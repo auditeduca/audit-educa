@@ -1,13 +1,79 @@
-/* Footer Styles */
-footer {
-    margin-top: auto;
+/* --- Estilos do Footer --- */
+
+/* Toggle Switch para Cookies */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
 }
-footer a {
-    transition: color 0.3s ease;
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
-footer h3, footer h4 {
-    color: var(--audit-gold);
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
 }
-footer {
-    animation: fadeIn 1s ease-out;
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+.dark .slider {
+    background-color: #4b5563;
+}
+
+input:checked + .slider {
+    background-color: #1e3a8a; /* audit-blue */
+}
+
+.dark input:checked + .slider {
+    background-color: #fbbf24; /* audit-gold */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Acordeão de Descrição */
+.item-desc {
+    transition: all 0.3s ease;
+}
+.item-desc.hidden {
+    display: none;
+}
+.item-desc.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Utilitários */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
