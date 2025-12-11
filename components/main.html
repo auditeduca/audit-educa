@@ -1,16 +1,10 @@
-/**
- * Main JS
- * Lógica específica para interações dentro da área de conteúdo principal.
- */
-
-document.addEventListener('componentsLoaded', () => {
-    // Código que roda após o esqueleto (Header/Footer) carregar
-    console.log('Main: Estrutura carregada.');
-});
-
-// Exemplo: Função para tratar o submit da newsletter (pode ser chamada pelo onsubmit do form)
-function handleNewsletter(event) {
-    event.preventDefault();
-    const email = event.target.querySelector('input[type="email"]').value;
-    alert(`Obrigado! O e-mail ${email} foi cadastrado (Simulação).`);
-}
+<!-- MAIN WRAPPER -->
+<!-- O conteúdo da Home, Sobre, etc será injetado dentro da div #content-placeholder -->
+<main id="main-content" class="flex-grow min-h-screen bg-gray-50 dark:bg-audit-bgDark transition-colors duration-300">
+    <div id="content-placeholder">
+        <!-- O conteúdo do pages/home.json será carregado aqui automaticamente -->
+        <div class="flex justify-center items-center h-64">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-audit-gold"></div>
+        </div>
+    </div>
+</main>
