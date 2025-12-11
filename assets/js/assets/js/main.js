@@ -1,11 +1,10 @@
-/**
- * Main JS
- * Responsável por lógicas gerais da página que não pertencem ao Header ou Footer.
- * Atualmente vazio ou com inicializações básicas para evitar erro 404.
- */
-
-document.addEventListener('componentsLoaded', () => {
-    console.log('Componentes carregados. Iniciando Main JS...');
-    
-    // Exemplo: Inicializar tooltips ou interações da área principal aqui
-});
+<!-- MAIN WRAPPER -->
+<!-- O conteúdo da Home, Sobre, etc será injetado dentro da div #content-placeholder -->
+<main id="main-content" class="flex-grow min-h-screen bg-gray-50 dark:bg-audit-bgDark transition-colors duration-300">
+    <div id="content-placeholder">
+        <!-- O conteúdo do pages/home.json será carregado aqui automaticamente -->
+        <div class="flex justify-center items-center h-64">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-audit-gold"></div>
+        </div>
+    </div>
+</main>
