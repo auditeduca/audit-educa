@@ -1,7 +1,5 @@
 class TemplateEngine {
     constructor() {
-        this.components = {};
-        // Mapeamento dos containers para os arquivos
         this.config = {
             'header-container': 'components/header.html',
             'main-container': 'components/main.html',
@@ -12,54 +10,48 @@ class TemplateEngine {
 
     async init() {
         await this.loadComponents();
-        // Não precisamos chamar injectComponents aqui pois loadComponents já injeta conforme carrega
-        this.dispatchComponentsLoaded();
-        this.setupRouting(); // Se houver roteamento de páginas
+        // Dispara evento para avisar outros scripts que o HTML está pronto
+        document.dispatchEvent(new CustomEvent('componentsLoaded'));
     }
 
     async loadComponents() {
+        // Verifica se está rodando em file:// (o que bloqueia o fetch)
+        const isLocalFile = window.location.protocol === 'file:';
+
         const promises = Object.entries(this.config).map(async ([containerId, filePath]) => {
             const container = document.getElementById(containerId);
-            if (!container) return; // Se o container não existe na página, ignora
+            if (!container) return;
+
+            // Se for arquivo local sem servidor, mostra aviso amigável
+            if (isLocalFile) {
+                container.innerHTML = `
+                    <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border: 1px solid #f87171; font-family: sans-serif; margin: 10px;">
+                        <strong>Erro de Visualização:</strong> Navegadores bloqueiam carregamento de componentes modulares (<em>${filePath}</em>) quando o arquivo é aberto direto.
+                        <br>
+                        <strong>Solução:</strong> Use um servidor local (ex: Live Server do VSCode) ou suba para o GitHub Pages.
+                    </div>
+                `;
+                return;
+            }
 
             try {
                 const response = await fetch(filePath);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                if (!response.ok) throw new Error(`HTTP ${response.status} - Arquivo não encontrado`);
+                
                 const html = await response.text();
-                
-                // Injeta o HTML
                 container.innerHTML = html;
-                
-                // Salva em cache se necessário
-                const componentName = filePath.split('/')[1].replace('.html', '');
-                this.components[componentName] = html;
 
             } catch (error) {
-                console.error(`Erro ao carregar componente ${filePath}:`, error);
-                container.innerHTML = `<div class="p-4 text-red-500 bg-red-100 rounded">Erro ao carregar ${filePath}. Verifique se o arquivo existe e se você está usando um Servidor Local (http://) e não abrindo o arquivo direto (file://).</div>`;
+                console.error(`Erro ao carregar ${filePath}:`, error);
+                container.innerHTML = `
+                    <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border: 1px solid #f87171; margin: 10px;">
+                        Erro ao carregar <strong>${filePath}</strong>. (Verifique se a pasta 'components' existe na raiz).
+                    </div>
+                `;
             }
         });
 
         await Promise.all(promises);
-    }
-
-    dispatchComponentsLoaded() {
-        // Dispara evento para avisar ao header.js e outros scripts que o HTML está pronto
-        document.dispatchEvent(new CustomEvent('componentsLoaded', {
-            detail: { components: this.components }
-        }));
-    }
-
-    setupRouting() {
-        // Lógica simples de roteamento para carregar conteúdo no main
-        const handleHashChange = () => {
-            const hash = window.location.hash.slice(1) || 'home';
-            // Aqui você pode expandir para carregar pages/home.json se necessário
-            console.log('Navegou para:', hash);
-        };
-
-        window.addEventListener('hashchange', handleHashChange);
-        handleHashChange(); // Executa na carga inicial
     }
 }
 
