@@ -1,0 +1,16 @@
+/**
+ * Main JS
+ * Lógica específica para interações dentro da área de conteúdo principal.
+ */
+
+document.addEventListener('componentsLoaded', () => {
+    // Código que roda após o esqueleto (Header/Footer) carregar
+    console.log('Main: Estrutura carregada.');
+});
+
+// Exemplo: Função para tratar o submit da newsletter (pode ser chamada pelo onsubmit do form)
+function handleNewsletter(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('input[type="email"]').value;
+    alert(`Obrigado! O e-mail ${email} foi cadastrado (Simulação).`);
+}
