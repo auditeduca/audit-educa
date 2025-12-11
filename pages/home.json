@@ -1,0 +1,11 @@
+{
+  "title": "Audit Educa - Acessibilidade em Conhecimento",
+  "description": "Plataforma dedicada à acessibilidade digital e educação inclusiva. Conheça nossos recursos e ferramentas para melhorar a experiência de todos.",
+  "keywords": "acessibilidade, educação, inclusão digital, audit educa",
+  "canonical": "https://www.auditeduca.com.br/",
+  "ogTitle": "Audit Educa - Acessibilidade em Conhecimento",
+  "ogDescription": "Plataforma dedicada à acessibilidade digital e educação inclusiva",
+  "ogImage": "https://www.auditeduca.com.br/assets/images/og-image.png",
+  "ogType": "website",
+  "html": "<section class='grid grid-cols-1 md:grid-cols-2 gap-8'><article class='bg-white dark:bg-audit-cardDark p-6 rounded-lg shadow-md'><h2 class='text-2xl font-bold text-audit-navy dark:text-audit-gold mb-4'>Sobre Nós</h2><p class='text-gray-600 dark:text-gray-300'>Somos uma plataforma dedicada a tornar o conhecimento acessível para todos, independentemente de suas limitações.</p></article><article class='bg-white dark:bg-audit-cardDark p-6 rounded-lg shadow-md'><h2 class='text-2xl font-bold text-audit-navy dark:text-audit-gold mb-4'>Nossa Missão</h2><p class='text-gray-600 dark:text-gray-300'>Promover acessibilidade digital e educação inclusiva através de recursos e ferramentas inovadoras.</p></article></section>"
+}
