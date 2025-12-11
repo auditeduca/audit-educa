@@ -1,0 +1,36 @@
+<header class="sticky top-0 z-[100] bg-white dark:bg-audit-navy shadow-md transition-all duration-300">
+<div class="golden-line"></div>
+<div class="flex items-center justify-between px-4 md:px-8 py-4 gap-4">
+<div class="flex items-center gap-4 flex-1">
+<a href="/" class="flex items-center gap-2 hover:opacity-80 transition">
+<img src="https://www.auditeduca.com.br/assets/images/audit-educa-favicon.webp" alt="Audit Educa Logo" class="w-10 h-10">
+<span class="hidden sm:inline font-bold text-audit-navy dark:text-white">Audit Educa</span>
+</a>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Início</a>
+<div class="relative group">
+<button class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition flex items-center gap-1">
+Sobre <i class="fas fa-chevron-down text-xs"></i>
+</button>
+</div>
+<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Conteúdo</a>
+<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Ferramentas</a>
+<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Carreiras</a>
+</nav>
+<div class="flex items-center gap-3">
+<button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition" aria-label="Alternar tema">
+<i class="fas fa-moon dark:hidden"></i>
+<i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+</button>
+<button id="mobile-menu-btn" class="lg:hidden p-2 text-audit-navy dark:text-white hover:bg-gray-200/50 dark:hover:bg-white/10 rounded-lg transition" aria-label="Menu Principal">
+<i class="fas fa-bars text-xl"></i>
+</button>
+</div>
+</div>
+<div id="mobile-menu" class="hidden lg:hidden fixed top-[140px] sm:top-[145px] bottom-0 left-0 w-full bg-audit-glassLight dark:bg-audit-glassDark glass backdrop-blur-xl border-t border-gray-200/20 shadow-2xl origin-top animate-fade-in-down z-[95] overflow-y-auto pb-40">
+<div class="px-4 py-6 space-y-2">
+<a href="#" class="block px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition">Início</a>
+</div>
+</div>
+</header>

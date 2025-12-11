@@ -1,0 +1,34 @@
+<footer class="bg-audit-navy dark:bg-black text-white py-12 px-4 md:px-8">
+<div class="max-w-6xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<h3 class="font-bold text-lg mb-4">Audit Educa</h3>
+<p class="text-gray-400 text-sm">Acessibilidade em Conhecimento</p>
+</div>
+<div>
+<h4 class="font-bold mb-4">Sobre</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a href="#" class="hover:text-audit-gold transition">Sobre Nós</a></li>
+<li><a href="#" class="hover:text-audit-gold transition">Contato</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">Legal</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a href="#" class="hover:text-audit-gold transition">Privacidade</a></li>
+<li><a href="#" class="hover:text-audit-gold transition">Termos</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">Redes Sociais</h4>
+<div class="flex gap-4">
+<a href="#" class="text-gray-400 hover:text-audit-gold transition"><i class="fab fa-linkedin"></i></a>
+<a href="#" class="text-gray-400 hover:text-audit-gold transition"><i class="fab fa-twitter"></i></a>
+<a href="#" class="text-gray-400 hover:text-audit-gold transition"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+<p>&copy; 2024 Audit Educa. Todos os direitos reservados.</p>
+</div>
+</footer>
