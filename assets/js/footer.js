@@ -1,11 +1,13 @@
 class FooterManager {
     constructor() {
+        console.log('FooterManager: Script carregado. Iniciando...');
         this.init();
     }
 
     init() {
         // Aguarda carregamento do HTML do footer
         document.addEventListener('componentsLoaded', () => {
+            console.log('FooterManager: Evento componentsLoaded recebido. Inicializando componentes...');
             this.initCookieSystem();
             this.initBackToTop();
             this.initFooterConfigBtn();
@@ -21,7 +23,11 @@ class FooterManager {
         const checkMkt = document.getElementById('check-mkt');
         const checkStats = document.getElementById('check-stats');
 
-        if (!banner || !overlay) return;
+        // Diagnóstico: Se os elementos não existem, avisa no console (provável cache de HTML antigo)
+        if (!banner || !overlay) {
+            console.warn('FooterManager: Elementos de cookies (banner/overlay) NÃO encontrados. O arquivo components/footer.html pode estar em cache (versão antiga). Dê um Ctrl+F5.');
+            return;
+        }
 
         // Exibe o Banner após 0.5s se não houver consentimento
         setTimeout(() => {
@@ -142,6 +148,9 @@ class FooterManager {
                 e.preventDefault();
                 if (this.openCookieModal) this.openCookieModal();
             });
+        } else {
+            // Log discreto para não poluir se o botão não for essencial
+            // console.log('FooterManager: Botão de configuração do rodapé não encontrado.');
         }
     }
 }
