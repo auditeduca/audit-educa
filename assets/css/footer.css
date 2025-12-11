@@ -1,0 +1,13 @@
+/* Footer Styles */
+footer {
+    margin-top: auto;
+}
+footer a {
+    transition: color 0.3s ease;
+}
+footer h3, footer h4 {
+    color: var(--audit-gold);
+}
+footer {
+    animation: fadeIn 1s ease-out;
+}
