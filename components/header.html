@@ -1,36 +1,65 @@
-<header class="sticky top-0 z-[100] bg-white dark:bg-audit-navy shadow-md transition-all duration-300">
-<div class="golden-line"></div>
-<div class="flex items-center justify-between px-4 md:px-8 py-4 gap-4">
-<div class="flex items-center gap-4 flex-1">
-<a href="/" class="flex items-center gap-2 hover:opacity-80 transition">
-<img src="https://www.auditeduca.com.br/assets/images/audit-educa-favicon.webp" alt="Audit Educa Logo" class="w-10 h-10">
-<span class="hidden sm:inline font-bold text-audit-navy dark:text-white">Audit Educa</span>
-</a>
-</div>
-<nav class="hidden lg:flex items-center gap-8">
-<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Início</a>
-<div class="relative group">
-<button class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition flex items-center gap-1">
-Sobre <i class="fas fa-chevron-down text-xs"></i>
-</button>
-</div>
-<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Conteúdo</a>
-<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Ferramentas</a>
-<a href="#" class="text-gray-700 dark:text-gray-300 hover:text-audit-blue transition">Carreiras</a>
-</nav>
-<div class="flex items-center gap-3">
-<button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition" aria-label="Alternar tema">
-<i class="fas fa-moon dark:hidden"></i>
-<i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-</button>
-<button id="mobile-menu-btn" class="lg:hidden p-2 text-audit-navy dark:text-white hover:bg-gray-200/50 dark:hover:bg-white/10 rounded-lg transition" aria-label="Menu Principal">
-<i class="fas fa-bars text-xl"></i>
-</button>
-</div>
-</div>
-<div id="mobile-menu" class="hidden lg:hidden fixed top-[140px] sm:top-[145px] bottom-0 left-0 w-full bg-audit-glassLight dark:bg-audit-glassDark glass backdrop-blur-xl border-t border-gray-200/20 shadow-2xl origin-top animate-fade-in-down z-[95] overflow-y-auto pb-40">
-<div class="px-4 py-6 space-y-2">
-<a href="#" class="block px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition">Início</a>
-</div>
-</div>
-</header>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Audit Educa - Acessibilidade em Conhecimento">
+<meta name="theme-color" content="#0f172a">
+<title>Audit Educa - Acessibilidade em Conhecimento</title>
+
+<!-- Bibliotecas Externas -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Configuração Tailwind -->
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                colors: {
+                    'audit-navy': '#0f172a',
+                    'audit-blue': '#1e3a8a',
+                    'audit-gold': '#fbbf24',
+                    'audit-goldDark': '#b45309',
+                    'audit-glassLight': 'rgba(255, 255, 255, 0.95)',
+                    'audit-glassDark': 'rgba(15, 23, 42, 0.95)',
+                    'audit-cardDark': '#1a202c',
+                    'audit-bgDark': '#0b1120'
+                },
+                boxShadow: {
+                    'mega': '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)',
+                }
+            }
+        }
+    }
+</script>
+
+<!-- CSS Modulares -->
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/footer.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800 dark:bg-audit-bgDark dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300 selection:bg-audit-gold selection:text-audit-navy">
+
+    <!-- Containers para Injeção -->
+    <div id="header-container"></div>
+    <div id="main-container"></div>
+    <div id="footer-container"></div>
+
+    <!-- Scripts Core -->
+    <script src="assets/js/seo-manager.js"></script>
+    <script src="assets/js/template-engine.js"></script>
+    
+    <!-- Scripts Modulares (Carregados após o core) -->
+    <!-- Eles ouvem o evento 'componentsLoaded' disparado pelo template-engine -->
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/footer.js"></script>
+
+</body>
+</html>
