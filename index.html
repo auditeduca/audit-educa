@@ -43,10 +43,27 @@ colors: {
 <div id="header-container"></div>
 <div id="main-container"></div>
 <div id="footer-container"></div>
+
+<!-- Scripts Core: Gerenciam SEO e Templates -->
 <script src="assets/js/seo-manager.js"></script>
 <script src="assets/js/template-engine.js"></script>
-<script src="assets/js/header.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/footer.js"></script>
+
+<!-- Scripts de Componentes: Carregados APENAS após a injeção do HTML -->
+<script>
+    document.addEventListener('componentsLoaded', function() {
+        const scripts = [
+            'assets/js/header.js',
+            'assets/js/main.js',
+            'assets/js/footer.js'
+        ];
+        
+        scripts.forEach(src => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = false; // Garante que a ordem seja respeitada, se necessário
+            document.body.appendChild(script);
+        });
+    });
+</script>
 </body>
 </html>
