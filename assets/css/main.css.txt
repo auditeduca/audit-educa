@@ -1,0 +1,13 @@
+/* Main Styles */
+main {
+    min-height: calc(100vh - 300px);
+}
+main h1 {
+    animation: fadeInDown 0.6s ease-out;
+}
+main p {
+    animation: fadeInDown 0.8s ease-out;
+}
+#content-placeholder {
+    animation: fadeIn 1s ease-out;
+}
