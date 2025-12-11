@@ -12,19 +12,25 @@ class SEOManager {
     }
 
     init() {
-        document.addEventListener('componentsLoaded', () => this.setupSEO());
+        // Aguarda o template engine carregar para garantir que o HEAD esteja pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setupSEO());
+        } else {
+            this.setupSEO();
+        }
     }
 
     setupSEO() {
         this.ensureBasicMetaTags();
-        this.setupStructuredData();
+        // this.setupStructuredData(); // Opcional: ativar se tiver dados estruturados
     }
 
     ensureBasicMetaTags() {
         const metaTags = [
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
             { name: 'theme-color', content: '#0f172a' },
-            { name: 'apple-mobile-web-app-capable', content: 'yes' },
+            // CORREÇÃO: Substituído 'apple-mobile-web-app-capable' por 'mobile-web-app-capable'
+            { name: 'mobile-web-app-capable', content: 'yes' }, 
             { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
         ];
 
@@ -39,133 +45,17 @@ class SEOManager {
     }
 
     updatePageSEO(pageData) {
-        this.updateBasicMeta(pageData);
-        this.updateOpenGraph(pageData);
-        this.updateTwitterCard(pageData);
-        this.updateCanonical(pageData);
-        this.updateStructuredData(pageData);
-    }
+        if (!pageData) return;
 
-    updateBasicMeta(pageData) {
-        if (pageData.title) {
-            document.title = pageData.title;
+        if (pageData.title) document.title = pageData.title;
+        if (pageData.description) this.setMetaTag('description', pageData.description);
+        if (pageData.keywords) this.setMetaTag('keywords', pageData.keywords);
+        if (pageData.canonical) this.updateCanonical(pageData.canonical);
+        
+        // Atualiza OpenGraph se disponível
+        if (pageData.ogTitle || pageData.title) {
+            this.updateOpenGraph(pageData);
         }
-
-        if (pageData.description) {
-            this.setMetaTag('description', pageData.description);
-        }
-
-        if (pageData.keywords) {
-            this.setMetaTag('keywords', pageData.keywords);
-        }
-
-        if (pageData.author) {
-            this.setMetaTag('author', pageData.author);
-        }
-    }
-
-    updateOpenGraph(pageData) {
-        const ogData = {
-            'og:title': pageData.ogTitle || pageData.title,
-            'og:description': pageData.ogDescription || pageData.description,
-            'og:image': pageData.ogImage || this.baseConfig.defaultImage,
-            'og:url': pageData.canonical || this.baseConfig.siteUrl,
-            'og:type': pageData.ogType || 'website',
-            'og:site_name': this.baseConfig.siteName,
-            'og:locale': this.baseConfig.locale
-        };
-
-        Object.entries(ogData).forEach(([property, content]) => {
-            if (content) {
-                this.setOpenGraphTag(property, content);
-            }
-        });
-    }
-
-    updateTwitterCard(pageData) {
-        const twitterData = {
-            'twitter:card': pageData.twitterCard || 'summary_large_image',
-            'twitter:title': pageData.twitterTitle || pageData.title,
-            'twitter:description': pageData.twitterDescription || pageData.description,
-            'twitter:image': pageData.twitterImage || pageData.ogImage || this.baseConfig.defaultImage,
-            'twitter:creator': this.baseConfig.twitterHandle
-        };
-
-        Object.entries(twitterData).forEach(([name, content]) => {
-            if (content) {
-                this.setTwitterTag(name, content);
-            }
-        });
-    }
-
-    updateCanonical(pageData) {
-        if (pageData.canonical) {
-            let canonical = document.querySelector('link[rel="canonical"]');
-            if (!canonical) {
-                canonical = document.createElement('link');
-                canonical.rel = 'canonical';
-                document.head.appendChild(canonical);
-            }
-            canonical.href = pageData.canonical;
-        }
-    }
-
-    updateStructuredData(pageData) {
-        if (pageData.structuredData) {
-            this.addStructuredData(pageData.structuredData);
-        } else {
-            this.addDefaultStructuredData(pageData);
-        }
-    }
-
-    addDefaultStructuredData(pageData) {
-        const structuredData = {
-            '@context': 'https://schema.org',
-            '@type': 'WebPage',
-            'name': pageData.title,
-            'description': pageData.description,
-            'url': pageData.canonical || this.baseConfig.siteUrl,
-            'image': pageData.ogImage || this.baseConfig.defaultImage,
-            'publisher': {
-                '@type': 'Organization',
-                'name': this.baseConfig.siteName,
-                'url': this.baseConfig.siteUrl,
-                'logo': {
-                    '@type': 'ImageObject',
-                    'url': 'https://www.auditeduca.com.br/assets/images/audit-educa-favicon.webp'
-                }
-            }
-        };
-
-        this.addStructuredData(structuredData);
-    }
-
-    addStructuredData(data) {
-        let script = document.querySelector('script[type="application/ld+json"]');
-        if (!script) {
-            script = document.createElement('script');
-            script.type = 'application/ld+json';
-            document.head.appendChild(script);
-        }
-        script.textContent = JSON.stringify(data);
-    }
-
-    setupStructuredData() {
-        const organizationData = {
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            'name': this.baseConfig.siteName,
-            'url': this.baseConfig.siteUrl,
-            'logo': 'https://www.auditeduca.com.br/assets/images/audit-educa-favicon.webp',
-            'description': this.baseConfig.defaultDescription,
-            'sameAs': [
-                'https://www.linkedin.com/company/audit-educa',
-                'https://twitter.com/auditeduca',
-                'https://github.com/auditeduca'
-            ]
-        };
-
-        this.addStructuredData(organizationData);
     }
 
     setMetaTag(name, content) {
@@ -178,46 +68,38 @@ class SEOManager {
         meta.content = content;
     }
 
-    setOpenGraphTag(property, content) {
-        let meta = document.querySelector(`meta[property="${property}"]`);
-        if (!meta) {
-            meta = document.createElement('meta');
-            meta.setAttribute('property', property);
-            document.head.appendChild(meta);
+    updateCanonical(url) {
+        let link = document.querySelector('link[rel="canonical"]');
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = 'canonical';
+            document.head.appendChild(link);
         }
-        meta.content = content;
+        link.href = url;
     }
 
-    setTwitterTag(name, content) {
-        let meta = document.querySelector(`meta[name="${name}"]`);
-        if (!meta) {
-            meta = document.createElement('meta');
-            meta.name = name;
-            document.head.appendChild(meta);
+    updateOpenGraph(pageData) {
+        const ogMap = {
+            'og:title': pageData.ogTitle || pageData.title,
+            'og:description': pageData.ogDescription || pageData.description,
+            'og:image': pageData.ogImage || this.baseConfig.defaultImage,
+            'og:url': pageData.canonical || window.location.href,
+            'og:type': pageData.ogType || 'website'
+        };
+
+        for (const [property, content] of Object.entries(ogMap)) {
+            if (content) {
+                let meta = document.querySelector(`meta[property="${property}"]`);
+                if (!meta) {
+                    meta = document.createElement('meta');
+                    meta.setAttribute('property', property);
+                    document.head.appendChild(meta);
+                }
+                meta.content = content;
+            }
         }
-        meta.content = content;
-    }
-
-    generateSitemap() {
-        const pages = ['home', 'about', 'services', 'contact'];
-        const sitemap = pages.map(page => ({
-            url: `${this.baseConfig.siteUrl}/#${page}`,
-            lastmod: new Date().toISOString().split('T')[0],
-            changefreq: 'weekly',
-            priority: page === 'home' ? '1.0' : '0.8'
-        }));
-
-        return sitemap;
-    }
-
-    generateRobotsTxt() {
-        return `User-agent: *
-Allow: /
-Disallow: /admin/
-Disallow: /private/
-
-Sitemap: ${this.baseConfig.siteUrl}/sitemap.xml`;
     }
 }
 
-const seoManager = new SEOManager();
+// Instancia globalmente para ser acessado pelo Template Engine
+window.seoManager = new SEOManager();
