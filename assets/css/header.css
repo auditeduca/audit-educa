@@ -1,26 +1,105 @@
-/* Header Styles */
-header {
+/* --- Estilos Base do Header --- */
+
+/* Efeito de Vidro (Glassmorphism) */
+.glass {
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
-header nav a {
-    position: relative;
+
+.dark .glass {
+    background: rgba(15, 23, 42, 0.95);
 }
-header nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--audit-gold);
-    transition: width 0.3s ease;
-}
-header nav a:hover::after {
+
+/* Linha Dourada Gradiente */
+.golden-line {
+    height: 4px;
     width: 100%;
+    background: linear-gradient(90deg, #b45309 0%, #fbbf24 50%, #b45309 100%);
 }
-#mobile-menu {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    border-top: none;
+
+/* --- Animações --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.3s ease-out forwards;
+}
+
+/* --- Menu Accordion (Mobile) --- */
+.accordion-content {
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.submenu-hidden {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.submenu-visible {
+    max-height: 1000px; /* Valor alto para permitir conteúdo dinâmico */
+    opacity: 1;
+    pointer-events: auto;
+    padding-bottom: 0.5rem;
+}
+
+/* Ícone de Seta (Rotação) */
+.icon-chevron {
+    transition: transform 0.3s ease;
+}
+
+.group.active .icon-chevron, /* Para botões com classe .active */
+button[aria-expanded="true"] .icon-chevron {
+    transform: rotate(180deg);
+}
+
+/* --- Scrollbar Customizada (Mega Menu) --- */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 20px;
+}
+
+.dark .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: #475569;
+}
+
+/* --- Barra de Busca Mobile --- */
+#mobile-search-bar {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+#mobile-search-bar.active {
+    max-height: 80px;
+    opacity: 1;
+}
+
+/* --- Detalhes do Mega Menu (Conteúdo Dinâmico) --- */
+.detail-content {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
