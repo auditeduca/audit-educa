@@ -1,13 +1,16 @@
-<main class="flex-1 py-12 px-4 md:px-8">
-<div class="max-w-6xl mx-auto">
-<section class="mb-12">
-<h1 class="text-4xl md:text-5xl font-bold text-audit-navy dark:text-white mb-4">Bem-vindo ao Audit Educa</h1>
-<p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Acessibilidade em Conhecimento</p>
-</section>
-<div id="content-placeholder" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Conteúdo dinâmico será injetado aqui -->
-</div>
-</div>
+/**
+ * Main JS
+ * Lógica específica para interações dentro da área de conteúdo principal.
+ */
 
-</main>
+document.addEventListener('componentsLoaded', () => {
+    // Código que roda após o esqueleto (Header/Footer) carregar
+    console.log('Main: Estrutura carregada.');
+});
 
+// Exemplo: Função para tratar o submit da newsletter (pode ser chamada pelo onsubmit do form)
+function handleNewsletter(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('input[type="email"]').value;
+    alert(`Obrigado! O e-mail ${email} foi cadastrado (Simulação).`);
+}
