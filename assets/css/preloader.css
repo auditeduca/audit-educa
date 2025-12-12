@@ -1,0 +1,196 @@
+/* * =========================================================
+ * PRELOADER CSS (Morphing, Glassmorphism e Transições)
+ * =========================================================
+ */
+
+/* Efeito de Vidro (Glassmorphism) para o estado "loaded" */
+.glass-effect {
+    /* Estas variáveis são definidas no assets/css/global.css para serem reconhecidas */
+    background: var(--tw-audit-glassLight); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); 
+}
+
+/* Linha Dourada Gradiente (Usada no estado final do logo e na barra) */
+.golden-line {
+    height: 4px;
+    width: 100%;
+    /* Gradiente usando audit-goldDark (#b45309) e audit-gold (#fbbf24) */
+    background: linear-gradient(90deg, #b45309 0%, #fbbf24 50%, #b45309 100%);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- PRELOADER WRAPPER --- */
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Transição para a saída final (loaded-complete) */
+    transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s;
+}
+
+/* Fundo do Preloader (Cor clara inicial) */
+.loader-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); /* Cinza Claro */
+    z-index: 0;
+    transition: opacity 0.8s ease;
+}
+
+/* Dark Mode - Fundo do Preloader */
+.dark .loader-bg {
+    background: linear-gradient(135deg, #1f2937 0%, #0b1120 100%); /* Azul Escuro */
+}
+
+/* Container Central */
+.center-cluster {
+    position: relative;
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* O elemento que faz o "Morphing" - Preto e Dourado */
+.morph-blob {
+    width: 120px;
+    height: 120px;
+    /* Gradiente usando audit-navy (#0f172a), preto e audit-goldDark (#b45309) */
+    background: linear-gradient(45deg, #0f172a, #000000, #b45309);
+    background-size: 200% 200%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: fluid-morph 4s ease-in-out infinite both, gradient-shift 3s ease infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: all 1.2s cubic-bezier(0.83, 0, 0.17, 1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Container do Logo */
+.logo-container {
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    margin-bottom: 8px;
+}
+
+/* BARRA DE CARREGAMENTO */
+.loading-bar-container {
+    width: 200px;
+    height: 4px;
+    background-color: #cbd5e1;
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.dark .loading-bar-container {
+    background-color: #374151;
+}
+
+.loading-bar-fill {
+    height: 100%;
+    width: 0%;
+    /* Gradiente Dourado (Mesmo da Linha) */
+    background: linear-gradient(90deg, #b45309 0%, #fbbf24 50%, #b45309 100%);
+    border-radius: 999px;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+/* Animações */
+@keyframes fluid-morph {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: translate(-50%, -50%) rotate(180deg) scale(1.1); }
+    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+}
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- ESTADOS DE FINALIZAÇÃO --- */
+
+/* 1. Fundo sólido desaparece */
+body.loaded .loader-bg { opacity: 0; }
+
+/* 2. O Blob se expande e vira a tela de vidro CLARA */
+body.loaded .morph-blob {
+    animation: none;
+    border-radius: 0;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%) scale(1);
+    /* Aplica o Glassmorphism com variável CSS */
+    background: var(--tw-audit-glassLight);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: none;
+}
+
+/* 2.1. O Blob se expande e vira a tela de vidro ESCURA (Dark Mode) */
+.dark body.loaded .morph-blob {
+    background: var(--tw-audit-glassDark);
+}
+
+/* 3. O Logo aparece */
+body.loaded .logo-container {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* 4. A linha dourada se expande */
+body.loaded .golden-line {
+    transform: scaleX(1);
+}
+
+/* 5. A barra de carregamento some */
+body.loaded .loading-bar-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+/* 6. Saída final: O vidro desaparece suavemente */
+body.loaded-complete #loader-wrapper {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
