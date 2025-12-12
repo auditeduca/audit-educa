@@ -1,62 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Audit Educa - Acessibilidade em Conhecimento">
-<meta name="theme-color" content="#0f172a">
-<title>Audit Educa - Acessibilidade em Conhecimento</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Educa - Portal Corporativo</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
 
-<!-- Bibliotecas Externas -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- TAGS HREFLANG PARA SEO INTERNACIONAL -->
+    <link rel="alternate" hreflang="pt-BR" href="https://www.auditeduca.com.br/pt/" />
+    <link rel="alternate" hreflang="en" href="https://www.auditeduca.com.br/" />
+    <link rel="alternate" hreflang="es" href="https://www.auditeduca.com.br/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.auditeduca.com.br/" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Configuração Tailwind -->
-<script>
-    tailwind.config = {
-        darkMode: 'class',
-        theme: {
-            extend: {
-                fontFamily: { sans: ['Poppins', 'sans-serif'] },
-                colors: {
-                    'audit-navy': '#0f172a',
-                    'audit-blue': '#1e3a8a',
-                    'audit-gold': '#fbbf24',
-                    'audit-goldDark': '#b45309',
-                    'audit-glassLight': 'rgba(255, 255, 255, 0.95)',
-                    'audit-glassDark': 'rgba(15, 23, 42, 0.95)',
-                    'audit-cardDark': '#1a202c',
-                    'audit-bgDark': '#0b1120'
-                },
-                boxShadow: {
-                    'mega': '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)',
+    <script>
+        // Configuração Tailwind (incluindo cores personalizadas e Poppins)
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e3a8a',
+                        'audit-gold': '#fbbf24',
+                        'audit-goldDark': '#b45309',
+                        'audit-glassLight': 'rgba(255, 255, 255, 0.98)',
+                        'audit-glassDark': 'rgba(15, 23, 42, 0.98)',
+                        'audit-cardDark': '#1a202c', 
+                        'audit-bgDark': '#0b1120', 
+                    }
                 }
             }
         }
-    }
-</script>
+    </script>
 
-<!-- CSS Modulares -->
-<link rel="stylesheet" href="assets/css/global.css">
-<link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/footer.css">
+    <!-- ESTILOS CSS MODULARES -->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
-
 <body class="bg-gray-100 text-gray-800 dark:bg-audit-bgDark dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300 selection:bg-audit-gold selection:text-audit-navy">
 
-    <!-- Containers para Injeção -->
-    <div id="header-container"></div>
-    <div id="main-container"></div>
-    <div id="footer-container"></div>
+    <!-- Skip link (Acessibilidade) -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-audit-gold text-audit-navy p-3 z-[120] font-bold rounded">Pular para Conteúdo</a>
 
-    <!-- Scripts Core -->
-    <script src="assets/js/seo-manager.js"></script>
-    <script src="assets/js/template-engine.js"></script>
+    <!-- Container Header -->
+    <div id="header-container"></div>
+
+    <!-- Container Main -->
+    <div id="main-container"></div>
+
+    <!-- Container Footer -->
+    <div id="footer-container"></div>
     
-    <!-- Scripts Modulares (Carregados após o core) -->
-    <!-- Eles ouvem o evento 'componentsLoaded' disparado pelo template-engine -->
+    <!-- SCRIPTS MODULARES -->
+    <script src="assets/js/template-engine.js"></script>
+    <script src="assets/js/seo-manager.js"></script>
     <script src="assets/js/header.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/footer.js"></script>
