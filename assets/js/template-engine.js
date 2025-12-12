@@ -6,6 +6,7 @@ class TemplateEngine {
             'main-container': 'components/main.html',
             'footer-container': 'components/footer.html'
         };
+        this.currentPage = null; // Rastreia a página atual para evitar recargas desnecessárias
         console.log('TemplateEngine: Iniciando...');
         this.init();
     }
@@ -67,11 +68,36 @@ class TemplateEngine {
     }
 
     setupRouting() {
+        // Lista de IDs internos que NÃO devem ser tratados como páginas JSON
+        const internalAnchors = [
+            'header', 'footer', 'main-content', 
+            'acesso-rapido', 'inicio', 'newsletter', 
+            'backToTop', 'cookie-fab'
+        ];
+
         const loadRoute = () => {
-            // Pega o hash da URL (ex: #sobre) ou usa 'home' como padrão
-            // Isso garante que pages/home.json seja carregado se não houver hash
-            const hash = window.location.hash.slice(1) || 'home';
+            let hash = window.location.hash.slice(1);
+            
+            // Lógica de proteção:
+            // 1. Se o hash for uma âncora interna (ex: #footer), ignoramos a carga de nova página.
+            // 2. Se for a primeira carga (currentPage é null) e o hash for interno, forçamos 'home' 
+            //    para garantir que o usuário veja conteúdo além do rodapé/topo.
+            if (internalAnchors.includes(hash)) {
+                if (this.currentPage) {
+                    console.log(`TemplateEngine: Navegação interna para #${hash}. Mantendo página atual.`);
+                    return; // Apenas rola a página, não carrega JSON
+                }
+                hash = 'home'; // Fallback para home na inicialização
+            }
+
+            // Se não houver hash, assume 'home'
+            hash = hash || 'home';
+
+            // Evita recarregar a mesma página JSON se já estiver nela
+            if (this.currentPage === hash) return;
+
             console.log(`TemplateEngine: Carregando rota '${hash}' (pages/${hash}.json)...`);
+            this.currentPage = hash;
             this.loadPage(hash);
         };
 
@@ -123,11 +149,20 @@ class TemplateEngine {
 
         } catch (error) {
             console.error(`TemplateEngine: Erro ao carregar página ${pageName}:`, error);
+            
+            // Fallback amigável se a página não existir (ex: clicou em "Sobre Nós" mas não tem sobre.json)
+            // Em vez de erro feio, avisa ou redireciona para Home se preferir.
+            if (pageName !== 'home') {
+                 console.log('Tentando carregar Home como fallback...');
+                 this.loadPage('home'); // Tenta carregar a home se a página falhar
+                 return;
+            }
+
             contentPlaceholder.innerHTML = `
                 <div class="flex flex-col items-center justify-center py-20 text-gray-500">
                     <i class="fas fa-exclamation-triangle text-4xl mb-4 text-audit-gold"></i>
-                    <h2 class="text-xl font-bold">Conteúdo não disponível</h2>
-                    <p>Não foi possível carregar: <code>pages/${pageName}.json</code></p>
+                    <h2 class="text-xl font-bold">Conteúdo indisponível</h2>
+                    <p>Não foi possível carregar o conteúdo principal.</p>
                 </div>
             `;
             contentPlaceholder.style.opacity = '1';
