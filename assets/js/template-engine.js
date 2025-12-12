@@ -69,8 +69,9 @@ class TemplateEngine {
     setupRouting() {
         const loadRoute = () => {
             // Pega o hash da URL (ex: #sobre) ou usa 'home' como padrão
+            // Isso garante que pages/home.json seja carregado se não houver hash
             const hash = window.location.hash.slice(1) || 'home';
-            console.log(`TemplateEngine: Carregando rota '${hash}'...`);
+            console.log(`TemplateEngine: Carregando rota '${hash}' (pages/${hash}.json)...`);
             this.loadPage(hash);
         };
 
@@ -92,7 +93,7 @@ class TemplateEngine {
         contentPlaceholder.style.opacity = '0.5';
 
         try {
-            // Busca o JSON da página
+            // Busca o JSON da página (ex: pages/home.json)
             const response = await fetch(`pages/${pageName}.json?v=${Date.now()}`);
             
             if (!response.ok) {
