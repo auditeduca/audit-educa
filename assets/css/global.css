@@ -1,6 +1,66 @@
+/* * =========================================================
+ * GLOBAL STYLES (Adicionado: Variáveis CSS para Glassmorphism)
+ * =========================================================
+ */
+/* Define as variáveis CSS que o preloader.css precisa usar para o glassmorphism 
+   Elas replicam os valores do Tailwind config para uso em CSS puro (backdrop-filter) */
+:root {
+    --tw-audit-glassLight: rgba(255, 255, 255, 0.98);
+    --tw-audit-glassDark: rgba(15, 23, 42, 0.98);
+}
+.dark :root {
+    --tw-audit-glassDark: rgba(15, 23, 42, 0.98);
+}
+
+/* ========= ANIMAÇÕES BÁSICAS ========= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Classes utilitárias do Tailwind estendidas */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+.animate-fade-in-down {
+    animation: fadeInDown 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.animate-slide-in-up {
+    animation: slideInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Estilos globais da página */
+/* Adicionado o CSS que você forneceu na solicitação anterior para evitar conflito de escopo */
 /* =====================================================
-   AUDIT EDUCA - ESTILOS GLOBAIS
-   ===================================================== */
+    AUDIT EDUCA - ESTILOS GLOBAIS
+    ===================================================== */
 
 /* ========= VARIÁVEIS CSS ========= */
 :root {
