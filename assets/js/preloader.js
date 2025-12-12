@@ -98,7 +98,7 @@ const preloaderManager = (function() {
                 document.body.classList.remove('overflow-hidden');
                 
                 // Dispara evento para que outros scripts (como main.js) saibam que a tela foi liberada
-                document.dispatchEvent(new Event('preloaderFinished'));
+                document.dispatchEvent(new Event('componentsLoaded')); // MUDANÇA AQUI: usando componentsLoaded
                 console.log('Preloader: Concluído e flag de execução única definida.');
             }, 1200); // 1.2s para a transição do morphing se completar
         }, 200);
