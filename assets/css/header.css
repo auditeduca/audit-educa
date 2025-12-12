@@ -1,65 +1,130 @@
-/* * =========================================================
- * ESTILOS DO COMPONENTE HEADER
- * =========================================================
- */
+/* =====================================================
+   ESTILOS ESPECÍFICOS DO HEADER
+   ===================================================== */
 
-/* Links de Navegação */
-.nav-link {
-    @apply h-full flex items-center px-2;
-    font-weight: 500;
+/* ========= GLASSMORPHISM & LINHA DOURADA ========= */
+.glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark .glass {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Botões de Ícone (Dark Mode, Idioma) */
-.nav-icon-button {
-    @apply p-2 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-audit-gold transition-colors;
+.golden-line {
+    height: 4px;
+    background: linear-gradient(90deg, var(--audit-gold-dark) 0%, var(--audit-gold) 50%, var(--audit-gold-dark) 100%);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
-/* ---------------------------------------------------------
- * SELETOR DE IDIOMAS (Bandeiras)
- * ---------------------------------------------------------
- */
-
-/* Garantindo que as bandeiras NÃO tenham bordas nem sombra para um look limpo */
-.flag-icon {
-    width: 24px;
-    height: 16px;
-    object-fit: cover;
-    border-radius: 2px;
-    /* Remover borda e box-shadow */
-    border: none !important;
-    box-shadow: none !important; 
+/* ========= BOTÕES DE NAVEGAÇÃO DESKTOP ========= */
+.menu-trigger {
+    @apply px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-goldDark transition border-b-2 border-transparent hover:border-audit-gold flex items-center gap-1 focus:outline-none;
 }
 
-/* Estilo do Dropdown Container */
-.language-dropdown {
-    /* Efeito sutil de Glassmorphism no dropdown (usando variáveis globais) */
-    background: var(--tw-audit-glassLight);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* ========= MEGA PAINÉIS DESKTOP ========= */
+.desktop-panel {
+    @apply absolute top-full left-0 w-full bg-audit-glassLight dark:bg-audit-glassDark border-t border-gray-200/20 shadow-xl backdrop-blur-xl p-8 z-40 origin-top;
+    animation: fadeInDown 0.3s ease-out forwards;
+}
+.menu-title {
+    @apply font-bold text-audit-navy dark:text-audit-gold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 text-sm;
+}
+.menu-link {
+    @apply block p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-audit-gold/20 dark:hover:bg-audit-blue/30 font-medium transition duration-150 flex justify-between items-center group;
+}
+.menu-icon {
+    @apply text-[10px] opacity-0 group-hover:opacity-100 transition-opacity;
 }
 
-.dark .language-dropdown {
-    background: var(--tw-audit-glassDark);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+/* Detalhes Dinâmicos */
+.detail-pane {
+    @apply w-1/3 p-8 overflow-y-auto bg-gray-50 dark:bg-audit-bgDark;
+}
+.detail-desc {
+    @apply text-sm text-gray-600 dark:text-gray-300 mb-4;
+}
+.detail-list {
+    @apply space-y-2 text-sm;
+}
+.detail-link {
+    @apply text-audit-goldDark hover:text-audit-blue transition font-semibold flex items-center gap-2;
 }
 
-/* Item individual do Dropdown */
-.dropdown-item {
-    @apply flex items-center w-full px-4 py-3 text-sm text-gray-800 dark:text-gray-200 transition-colors;
+/* CTA Coluna */
+.menu-cta-column {
+    @apply relative hidden md:block;
+}
+.menu-cta-icon {
+    @apply bg-audit-gold w-16 h-16 rounded-full flex items-center justify-center shadow-2xl text-audit-navy text-3xl mb-4;
+}
+.menu-cta-title {
+    @apply font-bold text-white text-xl mb-3 text-center drop-shadow-md;
+}
+.menu-cta-text {
+    @apply text-sm text-white/90 mb-4 text-center;
+}
+.menu-cta-btn {
+    @apply bg-audit-gold text-audit-navy font-bold py-3 px-6 rounded-full shadow-lg hover:bg-audit-goldDark hover:text-white transition uppercase text-sm;
 }
 
-.dropdown-item:hover {
-    @apply bg-audit-blue/10 dark:bg-audit-blue/20 text-audit-blue dark:text-audit-gold;
+
+/* ========= MENU MOBILE (ACORDEÃO) ========= */
+.mobile-accordion-trigger {
+    @apply w-full flex justify-between items-center px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition group;
+}
+.mobile-submenu-content {
+    @apply pl-4 border-l-2 border-audit-gold/30 ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-300 ease-in-out;
+}
+.mobile-link {
+    @apply block px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition;
+}
+.mobile-sublink {
+    @apply block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-audit-blue;
+}
+.mobile-sublink-small {
+    @apply block px-4 py-1 text-sm text-gray-600 dark:text-gray-300 hover:text-audit-blue;
+}
+.mobile-submenu-title {
+    @apply px-4 pt-2 text-xs font-semibold text-audit-goldDark dark:text-audit-gold uppercase;
+}
+.icon-chevron {
+    transition: transform var(--transition-fast);
+}
+.rotate-chevron {
+    transform: rotate(180deg);
 }
 
-.dropdown-item .flag-icon {
-    margin-right: 12px;
+/* --- MOBILE SEARCH SLIDE --- */
+.search-slide-enter {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
-
-/* Classes de controle JS (visibilidade) */
-.language-dropdown.is-open {
+.search-slide-active {
+    max-height: 100px; /* Suficiente para a barra */
     opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+}
+
+/* Botão de Idioma Mobile */
+.lang-btn-mobile {
+    @apply hover:scale-110 transition p-1 rounded hover:bg-white/20;
+}
+
+/* --- Animações --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in-down { 
+    animation: fadeInDown 0.3s ease-out forwards; 
 }
