@@ -12,10 +12,13 @@ class TemplateEngine {
         // 1. Carrega a estrutura (Header, Main, Footer)
         await this.loadComponents();
         
-        // 2. Avisa que os componentes HTML estão prontos
+        // 2. Define FLAG GLOBAL para scripts que carregarem depois
+        window.__COMPONENTS_LOADED__ = true;
+
+        // 3. Dispara evento para scripts que já estavam ouvindo
         document.dispatchEvent(new CustomEvent('componentsLoaded'));
 
-        // 3. Carrega o conteúdo do JSON (Home, Sobre, etc)
+        // 4. Carrega o conteúdo do JSON (Home, Sobre, etc)
         this.setupRouting();
     }
 
@@ -27,24 +30,17 @@ class TemplateEngine {
             if (!container) return;
 
             if (isLocalFile) {
-                container.innerHTML = `
-                    <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border: 1px solid #f87171; font-family: sans-serif; margin: 10px;">
-                        <strong>Erro de Visualização:</strong> Navegadores bloqueiam carregamento de componentes modulares (<em>${filePath}</em>).
-                        <br>
-                        <strong>Solução:</strong> Use um servidor local (ex: Live Server) ou suba para o GitHub Pages.
-                    </div>
-                `;
+                container.innerHTML = `<div style="color:red; padding:20px;">ERRO: Use um servidor local (Live Server) para ver ${filePath}</div>`;
                 return;
             }
 
             try {
                 const response = await fetch(filePath);
-                if (!response.ok) throw new Error(`HTTP ${response.status} - Arquivo não encontrado`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const html = await response.text();
                 container.innerHTML = html;
             } catch (error) {
-                console.error(`Erro ao carregar ${filePath}:`, error);
-                container.innerHTML = `<div class="error-box">Erro ao carregar ${filePath}</div>`;
+                console.error(`Erro no arquivo ${filePath}:`, error);
             }
         });
 
@@ -52,64 +48,29 @@ class TemplateEngine {
     }
 
     setupRouting() {
-        // Ouve mudanças na URL (#home, #about)
-        window.addEventListener('hashchange', () => this.handleRoute());
-        // Carrega a página inicial na primeira visita
-        this.handleRoute();
-    }
-
-    handleRoute() {
-        // Pega o hash da URL (ex: #about -> about) ou define 'home' como padrão
-        const hash = window.location.hash.slice(1) || 'home';
-        this.loadPage(hash);
+        const loadRoute = () => {
+            const hash = window.location.hash.slice(1) || 'home';
+            this.loadPage(hash);
+        };
+        window.addEventListener('hashchange', loadRoute);
+        loadRoute(); // Executa na carga inicial
     }
 
     async loadPage(page) {
         const contentPlaceholder = document.getElementById('content-placeholder');
-        if (!contentPlaceholder) {
-            // Se o main.html ainda não carregou ou não tem o placeholder, espera um pouco
-            console.warn('Placeholder de conteúdo não encontrado. O main.html carregou?');
-            return;
-        }
-
-        // Mostra um loading simples
-        contentPlaceholder.style.opacity = '0.5';
+        if (!contentPlaceholder) return; // Main ainda não carregou
 
         try {
-            // Busca o JSON da página (ex: pages/home.json)
             const response = await fetch(`pages/${page}.json`);
-            
-            if (!response.ok) {
-                throw new Error(`Página não encontrada: ${page}`);
-            }
-
+            if (!response.ok) throw new Error('Página não encontrada');
             const data = await response.json();
             
-            // Injeta o HTML do JSON no placeholder
-            if (data.html) {
-                contentPlaceholder.innerHTML = data.html;
-                contentPlaceholder.style.opacity = '1';
-            }
-
-            // Atualiza SEO (Título e Descrição)
+            if (data.html) contentPlaceholder.innerHTML = data.html;
             if (data.title) document.title = data.title;
-            if (data.description) {
-                const metaDesc = document.querySelector('meta[name="description"]');
-                if (metaDesc) metaDesc.content = data.description;
-            }
-
+            
         } catch (error) {
-            console.error(`Erro ao carregar página ${page}:`, error);
-            contentPlaceholder.innerHTML = `
-                <div class="text-center py-10">
-                    <h2 class="text-2xl font-bold text-gray-700">Conteúdo não encontrado</h2>
-                    <p class="text-gray-500">Não foi possível carregar o arquivo <code>pages/${page}.json</code>.</p>
-                </div>
-            `;
-            contentPlaceholder.style.opacity = '1';
+            console.warn(`Conteúdo para ${page} não encontrado.`, error);
+            // Não limpa o placeholder para evitar "piscar" se for apenas um delay
         }
     }
 }
-
-// Inicializa o motor
-const templateEngine = new TemplateEngine();
