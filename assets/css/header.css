@@ -1,21 +1,117 @@
-/* --- Estilos Base do Header --- */
+/* =====================================================
+   ESTILOS ESPECÍFICOS DO HEADER
+   ===================================================== */
 
-/* Efeito de Vidro (Glassmorphism) */
+/* ========= GLASSMORPHISM & LINHA DOURADA ========= */
 .glass {
-    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .dark .glass {
-    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Linha Dourada Gradiente */
 .golden-line {
     height: 4px;
+    background: linear-gradient(90deg, var(--audit-gold-dark) 0%, var(--audit-gold) 50%, var(--audit-gold-dark) 100%);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     width: 100%;
-    background: linear-gradient(90deg, #b45309 0%, #fbbf24 50%, #b45309 100%);
+}
+
+/* ========= BOTÕES DE NAVEGAÇÃO DESKTOP ========= */
+.menu-trigger {
+    @apply px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-goldDark transition border-b-2 border-transparent hover:border-audit-gold flex items-center gap-1 focus:outline-none;
+}
+
+/* ========= MEGA PAINÉIS DESKTOP ========= */
+.desktop-panel {
+    @apply absolute top-full left-0 w-full bg-audit-glassLight dark:bg-audit-glassDark border-t border-gray-200/20 shadow-xl backdrop-blur-xl p-8 z-40 origin-top;
+    animation: fadeInDown 0.3s ease-out forwards;
+}
+.menu-title {
+    @apply font-bold text-audit-navy dark:text-audit-gold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 text-sm;
+}
+.menu-link {
+    @apply block p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-audit-gold/20 dark:hover:bg-audit-blue/30 font-medium transition duration-150 flex justify-between items-center group;
+}
+.menu-icon {
+    @apply text-[10px] opacity-0 group-hover:opacity-100 transition-opacity;
+}
+
+/* Detalhes Dinâmicos */
+.detail-pane {
+    @apply w-1/3 p-8 overflow-y-auto bg-gray-50 dark:bg-audit-bgDark;
+}
+.detail-desc {
+    @apply text-sm text-gray-600 dark:text-gray-300 mb-4;
+}
+.detail-list {
+    @apply space-y-2 text-sm;
+}
+.detail-link {
+    @apply text-audit-goldDark hover:text-audit-blue transition font-semibold flex items-center gap-2;
+}
+
+/* CTA Coluna */
+.menu-cta-column {
+    @apply relative hidden md:block;
+}
+.menu-cta-icon {
+    @apply bg-audit-gold w-16 h-16 rounded-full flex items-center justify-center shadow-2xl text-audit-navy text-3xl mb-4;
+}
+.menu-cta-title {
+    @apply font-bold text-white text-xl mb-3 text-center drop-shadow-md;
+}
+.menu-cta-text {
+    @apply text-sm text-white/90 mb-4 text-center;
+}
+.menu-cta-btn {
+    @apply bg-audit-gold text-audit-navy font-bold py-3 px-6 rounded-full shadow-lg hover:bg-audit-goldDark hover:text-white transition uppercase text-sm;
+}
+
+
+/* ========= MENU MOBILE (ACORDEÃO) ========= */
+.mobile-accordion-trigger {
+    @apply w-full flex justify-between items-center px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition group;
+}
+.mobile-submenu-content {
+    @apply pl-4 border-l-2 border-audit-gold/30 ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-300 ease-in-out;
+}
+.mobile-link {
+    @apply block px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition;
+}
+.mobile-sublink {
+    @apply block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-audit-blue;
+}
+.mobile-sublink-small {
+    @apply block px-4 py-1 text-sm text-gray-600 dark:text-gray-300 hover:text-audit-blue;
+}
+.mobile-submenu-title {
+    @apply px-4 pt-2 text-xs font-semibold text-audit-goldDark dark:text-audit-gold uppercase;
+}
+.icon-chevron {
+    transition: transform var(--transition-fast);
+}
+.rotate-chevron {
+    transform: rotate(180deg);
+}
+
+/* --- MOBILE SEARCH SLIDE --- */
+.search-slide-enter {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+.search-slide-active {
+    max-height: 100px; /* Suficiente para a barra */
+    opacity: 1;
+}
+
+/* Botão de Idioma Mobile */
+.lang-btn-mobile {
+    @apply hover:scale-110 transition p-1 rounded hover:bg-white/20;
 }
 
 /* --- Animações --- */
@@ -29,77 +125,6 @@
         transform: translateY(0);
     }
 }
-
-.animate-fade-in-down {
-    animation: fadeInDown 0.3s ease-out forwards;
-}
-
-/* --- Menu Accordion (Mobile) --- */
-.accordion-content {
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    overflow: hidden;
-}
-
-.submenu-hidden {
-    max-height: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.submenu-visible {
-    max-height: 1000px; /* Valor alto para permitir conteúdo dinâmico */
-    opacity: 1;
-    pointer-events: auto;
-    padding-bottom: 0.5rem;
-}
-
-/* Ícone de Seta (Rotação) */
-.icon-chevron {
-    transition: transform 0.3s ease;
-}
-
-.group.active .icon-chevron, /* Para botões com classe .active */
-button[aria-expanded="true"] .icon-chevron {
-    transform: rotate(180deg);
-}
-
-/* --- Scrollbar Customizada (Mega Menu) --- */
-.overflow-y-auto::-webkit-scrollbar {
-    width: 6px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb {
-    background-color: #cbd5e1;
-    border-radius: 20px;
-}
-
-.dark .overflow-y-auto::-webkit-scrollbar-thumb {
-    background-color: #475569;
-}
-
-/* --- Barra de Busca Mobile --- */
-#mobile-search-bar {
-    transition: all 0.3s ease-in-out;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-}
-
-#mobile-search-bar.active {
-    max-height: 80px;
-    opacity: 1;
-}
-
-/* --- Detalhes do Mega Menu (Conteúdo Dinâmico) --- */
-.detail-content {
-    animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.animate-fade-in-down { 
+    animation: fadeInDown 0.3s ease-out forwards; 
 }
