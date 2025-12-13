@@ -70,6 +70,29 @@
     @apply bg-audit-gold text-audit-navy font-bold py-3 px-6 rounded-full shadow-lg hover:bg-audit-goldDark hover:text-white transition uppercase text-sm;
 }
 
+/* Estilos adicionais para idioma e tema escuro */
+.lang-option {
+    @apply flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-audit-gold/20 dark:hover:bg-white/10 cursor-pointer transition-all duration-300;
+}
+
+.lang-option:hover {
+    @apply transform scale-105 shadow-lg;
+}
+
+/* Melhorias para tema escuro */
+.dark .golden-line {
+    background: linear-gradient(90deg, var(--audit-gold-dark) 0%, var(--audit-gold) 30%, var(--audit-gold-dark) 70%, #f59e0b 100%);
+}
+
+/* Ajuste para melhor contraste no tema escuro */
+.dark .menu-link:hover {
+    @apply bg-white/20;
+}
+
+.dark .detail-content.active {
+    @apply text-gray-100;
+}
+
 
 /* ========= MENU MOBILE (ACORDEÃO) ========= */
 .mobile-accordion-trigger {
@@ -128,3 +151,4 @@
 .animate-fade-in-down { 
     animation: fadeInDown 0.3s ease-out forwards; 
 }
+
