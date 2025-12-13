@@ -23,7 +23,7 @@
                     <!-- Navegação Rápida (Desktop Only) -->
                     <div class="hidden md:flex items-center gap-1 text-[10px] uppercase tracking-wide font-semibold border-l border-gray-300 dark:border-gray-600 pl-4">
                         <a href="#header" class="w-24 text-center py-1 hover:bg-black/5 dark:hover:bg-white/5 rounded transition focus:outline-none focus:text-audit-gold hover:text-audit-gold">Topo</a>
-                        <a href="#main-content" class="w-24 text-center py-1 hover:bg-black/5 dark:hover:bg-white/5 rounded transition focus:outline-none focus:text-audit-gold hover:text-audit-gold">Conteúdo</a>
+                        <a href="#" onclick="document.getElementById('main-content').scrollIntoView({behavior: 'smooth'}); return false;" class="w-24 text-center py-1 hover:bg-black/5 dark:hover:bg-white/5 rounded transition focus:outline-none focus:text-audit-gold hover:text-audit-gold">Conteúdo</a>
                         <a href="#footer" class="w-24 text-center py-1 hover:bg-black/5 dark:hover:bg-white/5 rounded transition focus:outline-none focus:text-audit-gold hover:text-audit-gold">Rodapé</a>
                     </div>
                 </div>
@@ -65,10 +65,10 @@
 
                     <!-- LOGOTIPO -->
                     <a href="#home" class="flex items-center group">
-                        <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" 
+                        <img src="assets/images/logotipo-audit-educa-default.webp" 
                                 alt="Logotipo Audit Educa - Acesso rápido a conhecimento" 
                                 class="h-10 md:h-12 w-auto dark:filter dark:brightness-[1.2]" 
-                                onerror="this.onerror=null; this.src='https://placehold.co/150x50/1e3a8a/fbbf24?text=Audit+Educa'"
+                                onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfMF8xKSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzBfMSIgeDE9IjAiIHkxPSIwIiB4Mj0iMTUwIiB5Mj0iNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMWUzYThhIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZiYmYyNCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjx0ZXh0IHg9Ijc1IiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkF1ZGl0IEVkdWNhPC90ZXh0Pgo8L3N2Zz4K'"
                         >
                     </a>
                     
@@ -119,6 +119,8 @@
         <!-- Faixa 3: Linha Dourada -->
         <div class="golden-line w-full relative z-30"></div>
 
+
+
         <!-- =======================================================
              MEGA PAINÉIS (Desktop Dropdowns)
              ======================================================= -->
@@ -142,15 +144,15 @@
                 <div class="flex-grow">
                     <h3 class="text-lg font-bold text-audit-navy dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Selecione seu Idioma</h3>
                     <div class="grid grid-cols-3 gap-8">
-                        <button onclick="selectLang('pt')" class="lang-option" data-lang="pt">
+                        <button data-lang-select="pt" class="lang-option hover:scale-105 transition p-4 rounded-xl hover:bg-audit-gold/20 dark:hover:bg-white/10">
                             <span class="text-5xl drop-shadow-md">🇧🇷</span>
                             <div><span class="block font-bold text-lg">Português</span><span class="block text-xs uppercase tracking-widest">Brasil</span></div>
                         </button>
-                        <button onclick="selectLang('en')" class="lang-option" data-lang="en">
+                        <button data-lang-select="en" class="lang-option hover:scale-105 transition p-4 rounded-xl hover:bg-audit-gold/20 dark:hover:bg-white/10">
                             <span class="text-5xl drop-shadow-md">🇺🇸</span>
                             <div><span class="block font-bold text-lg">English</span><span class="block text-xs uppercase tracking-widest">United States</span></div>
                         </button>
-                        <button onclick="selectLang('es')" class="lang-option" data-lang="es">
+                        <button data-lang-select="es" class="lang-option hover:scale-105 transition p-4 rounded-xl hover:bg-audit-gold/20 dark:hover:bg-white/10">
                             <span class="text-5xl drop-shadow-md">🇪🇸</span>
                             <div><span class="block font-bold text-lg">Español</span><span class="block text-xs uppercase tracking-widest">España</span></div>
                         </button>
@@ -170,9 +172,9 @@
                     <ul id="sobre-menu-list" class="space-y-1">
                         <li class="menu-item-primary" data-area="sobre_nos"><a href="#sobre-nos" class="menu-link">Sobre Nós <i class="fas fa-chevron-right menu-icon"></i></a></li>
                         <li class="menu-item-primary" data-area="criador"><a href="#sobre-o-criador" class="menu-link">Sobre o Criador <i class="fas fa-chevron-right menu-icon"></i></a></li>
-                        <li class="menu-item-primary" data-area="acessibilidade"><a href="#acessibilidade" class="menu-link">Acessibilidade Digital <i class="fas fa-chevron-right menu-icon"></i></a></li>
-                        <li class="menu-item-primary" data-area="sustentabilidade"><a href="#sustentabilidade" class="menu-link">Sustentabilidade Digital <i class="fas fa-chevron-right menu-icon"></i></a></li>
-                        <li class="menu-item-primary" data-area="politicas"><a href="#politicas" class="menu-link">Políticas do Site <i class="fas fa-chevron-right menu-icon"></i></a></li>
+                        <li class="menu-item-primary" data-area="acessibilidade"><a href="#politica-de-acessibilidade" class="menu-link">Acessibilidade Digital <i class="fas fa-chevron-right menu-icon"></i></a></li>
+                        <li class="menu-item-primary" data-area="sustentabilidade"><a href="#sustentabilidade-digital" class="menu-link">Sustentabilidade Digital <i class="fas fa-chevron-right menu-icon"></i></a></li>
+                        <li class="menu-item-primary" data-area="politicas"><a href="#mapa-site" class="menu-link">Políticas do Site <i class="fas fa-chevron-right menu-icon"></i></a></li>
                         <li class="menu-item-primary" data-area="mapa_site"><a href="#mapa-site" class="menu-link">Mapa do Site <i class="fas fa-chevron-right menu-icon"></i></a></li>
                     </ul>
                 </div>
@@ -204,9 +206,8 @@
                     <div id="about-sustentabilidade" class="detail-content hidden">
                         <p class="detail-desc">Ações e políticas que visam reduzir nosso impacto ambiental.</p>
                         <ul class="detail-list">
-                            <li><a href="#nosso-compromisso-sustentabilidade" class="detail-link"><i class="fas fa-seedling"></i> Nosso Compromisso</a></li>
-                            <li><a href="#pegada-carbono" class="detail-link"><i class="fas fa-cloud-arrow-down"></i> Pegada de Carbono</a></li>
-                            <li><a href="#relatorio-impacto" class="detail-link"><i class="fas fa-file-invoice"></i> Relatório de Impacto</a></li>
+                            <li><a href="#nosso-pegada-de-carbono" class="detail-link"><i class="fas fa-cloud-arrow-down"></i> Pegada de Carbono</a></li>
+                            <li><a href="#relatorio-de-impacto-digital" class="detail-link"><i class="fas fa-file-invoice"></i> Relatório de Impacto</a></li>
                             <li><a href="#tecnologia-verde" class="detail-link"><i class="fas fa-leaf"></i> Tecnologia Verde</a></li>
                         </ul>
                     </div>
@@ -228,7 +229,7 @@
 
                 <!-- COLUNA CTA -->
                 <div class="w-1/3 menu-cta-column">
-                    <img src="https://placehold.co/400x500/1e3a8a/fbbf24?text=Audit+Educa+Institucional" alt="Profissionais em reunião de planejamento" class="w-full h-full object-cover opacity-60 dark:opacity-30">
+                    <img src="assets/images/business-meeting-institutional.jpg" alt="Profissionais em reunião de planejamento" class="w-full h-full object-cover opacity-60 dark:opacity-30">
                     <div class="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-br from-audit-blue/50 to-transparent">
                         <div class="menu-cta-icon"><i class="fas fa-building-columns"></i></div>
                         <h5 class="menu-cta-title">Nossa Governança</h5>
@@ -328,7 +329,7 @@
 
                 <!-- COLUNA CTA -->
                 <div class="w-1/3 menu-cta-column">
-                    <img src="https://placehold.co/400x500/1e3a8a/fbbf24?text=Audit+Educa+Conteúdo" alt="Profissionais discutindo auditoria" class="w-full h-full object-cover opacity-60 dark:opacity-30">
+                    <img src="assets/images/team-collaboration-content.jpg" alt="Profissionais discutindo auditoria" class="w-full h-full object-cover opacity-60 dark:opacity-30">
                     <div class="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-br from-audit-blue/50 to-transparent">
                         <div class="menu-cta-icon"><i class="fas fa-lightbulb"></i></div>
                         <h5 class="menu-cta-title">Explore Nossos Cursos</h5>
@@ -428,7 +429,7 @@
 
                 <!-- COLUNA CTA -->
                 <div class="w-1/3 menu-cta-column">
-                    <img src="https://placehold.co/400x500/1e3a8a/fbbf24?text=Audit+Educa+Ferramentas" alt="Pessoa utilizando um laptop com gráficos" class="w-full h-full object-cover opacity-60 dark:opacity-30">
+                    <img src="assets/images/laptop-charts-ferramentas.jpg" alt="Pessoa utilizando um laptop com gráficos" class="w-full h-full object-cover opacity-60 dark:opacity-30">
                     <div class="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-br from-audit-blue/50 to-transparent">
                         <div class="menu-cta-icon"><i class="fas fa-toolbox"></i></div>
                         <h5 class="menu-cta-title">Nossas Ferramentas Premium</h5>
@@ -446,7 +447,7 @@
                     <h4 class="menu-title">Trilhas de Carreira</h4>
                     <ul id="carreiras-menu-list" class="space-y-1">
                         <li class="menu-item-primary" data-area="auditoria_externa"><a href="#carreiras-auditoria-externa" class="menu-link">Auditoria Externa <i class="fas fa-chevron-right menu-icon"></i></a></li>
-                        <li class="menu-item-primary" data-area="auditoria_interna"><a href="#carreiras-auditoria-interna" class="menu-link">Auditoria Interna <i class="fas fa-chevron-right menu-icon"></i></a></li>
+                        <li class="menu-item="auditoria_in-primary" data-areaterna"><a href="#carreiras-auditoria-interna" class="menu-link">Auditoria Interna <i class="fas fa-chevron-right menu-icon"></i></a></li>
                         <li class="menu-item-primary" data-area="auditoria_sistema"><a href="#carreiras-auditoria-sistema" class="menu-link">Auditoria de Sistema <i class="fas fa-chevron-right menu-icon"></i></a></li>
                         <li class="menu-item-primary" data-area="contabilidade"><a href="#carreiras-contabilidade" class="menu-link">Contabilidade <i class="fas fa-chevron-right menu-icon"></i></a></li>
                         <li class="menu-item-primary" data-area="controladoria"><a href="#carreiras-controladoria" class="menu-link">Controladoria <i class="fas fa-chevron-right menu-icon"></i></a></li>
@@ -527,7 +528,7 @@
 
                 <!-- COLUNA CTA -->
                 <div class="w-1/3 menu-cta-column">
-                    <img src="https://placehold.co/400x500/1e3a8a/fbbf24?text=Audit+Educa+Carreiras" alt="Profissionais em reunião de planejamento de carreira" class="w-full h-full object-cover opacity-60 dark:opacity-30">
+                    <img src="assets/images/business-career-growth.webp" alt="Profissionais em reunião de planejamento de carreira" class="w-full h-full object-cover opacity-60 dark:opacity-30">
                     <div class="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-br from-audit-blue/50 to-transparent">
                         <div class="menu-cta-icon"><i class="fas fa-rocket"></i></div>
                         <h5 class="menu-cta-title">Impulsione Sua Carreira</h5>
@@ -561,9 +562,8 @@
                     <a href="#recursos-assistivos" class="mobile-sublink-small">Recursos Assistivos</a>
                     
                     <h5 class="mobile-submenu-title">Sustentabilidade Digital</h5>
-                    <a href="#nosso-compromisso-sustentabilidade" class="mobile-sublink-small">Nosso Compromisso</a>
-                    <a href="#pegada-carbono" class="mobile-sublink-small">Pegada de Carbono</a>
-                    <a href="#relatorio-impacto" class="mobile-sublink-small">Relatório de Impacto</a>
+                    <a href="#nosso-pegada-de-carbono" class="mobile-sublink-small">Pegada de Carbono</a>
+                    <a href="#relatorio-de-impacto-digital" class="mobile-sublink-small">Relatório de Impacto</a>
                     <a href="#tecnologia-verde" class="mobile-sublink-small">Tecnologia Verde</a>
 
                     <h5 class="mobile-submenu-title">Políticas do Site</h5>
