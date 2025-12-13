@@ -94,6 +94,50 @@ body {
     overflow-x: hidden; 
 }
 
+/* ========= CONFIGURAÇÕES DE TEMA ESCURO ========= */
+.dark {
+    color-scheme: dark;
+}
+
+/* Melhorias para o tema escuro */
+.dark body {
+    background-color: var(--audit-bg-dark, #0b1120);
+    color: #f1f5f9;
+}
+
+/* Configurações específicas para elementos que podem não estar sendo afetados pelo dark: */
+.dark .bg-white {
+    background-color: rgba(15, 23, 42, 0.8) !important;
+}
+
+.dark .bg-gray-50 {
+    background-color: rgba(15, 23, 42, 0.6) !important;
+}
+
+.dark .bg-gray-100 {
+    background-color: rgba(15, 23, 42, 0.4) !important;
+}
+
+.dark .text-gray-800 {
+    color: #e2e8f0 !important;
+}
+
+.dark .text-gray-700 {
+    color: #cbd5e1 !important;
+}
+
+.dark .text-gray-600 {
+    color: #94a3b8 !important;
+}
+
+.dark .border-gray-200 {
+    border-color: rgba(148, 163, 184, 0.2) !important;
+}
+
+.dark .border-gray-300 {
+    border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
 /* --- Scroll Lock para Modais/Menus --- */
 body.overflow-hidden {
     overflow: hidden !important;
