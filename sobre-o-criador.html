@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Criador - Audit Educa</title>
+    
+    <!-- TAGS CANÔNICA E SEO (Atualizadas) -->
+    <link rel="canonical" href="https://www.auditeduca.com.br/sobre-o-criador.html" />
+    <meta name="description" content="Conheça Leivis Lima, o Contador, Auditor Independente e Gerente Big4 que idealizou o Audit Educa para democratizar o conhecimento técnico na área." />
+    <meta name="keywords" content="Leivis Lima, Audit Educa, Criador, Auditor Independente, Big4, Contabilidade, Auditoria, Facilitador de Conhecimento, Desenvolvimento Web" />
+
+    <!-- Open Graph Tags para Redes Sociais -->
+    <meta property="og:title" content="Sobre o Criador - Leivis Lima | Audit Educa" />
+    <meta property="og:description" content="Conheça Leivis Lima, o Contador, Auditor Independente e Gerente Big4 que idealizou o Audit Educa para democratizar o conhecimento técnico na área." />
+    <meta property="og:url" content="https://www.auditeduca.com.br/sobre-o-criador.html" />
+    <meta property="og:type" content="website" />
+    <!-- Usando uma imagem de exemplo baseada na URL no snippet anterior para Open Graph -->
+    <meta property="og:image" content="https://auditeduca.com.br/assets/images/about-creator.webp" />
+    <meta property="og:locale" content="pt_BR" />
+    
+    <!-- Carregamento do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuração do Tailwind CSS com a paleta de cores personalizada do Audit Educa
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#D4AF37',
+                        'audit-navy': '#1E3A8A',
+                        'audit-blue': '#3B82F6',
+                        'audit-bgDark': '#0F172A', // Fundo escuro
+                        'audit-light-bg': '#F8FAFC', // Fundo claro (gray-50)
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Links de CSS modulares essenciais para a estrutura (Header, Footer, Global) -->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+
+    <!-- CSS adicional para a animação do card de perfil (Pulse Gold) -->
+    <style>
+        @keyframes pulse-gold {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+        }
+        .animate-pulse-gold {
+            animation: pulse-gold 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-audit-light-bg text-gray-800 dark:bg-audit-bgDark dark:text-gray-100 font-sans flex flex-col min-h-screen transition-colors duration-300">
+    
+    <!-- HEADER MODULAR (Contêiner necessário para o template-engine) -->
+    <div id="header-container">
+        <!-- Conteúdo do cabeçalho será carregado aqui -->
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER (Onde o template-engine carrega o conteúdo principal) -->
+    <div id="main-container" class="flex-grow">
+        
+        <!-- Conteúdo principal: Sobre o Editor - Leivis Lima -->
+        <section class='py-16 lg:py-24 relative overflow-hidden'>
+            <!-- Background Pattern -->
+            <div class='absolute inset-0 opacity-5 dark:opacity-10'>
+                <div class='absolute inset-0' style='background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.4) 1px, transparent 0); background-size: 40px 40px;'></div>
+            </div>
+            
+            <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
+                <!-- Breadcrumb -->
+                <nav class='flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-8'>
+                    <a href='#' class='hover:text-audit-blue dark:hover:text-audit-gold transition-colors'>
+                        <i class='fas fa-home mr-1'></i> Início
+                    </a>
+                    <i class='fas fa-chevron-right text-xs'></i>
+                    <a href='institucional.html' class='hover:text-audit-blue dark:hover:text-audit-gold transition-colors'>
+                        Institucional
+                    </a>
+                    <i class='fas fa-chevron-right text-xs'></i>
+                    <span class='text-audit-blue dark:text-audit-gold font-medium'>Sobre o Criador</span>
+                </nav>
+                
+                <div class='text-center mb-16'>
+                    <span class='inline-block py-2 px-6 rounded-full bg-audit-blue/10 dark:bg-audit-gold/20 text-audit-blue dark:text-audit-gold text-sm font-bold tracking-wider mb-6 border border-audit-blue/20 dark:border-audit-gold/30'>
+                        IDEALIZADOR E CRIADOR
+                    </span>
+                    <h1 class='text-4xl lg:text-6xl font-bold text-audit-navy dark:text-white mb-6 leading-tight'>
+                        Leivis Lima
+                    </h1>
+                    <p class='text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
+                        Contador, Auditor Independente e Facilitador de Conhecimento
+                    </p>
+                </div>
+                
+                <!-- Profile Section -->
+                <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20'>
+                    <!-- Photo -->
+                    <div class='text-center lg:text-left'>
+                        <div class='relative inline-block'>
+                            <div class='w-80 h-80 rounded-full overflow-hidden mx-auto lg:mx-0 border-8 border-audit-gold dark:border-audit-gold shadow-2xl transform hover:scale-105 transition-transform duration-300'>
+                                <img src='https://auditeduca.com.br/assets/images/about-creator.webp' alt='Leivis Lima - Idealizador do AuditEduca' class='w-full h-full object-cover' onerror="this.onerror=null; this.src='https://placehold.co/320x320/1E3A8A/D4AF37?text=Foto+Leivis+Lima'">
+                            </div>
+                            <!-- Floating elements -->
+                            <div class='absolute -top-4 -right-4 w-12 h-12 bg-audit-gold rounded-full flex items-center justify-center shadow-lg animate-pulse-gold'>
+                                <i class='fas fa-award text-white text-lg'></i>
+                            </div>
+                            <div class='absolute -bottom-4 -left-4 w-12 h-12 bg-audit-blue rounded-full flex items-center justify-center shadow-lg'>
+                                <i class='fas fa-graduation-cap text-white text-lg'></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bio -->
+                    <div class='space-y-6'>
+                        <div class='space-y-4'>
+                            <h2 class='text-3xl lg:text-4xl font-bold text-audit-navy dark:text-white'>
+                                Seja bem-vindo(a) ao Audit Educa
+                            </h2>
+                            <p class='text-lg text-gray-700 dark:text-gray-300 leading-relaxed'>
+                                Me chamo Leivis, sou Contador e Auditor Independente, mas gosto de me definir essencialmente como um <strong class='text-audit-gold'>facilitador de conhecimento</strong>.
+                            </p>
+                        </div>
+                        
+                        <div class='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-lg'>
+                            <div class='flex items-start space-x-3'>
+                                <div class='flex-shrink-0'>
+                                    <div class='w-10 h-10 bg-audit-gold/10 dark:bg-audit-gold/20 rounded-lg flex items-center justify-center'>
+                                        <i class='fas fa-briefcase text-audit-gold text-lg'></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class='font-bold text-audit-navy dark:text-white mb-2'>Experiência Big4</h3>
+                                    <p class='text-gray-700 dark:text-gray-300 text-sm'>
+                                        Carreira forjada no rigor das maiores empresas de auditoria do mundo (Big4), onde cheguei ao cargo de Gerente.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Story -->
+                <div class='max-w-4xl mx-auto'>
+                    <div class='bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-8 lg:p-12 shadow-xl border border-gray-200/50 dark:border-gray-700/50'>
+                        <div class='prose prose-lg dark:prose-invert max-w-none'>
+                            <div class='space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed'>
+                                <p class='text-lg'>
+                                    Nestes anos, tive a oportunidade de aprender profundamente sobre <strong class='text-audit-blue'>modelos de negócios</strong> e como aplicar a <strong class='text-audit-gold'>contabilidade e a auditoria</strong> no contexto prático das empresas.
+                                </p>
+                                
+                                <p>
+                                    No entanto, percebi que a aplicabilidade prática muitas vezes era ensinada de forma desnecessariamente complexa. Devido ao volume de trabalho e aos prazos apertados do mundo corporativo, o treinamento acabava sendo <span class='font-semibold text-red-600 dark:text-red-400'>deficitário ou até mesmo negligenciado</span>.
+                                </p>
+                                
+                                <div class='bg-gradient-to-r from-audit-blue/10 to-audit-gold/10 dark:from-audit-blue/20 dark:to-audit-gold/20 rounded-xl p-6 border-l-4 border-audit-gold'>
+                                    <p class='text-lg font-medium text-audit-navy dark:text-white mb-2'>
+                                        <i class='fas fa-heart text-audit-gold mr-2'></i>Missão Pessoal
+                                    </p>
+                                    <p>
+                                        Sabendo dessa deficiência, sempre procurei desenvolver os profissionais que tive a oportunidade de liderar ao longo da minha carreira. Considero que <strong class='text-audit-gold'>desenvolver pessoas — tanto técnica quanto comportamentalmente</strong> — é uma missão e o maior legado que podemos deixar para as novas gerações da área contábil.
+                                    </p>
+                                </div>
+                                
+                                <div class='bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl p-6 border border-green-400 dark:border-green-700'>
+                                    <h3 class='text-xl font-bold text-audit-navy dark:text-white mb-3'>
+                                        <i class='fas fa-lightbulb text-audit-gold mr-2'></i>O Audit Educa Nasce
+                                    </h3>
+                                    <p>
+                                        O Audit Educa <strong class='text-green-600 dark:text-green-400'>nasce dessa paixão por ensinar</strong>. Aqui, combino a experiência técnica e comportamental adquirida ao longo dos anos com minha nova paixão: o <strong class='text-audit-blue'>desenvolvimento web</strong> e o <strong class='text-purple-600'>"vibecoding"</strong>.
+                                    </p>
+                                </div>
+                                
+                                <p>
+                                    Eu mesmo projeto e codifico os conteúdos e as ferramentas que você vê aqui. Procuro <strong class='text-audit-gold'>simplificar o complexo</strong>, criando um site que sirva de apoio real ao seu desenvolvimento educacional e profissional.
+                                </p>
+                                
+                                <div class='text-center bg-gradient-to-r from-audit-navy to-audit-blue rounded-xl p-8 text-white'>
+                                    <p class='text-lg font-medium mb-2'>
+                                        <i class='fas fa-users mr-2'></i>Para Quem é este Espaço
+                                    </p>
+                                    <p class='text-xl'>
+                                        Seja você um <strong>estudante</strong> ou um <strong>profissional contábil experiente</strong>, este espaço é para você.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+    <!-- FOOTER MODULAR (Contêiner necessário para o template-engine) -->
+    <div id="footer-container">
+        <!-- Conteúdo do rodapé será carregado aqui -->
+    </div>
+
+    <!-- MODAIS MODULARES (Contêiner necessário para o template-engine chamar modais) -->
+    <div id="modals-container">
+        <!-- Modais serão carregados dinamicamente aqui -->
+    </div>
+
+    <!-- Scripts modulares essenciais para o funcionamento do sistema -->
+    <script src="assets/js/console-cleaner.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/template-engine.js"></script>
+    
+</body>
+</html>
