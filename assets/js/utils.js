@@ -1300,8 +1300,8 @@ class SiteController {
                 FloatingButtonsManager.init();
                 CookieModal.init();
                 
-                // Inicializar HeaderManager com retry
-                this.initHeaderManagerWithRetry();
+                // Usar sistema de fallback integrado para header
+                window.HeaderFallbackSystem.init();
                 
                 console.log('✅ Sistema completo inicializado');
             } catch (error) {
@@ -1310,30 +1310,6 @@ class SiteController {
         }, 1000);
     }
     
-    static initHeaderManagerWithRetry(maxRetries = 3) {
-        let attempt = 0;
-        
-        const tryInitHeader = () => {
-            attempt++;
-            console.log(`🔄 Tentativa ${attempt}/${maxRetries} de inicializar HeaderManager...`);
-            
-            try {
-                HeaderManager.init();
-                console.log('✅ HeaderManager inicializado com sucesso');
-            } catch (error) {
-                console.error(`❌ Erro na tentativa ${attempt}:`, error);
-                
-                if (attempt < maxRetries) {
-                    console.log(`⏳ Aguardando 500ms para próxima tentativa...`);
-                    setTimeout(tryInitHeader, 500);
-                } else {
-                    console.error('❌ Falha ao inicializar HeaderManager após todas as tentativas');
-                }
-            }
-        };
-        
-        tryInitHeader();
-    }
 }
 
 // Inicializar quando DOM estiver pronto
@@ -1355,7 +1331,6 @@ window.SearchManager = SearchManager;
 window.LanguageManager = LanguageManager;
 window.FloatingButtonsManager = FloatingButtonsManager;
 window.SiteController = SiteController;
-window.HeaderManager = HeaderManager;
 
 // Função de debug global
 window.debugCookies = function() {
@@ -1603,3 +1578,340 @@ class HeaderManager {
         console.log('✅ HeaderManager: Inicialização completa');
     }
 }
+
+// Exportar HeaderManager imediatamente para evitar problemas de hoisting
+window.HeaderManager = HeaderManager;
+
+// ===== SISTEMA DE FALLBACK INTEGRADO =====
+// Função de fallback robusta para garantir funcionamento em produção
+window.HeaderFallbackSystem = {
+    maxRetries: 10,
+    retryInterval: 1000,
+    initAttempts: 0,
+    isInitialized: false,
+    
+    init() {
+        this.initAttempts++;
+        console.log(`🔄 Tentativa ${this.initAttempts}/${this.maxRetries} de inicializar header...`);
+        
+        try {
+            // Verificar se HeaderManager existe e funciona
+            if (window.HeaderManager && typeof window.HeaderManager.init === 'function') {
+                console.log('🎯 Tentando usar HeaderManager...');
+                window.HeaderManager.init();
+                this.isInitialized = true;
+                console.log('✅ Header inicializado via HeaderManager');
+                return;
+            } else {
+                console.log('⚠️ HeaderManager não encontrado ou não funcional, usando fallback manual');
+            }
+            
+            // Fallback: inicialização manual
+            this.initManualFallback();
+            
+        } catch (error) {
+            console.error(`❌ Erro na tentativa ${this.initAttempts}:`, error);
+            
+            if (this.initAttempts < this.maxRetries) {
+                setTimeout(() => this.init(), this.retryInterval);
+            } else {
+                console.error('❌ Falha ao inicializar header após todas as tentativas');
+                this.initEmergencyFallback();
+            }
+        }
+    },
+    
+    initManualFallback() {
+        console.log('🔧 Usando inicialização manual...');
+        
+        // Verificar elementos
+        const header = document.querySelector('#header');
+        const triggers = document.querySelectorAll('.nav-trigger');
+        const panels = document.querySelectorAll('.mega-panel');
+        
+        if (!header || triggers.length === 0 || panels.length === 0) {
+            console.warn('⚠️ Elementos ainda não encontrados');
+            if (this.initAttempts < this.maxRetries) {
+                setTimeout(() => this.init(), this.retryInterval);
+            }
+            return;
+        }
+        
+        // Inicialização manual completa
+        this.initMegaMenusManual();
+        this.initFontControlsManual();
+        this.initThemeToggleManual();
+        this.initMobileMenuManual();
+        
+        this.isInitialized = true;
+        console.log('✅ Header inicializado via fallback manual');
+    },
+    
+    initEmergencyFallback() {
+        console.log('🚨 Inicialização de emergência...');
+        
+        // Lista mínima de funcionalidades críticas
+        const criticalElements = {
+            header: document.querySelector('#header'),
+            sobreTrigger: document.querySelector('[data-panel="panel-sobre"]'),
+            conteudoTrigger: document.querySelector('[data-panel="panel-conteudo"]'),
+            fontIncrease: document.querySelector('button[aria-label="Aumentar tamanho da fonte"]'),
+            fontDecrease: document.querySelector('button[aria-label="Diminuir tamanho da fonte"]'),
+            themeToggle: document.querySelector('#theme-toggle')
+        };
+        
+        Object.entries(criticalElements).forEach(([name, element]) => {
+            if (element) {
+                console.log(`✅ Elemento crítico encontrado: ${name}`);
+            } else {
+                console.warn(`⚠️ Elemento crítico ausente: ${name}`);
+            }
+        });
+        
+        // Tentar inicializar pelo menos o essencial
+        this.initBasicFunctionality();
+    },
+    
+    initMegaMenusManual() {
+        const triggers = document.querySelectorAll('.nav-trigger');
+        const panels = document.querySelectorAll('.mega-panel');
+        const header = document.querySelector('#header');
+        let activePanel = null;
+        
+        console.log(`🎯 Inicializando mega menus manualmente - Triggers: ${triggers.length}`);
+        
+        function closeAllPanels() {
+            panels.forEach(panel => {
+                panel.classList.remove('active');
+                const id = panel.id;
+                const trigger = document.querySelector(`.nav-trigger[data-panel="${id}"]`);
+                if(trigger) trigger.setAttribute('aria-expanded', 'false');
+            });
+            activePanel = null;
+        }
+        
+        triggers.forEach(trigger => {
+            const toggleMenu = (e) => {
+                e.stopPropagation();
+                if(e.type === 'keydown') e.preventDefault();
+                
+                const targetId = trigger.getAttribute('data-panel');
+                const targetPanel = document.getElementById(targetId);
+                
+                if (activePanel === targetPanel) {
+                    closeAllPanels();
+                } else {
+                    closeAllPanels();
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                        trigger.setAttribute('aria-expanded', 'true');
+                        activePanel = targetPanel;
+                        console.log(`📥 Painel aberto: ${targetId}`);
+                    }
+                }
+            };
+            
+            trigger.addEventListener('click', toggleMenu);
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') toggleMenu(e);
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!header.contains(e.target)) {
+                closeAllPanels();
+            }
+        });
+        
+        console.log('✅ Mega menus inicializados manualmente');
+    },
+    
+    initFontControlsManual() {
+        const fontDecreaseBtn = document.querySelector('button[aria-label="Diminuir tamanho da fonte"]');
+        const fontIncreaseBtn = document.querySelector('button[aria-label="Aumentar tamanho da fonte"]');
+        
+        console.log(`🔤 Inicializando controles de fonte manualmente`);
+        
+        if (fontDecreaseBtn) {
+            fontDecreaseBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('🔤 Diminuir fonte');
+                const currentSize = parseInt(getComputedStyle(document.documentElement).fontSize) || 16;
+                const newSize = Math.max(12, currentSize - 2);
+                document.documentElement.style.fontSize = newSize + 'px';
+                console.log(`📏 Novo tamanho: ${newSize}px`);
+            });
+        }
+        
+        if (fontIncreaseBtn) {
+            fontIncreaseBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('🔤 Aumentar fonte');
+                const currentSize = parseInt(getComputedStyle(document.documentElement).fontSize) || 16;
+                const newSize = Math.min(24, currentSize + 2);
+                document.documentElement.style.fontSize = newSize + 'px';
+                console.log(`📏 Novo tamanho: ${newSize}px`);
+            });
+        }
+        
+        console.log('✅ Controles de fonte inicializados manualmente');
+    },
+    
+    initThemeToggleManual() {
+        const themeBtn = document.querySelector('#theme-toggle');
+        
+        console.log(`🌙 Inicializando theme toggle manualmente`);
+        
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                console.log('🌙 Toggle theme');
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                console.log(`🌓 Tema: ${isDark ? 'dark' : 'light'}`);
+            });
+        }
+        
+        console.log('✅ Theme toggle inicializado manualmente');
+    },
+    
+    initMobileMenuManual() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileTrigger = document.getElementById('mobile-menu-trigger');
+        const mobileClose = document.getElementById('close-mobile-menu');
+        const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
+        
+        console.log(`📱 Inicializando menu mobile manualmente`);
+        
+        if (mobileTrigger && mobileMenu) {
+            const openMobileMenu = () => {
+                mobileMenu.classList.remove('hidden');
+                mobileTrigger.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden'; 
+                setTimeout(() => {
+                    if (mobileBackdrop) mobileBackdrop.classList.remove('opacity-0');
+                    if (mobileClose) mobileClose.focus();
+                }, 10);
+                console.log('📱 Menu mobile aberto');
+            };
+            
+            const closeMobileMenu = () => {
+                if (mobileBackdrop) mobileBackdrop.classList.add('opacity-0');
+                mobileTrigger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                    mobileTrigger.focus();
+                }, 300);
+                console.log('📱 Menu mobile fechado');
+            };
+            
+            mobileTrigger.addEventListener('click', openMobileMenu);
+            if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
+            if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
+        }
+        
+        console.log('✅ Menu mobile inicializado manualmente');
+    },
+    
+    initBasicFunctionality() {
+        console.log('🔧 Inicializando funcionalidades básicas...');
+        
+        // Apenas os controles mais críticos
+        const themeBtn = document.querySelector('#theme-toggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+            });
+        }
+        
+        const fontIncrease = document.querySelector('button[aria-label="Aumentar tamanho da fonte"]');
+        if (fontIncrease) {
+            fontIncrease.addEventListener('click', (e) => {
+                e.preventDefault();
+                const currentSize = parseInt(getComputedStyle(document.documentElement).fontSize) || 16;
+                const newSize = Math.min(24, currentSize + 2);
+                document.documentElement.style.fontSize = newSize + 'px';
+            });
+        }
+        
+        console.log('✅ Funcionalidades básicas inicializadas');
+    }
+};
+
+// ===== FUNÇÕES GLOBAIS DE DEBUG E CONTROLE =====
+
+// Função para forçar inicialização
+window.forceHeaderInit = function() {
+    console.log('🔧 Forçando inicialização do header...');
+    window.HeaderFallbackSystem.init();
+};
+
+// Função de debug detalhado
+window.debugHeader = function() {
+    console.log('🔍 Debug do Header:');
+    console.log('- HeaderManager existe:', !!window.HeaderManager);
+    console.log('- Header element:', document.querySelector('#header'));
+    console.log('- Triggers:', document.querySelectorAll('.nav-trigger').length);
+    console.log('- Panels:', document.querySelectorAll('.mega-panel').length);
+    console.log('- Font controls:', {
+        decrease: !!document.querySelector('button[aria-label="Diminuir tamanho da fonte"]'),
+        increase: !!document.querySelector('button[aria-label="Aumentar tamanho da fonte"]')
+    });
+    console.log('- Theme toggle:', !!document.querySelector('#theme-toggle'));
+    console.log('- Mobile menu:', {
+        trigger: !!document.querySelector('#mobile-menu-trigger'),
+        menu: !!document.querySelector('#mobile-menu')
+    });
+    console.log('- Fallback system initialized:', window.HeaderFallbackSystem.isInitialized);
+};
+
+// Função para testar todas as funcionalidades
+window.testAllHeaderFunctions = function() {
+    console.log('🧪 Testando todas as funcionalidades do header...');
+    
+    // Testar mega menus
+    const sobreTrigger = document.querySelector('[data-panel="panel-sobre"]');
+    if (sobreTrigger) {
+        sobreTrigger.click();
+        console.log('✅ Teste mega menu "Sobre Nós" executado');
+    }
+    
+    // Testar controles de fonte
+    const fontIncrease = document.querySelector('button[aria-label="Aumentar tamanho da fonte"]');
+    if (fontIncrease) {
+        const beforeSize = parseInt(getComputedStyle(document.documentElement).fontSize) || 16;
+        fontIncrease.click();
+        const afterSize = parseInt(getComputedStyle(document.documentElement).fontSize) || 16;
+        console.log(`✅ Teste fonte: ${beforeSize}px → ${afterSize}px`);
+    }
+    
+    // Testar theme toggle
+    const themeToggle = document.querySelector('#theme-toggle');
+    if (themeToggle) {
+        const beforeTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        themeToggle.click();
+        const afterTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        console.log(`✅ Teste tema: ${beforeTheme} → ${afterTheme}`);
+    }
+    
+    console.log('🧪 Todos os testes executados');
+};
+
+// Inicialização automática robusta
+window.addEventListener('load', () => {
+    console.log('🚀 Sistema robusto de header carregado');
+    
+    // Aguardar um pouco para garantir que todos os elementos foram carregados
+    setTimeout(() => {
+        if (!window.HeaderFallbackSystem.isInitialized) {
+            console.log('🔄 Iniciando sistema de fallback...');
+            window.HeaderFallbackSystem.init();
+        }
+    }, 1000); // Aumentado para 1000ms para dar mais tempo
+});
+
+// Exportar para console
+console.log('📦 Sistema integrado de header com fallback carregado');
+console.log('💡 Use forceHeaderInit() para forçar inicialização');
+console.log('💡 Use debugHeader() para debug detalhado');
+console.log('💡 Use testAllHeaderFunctions() para testar todas as funções');
