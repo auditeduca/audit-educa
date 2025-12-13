@@ -78,7 +78,7 @@
     --transition-fast: 0.3s ease;
 
     /* LAYOUT: VARIÁVEL PARA A ALTURA DO CABEÇALHO FIXO */
-    --header-height: 5rem; /* Aumentado de 4rem para 5rem, conforme solicitado */
+    --header-height: 6rem; /* Ajustado para 6rem para um deslocamento maior, resolvendo o problema de conteúdo escondido */
 }
 
 /* ========= RESET E BASE ========= */
