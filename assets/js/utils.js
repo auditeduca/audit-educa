@@ -1263,7 +1263,7 @@ class FloatingButtonsManager {
                 console.log('✅ FAB exibido com sucesso');
             }, 2000);
         } else {
-            console.log('❌ Elemento FAB de cookies não encontrado no DOM');
+            console.log('⚠️ FAB de cookies será criado dinamicamente se necessário');
         }
         
         // Banner só aparece se não houver preferências salvas
@@ -1279,7 +1279,7 @@ class FloatingButtonsManager {
                 CookieModal.hideCookieBanner();
             }
         } else {
-            console.log('❌ Elemento banner de cookies não encontrado no DOM');
+            console.log('⚠️ Banner de cookies será criado dinamicamente se necessário');
         }
     }
 }
