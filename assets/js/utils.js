@@ -1298,6 +1298,7 @@ class SiteController {
             LanguageManager.init();
             FloatingButtonsManager.init();
             CookieModal.init();
+            HeaderManager.init();
             
             console.log('✅ Sistema completo inicializado');
         }, 1000);
@@ -1323,6 +1324,7 @@ window.SearchManager = SearchManager;
 window.LanguageManager = LanguageManager;
 window.FloatingButtonsManager = FloatingButtonsManager;
 window.SiteController = SiteController;
+window.HeaderManager = HeaderManager;
 
 // Função de debug global
 window.debugCookies = function() {
@@ -1353,3 +1355,172 @@ window.resetCookieTest = function() {
     console.log('🧹 Preferências de cookies removidas para teste');
     console.log('🔄 Recarregue a página para testar o banner');
 };
+
+// ===== GESTOR DO HEADER ATUALIZADO =====
+class HeaderManager {
+    static init() {
+        const triggers = document.querySelectorAll('.nav-trigger');
+        const panels = document.querySelectorAll('.mega-panel');
+        const header = document.querySelector('#header');
+        const tabTriggers = document.querySelectorAll('.menu-tab-trigger');
+        let activePanel = null;
+
+        // --- Lógica Mega Menu Desktop ---
+        function closeAllPanels() {
+            panels.forEach(panel => {
+                panel.classList.remove('active');
+                // Resetar aria-expanded nos triggers que controlam este painel
+                const id = panel.id;
+                const trigger = document.querySelector(`.nav-trigger[data-panel="${id}"]`);
+                if(trigger) trigger.setAttribute('aria-expanded', 'false');
+            });
+            activePanel = null;
+        }
+
+        triggers.forEach(trigger => {
+            // Suporte a clique e tecla Enter/Espaço para acessibilidade
+            const toggleMenu = (e) => {
+                e.stopPropagation();
+                // Se for teclado, previne scroll
+                if(e.type === 'keydown') e.preventDefault();
+
+                const targetId = trigger.getAttribute('data-panel');
+                const targetPanel = document.getElementById(targetId);
+
+                if (activePanel === targetPanel) {
+                    closeAllPanels();
+                } else {
+                    closeAllPanels();
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                        trigger.setAttribute('aria-expanded', 'true');
+                        activePanel = targetPanel;
+                        // Focar no primeiro elemento interativo dentro do painel (opcional, mas bom para UX)
+                        const firstFocusable = targetPanel.querySelector('input, a, button, [tabindex="0"]');
+                        if(firstFocusable) firstFocusable.focus();
+                    }
+                }
+            };
+
+            trigger.addEventListener('click', toggleMenu);
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') toggleMenu(e);
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!header.contains(e.target)) {
+                closeAllPanels();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAllPanels();
+                closeMobileMenu();
+            }
+        });
+
+        // Lógica de Tabs internas (Sobre Nós, etc.)
+        tabTriggers.forEach(tab => {
+            const activateTab = () => {
+                // Remove ativo dos irmãos
+                const parent = tab.closest('ul');
+                parent.querySelectorAll('.menu-tab-trigger').forEach(t => {
+                     t.classList.remove('active');
+                     t.setAttribute('aria-selected', 'false');
+                });
+                
+                // Ativa atual
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+
+                // Gerencia conteúdo
+                const panel = tab.closest('.mega-panel');
+                const allContents = panel.querySelectorAll('.tab-content');
+                allContents.forEach(c => c.classList.remove('active'));
+
+                const targetContentId = tab.getAttribute('data-target');
+                const targetContent = document.getElementById(targetContentId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            };
+
+            tab.addEventListener('mouseenter', activateTab);
+            tab.addEventListener('focus', activateTab); // Acessibilidade via teclado (Tab navega e ativa)
+        });
+
+        // --- Lógica Menu Mobile ---
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileTrigger = document.getElementById('mobile-menu-trigger');
+        const mobileClose = document.getElementById('close-mobile-menu');
+        const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
+        const mobileDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileAccordions = document.querySelectorAll('.mobile-accordion-trigger');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            mobileTrigger.setAttribute('aria-expanded', 'true');
+            // Adiciona o foco visualmente
+            document.body.style.overflow = 'hidden'; 
+            setTimeout(() => {
+                mobileBackdrop.classList.remove('opacity-0');
+                mobileDrawer.classList.remove('-translate-x-full');
+                // Focar no botão de fechar ao abrir
+                mobileClose.focus();
+            }, 10);
+        }
+
+        function closeMobileMenu() {
+            mobileBackdrop.classList.add('opacity-0');
+            mobileDrawer.classList.add('-translate-x-full');
+            mobileTrigger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                mobileTrigger.focus(); // Retornar foco ao trigger
+            }, 300);
+        }
+
+        if (mobileTrigger) mobileTrigger.addEventListener('click', openMobileMenu);
+        if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
+        if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
+
+        mobileAccordions.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const content = trigger.nextElementSibling;
+                const icon = trigger.querySelector('.fa-chevron-down');
+                const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+                // Fecha outros submenus no mobile (comportamento de acordeão)
+                if (!isExpanded) {
+                    mobileAccordions.forEach(otherTrigger => {
+                        if (otherTrigger !== trigger) {
+                            otherTrigger.setAttribute('aria-expanded', 'false');
+                            otherTrigger.nextElementSibling.classList.remove('open');
+                            otherTrigger.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+                        }
+                    });
+                }
+
+                // Toggle
+                content.classList.toggle('open');
+                trigger.setAttribute('aria-expanded', !isExpanded);
+                
+                if (content.classList.contains('open')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        const themeBtn = document.getElementById('theme-toggle');
+        if(themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+            });
+        }
+    }
+}
