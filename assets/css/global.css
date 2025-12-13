@@ -78,7 +78,7 @@
     --transition-fast: 0.3s ease;
 
     /* LAYOUT: VARIÁVEL PARA A ALTURA DO CABEÇALHO FIXO */
-    --header-height: 4rem; /* Ajuste este valor conforme a altura real do seu cabeçalho */
+    --header-height: 5rem; /* Aumentado de 4rem para 5rem, conforme solicitado */
 }
 
 /* ========= RESET E BASE ========= */
