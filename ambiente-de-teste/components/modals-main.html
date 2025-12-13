@@ -1,0 +1,364 @@
+<!-- MODAL DE NEWSLETTER - CONFIRMAÇÃO PÓS-CADASTRO -->
+<div id="newsletter-modal" class="modal-overlay fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+    
+    <div class="modal-container relative flex items-center justify-center min-h-screen p-4">
+        <div class="modal-content bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full transform translate-y-8 opacity-0 transition-all duration-300">
+            
+            <!-- Header -->
+            <div class="modal-header p-6 pb-0">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Cadastro Realizado!</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Bem-vindo à nossa newsletter</p>
+                        </div>
+                    </div>
+                    <button class="modal-close-btn text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body p-6 pt-4">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope-open text-green-600 dark:text-green-400 text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                        🎉 Parabéns!
+                    </h4>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Você foi cadastrado com sucesso em nossa newsletter. 
+                        Agora receberá conteúdos exclusivos sobre auditoria e contabilidade.
+                    </p>
+                </div>
+
+                <!-- Email Info -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-envelope text-audit-blue dark:text-audit-gold"></i>
+                        <div>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Email cadastrado:</p>
+                            <p id="newsletter-email" class="text-sm text-gray-600 dark:text-gray-300 font-mono"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="space-y-3">
+                    <button id="newsletter-edit-email" class="w-full flex items-center justify-center space-x-2 px-4 py-3 border border-audit-blue text-audit-blue dark:text-audit-gold dark:border-audit-gold rounded-lg hover:bg-audit-blue/10 dark:hover:bg-audit-gold/10 transition-colors">
+                        <i class="fas fa-edit"></i>
+                        <span>Editar email</span>
+                    </button>
+                    
+                    <button id="newsletter-manage-preferences" class="w-full flex items-center justify-center space-x-2 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-cog"></i>
+                        <span>Gerenciar preferências</span>
+                    </button>
+                </div>
+
+                <!-- Info -->
+                <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-info-circle text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                        <div class="text-sm">
+                            <p class="text-blue-800 dark:text-blue-200 font-medium mb-1">O que você vai receber:</p>
+                            <ul class="text-blue-700 dark:text-blue-300 space-y-1">
+                                <li>• Artigos exclusivos sobre auditoria</li>
+                                <li>• Novidades normativas e regulamentações</li>
+                                <li>• Dicas de carreira e profissionalização</li>
+                                <li>• Conteúdos educativos gratuitos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer p-6 pt-0">
+                <button class="modal-close-btn w-full bg-audit-gold text-audit-navy font-semibold py-3 px-6 rounded-lg hover:bg-audit-gold-dark hover:text-white transition-colors">
+                    Entendi, continuar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE CONFIRMAÇÃO - PREVENÇÃO DE AÇÕES CRÍTICAS -->
+<div id="confirm-modal" class="modal-overlay fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+    
+    <div class="modal-container relative flex items-center justify-center min-h-screen p-4">
+        <div class="modal-content bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full transform translate-y-8 opacity-0 transition-all duration-300">
+            
+            <!-- Header -->
+            <div class="modal-header p-6 pb-0">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 id="confirm-title" class="text-xl font-bold text-gray-900 dark:text-white">Confirmar Ação</h3>
+                            <p id="confirm-subtitle" class="text-sm text-gray-500 dark:text-gray-400">Esta ação não pode ser desfeita</p>
+                        </div>
+                    </div>
+                    <button class="modal-close-btn text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body p-6 pt-4">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i id="confirm-icon" class="fas fa-exclamation-triangle text-red-600 dark:text-red-400 text-2xl"></i>
+                    </div>
+                    <p id="confirm-message" class="text-gray-600 dark:text-gray-300">
+                        Tem certeza que deseja continuar com esta ação?
+                    </p>
+                </div>
+
+                <!-- Custom Content Area -->
+                <div id="confirm-custom-content" class="hidden"></div>
+
+                <!-- Warning Details -->
+                <div id="confirm-warning" class="hidden mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-exclamation-triangle text-yellow-600 dark:text-yellow-400 mt-0.5"></i>
+                        <div class="text-sm">
+                            <p class="text-yellow-800 dark:text-yellow-200 font-medium mb-1">Atenção:</p>
+                            <p id="confirm-warning-text" class="text-yellow-700 dark:text-yellow-300"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer p-6 pt-0">
+                <div class="flex space-x-3">
+                    <button id="confirm-cancel" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        Cancelar
+                    </button>
+                    <button id="confirm-accept" class="flex-1 px-4 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors">
+                        Confirmar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE FEEDBACK - AVALIAÇÃO DE CONTEÚDO -->
+<div id="feedback-modal" class="modal-overlay fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+    
+    <div class="modal-container relative flex items-center justify-center min-h-screen p-4">
+        <div class="modal-content bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-lg w-full transform translate-y-8 opacity-0 transition-all duration-300">
+            
+            <!-- Header -->
+            <div class="modal-header p-6 pb-0">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-star text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Avalie este Conteúdo</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Sua opinião é importante para nós</p>
+                        </div>
+                    </div>
+                    <button class="modal-close-btn text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body p-6 pt-4">
+                <div class="text-center mb-6">
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                        Como você avalia este conteúdo?
+                    </h4>
+                    
+                    <!-- Star Rating -->
+                    <div class="flex justify-center space-x-2 mb-6">
+                        <button class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="1">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="2">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="3">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="4">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="5">
+                            <i class="fas fa-star"></i>
+                        </button>
+                    </div>
+
+                    <p id="rating-text" class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                        Clique nas estrelas para avaliar
+                    </p>
+                </div>
+
+                <!-- Comment Section -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Comentário (opcional)
+                        </label>
+                        <textarea id="feedback-comment" rows="3" placeholder="Compartilhe sua opinião sobre este conteúdo..."
+                                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-audit-gold focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            O que podemos melhorar?
+                        </label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" class="feedback-improvement" value="conteudo">
+                                <span class="text-sm text-gray-600 dark:text-gray-300">Qualidade do conteúdo</span>
+                            </label>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" class="feedback-improvement" value="clareza">
+                                <span class="text-sm text-gray-600 dark:text-gray-300">Clareza da explicação</span>
+                            </label>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" class="feedback-improvement" value="organizacao">
+                                <span class="text-sm text-gray-600 dark:text-gray-300">Organização do material</span>
+                            </label>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" class="feedback-improvement" value="exemplos">
+                                <span class="text-sm text-gray-600 dark:text-gray-300">Exemplos práticos</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer p-6 pt-0">
+                <button id="feedback-submit" class="w-full bg-audit-gold text-audit-navy font-semibold py-3 px-6 rounded-lg hover:bg-audit-gold-dark hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Enviar Avaliação
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- MODAIS DE COOKIES - SISTEMA DE PRIVACIDADE -->
+<!-- ===================================================== -->
+
+<!-- Botão Voltar ao Topo -->
+<button id="backToTop" class="fixed bottom-6 right-6 z-[90] bg-audit-gold dark:bg-yellow-500 text-audit-navy dark:text-gray-900 w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-white/50" title="Voltar ao topo">
+    <i class="fas fa-arrow-up font-bold"></i>
+</button>
+
+<!-- Botão Flutuante de Cookies -->
+<button id="cookie-fab" class="fixed bottom-20 right-6 z-[90] bg-audit-blue dark:bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-white/50" title="Preferências de Cookies">
+    <i class="fas fa-cookie-bite text-xl"></i>
+</button>
+
+<!-- Modal de Preferências de Cookies -->
+<div id="cookie-overlay" class="fixed inset-0 z-[110] bg-black/60 flex justify-center items-end md:items-center opacity-0 invisible transition-all duration-300 backdrop-blur-sm">
+    <div class="bg-white dark:bg-gray-800 w-full max-w-lg rounded-t-2xl md:rounded-2xl shadow-2xl flex flex-col max-h-[90vh] md:max-h-[85vh] transform translate-y-full transition-transform duration-300" id="cookie-modal-content">
+        
+        <header class="flex justify-between items-center p-5 border-b border-gray-200 dark:border-gray-700">
+            <h2 class="text-lg font-bold text-audit-navy dark:text-white">Preferências de Cookies</h2>
+            <button id="modal-close-x" class="text-gray-400 dark:text-gray-500 hover:text-audit-navy dark:hover:text-white text-2xl leading-none">&times;</button>
+        </header>
+
+        <div class="p-5 overflow-y-auto flex-grow space-y-4">
+            <!-- Item 1: Essenciais -->
+            <div class="border-b border-gray-100 dark:border-gray-700 pb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-shield-alt text-gray-500 dark:text-gray-400"></i>
+                        <span class="font-bold text-audit-navy dark:text-gray-100 text-sm">Tecnicamente Necessário</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button class="text-xs font-bold text-gray-600 dark:text-gray-300 hover:text-audit-blue flex items-center gap-1 mt-1 cookie-desc-toggle" data-target="desc-1">
+                    Ver detalhes <i class="fas fa-chevron-right text-[10px] transform transition-transform"></i>
+                </button>
+                <div id="desc-1" class="item-desc hidden mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    As tecnologias web e cookies necessários tornam a nossa página tecnicamente acessível e utilizável.
+                </div>
+            </div>
+
+            <!-- Item 2: Análise -->
+            <div class="border-b border-gray-100 dark:border-gray-700 pb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-chart-bar text-gray-500 dark:text-gray-400"></i>
+                        <span class="font-bold text-audit-navy dark:text-gray-100 text-sm">Análise e Estatísticas</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="check-stats">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button class="text-xs font-bold text-gray-600 dark:text-gray-300 hover:text-audit-blue flex items-center gap-1 mt-1 cookie-desc-toggle" data-target="desc-2">
+                    Ver detalhes <i class="fas fa-chevron-right text-[10px] transform transition-transform"></i>
+                </button>
+                <div id="desc-2" class="item-desc hidden mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Utilizamos tecnologias de análise para medir e avaliar como nosso site é utilizado (ex: Google Analytics).
+                </div>
+            </div>
+
+            <!-- Item 3: Marketing -->
+            <div class="pb-2">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-bullhorn text-gray-500 dark:text-gray-400"></i>
+                        <span class="font-bold text-audit-navy dark:text-gray-100 text-sm">Marketing</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="check-mkt">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button class="text-xs font-bold text-gray-600 dark:text-gray-300 hover:text-audit-blue flex items-center gap-1 mt-1 cookie-desc-toggle" data-target="desc-3">
+                    Ver detalhes <i class="fas fa-chevron-right text-[10px] transform transition-transform"></i>
+                </button>
+                <div id="desc-3" class="item-desc hidden mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Tecnologias de parceiros para apresentar conteúdos e publicidade personalizados.
+                </div>
+            </div>
+        </div>
+
+        <footer class="p-5 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 rounded-b-2xl flex flex-col sm:flex-row gap-3">
+            <button id="modal-reject-all" class="flex-1 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-100 dark:hover:bg-gray-700 transition text-sm">Rejeitar Tudo</button>
+            <button id="modal-save" class="flex-1 px-4 py-3 rounded-full bg-audit-blue dark:bg-audit-gold text-white dark:text-audit-navy font-bold shadow-lg hover:opacity-90 transition text-sm">Salvar Minhas Opções</button>
+        </footer>
+    </div>
+</div>
+
+<!-- Banner de Cookies (Rodapé) -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white dark:bg-audit-cardDark shadow-[0_-5px_20px_rgba(0,0,0,0.15)] z-[90] transform translate-y-full transition-transform duration-500 border-t border-gray-200 dark:border-gray-700 p-5 md:px-10 md:py-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex-1 space-y-3 text-center md:text-left">
+        <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+            <strong class="text-gray-900 dark:text-white">Seu conhecimento importa e sua privacidade também.</strong><br>
+            Utilizamos cookies para aprimorar sua experiência e analisar nosso tráfego.
+        </p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+        <button id="banner-options" class="px-6 py-2.5 rounded-full border-2 border-dashed border-audit-blue dark:border-audit-gold text-audit-blue dark:text-audit-gold font-bold text-sm hover:bg-audit-blue/5 dark:hover:bg-audit-gold/10 transition">Personalizar</button>
+        <button id="banner-accept" class="px-8 py-2.5 rounded-full bg-audit-blue dark:bg-audit-gold text-white dark:text-audit-navy font-bold text-sm shadow-md hover:opacity-90 transition">Aceitar</button>
+    </div>
+</div>
