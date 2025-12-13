@@ -57,7 +57,6 @@
 }
 
 /* Estilos globais da página */
-/* Adicionado o CSS que você forneceu na solicitação anterior para evitar conflito de escopo */
 /* =====================================================
     AUDIT EDUCA - ESTILOS GLOBAIS
     ===================================================== */
@@ -65,9 +64,9 @@
 /* ========= VARIÁVEIS CSS ========= */
 :root {
     /* Cores Audit Educa (Definidas no script Tailwind para utilidades) */
-    --audit-navy: #0f172a; 
-    --audit-blue: #1e3a8a; 
-    --audit-gold: #fbbf24; 
+    --audit-navy: #0f172a;	
+    --audit-blue: #1e3a8a;	
+    --audit-gold: #fbbf24;	
     --audit-gold-dark: #b45309;
     --audit-glass-light: rgba(255, 255, 255, 0.98);
     --audit-glass-dark: rgba(15, 23, 42, 0.98);
@@ -77,6 +76,9 @@
     
     /* Transições */
     --transition-fast: 0.3s ease;
+
+    /* LAYOUT: VARIÁVEL PARA A ALTURA DO CABEÇALHO FIXO */
+    --header-height: 4rem; /* Ajuste este valor conforme a altura real do seu cabeçalho */
 }
 
 /* ========= RESET E BASE ========= */
@@ -91,7 +93,27 @@
 body {
     font-family: var(--font-family);
     line-height: 1.6;
-    overflow-x: hidden; 
+    overflow-x: hidden;	
+}
+
+/* ========= LAYOUT E OFFSET DE CABEÇALHO ========= */
+
+/* Regra para o Cabeçalho Fixo (Assuma que você aplica esta classe ao seu <header>) */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+    /* A altura do cabeçalho é definida pelo Tailwind no HTML, mas garantimos que ele seja fixo */
+}
+
+/* Offset para o Conteúdo Principal: Empurra o <main> para baixo */
+/* Aplica um padding-top igual à altura do cabeçalho fixo */
+main {
+    padding-top: var(--header-height);
+    /* Opcional: Garante que o main comece no topo, abaixo do header */
+    min-height: calc(100vh - var(--header-height));
 }
 
 /* ========= CONFIGURAÇÕES DE TEMA ESCURO ========= */
