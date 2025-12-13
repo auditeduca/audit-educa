@@ -1,185 +1,330 @@
-class TemplateEngine {
-    constructor() {
-        // Configuração dos containers e arquivos
-        this.config = {
-            'header-container': 'components/header.html',
-            'main-container': 'components/main.html',
-            'footer-container': 'components/footer.html'
-        };
-        this.currentPage = null; // Rastreia a página atual para evitar recargas desnecessárias
-        console.log('TemplateEngine: Iniciando...');
-        this.init();
+class TemplateEngineV3 {
+  constructor() {
+    this.config = {
+      'header-container': 'assets/components/header.html',
+      'main-container': 'assets/components/main.html',
+      'footer-container': 'assets/components/footer.html',
+      'modals-container': 'assets/components/modals-main.html'
+    };
+    
+    this.currentPage = null;
+    this.initPromise = null;
+    this.isLoading = false;
+    this.componentsLoaded = false;
+    this.pageCache = new Map();
+    this.componentCache = new Map();
+    this.activeModals = new Set();
+    
+    if (window.__TEMPLATE_ENGINE_V3_INIT__) {
+      return;
     }
+    window.__TEMPLATE_ENGINE_V3_INIT__ = true;
+    
+    this.waitForDOM().then(() => {
+      this.init();
+    });
+  }
 
-    async init() {
-        // Passo 1: Carregar a estrutura base (HTMLs)
+  waitForDOM() {
+    return new Promise((resolve) => {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', resolve);
+      } else {
+        resolve();
+      }
+    });
+  }
+
+  async init() {
+    try {
+      this.cleanupCache();
+      await this.loadComponentsWithRetry();
+      this.setupErrorBoundary();
+      this.setupModalSystem();
+      this.setupAdvancedRouting();
+      this.forceLoadHomePage();
+      
+      // Aguardar componentes carregarem antes de sinalizar conclusão
+      setTimeout(() => {
+        console.log('✅ Componentes carregados e sistema operacional');
+      }, 500);
+    } catch (error) {
+      console.error('❌ Erro ao inicializar Template Engine:', error);
+      this.renderError('init', error.message);
+    }
+  }
+
+  async loadComponentsWithRetry() {
+    const maxRetries = 3;
+    let attempt = 0;
+    
+    while (attempt < maxRetries) {
+      try {
         await this.loadComponents();
-        
-        // Passo 2: Avisar ao sistema que o HTML base está pronto
-        // Isso permite que header.js e footer.js anexem seus eventos (cliques, modais)
-        window.__COMPONENTS_LOADED__ = true;
-        document.dispatchEvent(new CustomEvent('componentsLoaded'));
-        console.log('TemplateEngine: Componentes HTML carregados. Eventos disparados.');
-
-        // Passo 3: Carregar o conteúdo dinâmico (JSON) dentro do Main
-        this.setupRouting();
-    }
-
-    async loadComponents() {
-        const isLocalFile = window.location.protocol === 'file:';
-
-        // Cria um array de promessas para carregar tudo em paralelo
-        const promises = Object.entries(this.config).map(async ([containerId, filePath]) => {
-            const container = document.getElementById(containerId);
-            
-            if (!container) {
-                console.warn(`TemplateEngine: Container #${containerId} não encontrado no index.html`);
-                return;
-            }
-
-            // Verificação de segurança para execução local sem servidor
-            if (isLocalFile) {
-                container.innerHTML = `
-                    <div style="background:#fee2e2; color:#991b1b; padding:1rem; border:1px solid #f87171; margin:10px;">
-                        <strong>Erro de CORS:</strong> Não é possível carregar <em>${filePath}</em> via protocolo 'file://'.<br>
-                        Por favor, abra este projeto usando um Servidor Local (ex: Live Server do VSCode).
-                    </div>`;
-                return;
-            }
-
-            try {
-                // Adiciona timestamp para evitar cache agressivo durante desenvolvimento
-                const response = await fetch(`${filePath}?v=${Date.now()}`);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                
-                const html = await response.text();
-                container.innerHTML = html;
-                
-                // Executa scripts que possam estar dentro do HTML injetado (raro, mas útil)
-                this.executeScripts(container);
-
-            } catch (error) {
-                console.error(`TemplateEngine: Erro ao carregar ${filePath}:`, error);
-                container.innerHTML = `<div class="error-msg">Falha ao carregar componente: ${filePath}</div>`;
-            }
-        });
-
-        await Promise.all(promises);
-    }
-
-    setupRouting() {
-        // Lista de IDs internos que NÃO devem ser tratados como páginas JSON
-        const internalAnchors = [
-            'header', 'footer', 'main-content', 
-            'acesso-rapido', 'inicio', 'newsletter', 
-            'backToTop', 'cookie-fab'
-        ];
-
-        const loadRoute = () => {
-            let hash = window.location.hash.slice(1);
-            
-            // Lógica de proteção:
-            // 1. Se o hash for uma âncora interna (ex: #footer), ignoramos a carga de nova página.
-            // 2. Se for a primeira carga (currentPage é null) e o hash for interno, forçamos 'home' 
-            //    para garantir que o usuário veja conteúdo além do rodapé/topo.
-            if (internalAnchors.includes(hash)) {
-                if (this.currentPage) {
-                    console.log(`TemplateEngine: Navegação interna para #${hash}. Mantendo página atual.`);
-                    return; // Apenas rola a página, não carrega JSON
-                }
-                hash = 'home'; // Fallback para home na inicialização
-            }
-
-            // Se não houver hash, assume 'home'
-            hash = hash || 'home';
-
-            // Evita recarregar a mesma página JSON se já estiver nela
-            if (this.currentPage === hash) return;
-
-            console.log(`TemplateEngine: Carregando rota '${hash}' (pages/${hash}.json)...`);
-            this.currentPage = hash;
-            this.loadPage(hash);
-        };
-
-        // Ouve mudanças na URL e carrega na inicialização
-        window.addEventListener('hashchange', loadRoute);
-        loadRoute();
-    }
-
-    async loadPage(pageName) {
-        const contentPlaceholder = document.getElementById('content-placeholder');
-        
-        // Se o main.html não carregou corretamente, não há onde por o JSON
-        if (!contentPlaceholder) {
-            console.error('TemplateEngine: #content-placeholder não encontrado. O main.html foi carregado?');
-            return;
+        this.componentsLoaded = true;
+        return;
+      } catch (error) {
+        attempt++;
+        if (attempt >= maxRetries) {
+          throw error;
         }
+        console.warn(`🔄 Tentativa ${attempt} de carregar componentes falhou, tentando novamente...`);
+        await this.delay(1000);
+      }
+    }
+  }
 
-        // Indicador de carregamento visual
-        contentPlaceholder.style.opacity = '0.5';
+  async loadComponents() {
+    console.log('📂 Carregando componentes do template...');
+    
+    const promises = Object.entries(this.config).map(async ([containerId, componentPath]) => {
+      try {
+        const response = await fetch(componentPath);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const componentHTML = await response.text();
+        this.saveToCache('component', containerId, componentHTML);
+        
+        console.log(`✅ Componente ${containerId} carregado: ${componentPath}`);
+        return { containerId, componentHTML };
+      } catch (error) {
+        console.error(`❌ Erro ao carregar componente ${containerId}:`, error);
+        throw error;
+      }
+    });
 
+    const components = await Promise.all(promises);
+    
+    // Renderizar componentes
+    for (const { containerId, componentHTML } of components) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        container.innerHTML = componentHTML;
+        console.log(`🎯 Componente ${containerId} renderizado no DOM`);
+      }
+    }
+  }
+
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  setupErrorBoundary() {
+    window.addEventListener('error', (event) => {
+      console.error('❌ Erro JavaScript:', event.error);
+    });
+  }
+
+  setupModalSystem() {
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.modal-trigger');
+      if (trigger) {
+        e.preventDefault();
+        const modalId = trigger.getAttribute('href')?.substring(1);
+        if (modalId) {
+          this.openModal(modalId);
+        }
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) {
+        this.closeModal(e.target.id);
+      }
+    });
+  }
+
+  openModal(modalId) {
+    if (typeof Utils !== 'undefined' && Utils.openModal) {
+      Utils.openModal(modalId);
+    } else {
+      // Fallback para sistema próprio
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+
+      this.activeModals.add(modalId);
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeModal(modalId) {
+    if (typeof Utils !== 'undefined' && Utils.closeModal) {
+      Utils.closeModal(modalId);
+    } else {
+      // Fallback para sistema próprio
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+
+      this.activeModals.delete(modalId);
+      modal.classList.add('hidden');
+      
+      if (this.activeModals.size === 0) {
+        document.body.style.overflow = '';
+      }
+    }
+  }
+
+  setupAdvancedRouting() {
+    window.addEventListener('hashchange', () => {
+      const pageName = this.getPageNameFromHash();
+      if (pageName && pageName !== this.currentPage) {
+        this.loadPage(pageName);
+      }
+    });
+  }
+
+  async forceLoadHomePage() {
+    console.log('🏠 Template Engine V3 Iniciado - Sistema Modular');
+    console.log('📂 Componentes configurados:', Object.keys(this.config).length);
+    console.log('🔄 Sistema de cache ativado para otimização');
+    
+    const contentPlaceholder = document.getElementById('content-placeholder');
+    if (contentPlaceholder) {
+      contentPlaceholder.innerHTML = `
+        <div class="flex items-center justify-center h-64">
+          <div class="text-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-audit-gold mx-auto mb-4"></div>
+            <p class="text-gray-600 dark:text-gray-300 font-medium">Sistema carregado com sucesso</p>
+            <p class="text-sm text-gray-500 mt-2">Use a navegação do header para acessar as páginas disponíveis</p>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  getPageNameFromHash() {
+    return window.location.hash.substring(1) || null;
+  }
+
+  async loadPage(pageName) {
+    if (this.isLoading && pageName === this.currentPage) {
+      return;
+    }
+
+    this.isLoading = true;
+
+    try {
+      // Verificar se a página existe antes de tentar carregar
+      const availablePages = ['sobre-nos', 'sustentabilidade-digital', 'tecnologia-verde'];
+      if (!availablePages.includes(pageName)) {
+        throw new Error(`Página '${pageName}' não encontrada. Páginas disponíveis: ${availablePages.join(', ')}`);
+      }
+      
+      const response = await fetch(`assets/pages/${pageName}.html`);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
+      const pageHTML = await response.text();
+      this.renderPage(pageHTML, pageName);
+      
+    } catch (error) {
+      // Só mostrar erro se não for um erro de página não encontrada esperado
+      if (!error.message.includes('não encontrada')) {
+        console.error(`❌ Erro ao carregar página ${pageName}:`, error);
+      }
+      this.renderError(pageName, error.message);
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  renderPage(pageHTML, pageName) {
+    const contentPlaceholder = document.getElementById('content-placeholder');
+    if (!contentPlaceholder) return;
+
+    try {
+      contentPlaceholder.innerHTML = pageHTML;
+      this.currentPage = pageName;
+      this.executeScripts(contentPlaceholder);
+      
+      contentPlaceholder.dispatchEvent(new CustomEvent('pageLoaded', {
+        detail: { pageName, pageHTML }
+      }));
+      
+    } catch (error) {
+      console.error('❌ Erro ao renderizar página:', error);
+    }
+  }
+
+  renderError(pageName, errorMessage) {
+    const contentPlaceholder = document.getElementById('content-placeholder');
+    if (contentPlaceholder) {
+      contentPlaceholder.innerHTML = `
+        <div class="flex items-center justify-center min-h-[400px]">
+          <div class="text-center">
+            <i class="fas fa-exclamation-triangle text-6xl text-red-500 mb-4"></i>
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">Erro ao carregar página</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">${errorMessage}</p>
+            <button onclick="window.TemplateEngineV3.loadPage('${pageName}')" 
+                    class="bg-audit-blue text-white px-6 py-2 rounded-lg hover:bg-audit-navy transition-colors">
+              <i class="fas fa-redo mr-2"></i>Tentar Novamente
+            </button>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  executeScripts(container) {
+    const scripts = container.querySelectorAll('script');
+    scripts.forEach(script => {
+      if (script.src) {
+        const newScript = document.createElement('script');
+        newScript.src = script.src;
+        newScript.type = script.type || 'text/javascript';
+        document.head.appendChild(newScript);
+      } else if (script.textContent.trim()) {
         try {
-            // Busca o JSON da página (ex: pages/home.json)
-            const response = await fetch(`pages/${pageName}.json?v=${Date.now()}`);
-            
-            if (!response.ok) {
-                throw new Error(`Arquivo pages/${pageName}.json não encontrado.`);
-            }
-
-            const data = await response.json();
-            
-            // Injeção do Conteúdo
-            if (data.html) {
-                contentPlaceholder.innerHTML = data.html;
-                
-                // Re-executa scripts se houver lógica no HTML injetado (ex: formulários)
-                this.executeScripts(contentPlaceholder);
-                
-                // Animação suave de entrada
-                contentPlaceholder.style.opacity = '1';
-                contentPlaceholder.classList.add('animate-fade-in');
-            }
-
-            // Atualização de SEO
-            if (data.title) document.title = data.title;
-            if (data.description) {
-                const metaDesc = document.querySelector('meta[name="description"]');
-                if (metaDesc) metaDesc.content = data.description;
-            }
-
+          eval(script.textContent);
         } catch (error) {
-            console.error(`TemplateEngine: Erro ao carregar página ${pageName}:`, error);
-            
-            // Fallback amigável se a página não existir (ex: clicou em "Sobre Nós" mas não tem sobre.json)
-            // Em vez de erro feio, avisa ou redireciona para Home se preferir.
-            if (pageName !== 'home') {
-                 console.log('Tentando carregar Home como fallback...');
-                 this.loadPage('home'); // Tenta carregar a home se a página falhar
-                 return;
-            }
-
-            contentPlaceholder.innerHTML = `
-                <div class="flex flex-col items-center justify-center py-20 text-gray-500">
-                    <i class="fas fa-exclamation-triangle text-4xl mb-4 text-audit-gold"></i>
-                    <h2 class="text-xl font-bold">Conteúdo indisponível</h2>
-                    <p>Não foi possível carregar o conteúdo principal.</p>
-                </div>
-            `;
-            contentPlaceholder.style.opacity = '1';
+          console.error('❌ Erro ao executar script inline:', error);
         }
-    }
+      }
+    });
+  }
 
-    // Utilitário para rodar <script> tags que venham dentro do HTML injetado
-    executeScripts(container) {
-        const scripts = container.querySelectorAll('script');
-        scripts.forEach(oldScript => {
-            const newScript = document.createElement('script');
-            Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-            oldScript.parentNode.replaceChild(newScript, oldScript);
-        });
+  getFromCache(type, identifier) {
+    if (type === 'component') {
+      return this.componentCache.get(identifier);
     }
+    return null;
+  }
+
+  saveToCache(type, identifier, data) {
+    if (type === 'component') {
+      this.componentCache.set(identifier, data);
+    }
+  }
+
+  cleanupCache() {
+    // Limpeza básica
+    if (this.componentCache.size > 10) {
+      this.componentCache.clear();
+    }
+  }
 }
 
-// Inicializa o motor
-const templateEngine = new TemplateEngine();
+// Inicialização
+if (!window.__TEMPLATE_ENGINE_V3_GLOBAL_INIT__) {
+  window.__TEMPLATE_ENGINE_V3_GLOBAL_INIT__ = true;
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      const engine = new TemplateEngineV3();
+      window.TemplateEngineV3 = engine;
+      window.TemplateEngineV2 = engine;
+      
+      // Sistema de cookies inicializado automaticamente
+    });
+  } else {
+    const engine = new TemplateEngineV3();
+    window.TemplateEngineV3 = engine;
+    window.TemplateEngineV2 = engine;
+    
+    // Sistema de cookies inicializado automaticamente
+  }
+}
