@@ -78,7 +78,8 @@
     --transition-fast: 0.3s ease;
 
     /* LAYOUT: VARIÁVEL PARA A ALTURA DO CABEÇALHO FIXO */
-    --header-height: 6rem; /* Ajustado para 6rem para um deslocamento maior, resolvendo o problema de conteúdo escondido */
+    /* Ajustado para 7rem. Este valor compensa a altura total do cabeçalho fixo (incluindo navegação e linha dourada) + uma margem de segurança. */
+    --header-height: 7rem;
 }
 
 /* ========= RESET E BASE ========= */
