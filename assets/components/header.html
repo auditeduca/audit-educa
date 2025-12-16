@@ -1,4 +1,4 @@
-!-- MENU MOBILE (OFF-CANVAS) -->
+<!-- MENU MOBILE (OFF-CANVAS) -->
 <div id="mobile-menu" class="fixed inset-0 z-[200] hidden" aria-labelledby="mobile-menu-title" role="dialog" aria-modal="true">
     <!-- Backdrop -->
     <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/50 opacity-0 mobile-menu-backdrop" aria-hidden="true"></div>
@@ -14,122 +14,583 @@
             </button>
         </div>
         <h2 id="mobile-menu-title" class="sr-only">Menu de Navegação Principal</h2>
-        
-        <!-- Conteúdo do Menu Mobile -->
-        <nav class="flex-grow p-4 space-y-2 overflow-y-auto">
-            <a href="#home" class="block p-3 rounded-lg text-lg font-medium text-audit-navy dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition"><i class="fas fa-home mr-3 text-audit-blue"></i> Início</a>
-            <a href="#quick-access" class="block p-3 rounded-lg text-lg font-medium text-audit-navy dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition"><i class="fas fa-search-plus mr-3 text-audit-blue"></i> Acesso Rápido</a>
-            <div class="border-t border-gray-100 dark:border-gray-800 mt-4 pt-4">
-                <button id="open-lang-modal-mobile" class="w-full text-left p-3 rounded-lg text-lg font-medium text-audit-navy dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition flex items-center justify-between">
-                    <span class="flex items-center"><i class="fas fa-globe mr-3 text-audit-gold"></i> Idioma</span>
-                    <i class="fas fa-chevron-right text-sm"></i>
-                </button>
-            </div>
-        </nav>
 
-        <!-- Configurações do Fundo e Modo Escuro -->
-        <div class="p-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center">
-            <span class="text-sm font-medium text-audit-navy dark:text-white">Modo Escuro</span>
-            <label class="switch">
-                <input type="checkbox" id="mobile-dark-mode-toggle">
-                <span class="slider round"></span>
-            </label>
-        </div>
-    </div>
-</div>
-
-<!-- MODAL DE IDIOMAS (Visível apenas em Mobile) -->
-<div id="lang-modal" class="fixed inset-0 z-[250] bg-white dark:bg-slate-900 hidden flex-col transition-all duration-300 transform translate-x-full">
-    
-    <!-- Header do Modal de Idiomas -->
-    <div class="p-4 border-b border-gray-100 dark:border-gray-800 flex items-center">
-        <button id="back-to-menu-mobile" class="text-gray-500 dark:text-gray-400 hover:text-audit-gold text-lg p-2 mr-2" aria-label="Voltar ao menu principal">
-            <i class="fas fa-arrow-left" aria-hidden="true"></i>
-        </button>
-        <h2 class="text-xl font-bold text-audit-navy dark:text-white">Selecione o Idioma</h2>
-    </div>
-
-    <!-- Conteúdo do Modal de Idiomas -->
-    <div class="p-4 flex-grow overflow-y-auto">
-        <div class="flex flex-col md:flex-row bg-gray-50 dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden">
-            <!-- Navegação Tab -->
-            <div class="w-full md:w-[35%] p-4 space-y-2 border-r border-gray-200 dark:border-slate-700">
-                <button data-target="lang-pt" class="tab-btn active w-full text-left p-3 rounded-lg text-audit-navy dark:text-white font-semibold flex items-center hover:bg-gray-200 dark:hover:bg-slate-700 transition">
-                    <img src="https://flagcdn.com/br.svg" alt="Bandeira do Brasil" class="w-6 h-auto mr-3 border border-gray-300"> Português (Brasil)
-                </button>
-                <button data-target="lang-en" class="tab-btn w-full text-left p-3 rounded-lg text-audit-navy dark:text-white font-semibold flex items-center hover:bg-gray-200 dark:hover:bg-slate-700 transition">
-                    <img src="https://flagcdn.com/us.svg" alt="Bandeira dos EUA" class="w-6 h-auto mr-3 border border-gray-300"> English (US)
-                </button>
-                <button data-target="lang-es" class="tab-btn w-full text-left p-3 rounded-lg text-audit-navy dark:text-white font-semibold flex items-center hover:bg-gray-200 dark:hover:bg-slate-700 transition">
-                    <img src="https://flagcdn.com/es.svg" alt="Bandeira da Espanha" class="w-6 h-auto mr-3 border border-gray-300"> Español (España)
-                </button>
-            </div>
-
-            <!-- Conteúdo da Tab -->
-            <div class="w-full md:w-[65%] p-6 space-y-4">
-                <div id="lang-pt" class="tab-content active text-center" role="tabpanel">
-                    <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Bem-vindo ao Audit Educa</h3>
-                    <p class="text-sm text-gray-500 mb-6">Conteúdo adaptado às Normas Brasileiras de Contabilidade e Auditoria (NBC).</p>
-                    <!-- Link de Redirecionamento para Português (PT) -->
-                    <a href="https://auditeduca.com.br/index.html" class="inline-block px-6 py-2 bg-gray-200 text-gray-800 rounded font-bold hover:bg-gray-300 transition">Mudar para Português</a>
-                </div>
+        <!-- Lista de Links Mobile -->
+        <nav class="flex-1 overflow-y-auto custom-scroll p-4">
+            <ul class="space-y-2">
+                <li>
+                    <a href="#home" class="block py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 hover:text-audit-gold transition-colors">Início</a>
+                </li>
                 
-                <div id="lang-en" class="tab-content text-center" role="tabpanel">
-                    <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Welcome to Audit Educa</h3>
-                    <p class="text-sm text-gray-500 mb-6">Content adapted to IFRS Standards and International Auditing Guidelines.</p>
-                    <!-- Link de Redirecionamento para Inglês (EN) -->
-                    <a href="https://auditeduca.com.br/en/index.html" class="inline-block px-6 py-2 bg-gray-200 text-gray-800 rounded font-bold hover:bg-gray-300 transition">Switch to English</a>
-                </div>
-                 
-                <div id="lang-es" class="tab-content text-center" role="tabpanel">
-                    <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Bienvenido</h3>
-                    <p class="text-sm text-gray-500 mb-6">Contenido adaptado a las normas internacionales de contabilidad (NIF) y audítoria (NIA)</p>
-                    <!-- Link de Redirecionamento para Espanhol (ES) -->
-                    <a href="https://auditeduca.com.br/es/index.html" class="inline-block px-6 py-2 bg-gray-200 text-gray-800 rounded font-bold hover:bg-gray-300 transition">Cambiar a Español</a>
-                </div>
-            </div>
+                <!-- Item com Submenu: Sobre Nós -->
+                <li>
+                    <button class="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 mobile-accordion-trigger hover:text-audit-gold transition-colors" aria-expanded="false" aria-controls="mob-submenu-sobre">
+                        Sobre Nós <i class="fas fa-chevron-down text-xs transition-transform" aria-hidden="true"></i>
+                    </button>
+                    <div id="mob-submenu-sobre" class="mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1">
+                        <ul class="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Institucional</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">O Criador</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Acessibilidade</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Sustentabilidade</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Políticas</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-            <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/2000px-World_map_blank_without_borders.svg.png" alt="Mapa global de conexão" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null;this.src='https://placehold.co/200x200/cccccc/333333?text=Global+Map';" loading="lazy">
-            </div>
+                <!-- Item com Submenu: Conteúdo -->
+                <li>
+                    <button class="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 mobile-accordion-trigger hover:text-audit-gold transition-colors" aria-expanded="false" aria-controls="mob-submenu-conteudo">
+                        Conteúdo <i class="fas fa-chevron-down text-xs transition-transform" aria-hidden="true"></i>
+                    </button>
+                    <div id="mob-submenu-conteudo" class="mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1">
+                        <ul class="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Auditoria</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Contabilidade</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">ESG</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Tributário</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                 <!-- Item com Submenu: Ferramentas -->
+                 <li>
+                    <button class="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 mobile-accordion-trigger hover:text-audit-gold transition-colors" aria-expanded="false" aria-controls="mob-submenu-ferramentas">
+                        Ferramentas <i class="fas fa-chevron-down text-xs transition-transform" aria-hidden="true"></i>
+                    </button>
+                    <div id="mob-submenu-ferramentas" class="mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1">
+                        <ul class="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Checklists</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Planilhas</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Item com Submenu: Carreiras -->
+                <li>
+                    <button class="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 mobile-accordion-trigger hover:text-audit-gold transition-colors" aria-expanded="false" aria-controls="mob-submenu-carreiras">
+                        Carreiras <i class="fas fa-chevron-down text-xs transition-transform" aria-hidden="true"></i>
+                    </button>
+                    <div id="mob-submenu-carreiras" class="mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1">
+                        <ul class="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Vagas</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Trilhas</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                 <!-- Item com Submenu: Fale Conosco -->
+                 <li>
+                    <button class="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 mobile-accordion-trigger hover:text-audit-gold transition-colors" aria-expanded="false" aria-controls="mob-submenu-fale">
+                        Fale Conosco <i class="fas fa-chevron-down text-xs transition-transform" aria-hidden="true"></i>
+                    </button>
+                    <div id="mob-submenu-fale" class="mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1">
+                        <ul class="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Canais</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">FAQ</a></li>
+                            <li><a href="#" class="block py-2 px-4 hover:text-audit-gold">Parcerias</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Footer Mobile -->
+        <div class="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-slate-800/50">
+             <div class="flex items-center justify-between mb-4">
+                 <span class="text-xs text-gray-500 uppercase font-bold">Idioma</span>
+                 <div class="flex gap-2">
+                     <button aria-label="Mudar para Português"><img src="https://auditeduca.com.br/assets/flags/bandeira-brasil.webp" alt="Brasil" class="w-6 h-auto rounded opacity-50 hover:opacity-100 cursor-pointer"></button>
+                     <button aria-label="Mudar para Inglês"><img src="https://auditeduca.com.br/assets/flags/flag-united-kingdom.webp" alt="Reino Unido" class="w-6 h-auto rounded opacity-50 hover:opacity-100 cursor-pointer"></button>
+                     <button aria-label="Mudar para Espanhol"><img src="https://auditeduca.com.br/assets/flags/bandera-espana.webp" alt="Espanha" class="w-6 h-auto rounded opacity-50 hover:opacity-100 cursor-pointer"></button>
+                 </div>
+             </div>
+             <a href="#" class="block w-full text-center py-2 bg-audit-gold text-white rounded font-bold text-sm hover:bg-audit-goldDark transition-colors">Entrar / Área do Aluno</a>
         </div>
     </div>
 </div>
 
-<!-- MENU DESKTOP -->
-<header id="desktop-header" class="w-full bg-white dark:bg-audit-navy/90 backdrop-blur-sm shadow-md fixed top-0 left-0 right-0 z-50 transition-colors duration-300 border-b border-gray-200 dark:border-gray-700">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-        <!-- Logotipo -->
-        <a href="#home" class="flex items-center space-x-3" aria-label="Voltar para a página inicial">
-            <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logotipo Audit Educa" class="h-8 w-auto">
-            <span class="text-2xl font-extrabold text-audit-blue dark:text-audit-gold hidden sm:inline">Audit Educa</span>
-        </a>
-
-        <!-- Links de Navegação Primária -->
-        <nav class="hidden lg:flex space-x-8 text-lg font-medium">
-            <a href="#home" class="text-audit-navy dark:text-gray-300 hover:text-audit-gold dark:hover:text-audit-gold transition">Início</a>
-            <a href="#quick-access" class="text-audit-navy dark:text-gray-300 hover:text-audit-gold dark:hover:text-audit-gold transition">Acesso Rápido</a>
-            <a href="#" class="text-audit-navy dark:text-gray-300 hover:text-audit-gold dark:hover:text-audit-gold transition">Materiais</a>
-            <a href="#" class="text-audit-navy dark:text-gray-300 hover:text-audit-gold dark:hover:text-audit-gold transition">Contato</a>
-        </nav>
-
-        <!-- Ações e Botões de Configuração -->
-        <div class="flex items-center space-x-4">
-            <!-- Botão de Idioma (Desktop) -->
-            <button id="open-lang-modal-desktop" class="p-2 rounded-full text-audit-blue dark:text-audit-gold hover:bg-gray-100 dark:hover:bg-slate-800 transition" aria-label="Mudar idioma">
-                <i class="fas fa-globe text-xl"></i>
-            </button>
-            
-            <!-- Botão de Alternar Modo Escuro (Desktop) -->
-            <button id="desktop-dark-mode-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-audit-blue dark:text-audit-gold transition hover:scale-105" aria-label="Alternar modo escuro">
-                <i class="fas fa-sun dark:hidden"></i>
-                <i class="fas fa-moon hidden dark:inline"></i>
-            </button>
-
-            <!-- Botão de Menu Mobile (Visível apenas em Mobile/Tablet) -->
-            <button id="open-mobile-menu" class="lg:hidden p-2 rounded-full text-audit-blue dark:text-audit-gold hover:bg-gray-100 dark:hover:bg-slate-800 transition" aria-label="Abrir menu de navegação">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+<!-- HEADER PRINCIPAL DESKTOP -->
+<header id="header" class="fixed w-full top-0 z-[100] transition-all duration-300 font-sans group">
+    <!-- Barra de Acessibilidade e Topo -->
+    <div class="bg-audit-glassLight dark:bg-audit-glassDark glass shadow-sm relative z-[101]">
+        <div class="py-1 border-b border-gray-200/50 dark:border-gray-700/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs">
+                <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 w-full lg:w-auto">
+                    <div class="flex gap-2 items-center">
+                        <button class="hover:text-audit-gold font-bold transition px-1 p-1" aria-label="Diminuir tamanho da fonte">A-</button>
+                        <button class="hover:text-audit-gold font-bold transition px-1 p-1" aria-label="Aumentar tamanho da fonte">A+</button>
+                        <button id="theme-toggle" class="hover:text-audit-gold transition ml-2 p-1" aria-label="Alternar tema claro e escuro">
+                            <i class="fas fa-moon dark:hidden" aria-hidden="true"></i>
+                            <i class="fas fa-sun hidden dark:inline" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <nav class="hidden lg:flex items-center gap-1 border-l border-gray-300 dark:border-gray-600 pl-4 ml-2" aria-label="Navegação de Atalho">
+                        <a href="#header" class="w-24 text-center py-1 bg-gray-100/50 dark:bg-white/5 hover:bg-audit-gold hover:text-white dark:hover:bg-audit-gold rounded transition text-[10px] font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Topo</a>
+                        <a href="#main-content" class="w-24 text-center py-1 bg-gray-100/50 dark:bg-white/5 hover:bg-audit-gold hover:text-white dark:hover:bg-audit-gold rounded transition text-[10px] font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Conteúdo</a>
+                        <a href="#footer" class="w-24 text-center py-1 bg-gray-100/50 dark:bg-white/5 hover:bg-audit-gold hover:text-white dark:hover:bg-audit-gold rounded transition text-[10px] font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Rodapé</a>
+                    </nav>
+                </div>
+            </div>
         </div>
+
+        <div class="py-3 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                <div class="flex items-center shrink-0">
+                    <a href="#home" class="flex items-center gap-2" aria-label="Ir para a página inicial">
+                        <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logotipo Audit Educa" class="h-10 w-auto">
+                    </a>
+                </div>
+
+                <!-- Navegação Principal Desktop -->
+                <nav class="hidden lg:flex items-center gap-1 h-10" aria-label="Menu Principal">
+                    <a href="#home" class="nav-item px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition">Início</a>
+                    
+                    <button class="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1" data-panel="panel-sobre" aria-expanded="false" aria-controls="panel-sobre">
+                        Sobre Nós <i class="fas fa-chevron-down text-[10px] opacity-50" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1" data-panel="panel-conteudo" aria-expanded="false" aria-controls="panel-conteudo">
+                        Conteúdo <i class="fas fa-chevron-down text-[10px] opacity-50" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1" data-panel="panel-ferramentas" aria-expanded="false" aria-controls="panel-ferramentas">
+                        Ferramentas <i class="fas fa-chevron-down text-[10px] opacity-50" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1" data-panel="panel-carreiras" aria-expanded="false" aria-controls="panel-carreiras">
+                        Carreiras <i class="fas fa-chevron-down text-[10px] opacity-50" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1" data-panel="panel-fale" aria-expanded="false" aria-controls="panel-fale">
+                        Fale Conosco <i class="fas fa-chevron-down text-[10px] opacity-50" aria-hidden="true"></i>
+                    </button>
+                </nav>
+
+                <div class="hidden lg:flex items-center gap-2">
+                    <button class="nav-trigger w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-gray-600 dark:text-gray-300" data-panel="panel-busca" aria-label="Abrir busca" aria-expanded="false" aria-controls="panel-busca">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                    
+                    <button class="nav-trigger h-9 px-2 flex items-center gap-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-gray-600 dark:text-gray-300" data-panel="panel-idioma" aria-label="Selecionar Idioma" aria-expanded="false" aria-controls="panel-idioma">
+                        <img src="https://auditeduca.com.br/assets/flags/bandeira-brasil.webp" alt="Idioma selecionado: Português" class="w-6 h-auto shadow-sm rounded-sm">
+                        <i class="fas fa-chevron-down text-[10px]" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <!-- Botão Menu Mobile -->
+                <button id="mobile-menu-trigger" class="lg:hidden p-2 text-audit-navy dark:text-white" aria-label="Abrir menu principal" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="h-[2px] w-full bg-gradient-to-r from-audit-navy via-audit-gold to-audit-navy relative z-50"></div>
+        
+        <!-- MEGA PANELS (Estrutura Desktop) -->
+        <div id="panel-sobre" class="mega-panel" role="region" aria-label="Submenu Sobre Nós">
+            <div class="max-w-7xl mx-auto h-[400px] flex">
+                <div class="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 pr-2 custom-scroll overflow-y-auto">
+                    <ul class="space-y-1 px-4" role="tablist" aria-orientation="vertical">
+                        <!-- Os itens abaixo agem como tabs para mostrar o conteúdo à direita -->
+                        <li class="menu-tab-trigger active cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="sobre-inst" role="tab" aria-selected="true" aria-controls="sobre-inst">
+                            Institucional <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="sobre-criador" role="tab" aria-selected="false" aria-controls="sobre-criador">
+                            O Criador <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="sobre-acessibilidade" role="tab" aria-selected="false" aria-controls="sobre-acessibilidade">
+                            Acessibilidade <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="sobre-sustentabilidade" role="tab" aria-selected="false" aria-controls="sobre-sustentabilidade">
+                            Sustentabilidade Digital <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="sobre-politicas" role="tab" aria-selected="false" aria-controls="sobre-politicas">
+                            Políticas do Site <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="sobre-mapa" role="tab" aria-selected="false" aria-controls="sobre-mapa">
+                            Mapa do Site <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-[45%] p-8 overflow-y-auto custom-scroll dark:text-gray-300">
+                    <div id="sobre-inst" class="tab-content active" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Quem Somos</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">A Audit Educa nasceu para democratizar o conhecimento técnico em auditoria e finanças.</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="https://www.auditeduca.com.br/sobre-nos.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Missão, Visão e Valores</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossa Missão, Visão e Valores</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="sobre-criador" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Sobre o Idealizador do Audit Educa</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Conheça a trajetória de quem idealizou este projeto.</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="https://www.auditeduca.com.br/sobre-o-criador.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Sobre o Criador</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça mais sobre mim.</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div id="sobre-acessibilidade" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Inclusão Digital</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Compromisso com o acesso universal ao conhecimento.</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="https://www.auditeduca.com.br/politica-de-acessibilidade.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Política de Acessibilidade</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas diretrizes de inclusão.</span>
+                            </a>
+                            <a href="https://www.auditeduca.com.br/recursos-assistivos.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Recursos Assistivos</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossos recursos de acessibilidade.</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="sobre-sustentabilidade" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Sustentabilidade Digital</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Reduzindo nossa pegada ecológica através da tecnologia.</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="https://www.auditeduca.com.br/sustentabilidade-digital.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Nosso Compromisso</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas metas ambientais.</span>
+                            </a>
+                            <a href="https://www.auditeduca.com.br/pegada-de-carbono.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Pegada de Carbono</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça o monitoramento de impacto.</span>
+                            </a>
+                            <a href="https://www.auditeduca.com.br/relatorio-de-impacto.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Relatório de Impacto</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossos resultados de impacto ambiental</span>
+                            </a>
+                            <a href="https://www.auditeduca.com.br/tecnologia-verde.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Tecnologia Verde</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas tecnologias sustentáveis.</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="sobre-politicas" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Políticas do Site</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Transparência e conformidade legal.</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="https://www.auditeduca.com.br/privacidade.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Central de Privacidade</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas regras de privacidade alinhada com as práticas legais vigentes.</span>
+                            </a>
+                            <a href="https://www.auditeduca.com.br/notificacoes-legais.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Notificações Legais</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossa isenção de responsabilidade.</span>
+                            </a>
+                            <a href="https://www.auditeduca.com.br/termos-de-uso.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Termos de Utilização e Uso</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça os termos de utilização e uso do Audit Educa.</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="sobre-mapa" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Navegação</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Encontre o que você precisa rapidamente.</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="https://www.auditeduca.com.br/mapa-do-site.html" class="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                                <span class="text-audit-goldDark font-bold text-sm block mb-1">Mapa do Site</span>
+                                <span class="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça a estrutura completa do Audit Educa.</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Escritório corporativo moderno" class="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md">
+                </div>
+            </div>
+        </div>
+
+        <div id="panel-conteudo" class="mega-panel" role="region" aria-label="Submenu Conteúdo">
+            <div class="max-w-7xl mx-auto h-[400px] flex">
+                <div class="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 pr-2 custom-scroll overflow-y-auto">
+                    <ul class="space-y-1 px-4" role="tablist" aria-orientation="vertical">
+                        <li class="menu-tab-trigger active cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="cont-auditoria" role="tab" aria-selected="true" aria-controls="cont-auditoria">
+                            Auditoria (Int/Ext) <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="cont-contabil" role="tab" aria-selected="false" aria-controls="cont-contabil">
+                            Contabilidade <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="cont-esg" role="tab" aria-selected="false" aria-controls="cont-esg">
+                            ESG e Sustentabilidade <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="cont-tributario" role="tab" aria-selected="false" aria-controls="cont-tributario">
+                            Tributário <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-[45%] p-8 overflow-y-auto custom-scroll dark:text-gray-300">
+                    <div id="cont-auditoria" class="tab-content active" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Mundo da Auditoria</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-sm font-bold text-audit-goldDark mb-2 border-b border-gray-200 pb-1">Auditoria Externa</h4>
+                                <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                                    <li><a href="#" class="hover:text-audit-blue">Normas Brasileiras (NBAs)</a></li>
+                                    <li><a href="#" class="hover:text-audit-blue">Pareceres e Relatórios</a></li>
+                                    <li><a href="#" class="hover:text-audit-blue">Procedimentos Analíticos</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-audit-goldDark mb-2 border-b border-gray-200 pb-1">Auditoria Interna</h4>
+                                <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                                    <li><a href="#" class="hover:text-audit-blue">Gestão de Riscos</a></li>
+                                    <li><a href="#" class="hover:text-audit-blue">Compliance</a></li>
+                                    <li><a href="#" class="hover:text-audit-blue">Matriz de Controles</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cont-contabil" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Contabilidade (IFRS/CPC)</h3>
+                        <p class="text-sm mb-4">Aprofunde-se nos pronunciamentos contábeis.</p>
+                        <a href="#" class="text-audit-blue underline text-sm">Ver lista de CPCs comentados</a>
+                    </div>
+                    <div id="cont-esg" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">ESG</h3>
+                        <p class="text-sm text-gray-500">Environmental, Social and Governance.</p>
+                    </div>
+                     <div id="cont-tributario" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Tributário</h3>
+                        <p class="text-sm text-gray-500">Reforma tributária, PIS/COFINS e IRPJ.</p>
+                    </div>
+                </div>
+                <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Análise de dados financeiros em tablet" class="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md">
+                </div>
+            </div>
+        </div>
+        
+        <div id="panel-ferramentas" class="mega-panel" role="region" aria-label="Submenu Ferramentas">
+            <div class="max-w-7xl mx-auto h-[400px] flex">
+                <div class="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 pr-2">
+                    <ul class="space-y-1 px-4" role="tablist" aria-orientation="vertical">
+                        <li class="menu-tab-trigger active cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="tools-checklists" role="tab" aria-selected="true" aria-controls="tools-checklists">
+                            Checklists <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="tools-planilhas" role="tab" aria-selected="false" aria-controls="tools-planilhas">
+                            Planilhas & Modelos <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-[45%] p-8 overflow-y-auto custom-scroll dark:text-gray-300">
+                     <div id="tools-checklists" class="tab-content active" role="tabpanel">
+                         <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Checklists de Verificação</h3>
+                         <div class="space-y-3">
+                             <a href="#" class="flex items-start gap-3 p-3 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition">
+                                 <div class="w-10 h-10 bg-green-100 text-green-600 p-2 rounded flex items-center justify-center"><i class="fas fa-check" aria-hidden="true"></i></div>
+                                 <div>
+                                     <span class="font-bold text-sm block">Fechamento Contábil</span>
+                                     <span class="text-xs text-gray-500">Passo a passo mensal.</span>
+                                 </div>
+                             </a>
+                             <a href="#" class="flex items-start gap-3 p-3 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition">
+                                 <div class="w-10 h-10 bg-blue-100 text-blue-600 p-2 rounded flex items-center justify-center"><i class="fas fa-search" aria-hidden="true"></i></div>
+                                 <div>
+                                     <span class="font-bold text-sm block">Inventário Físico</span>
+                                     <span class="text-xs text-gray-500">Procedimentos de contagem.</span>
+                                 </div>
+                             </a>
+                         </div>
+                     </div>
+                     <div id="tools-planilhas" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Downloads Excel</h3>
+                        <p class="text-sm">Modelos de fluxo de caixa, DRE e Balanço.</p>
+                     </div>
+                </div>
+                <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Laptop com gráficos de análise financeira" class="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md">
+                </div>
+            </div>
+        </div>
+
+        <div id="panel-carreiras" class="mega-panel" role="region" aria-label="Submenu Carreiras">
+            <div class="max-w-7xl mx-auto h-[400px] flex">
+                <div class="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 pr-2">
+                    <ul class="space-y-1 px-4" role="tablist" aria-orientation="vertical">
+                        <li class="menu-tab-trigger active cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="carr-vagas" role="tab" aria-selected="true" aria-controls="carr-vagas">
+                            Mural de Vagas <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="carr-trilhas" role="tab" aria-selected="false" aria-controls="carr-trilhas">
+                            Trilhas de Carreira <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-[45%] p-8 dark:text-gray-300">
+                    <div id="carr-vagas" class="tab-content active" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Oportunidades Recentes</h3>
+                        <ul class="space-y-2">
+                            <li class="border-b border-gray-100 dark:border-gray-700 pb-2">
+                                <span class="text-xs font-bold text-audit-goldDark">SÃO PAULO</span>
+                                <a href="#" class="block text-sm font-bold hover:text-audit-blue">Auditor Sênior - Big4</a>
+                            </li>
+                            <li class="border-b border-gray-100 dark:border-gray-700 pb-2">
+                                <span class="text-xs font-bold text-audit-goldDark">REMOTO</span>
+                                <a href="#" class="block text-sm font-bold hover:text-audit-blue">Controller Financeiro</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="carr-trilhas" class="tab-content" role="tabpanel">
+                        <p>Mapas de competência para Junior, Pleno e Sênior.</p>
+                    </div>
+                </div>
+                <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Reunião de equipe em escritório" class="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md">
+                </div>
+            </div>
+        </div>
+
+        <div id="panel-fale" class="mega-panel" role="region" aria-label="Submenu Fale Conosco">
+            <div class="max-w-7xl mx-auto h-[400px] flex">
+                <div class="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 pr-2">
+                    <ul class="space-y-1 px-4" role="tablist" aria-orientation="vertical">
+                        <li class="menu-tab-trigger active cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="fale-canais" role="tab" aria-selected="true" aria-controls="fale-canais">
+                            Canais de Atendimento <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="fale-faq" role="tab" aria-selected="false" aria-controls="fale-faq">
+                            Dúvidas Frequentes <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-3 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5 transition flex justify-between items-center group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="fale-parcerias" role="tab" aria-selected="false" aria-controls="fale-parcerias">
+                            Parcerias <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-[45%] p-8 dark:text-gray-300 overflow-y-auto custom-scroll">
+                    <div id="fale-canais" class="tab-content active" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Estamos aqui para ajudar</h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="#" class="flex items-center gap-4 p-4 rounded-lg border border-gray-100 dark:border-gray-700 hover:border-audit-gold transition group bg-white dark:bg-white/5">
+                                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600"><i class="fab fa-whatsapp text-xl" aria-hidden="true"></i></div>
+                                <div>
+                                    <span class="block font-bold text-gray-800 dark:text-white">WhatsApp</span>
+                                    <span class="text-xs text-gray-500">Atendimento rápido em horário comercial.</span>
+                                </div>
+                            </a>
+                            <a href="#" class="flex items-center gap-4 p-4 rounded-lg border border-gray-100 dark:border-gray-700 hover:border-audit-gold transition group bg-white dark:bg-white/5">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600"><i class="fas fa-envelope text-xl" aria-hidden="true"></i></div>
+                                <div>
+                                    <span class="block font-bold text-gray-800 dark:text-white">E-mail</span>
+                                    <span class="text-xs text-gray-500">contato@auditeduca.com.br</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="fale-faq" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Central de Ajuda</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-sm hover:text-audit-gold flex items-center gap-2"><i class="fas fa-question-circle text-gray-400" aria-hidden="true"></i> Como emitir meu certificado?</a></li>
+                            <li><a href="#" class="text-sm hover:text-audit-gold flex items-center gap-2"><i class="fas fa-question-circle text-gray-400" aria-hidden="true"></i> Política de reembolso de cursos</a></li>
+                            <li><a href="#" class="text-sm hover:text-audit-gold flex items-center gap-2"><i class="fas fa-question-circle text-gray-400" aria-hidden="true"></i> Acesso à área do aluno</a></li>
+                        </ul>
+                    </div>
+                    <div id="fale-parcerias" class="tab-content" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-4">Seja nosso parceiro</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Busca conectar sua marca com profissionais de auditoria e finanças?</p>
+                        <a href="#" class="px-4 py-2 bg-audit-navy text-white text-sm rounded hover:bg-audit-blue transition">Solicitar Mídia Kit</a>
+                    </div>
+                </div>
+                <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Atendimento ao cliente em central de ajuda" class="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md">
+                </div>
+            </div>
+        </div>
+
+        <div id="panel-busca" class="mega-panel" role="region" aria-label="Busca">
+            <div class="max-w-7xl mx-auto h-[400px] flex">
+                <div class="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 px-4">
+                    <h5 class="text-xs uppercase font-bold text-gray-500 mb-4 px-2">Filtros Rápidos</h5>
+                    <ul class="space-y-1">
+                        <li class="cursor-pointer px-4 py-2 rounded text-sm text-gray-700 dark:text-gray-200 hover:bg-audit-gold hover:text-white transition" tabindex="0">Todos</li>
+                        <li class="cursor-pointer px-4 py-2 rounded text-sm text-gray-700 dark:text-gray-200 hover:bg-audit-gold hover:text-white transition" tabindex="0">Cursos</li>
+                        <li class="cursor-pointer px-4 py-2 rounded text-sm text-gray-700 dark:text-gray-200 hover:bg-audit-gold hover:text-white transition" tabindex="0">Artigos</li>
+                        <li class="cursor-pointer px-4 py-2 rounded text-sm text-gray-700 dark:text-gray-200 hover:bg-audit-gold hover:text-white transition" tabindex="0">Normas</li>
+                    </ul>
+                </div>
+
+                <div class="w-[45%] p-8 flex flex-col">
+                    <div class="relative mb-8">
+                        <input type="text" placeholder="Digite o que você procura..." class="w-full border-b-2 border-gray-300 dark:border-gray-600 py-3 text-xl bg-transparent focus:outline-none focus:border-audit-gold text-audit-navy dark:text-white" aria-label="Campo de busca principal">
+                        <button class="absolute right-0 top-3 text-gray-400 hover:text-audit-gold" aria-label="Buscar"><i class="fas fa-arrow-right text-xl" aria-hidden="true"></i></button>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-xs font-bold text-gray-400 uppercase mb-3">Mais buscados</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-white/10 rounded-full text-xs text-gray-600 dark:text-gray-300 cursor-pointer hover:bg-audit-gold hover:text-white transition" tabindex="0">CPC 00</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-white/10 rounded-full text-xs text-gray-600 dark:text-gray-300 cursor-pointer hover:bg-audit-gold hover:text-white transition" tabindex="0">Auditoria Interna</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-white/10 rounded-full text-xs text-gray-600 dark:text-gray-300 cursor-pointer hover:bg-audit-gold hover:text-white transition" tabindex="0">ESG</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Livros e material de pesquisa" class="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md">
+                </div>
+            </div>
+        </div>
+
+        <div id="panel-idioma" class="mega-panel" role="region" aria-label="Seleção de Idioma">
+            <div class="max-w-7xl mx-auto h-[400px] flex">
+                <div class="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 px-2">
+                    <ul class="space-y-1 px-4" role="tablist" aria-orientation="vertical">
+                        <li class="menu-tab-trigger active cursor-pointer px-4 py-4 rounded-lg flex items-center gap-3 hover:bg-white dark:hover:bg-white/5 transition border border-transparent hover:border-gray-200 group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="lang-pt" role="tab" aria-selected="true" aria-controls="lang-pt">
+                            <img src="https://auditeduca.com.br/assets/flags/bandeira-brasil.webp" alt="Brasil" class="w-8 h-auto shadow-sm rounded-sm">
+                            <div>
+                                <span class="block text-sm font-bold text-gray-800 dark:text-white group-hover:text-audit-gold">Português</span>
+                                <span class="block text-[10px] text-gray-500 uppercase">Brasil</span>
+                            </div>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-4 rounded-lg flex items-center gap-3 hover:bg-white dark:hover:bg-white/5 transition border border-transparent hover:border-gray-200 group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="lang-en" role="tab" aria-selected="false" aria-controls="lang-en">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_Kingdom.svg/320px-Flag_of_the_United_Kingdom.svg.png" alt="United Kingdom" class="w-8 h-auto shadow-sm rounded-sm">
+                            <div>
+                                <span class="block text-sm font-bold text-gray-800 dark:text-white group-hover:text-audit-gold">English</span>
+                                <span class="block text-[10px] text-gray-500 uppercase">Global</span>
+                            </div>
+                        </li>
+                        <li class="menu-tab-trigger cursor-pointer px-4 py-4 rounded-lg flex items-center gap-3 hover:bg-white dark:hover:bg-white/5 transition border border-transparent hover:border-gray-200 group focus:outline-none focus:bg-white dark:focus:bg-white/5" tabindex="0" data-target="lang-es" role="tab" aria-selected="false" aria-controls="lang-es">
+                            <img src="https://auditeduca.com.br/assets/flags/bandera-espana.webp" alt="España" class="w-8 h-auto shadow-sm rounded-sm">
+                            <div>
+                                <span class="block text-sm font-bold text-gray-800 dark:text-white group-hover:text-audit-gold">Español</span>
+                                <span class="block text-[10px] text-gray-500 uppercase">España / Latam</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-[45%] p-8 flex flex-col justify-center dark:text-gray-300">
+                    <div id="lang-pt" class="tab-content active text-center" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Bem-vindo ao Audit Educa</h3>
+                        <p class="text-sm text-gray-500 mb-6">Conteúdo adaptado a profissionais situados em território brasileiro</p>
+                        <button class="px-6 py-2 bg-audit-gold text-white rounded font-bold hover:bg-audit-goldDark transition shadow-lg">Confirmar Português</button>
+                    </div>
+                    <div id="lang-en" class="tab-content text-center" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Welcome to Audit Educa</h3>
+                        <p class="text-sm text-gray-500 mb-6">Content adapted to IFRS Standards and International Auditing Guidelines.</p>
+                        <button class="px-6 py-2 bg-gray-200 text-gray-800 rounded font-bold hover:bg-gray-300 transition">Switch to English</button>
+                    </div>
+                     <div id="lang-es" class="tab-content text-center" role="tabpanel">
+                        <h3 class="text-xl font-bold text-audit-navy dark:text-white mb-2">Bienvenido</h3>
+                        <p class="text-sm text-gray-500 mb-6">Contenido adaptado a las normas internacionales de contabilidad (NIF) y audítoria (NIA)</p>
+                        <button class="px-6 py-2 bg-gray-200 text-gray-800 rounded font-bold hover:bg-gray-300 transition">Cambiar a Español</button>
+                    </div>
+                </div>
+
+                <div class="w-[30%] p-6 pr-8 flex items-center justify-center">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/2000px-World_map_blank_without_borders.svg.png" alt="Mapa global de conexão" class="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md bg-white">
+                </div>
+            </div>
+        </div>
+
     </div>
 </header>
