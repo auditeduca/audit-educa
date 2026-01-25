@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Email - Auditeduca</title>
+
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <style>
+        .validation-container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .validation-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .validation-input:focus {
+            border-color: #007bff; /* Ajuste para a cor primária do Auditeduca */
+            outline: none;
+        }
+
+        .btn-validate {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-validate:hover {
+            background-color: #218838;
+        }
+
+        .btn-validate:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #result-area {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .loading { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <div id="header-container"></div>
+
+    <main class="main-content">
+        <div class="validation-container">
+            <h2>Validador de Email</h2>
+            <p>Verifique a validade técnica e os registros MX do domínio via Google Public DNS.</p>
+            
+            <input type="email" id="emailInput" class="validation-input" placeholder="Digite o email para validar (ex: contato@empresa.com)">
+            <button onclick="validarEmail()" class="btn-validate" id="btnValidate">Validar Email</button>
+
+            <div id="result-area"></div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="https://auditeduca.com.br/assets/js/console-cleaner.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/utils.js"></script>
+
+    <script>
+        // 1. Script para Modularização (Carregar Header e Footer)
+        async function loadComponents() {
+            const headerUrl = 'https://auditeduca.com.br/assets/components/header.html';
+            const footerUrl = 'https://auditeduca.com.br/assets/components/footer.html';
+
+            try {
+                const [headerRes, footerRes] = await Promise.all([
+                    fetch(headerUrl),
+                    fetch(footerUrl)
+                ]);
+
+                if (headerRes.ok) document.getElementById('header-container').innerHTML = await headerRes.text();
+                if (footerRes.ok) document.getElementById('footer-container').innerHTML = await footerRes.text();
+            } catch (error) {
+                console.error('Erro ao carregar componentes modulares:', error);
+            }
+        }
+
+        // 2. Lógica de Validação com Google Public DNS API
+        async function validarEmail() {
+            const email = document.getElementById('emailInput').value.trim();
+            const resultArea = document.getElementById('result-area');
+            const btn = document.getElementById('btnValidate');
+            
+            // Limpa resultados anteriores
+            resultArea.style.display = 'none';
+            resultArea.className = '';
+            
+            // Validação de Sintaxe Básica (Regex)
+            const syntaxRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!syntaxRegex.test(email)) {
+                showResult("Formato de email inválido.", "error");
+                return;
+            }
+
+            // UI Loading
+            btn.disabled = true;
+            btn.innerText = "Verificando...";
+            showResult("Consultando API do Google DNS...", "loading");
+
+            // Extrair domínio
+            const domain = email.split('@')[1];
+
+            try {
+                // Chamada à API Pública do Google (DNS-over-HTTPS)
+                // Type 15 = MX (Mail Exchange)
+                const response = await fetch(`https://dns.google/resolve?name=${domain}&type=MX`);
+                const data = await response.json();
+
+                if (data.Status === 0 && data.Answer) {
+                    // Status 0 = No Error, Answer existe = Tem servidor de email configurado
+                    const mxRecords = data.Answer.map(rec => rec.data).join(', ');
+                    showResult(`<strong>Email Válido!</strong><br>Domínio: ${domain}<br>Servidores MX encontrados via Google: ${data.Answer.length}`, "success");
+                } else {
+                    // Sem registros MX ou domínio inexistente
+                    showResult(`<strong>Email Inválido ou Domínio sem MX.</strong><br>O domínio @${domain} não parece aceitar emails.`, "error");
+                }
+            } catch (error) {
+                showResult("Erro ao conectar com a API do Google.", "error");
+                console.error(error);
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Validar Email";
+            }
+        }
+
+        function showResult(msg, type) {
+            const resultArea = document.getElementById('result-area');
+            resultArea.innerHTML = msg;
+            resultArea.className = type;
+            resultArea.style.display = 'block';
+        }
+
+        // Inicializa componentes ao carregar
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+</body>
+</html>
