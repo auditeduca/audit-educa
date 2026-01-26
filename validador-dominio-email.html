@@ -86,16 +86,20 @@
             @page { size: A4; margin: 1.5cm; }
             body * { visibility: hidden; }
             /* Ocultar elementos de UI */
-            #header-container, #footer-container, #sidebar, .no-print, button, .timeline-line, .timeline-dot i { display: none !important; }
+            #header-container, #footer-container, #sidebar, .no-print, button, .timeline-line, .timeline-dot i, #print-actions { display: none !important; }
             
             /* Exibir apenas o relatório */
             #printable-report, #printable-report * { visibility: visible; }
             #printable-report {
-                display: block !important; /* CORREÇÃO CRÍTICA: Força a exibição sobrepondo o 'hidden' do Tailwind */
+                display: block !important;
                 position: absolute; left: 0; top: 0; width: 100%;
                 background: white; color: black; font-family: 'Poppins', sans-serif;
+                z-index: 9999;
             }
-            .print-bg-gray { background-color: #f3f4f6 !important; -webkit-print-color-adjust: exact; }
+            /* Forçar cores de fundo na impressão */
+            .print-bg-gray { background-color: #f9fafb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-border { border: 1px solid #e5e7eb !important; }
+            
             #print-footer {
                 position: fixed; bottom: 0; left: 0; width: 100%;
                 display: flex !important; justify-content: space-between; align-items: flex-end;
@@ -260,7 +264,7 @@
         <div class="flex items-center justify-between mb-8 border-b-4 border-audit-navy pb-6">
             <div class="flex items-center gap-4">
                 <!-- Simulação de Logo AE -->
-                <div class="w-16 h-16 bg-audit-navy text-white flex items-center justify-center rounded-lg shadow-sm">
+                <div class="w-16 h-16 bg-audit-navy text-white flex items-center justify-center rounded-lg shadow-sm print-bg-gray">
                     <span class="font-bold text-3xl font-serif">AE</span>
                 </div>
                 <div>
@@ -268,14 +272,11 @@
                     <p class="text-gray-600 font-medium">Auditoria de Configuração de Domínio e MX</p>
                 </div>
             </div>
-            <div class="text-right">
-                <p class="text-sm text-gray-500">ID do Relatório</p>
-                <p class="font-mono font-bold text-lg" id="print-id">#GEN-0000</p>
-            </div>
+            <!-- ID Fictício removido conforme solicitado -->
         </div>
 
         <!-- Resumo Executivo -->
-        <div class="mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200">
+        <div class="mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200 print-bg-gray print-border">
             <div class="grid grid-cols-2 gap-8">
                 <div>
                     <span class="block text-xs font-bold text-gray-400 uppercase mb-1">Domínio Analisado</span>
@@ -306,7 +307,7 @@
         </div>
 
         <!-- Nota Legal -->
-        <div class="text-xs text-justify text-gray-500 mb-8 p-4 bg-gray-50 border border-gray-100 rounded">
+        <div class="text-xs text-justify text-gray-500 mb-8 p-4 bg-gray-50 border border-gray-100 rounded print-bg-gray print-border">
             <strong>Nota Técnica:</strong> Este relatório certifica apenas que, no momento da consulta, o domínio possuía registros públicos DNS indicando servidores de e-mail (MX) ativos. Não atesta a existência de caixas postais individuais, reputação de IP ou ausência de filtros de spam locais.
         </div>
 
@@ -485,9 +486,8 @@
             // Dados Básicos
             document.getElementById('print-email').innerText = domain; // Usando o termo genérico 'Domínio/Input'
             document.getElementById('print-date').innerText = new Date().toLocaleString('pt-BR');
-            const reportId = 'AUD-' + Math.floor(Math.random() * 1000000);
-            document.querySelectorAll('#print-id').forEach(el => el.innerText = reportId);
-
+            // ID removido conforme solicitado
+            
             // Status Badge
             const lastLog = logs[logs.length - 1];
             const isSuccess = lastLog.status === 'success';
@@ -517,7 +517,7 @@
                 document.querySelectorAll('#print-ip').forEach(el => el.innerText = ipData.ip);
             } catch(e) { document.querySelectorAll('#print-ip').forEach(el => el.innerText = 'IP Oculto'); }
 
-            const qrUrl = `https://quickchart.io/qr?text=AUDITEDUCA_MX_VALIDATION_${reportId}_${domain}&size=150&margin=1`;
+            const qrUrl = `https://quickchart.io/qr?text=AUDITEDUCA_MX_VALIDATION_${domain}_${Date.now()}&size=150&margin=1`;
             document.getElementById('print-qrcode').src = qrUrl;
         }
 
