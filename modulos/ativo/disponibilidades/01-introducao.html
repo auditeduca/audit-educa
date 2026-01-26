@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01: Introdução à Auditoria | AuditEduca</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'audit-navy': '#1E3A8A', 'audit-gold': '#D4AF37' } } } }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
+        .course-sidebar { background: #1e293b; border-left: 1px solid #334155; height: calc(100vh - 80px); overflow-y: auto; }
+        .lesson-item { padding: 15px 20px; border-bottom: 1px solid #334155; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: background 0.2s; }
+        .lesson-item:hover { background: #334155; }
+        .lesson-item.active { background: rgba(212, 175, 55, 0.1); border-left: 4px solid #D4AF37; }
+        .video-placeholder { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070'); background-size: cover; background-position: center; }
+    </style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
+
+    <!-- HEADER -->
+    <header class="h-20 bg-slate-900 border-b border-slate-700 flex items-center justify-between px-6 shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="biblioteca.html" class="text-slate-400 hover:text-white transition"><i class="fas fa-arrow-left"></i> Biblioteca</a>
+            <div class="h-6 w-px bg-slate-700"></div>
+            <h1 class="font-bold text-lg">Módulo 2: Procedimentos de Caixa e Bancos</h1>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-audit-navy flex items-center justify-center text-audit-gold font-bold border border-slate-600">AE</div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- ÁREA DE VÍDEO -->
+        <div class="flex-1 overflow-y-auto p-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="aspect-video bg-black rounded-xl mb-8 relative overflow-hidden shadow-2xl video-placeholder flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <button class="w-20 h-20 bg-audit-gold rounded-full flex items-center justify-center relative z-10 hover:scale-110 transition"><i class="fas fa-play text-audit-navy text-2xl"></i></button>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-2">Aula 01: Introdução e Asserções</h2>
+                        <div class="prose prose-invert max-w-none text-slate-300">
+                            <p>Antes de testar, precisamos entender O QUE estamos testando. Nesta aula introdutória, revisamos as asserções contábeis aplicáveis ao grupo de Disponibilidades.</p>
+                            <h3 class="text-audit-gold mt-4 mb-2">Conceitos Fundamentais:</h3>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><strong>Existência:</strong> O dinheiro está lá?</li>
+                                <li><strong>Integridade:</strong> Todo o dinheiro da empresa está registado?</li>
+                                <li><strong>Apresentação:</strong> O que é Caixa vs. Equivalente de Caixa?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- RECURSOS -->
+                    <div class="w-full md:w-80 shrink-0">
+                        <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                            <h3 class="font-bold mb-4 flex items-center gap-2"><i class="fas fa-paperclip text-audit-gold"></i> Material</h3>
+                            <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition mb-2">
+                                <i class="fas fa-file-pdf text-red-400"></i>
+                                <div><div class="text-sm font-medium">Guia de Asserções</div><div class="text-xs text-slate-500">PDF • 500kb</div></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="course-sidebar w-80 hidden lg:block shrink-0">
+            <div class="p-5 border-b border-slate-700"><h3 class="font-bold text-sm text-slate-400 uppercase">Conteúdo</h3></div>
+            
+            <a href="videoaula-introducao.html" class="lesson-item active">
+                <i class="fas fa-play-circle text-audit-gold"></i>
+                <div><div class="text-sm font-medium text-white">01. Introdução à Auditoria</div><div class="text-xs text-audit-gold">Você está aqui</div></div>
+            </a>
+            <a href="videoaula-riscos.html" class="lesson-item"><i class="far fa-circle text-slate-600"></i><div class="text-sm font-medium text-slate-400">02. Riscos de Caixa</div></a>
+            <a href="videoaula-circularizacao.html" class="lesson-item"><i class="far fa-circle text-slate-600"></i><div class="text-sm font-medium text-slate-400">03. Circularização Bancária</div></a>
+            <a href="videoaula-conciliacao.html" class="lesson-item"><i class="far fa-circle text-slate-600"></i><div class="text-sm font-medium text-slate-400">04. Conciliação e Cut-off</div></a>
+            <a href="videoaula-contagem.html" class="lesson-item"><i class="far fa-circle text-slate-600"></i><div class="text-sm font-medium text-slate-400">05. Contagem Física</div></a>
+        </div>
+    </div>
+</body>
+</html>
