@@ -5,25 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cotação de Moedas | AuditEduca</title>
 
+    <!-- Meta Tags -->
     <meta name="description" content="Consulte cotações de moedas em tempo real com dados oficiais do Banco Central do Brasil (PTAX).">
-    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+    <link rel="icon" type="image/webp" href="assets/images/audit-educa-favicon.webp">
 
+    <!-- CSS Externos Globais -->
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configurado -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'Poppins', 'sans-serif'] },
+                    fontFamily: {
+                        sans: ['Inter', 'Poppins', 'sans-serif'],
+                    },
                     colors: {
                         'audit-gold': '#D4AF37',
                         'audit-navy': '#1E3A8A',
                         'audit-blue': '#3B82F6',
                         'audit-bgDark': '#0F172A',
+                        'slate-900': '#0f172a',
                     }
                 }
             }
@@ -32,121 +45,657 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .hero-gradient { background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%); }
-        .card-currency { transition: all 0.3s ease; border: 1px solid #e2e8f0; }
-        .card-currency:hover { transform: translateY(-8px); border-color: #D4AF37; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .filter-btn.active { background-color: #D4AF37; color: white; border-color: #D4AF37; font-weight: 600; }
-        .skeleton-loader { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
+        }
+
+        .card-currency {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-currency:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #D4AF37;
+        }
+
+        .filter-btn { transition: all 0.2s ease; }
+        .filter-btn.active {
+            background-color: #D4AF37;
+            color: white;
+            border-color: #D4AF37;
+            font-weight: 600;
+        }
+
+        .currency-badge {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .skeleton-loader {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        .pulse-dot { animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        .price-up { color: #10b981; }
+        .price-down { color: #ef4444; }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .currency-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <header id="header-container" class="sticky top-0 z-50 bg-white border-b border-gray-100 px-8 py-4 flex justify-between items-center">
-        <div class="font-bold text-audit-navy text-xl">AuditEduca</div>
-        <div class="h-8 w-32 skeleton-loader rounded"></div>
-    </header>
+    <!-- HEADER MODULAR -->
+    <div id="header-container" class="no-print sticky top-0 z-50 bg-white">
+        <div class="h-20 w-full flex items-center justify-between px-8 border-b border-gray-100">
+            <div class="h-8 w-32 skeleton-loader rounded"></div>
+        </div>
+    </div>
 
-    <main class="flex-grow">
-        <section class="hero-gradient text-white py-16 px-4 text-center relative overflow-hidden">
-            <div class="max-w-5xl mx-auto relative z-10">
-                <span class="inline-block py-1 px-3 rounded bg-audit-gold/20 border border-audit-gold/50 text-audit-gold text-xs font-bold mb-4 uppercase">Banco Central do Brasil</span>
-                <h1 class="text-4xl md:text-6xl font-black mb-6">Cotação de <span class="text-audit-gold">Moedas</span></h1>
-                
-                <div class="mt-8 flex justify-center gap-6">
+    <!-- MAIN CONTENT -->
+    <div class="flex-grow">
+
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white py-20 px-4 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+            </div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <span class="inline-block py-1 px-3 rounded bg-audit-gold/20 border border-audit-gold/50 text-audit-gold text-xs font-bold mb-4 tracking-wider uppercase">Banco Central do Brasil</span>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">Cotação de <span class="text-audit-gold">Moedas</span></h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                    Consulte cotações oficiais PTAX em tempo real para conversões de moedas estrangeiras.
+                </p>
+
+                <!-- Data e Status -->
+                <div class="mt-8 flex flex-wrap justify-center items-center gap-6">
                     <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                         <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>
-                        <span class="text-sm">Dados Oficiais PTAX</span>
+                        <span class="text-sm text-slate-300">Dados atualizados</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                        <i data-lucide="calendar" class="w-4 h-4 text-audit-gold"></i>
+                        <span class="text-sm text-slate-300" id="data-referencia">Carregando...</span>
                     </div>
                 </div>
 
-                <div class="mt-10 max-w-2xl mx-auto relative">
-                    <input type="text" id="search-input" placeholder="Pesquisar moeda..." class="w-full text-slate-900 rounded-2xl py-4 px-12 outline-none focus:ring-4 focus:ring-audit-gold/30">
-                    <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <!-- Search Bar -->
+                <div class="mt-12 max-w-2xl mx-auto relative group">
+                    <input type="text" id="search-input" placeholder="Pesquisar moeda (Ex: Dólar, Euro, Libra...)"
+                           class="w-full bg-white text-slate-900 rounded-2xl py-5 px-14 shadow-2xl focus:ring-4 focus:ring-audit-gold/30 outline-none transition-all placeholder-gray-400">
+                    <i data-lucide="search" class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-6 h-6 group-focus-within:text-audit-gold transition-colors"></i>
+                    <button id="btn-buscar" class="absolute right-3 top-1/2 -translate-y-1/2 bg-audit-gold hover:bg-yellow-600 text-audit-navy px-6 py-2.5 rounded-xl font-bold transition shadow-lg">
+                        Buscar
+                    </button>
                 </div>
             </div>
         </section>
 
-        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-8">
-            <aside class="w-full lg:w-64 space-y-6">
-                <div id="filter-container" class="flex flex-col gap-2">
-                    <button class="filter-btn active text-left px-4 py-2 rounded-lg" data-filter="all">Todas</button>
-                    <button class="filter-btn text-left px-4 py-2 rounded-lg border border-gray-200" data-filter="principais">Principais</button>
-                </div>
-                
-                <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                    <h4 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="calculator" class="w-4 h-4"></i> Conversor</h4>
-                    <input type="number" id="valor-brl" value="1000" class="w-full border rounded p-2 mb-2" placeholder="Valor em BRL">
-                    <select id="moeda-destino" class="w-full border rounded p-2 text-sm"></select>
-                    <div class="mt-4 pt-4 border-t">
-                        <p class="text-xs text-slate-500">Resultado:</p>
-                        <p id="resultado-conversao" class="text-xl font-bold text-audit-navy">--</p>
+        <!-- Content Area -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="flex flex-col lg:flex-row gap-12">
+
+                <!-- Sidebar Filtros -->
+                <aside class="lg:col-span-3 w-full lg:w-64 flex-shrink-0">
+                    <div class="sticky top-32 space-y-8">
+                        <div>
+                            <h3 class="text-slate-900 font-bold mb-4 flex items-center gap-2">
+                                <i data-lucide="filter" class="w-4 h-4 text-audit-gold"></i> Filtros
+                            </h3>
+                            <div class="flex flex-col gap-2" id="filter-container">
+                                <button class="filter-btn active text-left px-4 py-2 rounded-lg text-sm font-medium border border-transparent transition" data-filter="all">Todas as Moedas</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="principais">Principais</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="americas">Américas</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="europa">Europa</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="asia">Ásia/Oceania</button>
+                            </div>
+                        </div>
+
+                        <!-- Conversor Rápido -->
+                        <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                            <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                <i data-lucide="calculator" class="w-4 h-4 text-audit-gold"></i> Conversor Rápido
+                            </h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="text-xs text-slate-500 mb-1 block">Valor em BRL</label>
+                                    <input type="number" id="valor-brl" value="1000" class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-audit-gold/30 outline-none">
+                                </div>
+                                <div>
+                                    <label class="text-xs text-slate-500 mb-1 block">Moeda destino</label>
+                                    <select id="moeda-destino" class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-audit-gold/30 outline-none">
+                                        <option value="USD">Dólar (USD)</option>
+                                        <option value="EUR">Euro (EUR)</option>
+                                        <option value="GBP">Libra (GBP)</option>
+                                    </select>
+                                </div>
+                                <div class="pt-4 border-t border-gray-100">
+                                    <p class="text-xs text-slate-500">Resultado:</p>
+                                    <p class="text-2xl font-bold text-audit-navy" id="resultado-conversao">--</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Banner Info -->
+                        <div class="p-6 bg-audit-navy rounded-2xl text-white shadow-xl relative overflow-hidden group">
+                            <div class="absolute -right-4 -top-4 text-audit-gold opacity-10 transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="info" class="w-24 h-24"></i>
+                            </div>
+                            <h4 class="font-bold mb-2 relative z-10">Sobre a PTAX</h4>
+                            <p class="text-xs text-blue-200 mb-4 relative z-10">Taxa de câmbio oficial calculada pelo Banco Central para liquidação de contratos.</p>
+                            <a href="https://www.bcb.gov.br/estabilidadefinanceira/historicocotacoes" target="_blank" class="block text-center py-2 bg-audit-gold text-audit-navy rounded-lg text-xs font-bold hover:bg-white transition relative z-10">
+                                Saiba Mais
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </aside>
+                </aside>
 
-            <div class="flex-1">
-                <div id="loading-state" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="h-40 skeleton-loader rounded-2xl"></div>
-                    <div class="h-40 skeleton-loader rounded-2xl"></div>
+                <!-- Grid de Resultados -->
+                <div class="flex-1">
+
+                    <div class="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4">
+                        <h2 class="text-2xl font-bold text-slate-900">Cotações <span class="text-audit-gold" id="contador-moedas">--</span></h2>
+                        <div class="flex items-center gap-4">
+                            <button id="btn-atualizar" class="flex items-center gap-2 text-sm text-audit-navy bg-white px-4 py-2 rounded-lg border border-gray-200 hover:border-audit-gold transition shadow-sm">
+                                <i data-lucide="refresh-cw" class="w-4 h-4"></i> Atualizar
+                            </button>
+                            <div class="flex items-center gap-2 text-sm text-slate-500 bg-white px-3 py-2 rounded-lg border border-gray-100 shadow-sm">
+                                <span>Ordenar:</span>
+                                <select id="ordenar" class="bg-transparent font-bold text-audit-navy outline-none cursor-pointer">
+                                    <option value="nome">Nome A-Z</option>
+                                    <option value="cotacao-asc">Menor cotação</option>
+                                    <option value="cotacao-desc">Maior cotação</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="loading-state" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                        <!-- Skeleton Cards -->
+                        <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 rounded-full skeleton-loader"></div>
+                                <div class="flex-1">
+                                    <div class="h-5 w-24 skeleton-loader rounded mb-2"></div>
+                                    <div class="h-4 w-16 skeleton-loader rounded"></div>
+                                </div>
+                            </div>
+                            <div class="h-8 w-32 skeleton-loader rounded mb-2"></div>
+                            <div class="h-4 w-full skeleton-loader rounded"></div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 rounded-full skeleton-loader"></div>
+                                <div class="flex-1">
+                                    <div class="h-5 w-24 skeleton-loader rounded mb-2"></div>
+                                    <div class="h-4 w-16 skeleton-loader rounded"></div>
+                                </div>
+                            </div>
+                            <div class="h-8 w-32 skeleton-loader rounded mb-2"></div>
+                            <div class="h-4 w-full skeleton-loader rounded"></div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-gray-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 rounded-full skeleton-loader"></div>
+                                <div class="flex-1">
+                                    <div class="h-5 w-24 skeleton-loader rounded mb-2"></div>
+                                    <div class="h-4 w-16 skeleton-loader rounded"></div>
+                                </div>
+                            </div>
+                            <div class="h-8 w-32 skeleton-loader rounded mb-2"></div>
+                            <div class="h-4 w-full skeleton-loader rounded"></div>
+                        </div>
+                    </div>
+
+                    <!-- Grid de Moedas -->
+                    <div id="moedas-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 hidden">
+                        <!-- Cards serão inseridos via JavaScript -->
+                    </div>
+
+                    <!-- Estado Vazio -->
+                    <div id="empty-state" class="hidden text-center py-16">
+                        <i data-lucide="search-x" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-700 mb-2">Nenhuma moeda encontrada</h3>
+                        <p class="text-slate-500">Tente ajustar sua pesquisa ou filtros.</p>
+                    </div>
+
+                    <!-- Erro State -->
+                    <div id="error-state" class="hidden text-center py-16">
+                        <i data-lucide="alert-triangle" class="w-16 h-16 text-red-400 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-700 mb-2">Erro ao carregar dados</h3>
+                        <p class="text-slate-500 mb-4">Não foi possível conectar à API do Banco Central.</p>
+                        <button id="btn-retry" class="bg-audit-gold text-audit-navy px-6 py-2 rounded-lg font-bold hover:bg-yellow-600 transition">
+                            Tentar Novamente
+                        </button>
+                    </div>
+
                 </div>
-                <div id="moedas-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 hidden"></div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
+    <!-- FOOTER MODULAR -->
+    <div id="footer-container" class="no-print mt-auto">
+        <div class="h-64 bg-slate-900 w-full flex items-center justify-center">
+             <div class="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE ORQUESTRAÇÃO -->
     <script>
-        // Configurações extraídas do documento original
+        const RESOURCES = {
+            headerHTML: 'https://auditeduca.com.br/assets/components/header.html',
+            footerHTML: 'https://auditeduca.com.br/assets/components/footer.html',
+            scripts: [
+                'https://auditeduca.com.br/assets/js/utils.js',
+                'https://auditeduca.com.br/assets/js/console-cleaner.js'
+            ]
+        };
+
+        // Configuração das moedas com metadados
         const MOEDAS_CONFIG = {
-            'USD': { nome: 'Dólar Americano', bandeira: '🇺🇸', cor: 'bg-green-500', principal: true },
-            'EUR': { nome: 'Euro', bandeira: '🇪🇺', cor: 'bg-blue-600', principal: true },
-            'GBP': { nome: 'Libra Esterlina', bandeira: '🇬🇧', cor: 'bg-indigo-600', principal: true }
+            'USD': { nome: 'Dólar Americano', bandeira: '🇺🇸', cor: 'bg-green-500', regiao: 'americas', principal: true },
+            'EUR': { nome: 'Euro', bandeira: '🇪🇺', cor: 'bg-blue-600', regiao: 'europa', principal: true },
+            'GBP': { nome: 'Libra Esterlina', bandeira: '🇬🇧', cor: 'bg-indigo-600', regiao: 'europa', principal: true },
+            'JPY': { nome: 'Iene Japonês', bandeira: '🇯🇵', cor: 'bg-red-500', regiao: 'asia', principal: true },
+            'CHF': { nome: 'Franco Suíço', bandeira: '🇨🇭', cor: 'bg-red-600', regiao: 'europa', principal: true },
+            'CAD': { nome: 'Dólar Canadense', bandeira: '🇨🇦', cor: 'bg-red-700', regiao: 'americas', principal: false },
+            'AUD': { nome: 'Dólar Australiano', bandeira: '🇦🇺', cor: 'bg-blue-500', regiao: 'asia', principal: false },
+            'CNY': { nome: 'Yuan Chinês', bandeira: '🇨🇳', cor: 'bg-red-600', regiao: 'asia', principal: true },
+            'ARS': { nome: 'Peso Argentino', bandeira: '🇦🇷', cor: 'bg-sky-400', regiao: 'americas', principal: false },
+            'MXN': { nome: 'Peso Mexicano', bandeira: '🇲🇽', cor: 'bg-green-600', regiao: 'americas', principal: false },
+            'CLP': { nome: 'Peso Chileno', bandeira: '🇨🇱', cor: 'bg-blue-700', regiao: 'americas', principal: false },
+            'COP': { nome: 'Peso Colombiano', bandeira: '🇨🇴', cor: 'bg-yellow-500', regiao: 'americas', principal: false },
+            'PEN': { nome: 'Sol Peruano', bandeira: '🇵🇪', cor: 'bg-red-600', regiao: 'americas', principal: false },
+            'UYU': { nome: 'Peso Uruguaio', bandeira: '🇺🇾', cor: 'bg-blue-600', regiao: 'americas', principal: false },
+            'NOK': { nome: 'Coroa Norueguesa', bandeira: '🇳🇴', cor: 'bg-red-600', regiao: 'europa', principal: false },
+            'SEK': { nome: 'Coroa Sueca', bandeira: '🇸🇪', cor: 'bg-blue-500', regiao: 'europa', principal: false },
+            'DKK': { nome: 'Coroa Dinamarquesa', bandeira: '🇩🇰', cor: 'bg-red-600', regiao: 'europa', principal: false },
+            'NZD': { nome: 'Dólar Neozelandês', bandeira: '🇳🇿', cor: 'bg-blue-800', regiao: 'asia', principal: false },
+            'ZAR': { nome: 'Rand Sul-Africano', bandeira: '🇿🇦', cor: 'bg-green-600', regiao: 'africa', principal: false },
+            'KRW': { nome: 'Won Sul-Coreano', bandeira: '🇰🇷', cor: 'bg-blue-600', regiao: 'asia', principal: false },
+            'SGD': { nome: 'Dólar de Singapura', bandeira: '🇸🇬', cor: 'bg-red-500', regiao: 'asia', principal: false },
+            'HKD': { nome: 'Dólar de Hong Kong', bandeira: '🇭🇰', cor: 'bg-red-600', regiao: 'asia', principal: false },
+            'INR': { nome: 'Rupia Indiana', bandeira: '🇮🇳', cor: 'bg-orange-500', regiao: 'asia', principal: false },
+            'RUB': { nome: 'Rublo Russo', bandeira: '🇷🇺', cor: 'bg-blue-700', regiao: 'europa', principal: false },
+            'TRY': { nome: 'Lira Turca', bandeira: '🇹🇷', cor: 'bg-red-600', regiao: 'europa', principal: false },
+            'ILS': { nome: 'Shekel Israelense', bandeira: '🇮🇱', cor: 'bg-blue-600', regiao: 'asia', principal: false },
+            'SAR': { nome: 'Rial Saudita', bandeira: '🇸🇦', cor: 'bg-green-700', regiao: 'asia', principal: false },
+            'AED': { nome: 'Dirham dos Emirados', bandeira: '🇦🇪', cor: 'bg-green-600', regiao: 'asia', principal: false },
+            'PLN': { nome: 'Zloty Polonês', bandeira: '🇵🇱', cor: 'bg-red-500', regiao: 'europa', principal: false },
+            'CZK': { nome: 'Coroa Tcheca', bandeira: '🇨🇿', cor: 'bg-blue-600', regiao: 'europa', principal: false },
+            'THB': { nome: 'Baht Tailandês', bandeira: '🇹🇭', cor: 'bg-blue-700', regiao: 'asia', principal: false },
+            'MYR': { nome: 'Ringgit Malaio', bandeira: '🇲🇾', cor: 'bg-blue-600', regiao: 'asia', principal: false },
+            'PHP': { nome: 'Peso Filipino', bandeira: '🇵🇭', cor: 'bg-blue-600', regiao: 'asia', principal: false },
+            'IDR': { nome: 'Rupia Indonésia', bandeira: '🇮🇩', cor: 'bg-red-500', regiao: 'asia', principal: false },
+            'TWD': { nome: 'Dólar Taiwanês', bandeira: '🇹🇼', cor: 'bg-blue-600', regiao: 'asia', principal: false },
+            'HUF': { nome: 'Florim Húngaro', bandeira: '🇭🇺', cor: 'bg-green-600', regiao: 'europa', principal: false },
+            'RON': { nome: 'Leu Romeno', bandeira: '🇷🇴', cor: 'bg-blue-600', regiao: 'europa', principal: false },
+            'BGN': { nome: 'Lev Búlgaro', bandeira: '🇧🇬', cor: 'bg-green-600', regiao: 'europa', principal: false },
+            'VND': { nome: 'Dong Vietnamita', bandeira: '🇻🇳', cor: 'bg-red-600', regiao: 'asia', principal: false },
+            'EGP': { nome: 'Libra Egípcia', bandeira: '🇪🇬', cor: 'bg-red-600', regiao: 'africa', principal: false },
+            'NGN': { nome: 'Naira Nigeriana', bandeira: '🇳🇬', cor: 'bg-green-600', regiao: 'africa', principal: false },
+            'PKR': { nome: 'Rupia Paquistanesa', bandeira: '🇵🇰', cor: 'bg-green-700', regiao: 'asia', principal: false },
+            'BDT': { nome: 'Taka de Bangladesh', bandeira: '🇧🇩', cor: 'bg-green-600', regiao: 'asia', principal: false },
         };
 
         let moedasData = [];
+        let filtroAtual = 'all';
+        let searchTerm = '';
 
-        // Lógica de Busca simulada para demonstração no Canvas
-        async function buscarCotacoes() {
-            // Em um ambiente real, faria o fetch na API do BCB conforme o código original
-            // Aqui simulamos o retorno para visualização imediata
-            moedasData = [
-                { codigo: 'USD', nome: 'Dólar Americano', bandeira: '🇺🇸', cor: 'bg-green-500', cotacaoVenda: 5.12, principal: true },
-                { codigo: 'EUR', nome: 'Euro', bandeira: '🇪🇺', cor: 'bg-blue-600', cotacaoVenda: 5.54, principal: true },
-                { codigo: 'GBP', nome: 'Libra Esterlina', bandeira: '🇬🇧', cor: 'bg-indigo-600', cotacaoVenda: 6.45, principal: true }
-            ];
-            
-            renderizar();
-            atualizarSelect();
+        // Funções utilitárias
+        async function loadHtmlComponent(url, elementId) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Status ${response.status}`);
+                const html = await response.text();
+                const wrapper = document.getElementById(elementId);
+                wrapper.innerHTML = html;
+                if (wrapper.firstElementChild) {
+                    wrapper.replaceWith(...wrapper.childNodes);
+                }
+            } catch (e) {
+                console.warn(`Erro no módulo ${elementId}:`, e);
+            }
         }
 
-        function renderizar() {
-            const grid = document.getElementById('moedas-grid');
-            document.getElementById('loading-state').classList.add('hidden');
-            grid.classList.remove('hidden');
+        function loadScript(url) {
+            return new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = url;
+                script.onload = resolve;
+                script.onerror = resolve;
+                document.body.appendChild(script);
+            });
+        }
 
-            grid.innerHTML = moedasData.map(m => `
-                <div class="card-currency bg-white p-6 rounded-2xl">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 rounded-full ${m.cor} flex items-center justify-center text-2xl">${m.bandeira}</div>
-                        <div><h3 class="font-bold">${m.nome}</h3><span class="text-xs text-slate-400">${m.codigo}</span></div>
+        function formatarMoeda(valor, decimais = 4) {
+            return new Intl.NumberFormat('pt-BR', {
+                minimumFractionDigits: decimais,
+                maximumFractionDigits: decimais
+            }).format(valor);
+        }
+
+        function formatarData(dataString) {
+            const data = new Date(dataString);
+            return data.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+
+        function getDataAtual() {
+            const hoje = new Date();
+            // Volta alguns dias para garantir que tenha cotação disponível
+            hoje.setDate(hoje.getDate() - 1);
+            return hoje.toLocaleDateString('en-CA'); // formato YYYY-MM-DD
+        }
+
+        // Buscar cotações da API do BCB
+        async function buscarCotacoes() {
+            showLoading();
+
+            try {
+                const dataFim = getDataAtual();
+                const dataInicio = dataFim; // Mesmo dia para pegar cotação mais recente
+
+                // API PTAX do Banco Central
+                const url = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='USD'&@dataInicial='01-01-2024'&@dataFinalCotacao='${dataFim.split('-').reverse().join('-')}'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json`;
+
+                // Buscar lista de moedas disponíveis
+                const urlMoedas = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas?$format=json`;
+
+                const responseMoedas = await fetch(urlMoedas);
+                if (!responseMoedas.ok) throw new Error('Erro ao buscar moedas');
+                const dataMoedas = await responseMoedas.json();
+
+                // Buscar cotações para cada moeda
+                const promessas = dataMoedas.value.map(async (moeda) => {
+                    try {
+                        const urlCotacao = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='${moeda.simbolo}'&@dataCotacao='${dataFim.split('-').reverse().join('-')}'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json`;
+
+                        const response = await fetch(urlCotacao);
+                        if (!response.ok) return null;
+
+                        const data = await response.json();
+                        if (data.value && data.value.length > 0) {
+                            const cotacao = data.value[0];
+                            const config = MOEDAS_CONFIG[moeda.simbolo] || {
+                                nome: moeda.nomeFormatado,
+                                bandeira: '🌍',
+                                cor: 'bg-gray-500',
+                                regiao: 'outros',
+                                principal: false
+                            };
+
+                            return {
+                                codigo: moeda.simbolo,
+                                nome: config.nome || moeda.nomeFormatado,
+                                bandeira: config.bandeira,
+                                cor: config.cor,
+                                regiao: config.regiao,
+                                principal: config.principal,
+                                cotacaoCompra: cotacao.cotacaoCompra,
+                                cotacaoVenda: cotacao.cotacaoVenda,
+                                dataHoraCotacao: cotacao.dataHoraCotacao,
+                                tipoBoletim: cotacao.tipoBoletim
+                            };
+                        }
+                        return null;
+                    } catch (e) {
+                        return null;
+                    }
+                });
+
+                const resultados = await Promise.all(promessas);
+                moedasData = resultados.filter(m => m !== null);
+
+                // Atualizar data de referência
+                if (moedasData.length > 0) {
+                    document.getElementById('data-referencia').textContent = formatarData(moedasData[0].dataHoraCotacao);
+                }
+
+                renderizarMoedas();
+                atualizarConversor();
+
+            } catch (error) {
+                console.error('Erro ao buscar cotações:', error);
+                showError();
+            }
+        }
+
+        function showLoading() {
+            document.getElementById('loading-state').classList.remove('hidden');
+            document.getElementById('moedas-grid').classList.add('hidden');
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('error-state').classList.add('hidden');
+        }
+
+        function showError() {
+            document.getElementById('loading-state').classList.add('hidden');
+            document.getElementById('moedas-grid').classList.add('hidden');
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('error-state').classList.remove('hidden');
+        }
+
+        function filtrarMoedas() {
+            let moedas = [...moedasData];
+
+            // Aplicar filtro de região
+            if (filtroAtual !== 'all') {
+                if (filtroAtual === 'principais') {
+                    moedas = moedas.filter(m => m.principal);
+                } else {
+                    moedas = moedas.filter(m => m.regiao === filtroAtual);
+                }
+            }
+
+            // Aplicar busca
+            if (searchTerm) {
+                const termo = searchTerm.toLowerCase();
+                moedas = moedas.filter(m =>
+                    m.nome.toLowerCase().includes(termo) ||
+                    m.codigo.toLowerCase().includes(termo)
+                );
+            }
+
+            // Aplicar ordenação
+            const ordenacao = document.getElementById('ordenar').value;
+            switch (ordenacao) {
+                case 'nome':
+                    moedas.sort((a, b) => a.nome.localeCompare(b.nome));
+                    break;
+                case 'cotacao-asc':
+                    moedas.sort((a, b) => a.cotacaoVenda - b.cotacaoVenda);
+                    break;
+                case 'cotacao-desc':
+                    moedas.sort((a, b) => b.cotacaoVenda - a.cotacaoVenda);
+                    break;
+            }
+
+            return moedas;
+        }
+
+        function renderizarMoedas() {
+            const moedas = filtrarMoedas();
+            const grid = document.getElementById('moedas-grid');
+            const loading = document.getElementById('loading-state');
+            const empty = document.getElementById('empty-state');
+
+            loading.classList.add('hidden');
+
+            if (moedas.length === 0) {
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+                document.getElementById('contador-moedas').textContent = '0 moedas';
+                return;
+            }
+
+            empty.classList.add('hidden');
+            grid.classList.remove('hidden');
+            document.getElementById('contador-moedas').textContent = `${moedas.length} moedas`;
+
+            grid.innerHTML = moedas.map(moeda => `
+                <div class="card-currency bg-white rounded-2xl overflow-hidden flex flex-col group">
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="currency-icon ${moeda.cor} text-white shadow-lg">
+                                ${moeda.bandeira}
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold text-slate-900 group-hover:text-audit-gold transition-colors">${moeda.nome}</h3>
+                                <span class="text-sm font-mono text-slate-500">${moeda.codigo}</span>
+                            </div>
+                            ${moeda.principal ? '<span class="currency-badge bg-audit-gold text-white">Principal</span>' : ''}
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-500">Compra:</span>
+                                <span class="text-lg font-bold text-audit-navy">R$ ${formatarMoeda(moeda.cotacaoCompra)}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-500">Venda:</span>
+                                <span class="text-lg font-bold text-green-600">R$ ${formatarMoeda(moeda.cotacaoVenda)}</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                            <span class="flex items-center gap-1">
+                                <i data-lucide="clock" class="w-3 h-3"></i>
+                                ${new Date(moeda.dataHoraCotacao).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
+                            </span>
+                            <span class="px-2 py-1 bg-slate-100 rounded">${moeda.tipoBoletim}</span>
+                        </div>
                     </div>
-                    <p class="text-sm text-slate-500">Venda: <span class="text-lg font-bold text-green-600">R$ ${m.cotacaoVenda.toFixed(4)}</span></p>
                 </div>
             `).join('');
-            lucide.createIcons();
+
+            // Re-criar ícones Lucide
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         }
 
-        function atualizarSelect() {
+        function atualizarConversor() {
+            const valorBRL = parseFloat(document.getElementById('valor-brl').value) || 0;
+            const moedaDestino = document.getElementById('moeda-destino').value;
+
+            const moeda = moedasData.find(m => m.codigo === moedaDestino);
+            if (moeda && moeda.cotacaoVenda > 0) {
+                const resultado = valorBRL / moeda.cotacaoVenda;
+                document.getElementById('resultado-conversao').textContent =
+                    `${moedaDestino} ${formatarMoeda(resultado, 2)}`;
+            } else {
+                document.getElementById('resultado-conversao').textContent = '--';
+            }
+        }
+
+        function atualizarSelectMoedas() {
             const select = document.getElementById('moeda-destino');
-            select.innerHTML = moedasData.map(m => `<option value="${m.codigo}">${m.codigo}</option>`).join('');
+            const moedasPrincipais = moedasData.filter(m => m.principal);
+
+            select.innerHTML = moedasPrincipais.map(m =>
+                `<option value="${m.codigo}">${m.nome} (${m.codigo})</option>`
+            ).join('');
         }
 
-        window.onload = () => {
-            lucide.createIcons();
-            buscarCotacoes();
-        };
+        async function initPage() {
+            // Carregar componentes
+            await Promise.all([
+                loadHtmlComponent(RESOURCES.headerHTML, 'header-container'),
+                loadHtmlComponent(RESOURCES.footerHTML, 'footer-container')
+            ]);
+
+            for (const scriptUrl of RESOURCES.scripts) {
+                await loadScript(scriptUrl);
+            }
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Buscar cotações
+            await buscarCotacoes();
+            atualizarSelectMoedas();
+
+            // Event Listeners
+
+            // Filtros
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.classList.add('text-slate-600', 'hover:text-audit-navy');
+                    });
+                    btn.classList.add('active');
+                    btn.classList.remove('text-slate-600', 'hover:text-audit-navy');
+
+                    filtroAtual = btn.dataset.filter;
+                    renderizarMoedas();
+                });
+            });
+
+            // Busca
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                renderizarMoedas();
+            });
+
+            document.getElementById('btn-buscar').addEventListener('click', () => {
+                searchTerm = document.getElementById('search-input').value;
+                renderizarMoedas();
+            });
+
+            // Ordenação
+            document.getElementById('ordenar').addEventListener('change', renderizarMoedas);
+
+            // Atualizar
+            document.getElementById('btn-atualizar').addEventListener('click', buscarCotacoes);
+            document.getElementById('btn-retry')?.addEventListener('click', buscarCotacoes);
+
+            // Conversor
+            document.getElementById('valor-brl').addEventListener('input', atualizarConversor);
+            document.getElementById('moeda-destino').addEventListener('change', atualizarConversor);
+        }
+
+        document.addEventListener('DOMContentLoaded', initPage);
     </script>
 </body>
 </html>
