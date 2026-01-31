@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo Programático 2025.2 | AuditEduca</title>
+    
+    <!-- Ícone -->
+    <link rel="icon" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+
+    <!-- Fontes e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- html2pdf Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- CSS Globais AuditEduca -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- Tailwind Configurado -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#D4AF37',
+                        'audit-gold-light': '#F3E5AB',
+                        'audit-navy': '#1E3A8A',
+                        'audit-blue': '#3B82F6',
+                        'audit-dark': '#0F172A',
+                        'slate-900': '#0f172a',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #f8fafc; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
+        }
+
+        /* Estilo do Acordeão */
+        .accordion-item {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .accordion-item.active {
+            border-color: #D4AF37;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; /* Valor alto seguro */
+            opacity: 1;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    </style>
+</head>
+<body class="text-slate-700 font-sans">
+
+    <!-- HEADER MODULAR -->
+    <div id="header-container" class="sticky top-0 z-50 bg-white border-b border-gray-100 no-print shadow-sm min-h-[80px]">
+        <div class="h-20 w-full flex items-center justify-between px-8">
+            <div class="h-8 w-32 skeleton rounded"></div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-grow flex flex-col relative">
+        
+        <!-- HERO SECTION -->
+        <section class="hero-gradient text-white py-12 px-6 no-print relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            <div class="max-w-7xl mx-auto relative z-10 text-center">
+                <span class="inline-block py-1 px-3 rounded-full bg-audit-gold/20 border border-audit-gold/40 text-audit-gold text-[10px] font-bold tracking-widest uppercase mb-4">
+                    Edital 2025.2
+                </span>
+                <h1 class="text-3xl md:text-4xl font-display font-bold mb-3">
+                    Conteúdo <span class="text-audit-gold">Programático</span>
+                </h1>
+                <p class="text-slate-300 max-w-2xl mx-auto font-light text-sm">
+                    Guia oficial de estudos organizado por tópicos. Utilize a barra lateral para acessar materiais de aprofundamento.
+                </p>
+            </div>
+        </section>
+
+        <!-- TOOLBAR (Busca e Ações) -->
+        <div class="sticky top-[80px] z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm py-4 px-4 no-print animate-slide-up">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <!-- Busca -->
+                <div class="relative w-full md:max-w-md">
+                    <input type="text" id="search-input" placeholder="Buscar tópico (ex: Custos, Ética)..." 
+                           class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-audit-navy/20 focus:border-audit-navy outline-none transition-all text-sm">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4"></i>
+                </div>
+
+                <!-- Ações -->
+                <div class="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                    <button onclick="generatePDF()" id="btn-pdf" class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-slate-700 rounded-lg hover:border-audit-navy hover:text-audit-navy hover:shadow-sm transition-all text-xs font-bold whitespace-nowrap">
+                        <i class="fa-solid fa-file-pdf text-red-600 text-sm"></i> 
+                        <span id="pdf-text">Baixar PDF</span>
+                    </button>
+                    
+                    <button onclick="downloadCSV()" class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-slate-700 rounded-lg hover:border-green-600 hover:text-green-700 hover:shadow-sm transition-all text-xs font-bold whitespace-nowrap">
+                        <i class="fa-solid fa-file-excel text-green-600 text-sm"></i> Excel
+                    </button>
+
+                    <button onclick="sharePage()" class="flex items-center gap-2 px-4 py-2 bg-audit-navy text-white rounded-lg hover:bg-blue-900 transition-all text-xs font-bold whitespace-nowrap shadow-md shadow-blue-900/20">
+                        <i class="fa-solid fa-share-nodes text-sm"></i> Compartilhar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAYOUT GRID: CONTEÚDO + SIDEBAR -->
+        <div class="max-w-7xl mx-auto w-full px-4 lg:px-6 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- COLUNA 1: CONTEÚDO (Acordeão) - Ocupa 2/3 -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold text-audit-navy flex items-center gap-2">
+                            <i class="fa-solid fa-list-check"></i> Tópicos do Edital
+                        </h2>
+                        <span class="text-xs text-slate-400 bg-slate-100 px-2 py-1 rounded" id="topic-counter">Carregando...</span>
+                    </div>
+
+                    <div id="main-content" class="space-y-4 animate-fade-in">
+                        <!-- Os itens do acordeão serão injetados aqui -->
+                        <div id="content-loader" class="space-y-4">
+                            <div class="h-16 w-full skeleton rounded-xl"></div>
+                            <div class="h-16 w-full skeleton rounded-xl"></div>
+                            <div class="h-16 w-full skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUNA 2: SIDEBAR CTA (Biblioteca) - Ocupa 1/3 -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-[160px]"> <!-- Sticky Sidebar -->
+                        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6">
+                            <h3 class="font-bold text-audit-navy mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-book-open"></i> Biblioteca de Estudos
+                            </h3>
+                            <p class="text-xs text-slate-500 mb-4">Acesse materiais teóricos focados nos temas mais cobrados.</p>
+                            
+                            <!-- Lista de Cards da Sidebar -->
+                            <div id="sidebar-content" class="space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                                <!-- Cards injetados via JS -->
+                            </div>
+
+                            <a href="#" class="block mt-4 text-center text-xs font-bold text-audit-gold hover:underline">Ver biblioteca completa</a>
+                        </div>
+
+                        <!-- Banner Promo -->
+                        <div class="bg-audit-navy rounded-2xl p-6 text-white relative overflow-hidden group cursor-pointer">
+                            <div class="absolute -right-4 -bottom-4 text-audit-gold opacity-10 transform group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-trophy text-8xl"></i>
+                            </div>
+                            <span class="bg-audit-gold text-audit-navy text-[10px] font-bold px-2 py-1 rounded uppercase">Premium</span>
+                            <h4 class="font-bold text-lg mt-2 mb-1">Simulado Comentado</h4>
+                            <p class="text-xs text-slate-300 mb-4">Teste seus conhecimentos com questões inéditas e correção em vídeo.</p>
+                            <button class="w-full bg-white text-audit-navy text-xs font-bold py-2 rounded-lg hover:bg-audit-gold hover:text-white transition-colors relative z-10">
+                                Iniciar Agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER MODULAR -->
+    <div id="footer-container" class="no-print bg-slate-900 text-slate-400 min-h-[120px] border-t border-slate-800">
+         <div class="h-32 w-full flex items-center justify-center">
+            <div class="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
+         </div>
+    </div>
+
+    <!-- DIV OCULTA PARA GERAÇÃO DO PDF (Estrutura limpa) -->
+    <div id="pdf-container" class="hidden">
+        <!-- Conteúdo injetado via JS na hora de gerar -->
+    </div>
+
+    <!-- LÓGICA DA APLICAÇÃO -->
+    <script>
+        // --- DADOS DO CONTEÚDO PROGRAMÁTICO ---
+        // (Títulos originais em UPPERCASE, convertidos via JS)
+        const syllabusData = [
+            { id: 1, title: "CONTABILIDADE GERAL", icon: "fa-calculator", color: "text-blue-600", bg: "bg-blue-50", topics: ["A) PATRIMÔNIO E VARIAÇÕES PATRIMONIAIS: Conceituação, ativo, passivo, PL, formação de capital, mutações.", "B) PLANO DE CONTAS E ESCRITURAÇÃO: Classificação, natureza das contas, regime de competência, balancete, ECD.", "C) AVALIAÇÃO DE ATIVOS E PASSIVOS: Mensuração inicial e subsequente, custo histórico, valor justo, valor recuperável (impairment), depreciação, amortização, provisões.", "D) MENSURAÇÃO E RECONHECIMENTO DE OPERAÇÕES: Operações financeiras, estoques, despesas antecipadas, ativos biológicos, intangíveis, folha de pagamento, tributos diferidos.", "E) OPERAÇÕES FISCAIS E TRIBUTÁRIAS: Tributos federais, estaduais e municipais, folha, passivos fiscais diferidos.", "F) BALANÇO PATRIMONIAL: Estrutura, classificação (Circulante/Não Circulante).", "G) DRE e DRA: Demonstração do Resultado e Resultado Abrangente.", "H) DMPL e DLPA: Mutações do Patrimônio Líquido e Lucros/Prejuízos Acumulados.", "I) DFC: Demonstração dos Fluxos de Caixa (Método direto e indireto).", "J) DVA: Demonstração do Valor Adicionado.", "K) NOTAS EXPLICATIVAS.", "L) CONSOLIDAÇÃO: Eliminação de transações intragrupo, participação de não controladores.", "M) LEGISLAÇÃO: Lei 6.404/76 e NBCs TG aplicáveis."] },
+            { id: 2, title: "CONTABILIDADE DE CUSTOS", icon: "fa-tags", color: "text-cyan-600", bg: "bg-cyan-50", topics: ["A) CONCEITOS: Gastos, custos, despesas, investimento.", "B) CLASSIFICAÇÃO: Fixos/Variáveis, Diretos/Indiretos, Primários/Transformação.", "C) CONTROLE E ALOCAÇÃO: Materiais, MOD, CIF, departamentalização, rateios.", "D) MÉTODOS DE CUSTEAMENTO: Absorção, Variável, ABC, RKW.", "E) SISTEMAS DE ACUMULAÇÃO: Por ordem, por processo.", "F) CUSTO PADRÃO: Real vs Padrão, variações."] },
+            { id: 3, title: "CONTABILIDADE APLICADA AO SETOR PÚBLICO", icon: "fa-landmark", color: "text-slate-600", bg: "bg-slate-100", topics: ["A) ESTRUTURA CONCEITUAL (NBCTSP): Objetivos, usuários, características qualitativas.", "B) RECEITA SEM CONTRAPRESTAÇÃO: Tributos e transferências.", "C) RECEITA COM CONTRAPRESTAÇÃO.", "D) PROVISÕES E PASSIVOS CONTINGENTES.", "E) ESTOQUES.", "F) CONCESSÕES (CONCEDENTE).", "G) PCASP: Plano de Contas Aplicado ao Setor Público.", "H) ORÇAMENTÁRIO: Receita e Despesa Orçamentária.", "I) PATRIMONIAL: Variações patrimoniais, depreciação, reavaliação.", "J) ESPECÍFICOS: Dívida Ativa, RPPS, Precatórios, Consórcios, Fundeb.", "K) DEMONSTRAÇÕES (DCASP): Balanço Orçamentário, Financeiro, Patrimonial, DVP, DFC, DMPL.", "L) LEGISLAÇÃO: Lei 4.320/64, LRF (LC 101/00), MCASP 10ª Edição."] },
+            { id: 4, title: "CONTABILIDADE GERENCIAL", icon: "fa-chess-rook", color: "text-teal-600", bg: "bg-teal-50", topics: ["A) CUSTOS PARA DECISÃO: Margem de contribuição, Ponto de Equilíbrio, Margem de Segurança, Alavancagem, Comprar vs Fabricar.", "B) CUSTOS PARA CONTROLE: Análise de variações.", "C) ANÁLISE DE DEMONSTRAÇÕES: Índices de liquidez, endividamento, rentabilidade, ciclo operacional/financeiro, análise vertical/horizontal."] },
+            { id: 5, title: "CONTROLADORIA", icon: "fa-bullseye", color: "text-red-600", bg: "bg-red-50", topics: ["A) CONTEXTUALIZAÇÃO: Função do controller e compliance.", "B) PLANEJAMENTO E ORÇAMENTO: Estratégico, tático, operacional. Orçamentos de vendas, produção, caixa.", "C) GESTÃO: Processo decisório e sistemas de avaliação.", "D) AVALIAÇÃO DE DESEMPENHO: Centros de responsabilidade, indicadores.", "E) SISTEMAS DE INFORMAÇÕES GERENCIAIS."] },
+            { id: 6, title: "NOÇÕES DE DIREITO E LEGISLAÇÃO APLICADA", icon: "fa-gavel", color: "text-indigo-600", bg: "bg-indigo-50", topics: ["A) DIREITO PÚBLICO E PRIVADO: Constitucional, Administrativo, Civil.", "B) TRABALHISTA E PREVIDENCIÁRIO: CLT, Empregado/Empregador, Contratos.", "C) EMPRESARIAL E SOCIETÁRIO: Tipos societários, Lei 6.404/76, LC 123/06.", "D) TRIBUTÁRIO: CTN, Tributos, Obrigação e Crédito Tributário."] },
+            { id: 7, title: "MATEMÁTICA FINANCEIRA E ESTATÍSTICA", icon: "fa-chart-line", color: "text-orange-600", bg: "bg-orange-50", topics: ["A) FUNDAMENTOS: Juros simples e compostos, descontos, taxas equivalentes.", "B) CORREÇÃO E INFLAÇÃO: Taxa real vs nominal, índices.", "C) ANÁLISE DE INVESTIMENTOS: VPL, TIR, Payback, TMA.", "D) ESTATÍSTICA: Média, moda, mediana, desvio padrão, probabilidade, normal, regressão."] },
+            { id: 8, title: "TEORIA DA CONTABILIDADE", icon: "fa-lightbulb", color: "text-amber-600", bg: "bg-amber-50", topics: ["A) ESTRUTURA CONCEITUAL (CPC 00): Objetivos, características, elementos.", "B) ELEMENTOS PATRIMONIAIS: Receitas, despesas, ganhos, perdas, PL."] },
+            { id: 9, title: "LEGISLAÇÃO E ÉTICA PROFISSIONAL", icon: "fa-shield-halved", color: "text-purple-600", bg: "bg-purple-50", topics: ["A) ÉTICA GERAL: Papel na sociedade.", "B) CÓDIGO DE ÉTICA (NBC PG 01): Normas profissionais.", "C) LEGISLAÇÃO PROFISSIONAL: Decreto-Lei 9.295/46, Regulação do CFC."] },
+            { id: 10, title: "PRINCÍPIOS E NORMAS BRASILEIRAS", icon: "fa-file-contract", color: "text-emerald-600", bg: "bg-emerald-50", topics: ["A) ESTRUTURA DAS NORMAS: Resolução CFC 1.328/11.", "B) NORMAS DO CFC: NBCs TG, TSP, PA, PO, PP."] },
+            { id: 11, title: "AUDITORIA CONTÁBIL", icon: "fa-magnifying-glass", color: "text-audit-gold", bg: "bg-yellow-50", topics: ["A) CONCEITOS: Interna vs Externa, papéis de trabalho.", "B) ASSEGURAÇÃO.", "C) OBJETIVOS: NBC TA 200.", "D) FRAUDE: NBC TA 240.", "E) PLANEJAMENTO: NBC TA 300.", "F) RISCOS: NBC TA 315.", "H) RELATÓRIO: NBC TA 700, 705, 706."] },
+            { id: 12, title: "PERÍCIA CONTÁBIL", icon: "fa-fingerprint", color: "text-violet-600", bg: "bg-violet-50", topics: ["A) CONCEITO: Judicial e Extrajudicial.", "B) ASPECTOS PROFISSIONAIS.", "C) PROCEDIMENTOS: Planejamento, honorários, laudo.", "D) LEGISLAÇÃO: CPC e NBC TP 01.", "E) APLICAÇÕES: Apuração de haveres."] },
+            { id: 13, title: "LÍNGUA PORTUGUESA APLICADA", icon: "fa-pen-nib", color: "text-rose-600", bg: "bg-rose-50", topics: ["A) ENSINO FUNDAMENTAL.", "B) ENSINO MÉDIO (Interpretação, gramática).", "C) ACORDO ORTOGRÁFICO."] }
+        ];
+
+        // --- INICIALIZAÇÃO ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Carrega componentes externos
+            await Promise.all([
+                loadHtmlComponent('https://auditeduca.com.br/assets/components/header.html', 'header-container'),
+                loadHtmlComponent('https://auditeduca.com.br/assets/components/footer.html', 'footer-container')
+            ]);
+            await loadScript('https://auditeduca.com.br/assets/js/utils.js');
+            lucide.createIcons();
+
+            // Renderização Inicial
+            renderSyllabus(syllabusData);
+            renderSidebar(syllabusData);
+
+            // Busca
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = syllabusData.filter(item => 
+                    item.title.toLowerCase().includes(term) || 
+                    item.topics.some(t => t.toLowerCase().includes(term))
+                );
+                renderSyllabus(filtered);
+            });
+        });
+
+        // --- FUNÇÃO TITLE CASE (Primeiras letras maiúsculas) ---
+        function toTitleCase(str) {
+            const smallWords = /^(de|do|da|dos|das|e|o|a|em|na|no|com|por|para|ao|aos)$/i;
+            return str.toLowerCase().replace(/\w\S*/g, (txt, index) => {
+                // Sempre capitaliza a primeira palavra da string
+                if (index === 0) return txt.charAt(0).toUpperCase() + txt.substr(1);
+                // Verifica se é preposição
+                if (smallWords.test(txt)) return txt.toLowerCase();
+                // Caso contrário, capitaliza
+                return txt.charAt(0).toUpperCase() + txt.substr(1);
+            });
+        }
+
+        // --- RENDERIZAR ACORDEÃO (Conteúdo) ---
+        function renderSyllabus(data) {
+            const container = document.getElementById('main-content');
+            const counter = document.getElementById('topic-counter');
+            
+            container.innerHTML = '';
+            counter.innerText = `${data.length} disciplinas`;
+
+            if(data.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-slate-400">Nenhum tópico encontrado.</div>`;
+                return;
+            }
+
+            data.forEach((item, index) => {
+                const isOpen = index === 0; // O primeiro abre por padrão? Vamos deixar todos fechados ou o primeiro aberto.
+                const formattedTitle = toTitleCase(item.title);
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `accordion-item bg-white rounded-xl overflow-hidden mb-3 ${isOpen ? '' : ''}`; // Removido 'active' padrão para comportamento limpo
+                itemDiv.setAttribute('data-id', item.id);
+
+                // Cabeçalho do Acordeão
+                itemDiv.innerHTML = `
+                    <button onclick="toggleSection(${item.id})" class="w-full flex items-center justify-between p-5 text-left bg-white hover:bg-slate-50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg ${item.bg} ${item.color} flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm md:text-base">${formattedTitle}</h3>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">${item.topics.length} Tópicos</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-slate-400 chevron"></i>
+                    </button>
+                    
+                    <div class="accordion-content bg-slate-50 border-t border-gray-100">
+                        <ul class="p-5 space-y-2">
+                            ${item.topics.map(t => {
+                                const formattedTopic = t.replace(/^([A-Z]\))/, '<strong class="text-audit-navy">$1</strong>');
+                                return `<li class="text-sm text-slate-600 pl-3 border-l-2 border-slate-200 hover:border-audit-gold transition-colors">${formattedTopic}</li>`;
+                            }).join('')}
+                        </ul>
+                    </div>
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+
+        // --- RENDERIZAR SIDEBAR (Mini Cards) ---
+        function renderSidebar(data) {
+            const container = document.getElementById('sidebar-content');
+            container.innerHTML = '';
+
+            data.forEach(item => {
+                const formattedTitle = toTitleCase(item.title);
+                const div = document.createElement('div');
+                div.className = "flex items-center gap-3 p-3 rounded-lg border border-transparent hover:border-gray-200 hover:bg-slate-50 cursor-pointer transition-all group";
+                div.onclick = () => {
+                    // Scroll até o item no conteúdo principal e abrir
+                    const target = document.querySelector(`.accordion-item[data-id="${item.id}"]`);
+                    if(target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        // Pequeno delay para abrir após o scroll
+                        setTimeout(() => {
+                            if(!target.classList.contains('active')) toggleSection(item.id);
+                        }, 500);
+                    }
+                };
+
+                div.innerHTML = `
+                    <div class="w-8 h-8 rounded ${item.bg} ${item.color} flex items-center justify-center flex-shrink-0 text-xs">
+                        <i class="fa-solid ${item.icon}"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-slate-700 truncate group-hover:text-audit-navy">${formattedTitle}</h4>
+                        <span class="text-[10px] text-slate-400">Ver conteúdo</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-[10px] text-slate-300 group-hover:text-audit-gold opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // --- LÓGICA DE ACORDEÃO (Um abre, outros fecham) ---
+        function toggleSection(id) {
+            const allItems = document.querySelectorAll('.accordion-item');
+            
+            allItems.forEach(item => {
+                if (parseInt(item.getAttribute('data-id')) === id) {
+                    // Toggle o clicado
+                    item.classList.toggle('active');
+                } else {
+                    // Fecha os outros
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // --- GERAÇÃO DE PDF (html2pdf) ---
+        function generatePDF() {
+            const btn = document.getElementById('btn-pdf');
+            const originalText = document.getElementById('pdf-text').innerText;
+            
+            // Estado de Loading
+            btn.disabled = true;
+            document.getElementById('pdf-text').innerText = "Gerando...";
+            
+            // 1. Criar estrutura HTML limpa e expandida para o PDF
+            const container = document.getElementById('pdf-container');
+            container.innerHTML = `
+                <div style="padding: 20px; font-family: sans-serif; color: #333;">
+                    <div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid #1E3A8A; padding-bottom: 10px;">
+                        <h1 style="color: #1E3A8A; font-size: 24px; font-weight: bold; margin: 0;">CONTEÚDO PROGRAMÁTICO</h1>
+                        <p style="font-size: 14px; color: #666; margin-top: 5px;">Exame de Suficiência CFC 2025.2 - AuditEduca</p>
+                    </div>
+                    ${syllabusData.map(item => `
+                        <div style="margin-bottom: 20px; page-break-inside: avoid;">
+                            <div style="background-color: #f8fafc; padding: 10px; border-left: 4px solid #D4AF37; margin-bottom: 10px;">
+                                <h3 style="margin: 0; font-size: 16px; color: #1E3A8A;">${toTitleCase(item.title)}</h3>
+                            </div>
+                            <ul style="list-style: none; padding-left: 0; font-size: 12px; line-height: 1.5;">
+                                ${item.topics.map(t => `<li style="margin-bottom: 5px; padding-left: 10px;">${t}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                    <div style="text-align: center; margin-top: 30px; font-size: 10px; color: #999;">
+                        Gerado automaticamente por AuditEduca em ${new Date().toLocaleDateString()}
+                    </div>
+                </div>
+            `;
+
+            // 2. Configurações do html2pdf
+            const opt = {
+                margin:       10,
+                filename:     'conteudo_programatico_cfc_2025_2.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // 3. Gerar e Salvar
+            html2pdf().set(opt).from(container).save().then(() => {
+                // Restaurar botão
+                btn.disabled = false;
+                document.getElementById('pdf-text').innerText = originalText;
+                container.innerHTML = ''; // Limpar container temporário
+            });
+        }
+
+        // --- EXPORTAÇÃO EXCEL/CSV ---
+        function downloadCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+            csvContent += "ID;Disciplina;Conteúdo Detalhado\n";
+
+            syllabusData.forEach(item => {
+                const cleanTitle = toTitleCase(item.title);
+                item.topics.forEach(topic => {
+                    const cleanTopic = topic.replace(/;/g, ",").replace(/\n/g, " ");
+                    csvContent += `${item.id};${cleanTitle};${cleanTopic}\n`;
+                });
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "conteudo_cfc_2025_2.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Edital CFC 2025.2 - AuditEduca',
+                    text: 'Conteúdo programático completo para o Exame de Suficiência.',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link copiado!");
+            }
+        }
+
+        // --- HELPERS DE CARREGAMENTO ---
+        async function loadHtmlComponent(url, elementId) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network');
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+            } catch (e) {
+                if(elementId.includes('header')) document.getElementById(elementId).innerHTML = '<div class="h-20 flex items-center px-8 border-b"><span class="font-bold text-audit-navy">AUDITEDUCA</span></div>';
+            }
+        }
+
+        async function loadScript(url) {
+            return new Promise(resolve => {
+                const s = document.createElement('script');
+                s.src = url;
+                s.onload = resolve;
+                s.onerror = resolve;
+                document.body.appendChild(s);
+            });
+        }
+    </script>
+</body>
+</html>
