@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Auditoria Externa | AuditEduca</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Acesse o kit completo de circularizações e papéis de trabalho para auditoria independente. Modelos conforme NBC TA.">
+    <link rel="icon" type="image/webp" href="assets/images/audit-educa-favicon.webp">
+
+    <!-- CSS Externos Globais -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind Configurado -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#D4AF37',
+                        'audit-navy': '#1E3A8A',
+                        'audit-blue': '#3B82F6',
+                        'audit-bgDark': '#0F172A',
+                        'slate-900': '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
+        }
+
+        .card-library {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-library:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #D4AF37;
+        }
+
+        .filter-btn { transition: all 0.2s ease; }
+        .filter-btn.active {
+            background-color: #D4AF37;
+            color: white;
+            border-color: #D4AF37;
+            font-weight: 600;
+        }
+
+        .category-badge {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .skeleton-loader {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- HEADER MODULAR -->
+    <div id="header-container" class="no-print sticky top-0 z-50 bg-white">
+        <div class="h-20 w-full flex items-center justify-between px-8 border-b border-gray-100">
+            <div class="h-8 w-32 skeleton-loader rounded"></div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white py-20 px-4 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+            </div>
+            
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <span class="inline-block py-1 px-3 rounded bg-audit-gold/20 border border-audit-gold/50 text-audit-gold text-xs font-bold mb-4 tracking-wider uppercase">Auditoria Independente</span>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">Biblioteca Técnica <span class="text-audit-gold">Externos</span></h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                    Acesse papéis de trabalho padronizados, guias das NBC TAs e modelos de confirmação externa (circularização).
+                </p>
+                
+                <!-- Search Bar -->
+                <div class="mt-12 max-w-2xl mx-auto relative group">
+                    <input type="text" placeholder="Pesquisar (Ex: Bancos, Advogados, NBC TA 505...)" 
+                           class="w-full bg-white text-slate-900 rounded-2xl py-5 px-14 shadow-2xl focus:ring-4 focus:ring-audit-gold/30 outline-none transition-all placeholder-gray-400">
+                    <i data-lucide="search" class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-6 h-6 group-focus-within:text-audit-gold transition-colors"></i>
+                    <button class="absolute right-3 top-1/2 -translate-y-1/2 bg-audit-gold hover:bg-yellow-600 text-audit-navy px-6 py-2.5 rounded-xl font-bold transition shadow-lg">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="flex flex-col lg:flex-row gap-12">
+                
+                <!-- Sidebar Filtros -->
+                <aside class="lg:col-span-3 w-full lg:w-64 flex-shrink-0">
+                    <div class="sticky top-32 space-y-8">
+                        <div>
+                            <h3 class="text-slate-900 font-bold mb-4 flex items-center gap-2">
+                                <i data-lucide="filter" class="w-4 h-4 text-audit-gold"></i> Filtros
+                            </h3>
+                            <div class="flex flex-col gap-2" id="filter-container">
+                                <button class="filter-btn active text-left px-4 py-2 rounded-lg text-sm font-medium border border-transparent transition">Todos os Recursos</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy">Circularizações</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy">Papéis de Trabalho</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy">Planilhas de Controle</button>
+                            </div>
+                        </div>
+
+                        <!-- Banner Suporte -->
+                        <div class="p-6 bg-audit-navy rounded-2xl text-white shadow-xl relative overflow-hidden group">
+                            <div class="absolute -right-4 -top-4 text-audit-gold opacity-10 transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="shield-check" class="w-24 h-24"></i>
+                            </div>
+                            <h4 class="font-bold mb-2 relative z-10">Revisão de Qualidade</h4>
+                            <p class="text-xs text-blue-200 mb-4 relative z-10">Precisa de suporte na revisão de papéis de trabalho complexos?</p>
+                            <a href="#" class="block text-center py-2 bg-audit-gold text-audit-navy rounded-lg text-xs font-bold hover:bg-white transition relative z-10">Consultar EQCR</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Grid de Resultados -->
+                <div class="flex-1">
+                    
+                    <div class="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4">
+                        <h2 class="text-2xl font-bold text-slate-900">Exibindo <span class="text-audit-gold">8</span> recursos principais</h2>
+                        <div class="flex items-center gap-2 text-sm text-slate-500 bg-white px-3 py-2 rounded-lg border border-gray-100 shadow-sm">
+                            <span>Ordenar:</span> 
+                            <select class="bg-transparent font-bold text-audit-navy outline-none cursor-pointer">
+                                <option>Relevância</option>
+                                <option>Mais Recentes</option>
+                                <option>A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                        
+                        <!-- Item 1: Controle Master -->
+                        <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group border-l-4 border-l-green-500">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-green-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-file-excel text-5xl text-green-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-green-600 text-white">Planilha Master</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Controle de Circularização e Estatística</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Dashboard automatizado para gestão de envios, respostas e divergências.</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="table" class="w-3 h-3"></i> Excel
+                                    </span>
+                                    <a href="controle-circularizacao.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Acessar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Bancos -->
+                        <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-blue-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-university text-5xl text-blue-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-white text-audit-navy border border-gray-200">Modelo</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Circularização Bancária</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Confirmação de saldos, empréstimos e garantias com instituições financeiras.</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="file-text" class="w-3 h-3"></i> Word
+                                    </span>
+                                    <a href="circularizacao-bancos.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Visualizar <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Clientes -->
+                        <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-green-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-users text-5xl text-green-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-white text-audit-navy border border-gray-200">Kit Completo</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Circularização de Clientes (AR)</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Modelos Positiva (Branco/Preto) e Negativa para contas a receber.</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="package" class="w-3 h-3"></i> 3 Arqs
+                                    </span>
+                                    <a href="circularizacao-clientes.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Acessar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Fornecedores -->
+                        <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-red-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-truck-loading text-5xl text-red-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-white text-audit-navy border border-gray-200">Em Branco</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Circularização de Fornecedores</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Confirmação "às cegas" para detecção de passivos não registados.</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="file-text" class="w-3 h-3"></i> Word
+                                    </span>
+                                    <a href="circularizacao-fornecedores.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Visualizar <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5: Advogados -->
+                        <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-indigo-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-gavel text-5xl text-indigo-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-white text-audit-navy border border-gray-200">Jurídico</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Circularização de Advogados</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Confirmação de litígios e probabilidade de perda (Provável/Possível/Remoto).</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="file-text" class="w-3 h-3"></i> Word
+                                    </span>
+                                    <a href="circularizacao-advogados.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Acessar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Item 6: Estoques Terceiros -->
+                         <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-amber-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-warehouse text-5xl text-amber-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-white text-audit-navy border border-gray-200">Logística</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Estoques em Poder de Terceiros</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Confirmação de quantidades em armazéns gerais, consignação ou industrialização.</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="file-text" class="w-3 h-3"></i> Word
+                                    </span>
+                                    <a href="circularizacao-estoques-terceiros.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Visualizar <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7: Partes Relacionadas -->
+                        <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-purple-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-network-wired text-5xl text-purple-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-white text-audit-navy border border-gray-200">Intercompany</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Partes Relacionadas</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Confirmação de saldos e transações com empresas ligadas e diretores.</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="file-text" class="w-3 h-3"></i> Word
+                                    </span>
+                                    <a href="circularizacao-partes-relacionadas.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Acessar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 8: Seguros -->
+                        <div class="card-library bg-white rounded-2xl overflow-hidden flex flex-col group">
+                            <div class="relative h-40 overflow-hidden bg-slate-100">
+                                <div class="absolute inset-0 bg-teal-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <i class="fas fa-shield-alt text-5xl text-teal-600"></i>
+                                </div>
+                                <span class="absolute top-4 left-4 category-badge bg-white text-audit-navy border border-gray-200">Seguros</span>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-audit-gold transition-colors">Circularização de Seguradoras</h3>
+                                <p class="text-slate-500 text-sm line-clamp-3 mb-6">Confirmação de apólices, coberturas de risco e prêmios a pagar.</p>
+                                <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                                        <i data-lucide="file-text" class="w-3 h-3"></i> Word
+                                    </span>
+                                    <a href="circularizacao-seguros.html" class="text-audit-navy font-bold text-sm flex items-center gap-1 hover:text-audit-gold transition-colors">
+                                        Visualizar <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Paginação -->
+                    <div class="mt-16 flex justify-center items-center gap-2">
+                        <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-slate-400 hover:text-audit-gold hover:border-audit-gold transition">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        </button>
+                        <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-audit-gold text-audit-navy font-bold shadow-md">1</button>
+                        <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-slate-600 hover:border-audit-gold hover:text-audit-gold transition">2</button>
+                        <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-slate-400 hover:text-audit-gold hover:border-audit-gold transition">
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER MODULAR -->
+    <div id="footer-container" class="no-print mt-auto">
+        <div class="h-64 bg-slate-900 w-full flex items-center justify-center">
+             <div class="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE ORQUESTRAÇÃO -->
+    <script>
+        const RESOURCES = {
+            headerHTML: 'https://auditeduca.com.br/assets/components/header.html',
+            footerHTML: 'https://auditeduca.com.br/assets/components/footer.html',
+            scripts: [
+                'https://auditeduca.com.br/assets/js/utils.js', 
+                'https://auditeduca.com.br/assets/js/console-cleaner.js'
+            ]
+        };
+
+        async function loadHtmlComponent(url, elementId) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Status ${response.status}`);
+                const html = await response.text();
+                const wrapper = document.getElementById(elementId);
+                wrapper.innerHTML = html;
+                if (wrapper.firstElementChild) {
+                    wrapper.replaceWith(...wrapper.childNodes);
+                }
+            } catch (e) {
+                console.warn(`Erro no módulo ${elementId}:`, e);
+            }
+        }
+
+        function loadScript(url) {
+            return new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = url;
+                script.onload = resolve;
+                script.onerror = resolve;
+                document.body.appendChild(script);
+            });
+        }
+
+        async function initPage() {
+            await Promise.all([
+                loadHtmlComponent(RESOURCES.headerHTML, 'header-container'),
+                loadHtmlComponent(RESOURCES.footerHTML, 'footer-container')
+            ]);
+            for (const scriptUrl of RESOURCES.scripts) {
+                await loadScript(scriptUrl);
+            }
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Filtros da Sidebar (Interativo)
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.classList.add('text-slate-600', 'hover:text-audit-navy');
+                    });
+                    btn.classList.add('active');
+                    btn.classList.remove('text-slate-600', 'hover:text-audit-navy');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>
