@@ -61,7 +61,11 @@
             border-color: #D4AF37;
         }
 
-        .filter-btn { transition: all 0.2s ease; }
+        .filter-btn { 
+            transition: all 0.2s ease; 
+            border: 1px solid #e2e8f0;
+        }
+        
         .filter-btn.active {
             background-color: #D4AF37;
             color: white;
@@ -85,9 +89,6 @@
             animation: shimmer 1.5s infinite;
         }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-        .price-up { color: #10b981; }
-        .price-down { color: #ef4444; }
 
         .pulse-dot {
             animation: pulse 2s infinite;
@@ -120,7 +121,6 @@
 
     <!-- MAIN CONTENT -->
     <div class="flex-grow">
-
         <!-- Hero Section -->
         <section class="hero-gradient text-white py-20 px-4 relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
@@ -138,18 +138,18 @@
                 <span class="inline-block py-1 px-3 rounded bg-audit-gold/20 border border-audit-gold/50 text-audit-gold text-xs font-bold mb-4 tracking-wider uppercase">Banco Central do Brasil</span>
                 <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">Cotação de <span class="text-audit-gold">Moedas</span></h1>
                 <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
-                    Consulte cotações oficiais PTAX em tempo real para conversões de moedas estrangeiras.
+                    Consulte cotações oficiais PTAX atualizadas para conversões de moedas estrangeiras.
                 </p>
 
                 <!-- Data e Status -->
                 <div class="mt-8 flex flex-wrap justify-center items-center gap-6">
                     <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                         <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>
-                        <span class="text-sm text-slate-300">Dados atualizados</span>
+                        <span class="text-sm text-slate-300">Dados oficiais BCB</span>
                     </div>
                     <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                         <i data-lucide="calendar" class="w-4 h-4 text-audit-gold"></i>
-                        <span class="text-sm text-slate-300" id="data-referencia">Carregando...</span>
+                        <span class="text-sm text-slate-300" id="data-referencia">Sincronizando...</span>
                     </div>
                 </div>
 
@@ -168,7 +168,6 @@
         <!-- Content Area -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="flex flex-col lg:flex-row gap-12">
-
                 <!-- Sidebar Filtros -->
                 <aside class="lg:col-span-3 w-full lg:w-64 flex-shrink-0">
                     <div class="sticky top-32 space-y-8">
@@ -177,11 +176,13 @@
                                 <i data-lucide="filter" class="w-4 h-4 text-audit-gold"></i> Filtros
                             </h3>
                             <div class="flex flex-col gap-2" id="filter-container">
-                                <button class="filter-btn active text-left px-4 py-2 rounded-lg text-sm font-medium border border-transparent transition" data-filter="all">Todas as Moedas</button>
-                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="principais">Principais</button>
-                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="americas">Américas</button>
-                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="europa">Europa</button>
-                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:border-audit-gold transition text-slate-600 hover:text-audit-navy" data-filter="asia">Ásia/Oceania</button>
+                                <button class="filter-btn active text-left px-4 py-2 rounded-lg text-sm font-medium transition" data-filter="all">Todas as Moedas</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-audit-navy transition" data-filter="principais">Principais</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-audit-navy transition" data-filter="americas">Américas</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-audit-navy transition" data-filter="europa">Europa</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-audit-navy transition" data-filter="asia">Ásia/Oceania</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-audit-navy transition" data-filter="africa">África</button>
+                                <button class="filter-btn text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-audit-navy transition" data-filter="outros">Outras Regiões</button>
                             </div>
                         </div>
 
@@ -198,9 +199,7 @@
                                 <div>
                                     <label class="text-xs text-slate-500 mb-1 block">Moeda destino</label>
                                     <select id="moeda-destino" class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-audit-gold/30 outline-none">
-                                        <option value="USD">Dólar (USD)</option>
-                                        <option value="EUR">Euro (EUR)</option>
-                                        <option value="GBP">Libra (GBP)</option>
+                                        <!-- Preenchido via JS -->
                                     </select>
                                 </div>
                                 <div class="pt-4 border-t border-gray-100">
@@ -209,24 +208,11 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Banner Info -->
-                        <div class="p-6 bg-audit-navy rounded-2xl text-white shadow-xl relative overflow-hidden group">
-                            <div class="absolute -right-4 -top-4 text-audit-gold opacity-10 transform group-hover:scale-110 transition-transform">
-                                <i data-lucide="info" class="w-24 h-24"></i>
-                            </div>
-                            <h4 class="font-bold mb-2 relative z-10">Sobre a PTAX</h4>
-                            <p class="text-xs text-blue-200 mb-4 relative z-10">Taxa de câmbio oficial calculada pelo Banco Central para liquidação de contratos.</p>
-                            <a href="https://www.bcb.gov.br/estabilidadefinanceira/historicocotacoes" target="_blank" class="block text-center py-2 bg-audit-gold text-audit-navy rounded-lg text-xs font-bold hover:bg-white transition relative z-10">
-                                Saiba Mais
-                            </a>
-                        </div>
                     </div>
                 </aside>
 
                 <!-- Grid de Resultados -->
                 <div class="flex-1">
-
                     <div class="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4">
                         <h2 class="text-2xl font-bold text-slate-900">Cotações <span class="text-audit-gold" id="contador-moedas">--</span></h2>
                         <div class="flex items-center gap-4">
@@ -246,77 +232,36 @@
 
                     <!-- Loading State -->
                     <div id="loading-state" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                        <!-- Skeleton Cards -->
                         <div class="bg-white rounded-2xl p-6 border border-gray-100">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="w-14 h-14 rounded-full skeleton-loader"></div>
-                                <div class="flex-1">
-                                    <div class="h-5 w-24 skeleton-loader rounded mb-2"></div>
-                                    <div class="h-4 w-16 skeleton-loader rounded"></div>
-                                </div>
-                            </div>
-                            <div class="h-8 w-32 skeleton-loader rounded mb-2"></div>
-                            <div class="h-4 w-full skeleton-loader rounded"></div>
-                        </div>
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="w-14 h-14 rounded-full skeleton-loader"></div>
-                                <div class="flex-1">
-                                    <div class="h-5 w-24 skeleton-loader rounded mb-2"></div>
-                                    <div class="h-4 w-16 skeleton-loader rounded"></div>
-                                </div>
-                            </div>
-                            <div class="h-8 w-32 skeleton-loader rounded mb-2"></div>
-                            <div class="h-4 w-full skeleton-loader rounded"></div>
-                        </div>
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="w-14 h-14 rounded-full skeleton-loader"></div>
-                                <div class="flex-1">
-                                    <div class="h-5 w-24 skeleton-loader rounded mb-2"></div>
-                                    <div class="h-4 w-16 skeleton-loader rounded"></div>
-                                </div>
-                            </div>
-                            <div class="h-8 w-32 skeleton-loader rounded mb-2"></div>
-                            <div class="h-4 w-full skeleton-loader rounded"></div>
+                            <div class="flex items-center gap-4 mb-4"><div class="w-14 h-14 rounded-full skeleton-loader"></div><div class="flex-1"><div class="h-5 w-24 skeleton-loader rounded mb-2"></div><div class="h-4 w-16 skeleton-loader rounded"></div></div></div>
+                            <div class="h-8 w-32 skeleton-loader rounded mb-2"></div><div class="h-4 w-full skeleton-loader rounded"></div>
                         </div>
                     </div>
 
                     <!-- Grid de Moedas -->
-                    <div id="moedas-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 hidden">
-                        <!-- Cards serão inseridos via JavaScript -->
-                    </div>
+                    <div id="moedas-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 hidden"></div>
 
-                    <!-- Estado Vazio -->
+                    <!-- Empty State -->
                     <div id="empty-state" class="hidden text-center py-16">
                         <i data-lucide="search-x" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
-                        <h3 class="text-xl font-bold text-slate-700 mb-2">Nenhuma moeda encontrada</h3>
-                        <p class="text-slate-500">Tente ajustar sua pesquisa ou filtros.</p>
+                        <h3 class="text-xl font-bold text-slate-700 mb-2">Nenhuma moeda encontrada nesta categoria</h3>
                     </div>
 
                     <!-- Erro State -->
                     <div id="error-state" class="hidden text-center py-16">
                         <i data-lucide="alert-triangle" class="w-16 h-16 text-red-400 mx-auto mb-4"></i>
                         <h3 class="text-xl font-bold text-slate-700 mb-2">Erro ao carregar dados</h3>
-                        <p class="text-slate-500 mb-4">Não foi possível conectar à API do Banco Central.</p>
-                        <button id="btn-retry" class="bg-audit-gold text-audit-navy px-6 py-2 rounded-lg font-bold hover:bg-yellow-600 transition">
-                            Tentar Novamente
-                        </button>
+                        <p class="text-slate-500 mb-4">Serviço do Banco Central temporariamente indisponível.</p>
+                        <button id="btn-retry" class="bg-audit-gold text-audit-navy px-6 py-2 rounded-lg font-bold hover:bg-yellow-600 transition">Tentar Novamente</button>
                     </div>
-
                 </div>
             </div>
         </main>
     </div>
 
     <!-- FOOTER MODULAR -->
-    <div id="footer-container" class="no-print mt-auto">
-        <div class="h-64 bg-slate-900 w-full flex items-center justify-center">
-             <div class="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
-        </div>
-    </div>
+    <div id="footer-container" class="no-print mt-auto"></div>
 
-    <!-- SCRIPT DE ORQUESTRAÇÃO -->
     <script>
         const RESOURCES = {
             headerHTML: 'https://auditeduca.com.br/assets/components/header.html',
@@ -327,175 +272,158 @@
             ]
         };
 
-        // Configuração das moedas com metadados
+        // Mapeamento Completo Consolidado para Filtros
         const MOEDAS_CONFIG = {
-            'USD': { nome: 'Dólar Americano', bandeira: '🇺🇸', cor: 'bg-green-500', regiao: 'americas', principal: true },
-            'EUR': { nome: 'Euro', bandeira: '🇪🇺', cor: 'bg-blue-600', regiao: 'europa', principal: true },
-            'GBP': { nome: 'Libra Esterlina', bandeira: '🇬🇧', cor: 'bg-indigo-600', regiao: 'europa', principal: true },
-            'JPY': { nome: 'Iene Japonês', bandeira: '🇯🇵', cor: 'bg-red-500', regiao: 'asia', principal: true },
-            'CHF': { nome: 'Franco Suíço', bandeira: '🇨🇭', cor: 'bg-red-600', regiao: 'europa', principal: true },
-            'CAD': { nome: 'Dólar Canadense', bandeira: '🇨🇦', cor: 'bg-red-700', regiao: 'americas', principal: false },
-            'AUD': { nome: 'Dólar Australiano', bandeira: '🇦🇺', cor: 'bg-blue-500', regiao: 'asia', principal: false },
-            'CNY': { nome: 'Yuan Chinês', bandeira: '🇨🇳', cor: 'bg-red-600', regiao: 'asia', principal: true },
-            'ARS': { nome: 'Peso Argentino', bandeira: '🇦🇷', cor: 'bg-sky-400', regiao: 'americas', principal: false },
-            'MXN': { nome: 'Peso Mexicano', bandeira: '🇲🇽', cor: 'bg-green-600', regiao: 'americas', principal: false },
-            'CLP': { nome: 'Peso Chileno', bandeira: '🇨🇱', cor: 'bg-blue-700', regiao: 'americas', principal: false },
-            'COP': { nome: 'Peso Colombiano', bandeira: '🇨🇴', cor: 'bg-yellow-500', regiao: 'americas', principal: false },
-            'PEN': { nome: 'Sol Peruano', bandeira: '🇵🇪', cor: 'bg-red-600', regiao: 'americas', principal: false },
-            'UYU': { nome: 'Peso Uruguaio', bandeira: '🇺🇾', cor: 'bg-blue-600', regiao: 'americas', principal: false },
-            'NOK': { nome: 'Coroa Norueguesa', bandeira: '🇳🇴', cor: 'bg-red-600', regiao: 'europa', principal: false },
-            'SEK': { nome: 'Coroa Sueca', bandeira: '🇸🇪', cor: 'bg-blue-500', regiao: 'europa', principal: false },
-            'DKK': { nome: 'Coroa Dinamarquesa', bandeira: '🇩🇰', cor: 'bg-red-600', regiao: 'europa', principal: false },
-            'NZD': { nome: 'Dólar Neozelandês', bandeira: '🇳🇿', cor: 'bg-blue-800', regiao: 'asia', principal: false },
-            'ZAR': { nome: 'Rand Sul-Africano', bandeira: '🇿🇦', cor: 'bg-green-600', regiao: 'africa', principal: false },
-            'KRW': { nome: 'Won Sul-Coreano', bandeira: '🇰🇷', cor: 'bg-blue-600', regiao: 'asia', principal: false },
-            'SGD': { nome: 'Dólar de Singapura', bandeira: '🇸🇬', cor: 'bg-red-500', regiao: 'asia', principal: false },
-            'HKD': { nome: 'Dólar de Hong Kong', bandeira: '🇭🇰', cor: 'bg-red-600', regiao: 'asia', principal: false },
-            'INR': { nome: 'Rupia Indiana', bandeira: '🇮🇳', cor: 'bg-orange-500', regiao: 'asia', principal: false },
-            'RUB': { nome: 'Rublo Russo', bandeira: '🇷🇺', cor: 'bg-blue-700', regiao: 'europa', principal: false },
-            'TRY': { nome: 'Lira Turca', bandeira: '🇹🇷', cor: 'bg-red-600', regiao: 'europa', principal: false },
-            'ILS': { nome: 'Shekel Israelense', bandeira: '🇮🇱', cor: 'bg-blue-600', regiao: 'asia', principal: false },
-            'SAR': { nome: 'Rial Saudita', bandeira: '🇸🇦', cor: 'bg-green-700', regiao: 'asia', principal: false },
-            'AED': { nome: 'Dirham dos Emirados', bandeira: '🇦🇪', cor: 'bg-green-600', regiao: 'asia', principal: false },
-            'PLN': { nome: 'Zloty Polonês', bandeira: '🇵🇱', cor: 'bg-red-500', regiao: 'europa', principal: false },
-            'CZK': { nome: 'Coroa Tcheca', bandeira: '🇨🇿', cor: 'bg-blue-600', regiao: 'europa', principal: false },
-            'THB': { nome: 'Baht Tailandês', bandeira: '🇹🇭', cor: 'bg-blue-700', regiao: 'asia', principal: false },
-            'MYR': { nome: 'Ringgit Malaio', bandeira: '🇲🇾', cor: 'bg-blue-600', regiao: 'asia', principal: false },
-            'PHP': { nome: 'Peso Filipino', bandeira: '🇵🇭', cor: 'bg-blue-600', regiao: 'asia', principal: false },
-            'IDR': { nome: 'Rupia Indonésia', bandeira: '🇮🇩', cor: 'bg-red-500', regiao: 'asia', principal: false },
-            'TWD': { nome: 'Dólar Taiwanês', bandeira: '🇹🇼', cor: 'bg-blue-600', regiao: 'asia', principal: false },
-            'HUF': { nome: 'Florim Húngaro', bandeira: '🇭🇺', cor: 'bg-green-600', regiao: 'europa', principal: false },
-            'RON': { nome: 'Leu Romeno', bandeira: '🇷🇴', cor: 'bg-blue-600', regiao: 'europa', principal: false },
-            'BGN': { nome: 'Lev Búlgaro', bandeira: '🇧🇬', cor: 'bg-green-600', regiao: 'europa', principal: false },
-            'VND': { nome: 'Dong Vietnamita', bandeira: '🇻🇳', cor: 'bg-red-600', regiao: 'asia', principal: false },
-            'EGP': { nome: 'Libra Egípcia', bandeira: '🇪🇬', cor: 'bg-red-600', regiao: 'africa', principal: false },
-            'NGN': { nome: 'Naira Nigeriana', bandeira: '🇳🇬', cor: 'bg-green-600', regiao: 'africa', principal: false },
-            'PKR': { nome: 'Rupia Paquistanesa', bandeira: '🇵🇰', cor: 'bg-green-700', regiao: 'asia', principal: false },
-            'BDT': { nome: 'Taka de Bangladesh', bandeira: '🇧🇩', cor: 'bg-green-600', regiao: 'asia', principal: false },
+            "USD": { "nome": "Dólar Americano", "bandeira": "🇺🇸", "cor": "bg-emerald-600", "regiao": "americas", "principal": true },
+            "EUR": { "nome": "Euro", "bandeira": "🇪🇺", "cor": "bg-blue-700", "regiao": "europa", "principal": true },
+            "GBP": { "nome": "Libra Esterlina", "bandeira": "🇬🇧", "cor": "bg-indigo-800", "regiao": "europa", "principal": true },
+            "JPY": { "nome": "Iene Japonês", "bandeira": "🇯🇵", "cor": "bg-rose-600", "regiao": "asia", "principal": true },
+            "CHF": { "nome": "Franco Suíço", "bandeira": "🇨🇭", "cor": "bg-red-500", "regiao": "europa", "principal": true },
+            "AUD": { "nome": "Dólar Australiano", "bandeira": "🇦🇺", "cor": "bg-blue-800", "regiao": "asia", "principal": false },
+            "CAD": { "nome": "Dólar Canadense", "bandeira": "🇨🇦", "cor": "bg-red-600", "regiao": "americas", "principal": false },
+            "CNY": { "nome": "Yuan Chinês", "bandeira": "🇨🇳", "cor": "bg-red-600", "regiao": "asia", "principal": true },
+            "ARS": { "nome": "Peso Argentino", "bandeira": "🇦🇷", "cor": "bg-sky-400", "regiao": "americas", "principal": false },
+            "DKK": { "nome": "Coroa Dinamarquesa", "bandeira": "🇩🇰", "cor": "bg-red-700", "regiao": "europa", "principal": false },
+            "NOK": { "nome": "Coroa Norueguesa", "bandeira": "🇳🇴", "cor": "bg-blue-900", "regiao": "europa", "principal": false },
+            "SEK": { "nome": "Coroa Sueca", "bandeira": "🇸🇪", "cor": "bg-blue-500", "regiao": "europa", "principal": false },
+            "RUB": { "nome": "Rublo Russo", "bandeira": "🇷🇺", "cor": "bg-slate-500", "regiao": "europa", "principal": false },
+            "MXN": { "nome": "Peso Mexicano", "bandeira": "🇲🇽", "cor": "bg-green-800", "regiao": "americas", "principal": false },
+            "SGD": { "nome": "Dólar de Singapura", "bandeira": "🇸🇬", "cor": "bg-red-500", "regiao": "asia", "principal": false },
+            "HKD": { "nome": "Dólar de Hong Kong", "bandeira": "🇭🇰", "cor": "bg-red-600", "regiao": "asia", "principal": false },
+            "KRW": { "nome": "Won Sul-Coreano", "bandeira": "🇰🇷", "cor": "bg-slate-700", "regiao": "asia", "principal": false },
+            "INR": { "nome": "Rúpia Indiana", "bandeira": "🇮🇳", "cor": "bg-orange-500", "regiao": "asia", "principal": false },
+            "NZD": { "nome": "Dólar Neozelandês", "bandeira": "🇳🇿", "cor": "bg-blue-900", "regiao": "asia", "principal": false },
+            "ZAR": { "nome": "Rand Sul-Africano", "bandeira": "🇿🇦", "cor": "bg-green-700", "regiao": "africa", "principal": false },
+            "CLP": { "nome": "Peso Chileno", "bandeira": "🇨🇱", "cor": "bg-red-800", "regiao": "americas", "principal": false },
+            "COP": { "nome": "Peso Colombiano", "bandeira": "🇨🇴", "cor": "bg-yellow-500", "regiao": "americas", "principal": false },
+            "PEN": { "nome": "Sol Peruano", "bandeira": "🇵🇪", "cor": "bg-red-700", "regiao": "americas", "principal": false },
+            "UYU": { "nome": "Peso Uruguaio", "bandeira": "🇺🇾", "cor": "bg-sky-600", "regiao": "americas", "principal": false },
+            "PYG": { "nome": "Guarani Paraguaio", "bandeira": "🇵🇾", "cor": "bg-red-500", "regiao": "americas", "principal": false },
+            "BOB": { "nome": "Boliviano", "bandeira": "🇧🇴", "cor": "bg-green-600", "regiao": "americas", "principal": false },
+            "ILS": { "nome": "Novo Shekel Israelense", "bandeira": "🇮🇱", "cor": "bg-blue-600", "regiao": "asia", "principal": false },
+            "SAR": { "nome": "Riyal Saudita", "bandeira": "🇸🇦", "cor": "bg-green-700", "regiao": "asia", "principal": false },
+            "AED": { "nome": "Dirham dos EAU", "bandeira": "🇦🇪", "cor": "bg-slate-600", "regiao": "asia", "principal": false },
+            "TRY": { "nome": "Lira Turca", "bandeira": "🇹🇷", "cor": "bg-red-700", "regiao": "europa", "principal": false },
+            "PLN": { "nome": "Zloty Polonês", "bandeira": "🇵🇱", "cor": "bg-red-500", "regiao": "europa", "principal": false },
+            "HUF": { "nome": "Florim Húngaro", "bandeira": "🇭🇺", "cor": "bg-green-600", "regiao": "europa", "principal": false },
+            "CZK": { "nome": "Coroa Checa", "bandeira": "🇨🇿", "cor": "bg-blue-700", "regiao": "europa", "principal": false },
+            "THB": { "nome": "Baht Tailandês", "bandeira": "🇹🇭", "cor": "bg-indigo-500", "regiao": "asia", "principal": false },
+            "IDR": { "nome": "Rupia Indonésia", "bandeira": "🇮🇩", "cor": "bg-red-500", "regiao": "asia", "principal": false },
+            "MYR": { "nome": "Ringgit Malaio", "bandeira": "🇲🇾", "cor": "bg-yellow-600", "regiao": "asia", "principal": false },
+            "PHP": { "nome": "Peso Filipino", "bandeira": "🇵🇭", "cor": "bg-blue-500", "regiao": "asia", "principal": false },
+            "BHD": { "nome": "Dinar Bareinita", "bandeira": "🇧🇭", "cor": "bg-red-600", "regiao": "asia", "principal": false },
+            "KWD": { "nome": "Dinar Kuwaitiano", "bandeira": "🇰🇼", "cor": "bg-blue-400", "regiao": "asia", "principal": false },
+            "QAR": { "nome": "Riyal Catariano", "bandeira": "🇶🇦", "cor": "bg-purple-800", "regiao": "asia", "principal": false },
+            "OMR": { "nome": "Riyal Omanense", "bandeira": "🇴🇲", "cor": "bg-red-700", "regiao": "asia", "principal": false },
+            "JOD": { "nome": "Dinar Jordaniano", "bandeira": "🇯🇴", "cor": "bg-slate-500", "regiao": "asia", "principal": false },
+            "EGP": { "nome": "Libra Egípcia", "bandeira": "🇪🇬", "cor": "bg-slate-800", "regiao": "africa", "principal": false },
+            "DZD": { "nome": "Dinar Argelino", "bandeira": "🇩🇿", "cor": "bg-green-800", "regiao": "africa", "principal": false },
+            "MAD": { "nome": "Dirham Marroquino", "bandeira": "🇲🇦", "cor": "bg-red-600", "regiao": "africa", "principal": false },
+            "CRC": { "nome": "Colón Costarriquenho", "bandeira": "🇨🇷", "cor": "bg-blue-600", "regiao": "americas", "principal": false },
+            "TWD": { "nome": "Novo Dólar Taiwanês", "bandeira": "🇹🇼", "cor": "bg-blue-500", "regiao": "asia", "principal": false },
+            "RON": { "nome": "Leu Romeno", "bandeira": "🇷🇴", "cor": "bg-yellow-500", "regiao": "europa", "principal": false },
+            "BGN": { "nome": "Lev Búlgaro", "bandeira": "🇧🇬", "cor": "bg-green-600", "regiao": "europa", "principal": false },
+            "ISK": { "nome": "Coroa Islandesa", "bandeira": "🇮🇸", "cor": "bg-blue-800", "regiao": "europa", "principal": false },
+            "VES": { "nome": "Bolívar Soberano", "bandeira": "🇻🇪", "cor": "bg-yellow-700", "regiao": "americas", "principal": false },
+            "VND": { "nome": "Dong Vietnamita", "bandeira": "🇻🇳", "cor": "bg-rose-700", "regiao": "asia", "principal": false },
+            "TJS": { "nome": "Somoni do Tajiquistão", "bandeira": "🇹🇯", "cor": "bg-green-500", "regiao": "asia", "principal": false },
+            "TMT": { "nome": "Manat Turcomeno", "bandeira": "🇹🇲", "cor": "bg-green-900", "regiao": "asia", "principal": false },
+            "UZS": { "nome": "Som Uzbeque", "bandeira": "🇺🇿", "cor": "bg-blue-400", "regiao": "asia", "principal": false },
+            "PKR": { "nome": "Rúpia Paquistanesa", "bandeira": "🇵🇰", "cor": "bg-green-600", "regiao": "asia", "principal": false },
+            "LKR": { "nome": "Rúpia do Sri Lanka", "bandeira": "🇱🇰", "cor": "bg-red-800", "regiao": "asia", "principal": false },
+            "KES": { "nome": "Xelim Queniano", "bandeira": "🇰🇪", "cor": "bg-red-700", "regiao": "africa", "principal": false },
+            "NGN": { "nome": "Naira Nigeriana", "bandeira": "🇳🇬", "cor": "bg-green-500", "regiao": "africa", "principal": false },
+            "TND": { "nome": "Dinar Tunisiano", "bandeira": "🇹🇳", "cor": "bg-red-500", "regiao": "africa", "principal": false },
+            "GEL": { "nome": "Lari Georgiano", "bandeira": "🇬🇪", "cor": "bg-red-600", "regiao": "asia", "principal": false },
+            "AZN": { "nome": "Manat Azerbaijano", "bandeira": "🇦🇿", "cor": "bg-blue-500", "regiao": "asia", "principal": false },
+            "BYN": { "nome": "Rublo Bielorrusso", "bandeira": "🇧🇾", "cor": "bg-red-500", "regiao": "europa", "principal": false },
+            "KZT": { "nome": "Tenge Cazaque", "bandeira": "🇰🇿", "cor": "bg-blue-600", "regiao": "asia", "principal": false },
+            "MDL": { "nome": "Leu Moldavo", "bandeira": "🇲🇩", "cor": "bg-blue-700", "regiao": "europa", "principal": false },
+            "KGS": { "nome": "Som Quirguiz", "bandeira": "🇰🇬", "cor": "bg-red-500", "regiao": "asia", "principal": false },
+            "DOP": { "nome": "Peso Dominicano", "bandeira": "🇩🇴", "cor": "bg-blue-500", "regiao": "americas", "principal": false },
+            "GTQ": { "nome": "Quetzal de Guatemala", "bandeira": "🇬🇹", "cor": "bg-green-600", "regiao": "americas", "principal": false },
+            "HNL": { "nome": "Lempira de Honduras", "bandeira": "🇭🇳", "cor": "bg-blue-800", "regiao": "americas", "principal": false },
+            "NIO": { "nome": "Córdoba de Nicarágua", "bandeira": "🇳🇮", "cor": "bg-blue-500", "regiao": "americas", "principal": false },
+            "PAB": { "nome": "Balboa de Panamá", "bandeira": "🇵🇦", "cor": "bg-blue-600", "regiao": "americas", "principal": false },
+            "BZD": { "nome": "Dólar de Belize", "bandeira": "🇧🇿", "cor": "bg-green-700", "regiao": "americas", "principal": false },
+            "GHS": { "nome": "Cedi de Gana", "bandeira": "🇬🇭", "cor": "bg-yellow-500", "regiao": "africa", "principal": false },
+            "MUR": { "nome": "Rúpia Mauriciana", "bandeira": "🇲🇺", "cor": "bg-red-600", "regiao": "africa", "principal": false },
+            "ETB": { "nome": "Birr Etíope", "bandeira": "🇪🇹", "cor": "bg-green-700", "regiao": "africa", "principal": false }
         };
 
         let moedasData = [];
         let filtroAtual = 'all';
         let searchTerm = '';
 
-        // Funções utilitárias
-        async function loadHtmlComponent(url, elementId) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`Status ${response.status}`);
-                const html = await response.text();
-                const wrapper = document.getElementById(elementId);
-                wrapper.innerHTML = html;
-                if (wrapper.firstElementChild) {
-                    wrapper.replaceWith(...wrapper.childNodes);
-                }
-            } catch (e) {
-                console.warn(`Erro no módulo ${elementId}:`, e);
-            }
+        function formatBCBDate(date) {
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            const y = date.getFullYear();
+            return `${m}-${d}-${y}`;
         }
 
-        function loadScript(url) {
-            return new Promise((resolve) => {
-                const script = document.createElement('script');
-                script.src = url;
-                script.onload = resolve;
-                script.onerror = resolve;
-                document.body.appendChild(script);
-            });
-        }
-
-        function formatarMoeda(valor, decimais = 4) {
-            return new Intl.NumberFormat('pt-BR', {
-                minimumFractionDigits: decimais,
-                maximumFractionDigits: decimais
-            }).format(valor);
-        }
-
-        function formatarData(dataString) {
-            const data = new Date(dataString);
-            return data.toLocaleDateString('pt-BR', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-        }
-
-        function getDataAtual() {
-            const hoje = new Date();
-            // Volta alguns dias para garantir que tenha cotação disponível
-            hoje.setDate(hoje.getDate() - 1);
-            return hoje.toLocaleDateString('en-CA'); // formato YYYY-MM-DD
-        }
-
-        // Buscar cotações da API do BCB
         async function buscarCotacoes() {
             showLoading();
-
             try {
-                const dataFim = getDataAtual();
-                const dataInicio = dataFim; // Mesmo dia para pegar cotação mais recente
+                const hoje = new Date();
+                const haUmaSemana = new Date();
+                haUmaSemana.setDate(hoje.getDate() - 7);
 
-                // API PTAX do Banco Central
-                const url = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='USD'&@dataInicial='01-01-2024'&@dataFinalCotacao='${dataFim.split('-').reverse().join('-')}'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json`;
+                const dataFinal = formatBCBDate(hoje);
+                const dataInicial = formatBCBDate(haUmaSemana);
 
-                // Buscar lista de moedas disponíveis
-                const urlMoedas = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas?$format=json`;
+                const resMoedas = await fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas?$format=json`);
+                const listaMoedas = await resMoedas.json();
 
-                const responseMoedas = await fetch(urlMoedas);
-                if (!responseMoedas.ok) throw new Error('Erro ao buscar moedas');
-                const dataMoedas = await responseMoedas.json();
-
-                // Buscar cotações para cada moeda
-                const promessas = dataMoedas.value.map(async (moeda) => {
+                const promessas = listaMoedas.value.map(async (m) => {
                     try {
-                        const urlCotacao = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='${moeda.simbolo}'&@dataCotacao='${dataFim.split('-').reverse().join('-')}'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json`;
+                        const url = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='${m.simbolo}'&@dataInicial='${dataInicial}'&@dataFinalCotacao='${dataFinal}'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json`;
+                        
+                        const res = await fetch(url);
+                        if (!res.ok) return null;
+                        const data = await res.json();
 
-                        const response = await fetch(urlCotacao);
-                        if (!response.ok) return null;
-
-                        const data = await response.json();
                         if (data.value && data.value.length > 0) {
-                            const cotacao = data.value[0];
-                            const config = MOEDAS_CONFIG[moeda.simbolo] || {
-                                nome: moeda.nomeFormatado,
-                                bandeira: '🌍',
-                                cor: 'bg-gray-500',
-                                regiao: 'outros',
-                                principal: false
+                            const c = data.value[0];
+                            // Busca config no mapeamento. Se não existir, marca como 'outros'
+                            const config = MOEDAS_CONFIG[m.simbolo] || { 
+                                nome: m.nomeFormatado, 
+                                bandeira: '🌍', 
+                                cor: 'bg-gray-400', 
+                                regiao: 'outros', 
+                                principal: false 
                             };
-
                             return {
-                                codigo: moeda.simbolo,
-                                nome: config.nome || moeda.nomeFormatado,
+                                codigo: m.simbolo,
+                                nome: config.nome,
                                 bandeira: config.bandeira,
                                 cor: config.cor,
                                 regiao: config.regiao,
                                 principal: config.principal,
-                                cotacaoCompra: cotacao.cotacaoCompra,
-                                cotacaoVenda: cotacao.cotacaoVenda,
-                                dataHoraCotacao: cotacao.dataHoraCotacao,
-                                tipoBoletim: cotacao.tipoBoletim
+                                cotacaoCompra: c.cotacaoCompra,
+                                cotacaoVenda: c.cotacaoVenda,
+                                dataHoraCotacao: c.dataHoraCotacao,
+                                tipoBoletim: c.tipoBoletim
                             };
                         }
                         return null;
-                    } catch (e) {
-                        return null;
-                    }
+                    } catch { return null; }
                 });
 
                 const resultados = await Promise.all(promessas);
-                moedasData = resultados.filter(m => m !== null);
+                moedasData = resultados.filter(x => x !== null);
 
-                // Atualizar data de referência
                 if (moedasData.length > 0) {
-                    document.getElementById('data-referencia').textContent = formatarData(moedasData[0].dataHoraCotacao);
+                    const dataRef = new Date(moedasData[0].dataHoraCotacao);
+                    document.getElementById('data-referencia').textContent = dataRef.toLocaleDateString('pt-BR');
                 }
 
                 renderizarMoedas();
+                atualizarSelectMoedas();
                 atualizarConversor();
 
             } catch (error) {
-                console.error('Erro ao buscar cotações:', error);
+                console.error('Erro BCB:', error);
                 showError();
             }
         }
@@ -503,21 +431,19 @@
         function showLoading() {
             document.getElementById('loading-state').classList.remove('hidden');
             document.getElementById('moedas-grid').classList.add('hidden');
-            document.getElementById('empty-state').classList.add('hidden');
             document.getElementById('error-state').classList.add('hidden');
+            document.getElementById('empty-state').classList.add('hidden');
         }
 
         function showError() {
             document.getElementById('loading-state').classList.add('hidden');
-            document.getElementById('moedas-grid').classList.add('hidden');
-            document.getElementById('empty-state').classList.add('hidden');
             document.getElementById('error-state').classList.remove('hidden');
         }
 
-        function filtrarMoedas() {
+        function renderizarMoedas() {
             let moedas = [...moedasData];
 
-            // Aplicar filtro de região
+            // Filtro por categoria
             if (filtroAtual !== 'all') {
                 if (filtroAtual === 'principais') {
                     moedas = moedas.filter(m => m.principal);
@@ -526,144 +452,106 @@
                 }
             }
 
-            // Aplicar busca
+            // Filtro por texto (Busca)
             if (searchTerm) {
-                const termo = searchTerm.toLowerCase();
-                moedas = moedas.filter(m =>
-                    m.nome.toLowerCase().includes(termo) ||
-                    m.codigo.toLowerCase().includes(termo)
+                const term = searchTerm.toLowerCase();
+                moedas = moedas.filter(m => 
+                    m.nome.toLowerCase().includes(term) || 
+                    m.codigo.toLowerCase().includes(term)
                 );
             }
 
-            // Aplicar ordenação
-            const ordenacao = document.getElementById('ordenar').value;
-            switch (ordenacao) {
-                case 'nome':
-                    moedas.sort((a, b) => a.nome.localeCompare(b.nome));
-                    break;
-                case 'cotacao-asc':
-                    moedas.sort((a, b) => a.cotacaoVenda - b.cotacaoVenda);
-                    break;
-                case 'cotacao-desc':
-                    moedas.sort((a, b) => b.cotacaoVenda - a.cotacaoVenda);
-                    break;
-            }
+            // Ordenação
+            const ord = document.getElementById('ordenar').value;
+            if (ord === 'nome') moedas.sort((a, b) => a.nome.localeCompare(b.nome));
+            else if (ord === 'cotacao-asc') moedas.sort((a, b) => a.cotacaoVenda - b.cotacaoVenda);
+            else if (ord === 'cotacao-desc') moedas.sort((a, b) => b.cotacaoVenda - a.cotacaoVenda);
 
-            return moedas;
-        }
-
-        function renderizarMoedas() {
-            const moedas = filtrarMoedas();
             const grid = document.getElementById('moedas-grid');
             const loading = document.getElementById('loading-state');
             const empty = document.getElementById('empty-state');
 
             loading.classList.add('hidden');
+            document.getElementById('contador-moedas').textContent = `${moedas.length} moedas`;
 
             if (moedas.length === 0) {
                 grid.classList.add('hidden');
                 empty.classList.remove('hidden');
-                document.getElementById('contador-moedas').textContent = '0 moedas';
                 return;
             }
 
             empty.classList.add('hidden');
             grid.classList.remove('hidden');
-            document.getElementById('contador-moedas').textContent = `${moedas.length} moedas`;
 
-            grid.innerHTML = moedas.map(moeda => `
+            grid.innerHTML = moedas.map(m => `
                 <div class="card-currency bg-white rounded-2xl overflow-hidden flex flex-col group">
                     <div class="p-6">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="currency-icon ${moeda.cor} text-white shadow-lg">
-                                ${moeda.bandeira}
-                            </div>
+                            <div class="currency-icon ${m.cor} text-white shadow-lg">${m.bandeira}</div>
                             <div class="flex-1">
-                                <h3 class="text-lg font-bold text-slate-900 group-hover:text-audit-gold transition-colors">${moeda.nome}</h3>
-                                <span class="text-sm font-mono text-slate-500">${moeda.codigo}</span>
+                                <h3 class="text-lg font-bold text-slate-900 group-hover:text-audit-gold transition-colors">${m.nome}</h3>
+                                <span class="text-sm font-mono text-slate-500">${m.codigo}</span>
                             </div>
-                            ${moeda.principal ? '<span class="currency-badge bg-audit-gold text-white">Principal</span>' : ''}
+                            ${m.principal ? '<span class="currency-badge bg-audit-gold text-white">Principal</span>' : ''}
                         </div>
-
                         <div class="space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-slate-500">Compra:</span>
-                                <span class="text-lg font-bold text-audit-navy">R$ ${formatarMoeda(moeda.cotacaoCompra)}</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-slate-500">Venda:</span>
-                                <span class="text-lg font-bold text-green-600">R$ ${formatarMoeda(moeda.cotacaoVenda)}</span>
-                            </div>
+                            <div class="flex justify-between items-center"><span class="text-sm text-slate-500">Compra:</span><span class="text-lg font-bold text-audit-navy">R$ ${m.cotacaoCompra.toFixed(4).replace('.', ',')}</span></div>
+                            <div class="flex justify-between items-center"><span class="text-sm text-slate-500">Venda:</span><span class="text-lg font-bold text-green-600">R$ ${m.cotacaoVenda.toFixed(4).replace('.', ',')}</span></div>
                         </div>
-
                         <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                            <span class="flex items-center gap-1">
-                                <i data-lucide="clock" class="w-3 h-3"></i>
-                                ${new Date(moeda.dataHoraCotacao).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
-                            </span>
-                            <span class="px-2 py-1 bg-slate-100 rounded">${moeda.tipoBoletim}</span>
+                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> ${new Date(m.dataHoraCotacao).toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'})}</span>
+                            <span class="px-2 py-1 bg-slate-100 rounded">${m.tipoBoletim}</span>
                         </div>
                     </div>
                 </div>
             `).join('');
-
-            // Re-criar ícones Lucide
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+            
+            if (window.lucide) lucide.createIcons();
         }
 
         function atualizarConversor() {
             const valorBRL = parseFloat(document.getElementById('valor-brl').value) || 0;
             const moedaDestino = document.getElementById('moeda-destino').value;
-
             const moeda = moedasData.find(m => m.codigo === moedaDestino);
-            if (moeda && moeda.cotacaoVenda > 0) {
-                const resultado = valorBRL / moeda.cotacaoVenda;
-                document.getElementById('resultado-conversao').textContent =
-                    `${moedaDestino} ${formatarMoeda(resultado, 2)}`;
+            const res = document.getElementById('resultado-conversao');
+            if (moeda) {
+                const valorConvertido = valorBRL / moeda.cotacaoVenda;
+                res.textContent = `${moeda.codigo} ${valorConvertido.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             } else {
-                document.getElementById('resultado-conversao').textContent = '--';
+                res.textContent = '--';
             }
         }
 
         function atualizarSelectMoedas() {
             const select = document.getElementById('moeda-destino');
-            const moedasPrincipais = moedasData.filter(m => m.principal);
-
-            select.innerHTML = moedasPrincipais.map(m =>
-                `<option value="${m.codigo}">${m.nome} (${m.codigo})</option>`
-            ).join('');
+            // Só mostra no select moedas que temos mapeadas ou que são relevantes
+            const filtradas = moedasData.filter(m => MOEDAS_CONFIG[m.codigo]);
+            if (filtradas.length > 0) {
+                select.innerHTML = filtradas
+                    .sort((a, b) => a.nome.localeCompare(b.nome))
+                    .map(m => `<option value="${m.codigo}" ${m.codigo === 'USD' ? 'selected' : ''}>${m.nome} (${m.codigo})</option>`).join('');
+            }
         }
 
         async function initPage() {
-            // Carregar componentes
-            await Promise.all([
-                loadHtmlComponent(RESOURCES.headerHTML, 'header-container'),
-                loadHtmlComponent(RESOURCES.footerHTML, 'footer-container')
-            ]);
+            // Carregar Componentes Globais
+            fetch(RESOURCES.headerHTML).then(r => r.text()).then(html => document.getElementById('header-container').innerHTML = html).catch(() => {});
+            fetch(RESOURCES.footerHTML).then(r => r.text()).then(html => document.getElementById('footer-container').innerHTML = html).catch(() => {});
 
-            for (const scriptUrl of RESOURCES.scripts) {
-                await loadScript(scriptUrl);
-            }
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-
-            // Buscar cotações
+            if (window.lucide) lucide.createIcons();
+            
             await buscarCotacoes();
-            atualizarSelectMoedas();
 
-            // Event Listeners
-
-            // Filtros
+            // Configuração dos Botões de Filtro
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
+                    // Limpa estados de todos os botões
                     document.querySelectorAll('.filter-btn').forEach(b => {
                         b.classList.remove('active');
                         b.classList.add('text-slate-600', 'hover:text-audit-navy');
                     });
+                    
+                    // Ativa botão clicado
                     btn.classList.add('active');
                     btn.classList.remove('text-slate-600', 'hover:text-audit-navy');
 
