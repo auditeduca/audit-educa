@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Auditoria: Teste de Inventário Físico (CPC 16)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #003366; --primary-gold: #DAA520; --bg-color: #f0f2f5; --white: #ffffff;
+            --text-dark: #2c3e50; --text-medium: #4a5568; --border-radius: 10px; --shadow-md: 0 4px 6px rgba(0,0,0,0.08);
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 20px; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; background-color: var(--white); padding: 50px; border-radius: var(--border-radius); box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-top: 6px solid var(--primary-gold); }
+        header { text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #f1f1f1; }
+        .logo-placeholder { display: inline-flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; color: var(--primary-blue); margin-bottom: 25px; border: 2px solid var(--primary-blue); padding: 8px 24px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
+        .logo-placeholder i { color: var(--primary-gold); }
+        h1 { color: var(--primary-blue); font-size: 24px; font-weight: 700; margin: 0; text-transform: uppercase; line-height: 1.4; }
+        h2 { text-align: left; color: var(--primary-blue); font-size: 20px; font-weight: 600; margin: 40px 0 20px 0; padding-bottom: 8px; border-bottom: 2px solid var(--primary-gold); display: flex; align-items: center; gap: 10px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .card-list { background-color: #fcfcfc; border: 1px solid #eef0f2; padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow-md); height: 100%; }
+        .card-list h3 { font-size: 16px; color: var(--primary-gold); margin-top: 0; padding-bottom: 5px; border-bottom: 1px dashed #ddd; }
+        .card-list ul { list-style: none; padding-left: 0; }
+        .card-list li { font-size: 14px; color: var(--text-medium); margin-bottom: 8px; padding-left: 15px; position: relative; }
+        .card-list li::before { content: "\f058"; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--primary-blue); position: absolute; left: 0; font-size: 12px; top: 3px; }
+        .procedure-card { border-left: 5px solid var(--primary-blue); background-color: #eef4fb; }
+        .risk-card { border-left: 5px solid #c0392b; background-color: #f8eef0; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e1e1; font-size: 12px; color: var(--text-medium); text-align: center; }
+        @media (max-width: 768px) { .container { padding: 30px; } .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 20px; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo-placeholder">
+            <i class="fas fa-warehouse"></i> AUDIT EDUCA
+        </div>
+        <h1>Guia de Bolso: Teste de Inventário Físico (Existência e Avaliação)</h1>
+    </header>
+
+    <p style="text-align: center; font-size: 16px; color: var(--text-medium); margin-bottom: 40px;">
+        A auditoria de estoques (inventário) é essencial para a **existência** do ativo e para a correta mensuração do **CMV**. O procedimento primário é a observação do inventário físico (ISA 501 / NBC TA 501).
+    </p>
+
+    <h2><i class="fas fa-search"></i> Afirmações de Auditoria Chave</h2>
+    <section class="grid-2">
+        <div class="card-list">
+            <h3>Contagem Física e Existência</h3>
+            <ul style="list-style: disc; padding-left: 20px;">
+                <li>**Existência:** Os estoques registrados realmente existem (observação da contagem física)?</li>
+                <li>**Integralidade:** Todos os estoques (incluindo em posse de terceiros ou em trânsito) foram incluídos?</li>
+                <li>**Corte:** Movimentações de estoque na data da contagem (entradas/saídas) foram registradas no período correto?</li>
+            </ul>
+        </div>
+        <div class="card-list">
+            <h3>Avaliação e Classificação</h3>
+            <ul style="list-style: disc; padding-left: 20px;">
+                <li>**Avaliação:** O estoque está registrado ao **menor valor** entre Custo e Valor Líquido Realizável (VLR)?</li>
+                <li>**Mensuração:** O método de custeio (FIFO, Custo Médio) foi aplicado consistentemente?</li>
+                <li>**Classificação:** Estoque Obsoleto, Danificado ou de Lenta Rotação foi provisionado (VLR)?</li>
+            </ul>
+        </div>
+    </section>
+
+    <h2><i class="fas fa-clipboard-list"></i> Procedimentos Substantivos Essenciais</h2>
+    <div class="card-list procedure-card">
+        <ul style="list-style: decimal; padding-left: 25px;">
+            <li>**Observação do Inventário:** Participar da contagem física para garantir a adequação dos procedimentos da entidade (contagem dupla, lacre de áreas contadas).</li>
+            <li>**Teste de *Tag* (Existência):** Selecionar uma amostra de etiquetas de contagem e rastreá-las até o estoque físico (da Contagem para o Estoque).</li>
+            <li>**Teste de *Floor-to-Sheet* (Integralidade):** Selecionar uma amostra de itens do estoque físico e rastreá-los até a lista final da contagem (do Estoque para a Contagem).</li>
+            <li>**Teste de Corte:** Inspecionar as últimas Notas Fiscais de Entrada e Saída (Recebimento/Emissão) antes e depois do balanço para garantir o registro no período correto.</li>
+            <li>**Teste de VLR (Obsoleto):** Analisar o relatório de itens de lenta rotação, obsoleto ou danificado, e testar a provisão de ajuste a VLR (custo vs. preço de venda estimado).</li>
+            <li>**Teste de Custos:** Testar o cálculo do custo unitário (Custo Médio ou FIFO) e verificar se o rateio de Custos Indiretos de Fabricação Fixos (CIF) foi feito pela capacidade normal.</li>
+        </ul>
+    </div>
+
+    <h2><i class="fas fa-exclamation-triangle"></i> Riscos Comuns de Distorção</h2>
+    <div class="card-list risk-card">
+        <ul style="list-style: square; padding-left: 25px;">
+            <li>**Existência:** Contagem de itens que não existem ou que não são de propriedade da entidade (ex: estoque em consignação). **Risco Altíssimo**.</li>
+            <li>**Avaliação:** Falha em provisionar estoques obsoletos ou danificados, superestimando o ativo e subestimando o CMV/Prejuízo.</li>
+            <li>**Corte:** Falha em registrar vendas/compras realizadas, mas não contabilizadas (manipulando CMV).</li>
+            <li>**Fraude:** Manipulação do CMV por meio da capitalização indevida de despesas no estoque (Ex: folha administrativa).</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Baseado nas Normas Internacionais de Auditoria (ISA 501 / NBC TA 501) e CPC 16 / IAS 2.</p>
+    </footer>
+</div>
+
+</body>
+</html>
