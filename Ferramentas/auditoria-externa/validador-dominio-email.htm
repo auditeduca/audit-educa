@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Domínio | Validador de Domínio e Configuração para receber e-mails | Audit Educa</title>
+    
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Ferramenta de validação de domínios em processo de circularização para auditores: valide se domínios corporativos estão configurados para receber e-mails (MX) com verificação técnica simplificada.">
+    <meta name="keywords" content="circularização, auditoria, validação de e-mail, validação de domínio, MX, DNS, controle de terceiros, auditoria externa">
+    <link rel="canonical" href="https://auditeduca.com.br/ferramentas/auditoria-externa/validador-dominio-email.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Controle de Circularização | Validador de Domínio e MX">
+    <meta property="og:description" content="Verifique se domínios de terceiros estão configurados para receber e-mails de circularização e são confiáveis - ferramenta técnica simplificada para auditores.">
+    <meta property="og:image" content="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp">
+    <meta property="og:url" content="https://auditeduca.com.br/ferramentas/auditoria-externa/validador-dominio-email.html">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P6GKJ7BF');</script>
+    <!-- End Google Tag Manager -->
+    
+    <link rel="icon" type="image/webp" href="assets/images/audit-educa-favicon.webp">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        'audit-gold': '#D4AF37',
+                        'audit-navy': '#1E3A8A',
+                        'audit-blue': '#3B82F6',
+                        'audit-bgDark': '#0F172A',
+                        'audit-cardDark': '#1E293B',
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'slide-in-up': 'slideInUp 0.5s ease-out forwards',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Assets Externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <style>
+        /* Animações */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Loader Circular */
+        .loader {
+            border: 2px solid rgba(255,255,255,0.2); border-left-color: #fff;
+            border-radius: 50%; width: 20px; height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Estilos da Timeline Visual */
+        .timeline-line {
+            position: absolute; left: 19px; top: 10px; bottom: 0; width: 2px;
+            background: #e5e7eb; z-index: 0;
+        }
+        .dark .timeline-line { background: #374151; }
+        
+        .timeline-dot {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 10; background: white; border: 2px solid #e5e7eb;
+            font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Cores de Status da Timeline */
+        .status-info .timeline-dot { border-color: #3B82F6; color: #3B82F6; }
+        .status-success .timeline-dot { border-color: #10B981; color: #fff; background: #10B981; }
+        .status-error .timeline-dot { border-color: #EF4444; color: #fff; background: #EF4444; }
+        .status-warning .timeline-dot { border-color: #F59E0B; color: #fff; background: #F59E0B; }
+        .status-loading .timeline-dot { border-color: #9CA3AF; color: #6B7280; animation: pulse 1.5s infinite; }
+
+        /* Estilos de Impressão (PDF Limpo) */
+        @media print {
+            @page { size: A4; margin: 1.5cm; }
+            body * { visibility: hidden; }
+            /* Ocultar elementos de UI */
+            #header-container, #footer-container, #sidebar, .no-print, button, .timeline-line, .timeline-dot i, #print-actions { display: none !important; }
+            
+            /* Exibir apenas o relatório */
+            #printable-report, #printable-report * { visibility: visible; }
+            #printable-report {
+                display: block !important;
+                position: absolute; left: 0; top: 0; width: 100%;
+                background: white; color: black; font-family: 'Poppins', sans-serif;
+                z-index: 9999;
+            }
+            /* Forçar cores de fundo na impressão */
+            .print-bg-gray { background-color: #f9fafb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-border { border: 1px solid #e5e7eb !important; }
+            
+            #print-footer {
+                position: fixed; bottom: 0; left: 0; width: 100%;
+                display: flex !important; justify-content: space-between; align-items: flex-end;
+                border-top: 1px solid #ccc; padding-top: 10px;
+            }
+        }
+        
+        /* Tags Estilizadas */
+        .tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 2px 4px 2px 0;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .tag:hover {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #93c5fd;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(3, 105, 161, 0.15);
+        }
+        .dark .tag {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            border-color: #3b82f6;
+            color: #dbeafe;
+        }
+        
+        /* Upload de Arquivo Estilizado */
+        .file-upload {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+        .file-upload:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .dark .file-upload {
+            border-color: #475569;
+            background: #1e293b;
+        }
+        .dark .file-upload:hover {
+            border-color: #60a5fa;
+            background: #1e3a8a20;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-audit-bgDark dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300 font-sans">
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6GKJ7BF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PN1VH0CF79"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PN1VH0CF79');
+    </script>
+
+    <!-- Header Modular -->
+    <div id="header-container" class="no-print sticky top-0 z-50"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="flex-grow">
+        
+        <!-- Seção Hero Limpa (Sem SVG) -->
+        <section class="relative bg-audit-navy text-white pt-32 pb-16 no-print shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+                <span class="inline-block py-1 px-3 rounded bg-blue-900/50 border border-blue-500/30 text-blue-200 text-xs font-semibold mb-4 tracking-wider uppercase">Validador de Domínio</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold mb-4 animate-fade-in-down leading-tight">
+                    Validador de Domínio e MX
+                </h1>
+                <p class="text-lg opacity-90 text-blue-100 font-light max-w-2xl">
+                    <strong>Para não técnicos:</strong> A ferramenta verifica se o domínio da empresa está configurado existe e está corretamente para receber e-mails de circularização. 
+                    Não verificamos caixas postais individuais, apenas se o domínio tem servidores de e-mail ativos.
+                </p>
+                
+                <!-- Tags de Navegação -->
+                <div class="mt-8 flex flex-wrap gap-2">
+                    <a href="/busca?tag=circularização" class="tag">#circularização</a>
+                    <a href="/busca?tag=auditoria" class="tag">#auditoria</a>
+                    <a href="/busca?tag=validação" class="tag">#validação</a>
+                    <a href="/busca?tag=domínio" class="tag">#domínio</a>
+                    <a href="/busca?tag=e-mail" class="tag">#e-mail</a>
+                    <a href="/busca?tag=controle" class="tag">#controle</a>
+                    <a href="/busca?tag=terceiros" class="tag">#terceiros</a>
+                    <a href="/busca?tag=confirmação" class="tag">#confirmação</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layout de Colunas -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- COLUNA ESQUERDA (Ferramenta) -->
+                <main class="lg:col-span-8 space-y-8">
+                    
+                    <!-- Card Principal -->
+                    <div class="bg-white dark:bg-audit-cardDark rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden no-print">
+                        <div class="h-1.5 w-full bg-gradient-to-r from-audit-navy via-audit-blue to-audit-navy"></div>
+                        <div class="p-6 md:p-8">
+                            
+                            <!-- Abas de Navegação -->
+                            <div class="flex border-b border-gray-200 dark:border-gray-700 mb-6">
+                                <button id="tab-single" class="tab-btn active px-4 py-3 font-medium text-audit-navy dark:text-audit-blue border-b-2 border-audit-navy dark:border-audit-blue">
+                                    <i class="fas fa-search mr-2"></i>Valide Domínio
+                                </button>
+                                <button id="tab-bulk" class="tab-btn px-4 py-3 font-medium text-gray-500 dark:text-gray-400 hover:text-audit-navy dark:hover:text-audit-blue">
+                                    <i class="fas fa-upload mr-2"></i>Valide Domínios em Massa
+                                </button>
+                            </div>
+                            
+                            <!-- Conteúdo Aba Individual -->
+                            <div id="content-single" class="tab-content active">
+                                <!-- Input Group -->
+                                <div class="space-y-4">
+                                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Digite o Domínio ou E-mail para análise:</label>
+                                    <div class="flex flex-col md:flex-row gap-3">
+                                        <div class="relative flex-grow group">
+                                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                                <i class="fas fa-globe text-gray-400 group-focus-within:text-audit-blue transition-colors"></i>
+                                            </div>
+                                            <input type="text" id="emailInput" 
+                                                class="w-full pl-11 pr-4 py-4 bg-gray-50 dark:bg-audit-bgDark/50 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-audit-blue outline-none transition-all text-lg shadow-inner"
+                                                placeholder="ex: empresa.com.br ou contato@empresa.com.br" autocomplete="off">
+                                        </div>
+                                        <button onclick="iniciarValidacao()" id="btnValidate" 
+                                            class="bg-audit-navy hover:bg-audit-blue text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 min-w-[160px]">
+                                            <span>Validar</span>
+                                            <i class="fas fa-search-location"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 italic">
+                                        * Esta ferramenta não verifica se a caixa de entrada individual existe, apenas se o domínio está configurado para receber e-mails.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Conteúdo Aba Massa -->
+                            <div id="content-bulk" class="tab-content hidden">
+                                <div class="space-y-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Importar Lista para Validação em Massa:</label>
+                                        
+                                        <!-- Área de Upload -->
+                                        <div class="file-upload" id="drop-area">
+                                            <div class="mb-4">
+                                                <i class="fas fa-file-upload text-4xl text-audit-navy dark:text-audit-blue mb-3"></i>
+                                                <h4 class="font-bold text-gray-700 dark:text-gray-300 mb-1">Arraste e solte seu arquivo aqui</h4>
+                                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">ou clique para selecionar</p>
+                                            </div>
+                                            <input type="file" id="fileInput" accept=".csv,.txt,.xlsx,.xls" class="hidden">
+                                            <button onclick="document.getElementById('fileInput').click()" 
+                                                class="bg-audit-navy hover:bg-audit-blue text-white font-bold px-6 py-3 rounded-lg shadow hover:shadow-xl transition-all flex items-center justify-center gap-2 mx-auto">
+                                                <i class="fas fa-file-import"></i> Selecionar Arquivo
+                                            </button>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+                                                Formatos aceitos: CSV, TXT, Excel (XLSX, XLS)<br>
+                                                <strong>Modelo recomendado:</strong> Uma coluna com cabeçalho "email" ou "domínio"
+                                            </p>
+                                        </div>
+                                        
+                                        <!-- Pré-visualização -->
+                                        <div id="file-preview" class="hidden mt-4 bg-gray-50 dark:bg-audit-bgDark/50 rounded-lg p-4">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <div class="flex items-center gap-3">
+                                                    <i class="fas fa-file-alt text-audit-navy dark:text-audit-blue"></i>
+                                                    <div>
+                                                        <h5 id="file-name" class="font-medium"></h5>
+                                                        <p id="file-size" class="text-xs text-gray-500"></p>
+                                                    </div>
+                                                </div>
+                                                <button onclick="limparArquivo()" class="text-red-500 hover:text-red-700">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                            <div id="file-stats" class="text-sm text-gray-600 dark:text-gray-400"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex gap-3">
+                                        <button onclick="processarArquivo()" id="btnProcessBulk" 
+                                            class="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg shadow hover:shadow-xl transition-all flex items-center justify-center gap-2 flex-1">
+                                            <i class="fas fa-play"></i> Processar Lista
+                                        </button>
+                                        <button onclick="baixarTemplate()" 
+                                            class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-bold px-4 py-3 rounded-lg shadow transition-all flex items-center justify-center gap-2">
+                                            <i class="fas fa-download"></i> Template
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Timeline Visual -->
+                            <div id="timeline-wrapper" class="hidden mt-10">
+                                <h3 class="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 border-b border-gray-100 dark:border-gray-700 pb-2">
+                                    <i class="fas fa-terminal"></i> Processo de Validação
+                                </h3>
+                                
+                                <div class="relative pl-4">
+                                    <div class="timeline-line"></div>
+                                    <div id="timeline-output" class="space-y-6">
+                                        <!-- Itens injetados via JS -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Resultado Final -->
+                            <div id="result-area" class="hidden mt-8"></div>
+
+                            <!-- Ações Pós Validação -->
+                            <div id="print-actions" class="hidden mt-6 flex justify-end pt-4 border-t border-gray-100 dark:border-gray-700">
+                                <button onclick="window.print()" class="group text-gray-600 hover:text-audit-navy dark:text-gray-400 dark:hover:text-white font-medium text-sm inline-flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                                    <i class="fas fa-file-pdf text-lg group-hover:text-red-500 transition-colors"></i>
+                                    Baixar Relatório PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Informativo -->
+                    <div class="bg-blue-50 dark:bg-blue-900/10 rounded-xl p-6 border border-blue-100 dark:border-blue-800/30 flex gap-4 items-start no-print">
+                        <div class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-200 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900 dark:text-blue-100 text-sm mb-1">Como funciona esta validação?</h4>
+                            <p class="text-sm text-blue-800 dark:text-blue-200/80 leading-relaxed mb-3">
+                                <strong>Em linguagem simples:</strong> Verificamos se o domínio da empresa (ex: "empresa.com.br") tem servidores de e-mail contratados e configurados. 
+                                É como verificar se um prédio comercial tem caixas de correio instaladas antes de enviar uma carta.
+                            </p>
+                            <p class="text-sm text-blue-800 dark:text-blue-200/80 leading-relaxed mb-3">
+                                <strong>O que NÃO verificamos:</strong> Não checamos se um e-mail específico (ex: "fulano@empresa.com.br") existe ou se está ativo. 
+                                Essa verificação seria como tentar abrir o cadeado de uma caixa de correio específica.
+                            </p>
+                            <p class="text-sm text-blue-800 dark:text-blue-200/80 leading-relaxed">
+                                <strong>Tecnologia utilizada:</strong> Usamos a <a href="https://developers.google.com/speed/public-dns/docs/doh" target="_blank" class="underline font-medium">Google Public DNS API</a> 
+                                para consultar registros MX (Mail Exchange) de forma segura e confiável.
+                            </p>
+                        </div>
+                    </div>
+
+                </main>
+
+                <!-- COLUNA DIREITA (Sidebar Completa) -->
+                <aside id="sidebar" class="lg:col-span-4 space-y-6 no-print">
+                    
+                    <!-- Widget: CTA Controle de Circularização -->
+                    <div class="relative bg-gradient-to-br from-audit-navy to-blue-900 rounded-2xl shadow-xl overflow-hidden group p-6 text-white transform transition hover:-translate-y-1">
+                        <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4">
+                            <i class="fas fa-file-signature text-9xl"></i>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <span class="bg-audit-gold text-audit-navy text-[10px] font-bold px-2 py-1 rounded uppercase mb-3 inline-block">Recomendado</span>
+                            <h3 class="font-bold text-xl mb-2">Controle de Circularização</h3>
+                            <p class="text-blue-100 text-sm mb-6">Modelos padronizados para facilitar sua rotina em campo.</p>
+                            
+                            <a href="biblioteca/modelos/controle-de-circularizacao.html" class="flex items-center justify-center w-full bg-white text-audit-navy font-bold py-3 rounded-xl hover:bg-audit-gold transition-colors shadow-lg gap-2">
+                                <i class="fas fa-download"></i> Baixar Modelo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Widget: Compartilhar -->
+                    <div class="bg-white dark:bg-audit-cardDark rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Compartilhar</h3>
+                        <div class="flex gap-2">
+                            <button onclick="compartilharWhatsApp()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition-colors"><i class="fab fa-whatsapp"></i></button>
+                            <button onclick="compartilharLinkedIn()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors"><i class="fab fa-linkedin-in"></i></button>
+                            <button onclick="compartilharTwitter()" class="flex-1 bg-black hover:bg-gray-800 text-white py-2 rounded-lg transition-colors"><i class="fab fa-x-twitter"></i></button>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ÁREA DE IMPRESSÃO (Oculta na Tela) -->
+    <div id="printable-report" class="hidden">
+        <!-- Cabeçalho do Relatório -->
+        <div class="flex items-center justify-between mb-8 border-b-4 border-audit-navy pb-6">
+            <div class="flex items-center gap-4">
+                <!-- Logo -->
+                <div class="w-16 h-16 bg-audit-navy text-white flex items-center justify-center rounded-lg shadow-sm print-bg-gray">
+                    <span class="font-bold text-3xl font-serif">AE</span>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-audit-navy uppercase tracking-tight">Controle de Circularização</h1>
+                    <p class="text-gray-600 font-medium">Relatório Técnico - Validação de Domínio e MX</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-sm text-gray-500">Gerado em: <span id="print-date"></span></p>
+                <p class="text-xs text-gray-400">ID: <span id="print-id"></span></p>
+            </div>
+        </div>
+
+        <!-- Informações do Processo -->
+        <div class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200 print-bg-gray print-border">
+            <h3 class="font-bold text-audit-navy mb-4 text-lg">Processo de Validação</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Esta validação utiliza a <strong>Google Public DNS API</strong> para consultar registros MX (Mail Exchange) 
+                        e verificar se o domínio está configurado para receber e-mails.
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        <strong>Documentação técnica:</strong><br>
+                        <a href="https://developers.google.com/speed/public-dns/docs/doh" class="text-blue-600 underline">https://developers.google.com/speed/public-dns/docs/doh</a>
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Etapas do processo:</strong></p>
+                    <ol class="text-sm text-gray-600 list-decimal pl-5 space-y-1">
+                        <li>Extração do domínio do e-mail informado</li>
+                        <li>Validação da sintaxe do domínio</li>
+                        <li>Consulta DNS para registros MX</li>
+                        <li>Análise da resposta técnica</li>
+                        <li>Geração deste relatório</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo Executivo -->
+        <div class="mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200 print-bg-gray print-border">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <span class="block text-xs font-bold text-gray-400 uppercase mb-1">Domínio Analisado</span>
+                    <strong id="print-email" class="text-xl text-gray-800 font-mono">...</strong>
+                </div>
+                <div>
+                    <span class="block text-xs font-bold text-gray-400 uppercase mb-1">Resultado da Configuração</span>
+                    <div id="print-status-badge" class="inline-block px-4 py-2 rounded text-sm font-bold border uppercase">...</div>
+                </div>
+                <div>
+                    <span class="block text-xs font-bold text-gray-400 uppercase mb-1">QR Code de Acesso</span>
+                    <img id="print-qrcode" src="" alt="QR Code" class="w-24 h-24 border p-1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela Técnica -->
+        <div class="mb-10">
+            <h3 class="font-bold text-audit-navy border-l-4 border-audit-gold pl-3 mb-4 uppercase text-sm">Trilha de Auditoria DNS (Log Técnico)</h3>
+            <table class="w-full text-sm border-collapse">
+                <thead>
+                    <tr class="border-b-2 border-gray-300">
+                        <th class="text-left py-2 font-bold text-gray-600 w-1/4">Etapa</th>
+                        <th class="text-left py-2 font-bold text-gray-600 w-1/4">Status</th>
+                        <th class="text-left py-2 font-bold text-gray-600 w-1/2">Detalhe Técnico</th>
+                    </tr>
+                </thead>
+                <tbody id="print-table-body">
+                    <!-- JS popula aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Nota Legal -->
+        <div class="text-xs text-justify text-gray-500 mb-8 p-4 bg-gray-50 border border-gray-100 rounded print-bg-gray print-border">
+            <p class="font-bold mb-2">Nota Técnica e Legal:</p>
+            <p class="mb-2">
+                1. Este relatório certifica apenas que, no momento da consulta, o domínio possuía registros públicos DNS indicando servidores de e-mail (MX) ativos. 
+                Não atesta a existência de caixas postais individuais, reputação de IP ou ausência de filtros de spam locais.
+            </p>
+            <p>
+                2. A validação foi realizada através da Google Public DNS API conforme documentação oficial disponível em: 
+                <a href="https://developers.google.com/speed/public-dns/docs/doh" class="text-blue-600 underline">developers.google.com/speed/public-dns/docs/doh</a>
+            </p>
+        </div>
+
+        <!-- Rodapé do Relatório -->
+        <div id="print-footer" class="hidden">
+            <div class="text-xs text-gray-500 w-2/3">
+                <p><strong>Audit Educa Tools v3.5 | Controle de Circularização</strong></p>
+                <p>Gerado em: <span id="print-date-full"></span></p>
+                <p>IP do Solicitante: <span id="print-ip">...</span></p>
+                <p>Acesso rápido: <span id="print-url" class="text-blue-600"></span></p>
+            </div>
+            <div class="w-1/3 flex flex-col items-end justify-end">
+                <img id="print-qrcode-footer" src="" alt="QR Code" class="w-20 h-20 mb-1 border p-1">
+                <span class="text-[10px] text-gray-400 uppercase tracking-wide">Acesso Rápido</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Modular -->
+    <div id="footer-container" class="no-print mt-auto"></div>
+
+    <!-- Scripts do Sistema -->
+    <script>
+        const RESOURCES = {
+            headerHTML: 'https://auditeduca.com.br/assets/components/header.html',
+            footerHTML: 'https://auditeduca.com.br/assets/components/footer.html',
+            scripts: [
+                'https://auditeduca.com.br/assets/js/utils.js', 
+                'https://auditeduca.com.br/assets/js/console-cleaner.js'
+            ]
+        };
+
+        let logHistory = [];
+        let currentDomain = '';
+
+        // --- FUNÇÕES DE NAVEGAÇÃO ENTRE ABAS ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar abas
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remover classe ativa de todas as abas
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'border-audit-navy', 'dark:border-audit-blue', 'text-audit-navy', 'dark:text-audit-blue'));
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.add('text-gray-500', 'dark:text-gray-400'));
+                    
+                    // Adicionar classe ativa à aba clicada
+                    this.classList.add('active', 'border-audit-navy', 'dark:border-audit-blue', 'text-audit-navy', 'dark:text-audit-blue');
+                    this.classList.remove('text-gray-500', 'dark:text-gray-400');
+                    
+                    // Mostrar conteúdo correspondente
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                    const targetId = this.id.replace('tab-', 'content-');
+                    document.getElementById(targetId).classList.remove('hidden');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+            
+            // Configurar upload de arquivo
+            const fileInput = document.getElementById('fileInput');
+            const dropArea = document.getElementById('drop-area');
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                dropArea.classList.add('border-audit-blue', 'bg-blue-50', 'dark:bg-blue-900/20');
+            }
+            
+            function unhighlight() {
+                dropArea.classList.remove('border-audit-blue', 'bg-blue-50', 'dark:bg-blue-900/20');
+            }
+            
+            dropArea.addEventListener('drop', handleDrop, false);
+            fileInput.addEventListener('change', handleFileSelect, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleFiles(files);
+            }
+            
+            function handleFileSelect() {
+                const files = this.files;
+                handleFiles(files);
+            }
+            
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    const file = files[0];
+                    exibirPreviaArquivo(file);
+                }
+            }
+        });
+
+        // --- FUNÇÕES DE UPLOAD DE ARQUIVO ---
+        function exibirPreviaArquivo(file) {
+            const preview = document.getElementById('file-preview');
+            const fileName = document.getElementById('file-name');
+            const fileSize = document.getElementById('file-size');
+            const fileStats = document.getElementById('file-stats');
+            
+            // Formatar tamanho do arquivo
+            const formatFileSize = (bytes) => {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            };
+            
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            
+            // Ler conteúdo do arquivo para estimar linhas
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                const lines = content.split('\n').filter(line => line.trim().length > 0);
+                const estimatedDomains = lines.length > 1 ? lines.length - 1 : lines.length; // Assumindo cabeçalho
+                
+                fileStats.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="text-center">
+                            <div class="font-bold text-lg">${estimatedDomains}</div>
+                            <div class="text-xs text-gray-500">Domínios estimados</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold text-lg">${Math.ceil(estimatedDomains * 1.5)}s</div>
+                            <div class="text-xs text-gray-500">Tempo estimado</div>
+                        </div>
+                    </div>
+                `;
+            };
+            
+            if (file.type === 'text/plain' || file.type === 'text/csv' || 
+                file.name.endsWith('.csv') || file.name.endsWith('.txt')) {
+                reader.readAsText(file);
+            } else {
+                fileStats.innerHTML = '<div class="text-amber-600">Arquivo não textual. Processamento limitado.</div>';
+            }
+            
+            preview.classList.remove('hidden');
+        }
+        
+        function limparArquivo() {
+            document.getElementById('fileInput').value = '';
+            document.getElementById('file-preview').classList.add('hidden');
+        }
+        
+        function baixarTemplate() {
+            const templateContent = 'email,empresa,responsavel\ncontato@empresa1.com.br,Empresa 1,Fulano\nadmin@empresa2.com,Empresa 2,Ciclano\n';
+            const blob = new Blob([templateContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'template-validacao-dominios.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            addTimelineItem('Template Baixado', 'Modelo CSV para validação em massa disponibilizado.', 'success');
+        }
+        
+        async function processarArquivo() {
+            const fileInput = document.getElementById('fileInput');
+            if (!fileInput.files.length) {
+                addTimelineItem('Nenhum arquivo', 'Selecione um arquivo para processamento em massa.', 'error');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = async function(e) {
+                const content = e.target.result;
+                const lines = content.split('\n').filter(line => line.trim().length > 0);
+                
+                // Determinar índice da coluna de e-mail/domínio
+                let emailIndex = 0;
+                if (lines.length > 0) {
+                    const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+                    emailIndex = headers.findIndex(h => h.includes('email') || h.includes('domínio') || h.includes('dominio'));
+                }
+                
+                const results = [];
+                let processados = 0;
+                let validos = 0;
+                
+                // Mostrar timeline de processamento
+                const wrapper = document.getElementById('timeline-wrapper');
+                const output = document.getElementById('timeline-output');
+                wrapper.classList.remove('hidden');
+                output.innerHTML = '';
+                
+                await addTimelineItem('Início Processamento em Massa', `Processando ${lines.length - 1} entradas do arquivo ${file.name}`, 'info');
+                
+                // Processar cada linha (começando da linha 1 se tiver cabeçalho)
+                const startIndex = lines.length > 1 && emailIndex !== -1 ? 1 : 0;
+                
+                for (let i = startIndex; i < lines.length; i++) {
+                    const cells = lines[i].split(',');
+                    if (cells.length > emailIndex && emailIndex !== -1) {
+                        const entrada = cells[emailIndex].trim();
+                        if (entrada) {
+                            processados++;
+                            await addTimelineItem(`Processando ${processados}/${lines.length - 1}`, `Analisando: ${entrada}`, 'loading');
+                            
+                            try {
+                                const resultado = await validarDominioIndividual(entrada);
+                                results.push({
+                                    entrada,
+                                    valido: resultado.valido,
+                                    detalhe: resultado.detalhe,
+                                    servidor: resultado.servidor
+                                });
+                                
+                                if (resultado.valido) validos++;
+                                
+                                await addTimelineItem(`Concluído ${processados}/${lines.length - 1}`, 
+                                    `${entrada}: ${resultado.valido ? 'VÁLIDO' : 'INVÁLIDO'}`, 
+                                    resultado.valido ? 'success' : 'warning');
+                            } catch (error) {
+                                results.push({
+                                    entrada,
+                                    valido: false,
+                                    detalhe: 'Erro na validação',
+                                    servidor: null
+                                });
+                                
+                                await addTimelineItem(`Erro ${processados}/${lines.length - 1}`, 
+                                    `${entrada}: ERRO NA VALIDAÇÃO`, 'error');
+                            }
+                            
+                            // Pequena pausa para não sobrecarregar a API
+                            await new Promise(r => setTimeout(r, 300));
+                        }
+                    }
+                }
+                
+                await addTimelineItem('Processamento Concluído', 
+                    `Finalizado: ${validos} válidos de ${processados} processados`, 
+                    validos > 0 ? 'success' : 'warning');
+                
+                // Exibir resultados consolidados
+                exibirResultadosMassa(results, validos, processados);
+            };
+            
+            if (file.type === 'text/plain' || file.type === 'text/csv' || 
+                file.name.endsWith('.csv') || file.name.endsWith('.txt')) {
+                reader.readAsText(file);
+            } else {
+                addTimelineItem('Formato não suportado', 'Use arquivos CSV ou TXT para validação em massa.', 'error');
+            }
+        }
+        
+        async function validarDominioIndividual(entrada) {
+            let domain = entrada;
+            if (entrada.includes('@')) {
+                domain = entrada.split('@')[1];
+            }
+            
+            try {
+                const response = await fetch(`https://dns.google/resolve?name=${domain}&type=MX`);
+                const data = await response.json();
+                
+                if (data.Status === 0 && data.Answer && data.Answer.length > 0) {
+                    const server = data.Answer[0].data.split(' ')[1] || data.Answer[0].data;
+                    return {
+                        valido: true,
+                        detalhe: 'Domínio com servidor MX configurado',
+                        servidor: server
+                    };
+                } else {
+                    return {
+                        valido: false,
+                        detalhe: 'Domínio sem servidores MX configurados',
+                        servidor: null
+                    };
+                }
+            } catch (error) {
+                return {
+                    valido: false,
+                    detalhe: 'Erro na consulta DNS',
+                    servidor: null
+                };
+            }
+        }
+        
+        function exibirResultadosMassa(results, validos, total) {
+            const resultArea = document.getElementById('result-area');
+            resultArea.classList.remove('hidden');
+            
+            const percentual = total > 0 ? Math.round((validos / total) * 100) : 0;
+            
+            resultArea.className = `mt-8 p-6 rounded-xl border-l-4 shadow-sm animate-fade-in-down ${
+                percentual > 70 ? 'bg-green-50 border-green-500' : 
+                percentual > 30 ? 'bg-amber-50 border-amber-500' : 
+                'bg-red-50 border-red-500'
+            }`;
+            
+            resultArea.innerHTML = `
+                <div class="flex items-start gap-4">
+                    <div class="text-3xl ${percentual > 70 ? 'text-green-500' : percentual > 30 ? 'text-amber-500' : 'text-red-500'}">
+                        <i class="fas ${percentual > 70 ? 'fa-chart-line' : percentual > 30 ? 'fa-chart-bar' : 'fa-chart-pie'}"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg ${percentual > 70 ? 'text-green-800' : percentual > 30 ? 'text-amber-800' : 'text-red-800'}">
+                            Resultado da Validação em Massa
+                        </h3>
+                        <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow text-center">
+                                <div class="text-2xl font-bold">${total}</div>
+                                <div class="text-xs text-gray-500">Total Processado</div>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow text-center">
+                                <div class="text-2xl font-bold text-green-600">${validos}</div>
+                                <div class="text-xs text-gray-500">Domínios Válidos</div>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow text-center">
+                                <div class="text-2xl font-bold text-red-600">${total - validos}</div>
+                                <div class="text-xs text-gray-500">Domínios Inválidos</div>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow text-center">
+                                <div class="text-2xl font-bold">${percentual}%</div>
+                                <div class="text-xs text-gray-500">Taxa de Sucesso</div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button onclick="exportarResultadosMassa()" class="bg-audit-navy hover:bg-audit-blue text-white font-bold px-4 py-2 rounded-lg transition-all flex items-center gap-2">
+                                <i class="fas fa-file-export"></i> Exportar Resultados
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function exportarResultadosMassa() {
+            // Esta função exportaria os resultados para CSV
+            addTimelineItem('Exportação', 'Funcionalidade de exportação em desenvolvimento.', 'info');
+        }
+
+        // --- MANIPULAÇÃO VISUAL DA TIMELINE (Humanizada) ---
+        async function addTimelineItem(title, friendlyMsg, status) {
+            const container = document.getElementById('timeline-output');
+            
+            // Mapeamento de Ícones e Estilos
+            const config = {
+                'loading': { icon: 'fa-circle-notch fa-spin', class: 'status-loading' },
+                'success': { icon: 'fa-check', class: 'status-success' },
+                'error': { icon: 'fa-times', class: 'status-error' },
+                'warning': { icon: 'fa-exclamation', class: 'status-warning' },
+                'info': { icon: 'fa-search', class: 'status-info' }
+            };
+            const style = config[status] || config['info'];
+
+            const item = document.createElement('div');
+            item.className = 'flex gap-4 animate-slide-in-up items-start';
+            item.innerHTML = `
+                <div class="timeline-dot ${style.class} flex-shrink-0 bg-white">
+                    <i class="fas ${style.icon}"></i>
+                </div>
+                <div class="pb-6 pt-1">
+                    <h4 class="font-bold text-gray-800 dark:text-gray-200 text-sm">${title}</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 leading-snug">${friendlyMsg}</p>
+                </div>
+            `;
+            
+            container.appendChild(item);
+            
+            // Salva para o relatório impresso
+            logHistory.push({ title, msg: friendlyMsg, status });
+            
+            // Scroll automático suave se necessário
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Pequeno delay para efeito visual de "processamento"
+            await new Promise(r => setTimeout(r, 600));
+        }
+
+        // --- LÓGICA DE VALIDAÇÃO (Focada em Domínio/MX) ---
+        async function iniciarValidacao() {
+            let inputVal = document.getElementById('emailInput').value.trim();
+            const wrapper = document.getElementById('timeline-wrapper');
+            const output = document.getElementById('timeline-output');
+            const result = document.getElementById('result-area');
+            const btn = document.getElementById('btnValidate');
+            
+            // Reset UI
+            output.innerHTML = '';
+            logHistory = [];
+            wrapper.classList.remove('hidden');
+            result.classList.add('hidden');
+            document.getElementById('print-actions').classList.add('hidden');
+            
+            // Loading Button
+            const btnOriginal = btn.innerHTML;
+            btn.innerHTML = '<div class="loader"></div>';
+            btn.disabled = true;
+
+            if (!inputVal) {
+                addTimelineItem('Campo Vazio', 'Por favor, digite um domínio ou e-mail.', 'error');
+                btn.innerHTML = btnOriginal;
+                btn.disabled = false;
+                return;
+            }
+
+            try {
+                // Se o usuário digitou email completo, extraímos o domínio. Se não, assumimos que é domínio.
+                let domain = inputVal;
+                if (inputVal.includes('@')) {
+                    domain = inputVal.split('@')[1];
+                    await addTimelineItem('Entrada Recebida', `E-mail detectado. Analisaremos o domínio: <strong>${domain}</strong>`, 'info');
+                } else {
+                    await addTimelineItem('Entrada Recebida', `Domínio detectado: <strong>${domain}</strong>`, 'info');
+                }
+                
+                currentDomain = domain;
+
+                // Passo 2: Sintaxe Básica do Domínio
+                await addTimelineItem('Sintaxe do Domínio', 'Verificando formato da URL...', 'loading');
+                if (!domain.includes('.') || domain.length < 3) {
+                     throw { title: 'Domínio Inválido', msg: 'O domínio parece incompleto (ex: falta .com ou .br).', type: 'error' };
+                }
+                await addTimelineItem('Formato Válido', 'A estrutura do domínio está correta.', 'success');
+
+                // Passo 3: DNS MX (A Mágica)
+                await addTimelineItem('Consulta DNS Global', 'Buscando registros MX (Mail Exchange) usando Google Public DNS API...', 'loading');
+                
+                const response = await fetch(`https://dns.google/resolve?name=${domain}&type=MX`);
+                const data = await response.json();
+
+                // TRATAMENTO DE ERROS AMIGÁVEL
+                if (data.Status === 3) { // NXDOMAIN
+                    throw { title: 'Domínio Inexistente', msg: `O domínio <strong>${domain}</strong> não está registrado na internet.`, type: 'error' };
+                }
+                if (data.Status === 2) { // SERVFAIL
+                    throw { title: 'Falha no Provedor', msg: `Os servidores DNS de <strong>${domain}</strong> falharam em responder.`, type: 'warning' };
+                }
+                
+                if (data.Status === 0) { // NOERROR
+                    if (data.Answer && data.Answer.length > 0) {
+                        // Sucesso total
+                        const server = data.Answer[0].data.split(' ')[1] || data.Answer[0].data;
+                        await addTimelineItem('Servidor MX Encontrado', `Configuração localizada: <code class="bg-gray-100 px-1 rounded text-xs">${server}</code>`, 'success');
+                        
+                        showFinalResult(true, 'Configuração Válida', `O domínio <strong>${domain}</strong> possui servidores ativos para receber e-mails.`, domain);
+                    } else {
+                        // Domínio existe mas não tem e-mail
+                        throw { title: 'Sem Servidor de E-mail', msg: `O domínio <strong>${domain}</strong> existe (pode ser um site), mas NÃO possui registros MX para receber e-mails.`, type: 'warning' };
+                    }
+                } else {
+                     throw { title: 'Erro Desconhecido', msg: `Código de retorno DNS: ${data.Status}`, type: 'error' };
+                }
+
+            } catch (err) {
+                await addTimelineItem(err.title || 'Erro', err.msg || 'Falha de conexão.', err.type || 'error');
+                showFinalResult(false, err.title || 'Configuração Inválida', err.msg, inputVal);
+            } finally {
+                btn.innerHTML = btnOriginal;
+                btn.disabled = false;
+                preparePrintReport(inputVal, logHistory);
+            }
+        }
+
+        function showFinalResult(isValid, title, msg, domain) {
+            const el = document.getElementById('result-area');
+            el.classList.remove('hidden');
+            el.className = `mt-8 p-6 rounded-xl border-l-4 shadow-sm animate-fade-in-down ${isValid ? 'bg-green-50 border-green-500' : 'bg-red-50 border-red-500'}`;
+            
+            el.innerHTML = `
+                <div class="flex items-start gap-4">
+                    <div class="text-3xl ${isValid ? 'text-green-500' : 'text-red-500'}">
+                        <i class="fas ${isValid ? 'fa-shield-check' : 'fa-exclamation-circle'}"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg ${isValid ? 'text-green-800' : 'text-red-800'}">${title}</h3>
+                        <p class="text-gray-600 mt-1">${msg}</p>
+                        <div class="mt-4 flex gap-2">
+                            ${isValid ? `<button onclick="window.print()" class="bg-audit-navy hover:bg-audit-blue text-white font-bold px-4 py-2 rounded-lg transition-all flex items-center gap-2">
+                                <i class="fas fa-file-pdf"></i> Gerar Relatório PDF
+                            </button>` : ''}
+                            <button onclick="copiarResultado()" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-bold px-4 py-2 rounded-lg transition-all flex items-center gap-2">
+                                <i class="fas fa-copy"></i> Copiar Resultado
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            if(isValid) document.getElementById('print-actions').classList.remove('hidden');
+        }
+        
+        function copiarResultado() {
+            const resultado = `Validação de Domínio MX - Audit Educa\nDomínio: ${currentDomain}\nResultado: ${document.querySelector('#result-area h3').textContent}\nData: ${new Date().toLocaleString()}`;
+            navigator.clipboard.writeText(resultado).then(() => {
+                addTimelineItem('Copiado', 'Resultado copiado para a área de transferência.', 'success');
+            });
+        }
+
+        // --- PREPARAÇÃO DO PDF/IMPRESSÃO ---
+        async function preparePrintReport(domain, logs) {
+            // Dados Básicos
+            document.getElementById('print-email').innerText = domain;
+            document.getElementById('print-date').innerText = new Date().toLocaleString('pt-BR');
+            document.getElementById('print-date-full').innerText = new Date().toLocaleString('pt-BR', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+            
+            // ID único
+            const uniqueId = 'AE-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            document.getElementById('print-id').innerText = uniqueId;
+            
+            // Status Badge
+            const lastLog = logs[logs.length - 1];
+            const isSuccess = lastLog.status === 'success';
+            const badge = document.getElementById('print-status-badge');
+            badge.innerText = isSuccess ? 'CONFIGURAÇÃO ATIVA' : 'CONFIGURAÇÃO INATIVA';
+            badge.className = `inline-block px-4 py-2 rounded text-sm font-bold border uppercase ${isSuccess ? 'bg-green-100 text-green-800 border-green-200' : 'bg-red-100 text-red-800 border-red-200'}`;
+
+            // Tabela de Logs
+            const tbody = document.getElementById('print-table-body');
+            tbody.innerHTML = '';
+            logs.forEach(log => {
+                if(log.status === 'loading') return; // Pula logs de loading no impresso
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-100';
+                tr.innerHTML = `
+                    <td class="py-2 text-gray-800 font-medium">${log.title}</td>
+                    <td class="py-2 uppercase text-xs font-bold ${log.status === 'success' ? 'text-green-600' : (log.status === 'error' ? 'text-red-600' : (log.status === 'warning' ? 'text-amber-600' : 'text-blue-600'))}">${log.status}</td>
+                    <td class="py-2 text-gray-500 italic">${log.msg.replace(/<[^>]*>?/gm, '')}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // IP e QR Code
+            try {
+                const ipRes = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipRes.json();
+                document.querySelectorAll('#print-ip').forEach(el => el.innerText = ipData.ip);
+            } catch(e) { document.querySelectorAll('#print-ip').forEach(el => el.innerText = 'IP Oculto'); }
+
+            // URL canônica para QR Code
+            const canonicalUrl = window.location.origin + window.location.pathname;
+            document.getElementById('print-url').textContent = canonicalUrl;
+            
+            // QR Codes
+            const qrUrl = `https://quickchart.io/qr?text=${encodeURIComponent(canonicalUrl + '?domain=' + encodeURIComponent(domain))}&size=150&margin=1&format=svg`;
+            document.getElementById('print-qrcode').src = qrUrl;
+            document.getElementById('print-qrcode-footer').src = qrUrl;
+        }
+
+        // --- FUNÇÕES DE COMPARTILHAMENTO ---
+        function compartilharWhatsApp() {
+            const texto = `Validador de Domínio e MX - Audit Educa\nVerifique se domínios estão configurados para receber e-mails de circularização.\n${window.location.href}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+        
+        function compartilharLinkedIn() {
+            const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`;
+            window.open(url, '_blank');
+        }
+        
+        function compartilharTwitter() {
+            const texto = `Validador de Domínio e MX para controle de circularização - Audit Educa`;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(texto)}&url=${encodeURIComponent(window.location.href)}`;
+            window.open(url, '_blank');
+        }
+
+        // --- CARREGAMENTO INICIAL (Waterfall) ---
+        async function initPage() {
+            const loadHTML = async (url, id) => {
+                try {
+                    const res = await fetch(url);
+                    if(res.ok) {
+                        const html = await res.text();
+                        const el = document.getElementById(id);
+                        el.innerHTML = html;
+                        if(el.firstElementChild) el.replaceWith(...el.childNodes);
+                    }
+                } catch(e) {}
+            };
+
+            await Promise.all([
+                loadHTML(RESOURCES.headerHTML, 'header-container'),
+                loadHTML(RESOURCES.footerHTML, 'footer-container')
+            ]);
+
+            RESOURCES.scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                document.body.appendChild(script);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initPage);
+        document.getElementById('emailInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') iniciarValidacao();
+        });
+    </script>
+</body>
+</html>
