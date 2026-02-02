@@ -1,7 +1,6 @@
 /**
  * Main JS - Audit Educa
  * Controlador Principal: Coordena a inicialização após o Template Engine.
- * Atualizado para arquitetura orientada a eventos.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. Fallback: Se o evento já ocorreu (cache rápido), verifica a variável global
-    if (window.TemplateEngine && window.TemplateEngine.componentsLoaded) {
-        console.log('🏁 Main JS: Engine já estava pronto (fallback).');
-        initializeApp();
+    if (window.TemplateEngine) {
+        // Aguarda um pequeno delay para garantir que o DOM injetado foi processado
+        setTimeout(initializeApp, 50);
     }
 });
 
@@ -25,6 +24,7 @@ function initializeApp() {
 
     try {
         // A. Inicializa lógica do Header (Menu Mobile)
+        // Se a função existir no escopo global (carregada pelo executeScripts)
         if (typeof initHeader === 'function') {
             initHeader();
         }
@@ -32,11 +32,9 @@ function initializeApp() {
         // B. Inicializa Gerenciador de Cookies
         if (typeof CookieManager !== 'undefined') {
             CookieManager.init();
-        } else {
-            console.warn('⚠️ CookieManager não definido.');
         }
 
-        // C. Ajustes de Layout (Sticky Footer)
+        // C. Ajustes de Layout
         adjustMainSpacing();
 
         // D. Remove Preloader
@@ -52,13 +50,12 @@ function adjustMainSpacing() {
     const main = document.querySelector('main');
     
     if (header && main) {
-        // Usa ResizeObserver para responsividade em tempo real do cabeçalho
         const resizeObserver = new ResizeObserver(entries => {
             for (let entry of entries) {
                 const height = entry.contentRect.height;
                 if (height > 0) {
-                    main.style.paddingTop = `calc(${height}px + 2rem)`;
-                    main.style.minHeight = `calc(100vh - ${height}px - 100px)`;
+                    // Adiciona padding para o conteúdo não ficar atrás do header fixo
+                    main.style.paddingTop = `0px`; // O header agora é sticky relativo ao placeholder, se necessário ajuste aqui
                 }
             }
         });
