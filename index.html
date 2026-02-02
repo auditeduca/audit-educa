@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Audit Educa - Excelência e conformidade em auditoria, contabilidade e educação continuada.">
+    <meta name="description" content="Audit Educa - Hub de ferramentas para auditoria, contabilidade e qualificação profissional.">
     <title>Audit Educa | Hub de Auditoria e Contabilidade</title>
     <link rel="icon" type="image/webp" href="assets/images/audit-educa-favicon.webp">
 
@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
 
-    <!-- Font Awesome & Lucide Icons -->
+    <!-- Font Awesome & Lucide -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Tailwind Configurado -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração Tailwind -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -42,49 +42,27 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
-
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #334155; }
-        
         .hero-section {
             background-color: #f8fafc;
             background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
             background-size: 40px 40px;
         }
-
-        /* Card Corporativo (Toolbox) */
+        /* Cards */
         .pro-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: white; border: 1px solid #e2e8f0; transition: all 0.3s ease; position: relative; overflow: hidden;
         }
         .pro-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: #C5A059; /* Gold */
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #C5A059;
             transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
         }
         .pro-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05); border-color: #cbd5e1; }
         .pro-card:hover::before { transform: scaleX(1); }
 
-        /* Card Estudante (Education) */
         .edu-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid #1e40af; /* Blue Navy para educação */
-            transition: all 0.3s ease;
+            background: white; border: 1px solid #e2e8f0; border-left: 4px solid #1e40af; transition: all 0.3s ease;
         }
-        .edu-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px -5px rgba(30, 64, 175, 0.1);
-        }
-
-        .btn-primary {
-            background-color: #0f172a; color: white; border-radius: 4px; font-weight: 500; transition: all 0.2s;
-        }
-        .btn-primary:hover { background-color: #1e293b; }
+        .edu-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -5px rgba(30, 64, 175, 0.1); }
     </style>
 
     <!-- Scripts -->
@@ -94,17 +72,14 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- Preloader -->
     <div id="preloader"><div class="spinner"></div></div>
-
+    
     <!-- HEADER -->
     <div id="header-placeholder" class="no-print sticky top-0 z-50 bg-white min-h-[80px] border-b border-gray-100"></div>
 
-    <!-- MAIN CONTENT -->
     <main class="flex-grow">
-        
-        <!-- Hero Section -->
-        <section class="hero-section pt-24 pb-20 px-4 border-b border-gray-200">
+        <!-- Hero Section (Padding reduzido de pt-24 para pt-10) -->
+        <section class="hero-section pt-10 pb-20 px-4 border-b border-gray-200">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2 text-left">
                     <div class="inline-flex items-center gap-2 mb-6">
@@ -112,18 +87,16 @@
                         <span class="text-xs font-bold uppercase tracking-widest text-audit-gold">Professional & Academic Hub</span>
                     </div>
                     <h1 class="text-4xl lg:text-5xl font-serif font-bold text-audit-navy mb-6 leading-tight">
-                        A Convergência entre <br>
-                        <span class="text-audit-blue">Prática e Teoria</span>.
+                        A Convergência entre <br><span class="text-audit-blue">Prática e Teoria</span>.
                     </h1>
                     <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg font-light">
-                        Ferramentas de auditoria para o mercado e simuladores de qualificação para a carreira. O ecossistema completo para o auditor.
+                        Ferramentas de auditoria para o mercado e simuladores de qualificação para a carreira.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#ferramentas" class="btn-primary px-8 py-3 flex items-center gap-2">Explorar Soluções</a>
+                        <a href="#ferramentas" class="bg-audit-navy text-white px-8 py-3 rounded hover:bg-slate-800 transition flex items-center gap-2">Explorar Soluções</a>
                         <a href="biblioteca.html" class="px-8 py-3 border border-slate-300 rounded text-audit-navy hover:bg-slate-50 transition">Biblioteca</a>
                     </div>
                 </div>
-                <!-- Elemento Visual Abstrato (Dashboard Clean) -->
                 <div class="md:w-1/2 flex justify-center relative">
                     <div class="relative w-full max-w-md bg-white p-6 rounded shadow-xl border border-gray-100 z-10">
                         <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-2">
@@ -146,42 +119,15 @@
             </div>
         </section>
 
-        <!-- Market Pulse (Destaques Regulatórios) -->
-        <div id="market-pulse-placeholder">
-            <section class="py-10 border-b border-gray-200 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex flex-col md:flex-row items-center justify-between mb-6">
-                        <h3 class="text-lg font-serif font-bold text-audit-navy flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-audit-gold"></i> Radar Regulatório</h3>
-                        <span class="text-xs font-semibold text-slate-500 uppercase">Atualizado: 2026</span>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="flex items-center gap-3 p-3 bg-slate-50 rounded border border-transparent hover:border-audit-gold/30 cursor-pointer transition">
-                            <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                            <span class="text-sm font-medium text-slate-700">Reforma Tributária (IVA Dual)</span>
-                        </div>
-                        <div class="flex items-center gap-3 p-3 bg-slate-50 rounded border border-transparent hover:border-audit-gold/30 cursor-pointer transition">
-                            <span class="w-1.5 h-1.5 rounded-full bg-audit-gold"></span>
-                            <span class="text-sm font-medium text-slate-700">IFRS S1/S2 Sustentabilidade</span>
-                        </div>
-                        <div class="flex items-center gap-3 p-3 bg-slate-50 rounded border border-transparent hover:border-audit-gold/30 cursor-pointer transition">
-                            <span class="w-1.5 h-1.5 rounded-full bg-audit-blue"></span>
-                            <span class="text-sm font-medium text-slate-700">Exame Suficiência 2026.1</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- SEÇÃO 1: FERRAMENTAS TÉCNICAS (CORPORATIVO) -->
+        <!-- Ferramentas Corporativas -->
         <section id="ferramentas" class="py-20 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-end justify-between mb-12">
                     <div>
                         <h2 class="text-3xl font-serif font-bold text-audit-navy">Toolbox do Auditor</h2>
                         <div class="h-1 w-16 bg-audit-gold mt-4"></div>
-                        <p class="mt-4 text-slate-600 max-w-2xl">Ferramentas de compliance e validação para procedimentos substantivos.</p>
+                        <p class="mt-4 text-slate-600 max-w-2xl">Ferramentas de compliance e validação.</p>
                     </div>
-                    <a href="biblioteca.html" class="hidden md:flex items-center text-sm font-bold text-audit-navy hover:text-audit-gold transition">Ver todas <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -194,11 +140,10 @@
                             <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
                         </div>
                         <h3 class="text-lg font-bold text-audit-navy mb-2">Cotação PTAX Oficial</h3>
-                        <p class="text-sm text-slate-500 mb-6">Extração de taxas históricas do BCB para testes de variação cambial.</p>
                         <div class="text-xs font-semibold text-audit-blue uppercase">Financeiro</div>
                     </a>
 
-                    <!-- Card Validador Domínio -->
+                    <!-- Card Validador -->
                     <a href="ferramentas/auditoria-externa/validador-dominio-email.html" class="pro-card p-8 group">
                         <div class="flex justify-between items-start mb-6">
                             <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
@@ -207,11 +152,10 @@
                             <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
                         </div>
                         <h3 class="text-lg font-bold text-audit-navy mb-2">Validador de Domínio</h3>
-                        <p class="text-sm text-slate-500 mb-6">Validação MX/SPF para segurança em circularizações externas.</p>
                         <div class="text-xs font-semibold text-audit-blue uppercase">Compliance</div>
                     </a>
 
-                    <!-- Card Calculadora PEPC (NOVO) -->
+                    <!-- Card PEPC (ADICIONADO) -->
                     <a href="calculadora-pepc.html" class="pro-card p-8 group">
                         <div class="flex justify-between items-start mb-6">
                             <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
@@ -227,90 +171,53 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 2: CARREIRA E QUALIFICAÇÃO (ESTUDANTES) -->
+        <!-- Área do Estudante -->
         <section id="estudantes" class="py-20 bg-white border-t border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row gap-12">
-                    
-                    <!-- Sidebar de Texto -->
                     <div class="md:w-1/3">
                         <div class="sticky top-32">
                             <span class="text-xs font-bold text-audit-gold uppercase tracking-widest mb-2 block">Área do Estudante</span>
                             <h2 class="text-3xl font-serif font-bold text-audit-navy mb-6">Qualificação Profissional</h2>
-                            <p class="text-slate-600 mb-8 leading-relaxed">
-                                Preparação focada para os exames mais rigorosos da carreira contábil. Utilize nossos simuladores baseados em provas anteriores para testar seu conhecimento.
-                            </p>
-                            <a href="#" class="inline-flex items-center font-bold text-audit-blue hover:text-audit-navy transition">
-                                Ver plano de estudos <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i>
-                            </a>
+                            <p class="text-slate-600 mb-8">Preparação para os exames mais rigorosos da carreira contábil.</p>
                         </div>
                     </div>
 
-                    <!-- Grid de Simuladores -->
                     <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        
-                        <!-- Card Exame Suficiência (SEM TAG GRATUITO) -->
+                        <!-- Card CRC -->
                         <div class="edu-card p-6 flex flex-col h-full relative group cursor-pointer hover:bg-slate-50">
                             <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-audit-blue mb-4 group-hover:bg-audit-blue group-hover:text-white transition-colors">
                                 <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                             </div>
                             <h3 class="text-lg font-bold text-audit-navy mb-2">Simulador CRC</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow">
-                                Banco de questões atualizado das últimas provas do Exame de Suficiência.
-                            </p>
+                            <p class="text-sm text-slate-500 mb-4 flex-grow">Banco de questões do Exame de Suficiência.</p>
                             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                                <span class="text-xs text-slate-400 font-mono">500+ Questões</span>
                                 <span class="text-sm font-bold text-audit-blue">Iniciar <i data-lucide="play" class="w-3 h-3 inline ml-1"></i></span>
                             </div>
                         </div>
 
-                        <!-- Card CNAI / QTG -->
+                        <!-- Card CNAI -->
                         <div class="edu-card p-6 flex flex-col h-full relative group cursor-pointer hover:bg-slate-50">
                             <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-audit-blue mb-4 group-hover:bg-audit-blue group-hover:text-white transition-colors">
                                 <i data-lucide="award" class="w-6 h-6"></i>
                             </div>
                             <h3 class="text-lg font-bold text-audit-navy mb-2">Simulador QTG (CNAI)</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow">
-                                Preparatório para o Exame de Qualificação Técnica Geral para Auditores Independentes.
-                            </p>
+                            <p class="text-sm text-slate-500 mb-4 flex-grow">Preparatório para Qualificação Técnica Geral.</p>
                             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                                <span class="text-xs text-slate-400 font-mono">CVM / BACEN</span>
                                 <span class="text-sm font-bold text-audit-blue">Iniciar <i data-lucide="play" class="w-3 h-3 inline ml-1"></i></span>
                             </div>
                         </div>
-
-                        <!-- Card Validador (Contexto Educacional) -->
-                        <div class="edu-card p-6 flex flex-col h-full relative group cursor-pointer hover:bg-slate-50">
-                            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-audit-blue mb-4 group-hover:bg-audit-blue group-hover:text-white transition-colors">
-                                <i data-lucide="search-check" class="w-6 h-6"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-audit-navy mb-2">Laboratório de Fraudes</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow">
-                                Aprenda na prática como validar domínios e e-mails suspeitos em procedimentos de auditoria.
-                            </p>
-                            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                                <span class="text-xs text-slate-400 font-mono">Ferramenta Didática</span>
-                                <span class="text-sm font-bold text-audit-blue">Acessar <i data-lucide="arrow-right" class="w-3 h-3 inline ml-1"></i></span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- FOOTER -->
     <div id="footer-placeholder" class="no-print mt-auto"></div>
-
-    <!-- MODALS -->
     <div id="modals-placeholder"></div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) lucide.createIcons();
-        });
+        document.addEventListener('DOMContentLoaded', () => { if (window.lucide) lucide.createIcons(); });
     </script>
 </body>
 </html>

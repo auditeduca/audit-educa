@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Ouve o evento de sucesso do Template Engine
     document.addEventListener('template-loaded', () => {
         console.log('🏁 Main JS: Evento recebido. Inicializando app...');
-        initializeApp();
+        // Pequeno delay para garantir que o navegador processou a injeção do HTML
+        setTimeout(initializeApp, 100);
     });
 
     // 2. Fallback: Se o evento já ocorreu (cache rápido), verifica a variável global
     if (window.TemplateEngine) {
-        // Aguarda um pequeno delay para garantir que o DOM injetado foi processado
-        setTimeout(initializeApp, 50);
+        setTimeout(initializeApp, 100);
     }
 });
 
@@ -24,14 +24,19 @@ function initializeApp() {
 
     try {
         // A. Inicializa lógica do Header (Menu Mobile)
-        // Se a função existir no escopo global (carregada pelo executeScripts)
-        if (typeof initHeader === 'function') {
-            initHeader();
+        // O Template Engine recria os scripts, então o initHeader deve estar disponível globalmente
+        if (typeof window.initHeader === 'function') {
+            window.initHeader();
+        } else {
+            console.log('ℹ️ initHeader não encontrado ou carregado via script tag direta.');
         }
 
         // B. Inicializa Gerenciador de Cookies
         if (typeof CookieManager !== 'undefined') {
+            console.log('🍪 Inicializando CookieManager...');
             CookieManager.init();
+        } else {
+            console.warn('⚠️ CookieManager não definido. Verifique se o script foi carregado.');
         }
 
         // C. Ajustes de Layout
@@ -46,20 +51,18 @@ function initializeApp() {
 }
 
 function adjustMainSpacing() {
-    const header = document.querySelector('header');
+    const header = document.querySelector('header') || document.querySelector('#header-placeholder > div');
     const main = document.querySelector('main');
     
-    if (header && main) {
-        const resizeObserver = new ResizeObserver(entries => {
-            for (let entry of entries) {
-                const height = entry.contentRect.height;
-                if (height > 0) {
-                    // Adiciona padding para o conteúdo não ficar atrás do header fixo
-                    main.style.paddingTop = `0px`; // O header agora é sticky relativo ao placeholder, se necessário ajuste aqui
-                }
-            }
-        });
-        resizeObserver.observe(header);
+    if (main) {
+        // Se o header for Sticky no CSS (top-0), ele ocupa espaço no fluxo normal.
+        // Não precisamos adicionar padding-top no main, apenas garantir o min-height para o footer.
+        // Removemos qualquer padding calculado via JS para evitar o "espaço enorme".
+        main.style.paddingTop = '0px'; 
+        
+        // Garante que o footer fique no final da página
+        const footerHeight = 100; // Altura estimada do footer
+        main.style.minHeight = `calc(100vh - ${footerHeight}px)`;
     }
 }
 

@@ -1,18 +1,17 @@
 /**
  * Template Engine - Audit Educa
- * Versão Corrigida: Sincronizada com IDs 'placeholder' e execução de scripts.
+ * Carrega componentes, executa scripts embutidos e gerencia utilitários globais.
  */
 
 class TemplateEngine {
     constructor() {
-        // CONFIGURAÇÃO: IDs ajustados para bater com seu index.html
+        // CONFIGURAÇÃO: IDs do HTML
         this.config = {
             'header-placeholder': 'assets/components/header.html',
             'footer-placeholder': 'assets/components/footer.html',
             'modals-placeholder': 'assets/components/modals-main.html'
         };
 
-        // Evita duplicação
         if (window.__TEMPLATE_ENGINE_INIT__) return;
         window.__TEMPLATE_ENGINE_INIT__ = true;
 
@@ -20,29 +19,28 @@ class TemplateEngine {
     }
 
     async init() {
-        // Aguarda o DOM estar pronto se necessário
         if (document.readyState === 'loading') {
             await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve));
         }
 
-        console.log('🚀 Template Engine: Inicializando...');
-        
+        console.log('🚀 Template Engine: Carregando componentes...');
         await this.loadComponents();
         
-        // Após carregar HTML, executa scripts e configura UI
+        // CRÍTICO: Executa os scripts que vieram dentro do HTML (ex: menu mobile, cookies)
         this.executeScriptsInPlaceholders();
-        this.highlightActiveMenuItem();
-        this.setupScrollToTop(); // Configura o botão voltar ao topo
         
-        // Dispara evento para o main.js e cookie-manager.js saberem que está pronto
+        this.highlightActiveMenuItem();
+        this.setupScrollToTop(); 
+        
+        // Avisa o resto do sistema que terminou
         document.dispatchEvent(new Event('template-loaded'));
-        console.log('✅ Template Engine: Concluído.');
+        console.log('✅ Template Engine: Pronto.');
     }
 
     async loadComponents() {
         const promises = Object.entries(this.config).map(async ([id, url]) => {
             const container = document.getElementById(id);
-            if (!container) return; // Se não existir na página, ignora
+            if (!container) return;
 
             try {
                 const response = await fetch(url);
@@ -53,11 +51,10 @@ class TemplateEngine {
                 console.warn(`Erro ao carregar ${url}:`, err);
             }
         });
-
         await Promise.all(promises);
     }
 
-    // CRÍTICO: Faz o menu mobile e outros scripts funcionarem
+    // Função mágica que faz o Mega Menu e Cookies funcionarem
     executeScriptsInPlaceholders() {
         Object.keys(this.config).forEach(id => {
             const container = document.getElementById(id);
@@ -65,9 +62,11 @@ class TemplateEngine {
                 const scripts = container.querySelectorAll('script');
                 scripts.forEach(oldScript => {
                     const newScript = document.createElement('script');
+                    // Copia atributos (src, type, etc)
                     Array.from(oldScript.attributes).forEach(attr => 
                         newScript.setAttribute(attr.name, attr.value)
                     );
+                    // Copia o conteúdo inline
                     newScript.appendChild(document.createTextNode(oldScript.innerHTML));
                     oldScript.parentNode.replaceChild(newScript, oldScript);
                 });
@@ -87,28 +86,32 @@ class TemplateEngine {
     }
 
     setupScrollToTop() {
-        // Cria o botão dinamicamente se não existir no footer/modals
-        if (!document.getElementById('btn-back-to-top')) {
-            const btn = document.createElement('button');
+        // Procura o botão. Se não achar (não veio no footer), cria um.
+        let btn = document.getElementById('btn-back-to-top');
+        
+        if (!btn) {
+            btn = document.createElement('button');
             btn.id = 'btn-back-to-top';
             btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-            btn.className = 'fixed bottom-6 right-6 z-40 bg-audit-navy text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none hover:bg-audit-gold';
+            // Estilos Tailwind para o botão flutuante
+            btn.className = 'fixed bottom-6 right-6 z-50 bg-audit-navy text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none hover:bg-audit-gold hover:-translate-y-1';
             document.body.appendChild(btn);
-
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    btn.classList.remove('opacity-0', 'pointer-events-none');
-                } else {
-                    btn.classList.add('opacity-0', 'pointer-events-none');
-                }
-            });
         }
+
+        // Lógica de aparecer/sumir
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btn.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                btn.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 }
 
-// Inicialização Global
+// Inicializa
 window.TemplateEngine = new TemplateEngine();
