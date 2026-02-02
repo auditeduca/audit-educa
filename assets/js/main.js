@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeApp();
     });
 
-    // 2. Fallback: Se o evento já ocorreu (cache rápido), verifica a variável global correta
-    // Nota: O nome da variável foi corrigido para 'TemplateEngine' para bater com o outro arquivo
+    // 2. Fallback: Se o evento já ocorreu (cache rápido), verifica a variável global
     if (window.TemplateEngine && window.TemplateEngine.componentsLoaded) {
         console.log('🏁 Main JS: Engine já estava pronto (fallback).');
         initializeApp();
@@ -31,7 +30,6 @@ function initializeApp() {
         }
 
         // B. Inicializa Gerenciador de Cookies
-        // O banner já existe no DOM agora
         if (typeof CookieManager !== 'undefined') {
             CookieManager.init();
         } else {
@@ -54,7 +52,7 @@ function adjustMainSpacing() {
     const main = document.querySelector('main');
     
     if (header && main) {
-        // Usa ResizeObserver para responsividade em tempo real
+        // Usa ResizeObserver para responsividade em tempo real do cabeçalho
         const resizeObserver = new ResizeObserver(entries => {
             for (let entry of entries) {
                 const height = entry.contentRect.height;

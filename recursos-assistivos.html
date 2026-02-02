@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessibilidade - Audit Educa</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ============================================
+           VARIÁVEIS DE CORES E ESTILO AUDIT EDUCA
+           ============================================ */
+        :root {
+            --audit-gold: #D4AF37;
+            --audit-navy: #1E3A8A;
+            --audit-blue: #3B82F6;
+            --audit-bgDark: #0F172A;
+            --audit-white: #FFFFFF;
+            --audit-gray-light: #F8FAFC;
+            --audit-gray-medium: #E2E8F0;
+            
+            --acc-panel-bg: var(--audit-white);
+            --acc-primary: var(--audit-navy);
+            --acc-accent: var(--audit-gold);
+            --acc-text-main: var(--audit-navy);
+            --acc-text-muted: #64748b;
+            --acc-card-bg: var(--audit-gray-light);
+            --acc-card-hover: var(--audit-gray-medium);
+            --acc-header-bg: var(--audit-white);
+        }
+
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            margin: 0; padding: 0; min-height: 100vh;
+            background-color: #f0f2f5;
+            transition: all 0.2s ease;
+        }
+
+        /* ============================================
+           WIDGETS LATERAIS COM FEEDBACK DINÂMICO
+           ============================================ */
+        .side-widgets-container {
+            position: fixed; right: 20px; bottom: 20px;
+            display: flex; flex-direction: column; gap: 12px; z-index: 9999;
+        }
+
+        .accessibility-widget button {
+            width: 56px; height: 56px; border-radius: 50%;
+            border: 3px solid transparent; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            margin-bottom: 8px; position: relative;
+        }
+
+        #accessibility-btn { background-color: var(--audit-navy); color: white; }
+        
+        #accessibility-btn.has-active-features {
+            background-color: var(--audit-gold);
+            border-color: var(--audit-navy);
+            animation: pulse-active 2s infinite;
+        }
+
+        @keyframes pulse-active {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .accessibility-widget button[data-action="toggleLibras"] { background-color: #ffde39; color: #000; }
+        .accessibility-widget button:hover { transform: scale(1.1); }
+
+        /* ============================================
+           PAINEL DE ACESSIBILIDADE
+           ============================================ */
+        #accessibility-panel {
+            position: fixed; top: 20px; right: 90px;
+            width: 420px; max-height: 85vh;
+            background: var(--acc-panel-bg);
+            border-radius: 16px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+            display: flex; flex-direction: column; overflow: hidden;
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--audit-gray-medium);
+        }
+
+        #accessibility-panel.maximized {
+            top: 0; right: 0; width: 500px; height: 100vh;
+            max-height: 100vh; border-radius: 0;
+        }
+
+        .accessibility-panel-hidden {
+            transform: translateX(130%) scale(0.9);
+            opacity: 0; pointer-events: none;
+        }
+
+        /* Cabeçalho Ajustado */
+        .panel-header {
+            background: #FFFFFF; padding: 0 25px;
+            display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 2px solid var(--audit-gold);
+            height: 80px; /* Altura aumentada para evitar extrapolação */
+        }
+
+        .header-logo-img { height: 40px; width: auto; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+
+        /* Estilos de botões mais profissionais */
+        .header-actions button {
+            background: transparent;
+            border: 1.5px solid var(--audit-gray-medium);
+            color: var(--audit-navy);
+            cursor: pointer;
+            width: 42px; height: 42px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+        }
+
+        .header-actions button:hover {
+            background: var(--audit-navy);
+            color: white;
+            border-color: var(--audit-navy);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .header-actions button:active {
+            transform: translateY(0);
+        }
+
+        .panel-body { padding: 25px; overflow-y: auto; flex: 1; scrollbar-width: thin; }
+        .panel-section { margin-bottom: 35px; }
+
+        .section-title {
+            font-size: 0.75rem; font-weight: 800;
+            text-transform: uppercase; color: var(--acc-text-muted);
+            margin-bottom: 18px; padding-bottom: 10px;
+            border-bottom: 1px solid var(--audit-gray-medium);
+            letter-spacing: 1.2px;
+        }
+
+        .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+        /* ============================================
+           CARDS E INDICADORES (DOTS)
+           ============================================ */
+        .acc-option-card {
+            background: var(--acc-card-bg); border: 2px solid transparent;
+            border-radius: 14px; padding: 20px 10px;
+            text-align: center; cursor: pointer;
+            transition: all 0.2s ease-in-out; display: flex;
+            flex-direction: column; align-items: center; gap: 12px;
+            position: relative;
+        }
+
+        .acc-option-card i { font-size: 1.4rem; color: var(--acc-primary); }
+        .acc-option-card span { font-size: 0.75rem; font-weight: 600; color: var(--acc-text-main); line-height: 1.3; }
+
+        .level-dots-container {
+            position: absolute; top: 10px; right: 10px;
+            display: flex; gap: 4px;
+        }
+
+        .status-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--audit-gray-medium);
+            transition: all 0.3s;
+        }
+
+        .status-dot.active {
+            background: var(--audit-gold);
+            box-shadow: 0 0 6px var(--audit-gold);
+        }
+
+        .acc-option-card.active { border-color: var(--audit-gold); background: #f0f7ff; }
+        .acc-option-card:hover { background: var(--acc-card-hover); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.05); }
+
+        .reset-btn {
+            width: 100%; padding: 16px; background: var(--audit-navy);
+            color: white; border: none; border-radius: 14px;
+            font-weight: 700; cursor: pointer; margin-top: 15px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .reset-btn:hover { background: var(--audit-blue); transform: scale(1.01); }
+
+        /* ============================================
+           NOTIFICAÇÕES (TOASTS)
+           ============================================ */
+        #acc-notification-container {
+            position: fixed; top: 25px; left: 50%;
+            transform: translateX(-50%); z-index: 10006;
+            display: flex; flex-direction: column; gap: 12px;
+            pointer-events: none;
+        }
+
+        .acc-toast {
+            background: var(--audit-navy); color: white;
+            padding: 14px 28px; border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            font-size: 0.85rem; font-weight: 600;
+            border-left: 6px solid var(--audit-gold);
+            animation: slide-toast 3s forwards;
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        @keyframes slide-toast {
+            0% { opacity: 0; transform: translateY(-30px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-30px); }
+        }
+
+        /* ============================================
+           GLOSSÁRIO AVANÇADO
+           ============================================ */
+        .acc-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.88); display: none;
+            align-items: center; justify-content: center; z-index: 11000;
+        }
+
+        .acc-modal-content {
+            background: white; width: 95%; max-width: 950px;
+            border-radius: 24px; padding: 0; overflow: hidden;
+            display: flex; flex-direction: column; max-height: 90vh;
+            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-header {
+            padding: 20px 30px; border-bottom: 2px solid var(--audit-gold);
+            background: var(--audit-navy); color: white;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .glossary-wrapper { display: flex; height: 100%; overflow: hidden; position: relative; }
+
+        .glossary-sidebar {
+            width: 70px; background: var(--audit-navy);
+            display: flex; flex-direction: column;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; z-index: 2;
+        }
+
+        .glossary-sidebar.expanded { width: 190px; }
+
+        .sidebar-toggle {
+            height: 60px; background: var(--audit-gold);
+            border: none; color: var(--audit-navy);
+            cursor: pointer; display: flex; align-items: center;
+            justify-content: center; font-size: 1.3rem; width: 100%;
+        }
+
+        .alphabet-nav { flex: 1; overflow-y: auto; padding: 15px 0; scrollbar-width: none; }
+        .alphabet-nav::-webkit-scrollbar { display: none; }
+
+        .alpha-btn {
+            width: 100%; padding: 14px 0; background: none; border: none;
+            color: rgba(255,255,255,0.7); cursor: pointer;
+            font-weight: 700; font-size: 1.1rem;
+            transition: all 0.2s; display: flex;
+            align-items: center; justify-content: center; gap: 15px;
+        }
+
+        .alpha-btn span { display: none; font-size: 0.95rem; white-space: nowrap; }
+        .glossary-sidebar.expanded .alpha-btn span { display: inline; }
+
+        .alpha-btn:hover, .alpha-btn.active { color: var(--audit-gold); background: rgba(255,255,255,0.1); }
+
+        .glossary-main-content { flex: 1; padding: 35px; overflow-y: auto; background: white; scroll-behavior: smooth; }
+        .glossary-section-title { font-size: 2.2rem; color: var(--audit-gold); border-bottom: 3px solid var(--audit-gray-medium); margin-bottom: 25px; padding-bottom: 12px; }
+        .glossary-item { margin-bottom: 30px; }
+        .glossary-item dt { font-weight: 700; color: var(--audit-navy); font-size: 1.3rem; margin-bottom: 6px; }
+        .glossary-item dd { margin-left: 0; color: #4a5568; line-height: 1.7; }
+
+        /* ============================================
+           UI ASSISTIVA ESTILOS
+           ============================================ */
+        #reading-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9997; pointer-events: none; display: none; }
+        #reading-guide { position: fixed; height: 5px; background: var(--audit-gold); width: 100%; z-index: 9998; pointer-events: none; display: none; box-shadow: 0 0 15px var(--audit-gold); }
+        #acc-magnifier { position: fixed; width: 280px; height: 280px; border: 5px solid var(--audit-gold); border-radius: 50%; pointer-events: none; z-index: 10002; display: none; background-color: white; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+
+        body[data-hide-images="true"] img { visibility: hidden !important; height: 0 !important; }
+        body[data-pause-anim="true"] * { animation: none !important; transition: none !important; }
+        body[data-bold="true"] * { font-weight: 700 !important; }
+        body[data-links-highlight="true"] a { background: #fff59d !important; color: #000 !important; outline: 3px solid #000 !important; text-decoration: underline !important; padding: 3px !important; }
+        body[data-header-highlight="true"] header#site-header { outline: 6px solid var(--audit-gold) !important; z-index: 10005 !important; }
+        body[data-stop-sounds="true"] audio, body[data-stop-sounds="true"] video { display: none !important; }
+
+    </style>
+</head>
+<body data-font-size="0">
+
+    <div id="acc-notification-container"></div>
+
+    <!-- Cabeçalho do Site (Mock) -->
+    <header id="site-header" style="background: white; padding: 25px; text-align: center; border-bottom: 1px solid #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h2 style="color: var(--audit-navy); margin:0; letter-spacing: 0.5px;">Audit Educa - Excelência em Auditoria</h2>
+    </header>
+
+    <main style="padding: 60px 20px; max-width: 950px; margin: auto;">
+        <h1 style="color: var(--audit-navy); font-weight: 700;">Portal de Acessibilidade Audit Educa</h1>
+        <p style="font-size: 1.1rem; color: #4a5568;">O nosso compromisso é garantir uma experiência inclusiva. Explore o glossário e ajuste as ferramentas assistivas.</p>
+        
+        <div style="background: white; padding: 30px; border-radius: 20px; border-left: 8px solid var(--audit-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin: 40px 0;">
+            <h3 style="color: var(--audit-navy);">Educação para Todos</h3>
+            <p>A conformidade financeira e a auditoria técnica exigem clareza. Este portal foi desenhado para facilitar o seu estudo. <a href="#">Saiba mais sobre os termos técnicos</a>.</p>
+        </div>
+        
+        <img src="https://via.placeholder.com/600x300" alt="Painel de Auditoria" style="width:100%; border-radius:15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    </main>
+
+    <!-- Widgets Laterais -->
+    <div class="side-widgets-container">
+        <div class="accessibility-widget">
+            <button type="button" onclick="toggleLibras()" title="Tradutor de Libras"><i class="fas fa-sign-language"></i></button>
+            <button id="accessibility-btn" onclick="AccessControl.togglePanel()" title="Recursos Assistivos"><i class="fas fa-eye"></i></button>
+        </div>
+    </div>
+
+    <!-- Painel Principal -->
+    <aside id="accessibility-panel" class="accessibility-panel-hidden" aria-labelledby="glossary-title">
+        <header class="panel-header">
+            <img src="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp" alt="Logo Audit Educa" class="header-logo-img">
+            <div class="header-actions">
+                <button onclick="AccessControl.toggleMaximize()" id="btn-maximize" title="Maximizar/Minimizar"><i class="fas fa-expand"></i></button>
+                <button onclick="AccessControl.togglePanel()" title="Fechar Painel"><i class="fas fa-times"></i></button>
+            </div>
+        </header>
+
+        <div class="panel-body">
+            
+            <div class="panel-section">
+                <div class="section-title">Termos de Contabilidade e Finanças</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" onclick="AccessControl.openModal('glossary-modal')">
+                        <i class="fas fa-book-bookmark"></i>
+                        <span>Glossário Financeiro</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title">Controle de Fonte</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" data-key="fontSize" data-max="3" onclick="AccessControl.updateStep('fontSize', 3, 'Tamanho de fonte')">
+                        <div class="level-dots-container"></div><i class="fas fa-text-height"></i><span>Tamanho de fonte</span>
+                    </div>
+                    <div class="acc-option-card" data-key="fontStyle" data-max="2" onclick="AccessControl.updateStep('fontStyle', 2, 'Estilo de Texto')">
+                        <div class="level-dots-container"></div><i class="fas fa-font"></i><span>Estilo de Texto</span>
+                    </div>
+                    <div class="acc-option-card" data-key="bold" data-max="1" onclick="AccessControl.toggleFeature('bold', 'Letras Destacadas')">
+                        <div class="level-dots-container"></div><i class="fas fa-bold"></i><span>Letras Destacadas</span>
+                    </div>
+                    <div class="acc-option-card" data-key="lineHeight" data-max="3" onclick="AccessControl.updateStep('lineHeight', 3, 'Espaço entre linhas')">
+                        <div class="level-dots-container"></div><i class="fas fa-arrows-up-down"></i><span>Espaço entre linhas</span>
+                    </div>
+                    <div class="acc-option-card" data-key="letterSpacing" data-max="3" onclick="AccessControl.updateStep('letterSpacing', 3, 'Espaço entre letras')">
+                        <div class="level-dots-container"></div><i class="fas fa-arrows-left-right"></i><span>Espaço entre letras</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title">Navegação</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" data-key="ttsActive" data-max="1" onclick="AccessControl.toggleFeature('ttsActive', 'Leitor de Sites')">
+                        <div class="level-dots-container"></div><i class="fas fa-volume-high"></i><span>Leitor de Sites</span>
+                    </div>
+                    <div class="acc-option-card" data-key="readingMode" data-max="1" onclick="AccessControl.toggleFeature('readingMode', 'Modo Leitura')">
+                        <div class="level-dots-container"></div><i class="fas fa-book-open"></i><span>Modo Leitura</span>
+                    </div>
+                    <div class="acc-option-card" data-key="readingMask" data-max="1" onclick="AccessControl.toggleFeature('readingMask', 'Máscara de Leitura')">
+                        <div class="level-dots-container"></div><i class="fas fa-mask"></i><span>Máscara de Leitura</span>
+                    </div>
+                    <div class="acc-option-card" data-key="readingGuide" data-max="1" onclick="AccessControl.toggleFeature('readingGuide', 'Guia de Leitura')">
+                        <div class="level-dots-container"></div><i class="fas fa-grip-lines"></i><span>Guia de Leitura</span>
+                    </div>
+                    <div class="acc-option-card" data-key="bigCursor" data-max="1" onclick="AccessControl.toggleFeature('bigCursor', 'Cursor de Rato')">
+                        <div class="level-dots-container"></div><i class="fas fa-arrow-pointer"></i><span>Cursor de Rato</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.openModal('shortcuts-modal')">
+                        <i class="fas fa-keyboard"></i><span>Atalhos do Teclado</span>
+                    </div>
+                    <div class="acc-option-card" data-key="links" data-max="1" onclick="AccessControl.toggleFeature('links', 'Destaque de Links')">
+                        <div class="level-dots-container"></div><i class="fas fa-link"></i><span>Destaque de Links</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.highlight('h1, h2, h3, h4')">
+                        <i class="fas fa-heading"></i><span>Estrutura: Títulos</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.highlight('a')">
+                        <i class="fas fa-list-ul"></i><span>Estrutura: Links</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.highlight('section, article, main, aside')">
+                        <i class="fas fa-layer-group"></i><span>Estrutura: Regiões</span>
+                    </div>
+                    <div class="acc-option-card" data-key="magnifier" data-max="1" onclick="AccessControl.toggleFeature('magnifier', 'Lupa de Conteúdo')">
+                        <div class="level-dots-container"></div><i class="fas fa-magnifying-glass-plus"></i><span>Lupa de Conteúdo</span>
+                    </div>
+                    <div class="acc-option-card" data-key="hideImages" data-max="1" onclick="AccessControl.toggleFeature('hideImages', 'Esconder Imagens')">
+                        <div class="level-dots-container"></div><i class="fas fa-image-portrait"></i><span>Esconder Imagens</span>
+                    </div>
+                    <div class="acc-option-card" data-key="headerHighlight" data-max="1" onclick="AccessControl.toggleFeature('headerHighlight', 'Destacar cabeçalho')">
+                        <div class="level-dots-container"></div><i class="fas fa-window-maximize"></i><span>Destacar cabeçalho</span>
+                    </div>
+                    <div class="acc-option-card" data-key="pauseAnim" data-max="1" onclick="AccessControl.toggleFeature('pauseAnim', 'Pausar animações')">
+                        <div class="level-dots-container"></div><i class="fas fa-film"></i><span>Pausar animações</span>
+                    </div>
+                    <div class="acc-option-card" data-key="stopSounds" data-max="1" onclick="AccessControl.toggleFeature('stopSounds', 'Parar Sons')">
+                        <div class="level-dots-container"></div><i class="fas fa-volume-mute"></i><span>Parar Sons</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title">Controles de Cor</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" data-key="contrast" data-max="2" onclick="AccessControl.updateStep('contrast', 2, 'Contraste')">
+                        <div class="level-dots-container"></div><i class="fas fa-circle-half-stroke"></i><span>Contraste</span>
+                    </div>
+                    <div class="acc-option-card" data-key="saturation" data-max="2" onclick="AccessControl.updateStep('saturation', 2, 'Saturação')">
+                        <div class="level-dots-container"></div><i class="fas fa-droplet"></i><span>Intensidade</span>
+                    </div>
+                    <div class="acc-option-card" data-key="colorblind" data-max="3" onclick="AccessControl.updateStep('colorblind', 3, 'Modo Daltonico')">
+                        <div class="level-dots-container"></div><i class="fas fa-palette"></i><span>Daltonismo</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="reset-btn" onclick="AccessControl.resetAll()">REDEFINIR TUDO</button>
+        </div>
+    </aside>
+
+    <!-- Modais -->
+    <div id="glossary-modal" class="acc-modal" onclick="AccessControl.closeModal('glossary-modal')">
+        <div class="acc-modal-content" onclick="event.stopPropagation()">
+            <header class="modal-header">
+                <h3>Glossário Financeiro</h3>
+                <button onclick="AccessControl.closeModal('glossary-modal')" style="background:none; border:none; color:white; cursor:pointer"><i class="fas fa-times fa-lg"></i></button>
+            </header>
+            <div class="glossary-wrapper">
+                <nav class="glossary-sidebar" id="glossary-sidebar">
+                    <button class="sidebar-toggle" onclick="AccessControl.toggleGlossarySidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="alphabet-nav" id="alphabet-nav"></div>
+                </nav>
+                <div class="glossary-main-content" id="glossary-content">
+                    <div id="glossary-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="shortcuts-modal" class="acc-modal" onclick="AccessControl.closeModal('shortcuts-modal')">
+        <div class="acc-modal-content" onclick="event.stopPropagation()">
+            <header class="modal-header">
+                <h3>Atalhos do Teclado</h3>
+                <button onclick="AccessControl.closeModal('shortcuts-modal')" style="background:none; border:none; color:white; cursor:pointer"><i class="fas fa-times fa-lg"></i></button>
+            </header>
+            <div style="padding: 30px;">
+                <ul style="list-style:none; padding:0;">
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Alt</kbd> + <kbd>A</kbd> <span>Abrir/Fechar Painel Assistivo</span>
+                    </li>
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Alt</kbd> + <kbd>R</kbd> <span>Redefinir Todas as Configurações</span>
+                    </li>
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Alt</kbd> + <kbd>M</kbd> <span>Maximizar/Minimizar Menu</span>
+                    </li>
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Esc</kbd> <span>Fechar Modais ou Menus Abertos</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros SVG -->
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+        <defs>
+            <filter id="protanopia-filter"><feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/></filter>
+            <filter id="deuteranopia-filter"><feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/></filter>
+            <filter id="tritanopia-filter"><feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/></filter>
+        </defs>
+    </svg>
+
+    <script>
+        const AccessControl = (() => {
+            const state = {
+                fontSize: 0, fontStyle: 0, letterSpacing: 0, lineHeight: 0,
+                bold: false, contrast: 0, saturation: 0, colorblind: 0,
+                ttsActive: false, readingMode: false, readingMask: false,
+                readingGuide: false, bigCursor: false, links: false,
+                magnifier: false, hideImages: false, headerHighlight: false,
+                pauseAnim: false, stopSounds: false, isMaximized: false
+            };
+
+            const glossaryData = [
+                { term: "13º Salário", def: "Gratificação natalina paga aos trabalhadores.", letter: "#" },
+                { term: "Ativo", def: "Bens e direitos de uma entidade.", letter: "A" },
+                { term: "Balanço", def: "Relatório da situação financeira.", letter: "B" },
+                { term: "Compliance", def: "Conformidade com normas.", letter: "C" },
+                { term: "Défice", def: "Quando as despesas superam as receitas.", letter: "D" },
+                { term: "EBITDA", def: "Lucro operacional antes de taxas.", letter: "E" },
+                { term: "Factoração", def: "Antecipação de recebíveis.", letter: "F" },
+                { term: "Garantia", def: "Segurança para pagamento de dívida.", letter: "G" },
+                { term: "Holding", def: "Empresa que detém participação em outras.", letter: "H" },
+                { term: "Inflação", def: "Aumento generalizado de preços.", letter: "I" },
+                { term: "Juros", def: "Remuneração do capital emprestado.", letter: "J" },
+                { term: "KPI", def: "Indicador chave de desempenho.", letter: "K" },
+                { term: "Liquidez", def: "Capacidade de converter ativos em dinheiro.", letter: "L" },
+                { term: "Margem de Lucro", def: "Percentual de ganho sobre vendas.", letter: "M" },
+                { term: "Nota Fiscal", def: "Documento de registo de transação.", letter: "N" },
+                { term: "Orçamento", def: "Plano financeiro para período futuro.", letter: "O" },
+                { term: "Passivo", def: "Obrigações e dívidas da empresa.", letter: "P" },
+                { term: "Quitação", def: "Pagamento total de uma dívida.", letter: "Q" },
+                { term: "Receita", def: "Entradas financeiras no período.", letter: "R" },
+                { term: "Solvência", def: "Capacidade de pagar obrigações de longo prazo.", letter: "S" },
+                { term: "Taxa Selic", def: "Taxa básica de juros da economia.", letter: "T" },
+                { term: "Utilidade", def: "Satisfação obtida no consumo.", letter: "U" },
+                { term: "Valuation", def: "Processo de estimar o valor de um ativo.", letter: "V" },
+                { term: "Warrant", def: "Título que garante direito de compra.", letter: "W" },
+                { term: "Xerox", def: "Cópia documental para auditoria.", letter: "X" },
+                { term: "Yield", def: "Rendimento de um investimento.", letter: "Y" },
+                { term: "ZPE", def: "Zona de processamento de exportação.", letter: "Z" }
+            ];
+
+            const alphabet = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+            const togglePanel = () => document.getElementById('accessibility-panel').classList.toggle('accessibility-panel-hidden');
+            
+            const toggleMaximize = () => {
+                state.isMaximized = !state.isMaximized;
+                const p = document.getElementById('accessibility-panel');
+                p.classList.toggle('maximized');
+                document.getElementById('btn-maximize').innerHTML = state.isMaximized ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+            };
+
+            const toggleGlossarySidebar = () => {
+                const sidebar = document.getElementById('glossary-sidebar');
+                sidebar.classList.toggle('expanded');
+                const icon = sidebar.querySelector('.sidebar-toggle i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-chevron-left');
+            };
+
+            const renderGlossary = () => {
+                const nav = document.getElementById('alphabet-nav');
+                const list = document.getElementById('glossary-list');
+                nav.innerHTML = "";
+                list.innerHTML = "";
+
+                alphabet.forEach(char => {
+                    const btn = document.createElement('button');
+                    btn.className = 'alpha-btn';
+                    btn.innerHTML = `${char} <span>Letra ${char === '#' ? 'Núm.' : char}</span>`;
+                    
+                    const hasTerms = glossaryData.some(i => i.letter === char);
+                    if (!hasTerms) btn.style.opacity = "0.3";
+                    else {
+                        btn.onclick = () => document.getElementById(`sec-${char}`).scrollIntoView();
+                    }
+                    nav.appendChild(btn);
+
+                    if (hasTerms) {
+                        const sec = document.createElement('section');
+                        sec.id = `sec-${char}`;
+                        sec.className = 'glossary-section';
+                        sec.innerHTML = `<h2 class="glossary-section-title">${char}</h2><dl id="dl-${char}"></dl>`;
+                        list.appendChild(sec);
+                        
+                        const dl = sec.querySelector('dl');
+                        glossaryData.filter(i => i.letter === char).forEach(item => {
+                            const div = document.createElement('div');
+                            div.className = 'glossary-item';
+                            div.innerHTML = `<dt>${item.term}</dt><dd>${item.def}</dd>`;
+                            dl.appendChild(div);
+                        });
+                    }
+                });
+            };
+
+            const notify = (msg, type = "info") => {
+                const container = document.getElementById('acc-notification-container');
+                const t = document.createElement('div');
+                t.className = 'acc-toast';
+                t.innerHTML = `<i class="fas fa-check-circle" style="color:var(--audit-gold)"></i> <span>${msg}</span>`;
+                container.appendChild(t);
+                speak(msg);
+                playBeep(type === "reset" ? 400 : 800);
+                setTimeout(() => t.remove(), 3000);
+            };
+
+            const speak = (text) => {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const ut = new SpeechSynthesisUtterance(text);
+                    ut.lang = 'pt-PT';
+                    ut.rate = 1.2;
+                    window.speechSynthesis.speak(ut);
+                }
+            };
+
+            const playBeep = (freq) => {
+                try {
+                    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                    const osc = ctx.createOscillator();
+                    const gn = ctx.createGain();
+                    osc.connect(gn); gn.connect(ctx.destination);
+                    osc.frequency.value = freq;
+                    gn.gain.setValueAtTime(0.05, ctx.currentTime);
+                    gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+                    osc.start(); osc.stop(ctx.currentTime + 0.1);
+                } catch(e) {}
+            };
+
+            const updateStep = (key, max, label) => {
+                state[key] = (state[key] + 1) > max ? 0 : state[key] + 1;
+                notify(`${label}: ${state[key] === 0 ? 'Normal' : 'Nível ' + state[key]}`);
+                apply();
+            };
+
+            const toggleFeature = (key, label) => {
+                state[key] = !state[key];
+                notify(`${label}: ${state[key] ? 'Ativado' : 'Desativado'}`);
+                if(key === 'ttsActive' && state.ttsActive) document.addEventListener('click', handleTTSLeitura);
+                else if(key === 'ttsActive') document.removeEventListener('click', handleTTSLeitura);
+                apply();
+            };
+
+            const handleTTSLeitura = (e) => {
+                if(!state.ttsActive) return;
+                const text = e.target.innerText;
+                if(text && e.target.tagName !== 'BUTTON') speak(text);
+            };
+
+            const highlight = (sel) => {
+                const els = document.querySelectorAll(sel);
+                els.forEach(el => el.style.boxShadow = '0 0 0 6px var(--audit-gold)');
+                setTimeout(() => els.forEach(el => el.style.boxShadow = ''), 4000);
+                notify("Estrutura destacada");
+            };
+
+            const apply = () => {
+                const b = document.body;
+                b.style.fontSize = state.fontSize === 0 ? '16px' : (16 + state.fontSize * 5) + 'px';
+                b.style.letterSpacing = state.letterSpacing === 0 ? 'normal' : (state.letterSpacing * 2) + 'px';
+                b.style.lineHeight = state.lineHeight === 0 ? '1.6' : (1.6 + state.lineHeight * 0.4);
+                
+                b.setAttribute('data-bold', state.bold);
+                b.setAttribute('data-hide-images', state.hideImages);
+                b.setAttribute('data-pause-anim', state.pauseAnim);
+                b.setAttribute('data-links-highlight', state.links);
+                b.setAttribute('data-header-highlight', state.headerHighlight);
+                b.setAttribute('data-stop-sounds', state.stopSounds);
+                
+                b.style.cursor = state.bigCursor ? 'crosshair' : 'default';
+                
+                document.getElementById('reading-mask').style.display = state.readingMask ? 'block' : 'none';
+                document.getElementById('reading-guide').style.display = state.readingGuide ? 'block' : 'none';
+                document.getElementById('acc-magnifier').style.display = state.magnifier ? 'block' : 'none';
+
+                let f = "";
+                if(state.contrast > 0) f += `contrast(${1 + state.contrast * 0.6}) `;
+                if(state.saturation === 1) f += "grayscale(1) ";
+                if(state.saturation === 2) f += "saturate(2.8) ";
+                if(state.colorblind === 1) f += "url(#protanopia-filter) ";
+                if(state.colorblind === 2) f += "url(#deuteranopia-filter) ";
+                if(state.colorblind === 3) f += "url(#tritanopia-filter) ";
+                b.style.filter = f;
+
+                updateUI();
+                saveState();
+            };
+
+            const updateUI = () => {
+                document.querySelectorAll('.acc-option-card').forEach(card => {
+                    const key = card.getAttribute('data-key');
+                    const max = parseInt(card.getAttribute('data-max'));
+                    const dots = card.querySelector('.level-dots-container');
+                    if(dots && key) {
+                        dots.innerHTML = "";
+                        const val = typeof state[key] === 'boolean' ? (state[key] ? 1 : 0) : state[key];
+                        for(let i=1; i<=max; i++) {
+                            const d = document.createElement('div');
+                            d.className = `status-dot ${i <= val ? 'active' : ''}`;
+                            dots.appendChild(d);
+                        }
+                    }
+                    card.classList.toggle('active', !!state[key]);
+                });
+
+                const hasActive = Object.keys(state).some(k => k !== 'isMaximized' && !!state[k]);
+                document.getElementById('accessibility-btn').classList.toggle('has-active-features', hasActive);
+            };
+
+            const resetAll = () => {
+                Object.keys(state).forEach(k => {
+                    if(typeof state[k] === 'boolean') state[k] = false;
+                    else if(typeof state[k] === 'number') state[k] = 0;
+                });
+                notify("Configurações Redefinidas", "reset");
+                apply();
+            };
+
+            const openModal = (id) => {
+                document.getElementById(id).style.display = 'flex';
+                if(id === 'glossary-modal') renderGlossary();
+            };
+            const closeModal = (id) => document.getElementById(id).style.display = 'none';
+
+            const saveState = () => localStorage.setItem('audit_acc_state_vFinal', JSON.stringify(state));
+            const loadState = () => {
+                const s = localStorage.getItem('audit_acc_state_vFinal');
+                if(s) { Object.assign(state, JSON.parse(s)); apply(); } else { updateUI(); }
+            };
+
+            window.addEventListener('mousemove', (e) => {
+                if(state.readingMask) {
+                    const m = document.getElementById('reading-mask');
+                    const y = e.clientY;
+                    m.style.clipPath = `polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 0% 0%, 0% ${y-55}px, 100% ${y-55}px, 100% ${y+55}px, 0% ${y+55}px, 0% ${y-55}px)`;
+                }
+                if(state.readingGuide) document.getElementById('reading-guide').style.top = e.clientY + 'px';
+                if(state.magnifier) {
+                    const mag = document.getElementById('acc-magnifier');
+                    mag.style.left = (e.clientX - 140) + 'px';
+                    mag.style.top = (e.clientY - 140) + 'px';
+                }
+            });
+
+            return { togglePanel, toggleMaximize, updateStep, toggleFeature, resetAll, highlight, openModal, closeModal, toggleGlossarySidebar, loadState };
+        })();
+
+        function toggleLibras() { const w = document.querySelector('[vw-access-button]'); if(w) w.click(); }
+
+        window.onload = () => {
+            AccessControl.loadState();
+            const sc = document.createElement('script');
+            sc.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+            sc.onload = () => new window.VLibras.Widget('https://vlibras.gov.br/app');
+            document.head.appendChild(sc);
+        };
+
+        window.onkeydown = (e) => {
+            if(e.altKey && e.key === 'a') AccessControl.togglePanel();
+            if(e.altKey && e.key === 'r') AccessControl.resetAll();
+            if(e.altKey && e.key === 'm') AccessControl.toggleMaximize();
+            if(e.key === 'Escape') {
+                AccessControl.closeModal('glossary-modal');
+                AccessControl.closeModal('shortcuts-modal');
+            }
+        };
+    </script>
+</body>
+</html>

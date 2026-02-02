@@ -1,96 +1,353 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Audit Educa - Transformando a Auditoria e Contabilidade através da educação digital.">
-    <title>Audit Educa - Início</title>
+    <meta name="description" content="Audit Educa - Excelência e conformidade em auditoria e contabilidade.">
+    <title>Audit Educa | Excelência em Auditoria</title>
+    <link rel="icon" type="image/webp" href="assets/images/audit-educa-favicon.webp">
 
-    <!-- Preloader CSS Crítico -->
+    <!-- CSS Externos Globais -->
     <link rel="stylesheet" href="assets/css/preloader.css">
-    <!-- CSS Global e Main -->
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <!-- Component Specific CSS -->
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
 
-    <!-- Preload dos Scripts Essenciais -->
-    <script src="assets/js/template-engine.js" defer></script>
+    <!-- Font Awesome & Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configurado -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'], // Adicionado para títulos elegantes
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059', // Dourado mais sóbrio/metálico
+                        'audit-navy': '#0f172a', // Navy quase preto para seriedade
+                        'audit-blue': '#1e40af', // Azul institucional
+                        'audit-gray': '#f1f5f9', // Fundo corporativo
+                    },
+                    boxShadow: {
+                        'elegant': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'card': '0 0 0 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #ffffff;
+            color: #334155;
+        }
+        
+        /* Fundo Sóbrio com padrão sutil de "Papel Timbrado" */
+        .hero-section {
+            background-color: #f8fafc;
+            background-image: 
+                linear-gradient(#e2e8f0 1px, transparent 1px),
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center top;
+        }
+
+        /* Card Corporativo Rigoroso */
+        .pro-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Detalhe elegante no topo do card (File Folder style) */
+        .pro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #C5A059; /* Gold */
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .pro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-color: #cbd5e1;
+        }
+
+        .pro-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Botões Refinados */
+        .btn-primary {
+            background-color: #0f172a;
+            color: white;
+            border-radius: 4px; /* Bordas menos arredondadas = mais seriedade */
+            font-weight: 500;
+            letter-spacing: 0.025em;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #1e293b;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            border-color: #0f172a;
+            background-color: #f8fafc;
+        }
+        
+        .stat-divider {
+            border-right: 1px solid #e2e8f0;
+        }
+        @media (max-width: 768px) {
+            .stat-divider { border-right: none; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; }
+        }
+    </style>
+
+    <!-- Scripts do Sistema -->
     <script src="assets/js/cookie-manager.js" defer></script>
+    <script src="assets/js/template-engine.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
     <!-- Preloader -->
     <div id="preloader">
         <div class="spinner"></div>
     </div>
 
-    <!-- Header (Injetado via JS) -->
-    <div id="header-placeholder"></div>
+    <!-- HEADER MODULAR -->
+    <div id="header-placeholder" class="no-print sticky top-0 z-50 bg-white min-h-[80px] border-b border-gray-100"></div>
 
-    <!-- Main Content -->
-    <main id="main-content">
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
         
-        <!-- Hero Section -->
-        <section class="module-section hero-section">
-            <div class="container">
-                <h1>Bem-vindo ao Audit Educa</h1>
-                <p class="lead">Educação e Ferramentas para Auditores Modernos.</p>
-                <!-- Inserir imagem do Hero aqui se necessário -->
+        <!-- Hero Section: Clean & Corporate -->
+        <section class="hero-section pt-24 pb-20 px-4 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                
+                <!-- Coluna de Texto -->
+                <div class="md:w-1/2 text-left">
+                    <div class="inline-flex items-center gap-2 mb-6">
+                        <span class="h-px w-8 bg-audit-gold"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-audit-gold">Audit & Accounting Education</span>
+                    </div>
+                    
+                    <h1 class="text-4xl lg:text-5xl font-serif font-bold text-audit-navy mb-6 leading-tight">
+                        Rigor Técnico aliado à <br>
+                        <span class="text-audit-blue">Inteligência Digital</span>.
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg font-light">
+                        Plataforma integrada de ferramentas de auditoria, conformidade com NBC TAs e educação continuada para profissionais exigentes.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#solucoes" class="btn-primary px-8 py-3 flex items-center gap-2">
+                            Acessar Ferramentas <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                        <a href="biblioteca.html" class="btn-outline px-8 py-3 flex items-center gap-2">
+                            Consultar Biblioteca
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="mt-10 pt-6 border-t border-gray-200 flex gap-6 text-sm text-slate-500">
+                        <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-audit-gold"></i> Dados BCB Oficial</span>
+                        <span class="flex items-center gap-2"><i data-lucide="file-check" class="w-4 h-4 text-audit-gold"></i> Normas NBC TA</span>
+                    </div>
+                </div>
+
+                <!-- Coluna Visual / Abstrata -->
+                <div class="md:w-1/2 flex justify-center relative">
+                    <!-- Elemento Decorativo: Um "dashboard" abstrato ou composição geométrica -->
+                    <div class="relative w-full max-w-md bg-white p-6 rounded shadow-xl border border-gray-100 z-10">
+                        <!-- Mockup de Interface Limpa -->
+                        <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-2">
+                            <div class="h-3 w-24 bg-slate-200 rounded"></div>
+                            <div class="h-3 w-8 bg-green-100 text-green-700 text-[10px] flex items-center justify-center rounded px-1">ATIVO</div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex gap-3">
+                                <div class="w-1/3 h-20 bg-slate-50 rounded border border-slate-100 flex flex-col justify-center items-center p-2">
+                                    <span class="text-audit-blue font-bold text-xl">100%</span>
+                                    <span class="text-[10px] text-slate-400 uppercase mt-1">Conformidade</span>
+                                </div>
+                                <div class="w-1/3 h-20 bg-slate-50 rounded border border-slate-100 flex flex-col justify-center items-center p-2">
+                                    <span class="text-audit-navy font-bold text-xl">PTAX</span>
+                                    <span class="text-[10px] text-slate-400 uppercase mt-1">Tempo Real</span>
+                                </div>
+                                <div class="w-1/3 h-20 bg-slate-50 rounded border border-slate-100 flex flex-col justify-center items-center p-2">
+                                    <span class="text-audit-gold font-bold text-xl"><i data-lucide="check" class="w-5 h-5"></i></span>
+                                    <span class="text-[10px] text-slate-400 uppercase mt-1">Validado</span>
+                                </div>
+                            </div>
+                            <div class="h-32 bg-slate-50 rounded border border-slate-100 relative overflow-hidden">
+                                <!-- Fake Graph Line -->
+                                <svg class="absolute bottom-0 left-0 w-full h-16 text-audit-blue opacity-20" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                    <path d="M0 100 L0 50 L20 60 L40 40 L60 80 L80 30 L100 50 L100 100 Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Elemento de fundo para profundidade -->
+                    <div class="absolute top-4 -right-4 w-full h-full bg-slate-100 border border-slate-200 rounded -z-0"></div>
+                </div>
             </div>
         </section>
 
-        <!-- Destaques / Módulos -->
-        <section class="module-section" id="ferramentas">
-            <div class="container">
-                <h2>Ferramentas Populares</h2>
-                <!-- Exemplo de Grid de Cards -->
-                <div class="grid-cards">
-                    <div class="card">
-                        <h3>Guias de Bolso</h3>
-                        <p>Acesse resumos rápidos de normas de auditoria.</p>
-                        <a href="biblioteca.html" class="btn">Acessar</a>
+        <!-- Barra de Estatísticas / Dados -->
+        <section class="bg-white py-8 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                    <div class="stat-divider p-4">
+                        <p class="text-3xl font-serif font-bold text-audit-navy">25+</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Ferramentas de Auditoria</p>
                     </div>
-                    <div class="card">
-                        <h3>Validador de Domínio</h3>
-                        <p>Verifique a segurança de e-mails corporativos.</p>
-                        <a href="ferramentas/auditoria-externa/validador-dominio-email.html" class="btn">Testar</a>
+                    <div class="stat-divider p-4">
+                        <p class="text-3xl font-serif font-bold text-audit-navy">NBC</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Normas Atualizadas</p>
+                    </div>
+                    <div class="stat-divider p-4">
+                        <p class="text-3xl font-serif font-bold text-audit-navy">24/7</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Disponibilidade Online</p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-3xl font-serif font-bold text-audit-navy">100%</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Gratuito</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sobre Rápido -->
-        <section class="module-section" id="sobre-home">
-            <div class="container">
-                <h2>Nossa Missão</h2>
-                <p>Simplificar o complexo mundo da auditoria contábil com tecnologia e didática.</p>
+        <!-- Seção Soluções Técnicas -->
+        <section id="solucoes" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-serif font-bold text-audit-navy">Soluções Técnicas</h2>
+                    <div class="h-1 w-20 bg-audit-gold mx-auto mt-4"></div>
+                    <p class="mt-4 text-slate-600">Ferramentas desenvolvidas para auxiliar nos procedimentos substantivos e testes de controle.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1 -->
+                    <a href="moedas-bcb.html" class="pro-card p-8 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
+                                <i data-lucide="coins" class="w-6 h-6"></i>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-audit-navy mb-2">Cotação PTAX Oficial</h3>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Acesse o histórico de taxas de câmbio diretamente da base do Banco Central do Brasil para recálculo de variações cambiais.
+                        </p>
+                        <div class="text-xs font-semibold text-audit-blue uppercase tracking-wide">Ferramenta Financeira</div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="biblioteca.html" class="pro-card p-8 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
+                                <i data-lucide="book-open-check" class="w-6 h-6"></i>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-audit-navy mb-2">Guias de Bolso NBC</h3>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Resumos técnicos das Normas Brasileiras de Contabilidade e Auditoria. Ideal para consulta rápida em campo.
+                        </p>
+                        <div class="text-xs font-semibold text-audit-blue uppercase tracking-wide">Base de Conhecimento</div>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="ferramentas/auditoria-externa/validador-dominio-email.html" class="pro-card p-8 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
+                                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-audit-navy mb-2">Validador de Domínio</h3>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Mitigue riscos de fraude em confirmações externas validando a existência e segurança (MX/SPF) de domínios de e-mail.
+                        </p>
+                        <div class="text-xs font-semibold text-audit-blue uppercase tracking-wide">Risco & Compliance</div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Institucional Sóbria -->
+        <section class="py-20 bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <div class="pl-6 border-l-4 border-audit-navy">
+                            <h2 class="text-3xl font-serif font-bold text-audit-navy mb-4">Compromisso com a Educação Contábil</h2>
+                            <p class="text-slate-600 mb-6 leading-relaxed text-justify">
+                                Em um cenário regulatório em constante evolução, o acesso à informação precisa é o maior ativo de um auditor. O <strong>Audit Educa</strong> foi estruturado para eliminar ruídos, entregando conteúdo direto, fundamentado nas normas e aplicável à realidade das firmas de auditoria e departamentos de contabilidade.
+                            </p>
+                        </div>
+                        <a href="sobre-nos.html" class="mt-8 inline-flex items-center text-audit-navy font-semibold hover:text-audit-gold transition-colors">
+                            Conheça nossa metodologia <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2 flex justify-center">
+                        <div class="relative w-full max-w-md aspect-video bg-slate-100 rounded border border-gray-200 flex items-center justify-center overflow-hidden">
+                            <!-- Placeholder elegante para imagem institucional -->
+                            <i data-lucide="building-2" class="w-16 h-16 text-slate-300"></i>
+                            <img src="assets/images/Audit-Educa-Hero.webp" alt="Institucional" class="absolute inset-0 w-full h-full object-cover opacity-90 mix-blend-multiply" onerror="this.style.opacity='0'">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer (Injetado via JS) -->
-    <div id="footer-placeholder"></div>
+    <!-- FOOTER MODULAR -->
+    <div id="footer-placeholder" class="no-print mt-auto"></div>
 
-    <!-- Modais e Banner de Cookie (Injetado via JS no div placeholder ou fim do body) -->
+    <!-- MODAIS E COOKIES -->
     <div id="modals-placeholder"></div>
 
-    <!-- Banner de Cookie Explicito (Caso não esteja no modals-placeholder) 
-         Recomendado manter aqui oculto para evitar delay de carregamento via JS
-    -->
-    <div id="cookie-banner" style="display: none;">
-        <div class="cookie-content">
-            <h4>Sua Privacidade Importa</h4>
-            <p>Utilizamos cookies para melhorar sua experiência e analisar o tráfego. Ao continuar, você concorda com nossa <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
-        </div>
-        <div class="cookie-actions">
-            <button id="btn-reject-cookies" class="btn-cookie btn-reject">Rejeitar</button>
-            <button id="btn-accept-cookies" class="btn-cookie btn-accept">Aceitar Todos</button>
-        </div>
-    </div>
-
+    <script>
+        // Inicializa ícones do Lucide
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>
