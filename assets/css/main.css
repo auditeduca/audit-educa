@@ -1,301 +1,148 @@
-/* Main CSS - Animações e Estilos Específicos do Conteúdo */
+/* * Main CSS - Audit Educa 
+ * Focado em estrutura, espaçamento e correções de layout.
+ */
 
-/* --- Keyframes (Definição dos movimentos) --- */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+:root {
+    --header-height: 80px; /* Valor base, será ajustado via JS se necessário */
+    --spacing-section: 4rem; /* Espaço padrão entre seções */
+    --spacing-container: 2rem;
+    --primary-color: #004aad; /* Exemplo baseado no tema */
+    --text-color: #333;
+    --bg-light: #f9f9f9;
 }
 
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- Classes de Utilidade de Animação (Usadas no JSON) --- */
-.animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-.animate-fade-in-down {
-    animation: fadeInDown 0.6s ease-out forwards;
-}
-
-.animate-slide-in-up {
-    animation: slideInUp 0.8s ease-out forwards;
-}
-
-/* --- Ajustes Específicos para Dark Mode no Conteúdo --- */
-
-/* Ajuste fino para os SVGs de onda na seção Hero */
-.dark section#inicio svg.text-gray-100 {
-    color: #0b1120; /* Garante que a "máscara" da onda combine com o fundo dark */
-}
-
-/* Inputs de Newsletter no Dark Mode */
-.dark input[type="email"] {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #0f172a;
-}
-
-.dark input[type="email"]::placeholder {
-    color: #4b5563;
-}
-
-/* Cards de Acesso Rápido - Hover */
-.dark .shadow-xl:hover {
-    box-shadow: 0 20px 25px -5px rgba(251, 191, 36, 0.1), 0 10px 10px -5px rgba(251, 191, 36, 0.04); /* Glow dourado sutil no dark mode */
-}
-
-/* ========= SISTEMA DE MODAIS ========= */
-
-/* Overlay do modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    animation: modalFadeIn 0.3s ease-out;
-}
-
-/* Conteúdo do modal */
-.modal-content {
-    position: relative;
-    background-color: white;
-    margin: 5% auto;
-    padding: 0;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    animation: modalSlideIn 0.3s ease-out;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-/* Header do modal */
-.modal-header {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-    color: #0f172a;
-    padding: 20px 24px;
+/* =========================================
+   Estrutura Base (Sticky Footer Fix)
+   ========================================= */
+body {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.modal-header h3 {
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #0f172a;
+    overflow-x: hidden; /* Previne scroll horizontal acidental */
 }
 
-/* Botão de fechar */
-.modal-close {
-    color: #0f172a;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0;
-    background: none;
-    border: none;
-    transition: color 0.2s ease;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+main {
+    flex: 1; /* Faz o main ocupar o espaço disponível empurrando o footer */
+    width: 100%;
+    max-width: 1440px; /* Container máximo para telas gigantes */
+    margin: 0 auto;
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
+    /* Padding-top é gerenciado via JS para ser perfeito com header fixo */
+    box-sizing: border-box;
 }
 
-.modal-close:hover {
-    color: #dc2626;
-    background-color: rgba(255, 255, 255, 0.2);
+/* =========================================
+   Espaçamento de Módulos (Index)
+   ========================================= */
+
+/* Classe utilitária para seções na Index */
+.module-section {
+    margin-bottom: var(--spacing-section);
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Divisor sutil opcional */
 }
 
-/* Corpo do modal */
-.modal-body {
-    padding: 24px;
-    overflow-y: auto;
-    max-height: calc(80vh - 80px);
-    line-height: 1.6;
+.module-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
-.modal-body h4 {
-    color: #1e293b;
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin: 20px 0 12px 0;
-    border-bottom: 2px solid #d4af37;
-    padding-bottom: 4px;
+.hero-section {
+    /* Ajuste para garantir que o Hero não colida com o Header */
+    margin-top: 1rem; 
+    margin-bottom: var(--spacing-section);
 }
 
-.modal-body h4:first-child {
-    margin-top: 0;
-}
-
-.modal-body p {
-    color: #4b5563;
-    margin-bottom: 16px;
-}
-
-.modal-body ul {
-    color: #4b5563;
-    margin: 12px 0;
-    padding-left: 20px;
-}
-
-.modal-body li {
-    margin-bottom: 8px;
-    list-style-type: none;
-    position: relative;
-    padding-left: 20px;
-}
-
-.modal-body li::before {
-    content: "•";
-    color: #d4af37;
-    font-weight: bold;
-    position: absolute;
+/* =========================================
+   Cookie Banner Styles
+   ========================================= */
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
     left: 0;
-}
-
-/* Animações dos modais */
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes modalSlideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Estado ativo do modal */
-.modal.modal-active {
-    display: flex;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    z-index: 9999;
+    display: none; /* Controlado via JS (flex/none) */
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    border-top: 4px solid var(--primary-color);
 }
 
-/* Dark mode para modais */
-.dark .modal-content {
-    background-color: #1e293b;
-    border-color: rgba(212, 175, 55, 0.3);
+.cookie-content {
+    flex: 1;
+    padding-right: 2rem;
 }
 
-.dark .modal-header {
-    background: linear-gradient(135deg, #d4af37 0%, #f59e0b 100%);
-    color: #0f172a;
+.cookie-content h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
 }
 
-.dark .modal-header h3 {
-    color: #0f172a;
+.cookie-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
 }
 
-.dark .modal-body {
-    color: #e2e8f0;
+.cookie-actions {
+    display: flex;
+    gap: 1rem;
+    white-space: nowrap;
 }
 
-.dark .modal-body h4 {
-    color: #f1f5f9;
-    border-bottom-color: #d4af37;
+.btn-cookie {
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.dark .modal-body p,
-.dark .modal-body ul,
-.dark .modal-body li {
-    color: #cbd5e1;
+.btn-accept {
+    background-color: var(--primary-color);
+    color: white;
 }
 
-/* Responsividade dos modais */
+.btn-accept:hover {
+    background-color: #003380;
+}
+
+.btn-reject {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-reject:hover {
+    background-color: #d0d0d0;
+}
+
+/* Mobile Responsiveness para o Banner */
 @media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 2% auto;
-        max-height: 90vh;
+    #cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
     }
-    
-    .modal-header {
-        padding: 16px 20px;
+
+    .cookie-content {
+        padding-right: 0;
+        margin-bottom: 1rem;
     }
-    
-    .modal-header h3 {
-        font-size: 1.125rem;
+
+    .cookie-actions {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
     }
-    
-    .modal-body {
-        padding: 20px;
-        max-height: calc(90vh - 70px);
+
+    .btn-cookie {
+        width: 100%;
     }
-    
-    .modal-close {
-        font-size: 24px;
-        width: 28px;
-        height: 28px;
-    }
-}
-
-/* Scrollbar customizada para modais */
-.modal-body::-webkit-scrollbar {
-    width: 6px;
-}
-
-.modal-body::-webkit-scrollbar-track {
-    background: #f1f5f9;
-    border-radius: 3px;
-}
-
-.modal-body::-webkit-scrollbar-thumb {
-    background: #d4af37;
-    border-radius: 3px;
-}
-
-.modal-body::-webkit-scrollbar-thumb:hover {
-    background: #b8941f;
-}
-
-.dark .modal-body::-webkit-scrollbar-track {
-    background: #334155;
-}
-
-.dark .modal-body::-webkit-scrollbar-thumb {
-    background: #d4af37;
-}
-
-.dark .modal-body::-webkit-scrollbar-thumb:hover {
-    background: #b8941f;
 }

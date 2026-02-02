@@ -1,69 +1,61 @@
 /**
- * Lógica de Carregamento Principal e Handlers de Eventos
- *
- * Objetivo: Configurar listeners globais. O TemplateEngine.js é responsável pelo roteamento 
- * e injeção do conteúdo principal da página (Ex: home.json).
- * * *Aviso*: A injeção inicial de conteúdo foi removida deste arquivo (main.js) para evitar 
- * conflito com a lógica de roteamento do template-engine.js, que é quem deve 
- * gerenciar o placeholder #content-placeholder.
+ * Main JS - Audit Educa
+ * Integração de componentes, inicialização e lógica global.
  */
 
-// Listener para o evento de conclusão do preloader
-document.addEventListener('componentsLoaded', () => {
-    // Código que roda após o esqueleto (Header/Footer) carregar e o preloader sair.
-    console.log('Main: Evento componentsLoaded recebido. Handlers de eventos globais inicializados.');
-    
-    // OBS: O template-engine.js agora deve carregar a rota inicial ('home') por conta própria
-    // após receber este evento ou após sua própria inicialização.
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // 1. Carrega os componentes essenciais (Header, Footer, Modais)
+        // Assume-se que 'loadComponent' vem do template-engine.js
+        if (typeof loadTemplate === 'function') {
+            await Promise.all([
+                loadTemplate('header', 'assets/components/header.html'),
+                loadTemplate('footer', 'assets/components/footer.html'),
+                loadTemplate('modals', 'assets/components/modals-main.html') // Assume que o banner de cookie está aqui
+            ]);
+        } else {
+            console.error('Template Engine não encontrado.');
+        }
+
+        // 2. Inicializa lógica específica do cabeçalho (menu mobile, etc)
+        // Verifica se a função existe no escopo global (vinda de header.js)
+        if (typeof initHeader === 'function') initHeader();
+
+        // 3. Inicializa lógica de Cookies
+        // Crítico: Só roda DEPOIS que 'modals' foi carregado no passo 1
+        if (typeof CookieManager !== 'undefined') {
+            CookieManager.init();
+        }
+
+        // 4. Ajustes de Layout (Espaçamento dinâmico)
+        adjustMainSpacing();
+
+        // 5. Remove Preloader
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.remove(), 500);
+        }
+
+    } catch (error) {
+        console.error('Erro na inicialização da página:', error);
+    }
 });
 
-/**
- * Função de manipulação da Newsletter (Mantida para ser globalmente acessível)
- * É chamada diretamente pelo evento onsubmit do formulário.
- * @param {Event} event O evento de submissão do formulário.
- */
-function handleNewsletter(event) {
-    event.preventDefault();
-    const input = event.target.querySelector('input[type="email"]');
-    const email = input.value;
+// Ajusta o padding-top do main baseado na altura do header (se for fixo)
+function adjustMainSpacing() {
+    const header = document.querySelector('header');
+    const main = document.querySelector('main');
     
-    if (email && email.includes('@') && email.length > 5) {
-        console.log(`Newsletter: E-mail ${email} cadastrado com sucesso (Simulação).`);
-        input.value = '';
+    if (header && main) {
+        const headerHeight = header.offsetHeight;
+        // Adiciona um pouco de respiro extra (ex: +2rem)
+        main.style.paddingTop = `calc(${headerHeight}px + 2rem)`;
         
-        const form = event.target;
-        form.parentNode.querySelectorAll('.newsletter-msg').forEach(msg => msg.remove());
-
-        const successMsg = document.createElement('p');
-        successMsg.className = 'newsletter-msg text-green-600 dark:text-green-300 font-semibold mt-4 opacity-0';
-        successMsg.style.animation = 'fadeIn 0.5s ease-out forwards'; 
-        successMsg.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Cadastro de ${email} realizado!`;
-        
-        form.parentNode.insertBefore(successMsg, form.nextSibling);
-
-        setTimeout(() => {
-            successMsg.style.animation = 'fadeOut 0.5s ease-out forwards'; 
-            setTimeout(() => successMsg.remove(), 500);
-        }, 4000);
-
-    } else {
-        console.error('Newsletter: E-mail inválido.');
-        
-        const form = event.target;
-        form.parentNode.querySelectorAll('.newsletter-msg').forEach(msg => msg.remove());
-        
-        const errorMsg = document.createElement('p');
-        errorMsg.className = 'newsletter-msg text-red-600 dark:text-red-300 font-semibold mt-4 opacity-0';
-        errorMsg.style.animation = 'fadeIn 0.5s ease-out forwards';
-        errorMsg.innerHTML = `<i class="fas fa-times-circle mr-2"></i> Por favor, insira um e-mail válido.`;
-        form.parentNode.insertBefore(errorMsg, form.nextSibling);
-
-        setTimeout(() => {
-            errorMsg.style.animation = 'fadeOut 0.5s ease-out forwards';
-            setTimeout(() => errorMsg.remove(), 500);
-        }, 5000);
+        // Garante que o footer fique no final da página (Sticky Footer logic)
+        main.style.minHeight = `calc(100vh - ${headerHeight}px - 200px)`; // 200px estimado do footer
     }
 }
 
-// Exporta a função para que ela possa ser acessada globalmente 
-window.handleNewsletter = handleNewsletter;
+// Ouve redimensionamento para reajustar
+window.addEventListener('resize', adjustMainSpacing);
