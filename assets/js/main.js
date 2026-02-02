@@ -1,56 +1,67 @@
 /**
  * Main JS - Audit Educa
  * Controlador Principal: Coordena a inicialização após o Template Engine.
+ * Atualizado para arquitetura orientada a eventos.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Escuta o evento disparado pelo Template Engine
+    // 1. Ouve o evento de sucesso do Template Engine
     document.addEventListener('template-loaded', () => {
-        console.log('🏁 Main JS: Templates prontos. Inicializando lógica dependente...');
+        console.log('🏁 Main JS: Evento recebido. Inicializando app...');
         initializeApp();
     });
 
-    // Fallback de segurança: Se o evento já passou (raro, mas possível em cache), verifica manualmente
-    if (window.TemplateEngineInstance && window.TemplateEngineInstance.componentsLoaded) {
+    // 2. Fallback: Se o evento já ocorreu (cache rápido), verifica a variável global correta
+    // Nota: O nome da variável foi corrigido para 'TemplateEngine' para bater com o outro arquivo
+    if (window.TemplateEngine && window.TemplateEngine.componentsLoaded) {
+        console.log('🏁 Main JS: Engine já estava pronto (fallback).');
         initializeApp();
     }
 });
 
 function initializeApp() {
-    // 1. Inicializa lógica do Header (Menu Mobile, etc)
-    // Verifica se a função existe no escopo global (vinda do header.html/js)
-    if (typeof initHeader === 'function') {
-        initHeader();
+    // Previne inicialização dupla
+    if (window.appInitialized) return;
+    window.appInitialized = true;
+
+    try {
+        // A. Inicializa lógica do Header (Menu Mobile)
+        if (typeof initHeader === 'function') {
+            initHeader();
+        }
+
+        // B. Inicializa Gerenciador de Cookies
+        // O banner já existe no DOM agora
+        if (typeof CookieManager !== 'undefined') {
+            CookieManager.init();
+        } else {
+            console.warn('⚠️ CookieManager não definido.');
+        }
+
+        // C. Ajustes de Layout (Sticky Footer)
+        adjustMainSpacing();
+
+        // D. Remove Preloader
+        removePreloader();
+        
+    } catch (error) {
+        console.error('❌ Erro durante initializeApp:', error);
     }
-
-    // 2. Inicializa Gerenciador de Cookies
-    // Agora é seguro, pois o banner (que estava no modals ou index) já existe no DOM
-    if (typeof CookieManager !== 'undefined') {
-        CookieManager.init();
-    } else {
-        console.warn('CookieManager não encontrado.');
-    }
-
-    // 3. Ajustes Finais de Layout (Sticky Footer e Header Fixo)
-    adjustMainSpacing();
-
-    // 4. Remove Preloader com transição suave
-    removePreloader();
 }
 
 function adjustMainSpacing() {
-    const header = document.querySelector('header'); // Agora o <header> existe, pois foi injetado
+    const header = document.querySelector('header');
     const main = document.querySelector('main');
     
     if (header && main) {
-        // Usa ResizeObserver para detectar mudanças de tamanho no header (ex: troca de banner responsivo)
+        // Usa ResizeObserver para responsividade em tempo real
         const resizeObserver = new ResizeObserver(entries => {
             for (let entry of entries) {
                 const height = entry.contentRect.height;
-                // Ajusta o padding do main para o conteúdo não ficar escondido
-                main.style.paddingTop = `calc(${height}px + 2rem)`; 
-                // Garante sticky footer
-                main.style.minHeight = `calc(100vh - ${height}px - 100px)`; 
+                if (height > 0) {
+                    main.style.paddingTop = `calc(${height}px + 2rem)`;
+                    main.style.minHeight = `calc(100vh - ${height}px - 100px)`;
+                }
             }
         });
         resizeObserver.observe(header);
