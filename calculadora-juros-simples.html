@@ -129,6 +129,17 @@
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+        
+        /* Ajuste para Cabeçalho Fixo e Margens de Segurança */
+        main {
+            padding-top: 100px; /* Garante que o conteúdo não fique sob o header fixo */
+        }
+        @media (min-width: 1024px) {
+            .content-wrapper {
+                padding-left: 100px; /* Espaço para a sidebar esquerda fixada */
+                padding-right: 60px; /* Espaço de segurança para widgets à direita */
+            }
+        }
     </style>
 
     <!-- Scripts de Integração Audit Educa (URLs Absolutas) -->
@@ -220,11 +231,11 @@
     </aside>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
+    <main class="flex-grow pb-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper">
             
             <!-- Introdução -->
-            <div class="mb-12 no-print lg:pl-16">
+            <div class="mb-12 no-print">
                 <nav class="flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     <ol class="flex items-center gap-2">
                         <li><a href="/" class="hover:text-audit-gold transition">Home</a></li>
@@ -244,12 +255,12 @@
                     </div>
                 </div>
 
-                <!-- Metadados e Compartilhamento (RECUPERADOS) -->
+                <!-- Metadados e Compartilhamento -->
                 <div class="mt-8 space-y-6">
                     <div class="flex flex-wrap items-center gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">
                         <span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-audit-gold"></i> Atualizado em: 05/02/2026</span>
                         <span class="hidden md:inline w-1 h-1 bg-slate-300 rounded-full"></span>
-                        <span class="flex items-center gap-2"><i class="fas fa-code-branch text-audit-gold"></i> Versão: 2.7.5</span>
+                        <span class="flex items-center gap-2"><i class="fas fa-code-branch text-audit-gold"></i> Versão: 2.8.5</span>
                     </div>
 
                     <div class="flex items-center gap-3">
@@ -261,7 +272,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:pl-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 
                 <!-- Coluna de Entrada de Dados -->
                 <div class="lg:col-span-8 space-y-8" id="capture-pdf-area">
@@ -350,7 +361,7 @@
                         </div>
                     </div>
 
-                    <!-- INSIGHT E MEMÓRIA TÉCNICA (RECUPERADOS) -->
+                    <!-- INSIGHT E MEMÓRIA TÉCNICA -->
                     <div class="bg-audit-blue/5 p-8 border-l-4 border-audit-blue rounded-r-2xl flex gap-6 no-print">
                         <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm shrink-0">
                             <i class="fas fa-lightbulb text-audit-blue text-xl"></i>
@@ -398,23 +409,27 @@
                         </nav>
                     </div>
 
-                    <!-- Hub Informativo -->
-                    <div class="bg-audit-navy p-8 rounded-2xl shadow-xl text-white relative overflow-hidden group">
+                    <!-- RESTAURAÇÃO: SIDEBAR NEWSLETTER AUDIT -->
+                    <div class="bg-audit-navy p-8 rounded-2xl shadow-xl text-white relative overflow-hidden group no-print">
                         <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
                             <i class="fas fa-shield-halved text-6xl"></i>
                         </div>
                         <div class="relative z-10">
-                            <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">Suporte Técnico</h4>
-                            <p class="text-xs font-light leading-relaxed text-slate-300 mb-6">Dúvidas sobre a aplicação da norma? Nossos especialistas podem ajudar.</p>
-                            <button class="w-full p-3 bg-audit-gold text-audit-navy font-bold text-[10px] uppercase tracking-widest rounded-lg hover:bg-yellow-500 transition">Consultoria</button>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">Newsletter Audit</h4>
+                            <p class="text-xs font-light leading-relaxed text-slate-300 mb-6">
+                                Receba atualizações semanais sobre normas técnicas e novas ferramentas do Hub diretamente no seu e-mail.
+                            </p>
+                            <div class="space-y-3">
+                                <input type="email" placeholder="seu@email.com" class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-xs outline-none focus:border-audit-gold transition">
+                                <button onclick="showToast('Assinatura realizada!')" class="w-full p-3 bg-audit-gold text-audit-navy font-bold text-[10px] uppercase tracking-widest rounded-lg hover:bg-yellow-500 transition shadow-lg">Assinar Hub</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SEÇÕES DE APOIO PADRONIZADAS (RECUPERADAS) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 pt-16 border-t border-slate-200 no-print lg:pl-16 mt-16" id="secao-apoio">
-                <!-- Conteúdo Relacionado -->
+            <!-- SEÇÕES DE APOIO PADRONIZADAS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 pt-16 border-t border-slate-200 no-print mt-16" id="secao-apoio">
                 <section class="h-full">
                     <h3 class="text-xl font-bold text-audit-navy mb-8 flex items-center gap-3"><i class="fas fa-bookmark text-audit-gold"></i> Conteúdo Relacionado</h3>
                     <div class="space-y-4">
@@ -433,7 +448,6 @@
                     </div>
                 </section>
 
-                <!-- Hub de Ferramentas -->
                 <section class="h-full">
                     <h3 class="text-xl font-bold text-audit-navy mb-8 flex items-center gap-3"><i class="fas fa-th-large text-audit-gold"></i> Hub de Ferramentas</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -453,8 +467,8 @@
                 </section>
             </div>
 
-            <!-- SEÇÃO TAGS / TÓPICOS (RECUPERADA) -->
-            <section class="mt-20 lg:pl-16 no-print">
+            <!-- SEÇÃO TAGS / TÓPICOS -->
+            <section class="mt-20 no-print">
                 <div class="flex items-center gap-3 mb-6 border-b pb-4">
                     <i class="fas fa-tags text-audit-gold"></i>
                     <h3 class="text-xs font-bold text-audit-navy uppercase tracking-widest">Tópicos Técnicos</h3>
@@ -469,7 +483,7 @@
             </section>
 
             <!-- CTA BIBLIOTECA -->
-            <section class="mt-16 bg-audit-navy rounded-[3rem] p-10 md:p-20 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12 no-print shadow-2xl relative overflow-hidden group lg:ml-16">
+            <section class="mt-16 bg-audit-navy rounded-[3rem] p-10 md:p-20 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12 no-print shadow-2xl relative overflow-hidden group">
                 <div class="absolute top-0 right-0 w-96 h-96 bg-audit-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
                 <div class="max-w-xl relative z-10">
                     <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">Aprofunde seus conhecimentos</h2>
