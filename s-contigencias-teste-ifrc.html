@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guia Técnico Audit Educa - Auditoria de Incertezas sobre Tratamento de Tributos (CPC 49 / IFRIC 23).">
+    <title>Guia Técnico CPC 49 | Audit Educa</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
+
+    <!-- Bibliotecas Externas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                        'audit-red': '#991b1b',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #334155; 
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+
+        /* BARRA DE FERRAMENTAS LATERAL */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+        }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+        }
+        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none;
+        }
+        .tool-btn:hover .btn-label { display: block; }
+
+        /* DRAWERS */
+        .drawer { 
+            position: fixed; top: 0; left: 0; height: 100%; width: 100%; max-width: 26rem; 
+            background: white; z-index: 1100; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%);
+        }
+        .drawer.active { transform: translateX(0); }
+
+        /* CARDS */
+        .premium-card {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);
+            border: 1px solid #e2e8f0; border-top: 4px solid #0f172a;
+            transition: transform 0.3s ease;
+        }
+        .premium-card:hover { transform: translateY(-2px); }
+        
+        .risk-card { border-top-color: #991b1b; background: #fffafb; }
+        .procedure-card { border-top-color: #C5A059; }
+
+        @media (max-width: 768px) {
+            .sidebar-left-tools {
+                top: auto; bottom: 0; left: 0; width: 100%; height: 60px;
+                flex-direction: row; transform: none; background: white; border-top: 1px solid #e2e8f0;
+            }
+            .tool-btn { border: none; border-radius: 0; width: auto; flex: 1; }
+            .btn-label { display: none !important; }
+            main { padding-bottom: 80px; }
+        }
+
+        .content-wrapper { padding-top: 60px; }
+        @media (min-width: 1024px) { .content-wrapper { padding-left: 100px; padding-right: 40px; } }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar-left-tools no-print">
+        <button class="tool-btn" onclick="toggleDrawer('teoria')" title="Teoria">
+            <i class="fas fa-book-open"></i>
+            <span class="btn-label">Fundamentação</span>
+        </button>
+        <button class="tool-btn" onclick="toggleDrawer('normas')" title="Normas">
+            <i class="fas fa-gavel"></i>
+            <span class="btn-label">Normas Aplicáveis</span>
+        </button>
+        <button class="tool-btn" onclick="copyContent()" title="Copiar Guia">
+            <i class="fas fa-copy"></i>
+            <span class="btn-label">Copiar Texto</span>
+        </button>
+    </aside>
+
+    <!-- DRAWER: TEORIA -->
+    <aside id="drawer-teoria" class="drawer shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest">
+                    <i class="fas fa-lightbulb text-audit-gold"></i> Conceitos Chave
+                </h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-grow space-y-6 text-sm text-slate-600 leading-relaxed">
+                <p>O <strong>CPC 49</strong> orienta como refletir incertezas sobre tratamentos de tributos sobre o lucro.</p>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                    <p class="font-bold text-audit-navy mb-2">Unidade de Conta:</p>
+                    <p>A entidade deve determinar se considera cada tratamento incerto separadamente ou em conjunto, baseando-se na abordagem que melhor preveja a resolução da incerteza.</p>
+                </div>
+                <p>O auditor deve avaliar se a autoridade fiscal tem conhecimento de todas as informações relevantes ao realizar sua análise.</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- DRAWER: NORMAS -->
+    <aside id="drawer-normas" class="drawer shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest">
+                    <i class="fas fa-balance-scale text-audit-gold"></i> Referências
+                </h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs">
+                    <p class="font-bold text-audit-navy uppercase mb-1">CPC 49 / IFRIC 23</p>
+                    <p class="text-slate-500">Incerteza sobre Tratamento de Tributos sobre o Lucro.</p>
+                </div>
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs">
+                    <p class="font-bold text-audit-navy uppercase mb-1">NBC TA 540</p>
+                    <p class="text-slate-500">Auditoria de Estimativas Contábeis e Divulgações.</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- OVERLAY -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none z-[1050] transition-opacity duration-300" onclick="closeAllDrawers()"></div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow pb-12 px-4 sm:px-6 content-wrapper">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Header/Hero -->
+            <div class="mb-12">
+                <nav class="flex mb-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    <ol class="flex items-center gap-2">
+                        <li>Audit Educa</li>
+                        <li><i class="fas fa-chevron-right text-[7px]"></i></li>
+                        <li class="text-audit-gold">Guia Técnico de Auditoria</li>
+                    </ol>
+                </nav>
+                
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy tracking-tight mb-4">
+                    Incertezas Tributárias <span class="text-audit-gold block md:inline">(CPC 49)</span>
+                </h1>
+                <p class="text-slate-600 text-lg font-light max-w-3xl leading-relaxed">
+                    Framework de auditoria para avaliação de riscos e procedimentos substantivos sobre o reconhecimento de tributos sobre o lucro sob incerteza.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Coluna Principal -->
+                <div class="lg:col-span-8 space-y-8">
+                    
+                    <!-- Seção: Afirmações -->
+                    <div class="premium-card rounded-2xl p-8 shadow-sm">
+                        <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
+                            <i class="fas fa-check-double text-audit-gold"></i>
+                            <h2 class="text-xs font-bold text-audit-navy uppercase tracking-[0.2em]">Afirmações de Auditoria</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <h4 class="text-[11px] font-bold text-audit-blue uppercase tracking-wider">Reconhecimento & Mensuração</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex gap-3 text-sm text-slate-600">
+                                        <i class="fas fa-circle-check text-audit-navy mt-1 text-[10px]"></i>
+                                        <span><strong>Probabilidade:</strong> Avaliar se a aceitação fiscal é > 50%.</span>
+                                    </li>
+                                    <li class="flex gap-3 text-sm text-slate-600">
+                                        <i class="fas fa-circle-check text-audit-navy mt-1 text-[10px]"></i>
+                                        <span><strong>Valor Esperado:</strong> Recálculo baseado na soma ponderada de probabilidades.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <h4 class="text-[11px] font-bold text-audit-blue uppercase tracking-wider">Apresentação & Divulgação</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex gap-3 text-sm text-slate-600">
+                                        <i class="fas fa-circle-check text-audit-navy mt-1 text-[10px]"></i>
+                                        <span><strong>Transparência:</strong> Notas explicativas sobre julgamentos críticos.</span>
+                                    </li>
+                                    <li class="flex gap-3 text-sm text-slate-600">
+                                        <i class="fas fa-circle-check text-audit-navy mt-1 text-[10px]"></i>
+                                        <span><strong>Classificação:</strong> Passivos correntes vs. diferidos.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seção: Procedimentos -->
+                    <div class="premium-card procedure-card rounded-2xl p-8 shadow-sm">
+                        <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
+                            <i class="fas fa-clipboard-list text-audit-gold"></i>
+                            <h2 class="text-xs font-bold text-audit-navy uppercase tracking-[0.2em]">Procedimentos Substantivos</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="group flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+                                <span class="w-8 h-8 rounded-lg bg-audit-navy text-white flex items-center justify-center font-bold text-xs shrink-0">01</span>
+                                <div>
+                                    <p class="text-sm font-bold text-audit-navy mb-1">Exame de Pareceres Legais</p>
+                                    <p class="text-xs text-slate-500">Obter e revisar opiniões de especialistas tributários que sustentam a posição da gestão.</p>
+                                </div>
+                            </div>
+                            <div class="group flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+                                <span class="w-8 h-8 rounded-lg bg-audit-navy text-white flex items-center justify-center font-bold text-xs shrink-0">02</span>
+                                <div>
+                                    <p class="text-sm font-bold text-audit-navy mb-1">Recálculo de Estimativas</p>
+                                    <p class="text-xs text-slate-500">Testar a precisão aritmética do "Valor Mais Provável" ou "Valor Esperado".</p>
+                                </div>
+                            </div>
+                            <div class="group flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+                                <span class="w-8 h-8 rounded-lg bg-audit-navy text-white flex items-center justify-center font-bold text-xs shrink-0">03</span>
+                                <div>
+                                    <p class="text-sm font-bold text-audit-navy mb-1">Review de Eventos Subsequentes</p>
+                                    <p class="text-xs text-slate-500">Monitorar decisões de tribunais superiores que impactem a tese adotada.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Lateral -->
+                <div class="lg:col-span-4 space-y-6">
+                    
+                    <!-- Risco -->
+                    <div class="premium-card risk-card rounded-2xl p-6 shadow-sm">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i class="fas fa-triangle-exclamation text-audit-red"></i>
+                            <span class="text-[10px] font-bold text-audit-red uppercase tracking-widest">Matriz de Risco</span>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="border-b border-red-100 pb-3">
+                                <p class="text-xs font-bold text-slate-700">Otimismo Excessivo</p>
+                                <p class="text-[11px] text-slate-500">Viés da gestão em julgar como "provável" teses de baixo êxito.</p>
+                            </li>
+                            <li class="border-b border-red-100 pb-3">
+                                <p class="text-xs font-bold text-slate-700">Omissão de Jurisdições</p>
+                                <p class="text-[11px] text-slate-500">Não considerar incertezas em filiais estrangeiras ou outros estados.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter Audit -->
+                    <div class="bg-audit-navy p-8 rounded-2xl shadow-xl text-white relative overflow-hidden group">
+                        <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-shield-halved text-6xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">Radar Fiscal</h4>
+                            <p class="text-[11px] font-light leading-relaxed text-slate-300 mb-6">
+                                Receba alertas sobre mudanças na interpretação do CPC 49 pelo Fisco.
+                            </p>
+                            <button class="w-full p-3 bg-audit-gold text-audit-navy font-bold text-[10px] uppercase tracking-widest rounded-lg hover:bg-yellow-500 transition shadow-lg">
+                                Assinar Radar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Insight -->
+                    <div class="p-6 bg-white border border-slate-200 rounded-2xl italic text-sm text-slate-500">
+                        <i class="fas fa-quote-left text-audit-gold mb-2 block"></i>
+                        "Em auditoria, a evidência mais forte para o CPC 49 costuma ser a consistência histórica entre as provisões e os desfechos reais das fiscalizações."
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER METADATA -->
+    <footer class="bg-white border-t border-slate-200 py-8 px-4 no-print">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                Audit Educa &copy; 2026 | Hub de Auditoria Independente
+            </div>
+            <div class="flex gap-4">
+                <span class="text-[10px] font-bold text-audit-navy bg-slate-100 px-3 py-1 rounded-full">v 1.2.0</span>
+                <span class="text-[10px] font-bold text-audit-navy bg-slate-100 px-3 py-1 rounded-full">ISA 540 COMPLIANT</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] border border-white/10 pointer-events-none">
+        Operação concluída!
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleDrawer(id) {
+            closeAllDrawers();
+            document.getElementById(`drawer-${id}`).classList.add('active');
+            document.getElementById('drawer-overlay').classList.replace('opacity-0', 'opacity-100');
+            document.getElementById('drawer-overlay').classList.replace('pointer-events-none', 'pointer-events-auto');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAllDrawers() {
+            document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
+            const o = document.getElementById('drawer-overlay');
+            o.classList.replace('opacity-100', 'opacity-0');
+            o.classList.replace('pointer-events-auto', 'pointer-events-none');
+            document.body.style.overflow = '';
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.replace('opacity-0', 'opacity-100');
+            t.classList.replace('translate-y-10', 'translate-y-0');
+            setTimeout(() => {
+                t.classList.replace('opacity-100', 'opacity-0');
+                t.classList.replace('translate-y-0', 'translate-y-10');
+            }, 3000);
+        }
+
+        function copyContent() {
+            const text = "Guia Auditoria CPC 49 - Resumo Técnico\nAfirmações: Reconhecimento (Probabilidade > 50%), Mensuração (Valor Esperado).\nProcedimentos: Exame de pareceres, Recálculo, Eventos Subsequentes.";
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            showToast("GUIA COPIADO PARA TRANSFERÊNCIA!");
+        }
+    </script>
+</body>
+</html>
