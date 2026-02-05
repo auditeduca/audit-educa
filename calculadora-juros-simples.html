@@ -2,29 +2,31 @@
 <html lang="pt-br" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Calculadora Profissional de Juros Simples - Audit Educa">
-    <meta name="application-name" content="Audit Educa Tools">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de Juros Simples - Ferramenta Profissional Audit Educa para recálculo de encargos financeiros e auditoria.">
     <title>Calculadora Juros Simples | Audit Educa</title>
     
-    <!-- === BIBLIOTECAS EXTERNAS === -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.6/dist/driver.css">
-    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.6/dist/driver.js.iife.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
 
-    <!-- === INTEGRAÇÃO AUDIT EDUCA (CSS) === -->
+    <!-- CSS Externos Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
 
-    <!-- === SCRIPTS DE INTEGRAÇÃO (JS) === -->
-    <!-- Adicionado crossorigin para melhor reporte de erros se o servidor permitir -->
-    <script src="https://auditeduca.com.br/assets/js/header.js" defer crossorigin="anonymous"></script>
-    <script src="https://auditeduca.com.br/assets/js/footer.js" defer crossorigin="anonymous"></script>
-    <script src="https://auditeduca.com.br/accessibility-api.js" defer crossorigin="anonymous"></script>
+    <!-- FontAwesome & Lucide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Bibliotecas para Geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- === CONFIGURAÇÃO TAILWIND === -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -32,480 +34,677 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
                         'audit-gold': '#C5A059',
                         'audit-navy': '#0f172a',
                         'audit-blue': '#1e40af',
-                        'audit-gray': '#f8fafc',
-                    },
-                    zIndex: {
-                        'drawer': '60',
-                        'overlay': '55',
-                        'header': '50',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
                     }
                 }
             }
         }
     </script>
 
-    <!-- === CSS PERSONALIZADO DA CALCULADORA === -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
         
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; }
-        
-        .bg-grid-pattern {
-            background-color: #f8fafc;
-            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #334155; 
+            background-image: 
+                radial-gradient(#cbd5e1 0.5px, transparent 0.5px), 
+                linear-gradient(#e2e8f0 1px, transparent 1px), 
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            background-attachment: fixed;
         }
 
-        .btn-spinner {
-            display: none; width: 16px; height: 16px; margin-right: 8px;
-            border: 2px solid currentColor; border-top-color: transparent;
-            border-radius: 50%; animation: spin 0.8s linear infinite;
+        /* BARRA DE FERRAMENTAS LATERAL ESQUERDA */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
         }
-        .btn-loading .btn-spinner { display: inline-block; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none;
+        }
+        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
 
-        .drawer-overlay {
-            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); 
-            backdrop-filter: blur(2px); z-index: 55; opacity: 0; pointer-events: none; transition: opacity 0.3s;
-        }
-        .drawer-overlay.open { opacity: 1; pointer-events: auto; }
-        
-        .right-drawer {
-            position: fixed; top: 0; right: 0; height: 100vh; width: 100%; max-width: 400px;
-            background: white; z-index: 60; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.1); display: flex; flex-direction: column;
-        }
-        .right-drawer.open { transform: translateX(0); }
-
-        .custom-input {
-            width: 100%; border-radius: 0.5rem; border: 1px solid #cbd5e1; padding: 0.75rem 1rem;
-            transition: all 0.2s; font-weight: 500; color: #334155;
-        }
-        .custom-input:focus {
-            outline: none; border-color: #1e40af; box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
+        @media (max-width: 768px) {
+            .sidebar-left-tools {
+                top: auto; bottom: 0; left: 0; width: 100%; height: 70px;
+                flex-direction: row; transform: none; justify-content: space-around;
+                align-items: center; background: white; border-top: 1px solid #e2e8f0;
+                border-radius: 0; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08); padding: 0 5px;
+            }
+            .tool-btn { border: none; width: auto; height: 100%; flex: 1; gap: 4px; box-shadow: none; background: transparent; border-radius: 8px; color: #64748b; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; box-shadow: none; }
+            body { padding-bottom: 90px; }
         }
 
-        @media print {
-            .no-print { display: none !important; }
-            body, .bg-grid-pattern { background: white !important; }
-            .shadow-lg, .shadow-sm { box-shadow: none !important; }
-            #box-resultado { break-inside: avoid; background-color: #fff !important; color: #000 !important; border: 1px solid #000; }
-            #box-resultado * { color: #000 !important; }
-            .print-header { display: block !important; }
-            #header-placeholder, #footer-placeholder { display: none !important; }
+        /* DRAWERS (EXPANSÃO ESQUERDA PARA DIREITA) */
+        .drawer { 
+            position: fixed; top: 0; left: 0; height: 100%; width: 100%; max-width: 24rem; 
+            background: white; shadow: 2xl; z-index: 1100;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%);
         }
-        .print-header { display: none; margin-bottom: 2rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
+        .drawer.active { transform: translateX(0); }
+
+        /* TOUR INTERATIVO */
+        .tour-highlight {
+            position: relative; z-index: 1301 !important;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important;
+            pointer-events: none; border: 2px solid #C5A059 !important;
+        }
+        .tour-popover {
+            position: fixed; z-index: 1302; background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); max-width: 280px;
+            border-top: 4px solid #C5A059;
+        }
+
+        /* CARDS E ELEMENTOS UI */
+        .calculator-card {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.8); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #0f172a;
+        }
+        .result-card-premium {
+            background: #ffffff; border: 1px solid #e2e8f0; position: relative; overflow: hidden;
+            border-top: 4px solid #C5A059;
+        }
+        .tag-pill-link {
+            @apply flex items-center gap-2 px-4 py-2 bg-white text-slate-500 text-[10px] uppercase font-bold rounded-xl border border-slate-200 hover:border-audit-gold hover:text-audit-navy hover:shadow-md transition-all;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
     </style>
+
+    <!-- Scripts de Integração Audit Educa (URLs Absolutas) -->
+    <script src="https://auditeduca.com.br/assets/js/utils.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/seo-manager.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/main.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
 </head>
-<body class="flex flex-col min-h-screen bg-grid-pattern relative">
+<body class="flex flex-col min-h-screen">
 
-    <!-- === 1. HEADER === -->
-    <div id="header-placeholder" class="no-print sticky top-0 z-header bg-white min-h-[80px]"></div>
+    <!-- Preloader Global -->
+    <div id="preloader"><div class="spinner"></div></div>
+    
+    <!-- Placeholder do Cabeçalho -->
+    <div id="header-placeholder" class="no-print"></div>
 
-    <!-- === 2. CONTEÚDO PRINCIPAL === -->
-    <main class="flex-grow py-8 px-4 sm:px-6 lg:px-8 w-full z-0">
-        
-        <div class="print-header">
-            <h1 class="text-2xl font-bold">Relatório de Cálculo - Juros Simples</h1>
-            <p class="text-sm">Gerado por Audit Educa Tools em <span id="print-date"></span></p>
-        </div>
+    <!-- BARRA LATERAL DE FERRAMENTAS -->
+    <aside class="sidebar-left-tools no-print" id="sidebar-tools">
+        <button class="tool-btn" onclick="toggleDrawer('teoria')" title="Teoria">
+            <i class="fas fa-book-open"></i>
+            <span class="btn-label">Teoria</span>
+        </button>
+        <button class="tool-btn" onclick="toggleDrawer('referencias')" title="Referências">
+            <i class="fas fa-link"></i>
+            <span class="btn-label">Referências</span>
+        </button>
+        <button class="tool-btn" onclick="toggleDrawer('sobre')" title="Sobre">
+            <i class="fas fa-info-circle"></i>
+            <span class="btn-label">Sobre</span>
+        </button>
+        <button class="tool-btn" onclick="startTour()" title="Tour Guiado">
+            <i class="fas fa-magic"></i>
+            <span class="btn-label">Ajuda</span>
+        </button>
+    </aside>
 
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 no-print">
-                <div>
-                    <nav class="flex mb-3 text-xs text-slate-500" aria-label="Breadcrumb">
-                        <ol class="inline-flex items-center space-x-1 md:space-x-2">
-                            <li><a href="index.html" class="hover:text-audit-blue">Home</a></li>
-                            <li><i data-lucide="chevron-right" class="w-3 h-3"></i></li>
-                            <li><span class="text-audit-navy font-medium">Juros Simples</span></li>
-                        </ol>
-                    </nav>
-                    <div class="inline-flex items-center gap-2 mb-2">
-                        <span class="h-px w-8 bg-audit-gold"></span>
-                        <span class="text-xs font-bold uppercase tracking-widest text-audit-gold">Matemática Financeira</span>
-                    </div>
-                    <h1 id="page-title" class="text-3xl md:text-4xl font-serif font-bold text-audit-navy leading-tight">
-                        Calculadora de Juros Simples
-                    </h1>
-                </div>
-                
-                <div class="flex items-center gap-3">
-                    <button onclick="AuditCalculadora.toggleDrawer('referencias')" class="text-slate-500 hover:text-audit-blue transition px-3 py-2 border border-slate-200 rounded-md text-sm flex items-center gap-2 bg-white" title="Referências Técnicas">
-                        <i data-lucide="book-open" class="w-4 h-4"></i> Referências
-                    </button>
-                    <button onclick="AuditCalculadora.startTour()" class="hidden sm:flex items-center gap-2 px-4 py-2 text-xs font-bold text-audit-navy bg-slate-100 rounded-full hover:bg-slate-200 transition">
-                        <i data-lucide="play-circle" class="w-4 h-4"></i> Guia Rápido
-                    </button>
-                </div>
+    <!-- DRAWERS (CONTEÚDO) -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none drawer-overlay z-[1050] no-print" onclick="closeAllDrawers()"></div>
+    
+    <aside id="drawer-teoria" class="drawer no-print shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-book-open text-audit-gold"></i> Fundamentação Teórica</h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
             </div>
-
-            <div class="lg:grid lg:grid-cols-12 lg:gap-10">
-                
-                <div class="lg:col-span-8 space-y-8" id="main-content">
-                    
-                    <section id="calc-card" class="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 shadow-sm relative overflow-hidden group hover:border-audit-blue/30 transition-all duration-300">
-                        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-audit-navy to-audit-blue"></div>
-                        
-                        <form id="form-calculadora" class="space-y-6 mt-2">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div class="col-span-1 sm:col-span-2">
-                                    <label class="block text-sm font-semibold text-audit-navy mb-2">
-                                        Capital Inicial (VP) <span class="text-red-500">*</span>
-                                    </label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <span class="text-gray-500 font-bold sm:text-sm">R$</span>
-                                        </div>
-                                        <input type="text" id="principal" class="custom-input pl-10" placeholder="0,00" oninput="AuditCalculadora.formatCurrency(this)">
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-audit-navy mb-2">
-                                        Taxa de Juros (%) <span class="text-red-500">*</span>
-                                    </label>
-                                    <div class="relative">
-                                        <input type="number" id="taxa" step="0.01" class="custom-input pr-20" placeholder="Ex: 1.0">
-                                        <div class="absolute inset-y-0 right-0 flex items-center pr-1">
-                                            <select id="tipo-taxa" class="h-full py-0 pl-2 pr-7 bg-transparent border-0 text-gray-500 font-medium text-sm focus:ring-0 cursor-pointer">
-                                                <option value="mensal">a.m.</option>
-                                                <option value="anual">a.a.</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-audit-navy mb-2">
-                                        Período <span class="text-red-500">*</span>
-                                    </label>
-                                    <div class="relative">
-                                        <input type="number" id="periodo" step="1" class="custom-input pr-24" placeholder="Ex: 12">
-                                        <div class="absolute inset-y-0 right-0 flex items-center pr-1">
-                                            <select id="tipo-periodo" class="h-full py-0 pl-2 pr-7 bg-transparent border-0 text-gray-500 font-medium text-sm focus:ring-0 cursor-pointer">
-                                                <option value="meses">Meses</option>
-                                                <option value="anos">Anos</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 no-print">
-                                <button type="submit" id="btn-calcular" class="flex items-center justify-center gap-2 h-12 bg-audit-navy text-white font-bold rounded-lg hover:bg-slate-800 transition-all shadow-md active:scale-95">
-                                    <span class="btn-spinner"></span>
-                                    <i data-lucide="calculator" class="w-4 h-4"></i> <span>Calcular</span>
-                                </button>
-                                
-                                <button type="button" id="btn-limpar" class="flex items-center justify-center gap-2 h-12 bg-white border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-all">
-                                    <span class="btn-spinner"></span>
-                                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> <span>Limpar</span>
-                                </button>
-                            </div>
-                        </form>
-                    </section>
-
-                    <section id="box-resultado" class="hidden animate-fade-in space-y-4">
-                        <div class="bg-audit-navy text-white rounded-xl p-8 shadow-lg relative overflow-hidden">
-                            <div class="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 bg-white opacity-5 rounded-full blur-2xl"></div>
-                            <div class="absolute bottom-0 left-0 -mb-6 -ml-6 w-24 h-24 bg-audit-gold opacity-10 rounded-full blur-xl"></div>
-                            
-                            <div class="relative z-10">
-                                <h3 class="text-xs font-bold text-audit-gold uppercase tracking-widest mb-6">Resultado Consolidado</h3>
-                                
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                    <div>
-                                        <span class="text-slate-400 text-sm block mb-1">Montante Final (M)</span>
-                                        <span class="text-4xl font-serif font-bold text-white tracking-tight block" id="res-montante">R$ 0,00</span>
-                                    </div>
-                                    <div class="sm:border-l sm:border-slate-700 sm:pl-8">
-                                        <span class="text-slate-400 text-sm block mb-1">Total em Juros (J)</span>
-                                        <span class="text-3xl font-serif font-bold text-audit-gold tracking-tight block" id="res-juros">R$ 0,00</span>
-                                    </div>
-                                </div>
-
-                                <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-4 text-sm text-slate-300">
-                                    <div class="flex items-center gap-2">
-                                        <i data-lucide="percent" class="w-4 h-4 text-audit-gold"></i>
-                                        Taxa Efetiva: <span id="res-taxa-efetiva" class="text-white font-bold">0%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4 no-print">
-                            <button id="btn-copiar" onclick="AuditCalculadora.copyResult()" class="h-12 flex items-center justify-center gap-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-slate-600 hover:text-audit-blue hover:border-audit-blue transition-colors group">
-                                <span class="btn-spinner"></span>
-                                <i data-lucide="copy" class="w-4 h-4 group-hover:scale-110 transition-transform"></i> Copiar
-                            </button>
-                            <button id="btn-pdf" onclick="AuditCalculadora.generatePDF()" class="h-12 flex items-center justify-center gap-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-slate-600 hover:text-red-600 hover:border-red-200 transition-colors group">
-                                <span class="btn-spinner"></span>
-                                <i data-lucide="file-down" class="w-4 h-4 group-hover:scale-110 transition-transform"></i> PDF
-                            </button>
-                        </div>
-                    </section>
+            <div class="overflow-y-auto flex-grow space-y-6 text-sm text-slate-600 leading-relaxed">
+                <p>O regime de <strong>Juros Simples</strong> é caracterizado pelo cálculo de rendimentos apenas sobre o capital inicial (Principal).</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
+                    <p class="font-serif text-2xl text-audit-blue font-bold tracking-widest">J = P × i × n</p>
                 </div>
-
-                <aside class="lg:col-span-4 mt-8 lg:mt-0 space-y-6 no-print">
-                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm lg:sticky lg:top-24">
-                        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-gray-100">
-                            <i data-lucide="list" class="w-4 h-4 text-audit-gold"></i>
-                            <span class="text-sm font-bold text-audit-navy uppercase">Nesta Página</span>
-                        </div>
-                        <nav id="toc-right" class="space-y-1">
-                            <a href="#form-calculadora" class="block py-2 px-3 rounded text-sm text-slate-600 hover:bg-slate-50 hover:text-audit-blue transition-colors">Calculadora</a>
-                            <a href="#box-resultado" class="block py-2 px-3 rounded text-sm text-slate-600 hover:bg-slate-50 hover:text-audit-blue transition-colors">Resultado</a>
-                            <button onclick="AuditCalculadora.toggleDrawer('referencias')" class="w-full text-left py-2 px-3 rounded text-sm text-slate-600 hover:bg-slate-50 hover:text-audit-blue transition-colors">Referências</button>
-                        </nav>
-                    </div>
-
-                    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Compartilhar</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <button class="w-9 h-9 rounded bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 transition"><i class="fab fa-facebook-f text-sm"></i></button>
-                            <button class="w-9 h-9 rounded bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition"><i class="fab fa-whatsapp text-sm"></i></button>
-                            <button class="w-9 h-9 rounded bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-90 transition"><i class="fab fa-linkedin-in text-sm"></i></button>
-                        </div>
-                    </div>
-                </aside>
+                <p>Neste regime, os juros não são incorporados ao capital para fins de novos cálculos de juros no período seguinte (ausência de capitalização composta).</p>
             </div>
         </div>
-    </main>
+    </aside>
 
-    <!-- === 3. FOOTER === -->
-    <div id="footer-placeholder" class="no-print mt-auto"></div>
-
-    <!-- === DRAWERS === -->
-    <div id="drawer-overlay" class="drawer-overlay" onclick="AuditCalculadora.closeDrawers()"></div>
-
-    <aside id="drawer-referencias" class="right-drawer">
-        <div class="p-5 border-b border-gray-100 flex items-center justify-between bg-white sticky top-0 z-10">
-            <h3 class="font-bold text-audit-navy flex items-center gap-2">
-                <i data-lucide="book-open" class="w-5 h-5 text-audit-blue"></i> Referências
-            </h3>
-            <button onclick="AuditCalculadora.closeDrawers()" class="p-2 hover:bg-slate-100 rounded-full text-slate-400 transition">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-        </div>
-        <div class="p-6 overflow-y-auto space-y-6">
-            <div class="prose prose-sm text-slate-600">
-                <p>O regime de <strong>Juros Simples</strong> considera que a taxa incide apenas sobre o valor principal.</p>
-                <div class="bg-slate-50 border border-slate-200 rounded p-4 my-4 text-center">
-                    <span class="font-serif font-bold text-audit-blue text-lg">J = C × i × t</span>
+    <aside id="drawer-referencias" class="drawer no-print shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-link text-audit-gold"></i> Referências Técnicas</h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs">
+                    <p class="font-bold text-audit-navy uppercase mb-1">NBC TA 500</p>
+                    <p class="text-slate-500">Procedimentos de recálculo em evidência de auditoria independente.</p>
+                </div>
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs">
+                    <p class="font-bold text-audit-navy uppercase mb-1">CPC 12</p>
+                    <p class="text-slate-500">Ajuste a Valor Presente para operações financeiras.</p>
                 </div>
             </div>
         </div>
     </aside>
 
+    <aside id="drawer-sobre" class="drawer no-print shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-info-circle text-audit-gold"></i> Sobre o Hub</h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
+            </div>
+            <div class="text-sm text-slate-600 space-y-4">
+                <p>Solução desenvolvida pelo Hub Audit Educa para suporte a auditores, peritos e contadores.</p>
+                <p><strong>Privacidade:</strong> O cálculo é executado localmente no seu dispositivo.</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Introdução -->
+            <div class="mb-12 no-print lg:pl-16">
+                <nav class="flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    <ol class="flex items-center gap-2">
+                        <li><a href="/" class="hover:text-audit-gold transition">Home</a></li>
+                        <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                        <li>Ferramentas Financeiras</li>
+                        <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                        <li class="text-audit-gold underline underline-offset-4">Juros Simples</li>
+                    </ol>
+                </nav>
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+                    <div id="tour-step-0">
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy tracking-tight mb-2">Calculadora de Juros Simples</h1>
+                        <p class="text-slate-600 text-lg font-light max-w-3xl leading-relaxed">
+                            Solução de alta precisão para recálculo de encargos. Ideal para a conferência técnica de <span class="text-audit-navy font-semibold">provisões financeiras</span> e <span class="text-audit-navy font-semibold">contratos de mútuo</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Metadados e Compartilhamento (RECUPERADOS) -->
+                <div class="mt-8 space-y-6">
+                    <div class="flex flex-wrap items-center gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">
+                        <span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-audit-gold"></i> Atualizado em: 05/02/2026</span>
+                        <span class="hidden md:inline w-1 h-1 bg-slate-300 rounded-full"></span>
+                        <span class="flex items-center gap-2"><i class="fas fa-code-branch text-audit-gold"></i> Versão: 2.7.5</span>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <span class="text-[9px] font-bold text-audit-navy uppercase tracking-widest mr-2">Compartilhar:</span>
+                        <button onclick="showToast('Link copiado!')" class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:border-audit-navy transition shadow-sm" title="WhatsApp"><i class="fab fa-whatsapp text-xs"></i></button>
+                        <button onclick="showToast('Link copiado!')" class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:border-audit-navy transition shadow-sm" title="LinkedIn"><i class="fab fa-linkedin-in text-xs"></i></button>
+                        <button onclick="showToast('Link copiado!')" class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:border-audit-navy transition shadow-sm" title="Copiar Link"><i class="fas fa-link text-xs"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:pl-16">
+                
+                <!-- Coluna de Entrada de Dados -->
+                <div class="lg:col-span-8 space-y-8" id="capture-pdf-area">
+                    <div class="calculator-card rounded-2xl p-8 md:p-10 no-print" id="parametros-calculo">
+                        <form id="calc-form" class="space-y-8">
+                            <div class="group" id="tour-step-1">
+                                <label class="block text-xs font-bold text-audit-navy uppercase tracking-widest mb-3 flex items-center gap-2">
+                                    Capital Inicial (P) <span class="text-red-500">*</span>
+                                    <i class="fas fa-info-circle text-slate-300 text-[10px] cursor-help" title="Valor principal sobre o qual os juros serão calculados."></i>
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <span class="text-slate-400 font-bold">R$</span>
+                                    </div>
+                                    <input type="text" id="principal" class="form-input pl-12 text-xl font-semibold text-slate-700 w-full p-4 border rounded-xl" placeholder="0,00" oninput="formatCurrency(this)">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div id="tour-step-2">
+                                    <label class="block text-xs font-bold text-audit-navy uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        Taxa de Juros (i) <span class="text-red-500">*</span>
+                                        <i class="fas fa-info-circle text-slate-300 text-[10px] cursor-help" title="Percentual de juros aplicado. Valores negativos são invalidados."></i>
+                                    </label>
+                                    <div class="flex shadow-sm rounded-lg overflow-hidden border border-slate-200">
+                                        <input type="number" id="rate" step="0.01" min="0" class="w-full px-4 py-4 focus:outline-none text-lg font-medium" placeholder="0.00">
+                                        <select id="rate-type" class="bg-slate-50 border-l border-slate-200 px-4 text-xs font-bold text-slate-500 uppercase">
+                                            <option value="mensal">a.m.</option>
+                                            <option value="anual">a.a.</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="tour-step-3">
+                                    <label class="block text-xs font-bold text-audit-navy uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        Período (n) <span class="text-red-500">*</span>
+                                        <i class="fas fa-info-circle text-slate-300 text-[10px] cursor-help" title="Duração da operação financeira."></i>
+                                    </label>
+                                    <div class="flex shadow-sm rounded-lg overflow-hidden border border-slate-200">
+                                        <input type="number" id="time" min="0" class="w-full px-4 py-4 focus:outline-none text-lg font-medium" placeholder="0">
+                                        <select id="time-type" class="bg-slate-50 border-l border-slate-200 px-4 text-xs font-bold text-slate-500 uppercase">
+                                            <option value="meses">Meses</option>
+                                            <option value="anos">Anos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4" id="tour-step-4">
+                                <button type="button" onclick="calculateSimpleInterest()" class="bg-audit-navy text-white px-8 py-5 rounded-xl font-bold flex items-center justify-center gap-3 shadow-lg hover:bg-slate-800 transition-all active:scale-95 group">
+                                    <i class="fas fa-calculator text-audit-gold group-hover:scale-110 transition-transform"></i> EFETUAR CÁLCULO
+                                </button>
+                                <button type="button" onclick="clearForm()" class="px-8 py-5 rounded-xl font-bold border border-slate-200 text-slate-500 hover:bg-slate-50 transition flex items-center justify-center gap-2">
+                                    <i class="fas fa-rotate-left"></i> LIMPAR CAMPOS
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- EXIBIÇÃO DE RESULTADO -->
+                    <div id="result-area" class="hidden animate-in fade-in slide-in-from-top-4 duration-500 space-y-6">
+                        <div class="result-card-premium p-8 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-10">
+                            <div class="text-center md:text-left">
+                                <p class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-3">Montante Final Calculado (M)</p>
+                                <h2 id="display-total" class="text-5xl md:text-6xl font-serif font-bold text-audit-navy tracking-tight">R$ 0,00</h2>
+                            </div>
+                            <div class="flex flex-col gap-4 w-full md:w-auto">
+                                <div class="flex justify-between items-center gap-10 p-5 bg-slate-50 rounded-xl border border-slate-100">
+                                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Juros Acumulados</span>
+                                    <span id="display-interest" class="text-lg font-bold text-audit-blue font-serif">R$ 0,00</span>
+                                </div>
+                                <div class="flex justify-between items-center gap-10 p-5 bg-slate-50 rounded-xl border border-slate-100">
+                                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Taxa Efetiva Final</span>
+                                    <span id="display-effective-rate" class="text-lg font-bold text-slate-700">0,00%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 no-print" id="tour-step-5">
+                            <button onclick="generatePDFReport()" class="flex-1 py-4 bg-audit-navy text-white rounded-xl font-bold uppercase text-[10px] tracking-widest flex items-center justify-center gap-3 hover:bg-slate-800 shadow-lg">
+                                <i class="fas fa-file-pdf text-audit-gold"></i> Exportar Relatório em PDF
+                            </button>
+                            <button onclick="copyToClipboard()" class="flex-1 py-4 bg-white border border-slate-200 text-slate-600 rounded-xl font-bold uppercase text-[10px] tracking-widest flex items-center justify-center gap-3 hover:border-audit-gold transition">
+                                <i class="fas fa-copy text-audit-gold"></i> Copiar Memória
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- INSIGHT E MEMÓRIA TÉCNICA (RECUPERADOS) -->
+                    <div class="bg-audit-blue/5 p-8 border-l-4 border-audit-blue rounded-r-2xl flex gap-6 no-print">
+                        <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm shrink-0">
+                            <i class="fas fa-lightbulb text-audit-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mb-2">Insight Profissional</p>
+                            <p class="text-sm text-slate-600 italic leading-relaxed">
+                                Em auditoria, utilize esta ferramenta para recalcular provisões de juros sobre contratos que não prevejam capitalização composta.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-8 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-6">
+                        <div class="flex items-center gap-2 border-b border-slate-100 pb-4">
+                            <i class="fas fa-graduation-cap text-audit-gold text-sm"></i>
+                            <h3 class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Memória Acadêmica</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-sm text-slate-600 leading-relaxed">
+                            <p>O regime simples considera que a remuneração do capital é constante ao longo do tempo. Os juros incidem apenas sobre o principal inicial.</p>
+                            <div class="bg-slate-50 p-4 rounded-lg">
+                                <ul class="space-y-2 text-[11px] font-medium">
+                                    <li class="flex justify-between border-b border-slate-200 pb-1"><span>Capital Inicial:</span> <span>Principal (P)</span></li>
+                                    <li class="flex justify-between pt-1"><span>Rendimento:</span> <span>Linear</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Lateral -->
+                <div class="lg:col-span-4 space-y-6">
+                    <!-- Widget Nesta Página -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-8 no-print shadow-sm">
+                        <div class="flex items-center gap-2 mb-6 border-b pb-4">
+                            <i class="fas fa-list text-audit-gold text-xs"></i>
+                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Nesta Página</span>
+                        </div>
+                        <nav class="space-y-4">
+                            <a href="#parametros-calculo" class="flex items-center gap-3 text-xs text-slate-500 hover:text-audit-blue transition font-medium group">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-audit-blue transition"></span> Parâmetros
+                            </a>
+                            <a href="#result-area" class="flex items-center gap-3 text-xs text-slate-500 hover:text-audit-blue transition font-medium group">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-audit-blue transition"></span> Resultado Gerado
+                            </a>
+                        </nav>
+                    </div>
+
+                    <!-- Hub Informativo -->
+                    <div class="bg-audit-navy p-8 rounded-2xl shadow-xl text-white relative overflow-hidden group">
+                        <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+                            <i class="fas fa-shield-halved text-6xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">Suporte Técnico</h4>
+                            <p class="text-xs font-light leading-relaxed text-slate-300 mb-6">Dúvidas sobre a aplicação da norma? Nossos especialistas podem ajudar.</p>
+                            <button class="w-full p-3 bg-audit-gold text-audit-navy font-bold text-[10px] uppercase tracking-widest rounded-lg hover:bg-yellow-500 transition">Consultoria</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÕES DE APOIO PADRONIZADAS (RECUPERADAS) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 pt-16 border-t border-slate-200 no-print lg:pl-16 mt-16" id="secao-apoio">
+                <!-- Conteúdo Relacionado -->
+                <section class="h-full">
+                    <h3 class="text-xl font-bold text-audit-navy mb-8 flex items-center gap-3"><i class="fas fa-bookmark text-audit-gold"></i> Conteúdo Relacionado</h3>
+                    <div class="space-y-4">
+                        <a href="#" class="flex h-24 items-center justify-between p-5 bg-white border border-slate-100 rounded-xl hover:shadow-md hover:border-audit-blue transition group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-slate-50 flex items-center justify-center text-audit-blue group-hover:bg-audit-blue group-hover:text-white transition-colors">
+                                    <i class="fas fa-file-invoice-dollar text-lg"></i>
+                                </div>
+                                <div class="space-y-0.5">
+                                    <span class="text-sm font-bold text-slate-700 group-hover:text-audit-blue">Regimes de Capitalização</span>
+                                    <p class="text-[9px] text-slate-400 uppercase tracking-wider">Teoria Linear vs Exponencial</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-arrow-right text-slate-200 group-hover:text-audit-blue transition-all"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Hub de Ferramentas -->
+                <section class="h-full">
+                    <h3 class="text-xl font-bold text-audit-navy mb-8 flex items-center gap-3"><i class="fas fa-th-large text-audit-gold"></i> Hub de Ferramentas</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-6 h-24 flex flex-col justify-center bg-white border border-slate-100 rounded-xl hover:shadow-lg transition-all cursor-pointer group">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-sync-alt text-audit-blue group-hover:rotate-180 transition-transform duration-700"></i>
+                                <p class="text-[10px] font-bold text-audit-navy uppercase tracking-widest leading-tight">Correção Monetária</p>
+                            </div>
+                        </div>
+                        <div class="p-6 h-24 flex flex-col justify-center bg-white border border-slate-100 rounded-xl hover:shadow-lg transition-all cursor-pointer group">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-chart-line text-audit-blue group-hover:scale-110 transition-transform"></i>
+                                <p class="text-[10px] font-bold text-audit-navy uppercase tracking-widest leading-tight">Juros Compostos</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- SEÇÃO TAGS / TÓPICOS (RECUPERADA) -->
+            <section class="mt-20 lg:pl-16 no-print">
+                <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                    <i class="fas fa-tags text-audit-gold"></i>
+                    <h3 class="text-xs font-bold text-audit-navy uppercase tracking-widest">Tópicos Técnicos</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/busca?tag=matematica-financeira" class="tag-pill-link"><i class="fas fa-tag text-[8px]"></i> Matemática Financeira</a>
+                    <a href="/busca?tag=auditoria-tecnica" class="tag-pill-link"><i class="fas fa-tag text-[8px]"></i> Auditoria Técnica</a>
+                    <a href="/busca?tag=cpc-12" class="tag-pill-link"><i class="fas fa-tag text-[8px]"></i> CPC 12</a>
+                    <a href="/busca?tag=capitalizacao-linear" class="tag-pill-link"><i class="fas fa-tag text-[8px]"></i> Capitalização Linear</a>
+                    <a href="/busca?tag=anatocismo" class="tag-pill-link"><i class="fas fa-tag text-[8px]"></i> Anatocismo</a>
+                </div>
+            </section>
+
+            <!-- CTA BIBLIOTECA -->
+            <section class="mt-16 bg-audit-navy rounded-[3rem] p-10 md:p-20 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12 no-print shadow-2xl relative overflow-hidden group lg:ml-16">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-audit-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
+                <div class="max-w-xl relative z-10">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">Aprofunde seus conhecimentos</h2>
+                    <p class="text-slate-300 text-lg leading-relaxed font-light">Acesse nossa biblioteca técnica completa com normas, e-books e planilhas exclusivas.</p>
+                </div>
+                <a href="#" class="bg-audit-gold text-audit-navy px-12 py-6 rounded-2xl font-bold hover:bg-yellow-500 transition-all shadow-xl relative z-10 uppercase tracking-[0.2em] text-xs">
+                    Acessar Biblioteca <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Rodapé Modular -->
+    <div id="footer-placeholder" class="no-print"></div>
+
+    <!-- API de Acessibilidade -->
+    <script src="https://auditeduca.com.br/accessibility-api.js"></script>
+
+    <!-- Toast / Notificação -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
+        Operação concluída com sucesso!
+    </div>
+
+    <!-- Tour Guiado -->
+    <div id="tour-container"></div>
+
     <script>
-        // Renomeado para evitar colisões globais e erros genéricos de script
-        const AuditCalculadora = {
-            init() {
-                try {
-                    if (window.lucide && typeof lucide.createIcons === 'function') {
-                        lucide.createIcons();
-                    }
-                    this.bindEvents();
-                    const printDateElem = document.getElementById('print-date');
-                    if (printDateElem) {
-                        printDateElem.textContent = new Date().toLocaleDateString();
-                    }
-                } catch (e) {
-                    console.error("Erro na inicialização:", e);
-                }
-            },
+        // Inicialização de Ícones
+        lucide.createIcons();
 
-            bindEvents() {
-                const form = document.getElementById('form-calculadora');
-                if (form) {
-                    form.addEventListener('submit', (e) => {
-                        e.preventDefault();
-                        this.calculate();
-                    });
-                }
+        // --- Lógica de Sincronização e Cálculo ---
+        function calculateSimpleInterest() {
+            const pInput = document.getElementById('principal');
+            const p = parseCurrency(pInput.value);
+            const i = parseFloat(document.getElementById('rate').value);
+            const n = parseFloat(document.getElementById('time').value);
 
-                const btnLimpar = document.getElementById('btn-limpar');
-                if (btnLimpar) {
-                    btnLimpar.addEventListener('click', () => {
-                        this.setLoading('btn-limpar', true);
-                        setTimeout(() => {
-                            if (form) form.reset();
-                            const resBox = document.getElementById('box-resultado');
-                            if (resBox) resBox.classList.add('hidden');
-                            this.setLoading('btn-limpar', false);
-                        }, 400);
-                    });
-                }
-            },
-
-            setLoading(btnId, isLoading) {
-                const btn = document.getElementById(btnId);
-                if (!btn) return;
-                if (isLoading) {
-                    btn.classList.add('btn-loading', 'opacity-80', 'cursor-not-allowed');
-                    btn.disabled = true;
-                } else {
-                    btn.classList.remove('btn-loading', 'opacity-80', 'cursor-not-allowed');
-                    btn.disabled = false;
-                }
-            },
-
-            formatCurrency(input) {
-                let value = input.value.replace(/\D/g, "");
-                value = (Number(value) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                input.value = value;
-            },
-
-            parseCurrency(str) {
-                if (!str) return 0;
-                return parseFloat(str.replace(/\./g, "").replace(",", ".")) || 0;
-            },
-
-            calculate() {
-                this.setLoading('btn-calcular', true);
-
-                setTimeout(() => {
-                    try {
-                        const principalInput = document.getElementById('principal');
-                        const taxaInput = document.getElementById('taxa');
-                        const periodoInput = document.getElementById('periodo');
-
-                        if (!principalInput || !taxaInput || !periodoInput) return;
-
-                        const P = this.parseCurrency(principalInput.value);
-                        const i_val = parseFloat(taxaInput.value);
-                        const n_val = parseFloat(periodoInput.value);
-
-                        if (isNaN(P) || isNaN(i_val) || isNaN(n_val)) {
-                            this.setLoading('btn-calcular', false);
-                            return;
-                        }
-
-                        const tipoTaxa = document.getElementById('tipo-taxa').value;
-                        const tipoPeriodo = document.getElementById('tipo-periodo').value;
-
-                        let taxaMensal = i_val;
-                        if (tipoTaxa === 'anual') taxaMensal = i_val / 12;
-
-                        let meses = n_val;
-                        if (tipoPeriodo === 'anos') meses = n_val * 12;
-
-                        const juros = P * (taxaMensal / 100) * meses;
-                        const montante = P + juros;
-                        const taxaEfetiva = P !== 0 ? (juros / P) * 100 : 0;
-
-                        document.getElementById('res-montante').textContent = montante.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-                        document.getElementById('res-juros').textContent = juros.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-                        document.getElementById('res-taxa-efetiva').textContent = taxaEfetiva.toFixed(2) + '%';
-
-                        const box = document.getElementById('box-resultado');
-                        if (box) {
-                            box.classList.remove('hidden');
-                            if (window.innerWidth < 1024) {
-                                box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        }
-                    } catch (e) {
-                        console.error("Erro no cálculo:", e);
-                    } finally {
-                        this.setLoading('btn-calcular', false);
-                    }
-                }, 600);
-            },
-
-            async copyResult() {
-                this.setLoading('btn-copiar', true);
-                const montante = document.getElementById('res-montante').textContent;
-                const juros = document.getElementById('res-juros').textContent;
-                const text = `AUDIT EDUCA - Juros Simples\nMontante: ${montante}\nJuros: ${juros}`;
-
-                try {
-                    // Tenta API moderna
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        await navigator.clipboard.writeText(text);
-                        alert("Copiado!");
-                    } else {
-                        throw new Error("Clipboard API indisponível");
-                    }
-                } catch (err) {
-                    // Fallback manual para evitar Script Error em ambientes restritos
-                    try {
-                        const textArea = document.createElement("textarea");
-                        textArea.value = text;
-                        textArea.style.position = "fixed";
-                        textArea.style.left = "-9999px";
-                        textArea.style.top = "0";
-                        document.body.appendChild(textArea);
-                        textArea.focus();
-                        textArea.select();
-                        const successful = document.execCommand('copy');
-                        document.body.removeChild(textArea);
-                        if (successful) alert("Copiado!");
-                        else alert("Falha ao copiar.");
-                    } catch (f) {
-                        console.error("Falha no fallback de cópia:", f);
-                    }
-                } finally {
-                    this.setLoading('btn-copiar', false);
-                }
-            },
-
-            generatePDF() {
-                this.setLoading('btn-pdf', true);
-                setTimeout(() => {
-                    window.print();
-                    this.setLoading('btn-pdf', false);
-                }, 800);
-            },
-
-            toggleDrawer(id) {
-                const drawer = document.getElementById(`drawer-${id}`);
-                const overlay = document.getElementById('drawer-overlay');
-                if (drawer && overlay) {
-                    drawer.classList.add('open');
-                    overlay.classList.add('open');
-                    document.body.style.overflow = 'hidden';
-                }
-            },
-
-            closeDrawers() {
-                document.querySelectorAll('.right-drawer').forEach(d => d.classList.remove('open'));
-                const overlay = document.getElementById('drawer-overlay');
-                if (overlay) overlay.classList.remove('open');
-                document.body.style.overflow = '';
-            },
-
-            startTour() {
-                if (window.driver && window.driver.js && typeof window.driver.js.driver === 'function') {
-                    const driverObj = window.driver.js.driver({
-                        showProgress: true,
-                        steps: [
-                            { element: '#calc-card', popover: { title: 'Parâmetros', description: 'Insira Capital, Taxa e Período aqui.' } },
-                            { element: '#btn-calcular', popover: { title: 'Calcular', description: 'Clique para processar a simulação.' } }
-                        ]
-                    });
-                    driverObj.drive();
-                }
+            if (p <= 0 || isNaN(i) || isNaN(n)) {
+                showToast("Por favor, preencha todos os campos obrigatórios corretamente.");
+                return;
             }
-        };
 
-        document.addEventListener('DOMContentLoaded', () => AuditCalculadora.init());
+            if (i < 0 || n < 0) {
+                showToast("Taxa e período não podem ser negativos.");
+                return;
+            }
+
+            const iType = document.getElementById('rate-type').value; 
+            const nType = document.getElementById('time-type').value; 
+            
+            let factor = 1;
+            // Sincronização Temporal Automática
+            if (iType === 'mensal' && nType === 'anos') factor = 12;
+            if (iType === 'anual' && nType === 'meses') factor = 1 / 12;
+
+            const interest = p * (i / 100) * (n * factor);
+            const total = p + interest;
+            const eff = (interest / p) * 100;
+
+            document.getElementById('display-total').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('display-interest').innerText = interest.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('display-effective-rate').innerText = eff.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%";
+            
+            document.getElementById('result-area').classList.remove('hidden');
+            document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // --- API de Exportação para PDF Profissional ---
+        async function generatePDFReport() {
+            const { jsPDF } = window.jspdf;
+            showToast("Gerando PDF, por favor aguarde...");
+            
+            const area = document.getElementById('capture-pdf-area');
+            const resultArea = document.getElementById('result-area');
+            resultArea.classList.remove('hidden');
+
+            try {
+                const canvas = await html2canvas(area, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff'
+                });
+
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                
+                const imgProps = pdf.getImageProperties(imgData);
+                const imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+                // Cabeçalho Premium
+                pdf.setFillColor(15, 23, 42); // Audit Navy
+                pdf.rect(0, 0, pdfWidth, 40, 'F');
+                
+                pdf.setFont("helvetica", "bold");
+                pdf.setTextColor(255, 255, 255);
+                pdf.setFontSize(14);
+                pdf.text("AUDIT EDUCA - RELATÓRIO DE CÁLCULO", 15, 15);
+                
+                pdf.setFontSize(9);
+                pdf.setFont("helvetica", "normal");
+                pdf.text("Ferramenta de Juros Simples - Hub Tools", 15, 22);
+                pdf.text(`Emitido em: ${new Date().toLocaleString('pt-BR')}`, 15, 27);
+
+                // Corpo
+                pdf.addImage(imgData, 'PNG', 0, 45, pdfWidth, imgHeight);
+
+                // Rodapé
+                pdf.setFontSize(7);
+                pdf.setTextColor(180, 180, 180);
+                pdf.text("Este documento é uma memória de cálculo oficial gerada pela plataforma Audit Educa.", pdfWidth / 2, pdfHeight - 10, { align: 'center' });
+
+                pdf.save(`AuditEduca_Relatorio_JurosSimples_${Date.now()}.pdf`);
+                showToast("Relatório PDF gerado com sucesso!");
+            } catch (err) {
+                console.error(err);
+                showToast("Erro ao gerar PDF.");
+            }
+        }
+
+        // --- Tour Guiado JS ---
+        let currentTourStep = 0;
+        const tourSteps = [
+            { id: 'tour-step-0', text: 'Esta é a Calculadora Profissional de Juros Simples. Ideal para recálculos em auditoria.' },
+            { id: 'principal', text: 'Insira o Capital Inicial. Os valores são formatados em Real Brasileiro automaticamente.' },
+            { id: 'rate', text: 'Defina a taxa e o período. Nossa inteligência sincroniza anos e meses sem erro.' },
+            { id: 'tour-step-4', text: 'Clique em Calcular para gerar a memória técnica detalhada.' },
+            { id: 'tour-step-5', text: 'Ao finalizar, você pode exportar este relatório estilizado em PDF para anexar aos seus papéis de trabalho.' }
+        ];
+
+        function startTour() {
+            currentTourStep = 0;
+            showTourStep();
+        }
+
+        function showTourStep() {
+            removeTourHighlights();
+            const step = tourSteps[currentTourStep];
+            const el = document.getElementById(step.id);
+            if (!el) return;
+
+            el.classList.add('tour-highlight');
+            const rect = el.getBoundingClientRect();
+
+            const container = document.getElementById('tour-container');
+            container.innerHTML = `
+                <div class="tour-popover" style="top: ${rect.bottom + window.scrollY + 10}px; left: ${Math.max(10, rect.left)}px;">
+                    <p class="text-xs font-bold text-audit-navy mb-3 uppercase tracking-widest">Guia (${currentTourStep + 1}/${tourSteps.length})</p>
+                    <p class="text-xs text-slate-600 mb-4">${step.text}</p>
+                    <div class="flex justify-between">
+                        <button onclick="closeTour()" class="text-[10px] font-bold text-slate-400 uppercase">Sair</button>
+                        <button onclick="nextTourStep()" class="bg-audit-gold text-audit-navy px-3 py-1 rounded text-[10px] font-bold uppercase">
+                            ${currentTourStep === tourSteps.length - 1 ? 'Finalizar' : 'Próximo'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function nextTourStep() {
+            currentTourStep++;
+            if (currentTourStep >= tourSteps.length) closeTour();
+            else showTourStep();
+        }
+
+        function closeTour() {
+            removeTourHighlights();
+            document.getElementById('tour-container').innerHTML = '';
+        }
+
+        function removeTourHighlights() {
+            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+        }
+
+        // --- Helpers e UI ---
+        function formatCurrency(input) {
+            let value = input.value.replace(/\D/g, "");
+            if (value === "") return input.value = "";
+            value = (parseInt(value) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            input.value = value;
+        }
+
+        function parseCurrency(str) {
+            return parseFloat(str.replace(/\./g, "").replace(",", ".")) || 0;
+        }
+
+        function clearForm() {
+            document.getElementById('calc-form').reset();
+            document.getElementById('result-area').classList.add('hidden');
+            showToast("Formulário limpo.");
+        }
+
+        function toggleDrawer(id) {
+            closeAllDrawers();
+            document.getElementById(`drawer-${id}`).classList.add('active');
+            document.getElementById('drawer-overlay').classList.replace('opacity-0', 'opacity-100');
+            document.getElementById('drawer-overlay').classList.replace('pointer-events-none', 'pointer-events-auto');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAllDrawers() {
+            document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
+            const o = document.getElementById('drawer-overlay');
+            o.classList.replace('opacity-100', 'opacity-0');
+            o.classList.replace('pointer-events-auto', 'pointer-events-none');
+            document.body.style.overflow = '';
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.replace('opacity-0', 'opacity-100');
+            t.classList.replace('translate-y-10', 'translate-y-0');
+            setTimeout(() => {
+                t.classList.replace('opacity-100', 'opacity-0');
+                t.classList.replace('translate-y-0', 'translate-y-10');
+            }, 3000);
+        }
+
+        function copyToClipboard() {
+            const total = document.getElementById('display-total').innerText;
+            const interest = document.getElementById('display-interest').innerText;
+            const text = `AUDIT EDUCA Hub - Memória de Cálculo\n------------------\nMontante: ${total}\nJuros Simples: ${interest}\nData: ${new Date().toLocaleString()}`;
+            
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            showToast("Memória copiada para a área de transferência!");
+        }
     </script>
 </body>
 </html>
