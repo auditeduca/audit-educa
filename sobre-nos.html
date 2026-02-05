@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
+<html lang="pt-pt" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta id="meta-description" name="description" content="Conheça a história e o propósito da Audit Educa.">
-    <title id="page-title">Sobre Nós | Audit Educa</title>
     
-    <!-- Favicon Oficial (URL Absoluta) -->
+    <!-- Metadados Dinâmicos (Injetados via JSON) -->
+    <title id="dynamic-title">Audit Educa | Institucional</title>
+    <meta id="meta-desc" name="description" content="">
+    <meta id="meta-keywords" name="keywords" content="">
+    <link id="link-canonical" rel="canonical" href="">
+    
+    <!-- Open Graph (Injetados via JSON) -->
+    <meta id="og-title" property="og:title" content="">
+    <meta id="og-desc" property="og:description" content="">
+    <meta id="og-image" property="og:image" content="">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon Oficial -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
 
-    <!-- CSS Externos Globais (Seguindo padrão da página referência) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS Externos Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- FontAwesome & Lucide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -21,13 +38,13 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
                         'audit-gold': '#C5A059',
+                        'audit-goldDark': '#A6864A',
                         'audit-navy': '#0f172a',
                         'audit-blue': '#1e40af',
-                        'audit-gray': '#f8fafc',
                     }
                 }
             }
@@ -35,217 +52,204 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
         
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #334155; }
-        
-        #preloader {
-            position: fixed; inset: 0; background: white; 
-            display: flex; justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 0.5s ease;
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #334155; 
+            background-image: 
+                radial-gradient(#cbd5e1 0.5px, transparent 0.5px), 
+                linear-gradient(#e2e8f0 1px, transparent 1px), 
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            transition: background-color 0.3s ease;
         }
 
-        /* Tipografia de Conteúdo Rico */
-        .rich-text p { margin-bottom: 1.5rem; line-height: 1.8; color: #475569; font-weight: 300; font-size: 1.125rem; }
-        .rich-text strong { color: #0f172a; font-weight: 600; }
+        /* BARRA DE FERRAMENTAS LATERAL */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
+        }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none;
+        }
+        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
 
-        /* Estilização de Imagens com Frame */
-        .content-image-wrapper {
-            position: relative;
-            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        /* DRAWERS */
+        .drawer { 
+            position: fixed; top: 0; left: 0; height: 100%; width: 100%; max-width: 24rem; 
+            background: white; z-index: 1100;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%);
         }
-        .content-image-wrapper::after {
-            content: ''; position: absolute; inset: 10px;
-            border: 1px solid #C5A059; z-index: -1;
-            transform: translate(15px, 15px);
-            opacity: 0.2;
-        }
-        .content-image-wrapper:hover { transform: translateY(-5px); }
+        .drawer.active { transform: translateX(0); }
 
-        /* Cards de Pilares */
-        .value-card {
-            background: white; border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+        /* TOUR HIGHLIGHT */
+        .tour-highlight {
+            position: relative; z-index: 1301 !important;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important;
+            pointer-events: none; border: 2px solid #C5A059 !important;
         }
-        .value-card:hover {
-            border-color: #C5A059;
-            box-shadow: 0 20px 40px -20px rgba(197, 160, 89, 0.15);
-            transform: translateY(-5px);
+        .tour-popover {
+            position: fixed; z-index: 1302; background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); width: 280px;
+            border-top: 4px solid #C5A059; transition: all 0.3s ease;
         }
+
+        /* AJUSTE DE CABEÇALHO E PADDING */
+        main { padding-top: 100px; }
+        @media (min-width: 1024px) {
+            .content-wrapper { padding-left: 110px; padding-right: 70px; }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="w-12 h-12 border-4 border-slate-100 border-t-audit-gold rounded-full animate-spin"></div>
-    </div>
+    <div id="preloader"><div class="spinner"></div></div>
+    
+    <!-- Placeholder do Cabeçalho -->
+    <div id="header-placeholder" class="no-print"></div>
 
-    <!-- HEADER MODULADO (URLs Absolutas) -->
-    <nav class="sticky top-0 z-50 bg-white border-b border-gray-100 px-6 py-4 no-print">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="https://auditeduca.com.br/index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-audit-navy rounded flex items-center justify-center text-white font-bold">A</div>
-                <span class="font-serif font-bold text-audit-navy text-xl">AuditEduca</span>
-            </a>
-            <div class="flex gap-6 items-center">
-                <a href="https://auditeduca.com.br/index.html" class="text-sm font-medium text-slate-600 hover:text-audit-gold transition">Início</a>
-                <a href="https://auditeduca.com.br/index.html#ferramentas" class="hidden md:block text-sm font-medium text-slate-600 hover:text-audit-gold transition">Ferramentas</a>
-                <span class="h-4 w-px bg-slate-200"></span>
-                <span class="text-xs font-bold text-audit-gold uppercase tracking-tighter">Sobre Nós</span>
+    <!-- BARRA LATERAL DE FERRAMENTAS -->
+    <aside class="sidebar-left-tools no-print" id="sidebar-tools">
+        <button class="tool-btn" onclick="toggleDrawer('teoria')" title="Nossa Missão">
+            <i class="fas fa-lightbulb"></i>
+            <span class="btn-label">Missão</span>
+        </button>
+        <button class="tool-btn" onclick="toggleDrawer('referencias')" title="Referências">
+            <i class="fas fa-link"></i>
+            <span class="btn-label">Referências</span>
+        </button>
+        <button class="tool-btn" onclick="toggleDrawer('sobre')" title="Sobre">
+            <i class="fas fa-info-circle"></i>
+            <span class="btn-label">Sobre</span>
+        </button>
+        <button class="tool-btn" onclick="startTour()" title="Ajuda">
+            <i class="fas fa-magic"></i>
+            <span class="btn-label">Ajuda</span>
+        </button>
+    </aside>
+
+    <!-- DRAWERS (CONTEÚDO) -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none drawer-overlay z-[1050] no-print" onclick="closeAllDrawers()"></div>
+    
+    <aside id="drawer-teoria" class="drawer no-print shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-lightbulb text-audit-gold"></i> Institucional</h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-grow space-y-6 text-sm text-slate-600 leading-relaxed">
+                <p>Nossa fundação baseia-se na democratização do saber técnico em auditoria independente.</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
+                    <p class="font-serif text-lg text-audit-blue font-bold italic">"Conhecimento que transforma."</p>
+                </div>
             </div>
         </div>
-    </nav>
+    </aside>
 
-    <main class="flex-grow">
-        <!-- Hero Section -->
-        <header class="bg-audit-gray pt-24 pb-20 border-b border-slate-100 relative overflow-hidden">
-            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#0f172a 1px, transparent 1px); background-size: 20px 20px;"></div>
-            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-                <div class="inline-flex items-center gap-2 mb-6">
-                    <span class="h-px w-8 bg-audit-gold"></span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-audit-gold">Institucional</span>
-                    <span class="h-px w-8 bg-audit-gold"></span>
-                </div>
-                <h1 id="hero-title" class="text-4xl md:text-6xl font-serif font-bold text-audit-navy mb-8 leading-tight">
-                    <!-- Dinâmico via JSON -->
-                </h1>
-                <p id="hero-subtitle" class="text-xl text-slate-500 font-light leading-relaxed max-w-2xl mx-auto italic">
-                    <!-- Dinâmico via JSON -->
-                </p>
+    <aside id="drawer-referencias" class="drawer no-print shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-link text-audit-gold"></i> Normativas</h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
             </div>
-        </header>
-
-        <!-- Container de Conteúdo Dinâmico -->
-        <div id="sections-container">
-            <!-- Blocos de Texto + Imagem Injetados -->
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs">
+                    <p class="font-bold text-audit-navy uppercase mb-1">CFC / IBRACON</p>
+                    <p class="text-slate-500">Alinhamento total com as Normas Brasileiras de Contabilidade.</p>
+                </div>
+            </div>
         </div>
+    </aside>
 
-        <!-- Seção de Valores/Pilares -->
-        <section id="pillars-section" class="py-24 bg-white hidden border-t border-slate-100">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-serif font-bold text-audit-navy">Nossos Fundamentos</h2>
-                    <div class="h-1 w-12 bg-audit-gold mx-auto mt-4"></div>
-                </div>
-                <div id="pillars-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Cards de Pilares Injetados -->
-                </div>
+    <aside id="drawer-sobre" class="drawer no-print shadow-2xl border-r border-slate-200">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-info-circle text-audit-gold"></i> AuditEduca</h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
             </div>
-        </section>
+            <div class="text-sm text-slate-600 space-y-4">
+                <p>O hub técnico-educacional mais completo para profissionais de auditoria externa no Brasil.</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL (ONDE O JSON É INJETADO) -->
+    <main class="flex-grow pb-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper" id="main-injection-point">
+            <!-- O campo "html" do JSON será injetado integralmente aqui -->
+        </div>
     </main>
 
-    <!-- FOOTER MODULADO (URLs Absolutas) -->
-    <footer class="bg-audit-navy text-white py-16 px-6 no-print">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-white/10 rounded flex items-center justify-center font-bold text-audit-gold">AE</div>
-                <div class="text-left">
-                    <div class="font-serif font-bold text-lg text-white">AuditEduca</div>
-                    <div class="text-[10px] uppercase tracking-widest text-slate-400">Hub de Auditoria & Contabilidade</div>
-                </div>
-            </div>
-            <div class="flex flex-col md:items-end text-center md:text-right gap-2">
-                <div class="text-slate-400 text-sm">
-                    &copy; 2024 Audit Educa. Todos os direitos reservados.
-                </div>
-                <div class="flex gap-4 justify-center">
-                    <a href="https://auditeduca.com.br/index.html" class="text-xs text-slate-500 hover:text-white transition">Início</a>
-                    <a href="https://auditeduca.com.br/calculadora-juros-simples.html" class="text-xs text-slate-500 hover:text-white transition">Ferramentas</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Placeholder do Rodapé -->
+    <div id="footer-placeholder" class="no-print"></div>
 
-    <!-- ENGINE DE CONTEÚDO -->
+    <!-- Scripts de Notificação e Tour -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
+        Mensagem Audit Educa
+    </div>
+
+    <div id="tour-container"></div>
+
+    <!-- ENGINE DE INTEGRAÇÃO -->
     <script>
-        /**
-         * Audit Content Engine v2.0
-         * Utiliza caminhos absolutos para renderização de assets e links
-         */
         const AuditEngine = {
             config: {
                 jsonUrl: 'https://auditeduca.com.br/pages/sobre-nos.json',
-                domain: 'https://auditeduca.com.br/',
-                fallback: {
-                    title: "A Convergência entre <span class='text-audit-blue'>Prática e Teoria</span>",
-                    subtitle: "Uma jornada dedicada à excelência técnica e inovação tecnológica no setor de auditoria.",
-                    sections: [
-                        {
-                            title: "Nossa História",
-                            content: "<p>A <strong>Audit Educa</strong> nasceu da necessidade de transformar processos manuais complexos em ferramentas intuitivas de auditoria.</p>",
-                            image: "https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=1000&q=80",
-                            layout: "right"
-                        }
-                    ],
-                    pillars: [
-                        { icon: "shield-check", title: "Rigor Técnico", desc: "Aderência às normas NBC e IFRS." },
-                        { icon: "cpu", title: "Inovação", desc: "Tecnologia aplicada ao compliance." }
-                    ]
-                }
             },
 
             async init() {
                 try {
-                    const response = await fetch(this.config.jsonUrl).catch(() => null);
-                    const data = (response && response.ok) ? await response.json() : this.config.fallback;
-                    this.render(data);
+                    const response = await fetch(this.config.jsonUrl, { cache: "no-cache" });
+                    if (!response.ok) throw new Error("Erro de rede");
+                    const data = await response.json();
+                    
+                    this.injectMetadata(data);
+                    this.injectContent(data);
                 } catch (err) {
-                    this.render(this.config.fallback);
+                    console.error("Engine Error:", err);
                 } finally {
                     this.hideLoader();
                 }
             },
 
-            render(data) {
-                // Metadados
-                if(data.pageTitle) document.title = data.pageTitle;
-                document.getElementById('hero-title').innerHTML = data.title;
-                document.getElementById('hero-subtitle').textContent = data.subtitle;
+            injectMetadata(data) {
+                document.title = data.title || "Audit Educa | Institucional";
+                this.setAttr('meta-desc', 'content', data.description);
+                this.setAttr('meta-keywords', 'content', data.keywords);
+                this.setAttr('link-canonical', 'href', data.canonical);
+                this.setAttr('og-title', 'content', data.ogTitle);
+                this.setAttr('og-desc', 'content', data.ogDescription);
+                this.setAttr('og-image', 'content', data.ogImage);
+            },
 
-                // Seções Dinâmicas
-                const container = document.getElementById('sections-container');
-                if (data.sections) {
-                    container.innerHTML = data.sections.map((sec, idx) => `
-                        <section class="py-20 ${idx % 2 !== 0 ? 'bg-audit-gray' : 'bg-white'}">
-                            <div class="max-w-7xl mx-auto px-6">
-                                <div class="flex flex-col ${sec.layout === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12 lg:gap-20">
-                                    <div class="md:w-1/2">
-                                        <h2 class="text-3xl font-serif font-bold text-audit-navy mb-8 relative inline-block">
-                                            ${sec.title}
-                                            <span class="absolute -bottom-3 left-0 w-12 h-1 bg-audit-gold"></span>
-                                        </h2>
-                                        <div class="rich-text">
-                                            ${sec.content}
-                                        </div>
-                                    </div>
-                                    <div class="md:w-1/2">
-                                        <div class="content-image-wrapper">
-                                            <img src="${sec.image}" alt="${sec.title}" class="rounded-lg shadow-xl w-full aspect-[4/3] object-cover">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    `).join('');
+            injectContent(data) {
+                const container = document.getElementById('main-injection-point');
+                if (container && data.html) {
+                    container.innerHTML = data.html;
                 }
-
-                // Pilares/Valores
-                if (data.pillars && data.pillars.length > 0) {
-                    document.getElementById('pillars-section').classList.remove('hidden');
-                    const grid = document.getElementById('pillars-grid');
-                    grid.innerHTML = data.pillars.map(p => `
-                        <div class="value-card p-10 rounded-xl text-center">
-                            <div class="w-16 h-16 bg-audit-gold/5 text-audit-gold rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i data-lucide="${p.icon}" class="w-8 h-8"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-audit-navy mb-4">${p.title}</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed">${p.desc}</p>
-                        </div>
-                    `).join('');
-                }
-
+                // Ativar ícones lucide injetados
                 if (window.lucide) lucide.createIcons();
+            },
+
+            setAttr(id, attr, value) {
+                const el = document.getElementById(id);
+                if (el && value) el.setAttribute(attr, value);
             },
 
             hideLoader() {
@@ -257,7 +261,91 @@
             }
         };
 
+        // --- Lógica de UI (Drawers e Tour) ---
+        function toggleDrawer(id) {
+            closeAllDrawers();
+            document.getElementById(`drawer-${id}`).classList.add('active');
+            const o = document.getElementById('drawer-overlay');
+            o.classList.replace('opacity-0', 'opacity-100');
+            o.classList.replace('pointer-events-none', 'pointer-events-auto');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAllDrawers() {
+            document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
+            const o = document.getElementById('drawer-overlay');
+            o.classList.replace('opacity-100', 'opacity-0');
+            o.classList.replace('pointer-events-auto', 'pointer-events-none');
+            document.body.style.overflow = '';
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.replace('opacity-0', 'opacity-100');
+            t.classList.replace('translate-y-10', 'translate-y-0');
+            setTimeout(() => {
+                t.classList.replace('opacity-100', 'opacity-0');
+                t.classList.replace('translate-y-0', 'translate-y-10');
+            }, 3000);
+        }
+
+        // --- Tour Guiado ---
+        let currentTourStep = 0;
+        const tourSteps = [
+            { id: 'sidebar-tools', text: 'Aqui encontrará ferramentas rápidas para consulta institucional e suporte.' },
+            { id: 'main-injection-point', text: 'Toda a nossa fundamentação e compromisso legal estão detalhados nesta área.' }
+        ];
+
+        function startTour() {
+            currentTourStep = 0;
+            showTourStep();
+        }
+
+        function showTourStep() {
+            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+            const step = tourSteps[currentTourStep];
+            const el = document.getElementById(step.id);
+            if (!el) return;
+
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                el.classList.add('tour-highlight');
+                const rect = el.getBoundingClientRect();
+                const container = document.getElementById('tour-container');
+                container.innerHTML = `
+                    <div class="tour-popover" style="top: ${rect.bottom + 20}px; left: ${Math.max(20, rect.left)}px;">
+                        <p class="text-[10px] font-bold text-audit-navy mb-2 uppercase">Guia Institucional (${currentTourStep + 1}/${tourSteps.length})</p>
+                        <p class="text-xs text-slate-600 mb-4">${step.text}</p>
+                        <div class="flex justify-between">
+                            <button onclick="closeTour()" class="text-[9px] font-bold text-slate-400 uppercase">Sair</button>
+                            <button onclick="nextTourStep()" class="bg-audit-gold text-audit-navy px-3 py-1 rounded-md text-[9px] font-bold uppercase">
+                                ${currentTourStep === tourSteps.length - 1 ? 'Finalizar' : 'Próximo'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }, 500);
+        }
+
+        function nextTourStep() {
+            currentTourStep++;
+            if (currentTourStep >= tourSteps.length) closeTour();
+            else showTourStep();
+        }
+
+        function closeTour() {
+            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+            document.getElementById('tour-container').innerHTML = '';
+        }
+
         document.addEventListener('DOMContentLoaded', () => AuditEngine.init());
     </script>
+
+    <!-- Scripts de Integração Audit Educa -->
+    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
 </body>
 </html>
