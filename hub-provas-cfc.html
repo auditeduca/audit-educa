@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Repositório Oficial de Provas Audit Educa - Exame de Suficiência, CNAI, QTG e Certificações Técnicas.">
+    <title>Repositório de Provas | Audit Educa</title>
+    
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
+
+    <!-- CSS Externos Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- FontAwesome & Lucide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #334155; 
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+
+        /* Sidebar Tools - Identidade Audit Educa */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+        }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; }
+
+        /* Estilos de Visualização */
+        .view-grid-xl { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .view-grid-lg { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+        .view-grid-md { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+        .view-grid-sm { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
+        
+        .view-details { display: flex; flex-direction: column; gap: 0.5rem; }
+        .view-compact { display: flex; flex-direction: column; gap: 2px; }
+
+        /* Card de Documento Profissional */
+        .doc-card {
+            background: white; border: 1px solid #e2e8f0; border-radius: 12px;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .doc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.1); border-color: #C5A059; }
+
+        /* Skeleton Loading */
+        .skeleton { background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+        @keyframes loading { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+        /* Modal Preview PDF-Style */
+        .modal-overlay { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(4px); }
+        .pdf-viewer-frame { background: #525659; border-radius: 8px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+
+        main { padding-top: 140px; }
+        @media (min-width: 1024px) { .content-wrapper { padding-left: 110px; padding-right: 70px; } }
+        @media (max-width: 768px) { body { padding-bottom: 80px; } .sidebar-left-tools { display: none; } }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="preloader"><div class="spinner"></div></div>
+    
+    <!-- Cabeçalho Placeholder -->
+    <div id="header-placeholder" class="no-print"></div>
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar-left-tools no-print">
+        <button class="tool-btn" title="Biblioteca"><i class="fas fa-book"></i></button>
+        <button class="tool-btn" title="Favoritos"><i class="fas fa-star"></i></button>
+        <button class="tool-btn" title="Ajuda"><i class="fas fa-question-circle"></i></button>
+    </aside>
+
+    <main class="flex-grow pb-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper">
+            
+            <!-- Breadcrumbs & Título -->
+            <nav class="flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                <ol class="flex items-center gap-2">
+                    <li><a href="/" class="hover:text-audit-gold transition">Home</a></li>
+                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                    <li class="text-audit-gold">Repositório de Provas</li>
+                </ol>
+            </nav>
+
+            <div class="mb-10">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy tracking-tight mb-4">Banco de Exames & Certificações</h1>
+                <p class="text-slate-600 text-lg font-light max-w-3xl">Acesso completo ao acervo de provas do <span class="text-audit-navy font-semibold">Exame de Suficiência (CFC)</span>, <span class="text-audit-navy font-semibold">CNAI</span> e certificações regulatórias.</p>
+            </div>
+
+            <!-- BARRA DE FERRAMENTAS E FILTROS -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 mb-8 shadow-sm space-y-6">
+                
+                <!-- Filtros Superiores -->
+                <div class="flex flex-wrap items-center justify-between gap-6">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="relative min-w-[200px]">
+                            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="searchDoc" placeholder="Pesquisar prova..." class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none focus:border-audit-gold transition" onkeyup="filterDocs()">
+                        </div>
+                        
+                        <select id="filterType" class="bg-slate-50 border border-slate-200 px-4 py-3 rounded-xl text-[10px] font-bold text-slate-500 uppercase tracking-widest outline-none focus:border-audit-gold cursor-pointer" onchange="filterDocs()">
+                            <option value="all">Todos os Exames</option>
+                            <option value="CFC">Exame Suficiência (CFC)</option>
+                            <option value="QTG">CNAI QTG</option>
+                            <option value="CVM">CNAI CVM</option>
+                            <option value="SUSEP">CNAI SUSEP</option>
+                            <option value="BACEN">CNAI BACEN</option>
+                            <option value="PREVIC">PREVIC</option>
+                        </select>
+
+                        <select id="filterYear" class="bg-slate-50 border border-slate-200 px-4 py-3 rounded-xl text-[10px] font-bold text-slate-500 uppercase tracking-widest outline-none focus:border-audit-gold cursor-pointer" onchange="filterDocs()">
+                            <option value="all">Todos os Anos</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
+
+                    <!-- Ordenação -->
+                    <div class="flex items-center gap-2">
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Ordenar por:</span>
+                        <select id="sortBy" class="text-[10px] font-bold text-audit-navy border-none focus:ring-0 cursor-pointer bg-transparent" onchange="sortDocs()">
+                            <option value="name">Nome (A-Z)</option>
+                            <option value="date">Data Recente</option>
+                            <option value="type">Tipo de Exame</option>
+                        </select>
+                        <button id="sortOrderBtn" onclick="toggleSortOrder()" class="p-2 text-slate-400 hover:text-audit-navy transition"><i class="fas fa-sort-amount-down"></i></button>
+                    </div>
+                </div>
+
+                <!-- Modos de Visualização -->
+                <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0">
+                        <button onclick="changeView('view-grid-xl')" class="view-mode-btn p-2 rounded-lg hover:bg-slate-100 text-slate-400" title="Extra Grande"><i class="fas fa-th-large text-lg"></i></button>
+                        <button onclick="changeView('view-grid-lg')" class="view-mode-btn p-2 rounded-lg bg-slate-100 text-audit-navy" title="Grande"><i class="fas fa-th"></i></button>
+                        <button onclick="changeView('view-grid-md')" class="view-mode-btn p-2 rounded-lg hover:bg-slate-100 text-slate-400" title="Médio"><i class="fas fa-table-cells"></i></button>
+                        <button onclick="changeView('view-grid-sm')" class="view-mode-btn p-2 rounded-lg hover:bg-slate-100 text-slate-400" title="Pequeno"><i class="fas fa-table-cells-large"></i></button>
+                        <div class="h-6 w-px bg-slate-200 mx-2"></div>
+                        <button onclick="changeView('view-details')" class="view-mode-btn p-2 rounded-lg hover:bg-slate-100 text-slate-400" title="Detalhes"><i class="fas fa-list-ul"></i></button>
+                        <button onclick="changeView('view-compact')" class="view-mode-btn p-2 rounded-lg hover:bg-slate-100 text-slate-400" title="Compacto"><i class="fas fa-align-justify"></i></button>
+                    </div>
+                    <div class="hidden md:block text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                        Exibindo <span id="docCount" class="text-audit-navy">0</span> documentos
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÁREA DOS DOCUMENTOS (REPOSITÓRIO) -->
+            <div id="docs-container" class="view-grid-lg min-h-[400px]">
+                <!-- Skeletons inicias -->
+                <div class="doc-card p-4 animate-pulse"><div class="h-40 bg-slate-100 rounded-lg mb-4 skeleton"></div><div class="h-4 w-3/4 bg-slate-100 rounded skeleton mb-2"></div><div class="h-3 w-1/2 bg-slate-100 rounded skeleton"></div></div>
+                <div class="doc-card p-4 animate-pulse"><div class="h-40 bg-slate-100 rounded-lg mb-4 skeleton"></div><div class="h-4 w-3/4 bg-slate-100 rounded skeleton mb-2"></div><div class="h-3 w-1/2 bg-slate-100 rounded skeleton"></div></div>
+                <div class="doc-card p-4 animate-pulse"><div class="h-40 bg-slate-100 rounded-lg mb-4 skeleton"></div><div class="h-4 w-3/4 bg-slate-100 rounded skeleton mb-2"></div><div class="h-3 w-1/2 bg-slate-100 rounded skeleton"></div></div>
+                <div class="doc-card p-4 animate-pulse"><div class="h-40 bg-slate-100 rounded-lg mb-4 skeleton"></div><div class="h-4 w-3/4 bg-slate-100 rounded skeleton mb-2"></div><div class="h-3 w-1/2 bg-slate-100 rounded skeleton"></div></div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden py-20 text-center">
+                <i class="fas fa-file-circle-exclamation text-slate-200 text-6xl mb-4"></i>
+                <h3 class="text-xl font-serif font-bold text-slate-400">Nenhum documento encontrado</h3>
+                <p class="text-slate-400 text-sm">Tente ajustar seus filtros ou termo de pesquisa.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- MODAL PREVIEW -->
+    <div id="previewModal" class="fixed inset-0 z-[2000] hidden flex items-center justify-center p-4">
+        <div class="modal-overlay absolute inset-0" onclick="closePreview()"></div>
+        <div class="pdf-viewer-frame relative w-full max-w-5xl h-[90vh] flex flex-col z-10 animate-in zoom-in duration-300">
+            <!-- Header Modal -->
+            <div class="flex items-center justify-between p-4 border-b border-white/10 bg-audit-navy text-white rounded-t-lg">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-file-pdf text-audit-gold"></i>
+                    <div>
+                        <h4 id="modalDocTitle" class="text-xs font-bold uppercase tracking-widest">Título da Prova</h4>
+                        <p id="modalDocMeta" class="text-[9px] text-slate-400 uppercase">Categoria • Ano</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="px-4 py-2 bg-white/10 hover:bg-audit-gold hover:text-audit-navy transition rounded-lg text-[10px] font-bold uppercase"><i class="fas fa-download mr-2"></i> Baixar</button>
+                    <button onclick="closePreview()" class="w-10 h-10 flex items-center justify-center hover:bg-red-500 transition rounded-lg"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <!-- Body Modal (Mock do Documento) -->
+            <div class="flex-grow overflow-auto p-8 flex justify-center bg-slate-800/50">
+                <div class="w-full max-w-[800px] bg-white shadow-2xl min-h-[1000px] p-12 md:p-20 relative">
+                    <div class="border-b-2 border-audit-navy pb-8 mb-10 flex justify-between items-start">
+                        <img src="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp" class="h-12 opacity-30 grayscale" alt="Audit Educa Logo">
+                        <div class="text-right">
+                            <h2 class="text-audit-navy font-serif font-bold text-2xl">MEMÓRIA DE EXAME</h2>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">REPRODUÇÃO TÉCNICA PARA FINS EDUCACIONAIS</p>
+                        </div>
+                    </div>
+                    <!-- Conteúdo simulado -->
+                    <div class="space-y-6 opacity-40">
+                        <div class="h-4 bg-slate-100 rounded w-1/2 mb-10"></div>
+                        <div class="space-y-3">
+                            <div class="h-3 bg-slate-50 rounded w-full"></div>
+                            <div class="h-3 bg-slate-50 rounded w-full"></div>
+                            <div class="h-3 bg-slate-50 rounded w-5/6"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="border-2 border-dashed border-slate-100 h-32 rounded-xl flex items-center justify-center text-[10px] uppercase font-bold text-slate-300">Questão 01</div>
+                            <div class="border-2 border-dashed border-slate-100 h-32 rounded-xl flex items-center justify-center text-[10px] uppercase font-bold text-slate-300">Questão 02</div>
+                        </div>
+                        <div class="flex justify-center mt-20">
+                            <i class="fas fa-lock text-slate-200 text-6xl"></i>
+                        </div>
+                        <p class="text-center text-slate-300 text-xs italic mt-4">Conteúdo restrito para membros logados. Clique em baixar para acessar o arquivo original.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder" class="no-print"></div>
+
+    <script>
+        // Mock de Dados dos Documentos
+        const documents = [
+            { id: 1, name: "Exame de Suficiência 2024.1 - Prova Branca", type: "CFC", year: 2024, date: "2024-05-10", size: "2.4 MB" },
+            { id: 2, name: "Exame de Suficiência 2023.2 - Prova Verde", type: "CFC", year: 2023, date: "2023-10-15", size: "2.1 MB" },
+            { id: 3, name: "CNAI QTG 2024 - Auditoria Geral", type: "QTG", year: 2024, date: "2024-11-20", size: "3.2 MB" },
+            { id: 4, name: "CNAI CVM 2023 - Mercado de Capitais", type: "CVM", year: 2023, date: "2023-11-20", size: "2.8 MB" },
+            { id: 5, name: "SUSEP 2022 - Perícia Contábil", type: "SUSEP", year: 2022, date: "2022-09-05", size: "1.9 MB" },
+            { id: 6, name: "BACEN 2023 - Instituições Financeiras", type: "BACEN", year: 2023, date: "2023-11-15", size: "3.5 MB" },
+            { id: 7, name: "PREVIC 2024 - Entidades de Previdência", type: "PREVIC", year: 2024, date: "2024-12-01", size: "2.5 MB" },
+            { id: 8, name: "Exame CFC 2022.1 - Prova Amarela", type: "CFC", year: 2022, date: "2022-05-15", size: "2.2 MB" },
+            { id: 9, name: "QTG 2023 - Auditoria Independente", type: "QTG", year: 2023, date: "2023-08-10", size: "4.1 MB" },
+            { id: 10, name: "CNAI CVM 2022 - Relatórios Financeiros", type: "CVM", year: 2022, date: "2022-11-22", size: "2.9 MB" }
+        ];
+
+        let currentSortOrder = 'asc';
+        let currentView = 'view-grid-lg';
+
+        // Renderização Inicial
+        window.onload = () => {
+            setTimeout(() => {
+                renderDocuments(documents);
+                document.getElementById('preloader').style.display = 'none';
+            }, 1000); // Simulando delay de carregamento das miniaturas
+        };
+
+        function renderDocuments(data) {
+            const container = document.getElementById('docs-container');
+            const countEl = document.getElementById('docCount');
+            const emptyEl = document.getElementById('empty-state');
+            
+            container.innerHTML = '';
+            countEl.innerText = data.length;
+
+            if (data.length === 0) {
+                emptyEl.classList.remove('hidden');
+                return;
+            } else {
+                emptyEl.classList.add('hidden');
+            }
+
+            data.forEach(doc => {
+                const isList = currentView === 'view-details' || currentView === 'view-compact';
+                const card = document.createElement('div');
+                card.className = `doc-card p-4 flex ${isList ? 'flex-row items-center justify-between gap-4' : 'flex-col'}`;
+                
+                // Determinar ícone por tipo
+                const typeIcon = doc.type === 'CFC' ? 'fa-graduation-cap' : 'fa-shield-halved';
+                const typeColor = doc.type === 'CFC' ? 'text-audit-blue' : 'text-audit-gold';
+
+                let innerHTML = '';
+                
+                if (isList) {
+                    innerHTML = `
+                        <div class="flex items-center gap-4 flex-grow">
+                            <div class="w-10 h-10 bg-slate-50 rounded flex items-center justify-center ${typeColor}">
+                                <i class="fas ${typeIcon} text-sm"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <h4 class="text-xs font-bold text-audit-navy line-clamp-1">${doc.name}</h4>
+                                <div class="flex gap-3 mt-1">
+                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">${doc.type} • ${doc.year}</span>
+                                    ${currentView === 'view-details' ? `<span class="text-[9px] text-slate-400 uppercase tracking-tighter"><i class="fas fa-database mr-1"></i>${doc.size}</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="openPreview('${doc.name}', '${doc.type}', ${doc.year})" class="px-3 py-2 bg-slate-50 text-audit-navy text-[9px] font-bold uppercase rounded hover:bg-audit-navy hover:text-white transition">Ver</button>
+                            <button class="px-3 py-2 bg-slate-50 text-audit-navy text-[9px] font-bold uppercase rounded hover:bg-audit-gold transition"><i class="fas fa-download"></i></button>
+                        </div>
+                    `;
+                } else {
+                    innerHTML = `
+                        <div class="relative group cursor-pointer" onclick="openPreview('${doc.name}', '${doc.type}', ${doc.year})">
+                            <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-4 flex flex-col items-center justify-center gap-3 overflow-hidden border border-slate-100 group-hover:bg-slate-100 transition">
+                                <i class="fas fa-file-pdf text-4xl text-slate-200 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-[8px] font-bold text-slate-300 uppercase tracking-[0.3em]">Preview Indisponível</span>
+                            </div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-white/90 backdrop-blur rounded text-[8px] font-black ${typeColor} uppercase tracking-tighter shadow-sm">
+                                ${doc.type}
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-[11px] font-bold text-audit-navy leading-tight mb-2 line-clamp-2">${doc.name}</h4>
+                            <div class="flex items-center justify-between text-[9px] text-slate-400 font-bold uppercase">
+                                <span>${doc.year}</span>
+                                <span>${doc.size}</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-2 pt-4 border-t border-slate-50">
+                            <button onclick="openPreview('${doc.name}', '${doc.type}', ${doc.year})" class="py-2 bg-slate-50 text-audit-navy text-[9px] font-black uppercase rounded hover:bg-audit-navy hover:text-white transition">Ver</button>
+                            <button class="py-2 bg-slate-50 text-audit-navy text-[9px] font-black uppercase rounded hover:bg-audit-gold transition"><i class="fas fa-download"></i></button>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = innerHTML;
+                container.appendChild(card);
+            });
+        }
+
+        function changeView(viewClass) {
+            currentView = viewClass;
+            const container = document.getElementById('docs-container');
+            container.className = viewClass + ' min-h-[400px] animate-in fade-in duration-300';
+            
+            // Ativa botão correto
+            document.querySelectorAll('.view-mode-btn').forEach(btn => btn.classList.replace('bg-slate-100', 'hover:bg-slate-100'));
+            document.querySelectorAll('.view-mode-btn').forEach(btn => btn.classList.replace('text-audit-navy', 'text-slate-400'));
+            
+            event.currentTarget.classList.add('bg-slate-100', 'text-audit-navy');
+            
+            filterDocs(); // Re-renderiza com novo estilo
+        }
+
+        function filterDocs() {
+            const query = document.getElementById('searchDoc').value.toLowerCase();
+            const type = document.getElementById('filterType').value;
+            const year = document.getElementById('filterYear').value;
+
+            const filtered = documents.filter(doc => {
+                const matchName = doc.name.toLowerCase().includes(query);
+                const matchType = type === 'all' || doc.type === type;
+                const matchYear = year === 'all' || doc.year.toString() === year;
+                return matchName && matchType && matchYear;
+            });
+
+            renderDocuments(filtered);
+        }
+
+        function toggleSortOrder() {
+            currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+            const btn = document.getElementById('sortOrderBtn');
+            btn.innerHTML = currentSortOrder === 'asc' ? '<i class="fas fa-sort-amount-down"></i>' : '<i class="fas fa-sort-amount-up"></i>';
+            sortDocs();
+        }
+
+        function sortDocs() {
+            const sortBy = document.getElementById('sortBy').value;
+            const filtered = [...documents]; // Pega do estado atual filtrado na verdade seria melhor filtrar antes
+
+            filtered.sort((a, b) => {
+                let valA = a[sortBy];
+                let valB = b[sortBy];
+                
+                if (typeof valA === 'string') {
+                    return currentSortOrder === 'asc' 
+                        ? valA.localeCompare(valB) 
+                        : valB.localeCompare(valA);
+                } else {
+                    return currentSortOrder === 'asc' ? valA - valB : valB - valA;
+                }
+            });
+
+            renderDocuments(filtered);
+        }
+
+        // Funções do Modal
+        function openPreview(title, type, year) {
+            document.getElementById('modalDocTitle').innerText = title;
+            document.getElementById('modalDocMeta').innerText = `${type} • ${year}`;
+            document.getElementById('previewModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePreview() {
+            document.getElementById('previewModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
