@@ -1,94 +1,136 @@
+// FORMATADORES E UTILITÁRIOS
 const formatBRL = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-const parseCurrency = (s) => parseFloat(s.replace(/\D/g, "")) / 100 || 0;
+const parseCurrency = (s) => {
+    if (!s) return 0;
+    const value = s.replace(/\D/g, "");
+    return parseFloat(value) / 100 || 0;
+};
 
-// Inicialização
+// INICIALIZAÇÃO DO SELETOR
 document.addEventListener('DOMContentLoaded', () => {
     const selector = document.getElementById('calc-selector');
+    if (!selector) return;
+
     Object.keys(calculatorDB).forEach(id => {
         let opt = document.createElement('option');
         opt.value = id;
         opt.innerText = calculatorDB[id].name;
         selector.appendChild(opt);
     });
+
     selector.addEventListener('change', (e) => renderInputs(e.target.value));
-    renderInputs(selector.value);
+    renderInputs(selector.value); // Primeira carga
 });
 
 function renderInputs(calcId) {
     const container = document.getElementById('dynamic-inputs-container');
     const calc = calculatorDB[calcId];
-    container.innerHTML = '';
+    if (!calc) return;
+    
+    container.innerHTML = ''; // Limpa campos anteriores
     
     calc.variables.forEach(v => {
         const div = document.createElement('div');
-        div.innerHTML = `<label class="block text-xs font-bold mb-1">${v.label}</label>
-            <input id="${v.id}" class="w-full p-3 border rounded-lg" oninput="${v.unit==='currency'?'formatCurrency(this)':''}">`;
+        div.className = "mb-4";
+        div.innerHTML = `
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">${v.label}</label>
+            <input id="${v.id}" class="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" 
+            placeholder="${v.unit === 'currency' ? '0,00' : '0'}"
+            oninput="${v.unit === 'currency' ? 'handleCurrencyInput(this)' : ''}">`;
         container.appendChild(div);
     });
 
+    // Fluxos dinâmicos para VPL
     if(calc.isDynamic) {
-        const btn = document.createElement('button');
-        btn.type = "button";
-        btn.className = "col-span-2 text-blue-600 text-xs font-bold";
-        btn.innerText = "+ ADICIONAR FLUXO DE CAIXA";
-        btn.onclick = () => {
-            const input = document.createElement('input');
-            input.className = "flow-input w-full p-3 border rounded-lg mt-2";
-            input.placeholder = "Valor do Mês";
-            input.oninput = function() { formatCurrency(this) };
-            container.appendChild(input);
-        };
-        container.appendChild(btn);
+        const dynamicSection = document.createElement('div');
+        dynamicSection.className = "col-span-1 md:col-span-2 border-t pt-4 mt-2";
+        dynamicSection.innerHTML = `
+            <button type="button" onclick="addFlowField()" class="text-blue-600 text-xs font-bold hover:underline">
+                <i class="fas fa-plus mr-1"></i> ADICIONAR NOVO FLUXO DE CAIXA
+            </button>
+            <div id="extra-flows" class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3"></div>
+        `;
+        container.appendChild(dynamicSection);
     }
 }
 
-function formatCurrency(i) {
+function handleCurrencyInput(i) {
     let v = i.value.replace(/\D/g, "");
-    i.value = (v/100).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+    if (v === "") return i.value = "";
+    i.value = (parseFloat(v) / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+}
+
+function addFlowField() {
+    const container = document.getElementById('extra-flows');
+    const count = container.children.length + 1;
+    const div = document.createElement('div');
+    div.innerHTML = `
+        <label class="block text-[10px] text-slate-400 font-bold uppercase">Mês ${count}</label>
+        <input class="flow-input w-full p-2 border border-slate-200 rounded-lg text-sm" placeholder="0,00" oninput="handleCurrencyInput(this)">
+    `;
+    container.appendChild(div);
 }
 
 function executeCalculation() {
     const id = document.getElementById('calc-selector').value;
     const calc = calculatorDB[id];
     const data = {};
+    
+    // Captura dados fixos
     calc.variables.forEach(v => {
-        const val = document.getElementById(v.id).value;
-        data[v.id] = v.unit === 'currency' ? parseCurrency(val) : parseFloat(val);
+        const input = document.getElementById(v.id);
+        data[v.id] = v.unit === 'currency' ? parseCurrency(input.value) : parseFloat(input.value);
     });
+
+    // Captura fluxos dinâmicos
     if(calc.isDynamic) {
-        data.fluxos = Array.from(document.querySelectorAll('.flow-input')).map(i => parseCurrency(i.value));
+        const flowInputs = document.querySelectorAll('.flow-input');
+        data.fluxos = Array.from(flowInputs).map(i => parseCurrency(i.value));
     }
 
     const res = calc.calc(data);
-    document.getElementById('display-total').innerText = res.type === 'VPL' ? formatBRL(res.total) : formatBRL(res.total);
+    
+    // Atualiza Displays
+    document.getElementById('display-total').innerText = formatBRL(res.total);
     document.getElementById('display-interest').innerText = typeof res.interest === 'string' ? res.interest : formatBRL(res.interest);
     document.getElementById('display-effective-rate').innerText = res.effective.toFixed(2) + "%";
-    document.getElementById('result-area').classList.remove('hidden');
     
+    document.getElementById('result-area').classList.remove('hidden');
     if(res.table) renderTable(res.table, res.type);
 }
 
 function renderTable(rows, type) {
-    let headers = type === 'VPL' ? ['Mês', 'Fluxo', 'VP', 'Acumulado'] : ['Mês', 'Parcela', 'Juros', 'Amort', 'Saldo'];
-    let html = `<table class="w-full bg-white border mt-4 text-xs"><thead><tr class="bg-slate-100">`;
-    headers.forEach(h => html += `<th class="p-3 border">${h}</th>`);
+    let headers = type === 'VPL' ? ['Mês', 'Fluxo', 'Valor Presente', 'VPL Acumulado'] : ['Mês', 'Parcela', 'Juros', 'Amortização', 'Saldo'];
+    let html = `<div class="overflow-x-auto mt-6 rounded-xl border border-slate-200">
+        <table class="w-full text-left text-xs bg-white">
+        <thead><tr class="bg-slate-50 text-slate-500">`;
+    headers.forEach(h => html += `<th class="p-3 font-bold">${h}</th>`);
     html += `</tr></thead><tbody>`;
+    
     rows.forEach(r => {
-        html += `<tr class="border text-center">
-            <td class="p-2 border">${r.t}</td>
-            <td class="p-2 border">${formatBRL(r.pmt || 0)}</td>
-            <td class="p-2 border">${formatBRL(r.juros || r.vp || 0)}</td>
-            <td class="p-2 border">${formatBRL(r.amort || 0)}</td>
-            <td class="p-2 border">${formatBRL(r.saldo || r.vpl_acumulado || 0)}</td>
+        html += `<tr class="border-t hover:bg-slate-50 transition">
+            <td class="p-3 font-bold">${r.t}</td>
+            <td class="p-3">${formatBRL(r.pmt || 0)}</td>
+            <td class="p-3">${formatBRL(r.juros || r.vp || 0)}</td>
+            <td class="p-3 text-blue-600">${formatBRL(r.amort || 0)}</td>
+            <td class="p-3 font-bold ${r.vpl_acumulado < 0 ? 'text-red-500' : 'text-slate-800'}">${formatBRL(r.saldo || r.vpl_acumulado || 0)}</td>
         </tr>`;
     });
-    document.getElementById('table-container').innerHTML = html + `</tbody></table>`;
+    
+    document.getElementById('table-container').innerHTML = html + `</tbody></table></div>`;
 }
 
 async function generatePDFReport() {
     const { jsPDF } = window.jspdf;
-    const canvas = await html2canvas(document.getElementById('capture-pdf-area'));
+    const area = document.getElementById('capture-pdf-area');
+    const canvas = await html2canvas(area, { scale: 2 });
+    const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF('p', 'mm', 'a4');
-    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, (canvas.height * 210) / canvas.width);
-    pdf.save('Relatorio_Audit.pdf');
+    const imgWidth = 190;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    
+    pdf.setFontSize(16);
+    pdf.text("AUDIT EDUCA - RELATÓRIO TÉCNICO", 10, 15);
+    pdf.addImage(imgData, 'PNG', 10, 25, imgWidth, imgHeight);
+    pdf.save(`Audit_Relatorio_${Date.now()}.pdf`);
 }
