@@ -1,0 +1,1 @@
+(function(){function hide(){const p=document.getElementById('preloader');if(p)p.style.display='none'}window.addEventListener('load',()=>setTimeout(hide,150));})();
