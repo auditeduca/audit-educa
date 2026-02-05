@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Repositório de Provas Audit Educa - Exames de Suficiência, CNAI e Certificações.">
+    <meta name="description" content="Repositório de Provas Audit Educa - Acervo técnico de exames para fins de auditoria e estudo independente.">
     <title>Repositório de Provas | Audit Educa</title>
     
     <!-- Favicon Oficial -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
 
-    <!-- CSS Externos Audit Educa -->
+    <!-- CSS Externos Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- FontAwesome & Lucide -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -48,21 +57,27 @@
             background-attachment: fixed;
         }
 
-        /* Sidebar Esquerda */
+        /* BARRA DE FERRAMENTAS LATERAL ESQUERDA */
         .sidebar-left-tools {
             position: fixed; left: 0; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
         }
         .tool-btn {
             background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
             width: 54px; height: 54px; border-radius: 0 14px 14px 0;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none;
         }
-        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; }
+        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
 
-        /* Capa Flat Page */
+        /* Capa em Formato de Página */
         .exam-page-cover {
             aspect-ratio: 1 / 1.414;
             background: white;
@@ -74,84 +89,100 @@
             display: flex;
             flex-direction: column;
         }
+        .exam-page-cover-mini {
+            width: 140px; height: 198px; flex-shrink: 0;
+        }
         .exam-page-cover:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             border-color: #C5A059;
         }
 
-        /* Capa Mini (Para o Hero Slider) */
-        .exam-page-cover-mini {
-            width: 160px;
-            height: 226px;
-            flex-shrink: 0;
+        /* Efeito de Textura SVG */
+        .svg-texture {
+            position: absolute; inset: 0; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230f172a' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
         }
 
-        .type-indicator { height: 6px; width: 100%; position: absolute; top: 0; left: 0; z-index: 10; }
+        /* Hero Infinite Slider */
+        .hero-slider-container { width: 100%; overflow: hidden; position: relative; padding: 10px 0; }
+        .hero-slider-track { display: flex; gap: 1.5rem; width: max-content; animation: scroll-infinite 30s linear infinite; }
+        .hero-slider-track:hover { animation-play-state: paused; }
+        @keyframes scroll-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 0.75rem)); }
+        }
+
+        /* Botão Baixar Reestilizado */
+        .btn-download-premium {
+            @apply flex-1 bg-audit-navy text-white text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-800 transition-all border-t border-white/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)];
+        }
+        .btn-view-premium {
+            @apply flex-1 bg-white text-audit-navy text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-50 transition-all border-r border-slate-100;
+        }
+
+        /* Tour & Popover */
+        .tour-highlight {
+            position: relative; z-index: 1301 !important;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important;
+            pointer-events: none; border: 2px solid #C5A059 !important;
+        }
+        .tour-popover {
+            position: fixed; z-index: 1302; background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); width: 280px;
+            border-top: 4px solid #C5A059; transition: all 0.3s ease;
+        }
+
+        .type-indicator { height: 4px; width: 100%; position: absolute; top: 0; left: 0; z-index: 10; }
         .type-branca { background: #cbd5e1; }
         .type-verde { background: #22c55e; }
         .type-azul { background: #3b82f6; }
         .type-amarela { background: #eab308; }
 
-        .svg-texture {
-            position: absolute;
-            inset: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230f172a' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-            z-index: 1;
-        }
-
-        /* Botões de Ação */
-        .btn-download-premium {
-            @apply flex-1 bg-audit-navy text-white text-[9px] font-black uppercase tracking-widest py-2.5 flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors border-t border-white/5;
-        }
-        .btn-view-premium {
-            @apply flex-1 bg-white text-audit-navy text-[9px] font-black uppercase tracking-widest py-2.5 flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors border-r border-slate-100;
-        }
-
-        /* Hero Infinite Slider */
-        .hero-slider-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            padding: 20px 0;
-        }
-        .hero-slider-track {
-            display: flex;
-            gap: 2rem;
-            width: max-content;
-            animation: scroll-infinite 40s linear infinite;
-        }
-        .hero-slider-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll-infinite {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 1rem)); }
-        }
-
-        .tag-pill-link {
-            @apply flex items-center gap-2 px-4 py-2 bg-white text-slate-500 text-[10px] uppercase font-bold rounded-xl border border-slate-200 hover:border-audit-gold hover:text-audit-navy hover:shadow-md transition-all cursor-pointer;
-        }
-
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+        
         main { padding-top: 150px; }
         @media (min-width: 1024px) { .content-wrapper { padding-left: 110px; padding-right: 70px; } }
         
-        @media (max-width: 640px) {
-            .sidebar-left-tools { top: auto; bottom: 0; left: 0; width: 100%; height: 70px; flex-direction: row; transform: none; background: white; border-top: 1px solid #e2e8f0; border-radius: 0; }
-            .tool-btn { border: none; border-radius: 8px; width: auto; flex: 1; }
-            body { padding-bottom: 80px; }
+        @media (max-width: 768px) {
+            .sidebar-left-tools { top: auto; bottom: 0; left: 0; width: 100%; height: 70px; flex-direction: row; transform: none; justify-content: space-around; background: white; border-top: 1px solid #e2e8f0; border-radius: 0; }
+            .tool-btn { border: none; width: auto; height: 100%; flex: 1; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; }
+            body { padding-bottom: 90px; }
         }
     </style>
+
+    <!-- Scripts de Integração Audit Educa -->
+    <script src="https://auditeduca.com.br/assets/js/utils.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/seo-manager.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/main.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- BARRA LATERAL ESQUERDA -->
-    <aside class="sidebar-left-tools no-print">
-        <button class="tool-btn" onclick="openHelp()" title="Ajuda"><i class="fas fa-question-circle"></i></button>
-        <button class="tool-btn" onclick="showToast('Histórico sincronizado.')" title="Histórico"><i class="fas fa-history"></i></button>
-        <button class="tool-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Topo"><i class="fas fa-chevron-up"></i></button>
+    <div id="preloader"><div class="spinner"></div></div>
+    
+    <!-- Placeholder do Cabeçalho Modular -->
+    <div id="header-placeholder" class="no-print"></div>
+
+    <!-- BARRA LATERAL DE FERRAMENTAS -->
+    <aside class="sidebar-left-tools no-print" id="sidebar-tools">
+        <button class="tool-btn" onclick="startTour()" title="Guia de Uso">
+            <i class="fas fa-magic"></i>
+            <span class="btn-label">Ajuda</span>
+        </button>
+        <button class="tool-btn" onclick="showToast('Histórico sincronizado.')" title="Favoritos">
+            <i class="fas fa-star"></i>
+            <span class="btn-label">Salvos</span>
+        </button>
+        <button class="tool-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao Topo">
+            <i class="fas fa-chevron-up"></i>
+            <span class="btn-label">Topo</span>
+        </button>
     </aside>
 
     <main class="flex-grow pb-20 px-4 sm:px-6">
@@ -164,7 +195,7 @@
                     <li><i class="fas fa-chevron-right text-[8px]"></i></li>
                     <li>Conteúdo Técnico</li>
                     <li><i class="fas fa-chevron-right text-[8px]"></i></li>
-                    <li class="text-audit-gold underline underline-offset-4 tracking-widest">Repositório Hub</li>
+                    <li class="text-audit-gold underline underline-offset-4 tracking-widest">Repositório de Provas</li>
                 </ol>
             </nav>
 
@@ -173,31 +204,30 @@
                 <!-- Coluna Principal -->
                 <div class="lg:col-span-8 space-y-16">
                     
-                    <div>
-                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy tracking-tight mb-4">Repositório Técnico</h1>
-                        <p class="text-slate-600 text-lg font-light leading-relaxed">Central de inteligência com as últimas edições de <span class="text-audit-navy font-semibold">exames profissionais de auditoria</span>.</p>
+                    <div id="tour-step-0">
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy tracking-tight mb-4">Acervo de Exames</h1>
+                        <p class="text-slate-600 text-lg font-light leading-relaxed">Central de inteligência com cópias integrais das <span class="text-audit-navy font-semibold">últimas edições</span> para fins didáticos e técnicos.</p>
                     </div>
 
-                    <!-- SECÇÃO: HERO SLIDER (LANÇAMENTOS RECENTES) -->
-                    <section id="hero-quick-access" class="relative">
+                    <!-- HERO: ÚLTIMAS EDIÇÕES (INFINITE SLIDER) -->
+                    <section id="tour-step-1" class="relative">
                         <div class="flex items-center justify-between mb-8 border-b border-slate-200 pb-4">
                             <div class="flex items-center gap-3">
                                 <i class="fas fa-bolt text-audit-gold text-xs"></i>
-                                <h2 class="text-xs font-black text-audit-navy uppercase tracking-widest">Últimas Edições por Categoria</h2>
+                                <h2 class="text-xs font-black text-audit-navy uppercase tracking-widest">Acesso Rápido: Lançamentos</h2>
                             </div>
-                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest hidden sm:block">Scroll Automático</span>
                         </div>
                         
                         <div class="hero-slider-container">
                             <div id="hero-track" class="hero-slider-track">
-                                <!-- Conteúdo gerado via JS (Dobra duplicada para efeito infinito) -->
+                                <!-- Gerado dinamicamente -->
                             </div>
                         </div>
                     </section>
 
-                    <!-- SECÇÕES POR TIPO -->
+                    <!-- GRUPOS POR CATEGORIA -->
                     <div id="exam-sections-container" class="space-y-16">
-                        <!-- Categorias dinâmicas injetadas aqui -->
+                        <!-- Categorias dinâmicas (CFC, CNAI, etc) -->
                     </div>
 
                     <!-- CTA SIMULADO -->
@@ -205,11 +235,11 @@
                         <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
                             <i class="fas fa-graduation-cap text-[12rem]"></i>
                         </div>
-                        <div class="relative z-10">
-                            <h2 class="text-3xl font-serif font-bold mb-6">Simulado de Suficiência</h2>
-                            <p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-lg">Pratique com a metodologia Audit Educa em um ambiente que replica fielmente as condições dos exames oficiais.</p>
+                        <div class="relative z-10 max-w-lg">
+                            <h2 class="text-3xl font-serif font-bold mb-6">Treino para o Exame</h2>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-8">Utilize o nosso simulador de provas para medir o seu tempo e desempenho técnico em tempo real.</p>
                             <a href="#" class="inline-flex items-center gap-3 bg-audit-gold text-audit-navy px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-yellow-500 transition-all shadow-lg">
-                                Iniciar Preparação <i class="fas fa-arrow-right"></i>
+                                Ir para Simulados <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </section>
@@ -218,46 +248,44 @@
                 <!-- Coluna Lateral -->
                 <aside class="lg:col-span-4 space-y-8 no-print">
                     
-                    <!-- Search & Filters -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+                    <!-- Filtros -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm" id="tour-step-2">
                         <div class="flex items-center gap-2 mb-6 border-b pb-4">
                             <i class="fas fa-filter text-audit-gold text-xs"></i>
-                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Filtrar Base</span>
+                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Filtrar Acervo</span>
                         </div>
                         <div class="space-y-4">
-                            <div class="relative">
-                                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 text-xs"></i>
-                                <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="CFC, CNAI, 2024..." class="w-full pl-10 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none focus:border-audit-gold transition">
-                            </div>
+                            <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="Procurar por ano ou tipo..." class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none focus:border-audit-gold transition">
                             <select id="typeFilter" onchange="filterContent()" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-audit-navy uppercase tracking-widest outline-none focus:border-audit-gold cursor-pointer">
-                                <option value="all">Todas as Áreas</option>
+                                <option value="all">Todas as Categorias</option>
                                 <option value="CFC">Contabilidade (CFC)</option>
                                 <option value="CNAI">Auditoria (CNAI)</option>
-                                <option value="SUSEP">Seguros (SUSEP)</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Tags Rápidas -->
+                    <!-- Tags -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
                         <div class="flex items-center gap-2 mb-6 border-b pb-4">
                             <i class="fas fa-tags text-audit-gold text-xs"></i>
-                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Tags Populares</span>
+                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Tópicos Frequentes</span>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span onclick="setTag('2024')" class="tag-pill-link">#Atualizado2024</span>
-                            <span onclick="setTag('QTG')" class="tag-pill-link">#AuditoriaGeral</span>
-                            <span onclick="setTag('BACEN')" class="tag-pill-link">#Bacen</span>
-                            <span onclick="setTag('CVM')" class="tag-pill-link">#CVM</span>
+                            <span onclick="setTag('2024')" class="tag-pill-link cursor-pointer">#2024</span>
+                            <span onclick="setTag('CVM')" class="tag-pill-link cursor-pointer">#CVM</span>
+                            <span onclick="setTag('BACEN')" class="tag-pill-link cursor-pointer">#Bacen</span>
                         </div>
                     </div>
 
-                    <!-- Hub Premium -->
-                    <div class="bg-audit-gold/10 p-8 rounded-2xl border border-audit-gold/20 relative overflow-hidden">
+                    <!-- Newsletter -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm relative overflow-hidden group">
                         <div class="relative z-10">
-                            <h4 class="text-[10px] font-black uppercase tracking-widest text-audit-navy mb-3">Audit Educa Premium</h4>
-                            <p class="text-[11px] leading-relaxed text-slate-600 mb-6">Aceda a gabaritos comentados e resoluções em vídeo para cada questão deste repositório.</p>
-                            <button class="w-full p-3 bg-audit-navy text-white font-bold text-[9px] uppercase tracking-widest rounded-lg hover:bg-slate-800 transition shadow-lg">Conhecer Planos</button>
+                            <h4 class="text-[10px] font-black uppercase tracking-widest text-audit-gold mb-4">Newsletter Hub</h4>
+                            <p class="text-[11px] leading-relaxed text-slate-500 mb-6 italic">Receba alertas de novas provas assim que processadas.</p>
+                            <div class="space-y-3">
+                                <input type="email" placeholder="seu@email.com" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs outline-none focus:border-audit-gold transition">
+                                <button class="w-full p-3 bg-audit-navy text-white font-bold text-[9px] uppercase tracking-widest rounded-lg hover:bg-slate-800 transition shadow-lg">Subscrever</button>
+                            </div>
                         </div>
                     </div>
 
@@ -266,108 +294,79 @@
         </div>
     </main>
 
-    <!-- MODAL AJUDA -->
-    <div id="helpModal" class="fixed inset-0 z-[2000] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-audit-navy/80 backdrop-blur-sm" onclick="closeHelp()"></div>
-        <div class="relative bg-white w-full max-w-lg rounded-[2rem] p-10 shadow-2xl animate-in zoom-in duration-300">
-            <h3 class="text-2xl font-serif font-bold text-audit-navy mb-4">Central de Ajuda</h3>
-            <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
-                <p>O <strong>Hero Slider</strong> no topo mostra sempre a edição mais recente de cada categoria contida no sistema.</p>
-                <p>Para localizar provas de anos anteriores, utilize os <strong>Filtros</strong> na barra lateral ou navegue pelas secções organizadas abaixo.</p>
-            </div>
-            <button onclick="closeHelp()" class="mt-8 w-full py-4 bg-audit-gold text-audit-navy font-black uppercase tracking-widest rounded-xl hover:bg-yellow-500 transition shadow-lg">Fechar Guia</button>
-        </div>
-    </div>
+    <!-- Placeholder do Rodapé Modular -->
+    <div id="footer-placeholder" class="no-print"></div>
+
+    <script src="https://auditeduca.com.br/accessibility-api.js"></script>
+
+    <!-- Tour Container -->
+    <div id="tour-container"></div>
 
     <!-- Toast -->
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[3000] pointer-events-none">
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none">
         Operação concluída!
     </div>
 
     <script>
         lucide.createIcons();
 
-        // Dados simulados expandidos para demonstrar o slider
+        // Dados simulados para o repositório
         const examData = [
-            { id: '1', title: 'Exame de Suficiência Contábil', year: '2024.1', type: 'CFC', color: 'branca', ref: 'AE-2024-CFC-B' },
-            { id: '2', title: 'Auditoria Geral (QTG)', year: '2023', type: 'CNAI', color: 'verde', ref: 'AE-2023-QTG-V' },
-            { id: '3', title: 'Mercado de Capitais (CVM)', year: '2023', type: 'CNAI', color: 'azul', ref: 'AE-2023-CVM-A' },
-            { id: '4', title: 'Inst. Financeiras (BACEN)', year: '2023', type: 'CNAI', color: 'amarela', ref: 'AE-2023-BAC-Y' },
-            { id: '5', title: 'Perícia Contábil (SUSEP)', year: '2022', type: 'SUSEP', color: 'verde', ref: 'AE-2022-SUS-P' },
-            { id: '6', title: 'Exame de Suficiência Contábil', year: '2023.2', type: 'CFC', color: 'verde', ref: 'AE-2023-CFC-V' },
-            { id: '7', title: 'Auditoria Geral (QTG)', year: '2022', type: 'CNAI', color: 'amarela', ref: 'AE-2022-QTG-Y' }
+            { id: '1', title: 'Suficiência Contábil', year: '2024.1', type: 'CFC', color: 'branca', ref: 'AE-2024-CFC-B' },
+            { id: '2', title: 'Auditoria QTG', year: '2023', type: 'CNAI', color: 'verde', ref: 'AE-2023-QTG-V' },
+            { id: '3', title: 'Mercado Capitais CVM', year: '2023', type: 'CNAI', color: 'azul', ref: 'AE-2023-CVM-A' },
+            { id: '4', title: 'Inst. Financeiras BACEN', year: '2023', type: 'CNAI', color: 'amarela', ref: 'AE-2023-BAC-Y' },
+            { id: '5', title: 'Suficiência Contábil', year: '2023.2', type: 'CFC', color: 'azul', ref: 'AE-2023-CFC-A' }
         ];
 
         function createCapaHTML(doc, isMini = false) {
             const sizeClasses = isMini ? 'exam-page-cover-mini' : 'w-full';
-            const textHeader = isMini ? 'text-[6px]' : 'text-[7px]';
-            const titleSize = isMini ? 'text-2xl mt-3' : 'text-4xl mt-10';
-            const yearSize = isMini ? 'text-xl' : 'text-3xl';
-            const logoSize = isMini ? 'h-6' : 'h-10';
+            const headerText = isMini ? 'text-[6px]' : 'text-[7px]';
+            const titleText = isMini ? 'text-2xl mt-4' : 'text-4xl mt-10';
+            const yearText = isMini ? 'text-xl' : 'text-3xl';
 
             return `
                 <div class="flex flex-col gap-4 group exam-item" data-type="${doc.type}" data-title="${doc.title} ${doc.year}">
                     <div class="exam-page-cover rounded-2xl ${sizeClasses}">
                         <div class="type-indicator type-${doc.color}"></div>
                         <div class="svg-texture"></div>
-                        
                         <div class="relative z-10 p-5 h-full flex flex-col items-center justify-between text-center w-full">
                             <div>
-                                <span class="${textHeader} font-black text-slate-300 uppercase tracking-[0.3em]">Audit Educa</span>
-                                <h3 class="font-serif font-black text-audit-navy tracking-tighter ${titleSize}">${doc.type}</h3>
+                                <span class="${headerText} font-black text-slate-300 uppercase tracking-[0.3em]">Audit Educa Repositório</span>
+                                <h3 class="font-serif font-black text-audit-navy tracking-tighter ${titleText}">${doc.type}</h3>
                                 <p class="text-[7px] font-bold text-audit-gold uppercase tracking-widest mt-1">${doc.title}</p>
                             </div>
-
-                            <div>
-                                <span class="font-black text-audit-navy tracking-tighter ${yearSize}">${doc.year}</span>
-                            </div>
-
+                            <div><span class="font-black text-audit-navy tracking-tighter ${yearText}">${doc.year}</span></div>
                             <div class="w-full flex flex-col items-center pt-4 border-t border-slate-50">
-                                <img src="https://auditeduca.com.br/assets/images/Gemini_Generated_Image_q34fncq34fncq34f.png" class="${logoSize} object-contain opacity-70 grayscale group-hover:grayscale-0 transition-all">
+                                <img src="https://auditeduca.com.br/assets/images/Gemini_Generated_Image_q34fncq34fncq34f.png" class="${isMini ? 'h-6' : 'h-10'} opacity-70 grayscale group-hover:grayscale-0 transition-all">
                                 <span class="text-[6px] font-bold text-slate-400 uppercase tracking-widest mt-1">${doc.ref}</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="flex shadow-lg rounded-2xl overflow-hidden border border-slate-200">
-                        <button onclick="showToast('Abrindo preview técnico...')" class="btn-view-premium">
-                            <i class="fas fa-eye text-audit-gold"></i> Ver
-                        </button>
-                        <button onclick="showToast('A processar download PDF...')" class="btn-download-premium">
-                            <i class="fas fa-download text-audit-gold"></i> Baixar
-                        </button>
+                    <div class="flex shadow-md rounded-2xl overflow-hidden border border-slate-200">
+                        <button onclick="showToast('A abrir preview técnico...')" class="btn-view-premium"><i class="fas fa-eye text-audit-gold"></i> Ver</button>
+                        <button onclick="showToast('Download do PDF iniciado.')" class="btn-download-premium"><i class="fas fa-download text-audit-gold"></i> Baixar</button>
                     </div>
                 </div>
             `;
-        }
-
-        function getLatestExams() {
-            // Lógica para pegar a última edição de cada categoria (Type)
-            const latest = {};
-            examData.forEach(exam => {
-                if (!latest[exam.type] || exam.year > latest[exam.type].year) {
-                    latest[exam.type] = exam;
-                }
-            });
-            return Object.values(latest);
         }
 
         function renderExams() {
             const heroTrack = document.getElementById('hero-track');
             const sectionContainer = document.getElementById('exam-sections-container');
             
-            // 1. Render Hero Slider (Infinite)
-            const latests = getLatestExams();
-            // Duplicamos o array para criar o efeito infinito perfeito no CSS
-            const sliderItems = [...latests, ...latests]; 
-            heroTrack.innerHTML = sliderItems.map(doc => createCapaHTML(doc, true)).join('');
+            // Lógica de "Última Edição" para o Slider
+            const latest = {};
+            examData.forEach(e => { if (!latest[e.type] || e.year > latest[e.type].year) latest[e.type] = e; });
+            const latestExams = Object.values(latest);
+            
+            // Efeito infinito
+            heroTrack.innerHTML = [...latestExams, ...latestExams].map(doc => createCapaHTML(doc, true)).join('');
 
-            // 2. Render Categories (Others)
-            const types = ['CFC', 'CNAI', 'SUSEP'];
+            // Secções por Categoria
+            const types = ['CFC', 'CNAI'];
             sectionContainer.innerHTML = types.map(type => {
                 const filtered = examData.filter(e => e.type === type);
-                if (filtered.length === 0) return '';
-                
                 return `
                     <section class="type-section" data-section-type="${type}">
                         <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
@@ -382,36 +381,60 @@
             }).join('');
         }
 
+        // --- Sistema de Tour Guiado ---
+        let currentTourStep = 0;
+        const tourSteps = [
+            { id: 'tour-step-0', text: 'Bem-vindo ao Repositório Técnico. Aqui encontrará cópias fiéis das provas aplicadas.' },
+            { id: 'tour-step-1', text: 'No Hero Slider, destacamos sempre a última edição de cada categoria de exame.' },
+            { id: 'tour-step-2', text: 'Utilize os filtros laterais para localizar anos específicos ou tipos de carreira.' },
+            { id: 'sidebar-tools', text: 'Precisa de ajuda ou quer ver os seus favoritos? Use a barra de ferramentas lateral.' }
+        ];
+
+        function startTour() { currentTourStep = 0; showTourStep(); }
+
+        function showTourStep() {
+            removeTourHighlights();
+            const step = tourSteps[currentTourStep];
+            const el = document.getElementById(step.id);
+            if (!el) return;
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                el.classList.add('tour-highlight');
+                const rect = el.getBoundingClientRect();
+                const container = document.getElementById('tour-container');
+                container.innerHTML = `
+                    <div class="tour-popover" style="top: ${rect.bottom + 15}px; left: ${Math.max(10, rect.left)}px;">
+                        <p class="text-[10px] font-black text-audit-navy mb-3 uppercase tracking-widest">Guia Audit Hub (${currentTourStep + 1}/${tourSteps.length})</p>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">${step.text}</p>
+                        <div class="flex justify-between items-center">
+                            <button onclick="closeTour()" class="text-[9px] font-bold text-slate-400 uppercase hover:text-red-500 transition">Sair</button>
+                            <button onclick="nextTourStep()" class="bg-audit-gold text-audit-navy px-4 py-2 rounded-lg text-[9px] font-black uppercase shadow-md">${currentTourStep === tourSteps.length - 1 ? 'Finalizar' : 'Próximo'}</button>
+                        </div>
+                    </div>
+                `;
+            }, 600);
+        }
+
+        function nextTourStep() { currentTourStep++; if (currentTourStep >= tourSteps.length) closeTour(); else showTourStep(); }
+        function closeTour() { removeTourHighlights(); document.getElementById('tour-container').innerHTML = ''; }
+        function removeTourHighlights() { document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight')); }
+
+        // --- Filtros ---
         function filterContent() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const typeFilter = document.getElementById('typeFilter').value;
-            const items = document.querySelectorAll('.exam-item');
-            const sections = document.querySelectorAll('.type-section');
-
-            items.forEach(item => {
-                const type = item.getAttribute('data-type');
-                const title = item.getAttribute('data-title').toLowerCase();
-                const matchType = typeFilter === 'all' || type === typeFilter;
-                const matchQuery = title.includes(query);
-
-                if (matchType && matchQuery) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
+            document.querySelectorAll('.exam-item').forEach(item => {
+                const matchType = typeFilter === 'all' || item.getAttribute('data-type') === typeFilter;
+                const matchQuery = item.getAttribute('data-title').toLowerCase().includes(query);
+                item.style.display = (matchType && matchQuery) ? 'flex' : 'none';
             });
-
-            sections.forEach(sec => {
-                const visible = sec.querySelectorAll('.exam-item:not(.hidden)').length;
-                if (visible === 0) sec.classList.add('hidden');
-                else sec.classList.remove('hidden');
+            document.querySelectorAll('.type-section').forEach(sec => {
+                const visible = Array.from(sec.querySelectorAll('.exam-item')).some(item => item.style.display !== 'none');
+                sec.style.display = visible ? 'block' : 'none';
             });
         }
 
-        function setTag(tag) {
-            document.getElementById('searchInput').value = tag;
-            filterContent();
-        }
+        function setTag(tag) { document.getElementById('searchInput').value = tag; filterContent(); }
 
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -424,11 +447,9 @@
             }, 3000);
         }
 
-        function openHelp() { document.getElementById('helpModal').classList.remove('hidden'); }
-        function closeHelp() { document.getElementById('helpModal').classList.add('hidden'); }
-
         window.onload = () => {
             renderExams();
+            setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 600);
         };
     </script>
 </body>
