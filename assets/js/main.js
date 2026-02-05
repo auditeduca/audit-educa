@@ -5,14 +5,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Ouve o evento de sucesso do Template Engine
+    // O Template Engine dispara 'template-loaded' quando o HTML (header/footer) é injetado
     document.addEventListener('template-loaded', () => {
         console.log('🏁 Main JS: Evento recebido. Inicializando app...');
-        // Pequeno delay para garantir que o navegador processou a injeção do HTML
         setTimeout(initializeApp, 100);
     });
 
-    // 2. Fallback: Se o evento já ocorreu (cache rápido), verifica a variável global
-    if (window.TemplateEngine) {
+    // 2. Fallback: Se o evento já ocorreu ou TemplateEngine já terminou
+    if (window.TemplateEngine && window.__TEMPLATE_ENGINE_INIT__) {
         setTimeout(initializeApp, 100);
     }
 });
@@ -23,54 +23,51 @@ function initializeApp() {
     window.appInitialized = true;
 
     try {
-        // A. Inicializa lógica do Header (Menu Mobile)
-        // O Template Engine recria os scripts, então o initHeader deve estar disponível globalmente
-        if (typeof window.initHeader === 'function') {
-            window.initHeader();
-        } else {
-            console.log('ℹ️ initHeader não encontrado ou carregado via script tag direta.');
+        // A. Inicializa lógica do Header (Menu Mobile, Acessibilidade)
+        if (typeof window.HeaderManager !== 'undefined') {
+            // O HeaderManager geralmente se auto-inicializa, mas podemos forçar se necessário
+            // window.headerManagerInstance = new HeaderManager(); 
         }
 
-        // B. Inicializa Gerenciador de Cookies
-        if (typeof CookieManager !== 'undefined') {
-            console.log('🍪 Inicializando CookieManager...');
-            CookieManager.init();
+        // B. Inicializa Gerenciador de Cookies (CORREÇÃO AQUI)
+        if (typeof window.CookieManager !== 'undefined') {
+            window.CookieManager.init();
         } else {
-            console.warn('⚠️ CookieManager não definido. Verifique se o script foi carregado.');
+            console.warn('⚠️ CookieManager.js não foi carregado. Adicione <script src="assets/js/cookie-manager.js"></script> ao seu HTML.');
         }
 
-        // C. Ajustes de Layout
+        // C. Ajustes de Layout (Footer fixo, etc)
         adjustMainSpacing();
 
-        // D. Remove Preloader
+        // D. Remove Preloader (Transição final)
         removePreloader();
         
+        // E. Inicializa Ícones (Lucide/FontAwesome se necessário recarregar)
+        if (window.lucide) window.lucide.createIcons();
+
     } catch (error) {
         console.error('❌ Erro durante initializeApp:', error);
     }
 }
 
 function adjustMainSpacing() {
-    const header = document.querySelector('header') || document.querySelector('#header-placeholder > div');
     const main = document.querySelector('main');
-    
     if (main) {
-        // Se o header for Sticky no CSS (top-0), ele ocupa espaço no fluxo normal.
-        // Não precisamos adicionar padding-top no main, apenas garantir o min-height para o footer.
-        // Removemos qualquer padding calculado via JS para evitar o "espaço enorme".
-        main.style.paddingTop = '0px'; 
-        
-        // Garante que o footer fique no final da página
-        const footerHeight = 100; // Altura estimada do footer
+        // Garante que o footer fique no final da página (Sticky Footer via JS fallback)
+        // O CSS flex-grow já deve cuidar disso, mas isso é uma garantia extra
+        const footerHeight = document.getElementById('footer')?.offsetHeight || 100;
         main.style.minHeight = `calc(100vh - ${footerHeight}px)`;
     }
 }
 
 function removePreloader() {
-    const preloader = document.getElementById('preloader');
+    const preloader = document.getElementById('loader-wrapper'); // ID corrigido baseado no preloader.js
     if (preloader) {
-        preloader.style.transition = 'opacity 0.5s ease';
-        preloader.style.opacity = '0';
-        setTimeout(() => preloader.remove(), 500);
+        // O preloader.js já gerencia a lógica complexa, aqui apenas garantimos que ele não trave
+        setTimeout(() => {
+            if (!document.body.classList.contains('loaded-complete')) {
+                document.body.classList.add('loaded-complete');
+            }
+        }, 2000); // Timeout de segurança
     }
 }

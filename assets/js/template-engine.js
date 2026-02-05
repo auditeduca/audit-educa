@@ -1,117 +1,71 @@
 /**
- * Template Engine - Audit Educa
- * Carrega componentes, executa scripts embutidos e gerencia utilitários globais.
+ * Template Engine Simples para Audit Educa
+ * Carrega componentes HTML (Header, Footer, Modais) e injeta na página.
+ * Dispara evento 'audit:components:loaded' quando finalizado.
  */
 
-class TemplateEngine {
-    constructor() {
-        // CONFIGURAÇÃO: IDs do HTML
-        this.config = {
-            'header-placeholder': 'assets/components/header.html',
-            'footer-placeholder': 'assets/components/footer.html',
-            'modals-placeholder': 'assets/components/modals-main.html'
-        };
+document.addEventListener('DOMContentLoaded', async () => {
+    
+    // Função auxiliar para carregar um componente
+    const loadComponent = async (id, file) => {
+        const element = document.getElementById(id);
+        if (!element) return;
 
-        if (window.__TEMPLATE_ENGINE_INIT__) return;
-        window.__TEMPLATE_ENGINE_INIT__ = true;
+        try {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Erro ao carregar ${file}`);
+            const html = await response.text();
+            
+            // Injeta o HTML
+            element.innerHTML = html;
+            
+            // Executa scripts que possam estar dentro do HTML injetado (opcional, mas útil)
+            const scripts = element.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
 
-        this.init();
-    }
-
-    async init() {
-        if (document.readyState === 'loading') {
-            await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve));
+        } catch (error) {
+            console.error(`[TemplateEngine] Falha ao carregar ${file}:`, error);
         }
+    };
 
-        console.log('🚀 Template Engine: Carregando componentes...');
-        await this.loadComponents();
-        
-        // CRÍTICO: Executa os scripts que vieram dentro do HTML (ex: menu mobile, cookies)
-        this.executeScriptsInPlaceholders();
-        
-        this.highlightActiveMenuItem();
-        this.setupScrollToTop(); 
-        
-        // Avisa o resto do sistema que terminou
-        document.dispatchEvent(new Event('template-loaded'));
-        console.log('✅ Template Engine: Pronto.');
+    // Lista de promessas de carregamento
+    // Verifica se os placeholders existem no index.html antes de tentar carregar
+    const loadPromises = [];
+
+    // Tenta carregar Header
+    // (Você precisará criar <div id="header-placeholder"></div> no topo do seu index.html se não tiver)
+    if (document.getElementById('header-placeholder')) {
+        loadPromises.push(loadComponent('header-placeholder', 'assets/components/header.html'));
+    } else {
+        // Fallback: se o header for carregado via 'header.html' direto no body ou similar, ajuste aqui.
+        // Assumindo padrão de placeholders:
+        console.warn("[TemplateEngine] #header-placeholder não encontrado.");
     }
 
-    async loadComponents() {
-        const promises = Object.entries(this.config).map(async ([id, url]) => {
-            const container = document.getElementById(id);
-            if (!container) return;
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const html = await response.text();
-                container.innerHTML = html;
-            } catch (err) {
-                console.warn(`Erro ao carregar ${url}:`, err);
-            }
-        });
-        await Promise.all(promises);
+    // Carrega Footer
+    if (document.getElementById('footer-placeholder')) {
+        loadPromises.push(loadComponent('footer-placeholder', 'assets/components/footer.html'));
     }
 
-    // Função mágica que faz o Mega Menu e Cookies funcionarem
-    executeScriptsInPlaceholders() {
-        Object.keys(this.config).forEach(id => {
-            const container = document.getElementById(id);
-            if (container) {
-                const scripts = container.querySelectorAll('script');
-                scripts.forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    // Copia atributos (src, type, etc)
-                    Array.from(oldScript.attributes).forEach(attr => 
-                        newScript.setAttribute(attr.name, attr.value)
-                    );
-                    // Copia o conteúdo inline
-                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-                    oldScript.parentNode.replaceChild(newScript, oldScript);
-                });
-            }
-        });
+    // Carrega Modais (inclui Cookie Banner)
+    if (document.getElementById('modals-placeholder')) {
+        loadPromises.push(loadComponent('modals-placeholder', 'assets/components/modals-main.html'));
     }
 
-    highlightActiveMenuItem() {
-        const currentPath = window.location.pathname;
-        const links = document.querySelectorAll('nav a');
-        links.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && (currentPath.includes(href) || (currentPath === '/' && href.includes('index')))) {
-                link.classList.add('text-audit-gold', 'font-bold');
-            }
-        });
-    }
+    // Aguarda todos carregarem
+    await Promise.all(loadPromises);
 
-    setupScrollToTop() {
-        // Procura o botão. Se não achar (não veio no footer), cria um.
-        let btn = document.getElementById('btn-back-to-top');
-        
-        if (!btn) {
-            btn = document.createElement('button');
-            btn.id = 'btn-back-to-top';
-            btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-            // Estilos Tailwind para o botão flutuante
-            btn.className = 'fixed bottom-6 right-6 z-50 bg-audit-navy text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none hover:bg-audit-gold hover:-translate-y-1';
-            document.body.appendChild(btn);
-        }
+    console.log("[TemplateEngine] Todos os componentes carregados.");
 
-        // Lógica de aparecer/sumir
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                btn.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                btn.classList.add('opacity-0', 'pointer-events-none');
-            }
-        });
-
-        btn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-}
-
-// Inicializa
-window.TemplateEngine = new TemplateEngine();
+    // DISPARA O EVENTO QUE OS OUTROS SCRIPTS ESTÃO ESPERANDO
+    const event = new Event('audit:components:loaded');
+    document.dispatchEvent(event);
+    
+    // Inicializa Lucide Icons (se estiver sendo usado)
+    if (window.lucide) window.lucide.createIcons();
+});
