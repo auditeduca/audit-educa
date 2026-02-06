@@ -1,344 +1,767 @@
 <!DOCTYPE html>
-<html lang="pt-BR" dir="ltr" class="scroll-smooth">
+<html lang="pt-PT">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-P6GKJ7BF');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PN1VH0CF79"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PN1VH0CF79');
-    </script>
-
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
-    <!-- SEO & Metadados (Injetados via JSON) -->
-    <title>Recursos Assistivos - Audit Educa | Acessibilidade Digital</title>
-    <meta name="description" content="Lista de recursos e ferramentas gratuitas de acessibilidade e assistivas para garantir a inclusão digital completa na plataforma Audit Educa.">
-    <meta name="keywords" content="recursos assistivos, acessibilidade digital, WCAG, inclusão, leitor de tela, daltonismo, Audit Educa">
-    <meta name="author" content="Audit Educa">
-    <meta name="theme-color" content="#0f172a">
-    <link rel="canonical" href="https://www.auditeduca.com.br/#recursos-assistivos">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Recursos Assistivos - Audit Educa">
-    <meta property="og:description" content="Explore as ferramentas e guias para uma experiência digital inclusiva no Audit Educa.">
-    <meta property="og:image" content="https://auditeduca.github.io/audit-educa/Logotipo-Audit-Educa-Versao-Oficial.webp">
-
-    <!-- CSS Externos Globais -->
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
-
-    <!-- Fontes e Ícones -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessibilidade - Audit Educa</title>
     
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        'audit-gold': '#C5A059',
-                        'audit-navy': '#0f172a',
-                        'audit-blue': '#1e40af', // Azul institucional para Acessibilidade
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #f8fafc; 
-            color: #334155;
-            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
-            background-size: 20px 20px;
-            background-attachment: fixed;
+        /* ============================================
+           VARIÁVEIS DE CORES E ESTILO AUDIT EDUCA
+           ============================================ */
+        :root {
+            --audit-gold: #D4AF37;
+            --audit-navy: #1E3A8A;
+            --audit-blue: #3B82F6;
+            --audit-bgDark: #0F172A;
+            --audit-white: #FFFFFF;
+            --audit-gray-light: #F8FAFC;
+            --audit-gray-medium: #E2E8F0;
+            
+            --acc-panel-bg: var(--audit-white);
+            --acc-primary: var(--audit-navy);
+            --acc-accent: var(--audit-gold);
+            --acc-text-main: var(--audit-navy);
+            --acc-text-muted: #64748b;
+            --acc-card-bg: var(--audit-gray-light);
+            --acc-card-hover: var(--audit-gray-medium);
+            --acc-header-bg: var(--audit-white);
         }
 
-        /* Sidebar Left Navigation */
-        .sidebar-left-tools {
-            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            margin: 0; padding: 0; min-height: 100vh;
+            background-color: #f0f2f5;
+            transition: all 0.2s ease;
         }
-        .tool-btn {
-            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
-            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+
+        /* ============================================
+           WIDGETS LATERAIS COM FEEDBACK DINÂMICO
+           ============================================ */
+        .side-widgets-container {
+            position: fixed; right: 20px; bottom: 20px;
+            display: flex; flex-direction: column; gap: 12px; z-index: 9999;
+        }
+
+        .accessibility-widget button {
+            width: 56px; height: 56px; border-radius: 50%;
+            border: 3px solid transparent; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            margin-bottom: 8px; position: relative;
+        }
+
+        #accessibility-btn { background-color: var(--audit-navy); color: white; }
+        
+        #accessibility-btn.has-active-features {
+            background-color: var(--audit-gold);
+            border-color: var(--audit-navy);
+            animation: pulse-active 2s infinite;
+        }
+
+        @keyframes pulse-active {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .accessibility-widget button[data-action="toggleLibras"] { background-color: #ffde39; color: #000; }
+        .accessibility-widget button:hover { transform: scale(1.1); }
+
+        /* ============================================
+           PAINEL DE ACESSIBILIDADE
+           ============================================ */
+        #accessibility-panel {
+            position: fixed; top: 20px; right: 90px;
+            width: 420px; max-height: 85vh;
+            background: var(--acc-panel-bg);
+            border-radius: 16px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+            display: flex; flex-direction: column; overflow: hidden;
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--audit-gray-medium);
+        }
+
+        #accessibility-panel.maximized {
+            top: 0; right: 0; width: 500px; height: 100vh;
+            max-height: 100vh; border-radius: 0;
+        }
+
+        .accessibility-panel-hidden {
+            transform: translateX(130%) scale(0.9);
+            opacity: 0; pointer-events: none;
+        }
+
+        /* Cabeçalho Ajustado */
+        .panel-header {
+            background: #FFFFFF; padding: 0 25px;
+            display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 2px solid var(--audit-gold);
+            height: 80px; /* Altura aumentada para evitar extrapolação */
+        }
+
+        .header-logo-img { height: 40px; width: auto; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+
+        /* Estilos de botões mais profissionais */
+        .header-actions button {
+            background: transparent;
+            border: 1.5px solid var(--audit-gray-medium);
+            color: var(--audit-navy);
+            cursor: pointer;
+            width: 42px; height: 42px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
-
-        /* Estilos de Cartão de Recurso */
-        .resource-card {
-            background: white; border-radius: 1.5rem; padding: 2rem;
-            border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease; height: 100%;
-        }
-        .resource-card:hover { transform: translateY(-5px); border-color: #1e40af; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-
-        kbd {
-            background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px;
-            padding: 2px 6px; font-family: monospace; font-size: 0.8rem; color: #0f172a;
-            box-shadow: 0 2px 0 #cbd5e1;
+            font-size: 1rem;
         }
 
-        main { padding-top: 150px; }
-        @media (min-width: 1024px) { .content-wrapper { padding-left: 110px; padding-right: 70px; } }
+        .header-actions button:hover {
+            background: var(--audit-navy);
+            color: white;
+            border-color: var(--audit-navy);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .header-actions button:active {
+            transform: translateY(0);
+        }
+
+        .panel-body { padding: 25px; overflow-y: auto; flex: 1; scrollbar-width: thin; }
+        .panel-section { margin-bottom: 35px; }
+
+        .section-title {
+            font-size: 0.75rem; font-weight: 800;
+            text-transform: uppercase; color: var(--acc-text-muted);
+            margin-bottom: 18px; padding-bottom: 10px;
+            border-bottom: 1px solid var(--audit-gray-medium);
+            letter-spacing: 1.2px;
+        }
+
+        .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+        /* ============================================
+           CARDS E INDICADORES (DOTS)
+           ============================================ */
+        .acc-option-card {
+            background: var(--acc-card-bg); border: 2px solid transparent;
+            border-radius: 14px; padding: 20px 10px;
+            text-align: center; cursor: pointer;
+            transition: all 0.2s ease-in-out; display: flex;
+            flex-direction: column; align-items: center; gap: 12px;
+            position: relative;
+        }
+
+        .acc-option-card i { font-size: 1.4rem; color: var(--acc-primary); }
+        .acc-option-card span { font-size: 0.75rem; font-weight: 600; color: var(--acc-text-main); line-height: 1.3; }
+
+        .level-dots-container {
+            position: absolute; top: 10px; right: 10px;
+            display: flex; gap: 4px;
+        }
+
+        .status-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--audit-gray-medium);
+            transition: all 0.3s;
+        }
+
+        .status-dot.active {
+            background: var(--audit-gold);
+            box-shadow: 0 0 6px var(--audit-gold);
+        }
+
+        .acc-option-card.active { border-color: var(--audit-gold); background: #f0f7ff; }
+        .acc-option-card:hover { background: var(--acc-card-hover); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.05); }
+
+        .reset-btn {
+            width: 100%; padding: 16px; background: var(--audit-navy);
+            color: white; border: none; border-radius: 14px;
+            font-weight: 700; cursor: pointer; margin-top: 15px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .reset-btn:hover { background: var(--audit-blue); transform: scale(1.01); }
+
+        /* ============================================
+           NOTIFICAÇÕES (TOASTS)
+           ============================================ */
+        #acc-notification-container {
+            position: fixed; top: 25px; left: 50%;
+            transform: translateX(-50%); z-index: 10006;
+            display: flex; flex-direction: column; gap: 12px;
+            pointer-events: none;
+        }
+
+        .acc-toast {
+            background: var(--audit-navy); color: white;
+            padding: 14px 28px; border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            font-size: 0.85rem; font-weight: 600;
+            border-left: 6px solid var(--audit-gold);
+            animation: slide-toast 3s forwards;
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        @keyframes slide-toast {
+            0% { opacity: 0; transform: translateY(-30px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-30px); }
+        }
+
+        /* ============================================
+           GLOSSÁRIO AVANÇADO
+           ============================================ */
+        .acc-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.88); display: none;
+            align-items: center; justify-content: center; z-index: 11000;
+        }
+
+        .acc-modal-content {
+            background: white; width: 95%; max-width: 950px;
+            border-radius: 24px; padding: 0; overflow: hidden;
+            display: flex; flex-direction: column; max-height: 90vh;
+            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-header {
+            padding: 20px 30px; border-bottom: 2px solid var(--audit-gold);
+            background: var(--audit-navy); color: white;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .glossary-wrapper { display: flex; height: 100%; overflow: hidden; position: relative; }
+
+        .glossary-sidebar {
+            width: 70px; background: var(--audit-navy);
+            display: flex; flex-direction: column;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; z-index: 2;
+        }
+
+        .glossary-sidebar.expanded { width: 190px; }
+
+        .sidebar-toggle {
+            height: 60px; background: var(--audit-gold);
+            border: none; color: var(--audit-navy);
+            cursor: pointer; display: flex; align-items: center;
+            justify-content: center; font-size: 1.3rem; width: 100%;
+        }
+
+        .alphabet-nav { flex: 1; overflow-y: auto; padding: 15px 0; scrollbar-width: none; }
+        .alphabet-nav::-webkit-scrollbar { display: none; }
+
+        .alpha-btn {
+            width: 100%; padding: 14px 0; background: none; border: none;
+            color: rgba(255,255,255,0.7); cursor: pointer;
+            font-weight: 700; font-size: 1.1rem;
+            transition: all 0.2s; display: flex;
+            align-items: center; justify-content: center; gap: 15px;
+        }
+
+        .alpha-btn span { display: none; font-size: 0.95rem; white-space: nowrap; }
+        .glossary-sidebar.expanded .alpha-btn span { display: inline; }
+
+        .alpha-btn:hover, .alpha-btn.active { color: var(--audit-gold); background: rgba(255,255,255,0.1); }
+
+        .glossary-main-content { flex: 1; padding: 35px; overflow-y: auto; background: white; scroll-behavior: smooth; }
+        .glossary-section-title { font-size: 2.2rem; color: var(--audit-gold); border-bottom: 3px solid var(--audit-gray-medium); margin-bottom: 25px; padding-bottom: 12px; }
+        .glossary-item { margin-bottom: 30px; }
+        .glossary-item dt { font-weight: 700; color: var(--audit-navy); font-size: 1.3rem; margin-bottom: 6px; }
+        .glossary-item dd { margin-left: 0; color: #4a5568; line-height: 1.7; }
+
+        /* ============================================
+           UI ASSISTIVA ESTILOS
+           ============================================ */
+        #reading-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9997; pointer-events: none; display: none; }
+        #reading-guide { position: fixed; height: 5px; background: var(--audit-gold); width: 100%; z-index: 9998; pointer-events: none; display: none; box-shadow: 0 0 15px var(--audit-gold); }
+        #acc-magnifier { position: fixed; width: 280px; height: 280px; border: 5px solid var(--audit-gold); border-radius: 50%; pointer-events: none; z-index: 10002; display: none; background-color: white; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+
+        body[data-hide-images="true"] img { visibility: hidden !important; height: 0 !important; }
+        body[data-pause-anim="true"] * { animation: none !important; transition: none !important; }
+        body[data-bold="true"] * { font-weight: 700 !important; }
+        body[data-links-highlight="true"] a { background: #fff59d !important; color: #000 !important; outline: 3px solid #000 !important; text-decoration: underline !important; padding: 3px !important; }
+        body[data-header-highlight="true"] header#site-header { outline: 6px solid var(--audit-gold) !important; z-index: 10005 !important; }
+        body[data-stop-sounds="true"] audio, body[data-stop-sounds="true"] video { display: none !important; }
+
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body data-font-size="0">
 
-    <div id="preloader" aria-hidden="true"><div class="spinner"></div></div>
-    
-    <!-- Sidebar Left Tools -->
-    <aside class="sidebar-left-tools no-print">
-        <a href="/" class="tool-btn" title="Início"><i class="fas fa-home"></i></a>
-        <a href="institucional.html" class="tool-btn" title="Sobre Nós"><i class="fas fa-building"></i></a>
-        <button class="tool-btn" onclick="showToast('Recursos Assistivos Ativados')"><i class="fas fa-universal-access text-audit-blue"></i></button>
-    </aside>
+    <div id="acc-notification-container"></div>
 
-    <!-- Header -->
-    <div id="header-placeholder" class="no-print h-20 bg-white shadow-sm mb-4 flex items-center justify-center text-slate-400 text-sm border-b">
-        [Header Audit Educa]
+    <!-- Cabeçalho do Site (Mock) -->
+    <header id="site-header" style="background: white; padding: 25px; text-align: center; border-bottom: 1px solid #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h2 style="color: var(--audit-navy); margin:0; letter-spacing: 0.5px;">Audit Educa - Excelência em Auditoria</h2>
+    </header>
+
+    <main style="padding: 60px 20px; max-width: 950px; margin: auto;">
+        <h1 style="color: var(--audit-navy); font-weight: 700;">Portal de Acessibilidade Audit Educa</h1>
+        <p style="font-size: 1.1rem; color: #4a5568;">O nosso compromisso é garantir uma experiência inclusiva. Explore o glossário e ajuste as ferramentas assistivas.</p>
+        
+        <div style="background: white; padding: 30px; border-radius: 20px; border-left: 8px solid var(--audit-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin: 40px 0;">
+            <h3 style="color: var(--audit-navy);">Educação para Todos</h3>
+            <p>A conformidade financeira e a auditoria técnica exigem clareza. Este portal foi desenhado para facilitar o seu estudo. <a href="#">Saiba mais sobre os termos técnicos</a>.</p>
+        </div>
+        
+        <img src="https://via.placeholder.com/600x300" alt="Painel de Auditoria" style="width:100%; border-radius:15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    </main>
+
+    <!-- Widgets Laterais -->
+    <div class="side-widgets-container">
+        <div class="accessibility-widget">
+            <button type="button" onclick="toggleLibras()" title="Tradutor de Libras"><i class="fas fa-sign-language"></i></button>
+            <button id="accessibility-btn" onclick="AccessControl.togglePanel()" title="Recursos Assistivos"><i class="fas fa-eye"></i></button>
+        </div>
     </div>
 
-    <main class="flex-grow pb-12 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto content-wrapper">
+    <!-- Painel Principal -->
+    <aside id="accessibility-panel" class="accessibility-panel-hidden" aria-labelledby="glossary-title">
+        <header class="panel-header">
+            <img src="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp" alt="Logo Audit Educa" class="header-logo-img">
+            <div class="header-actions">
+                <button onclick="AccessControl.toggleMaximize()" id="btn-maximize" title="Maximizar/Minimizar"><i class="fas fa-expand"></i></button>
+                <button onclick="AccessControl.togglePanel()" title="Fechar Painel"><i class="fas fa-times"></i></button>
+            </div>
+        </header>
+
+        <div class="panel-body">
             
-            <!-- Breadcrumb -->
-            <nav class="mb-12 no-print text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                <ol class="flex items-center gap-2">
-                    <li><a href="/" class="hover:text-audit-gold transition">Home</a></li>
-                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
-                    <li><a href="institucional.html" class="hover:text-audit-gold transition">Institucional</a></li>
-                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
-                    <li class="text-audit-blue underline underline-offset-4">Recursos Assistivos</li>
-                </ol>
-            </nav>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                
-                <!-- CONTEÚDO PRINCIPAL (8) -->
-                <div class="lg:col-span-8 space-y-16">
-                    
-                    <!-- Hero Section -->
-                    <div id="introducao">
-                        <span class="inline-block py-1 px-3 rounded-full bg-audit-blue/10 text-audit-blue text-[10px] font-bold tracking-widest uppercase mb-4 border border-audit-blue/20">
-                            Acessibilidade Total
-                        </span>
-                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy tracking-tight mb-6">
-                            Guia de Recursos Assistivos
-                        </h1>
-                        <p class="text-slate-600 text-lg font-light leading-relaxed">
-                            Ferramentas recomendadas e guias para aproveitar o Audit Educa ao máximo, independentemente das suas necessidades de acessibilidade. Nosso compromisso é com a inclusão digital completa.
-                        </p>
-                    </div>
-
-                    <!-- Index Cards (Grid Interno) -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <a href="#leitores-de-tela" class="resource-card group">
-                            <i class="fas fa-volume-up text-audit-blue text-2xl mb-4"></i>
-                            <h3 class="font-bold text-audit-navy mb-2 group-hover:text-audit-blue transition">Leitores de Tela</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed">Guias e softwares para NVDA, VoiceOver e TalkBack.</p>
-                        </a>
-                        <a href="#ajuste-visual" class="resource-card group">
-                            <i class="fas fa-magnifying-glass-plus text-audit-blue text-2xl mb-4"></i>
-                            <h3 class="font-bold text-audit-navy mb-2 group-hover:text-audit-blue transition">Ajuste Visual</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed">Zoom, alto contraste e filtros para daltonismo.</p>
-                        </a>
-                        <a href="#navegacao-teclado" class="resource-card group">
-                            <i class="fas fa-keyboard text-audit-blue text-2xl mb-4"></i>
-                            <h3 class="font-bold text-audit-navy mb-2 group-hover:text-audit-blue transition">Teclado</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed">Navegação eficiente sem o uso de mouse.</p>
-                        </a>
-                        <a href="#conteudo-simplificado" class="resource-card group">
-                            <i class="fas fa-paragraph text-audit-blue text-2xl mb-4"></i>
-                            <h3 class="font-bold text-audit-navy mb-2 group-hover:text-audit-blue transition">Linguagem Clara</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed">Diretrizes de leitura e compreensão facilitada.</p>
-                        </a>
-                    </div>
-
-                    <!-- Detalhamento: Leitores de Tela -->
-                    <section id="leitores-de-tela" class="scroll-mt-24 space-y-6">
-                        <h2 class="text-2xl font-serif font-bold text-audit-navy border-b pb-4">🎙️ Leitores de Tela (Screen Readers)</h2>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            O Audit Educa é totalmente compatível com os principais leitores de tela do mercado, utilizando tags semânticas ARIA para garantir uma navegação fluida.
-                        </p>
-                        <div class="space-y-4">
-                            <div class="p-6 bg-white border border-slate-200 rounded-xl">
-                                <h4 class="font-bold text-sm text-audit-navy mb-2 flex items-center gap-2">
-                                    <i class="fas fa-desktop text-audit-blue"></i> NVDA (Windows)
-                                </h4>
-                                <p class="text-xs text-slate-500 mb-3">Software gratuito e de código aberto. Excelente para nossa estrutura semântica.</p>
-                                <a href="https://www.nvaccess.org/" target="_blank" class="text-[10px] font-bold text-audit-blue uppercase tracking-widest hover:underline">Baixar NVDA <i class="fas fa-external-link-alt ml-1"></i></a>
-                            </div>
-                            <div class="p-6 bg-white border border-slate-200 rounded-xl">
-                                <h4 class="font-bold text-sm text-audit-navy mb-2 flex items-center gap-2">
-                                    <i class="fab fa-apple text-slate-400"></i> VoiceOver (Apple)
-                                </h4>
-                                <p class="text-xs text-slate-500">Nativo em macOS e iOS, otimizado para nossa interface responsiva.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Detalhamento: Ajuste Visual -->
-                    <section id="ajuste-visual" class="scroll-mt-24 space-y-6">
-                        <h2 class="text-2xl font-serif font-bold text-audit-navy border-b pb-4">🔍 Ajuste Visual e Cores</h2>
-                        <div class="bg-slate-900 text-white p-8 rounded-2xl relative overflow-hidden group">
-                            <i class="fas fa-moon absolute -right-4 -bottom-4 text-white/5 text-7xl group-hover:scale-110 transition"></i>
-                            <h4 class="font-bold text-audit-gold text-sm mb-3 uppercase tracking-widest">Modo Escuro (Dark Mode)</h4>
-                            <p class="text-slate-300 text-xs leading-relaxed max-w-lg mb-4">
-                                Oferecemos alto contraste nativo. O modo escuro reduz o cansaço visual e é ideal para usuários com fotofobia ou sensibilidade à claridade.
-                            </p>
-                            <span class="text-[10px] text-slate-400 italic">*Ativável automaticamente via configurações do sistema.</span>
-                        </div>
-                        <div class="p-6 bg-white border border-slate-200 rounded-xl">
-                            <h4 class="font-bold text-sm text-audit-navy mb-2">Zoom e Daltonismo</h4>
-                            <p class="text-xs text-slate-500 leading-relaxed">
-                                Use <kbd>Ctrl</kbd> + <kbd>+</kbd> para ampliar o conteúdo. Recomendamos a extensão <strong>ColorBlind</strong> para filtros cromáticos personalizados no navegador.
-                            </p>
-                        </div>
-                    </section>
-
-                    <!-- Detalhamento: Teclado -->
-                    <section id="navegacao-teclado" class="scroll-mt-24 space-y-6">
-                        <h2 class="text-2xl font-serif font-bold text-audit-navy border-b pb-4">⌨️ Navegação por Teclado</h2>
-                        <div class="flex items-start gap-4 p-6 bg-blue-50 border border-blue-100 rounded-xl">
-                            <div class="w-10 h-10 bg-audit-blue text-white rounded-lg flex items-center justify-center shrink-0">
-                                <i class="fas fa-keyboard"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-audit-blue text-sm mb-1">Foco Visível (Tab-Key)</h4>
-                                <p class="text-xs text-slate-600 leading-relaxed">
-                                    Navegue por todos os botões e links usando a tecla <kbd>Tab</kbd>. Garantimos que o indicador de foco seja sempre visível e de alto contraste.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                </div>
-
-                <!-- SIDEBAR DIREITA (4) -->
-                <div class="lg:col-span-4 space-y-8">
-                    
-                    <!-- Navegação Widget -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm sticky top-24">
-                        <div class="flex items-center gap-2 mb-6 border-b pb-4">
-                            <i class="fas fa-list text-audit-gold text-xs"></i>
-                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Nesta Página</span>
-                        </div>
-                        <nav class="space-y-4">
-                            <a href="#introducao" class="flex items-center gap-3 text-xs text-slate-500 hover:text-audit-blue transition font-medium group">
-                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-audit-blue transition"></span> Introdução
-                            </a>
-                            <a href="#leitores-de-tela" class="flex items-center gap-3 text-xs text-slate-500 hover:text-audit-blue transition font-medium group">
-                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-audit-blue transition"></span> Leitores de Tela
-                            </a>
-                            <a href="#ajuste-visual" class="flex items-center gap-3 text-xs text-slate-500 hover:text-audit-blue transition font-medium group">
-                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-audit-blue transition"></span> Ajuste Visual
-                            </a>
-                            <a href="#navegacao-teclado" class="flex items-center gap-3 text-xs text-slate-500 hover:text-audit-blue transition font-medium group">
-                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-audit-blue transition"></span> Teclado
-                            </a>
-                        </nav>
-                    </div>
-
-                    <!-- Widget Acessibilidade -->
-                    <div class="bg-audit-navy p-8 rounded-2xl text-white shadow-xl relative overflow-hidden group">
-                        <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-universal-access text-6xl"></i>
-                        </div>
-                        <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">Relatar Barreiras</h4>
-                        <p class="text-xs font-light text-slate-300 mb-6 leading-relaxed">Encontrou alguma dificuldade de acesso? Nossa equipe técnica está pronta para ouvir você.</p>
-                        <button onclick="showToast('Abrindo canal de suporte...')" class="w-full p-3 bg-audit-gold text-audit-navy font-bold text-[10px] uppercase tracking-widest rounded-lg shadow-lg hover:bg-yellow-500 transition">Contactar Suporte</button>
-                    </div>
-
-                    <!-- Links Relacionados -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
-                        <div class="flex items-center gap-2 mb-6 border-b pb-4">
-                            <i class="fas fa-link text-audit-gold text-xs"></i>
-                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Relacionados</span>
-                        </div>
-                        <div class="space-y-4">
-                            <a href="relatorio-impacto.html" class="block p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition">
-                                <h6 class="text-xs font-bold text-audit-navy mb-1">Impacto Digital</h6>
-                                <p class="text-[10px] text-slate-500">Transparência e ESG digital.</p>
-                            </a>
-                            <a href="tecnologia-verde.html" class="block p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition">
-                                <h6 class="text-xs font-bold text-audit-navy mb-1">Tecnologia Verde</h6>
-                                <p class="text-[10px] text-slate-500">Arquitetura de baixo carbono.</p>
-                            </a>
-                        </div>
+            <div class="panel-section">
+                <div class="section-title">Termos de Contabilidade e Finanças</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" onclick="AccessControl.openModal('glossary-modal')">
+                        <i class="fas fa-book-bookmark"></i>
+                        <span>Glossário Financeiro</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Call to Action Final -->
-            <section class="mt-24 bg-gradient-to-r from-audit-blue to-audit-navy rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl no-print">
-                <div class="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-8">Inclusão sem Fronteiras</h2>
-                <p class="text-slate-300 text-lg font-light max-w-2xl mx-auto mb-10 opacity-90">
-                    A acessibilidade não é um recurso adicional, é o alicerce da nossa missão educativa. Garantimos que o conhecimento seja universal.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="politica-acessibilidade.html" class="bg-white text-audit-navy px-10 py-5 rounded-2xl font-bold uppercase text-[10px] tracking-widest hover:bg-slate-50 transition">
-                        Política WCAG 2.1
-                    </a>
-                    <a href="institucional.html" class="bg-transparent border-2 border-white/30 px-10 py-5 rounded-2xl font-bold uppercase text-[10px] tracking-widest hover:bg-white/10 transition">
-                        Página Institucional
-                    </a>
+            <div class="panel-section">
+                <div class="section-title">Controle de Fonte</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" data-key="fontSize" data-max="3" onclick="AccessControl.updateStep('fontSize', 3, 'Tamanho de fonte')">
+                        <div class="level-dots-container"></div><i class="fas fa-text-height"></i><span>Tamanho de fonte</span>
+                    </div>
+                    <div class="acc-option-card" data-key="fontStyle" data-max="2" onclick="AccessControl.updateStep('fontStyle', 2, 'Estilo de Texto')">
+                        <div class="level-dots-container"></div><i class="fas fa-font"></i><span>Estilo de Texto</span>
+                    </div>
+                    <div class="acc-option-card" data-key="bold" data-max="1" onclick="AccessControl.toggleFeature('bold', 'Letras Destacadas')">
+                        <div class="level-dots-container"></div><i class="fas fa-bold"></i><span>Letras Destacadas</span>
+                    </div>
+                    <div class="acc-option-card" data-key="lineHeight" data-max="3" onclick="AccessControl.updateStep('lineHeight', 3, 'Espaço entre linhas')">
+                        <div class="level-dots-container"></div><i class="fas fa-arrows-up-down"></i><span>Espaço entre linhas</span>
+                    </div>
+                    <div class="acc-option-card" data-key="letterSpacing" data-max="3" onclick="AccessControl.updateStep('letterSpacing', 3, 'Espaço entre letras')">
+                        <div class="level-dots-container"></div><i class="fas fa-arrows-left-right"></i><span>Espaço entre letras</span>
+                    </div>
                 </div>
-            </section>
+            </div>
 
+            <div class="panel-section">
+                <div class="section-title">Navegação</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" data-key="ttsActive" data-max="1" onclick="AccessControl.toggleFeature('ttsActive', 'Leitor de Sites')">
+                        <div class="level-dots-container"></div><i class="fas fa-volume-high"></i><span>Leitor de Sites</span>
+                    </div>
+                    <div class="acc-option-card" data-key="readingMode" data-max="1" onclick="AccessControl.toggleFeature('readingMode', 'Modo Leitura')">
+                        <div class="level-dots-container"></div><i class="fas fa-book-open"></i><span>Modo Leitura</span>
+                    </div>
+                    <div class="acc-option-card" data-key="readingMask" data-max="1" onclick="AccessControl.toggleFeature('readingMask', 'Máscara de Leitura')">
+                        <div class="level-dots-container"></div><i class="fas fa-mask"></i><span>Máscara de Leitura</span>
+                    </div>
+                    <div class="acc-option-card" data-key="readingGuide" data-max="1" onclick="AccessControl.toggleFeature('readingGuide', 'Guia de Leitura')">
+                        <div class="level-dots-container"></div><i class="fas fa-grip-lines"></i><span>Guia de Leitura</span>
+                    </div>
+                    <div class="acc-option-card" data-key="bigCursor" data-max="1" onclick="AccessControl.toggleFeature('bigCursor', 'Cursor de Rato')">
+                        <div class="level-dots-container"></div><i class="fas fa-arrow-pointer"></i><span>Cursor de Rato</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.openModal('shortcuts-modal')">
+                        <i class="fas fa-keyboard"></i><span>Atalhos do Teclado</span>
+                    </div>
+                    <div class="acc-option-card" data-key="links" data-max="1" onclick="AccessControl.toggleFeature('links', 'Destaque de Links')">
+                        <div class="level-dots-container"></div><i class="fas fa-link"></i><span>Destaque de Links</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.highlight('h1, h2, h3, h4')">
+                        <i class="fas fa-heading"></i><span>Estrutura: Títulos</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.highlight('a')">
+                        <i class="fas fa-list-ul"></i><span>Estrutura: Links</span>
+                    </div>
+                    <div class="acc-option-card" onclick="AccessControl.highlight('section, article, main, aside')">
+                        <i class="fas fa-layer-group"></i><span>Estrutura: Regiões</span>
+                    </div>
+                    <div class="acc-option-card" data-key="magnifier" data-max="1" onclick="AccessControl.toggleFeature('magnifier', 'Lupa de Conteúdo')">
+                        <div class="level-dots-container"></div><i class="fas fa-magnifying-glass-plus"></i><span>Lupa de Conteúdo</span>
+                    </div>
+                    <div class="acc-option-card" data-key="hideImages" data-max="1" onclick="AccessControl.toggleFeature('hideImages', 'Esconder Imagens')">
+                        <div class="level-dots-container"></div><i class="fas fa-image-portrait"></i><span>Esconder Imagens</span>
+                    </div>
+                    <div class="acc-option-card" data-key="headerHighlight" data-max="1" onclick="AccessControl.toggleFeature('headerHighlight', 'Destacar cabeçalho')">
+                        <div class="level-dots-container"></div><i class="fas fa-window-maximize"></i><span>Destacar cabeçalho</span>
+                    </div>
+                    <div class="acc-option-card" data-key="pauseAnim" data-max="1" onclick="AccessControl.toggleFeature('pauseAnim', 'Pausar animações')">
+                        <div class="level-dots-container"></div><i class="fas fa-film"></i><span>Pausar animações</span>
+                    </div>
+                    <div class="acc-option-card" data-key="stopSounds" data-max="1" onclick="AccessControl.toggleFeature('stopSounds', 'Parar Sons')">
+                        <div class="level-dots-container"></div><i class="fas fa-volume-mute"></i><span>Parar Sons</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title">Controles de Cor</div>
+                <div class="options-grid">
+                    <div class="acc-option-card" data-key="contrast" data-max="2" onclick="AccessControl.updateStep('contrast', 2, 'Contraste')">
+                        <div class="level-dots-container"></div><i class="fas fa-circle-half-stroke"></i><span>Contraste</span>
+                    </div>
+                    <div class="acc-option-card" data-key="saturation" data-max="2" onclick="AccessControl.updateStep('saturation', 2, 'Saturação')">
+                        <div class="level-dots-container"></div><i class="fas fa-droplet"></i><span>Intensidade</span>
+                    </div>
+                    <div class="acc-option-card" data-key="colorblind" data-max="3" onclick="AccessControl.updateStep('colorblind', 3, 'Modo Daltonico')">
+                        <div class="level-dots-container"></div><i class="fas fa-palette"></i><span>Daltonismo</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="reset-btn" onclick="AccessControl.resetAll()">REDEFINIR TUDO</button>
         </div>
-    </main>
+    </aside>
 
-    <!-- Footer -->
-    <div id="footer-placeholder" class="no-print h-32 bg-audit-navy mt-auto flex items-center justify-center text-white/30 text-xs tracking-widest uppercase font-bold">
-        [Audit Educa - Digital Accessibility Division]
+    <!-- Modais -->
+    <div id="glossary-modal" class="acc-modal" onclick="AccessControl.closeModal('glossary-modal')">
+        <div class="acc-modal-content" onclick="event.stopPropagation()">
+            <header class="modal-header">
+                <h3>Glossário Financeiro</h3>
+                <button onclick="AccessControl.closeModal('glossary-modal')" style="background:none; border:none; color:white; cursor:pointer"><i class="fas fa-times fa-lg"></i></button>
+            </header>
+            <div class="glossary-wrapper">
+                <nav class="glossary-sidebar" id="glossary-sidebar">
+                    <button class="sidebar-toggle" onclick="AccessControl.toggleGlossarySidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="alphabet-nav" id="alphabet-nav"></div>
+                </nav>
+                <div class="glossary-main-content" id="glossary-content">
+                    <div id="glossary-list"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
-        Operação concluída!
+    <div id="shortcuts-modal" class="acc-modal" onclick="AccessControl.closeModal('shortcuts-modal')">
+        <div class="acc-modal-content" onclick="event.stopPropagation()">
+            <header class="modal-header">
+                <h3>Atalhos do Teclado</h3>
+                <button onclick="AccessControl.closeModal('shortcuts-modal')" style="background:none; border:none; color:white; cursor:pointer"><i class="fas fa-times fa-lg"></i></button>
+            </header>
+            <div style="padding: 30px;">
+                <ul style="list-style:none; padding:0;">
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Alt</kbd> + <kbd>A</kbd> <span>Abrir/Fechar Painel Assistivo</span>
+                    </li>
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Alt</kbd> + <kbd>R</kbd> <span>Redefinir Todas as Configurações</span>
+                    </li>
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Alt</kbd> + <kbd>M</kbd> <span>Maximizar/Minimizar Menu</span>
+                    </li>
+                    <li style="margin-bottom:15px; display: flex; align-items: center; gap: 10px;">
+                        <kbd>Esc</kbd> <span>Fechar Modais ou Menus Abertos</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+
+    <!-- Filtros SVG -->
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+        <defs>
+            <filter id="protanopia-filter"><feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/></filter>
+            <filter id="deuteranopia-filter"><feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/></filter>
+            <filter id="tritanopia-filter"><feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/></filter>
+        </defs>
+    </svg>
 
     <script>
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.innerText = msg;
-            t.classList.replace('opacity-0', 'opacity-100');
-            t.classList.replace('translate-y-10', 'translate-y-0');
-            setTimeout(() => {
-                t.classList.replace('opacity-100', 'opacity-0');
-                t.classList.replace('translate-y-0', 'translate-y-10');
-            }, 3000);
-        }
-        lucide.createIcons();
+        const AccessControl = (() => {
+            const state = {
+                fontSize: 0, fontStyle: 0, letterSpacing: 0, lineHeight: 0,
+                bold: false, contrast: 0, saturation: 0, colorblind: 0,
+                ttsActive: false, readingMode: false, readingMask: false,
+                readingGuide: false, bigCursor: false, links: false,
+                magnifier: false, hideImages: false, headerHighlight: false,
+                pauseAnim: false, stopSounds: false, isMaximized: false
+            };
+
+            const glossaryData = [
+                { term: "13º Salário", def: "Gratificação natalina paga aos trabalhadores.", letter: "#" },
+                { term: "Ativo", def: "Bens e direitos de uma entidade.", letter: "A" },
+                { term: "Balanço", def: "Relatório da situação financeira.", letter: "B" },
+                { term: "Compliance", def: "Conformidade com normas.", letter: "C" },
+                { term: "Défice", def: "Quando as despesas superam as receitas.", letter: "D" },
+                { term: "EBITDA", def: "Lucro operacional antes de taxas.", letter: "E" },
+                { term: "Factoração", def: "Antecipação de recebíveis.", letter: "F" },
+                { term: "Garantia", def: "Segurança para pagamento de dívida.", letter: "G" },
+                { term: "Holding", def: "Empresa que detém participação em outras.", letter: "H" },
+                { term: "Inflação", def: "Aumento generalizado de preços.", letter: "I" },
+                { term: "Juros", def: "Remuneração do capital emprestado.", letter: "J" },
+                { term: "KPI", def: "Indicador chave de desempenho.", letter: "K" },
+                { term: "Liquidez", def: "Capacidade de converter ativos em dinheiro.", letter: "L" },
+                { term: "Margem de Lucro", def: "Percentual de ganho sobre vendas.", letter: "M" },
+                { term: "Nota Fiscal", def: "Documento de registo de transação.", letter: "N" },
+                { term: "Orçamento", def: "Plano financeiro para período futuro.", letter: "O" },
+                { term: "Passivo", def: "Obrigações e dívidas da empresa.", letter: "P" },
+                { term: "Quitação", def: "Pagamento total de uma dívida.", letter: "Q" },
+                { term: "Receita", def: "Entradas financeiras no período.", letter: "R" },
+                { term: "Solvência", def: "Capacidade de pagar obrigações de longo prazo.", letter: "S" },
+                { term: "Taxa Selic", def: "Taxa básica de juros da economia.", letter: "T" },
+                { term: "Utilidade", def: "Satisfação obtida no consumo.", letter: "U" },
+                { term: "Valuation", def: "Processo de estimar o valor de um ativo.", letter: "V" },
+                { term: "Warrant", def: "Título que garante direito de compra.", letter: "W" },
+                { term: "Xerox", def: "Cópia documental para auditoria.", letter: "X" },
+                { term: "Yield", def: "Rendimento de um investimento.", letter: "Y" },
+                { term: "ZPE", def: "Zona de processamento de exportação.", letter: "Z" }
+            ];
+
+            const alphabet = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+            const togglePanel = () => document.getElementById('accessibility-panel').classList.toggle('accessibility-panel-hidden');
+            
+            const toggleMaximize = () => {
+                state.isMaximized = !state.isMaximized;
+                const p = document.getElementById('accessibility-panel');
+                p.classList.toggle('maximized');
+                document.getElementById('btn-maximize').innerHTML = state.isMaximized ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+            };
+
+            const toggleGlossarySidebar = () => {
+                const sidebar = document.getElementById('glossary-sidebar');
+                sidebar.classList.toggle('expanded');
+                const icon = sidebar.querySelector('.sidebar-toggle i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-chevron-left');
+            };
+
+            const renderGlossary = () => {
+                const nav = document.getElementById('alphabet-nav');
+                const list = document.getElementById('glossary-list');
+                nav.innerHTML = "";
+                list.innerHTML = "";
+
+                alphabet.forEach(char => {
+                    const btn = document.createElement('button');
+                    btn.className = 'alpha-btn';
+                    btn.innerHTML = `${char} <span>Letra ${char === '#' ? 'Núm.' : char}</span>`;
+                    
+                    const hasTerms = glossaryData.some(i => i.letter === char);
+                    if (!hasTerms) btn.style.opacity = "0.3";
+                    else {
+                        btn.onclick = () => document.getElementById(`sec-${char}`).scrollIntoView();
+                    }
+                    nav.appendChild(btn);
+
+                    if (hasTerms) {
+                        const sec = document.createElement('section');
+                        sec.id = `sec-${char}`;
+                        sec.className = 'glossary-section';
+                        sec.innerHTML = `<h2 class="glossary-section-title">${char}</h2><dl id="dl-${char}"></dl>`;
+                        list.appendChild(sec);
+                        
+                        const dl = sec.querySelector('dl');
+                        glossaryData.filter(i => i.letter === char).forEach(item => {
+                            const div = document.createElement('div');
+                            div.className = 'glossary-item';
+                            div.innerHTML = `<dt>${item.term}</dt><dd>${item.def}</dd>`;
+                            dl.appendChild(div);
+                        });
+                    }
+                });
+            };
+
+            const notify = (msg, type = "info") => {
+                const container = document.getElementById('acc-notification-container');
+                const t = document.createElement('div');
+                t.className = 'acc-toast';
+                t.innerHTML = `<i class="fas fa-check-circle" style="color:var(--audit-gold)"></i> <span>${msg}</span>`;
+                container.appendChild(t);
+                speak(msg);
+                playBeep(type === "reset" ? 400 : 800);
+                setTimeout(() => t.remove(), 3000);
+            };
+
+            const speak = (text) => {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const ut = new SpeechSynthesisUtterance(text);
+                    ut.lang = 'pt-PT';
+                    ut.rate = 1.2;
+                    window.speechSynthesis.speak(ut);
+                }
+            };
+
+            const playBeep = (freq) => {
+                try {
+                    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                    const osc = ctx.createOscillator();
+                    const gn = ctx.createGain();
+                    osc.connect(gn); gn.connect(ctx.destination);
+                    osc.frequency.value = freq;
+                    gn.gain.setValueAtTime(0.05, ctx.currentTime);
+                    gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+                    osc.start(); osc.stop(ctx.currentTime + 0.1);
+                } catch(e) {}
+            };
+
+            const updateStep = (key, max, label) => {
+                state[key] = (state[key] + 1) > max ? 0 : state[key] + 1;
+                notify(`${label}: ${state[key] === 0 ? 'Normal' : 'Nível ' + state[key]}`);
+                apply();
+            };
+
+            const toggleFeature = (key, label) => {
+                state[key] = !state[key];
+                notify(`${label}: ${state[key] ? 'Ativado' : 'Desativado'}`);
+                if(key === 'ttsActive' && state.ttsActive) document.addEventListener('click', handleTTSLeitura);
+                else if(key === 'ttsActive') document.removeEventListener('click', handleTTSLeitura);
+                apply();
+            };
+
+            const handleTTSLeitura = (e) => {
+                if(!state.ttsActive) return;
+                const text = e.target.innerText;
+                if(text && e.target.tagName !== 'BUTTON') speak(text);
+            };
+
+            const highlight = (sel) => {
+                const els = document.querySelectorAll(sel);
+                els.forEach(el => el.style.boxShadow = '0 0 0 6px var(--audit-gold)');
+                setTimeout(() => els.forEach(el => el.style.boxShadow = ''), 4000);
+                notify("Estrutura destacada");
+            };
+
+            const apply = () => {
+                const b = document.body;
+                b.style.fontSize = state.fontSize === 0 ? '16px' : (16 + state.fontSize * 5) + 'px';
+                b.style.letterSpacing = state.letterSpacing === 0 ? 'normal' : (state.letterSpacing * 2) + 'px';
+                b.style.lineHeight = state.lineHeight === 0 ? '1.6' : (1.6 + state.lineHeight * 0.4);
+                
+                b.setAttribute('data-bold', state.bold);
+                b.setAttribute('data-hide-images', state.hideImages);
+                b.setAttribute('data-pause-anim', state.pauseAnim);
+                b.setAttribute('data-links-highlight', state.links);
+                b.setAttribute('data-header-highlight', state.headerHighlight);
+                b.setAttribute('data-stop-sounds', state.stopSounds);
+                
+                b.style.cursor = state.bigCursor ? 'crosshair' : 'default';
+                
+                document.getElementById('reading-mask').style.display = state.readingMask ? 'block' : 'none';
+                document.getElementById('reading-guide').style.display = state.readingGuide ? 'block' : 'none';
+                document.getElementById('acc-magnifier').style.display = state.magnifier ? 'block' : 'none';
+
+                let f = "";
+                if(state.contrast > 0) f += `contrast(${1 + state.contrast * 0.6}) `;
+                if(state.saturation === 1) f += "grayscale(1) ";
+                if(state.saturation === 2) f += "saturate(2.8) ";
+                if(state.colorblind === 1) f += "url(#protanopia-filter) ";
+                if(state.colorblind === 2) f += "url(#deuteranopia-filter) ";
+                if(state.colorblind === 3) f += "url(#tritanopia-filter) ";
+                b.style.filter = f;
+
+                updateUI();
+                saveState();
+            };
+
+            const updateUI = () => {
+                document.querySelectorAll('.acc-option-card').forEach(card => {
+                    const key = card.getAttribute('data-key');
+                    const max = parseInt(card.getAttribute('data-max'));
+                    const dots = card.querySelector('.level-dots-container');
+                    if(dots && key) {
+                        dots.innerHTML = "";
+                        const val = typeof state[key] === 'boolean' ? (state[key] ? 1 : 0) : state[key];
+                        for(let i=1; i<=max; i++) {
+                            const d = document.createElement('div');
+                            d.className = `status-dot ${i <= val ? 'active' : ''}`;
+                            dots.appendChild(d);
+                        }
+                    }
+                    card.classList.toggle('active', !!state[key]);
+                });
+
+                const hasActive = Object.keys(state).some(k => k !== 'isMaximized' && !!state[k]);
+                document.getElementById('accessibility-btn').classList.toggle('has-active-features', hasActive);
+            };
+
+            const resetAll = () => {
+                Object.keys(state).forEach(k => {
+                    if(typeof state[k] === 'boolean') state[k] = false;
+                    else if(typeof state[k] === 'number') state[k] = 0;
+                });
+                notify("Configurações Redefinidas", "reset");
+                apply();
+            };
+
+            const openModal = (id) => {
+                document.getElementById(id).style.display = 'flex';
+                if(id === 'glossary-modal') renderGlossary();
+            };
+            const closeModal = (id) => document.getElementById(id).style.display = 'none';
+
+            const saveState = () => localStorage.setItem('audit_acc_state_vFinal', JSON.stringify(state));
+            const loadState = () => {
+                const s = localStorage.getItem('audit_acc_state_vFinal');
+                if(s) { Object.assign(state, JSON.parse(s)); apply(); } else { updateUI(); }
+            };
+
+            window.addEventListener('mousemove', (e) => {
+                if(state.readingMask) {
+                    const m = document.getElementById('reading-mask');
+                    const y = e.clientY;
+                    m.style.clipPath = `polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 0% 0%, 0% ${y-55}px, 100% ${y-55}px, 100% ${y+55}px, 0% ${y+55}px, 0% ${y-55}px)`;
+                }
+                if(state.readingGuide) document.getElementById('reading-guide').style.top = e.clientY + 'px';
+                if(state.magnifier) {
+                    const mag = document.getElementById('acc-magnifier');
+                    mag.style.left = (e.clientX - 140) + 'px';
+                    mag.style.top = (e.clientY - 140) + 'px';
+                }
+            });
+
+            return { togglePanel, toggleMaximize, updateStep, toggleFeature, resetAll, highlight, openModal, closeModal, toggleGlossarySidebar, loadState };
+        })();
+
+        function toggleLibras() { const w = document.querySelector('[vw-access-button]'); if(w) w.click(); }
+
+        window.onload = () => {
+            AccessControl.loadState();
+            const sc = document.createElement('script');
+            sc.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+            sc.onload = () => new window.VLibras.Widget('https://vlibras.gov.br/app');
+            document.head.appendChild(sc);
+        };
+
+        window.onkeydown = (e) => {
+            if(e.altKey && e.key === 'a') AccessControl.togglePanel();
+            if(e.altKey && e.key === 'r') AccessControl.resetAll();
+            if(e.altKey && e.key === 'm') AccessControl.toggleMaximize();
+            if(e.key === 'Escape') {
+                AccessControl.closeModal('glossary-modal');
+                AccessControl.closeModal('shortcuts-modal');
+            }
+        };
     </script>
 </body>
 </html>
