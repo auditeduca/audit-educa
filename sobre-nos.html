@@ -4,29 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Metadados Dinâmicos (Injetados via JSON) -->
-    <title id="dynamic-title">Audit Educa | Institucional</title>
-    <meta id="meta-desc" name="description" content="">
-    <meta id="meta-keywords" name="keywords" content="">
-    <link id="link-canonical" rel="canonical" href="">
+    <!-- Metadados -->
+    <title id="dynamic-title">Nossa Instituição | Audit Educa</title>
+    <meta id="meta-desc" name="description" content="No AuditEduca, a educação é a ponte entre a norma técnica e a prática transformadora.">
     
-    <!-- Open Graph (Injetados via JSON) -->
-    <meta id="og-title" property="og:title" content="">
-    <meta id="og-desc" property="og:description" content="">
-    <meta id="og-image" property="og:image" content="">
-    <meta property="og:type" content="website">
-
-    <!-- Favicon Oficial -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
 
-    <!-- CSS Externos Globais Audit Educa -->
+    <!-- CSS Externos Globais -->
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
 
-    <!-- FontAwesome & Lucide -->
+    <!-- FontAwesome & Lucide & Tailwind -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,6 +36,10 @@
                         'audit-goldDark': '#A6864A',
                         'audit-navy': '#0f172a',
                         'audit-blue': '#1e40af',
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'floating': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
                     }
                 }
             }
@@ -52,22 +47,22 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
         
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #f8fafc; 
-            color: #334155; 
+            color: #334155;
+            /* Padrão de fundo idêntico à referência (Calculadora) */
             background-image: 
                 radial-gradient(#cbd5e1 0.5px, transparent 0.5px), 
                 linear-gradient(#e2e8f0 1px, transparent 1px), 
                 linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
             background-size: 20px 20px, 40px 40px, 40px 40px;
             background-attachment: fixed;
-            transition: background-color 0.3s ease;
         }
 
-        /* BARRA DE FERRAMENTAS LATERAL */
+        /* BARRA DE FERRAMENTAS LATERAL (Padronizada com a Referência) */
         .sidebar-left-tools {
             position: fixed; left: 0; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
@@ -78,8 +73,9 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none;
+            text-decoration: none; /* Reset para links */
         }
-        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
+        .tool-btn:hover, .tool-btn.active { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
         .btn-label {
             display: none; position: absolute; left: 60px; background: #0f172a; color: white;
             padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
@@ -87,16 +83,20 @@
         }
         .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
 
-        /* DRAWERS */
-        .drawer { 
-            position: fixed; top: 0; left: 0; height: 100%; width: 100%; max-width: 24rem; 
-            background: white; z-index: 1100;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-100%);
+        @media (max-width: 768px) {
+            .sidebar-left-tools {
+                top: auto; bottom: 0; left: 0; width: 100%; height: 70px;
+                flex-direction: row; transform: none; justify-content: space-around;
+                align-items: center; background: white; border-top: 1px solid #e2e8f0;
+                border-radius: 0; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08); padding: 0 5px;
+            }
+            .tool-btn { border: none; width: auto; height: 100%; flex: 1; gap: 4px; box-shadow: none; background: transparent; border-radius: 8px; color: #64748b; }
+            .tool-btn:hover, .tool-btn.active { width: auto; background: transparent; color: #0f172a; padding-left: 0; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; box-shadow: none; }
+            body { padding-bottom: 90px; }
         }
-        .drawer.active { transform: translateX(0); }
 
-        /* TOUR HIGHLIGHT */
+        /* TOUR INTERATIVO (Estilo Referência) */
         .tour-highlight {
             position: relative; z-index: 1301 !important;
             box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important;
@@ -108,148 +108,456 @@
             border-top: 4px solid #C5A059; transition: all 0.3s ease;
         }
 
-        /* AJUSTE DE CABEÇALHO E PADDING */
-        main { padding-top: 100px; }
+        /* TAGS */
+        .tag-pill-link {
+            display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem;
+            background-color: white; color: #64748b; font-size: 11px; text-transform: uppercase;
+            font-weight: bold; border-radius: 99px; border: 1px solid #e2e8f0;
+            transition: all 0.2s; cursor: pointer;
+        }
+        .tag-pill-link:hover {
+            border-color: #C5A059; color: #0f172a; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* CARD SAIBA MAIS */
+        .card-link-item {
+            transition: all 0.3s ease; border: 1px solid transparent;
+        }
+        .card-link-item:hover {
+            transform: translateX(5px); border-color: #e2e8f0; background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+
+        main { padding-top: 150px; }
         @media (min-width: 1024px) {
             .content-wrapper { padding-left: 110px; padding-right: 70px; }
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+        /* Smooth Scroll Padding */
+        html { scroll-padding-top: 120px; }
     </style>
+
+    <!-- Scripts de Integração Audit Educa -->
+    <script src="https://auditeduca.com.br/assets/js/utils.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
 </head>
 <body class="flex flex-col min-h-screen">
 
     <div id="preloader"><div class="spinner"></div></div>
     
-    <!-- Placeholder do Cabeçalho -->
-    <div id="header-placeholder" class="no-print"></div>
+    <!-- Placeholder Header -->
+    <div id="header-placeholder" class="no-print h-20 bg-white shadow-sm mb-8 flex items-center justify-center text-slate-400 text-sm border-b">
+        [Header Audit Educa]
+    </div>
 
-    <!-- BARRA LATERAL DE FERRAMENTAS -->
+    <!-- Sidebar Tools (Estilo Calculadora, Função Navegação) -->
     <aside class="sidebar-left-tools no-print" id="sidebar-tools">
-        <button class="tool-btn" onclick="toggleDrawer('teoria')" title="Nossa Missão">
-            <i class="fas fa-lightbulb"></i>
+        <!-- Navegação Rápida -->
+        <a href="#hero" class="tool-btn" title="Início">
+            <i class="fas fa-home"></i>
+            <span class="btn-label">Início</span>
+        </a>
+        <a href="#missao" class="tool-btn" title="Missão">
+            <i class="fas fa-bullseye"></i>
             <span class="btn-label">Missão</span>
-        </button>
-        <button class="tool-btn" onclick="toggleDrawer('referencias')" title="Referências">
-            <i class="fas fa-link"></i>
-            <span class="btn-label">Referências</span>
-        </button>
-        <button class="tool-btn" onclick="toggleDrawer('sobre')" title="Sobre">
-            <i class="fas fa-info-circle"></i>
-            <span class="btn-label">Sobre</span>
-        </button>
-        <button class="tool-btn" onclick="startTour()" title="Ajuda">
-            <i class="fas fa-magic"></i>
+        </a>
+        <a href="#visao" class="tool-btn" title="Visão">
+            <i class="fas fa-eye"></i>
+            <span class="btn-label">Visão</span>
+        </a>
+        <a href="#valores" class="tool-btn" title="Valores">
+            <i class="fas fa-gem"></i>
+            <span class="btn-label">Valores</span>
+        </a>
+        
+        <!-- Botão Tour -->
+        <button class="tool-btn" onclick="startTour()" title="Ajuda / Tour">
+            <i class="fas fa-magic text-audit-gold"></i>
             <span class="btn-label">Ajuda</span>
         </button>
     </aside>
 
-    <!-- DRAWERS (CONTEÚDO) -->
-    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none drawer-overlay z-[1050] no-print" onclick="closeAllDrawers()"></div>
-    
-    <aside id="drawer-teoria" class="drawer no-print shadow-2xl border-r border-slate-200">
-        <div class="p-8 h-full flex flex-col">
-            <div class="flex justify-between items-center mb-8 border-b pb-4">
-                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-lightbulb text-audit-gold"></i> Institucional</h3>
-                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
-            </div>
-            <div class="overflow-y-auto flex-grow space-y-6 text-sm text-slate-600 leading-relaxed">
-                <p>Nossa fundação baseia-se na democratização do saber técnico em auditoria independente.</p>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
-                    <p class="font-serif text-lg text-audit-blue font-bold italic">"Conhecimento que transforma."</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <aside id="drawer-referencias" class="drawer no-print shadow-2xl border-r border-slate-200">
-        <div class="p-8 h-full flex flex-col">
-            <div class="flex justify-between items-center mb-8 border-b pb-4">
-                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-link text-audit-gold"></i> Normativas</h3>
-                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
-            </div>
-            <div class="space-y-4">
-                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs">
-                    <p class="font-bold text-audit-navy uppercase mb-1">CFC / IBRACON</p>
-                    <p class="text-slate-500">Alinhamento total com as Normas Brasileiras de Contabilidade.</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <aside id="drawer-sobre" class="drawer no-print shadow-2xl border-r border-slate-200">
-        <div class="p-8 h-full flex flex-col">
-            <div class="flex justify-between items-center mb-8 border-b pb-4">
-                <h3 class="font-bold text-audit-navy flex items-center gap-2 uppercase text-xs tracking-widest"><i class="fas fa-info-circle text-audit-gold"></i> AuditEduca</h3>
-                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
-            </div>
-            <div class="text-sm text-slate-600 space-y-4">
-                <p>O hub técnico-educacional mais completo para profissionais de auditoria externa no Brasil.</p>
-            </div>
-        </div>
-    </aside>
-
-    <!-- CONTEÚDO PRINCIPAL (ONDE O JSON É INJETADO) -->
-    <main class="flex-grow pb-12 px-4 sm:px-6">
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow pb-20 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto content-wrapper" id="main-injection-point">
-            <!-- O campo "html" do JSON será injetado integralmente aqui -->
+            
+            <!-- Breadcrumb -->
+            <nav class="mb-8 no-print flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                <ol class="flex items-center gap-2">
+                    <li><a href="/" class="hover:text-audit-gold transition">Home</a></li>
+                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                    <li>Institucional</li>
+                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                    <li class="text-audit-gold underline underline-offset-4">Sobre Nós</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Section -->
+            <div id="hero" class="bg-white rounded-3xl p-10 md:p-16 shadow-card border border-slate-200 relative overflow-hidden mb-20 group">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-audit-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 transition-transform duration-1000 group-hover:scale-110"></div>
+                <div class="relative z-10 max-w-4xl">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-audit-navy/5 text-audit-navy text-[10px] font-bold tracking-widest uppercase mb-6 border border-audit-navy/10">
+                        Nossa Instituição
+                    </span>
+                    <h1 class="font-serif text-5xl md:text-6xl font-bold text-audit-navy mb-8 leading-tight">
+                        AuditEduca
+                    </h1>
+                    <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-10 font-light max-w-3xl">
+                        No AuditEduca, a educação é a ponte entre a norma técnica e a prática transformadora. Não somos apenas uma plataforma de conteúdo; somos um movimento pela democratização do saber contábil e da auditoria independente.
+                    </p>
+                    
+                    <!-- Metadados -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-8 border-t border-slate-100">
+                         <div class="flex flex-wrap items-center gap-6 text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">
+                            <span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-audit-gold"></i> Atualizado em: 05/02/2026</span>
+                            <span class="hidden md:inline w-1 h-1 bg-slate-300 rounded-full"></span>
+                            <span class="flex items-center gap-2"><i class="fas fa-code-branch text-audit-gold"></i> Versão: 2.9.5</span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <span class="text-[9px] font-bold text-audit-navy uppercase tracking-widest mr-2">Partilhar:</span>
+                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" title="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" title="X"><i class="fab fa-x-twitter"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Missão -->
+            <div id="missao" class="mb-32 scroll-mt-40">
+                <div class="flex flex-col lg:flex-row gap-16 items-start">
+                    <div class="lg:w-1/3 lg:sticky lg:top-40">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-1 bg-audit-gold rounded-full"></div>
+                            <span class="text-audit-gold font-bold text-xs uppercase tracking-widest">Nossa Missão</span>
+                        </div>
+                        <h2 class="text-4xl font-serif font-bold text-audit-navy mb-8 leading-tight">Democratizar, Capacitar e Transformar</h2>
+                        <blockquote class="text-slate-600 italic border-l-4 border-audit-gold pl-6 py-2 text-lg leading-relaxed font-light">
+                            "Tornar o conhecimento em auditoria independente e contábil acessível a todos os interessados, promovendo excelência, ética e impacto social por meio da educação, aliada à acessibilidade e sustentabilidade digital."
+                        </blockquote>
+                    </div>
+                    <div class="lg:w-2/3 space-y-8">
+                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-floating transition-all duration-300 group">
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-audit-navy/5 p-4 rounded-2xl group-hover:bg-audit-navy group-hover:text-audit-gold transition-colors duration-300">
+                                    <i class="fas fa-wheelchair w-6 h-6"></i> <!-- Acessibilidade -->
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-audit-navy mb-3">Acessibilidade</h3>
+                                    <p class="text-slate-600 leading-relaxed">Simplificamos a complexidade das normas de auditoria independente e contábil para uma linguagem clara e direta, sem perder o rigor técnico.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-floating transition-all duration-300 group">
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-audit-navy/5 p-4 rounded-2xl group-hover:bg-audit-navy group-hover:text-audit-gold transition-colors duration-300">
+                                    <i class="fas fa-award w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-audit-navy mb-3">Excelência</h3>
+                                    <p class="text-slate-600 leading-relaxed">Elaboramos materiais que preparam o estudante e profissional para os desafios reais do mercado de trabalho.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-floating transition-all duration-300 group">
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-audit-navy/5 p-4 rounded-2xl group-hover:bg-audit-navy group-hover:text-audit-gold transition-colors duration-300">
+                                    <i class="fas fa-handshake w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-audit-navy mb-3">Impacto Social</h3>
+                                    <p class="text-slate-600 leading-relaxed">Entendemos que contadores e auditores independentes bem formados são guardiões da transparência econômica e social do país.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Visão -->
+            <div id="visao" class="mb-32 scroll-mt-40">
+                <div class="bg-slate-50 rounded-[3rem] p-10 lg:p-20 border border-slate-200 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-audit-navy via-audit-gold to-audit-navy"></div>
+                    
+                    <div class="text-center max-w-4xl mx-auto mb-16">
+                        <span class="text-audit-gold font-bold text-xs uppercase tracking-widest mb-4 block">Nossa Visão</span>
+                        <h2 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy mb-8">O Futuro que Construímos</h2>
+                        <p class="text-xl md:text-2xl font-medium text-audit-navy italic mb-8">"Ser referência em educação acessível, confiável e inovadora em auditoria independente e contabilidade."</p>
+                        <p class="text-slate-600 leading-relaxed">Olhamos para um futuro onde o AuditEduca seja lembrado quando se fala em apoio técnico de qualidade. Queremos ser uma opção adicional de apoio para quem busca entender a teoria e aplicar a prática.</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-10 rounded-3xl border border-slate-200 text-center hover:shadow-lg transition-all hover:-translate-y-1">
+                            <div class="w-16 h-16 bg-audit-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 text-audit-gold">
+                                <i class="fas fa-book-open text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-audit-navy mb-4">Referência Técnica</h3>
+                            <p class="text-slate-600">Estar presente na rotina de estudos e trabalho de profissionais que atuam na área, oferecendo sempre o melhor conteúdo técnico disponível.</p>
+                        </div>
+                        <div class="bg-white p-10 rounded-3xl border border-slate-200 text-center hover:shadow-lg transition-all hover:-translate-y-1">
+                            <div class="w-16 h-16 bg-audit-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 text-audit-gold">
+                                <i class="fas fa-lightbulb text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-audit-navy mb-4">Inovação Constante</h3>
+                            <p class="text-slate-600">Utilizar a tecnologia para criar novas formas de aprendizado, tornando o estudo da auditoria independente e contabilidade uma experiência dinâmica e moderna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Valores -->
+            <div id="valores" class="mb-32 scroll-mt-40">
+                <div class="mb-16 text-center lg:text-left">
+                    <div class="flex items-center gap-3 justify-center lg:justify-start mb-6">
+                        <div class="bg-audit-navy p-3 rounded-lg text-white">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h2 class="text-4xl font-serif font-bold text-audit-navy">Nossos Valores</h2>
+                    </div>
+                    <p class="text-slate-600 max-w-2xl text-lg">Os princípios que nos guiam não são negociáveis. Eles orientam nossa conduta, nossa curadoria de conteúdo e nosso relacionamento com você.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Valor 1 - Destaque -->
+                    <div class="bg-audit-navy p-10 rounded-3xl text-white relative overflow-hidden group shadow-xl">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 transform group-hover:scale-110">
+                            <i class="fas fa-scale-balanced text-9xl"></i>
+                        </div>
+                        <h3 class="text-audit-gold font-bold text-2xl mb-4 flex items-center gap-3">
+                            <span class="text-sm font-mono opacity-50 border border-white/20 px-2 py-1 rounded">01</span> Ética
+                        </h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            A base de tudo. Na auditoria e na contabilidade, a ética é a própria substância da profissão. Promovemos a integridade absoluta na disseminação de informações.
+                        </p>
+                    </div>
+
+                    <!-- Demais Valores -->
+                    <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
+                            <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">02</span> Transparência
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">Somos claros sobre o que oferecemos e sobre nossas limitações. A confiança se constrói com a verdade.</p>
+                    </div>
+
+                    <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
+                            <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">03</span> Inclusão
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">O conhecimento não deve ter donos. Criamos um ambiente educacional inclusivo para todos os níveis.</p>
+                    </div>
+
+                    <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
+                            <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">04</span> Inovação
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">Buscamos constantemente novas tecnologias para tornar o aprendizado mais fluido, visual e eficiente.</p>
+                    </div>
+
+                    <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
+                            <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">05</span> Colaboração
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">Ninguém constrói nada sozinho. Valorizamos a troca de conhecimentos e o poder da comunidade.</p>
+                    </div>
+
+                    <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
+                            <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">06</span> Desenvolvimento
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">A estagnação é o oposto da nossa essência. Incentivamos a curiosidade constante e a atualização.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Compromisso -->
+            <div id="compromisso" class="mb-24 scroll-mt-40">
+                <div class="bg-white rounded-2xl border-l-8 border-audit-navy p-10 shadow-sm flex flex-col md:flex-row gap-10 items-start">
+                    <div class="md:w-1/3">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fas fa-gavel text-audit-navy text-3xl"></i>
+                            <h2 class="text-3xl font-serif font-bold text-audit-navy">Nosso Compromisso</h2>
+                        </div>
+                        <p class="text-slate-600 italic border-b border-slate-100 pb-6 mb-6">
+                            "Reafirmamos que todo o nosso trabalho é pautado pelo respeito às normas e pela responsabilidade educacional."
+                        </p>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-audit-navy mb-4 text-xs uppercase tracking-widest">Base Legal</h4>
+                            <ul class="space-y-3 text-slate-600 text-sm">
+                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Código de Ética Profissional</li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Legislação Contábil</li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Qualidade Educacional</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 grid gap-8">
+                        <div>
+                            <h4 class="font-bold text-audit-navy mb-3 flex items-center gap-2 text-lg">
+                                <i class="fas fa-shield-alt text-audit-gold"></i> Responsabilidade Profissional
+                            </h4>
+                            <p class="text-slate-600 leading-relaxed">Utilizando nosso conteúdo, você deve ter em mente suas responsabilidades profissionais e técnicas contidas no Código de Ética Profissional, bem como na legislação pertinente.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-audit-navy mb-3 flex items-center gap-2 text-lg">
+                                <i class="fas fa-exclamation-circle text-audit-gold"></i> Orientação Importante
+                            </h4>
+                            <p class="text-slate-600 leading-relaxed">Nosso conteúdo é desenvolvido para fins educacionais e de apoio técnico. Sempre consulte as normas vigentes e busque orientação profissional adequada para aplicações práticas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Grid: Newsletter, Tópicos e Saiba Mais -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-slate-200 pt-20">
+                
+                <!-- Coluna Principal -->
+                <div class="lg:col-span-8">
+                    <!-- Newsletter -->
+                    <div class="bg-audit-navy p-10 rounded-3xl shadow-2xl text-white relative overflow-hidden group mb-12">
+                        <div class="absolute -right-8 -top-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
+                            <i class="fas fa-shield-alt text-8xl"></i>
+                        </div>
+                        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4 flex items-center gap-2">
+                                    <i class="fas fa-envelope"></i> Newsletter Audit
+                                </h4>
+                                <h3 class="text-2xl font-serif font-bold mb-4">Mantenha-se Atualizado</h3>
+                                <p class="text-sm font-light leading-relaxed text-slate-300">
+                                    Receba atualizações semanais sobre normas técnicas, eventos e novos conteúdos educacionais diretamente no seu e-mail.
+                                </p>
+                            </div>
+                            <div class="w-full md:w-auto min-w-[300px] space-y-3">
+                                <input type="email" placeholder="seu@email.com" class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-sm outline-none focus:border-audit-gold transition placeholder-slate-400 text-white">
+                                <button onclick="showToast('Assinatura realizada!')" class="w-full p-4 bg-audit-gold text-audit-navy font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-white hover:text-audit-navy transition shadow-lg">
+                                    Assinar Gratuitamente
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tópicos Relacionados -->
+                    <div>
+                        <h3 class="text-sm font-bold text-audit-navy mb-6 flex items-center gap-2 uppercase tracking-wider">
+                            <i class="fas fa-tags text-audit-gold"></i> Tópicos Relacionados
+                        </h3>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" class="tag-pill-link">Governança Corporativa</a>
+                            <a href="#" class="tag-pill-link">Compliance</a>
+                            <a href="#" class="tag-pill-link">Normas IFRS</a>
+                            <a href="#" class="tag-pill-link">Ética Profissional</a>
+                            <a href="#" class="tag-pill-link">Auditoria Externa</a>
+                            <a href="#" class="tag-pill-link">Gestão de Riscos</a>
+                            <a href="#" class="tag-pill-link">NBC TA</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Lateral (Saiba Mais) -->
+                <div class="lg:col-span-4 space-y-8">
+                    <div>
+                        <h3 class="text-sm font-bold text-audit-navy mb-6 flex items-center gap-2 uppercase tracking-wider">
+                            <i class="fas fa-bookmark text-audit-gold"></i> Saiba Mais
+                        </h3>
+                        <div class="space-y-4">
+                            <!-- Link 1 -->
+                            <a href="#" class="card-link-item flex items-center gap-4 p-5 rounded-2xl bg-slate-50">
+                                <div class="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-audit-blue shadow-sm">
+                                    <i class="fas fa-book text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="text-sm font-bold text-audit-navy block mb-1">Biblioteca</span>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Acervo Técnico</span>
+                                </div>
+                                <i class="fas fa-chevron-right ml-auto text-slate-300"></i>
+                            </a>
+
+                            <!-- Link 2 -->
+                            <a href="#" class="card-link-item flex items-center gap-4 p-5 rounded-2xl bg-slate-50">
+                                <div class="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-audit-blue shadow-sm">
+                                    <i class="fas fa-check-square text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="text-sm font-bold text-audit-navy block mb-1">Simulados</span>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Qualificação Técnica</span>
+                                </div>
+                                <i class="fas fa-chevron-right ml-auto text-slate-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- Placeholder do Rodapé -->
-    <div id="footer-placeholder" class="no-print"></div>
-
-    <!-- Scripts de Notificação e Tour -->
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
-        Mensagem Audit Educa
+    <!-- Placeholder Footer -->
+    <div id="footer-placeholder" class="no-print h-32 bg-audit-navy mt-auto flex items-center justify-center text-white/30 text-sm">
+        [Footer Audit Educa]
     </div>
 
+    <!-- Tour Container -->
     <div id="tour-container"></div>
 
-    <!-- ENGINE DE INTEGRAÇÃO -->
+    <script src="https://auditeduca.com.br/accessibility-api.js"></script>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
+        Operação concluída!
+    </div>
+
+    <!-- Scripts -->
     <script>
+        // Inicialização de Ícones Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
         const AuditEngine = {
             config: {
-                jsonUrl: 'https://auditeduca.com.br/pages/sobre-nos.json',
+                jsonUrl: 'sobre-nos.json', 
             },
 
             async init() {
+                this.showLoader();
                 try {
-                    const response = await fetch(this.config.jsonUrl, { cache: "no-cache" });
-                    if (!response.ok) throw new Error("Erro de rede");
-                    const data = await response.json();
-                    
-                    this.injectMetadata(data);
-                    this.injectContent(data);
+                    const response = await fetch(this.config.jsonUrl);
+                    if (response.ok) {
+                        const data = await response.json();
+                        this.injectMetadata(data);
+                        this.injectContent(data);
+                    }
                 } catch (err) {
-                    console.error("Engine Error:", err);
+                    console.log("AuditEngine: Usando conteúdo fallback/preview.");
                 } finally {
                     this.hideLoader();
                 }
             },
 
             injectMetadata(data) {
-                document.title = data.title || "Audit Educa | Institucional";
-                this.setAttr('meta-desc', 'content', data.description);
-                this.setAttr('meta-keywords', 'content', data.keywords);
-                this.setAttr('link-canonical', 'href', data.canonical);
-                this.setAttr('og-title', 'content', data.ogTitle);
-                this.setAttr('og-desc', 'content', data.ogDescription);
-                this.setAttr('og-image', 'content', data.ogImage);
+                if(data.title) document.title = data.title;
+                if(data.description) {
+                    const meta = document.getElementById('meta-desc');
+                    if(meta) meta.setAttribute('content', data.description);
+                }
             },
 
             injectContent(data) {
                 const container = document.getElementById('main-injection-point');
                 if (container && data.html) {
                     container.innerHTML = data.html;
+                    if (window.lucide) lucide.createIcons();
                 }
-                // Ativar ícones lucide injetados
-                if (window.lucide) lucide.createIcons();
             },
 
-            setAttr(id, attr, value) {
-                const el = document.getElementById(id);
-                if (el && value) el.setAttribute(attr, value);
+            showLoader() {
+                const loader = document.getElementById('preloader');
+                if(loader) loader.style.display = 'flex';
             },
 
             hideLoader() {
@@ -260,24 +568,6 @@
                 }
             }
         };
-
-        // --- Lógica de UI (Drawers e Tour) ---
-        function toggleDrawer(id) {
-            closeAllDrawers();
-            document.getElementById(`drawer-${id}`).classList.add('active');
-            const o = document.getElementById('drawer-overlay');
-            o.classList.replace('opacity-0', 'opacity-100');
-            o.classList.replace('pointer-events-none', 'pointer-events-auto');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeAllDrawers() {
-            document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
-            const o = document.getElementById('drawer-overlay');
-            o.classList.replace('opacity-100', 'opacity-0');
-            o.classList.replace('pointer-events-auto', 'pointer-events-none');
-            document.body.style.overflow = '';
-        }
 
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -290,11 +580,14 @@
             }, 3000);
         }
 
-        // --- Tour Guiado ---
+        // --- Lógica do Tour (Adaptada para a Página Institucional) ---
         let currentTourStep = 0;
         const tourSteps = [
-            { id: 'sidebar-tools', text: 'Aqui encontrará ferramentas rápidas para consulta institucional e suporte.' },
-            { id: 'main-injection-point', text: 'Toda a nossa fundamentação e compromisso legal estão detalhados nesta área.' }
+            { id: 'hero', text: 'Bem-vindo ao Audit Educa! Conheça nossa proposta de valor e missão.' },
+            { id: 'missao', text: 'Nossa Missão é democratizar o conhecimento em auditoria.' },
+            { id: 'visao', text: 'Temos uma visão clara do futuro da profissão contábil.' },
+            { id: 'valores', text: 'Estes são os pilares éticos que sustentam nosso trabalho.' },
+            { id: 'compromisso', text: 'Nosso compromisso legal e educacional com você.' }
         ];
 
         function startTour() {
@@ -303,29 +596,36 @@
         }
 
         function showTourStep() {
-            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+            removeTourHighlights();
             const step = tourSteps[currentTourStep];
             const el = document.getElementById(step.id);
             if (!el) return;
 
             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
             setTimeout(() => {
                 el.classList.add('tour-highlight');
                 const rect = el.getBoundingClientRect();
                 const container = document.getElementById('tour-container');
+                
+                let topPos = rect.bottom + 15;
+                if (window.innerHeight - rect.bottom < 200) {
+                    topPos = rect.top - 200; 
+                }
+                
                 container.innerHTML = `
-                    <div class="tour-popover" style="top: ${rect.bottom + 20}px; left: ${Math.max(20, rect.left)}px;">
-                        <p class="text-[10px] font-bold text-audit-navy mb-2 uppercase">Guia Institucional (${currentTourStep + 1}/${tourSteps.length})</p>
-                        <p class="text-xs text-slate-600 mb-4">${step.text}</p>
-                        <div class="flex justify-between">
-                            <button onclick="closeTour()" class="text-[9px] font-bold text-slate-400 uppercase">Sair</button>
-                            <button onclick="nextTourStep()" class="bg-audit-gold text-audit-navy px-3 py-1 rounded-md text-[9px] font-bold uppercase">
+                    <div class="tour-popover" style="top: ${topPos}px; left: ${Math.max(10, rect.left)}px;">
+                        <p class="text-xs font-bold text-audit-navy mb-3 uppercase tracking-widest">Guia Institucional (${currentTourStep + 1}/${tourSteps.length})</p>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">${step.text}</p>
+                        <div class="flex justify-between items-center">
+                            <button onclick="closeTour()" class="text-[10px] font-bold text-slate-400 uppercase hover:text-red-500 transition">Sair</button>
+                            <button onclick="nextTourStep()" class="bg-audit-gold text-audit-navy px-4 py-2 rounded-lg text-[10px] font-bold uppercase shadow-sm hover:scale-105 transition">
                                 ${currentTourStep === tourSteps.length - 1 ? 'Finalizar' : 'Próximo'}
                             </button>
                         </div>
                     </div>
                 `;
-            }, 500);
+            }, 600);
         }
 
         function nextTourStep() {
@@ -335,17 +635,33 @@
         }
 
         function closeTour() {
-            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+            removeTourHighlights();
             document.getElementById('tour-container').innerHTML = '';
         }
 
+        function removeTourHighlights() {
+            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+        }
+
+        // Highlight Sidebar on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['hero', 'missao', 'visao', 'valores'];
+            const scrollPos = window.scrollY + 200;
+            
+            sections.forEach(sec => {
+                const el = document.getElementById(sec);
+                const link = document.querySelector(`a[href="#${sec}"]`);
+                if(el && link) {
+                    if(el.offsetTop <= scrollPos && (el.offsetTop + el.offsetHeight) > scrollPos) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', () => AuditEngine.init());
     </script>
-
-    <!-- Scripts de Integração Audit Educa -->
-    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/template-engine.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
 </body>
 </html>
