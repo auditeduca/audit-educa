@@ -1,0 +1,415 @@
+import React, { useState } from 'react';
+import { 
+  Building2, 
+  FileText, 
+  Users, 
+  UploadCloud, 
+  Download, 
+  Printer, 
+  Search, 
+  Plus, 
+  CheckCircle2, 
+  Clock, 
+  ChevronRight, 
+  Home, 
+  Settings, 
+  MoreVertical,
+  Trash2,
+  FileSpreadsheet,
+  AlertCircle,
+  Eye
+} from 'lucide-react';
+
+const App = () => {
+  // --- Estados da Aplicação ---
+  const [activeTab, setActiveTab] = useState('list'); // list, single, mass, preview
+  const [baseDate, setBaseDate] = useState('31/12/2025');
+  const [selectedLetter, setSelectedLetter] = useState(null);
+  
+  // Estado do Formulário Unitário
+  const [formData, setFormData] = useState({
+    bankName: '',
+    agency: '',
+    account: '',
+    manager: '',
+    address: '',
+    city: ''
+  });
+
+  // Estado da Lista de Cartas (Dados Mockados Iniciais)
+  const [letters, setLetters] = useState([
+    { id: 1, bankName: 'Banco do Brasil S.A.', agency: '1234-5', account: '998877-X', manager: 'Sr. João Silva', status: 'Gerada', date: '24/01/2026' },
+    { id: 2, bankName: 'Itaú Unibanco S.A.', agency: '4455', account: '112233-4', manager: 'Sra. Maria Santos', status: 'Pendente', date: '24/01/2026' },
+    { id: 3, bankName: 'Banco Santander', agency: '0098', account: '776655-1', manager: 'Gerência Geral', status: 'Enviada', date: '24/01/2026' },
+  ]);
+
+  // --- Lógica de Negócio ---
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSingleSubmit = (e) => {
+    e.preventDefault();
+    const newLetter = {
+      id: Date.now(),
+      ...formData,
+      status: 'Gerada',
+      date: new Date().toLocaleDateString('pt-BR')
+    };
+    setLetters([newLetter, ...letters]);
+    setActiveTab('list');
+    setFormData({ bankName: '', agency: '', account: '', manager: '', address: '', city: '' });
+  };
+
+  const handleMassImport = () => {
+    // Simulação de processamento de CSV/Excel
+    const mockImport = [
+      { id: 101, bankName: 'Caixa Econômica Federal', agency: '0101', account: '555-1', manager: 'Gerente PJ', status: 'Gerada', date: new Date().toLocaleDateString('pt-BR') },
+      { id: 102, bankName: 'Banco Safra', agency: '0900', account: '333-2', manager: 'Private Banking', status: 'Gerada', date: new Date().toLocaleDateString('pt-BR') },
+      { id: 103, bankName: 'BTG Pactual', agency: '0001', account: '100-9', manager: 'Mesa de Operações', status: 'Gerada', date: new Date().toLocaleDateString('pt-BR') },
+    ];
+    setLetters([...mockImport, ...letters]);
+    setActiveTab('list');
+  };
+
+  const openPreview = (letter) => {
+    setSelectedLetter(letter);
+    setActiveTab('preview');
+  };
+
+  const deleteLetter = (id) => {
+    setLetters(letters.filter(l => l.id !== id));
+  };
+
+  // --- Renderização ---
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
+      
+      {/* HEADER */}
+      <header className="bg-white border-b border-slate-200 h-20 flex items-center px-8 justify-between sticky top-0 z-50">
+        <div className="flex items-center gap-3">
+          <div className="bg-slate-900 text-amber-500 p-2.5 rounded-xl shadow-md">
+            <Building2 className="w-6 h-6" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-tighter uppercase italic leading-none">Audit<span className="text-amber-500">Educa</span></span>
+            <span className="text-[9px] font-bold text-slate-400 tracking-widest uppercase mt-1">Bank Confirmation Tool</span>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-2 bg-slate-100 p-1 rounded-lg">
+             <span className="text-[10px] font-black uppercase text-slate-400 px-3">Data Base da Auditoria:</span>
+             <input 
+               type="text" 
+               value={baseDate} 
+               onChange={(e) => setBaseDate(e.target.value)}
+               className="bg-white text-xs font-bold text-slate-900 w-24 p-1 rounded border-none focus:ring-0 text-center"
+             />
+          </div>
+          <div className="h-8 w-px bg-slate-200"></div>
+          <button className="p-2 text-slate-400 hover:text-amber-500"><Settings className="w-5 h-5" /></button>
+          <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 font-bold text-xs">AE</div>
+        </div>
+      </header>
+
+      <div className="flex flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 gap-8">
+        
+        {/* SIDEBAR */}
+        <aside className="w-64 hidden lg:block space-y-8">
+          <div className="space-y-2">
+            <NavButton active={activeTab === 'list'} onClick={() => setActiveTab('list')} icon={<FileText className="w-4 h-4" />} label="Cartas Geradas" count={letters.length} />
+            <NavButton active={activeTab === 'single'} onClick={() => setActiveTab('single')} icon={<Plus className="w-4 h-4" />} label="Nova Carta (Manual)" />
+            <NavButton active={activeTab === 'mass'} onClick={() => setActiveTab('mass')} icon={<UploadCloud className="w-4 h-4" />} label="Importação em Massa" />
+          </div>
+
+          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <h4 className="text-[10px] font-black uppercase text-slate-400 mb-4 tracking-widest">Resumo de Status</h4>
+            <div className="space-y-4">
+              <StatusItem label="Geradas" count={letters.filter(l => l.status === 'Gerada').length} color="bg-blue-500" />
+              <StatusItem label="Enviadas" count={letters.filter(l => l.status === 'Enviada').length} color="bg-green-500" />
+              <StatusItem label="Pendentes" count={letters.filter(l => l.status === 'Pendente').length} color="bg-amber-500" />
+            </div>
+          </div>
+        </aside>
+
+        {/* MAIN CONTENT */}
+        <main className="flex-1">
+          
+          {/* TAB: LISTA */}
+          {activeTab === 'list' && (
+            <div className="space-y-6 animate-in fade-in duration-500">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-black text-slate-900">Gerenciamento de Circularizações</h2>
+                <div className="flex gap-2">
+                  <button onClick={() => setActiveTab('mass')} className="bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-50 transition flex items-center gap-2">
+                    <FileSpreadsheet className="w-4 h-4" /> Importar Excel
+                  </button>
+                  <button onClick={() => setActiveTab('single')} className="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-800 transition flex items-center gap-2 shadow-lg shadow-slate-200">
+                    <Plus className="w-4 h-4" /> Nova Carta
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
+                <table className="w-full text-left">
+                  <thead className="bg-slate-50 border-b border-slate-100">
+                    <tr>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest">Banco / Instituição</th>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest">Destinatário</th>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest">Status</th>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-50">
+                    {letters.map((letter) => (
+                      <tr key={letter.id} className="hover:bg-slate-50/50 transition group">
+                        <td className="px-6 py-4">
+                          <p className="text-sm font-bold text-slate-900">{letter.bankName}</p>
+                          <p className="text-xs text-slate-400">Ag: {letter.agency}</p>
+                        </td>
+                        <td className="px-6 py-4 text-xs font-medium text-slate-500">{letter.manager}</td>
+                        <td className="px-6 py-4">
+                          <StatusBadge status={letter.status} />
+                        </td>
+                        <td className="px-6 py-4 text-right">
+                          <div className="flex justify-end gap-2">
+                            <button onClick={() => openPreview(letter)} className="p-2 text-slate-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition" title="Visualizar">
+                              <Eye className="w-4 h-4" />
+                            </button>
+                            <button onClick={() => deleteLetter(letter.id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition" title="Excluir">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {letters.length === 0 && (
+                  <div className="p-12 text-center text-slate-300">Nenhuma carta gerada ainda.</div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: SINGLE FORM */}
+          {activeTab === 'single' && (
+            <div className="max-w-2xl mx-auto animate-in slide-in-from-right-4 duration-500">
+              <button onClick={() => setActiveTab('list')} className="text-xs font-bold text-slate-400 hover:text-slate-900 mb-6 flex items-center gap-1">
+                <ChevronRight className="w-4 h-4 rotate-180" /> Voltar para Lista
+              </button>
+              
+              <div className="bg-white rounded-[2.5rem] p-10 border border-slate-100 shadow-sm">
+                <h2 className="text-2xl font-black text-slate-900 mb-2">Nova Circularização Individual</h2>
+                <p className="text-sm text-slate-400 mb-8">Preencha os dados abaixo para gerar uma carta única seguindo o padrão NBC TA 505.</p>
+
+                <form onSubmit={handleSingleSubmit} className="space-y-6">
+                  <InputField label="Nome da Instituição Financeira" name="bankName" placeholder="Ex: Banco do Brasil S.A." value={formData.bankName} onChange={handleInputChange} />
+                  
+                  <div className="grid grid-cols-2 gap-6">
+                    <InputField label="Agência" name="agency" placeholder="0000-0" value={formData.agency} onChange={handleInputChange} />
+                    <InputField label="Conta Principal (Ref.)" name="account" placeholder="00000-0" value={formData.account} onChange={handleInputChange} />
+                  </div>
+
+                  <InputField label="Aos Cuidados de (Gerente)" name="manager" placeholder="Ex: Gerência de Contas PJ" value={formData.manager} onChange={handleInputChange} />
+                  
+                  <div className="grid grid-cols-3 gap-6">
+                    <div className="col-span-2">
+                       <InputField label="Endereço (Opcional)" name="address" placeholder="Rua, Número, Bairro" value={formData.address} onChange={handleInputChange} />
+                    </div>
+                    <InputField label="Cidade/UF" name="city" placeholder="São Paulo/SP" value={formData.city} onChange={handleInputChange} />
+                  </div>
+
+                  <div className="pt-6 border-t border-slate-50 flex justify-end gap-4">
+                    <button type="button" onClick={() => setActiveTab('list')} className="px-6 py-3 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-50">Cancelar</button>
+                    <button type="submit" className="bg-slate-900 text-white px-8 py-3 rounded-xl text-xs font-black hover:bg-slate-800 transition shadow-lg">Gerar Carta</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* TAB: MASS IMPORT */}
+          {activeTab === 'mass' && (
+            <div className="max-w-3xl mx-auto animate-in zoom-in-95 duration-500 text-center">
+              <button onClick={() => setActiveTab('list')} className="text-xs font-bold text-slate-400 hover:text-slate-900 mb-6 flex items-center gap-1 mx-auto">
+                <ChevronRight className="w-4 h-4 rotate-180" /> Voltar para Lista
+              </button>
+
+              <div className="bg-white rounded-[2.5rem] p-16 border border-slate-100 shadow-sm">
+                <div className="bg-slate-50 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-300">
+                  <FileSpreadsheet className="w-10 h-10" />
+                </div>
+                <h2 className="text-3xl font-black text-slate-900 mb-4">Importação em Massa</h2>
+                <p className="text-slate-500 max-w-lg mx-auto mb-10 leading-relaxed">
+                  Carregue um arquivo Excel (.xlsx) ou CSV contendo as colunas: <strong>Banco, Agencia, Conta, Gerente</strong>. O sistema gerará cartas individuais para cada linha.
+                </p>
+
+                <div className="border-2 border-dashed border-slate-200 rounded-2xl p-10 hover:bg-slate-50 transition cursor-pointer group" onClick={handleMassImport}>
+                  <UploadCloud className="w-12 h-12 text-amber-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                  <p className="text-sm font-bold text-slate-900">Clique para selecionar o arquivo</p>
+                  <p className="text-xs text-slate-400 mt-2">ou arraste e solte aqui</p>
+                </div>
+
+                <div className="mt-8 flex justify-center gap-4">
+                  <button className="text-amber-600 text-xs font-bold hover:underline flex items-center gap-1">
+                    <Download className="w-3 h-3" /> Baixar Modelo de Planilha
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB: PREVIEW (DOCUMENT) */}
+          {activeTab === 'preview' && selectedLetter && (
+            <div className="animate-in fade-in duration-500 flex gap-8 justify-center">
+              
+              {/* Document Paper */}
+              <div className="bg-white w-[210mm] min-h-[297mm] p-[25mm] shadow-2xl text-slate-900 text-[11pt] leading-relaxed relative font-serif">
+                {/* Cabeçalho da Carta */}
+                <div className="text-center mb-12 border-b-2 border-slate-900 pb-4">
+                  <h1 className="text-xl font-bold uppercase tracking-widest mb-1">Empresa Auditada Ltda.</h1>
+                  <p className="text-xs text-slate-500">Av. Paulista, 1000 - São Paulo/SP - CNPJ: 00.000.000/0001-00</p>
+                </div>
+
+                {/* Destinatário */}
+                <div className="mb-8">
+                  <p className="font-bold">{selectedLetter.date}</p>
+                  <br />
+                  <p>À</p>
+                  <p className="font-bold uppercase">{selectedLetter.bankName}</p>
+                  <p>Agência: {selectedLetter.agency}</p>
+                  <p>A/C: {selectedLetter.manager || 'Gerência de Contas'}</p>
+                  {selectedLetter.address && <p>{selectedLetter.address}</p>}
+                </div>
+
+                {/* Corpo do Texto */}
+                <div className="mb-8 text-justify space-y-4">
+                  <p>Prezados Senhores,</p>
+                  
+                  <p>
+                    Para fins de exame de nossas demonstrações financeiras em <strong>{baseDate}</strong>, solicitamos a fineza de fornecer aos nossos auditores independentes, <strong>AuditEduca Auditores Independentes S.S.</strong>, as informações abaixo relacionadas a respeito de nossas operações com essa instituição.
+                  </p>
+                  
+                  <p>
+                    A resposta deverá ser enviada diretamente para o endereço dos auditores, abaixo indicado, ou através do e-mail <strong>confirmacoes@auditeduca.com.br</strong>.
+                  </p>
+
+                  <ul className="list-disc pl-8 space-y-2">
+                    <li>Saldos de todas as contas (Correntes, Vinculadas, Aplicações);</li>
+                    <li>Restrições sobre saldos de depósitos;</li>
+                    <li>Detalhes de empréstimos, financiamentos e descontos de duplicatas;</li>
+                    <li>Outras obrigações diretas ou indiretas (Avais, Fianças, Custódia);</li>
+                    <li>Pessoas autorizadas a assinar pela empresa.</li>
+                  </ul>
+                  
+                  <p>
+                    Se a resposta for "NADA CONSTA", por favor, indiquem tal fato.
+                  </p>
+                </div>
+
+                {/* Assinatura */}
+                <div className="mt-20 pt-8">
+                  <div className="border-t border-slate-900 w-64 mb-2"></div>
+                  <p className="font-bold">Empresa Auditada Ltda.</p>
+                  <p className="text-xs">Assinatura Autorizada</p>
+                </div>
+
+                {/* Rodapé Auditoria */}
+                <div className="absolute bottom-[25mm] left-[25mm] right-[25mm] text-center text-[9pt] text-slate-400 border-t border-slate-200 pt-4">
+                  <p>Resposta a ser enviada para:</p>
+                  <p className="font-bold text-slate-600">AuditEduca Auditores Independentes</p>
+                  <p>Rua da Auditoria, 500 - 10º Andar - São Paulo/SP - CEP 01000-000</p>
+                </div>
+              </div>
+
+              {/* Actions Sidebar (Floating) */}
+              <div className="w-64 space-y-4 h-fit sticky top-24">
+                <button onClick={() => window.print()} className="w-full bg-amber-500 text-slate-900 py-4 rounded-xl font-black shadow-lg shadow-amber-500/20 hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                  <Printer className="w-5 h-5" /> Imprimir / PDF
+                </button>
+                <button onClick={() => setActiveTab('list')} className="w-full bg-white border border-slate-200 text-slate-600 py-4 rounded-xl font-bold hover:bg-slate-50 transition">
+                  Voltar
+                </button>
+                
+                <div className="bg-slate-900 text-white p-6 rounded-2xl mt-4">
+                  <h4 className="text-xs font-black uppercase text-amber-500 mb-2 flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4" /> Norma NBC TA 505
+                  </h4>
+                  <p className="text-[10px] leading-relaxed text-slate-400">
+                    O auditor deve manter controle sobre os pedidos de confirmação externa. Certifique-se de que a carta seja enviada diretamente pelo auditor, não pelo cliente.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          )}
+
+        </main>
+      </div>
+    </div>
+  );
+};
+
+// --- SUB-COMPONENTES ---
+
+const NavButton = ({ active, onClick, icon, label, count }) => (
+  <button 
+    onClick={onClick}
+    className={`w-full flex items-center justify-between p-3 rounded-xl transition-all ${
+      active ? 'bg-slate-900 text-white shadow-md' : 'text-slate-500 hover:bg-white'
+    }`}
+  >
+    <div className="flex items-center gap-3">
+      {icon}
+      <span className="text-xs font-bold">{label}</span>
+    </div>
+    {count !== undefined && (
+      <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${active ? 'bg-amber-500 text-slate-900' : 'bg-slate-200 text-slate-500'}`}>
+        {count}
+      </span>
+    )}
+  </button>
+);
+
+const InputField = ({ label, name, placeholder, value, onChange }) => (
+  <div className="space-y-1">
+    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{label}</label>
+    <input 
+      type="text" 
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      className="w-full bg-slate-50 border-none rounded-xl px-4 py-3 text-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 outline-none" 
+    />
+  </div>
+);
+
+const StatusItem = ({ label, count, color }) => (
+  <div className="flex items-center justify-between">
+    <div className="flex items-center gap-2">
+      <div className={`w-2 h-2 rounded-full ${color}`}></div>
+      <span className="text-xs font-medium text-slate-600">{label}</span>
+    </div>
+    <span className="text-xs font-bold text-slate-900">{count}</span>
+  </div>
+);
+
+const StatusBadge = ({ status }) => {
+  const styles = {
+    'Gerada': 'bg-blue-50 text-blue-600',
+    'Enviada': 'bg-green-50 text-green-600',
+    'Pendente': 'bg-amber-50 text-amber-600'
+  };
+  return (
+    <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${styles[status] || 'bg-slate-50'}`}>
+      {status}
+    </span>
+  );
+};
+
+export default App;

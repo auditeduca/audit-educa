@@ -1,0 +1,350 @@
+import React, { useState, useMemo } from 'react';
+import { 
+  FileCheck, ShieldAlert, Search, Database, Cpu, 
+  CheckCircle2, AlertTriangle, ChevronRight, Layout, 
+  Edit3, Info, Lock, PieChart, ClipboardList, Home, 
+  Settings, ArrowRight, UserCheck, Zap, FileText, 
+  BarChart3, Layers, BookOpen, AlertCircle
+} from 'lucide-react';
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('planning');
+  const [auditData, setAuditData] = useState({
+    planning: { scope: '', materiality: '', highRiskApproach: 'High Risk' },
+    walkthrough: { narrative: '', elcRating: 'Forte' },
+    controls: [],
+    itTests: [],
+    substantive: { populationSize: 0, sampleSize: 0, criteria: [] },
+    conclusion: ''
+  });
+
+  const menuItems = [
+    { id: 'planning', label: '1. Planeamento', sub: 'Estratégia e High Risk', icon: <Layers className="w-5 h-5" /> },
+    { id: 'walkthrough', label: '2. Walkthrough & ELC', sub: 'Entendimento do Ambiente', icon: <Search className="w-5 h-5" /> },
+    { id: 'controls', label: '3. Testes de Controlos', sub: 'ToD, ToE e Fraude', icon: <ShieldAlert className="w-5 h-5" /> },
+    { id: 'it_tests', label: '4. Testes de TI', status: 'Obrigatório', icon: <Cpu className="w-5 h-5" /> },
+    { id: 'substantive', label: '5. Substantivo (JET)', sub: 'Data Analytics', icon: <Database className="w-5 h-5" /> },
+    { id: 'conclusion', label: '6. Conclusão', sub: 'Racionalização Final', icon: <CheckCircle2 className="w-5 h-5" /> },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#f8fafc] font-sans text-slate-900 flex flex-col">
+      
+      {/* HEADER PROFISSIONAL */}
+      <header className="bg-white border-b border-slate-200 h-20 flex items-center px-8 justify-between sticky top-0 z-50">
+        <div className="flex items-center gap-3">
+          <div className="bg-slate-900 text-amber-500 p-2.5 rounded-xl shadow-lg shadow-slate-200">
+            <FileCheck className="w-6 h-6" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-tighter uppercase italic leading-none">Audit<span className="text-amber-500">Educa</span></span>
+            <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mt-1">Sistemas de Documentação Técnica</span>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex flex-col items-end">
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Estado do Trabalho</span>
+            <span className="text-xs font-bold text-amber-600 flex items-center gap-1">
+              <AlertCircle className="w-3 h-3" /> Em Revisão pelo Sénior
+            </span>
+          </div>
+          <div className="h-10 w-px bg-slate-100"></div>
+          <button className="bg-slate-900 text-white px-6 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-800 transition-all shadow-md">
+            Exportar Papel de Trabalho
+          </button>
+        </div>
+      </header>
+
+      <div className="flex flex-1">
+        
+        {/* SIDEBAR DE NAVEGAÇÃO DA METODOLOGIA */}
+        <aside className="w-80 bg-white border-r border-slate-200 p-6 flex flex-col gap-2 overflow-y-auto hidden lg:flex">
+          <div className="mb-6 px-2">
+            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Workflow de Auditoria</h3>
+            <p className="text-xs text-slate-500 font-medium">Siga os passos normativos abaixo para concluir a documentação de JE.</p>
+          </div>
+          
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`group flex items-start gap-4 p-4 rounded-2xl transition-all text-left ${
+                activeTab === item.id 
+                ? 'bg-slate-900 text-white shadow-xl shadow-slate-200 translate-x-2' 
+                : 'hover:bg-slate-50 text-slate-500'
+              }`}
+            >
+              <div className={`p-2 rounded-lg ${activeTab === item.id ? 'bg-amber-500 text-slate-900' : 'bg-slate-100 text-slate-400 group-hover:bg-white'}`}>
+                {item.icon}
+              </div>
+              <div>
+                <p className="text-sm font-black leading-none mb-1">{item.label}</p>
+                <p className={`text-[10px] font-medium ${activeTab === item.id ? 'text-slate-400' : 'text-slate-400'}`}>{item.sub || 'Documentação Pendente'}</p>
+              </div>
+            </button>
+          ))}
+
+          <div className="mt-auto p-4 bg-amber-50 rounded-2xl border border-amber-100">
+            <h4 className="text-[10px] font-black text-amber-700 uppercase mb-2 flex items-center gap-1">
+              <Lock className="w-3 h-3" /> Segurança de Dados
+            </h4>
+            <p className="text-[10px] text-amber-600 leading-relaxed font-medium">
+              Todas as evidências inseridas são criptografadas e seguem as normas de retenção da firma.
+            </p>
+          </div>
+        </aside>
+
+        {/* ÁREA DE CONTEÚDO DINÂMICO */}
+        <main className="flex-1 p-8 lg:p-12 overflow-y-auto">
+          <div className="max-w-4xl mx-auto">
+            
+            {/* 1. PLANEAMENTO */}
+            {activeTab === 'planning' && (
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-8">
+                <SectionHeader title="Planeamento e Abordagem de Risco" icon={<Layers className="text-amber-500" />} />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Estratégia de Auditoria (Approach)</label>
+                    <div className="flex gap-2">
+                      <button className="flex-1 py-3 rounded-xl border-2 border-amber-500 bg-amber-50 text-amber-700 text-xs font-black">HIGH RISK</button>
+                      <button className="flex-1 py-3 rounded-xl border-2 border-slate-100 text-slate-400 text-xs font-black">NORMAL RISK</button>
+                    </div>
+                    <p className="text-[10px] text-slate-400 italic">Nota: Devido ao risco presumido de fraude (ISA 240), o sistema força o approach de High Risk.</p>
+                  </div>
+
+                  <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Materialidade de Execução</label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400">€</span>
+                      <input type="number" className="w-full bg-slate-50 border-none rounded-xl py-3 pl-10 pr-4 font-black text-slate-700 outline-none" placeholder="0,00" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
+                  <h4 className="text-sm font-black text-slate-900">Endereçamento de Oportunidades e Riscos</h4>
+                  <textarea className="w-full h-40 bg-slate-50 border-none rounded-2xl p-6 text-sm text-slate-600 focus:ring-2 focus:ring-amber-500 outline-none leading-relaxed" placeholder="Documente como os riscos identificados no planeamento serão endereçados pelos testes abaixo..."></textarea>
+                </div>
+              </div>
+            )}
+
+            {/* 2. WALKTHROUGH & ELC */}
+            {activeTab === 'walkthrough' && (
+              <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-8">
+                <SectionHeader title="Walkthrough e Entendimento do Processo" icon={<Search className="text-blue-500" />} />
+                
+                <div className="bg-white rounded-[2rem] p-10 border border-slate-100 shadow-sm space-y-8">
+                  <div className="space-y-4">
+                    <h4 className="text-sm font-black text-slate-900">Narrativa do Fluxo de Journal Entries</h4>
+                    <p className="text-xs text-slate-400 italic">Descreva como um lançamento nasce, quem o autoriza e como chega ao Razão Geral (GL).</p>
+                    <textarea className="w-full h-48 bg-slate-50 border-none rounded-2xl p-6 text-sm text-slate-600 focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Ex: O lançamento é iniciado pelo assistente contabilístico, revisto pelo controller e aprovado automaticamente se estiver dentro do limite..."></textarea>
+                  </div>
+
+                  <div className="pt-8 border-t border-slate-100">
+                    <h4 className="text-sm font-black text-slate-900 mb-6">Entidade-Level Controls (ELC)</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <ELCCard label="Ambiente de Controlo" score="Forte" />
+                      <ELCCard label="Avaliação de Risco" score="Moderado" />
+                      <ELCCard label="Monitorização" score="Forte" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 3. TESTES DE CONTROLOS */}
+            {activeTab === 'controls' && (
+              <div className="animate-in zoom-in-95 duration-500 space-y-8">
+                <SectionHeader title="Desenho (ToD) e Efetividade (ToE)" icon={<ShieldAlert className="text-red-500" />} />
+                
+                <div className="bg-white rounded-[2.5rem] p-10 border border-slate-100 shadow-sm overflow-hidden">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="font-black text-slate-900 uppercase text-xs tracking-widest">Matriz de Risco e Controlo (FRAUDE)</h3>
+                    <button className="bg-slate-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase">Adicionar Controle</button>
+                  </div>
+                  
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr className="border-b border-slate-100">
+                        <th className="py-4 text-[10px] font-black uppercase text-slate-400">ID</th>
+                        <th className="py-4 text-[10px] font-black uppercase text-slate-400">Risco Coberto</th>
+                        <th className="py-4 text-[10px] font-black uppercase text-slate-400">Teste de Desenho (ToD)</th>
+                        <th className="py-4 text-[10px] font-black uppercase text-slate-400">Efetividade (ToE)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-50">
+                      <AuditRow id="R.01" risk="Bypass de Controlos pela Direção" tod="Aprovado" toe="Efetivo" />
+                      <AuditRow id="R.02" risk="Lançamentos em Contas Sensíveis" tod="Aprovado" toe="Deficiência" />
+                      <AuditRow id="R.03" risk="Segregação de Funções (SoD)" tod="Aprovado" toe="Efetivo" />
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="bg-red-50 p-8 rounded-[2rem] border border-red-100 space-y-4">
+                  <div className="flex items-center gap-2 text-red-700 font-black text-sm">
+                    <AlertTriangle className="w-5 h-5" /> RACIONALIZAÇÃO DE DEFICIÊNCIAS (R.02)
+                  </div>
+                  <p className="text-xs text-red-600 leading-relaxed">
+                    Documente abaixo o impacto da deficiência encontrada no controle R.02. Como isso altera a sua estratégia de testes substantivos?
+                  </p>
+                  <textarea className="w-full h-32 bg-white border border-red-200 rounded-2xl p-6 text-sm text-slate-600 focus:ring-2 focus:ring-red-500 outline-none shadow-sm"></textarea>
+                </div>
+              </div>
+            )}
+
+            {/* 4. TESTES DE TI */}
+            {activeTab === 'it_tests' && (
+              <div className="animate-in fade-in duration-500 space-y-8">
+                <SectionHeader title="Validação de Dados e TI" icon={<Cpu className="text-indigo-500" />} />
+                
+                <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8">
+                  <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="bg-white p-3 rounded-xl shadow-sm"><Database className="w-6 h-6 text-indigo-500" /></div>
+                      <div>
+                        <h4 className="text-sm font-black text-slate-900">Teste de IPE (Information Produced by Entity)</h4>
+                        <p className="text-xs text-slate-500">Validação da integridade e completitude do dump de JE extraído do ERP.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black uppercase text-green-600 bg-green-100 px-3 py-1 rounded-full">Validado</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <ITCheckCard title="Lógica de Extração" desc="A query utilizada abrange todos os centros de custo e todas as moedas?" />
+                    <ITCheckCard title="Relatório de Auditoria de Log" desc="O sistema gera logs imutáveis de quem alterou privilégios de postagem?" />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 5. TESTES SUBSTANTIVOS */}
+            {activeTab === 'substantive' && (
+              <div className="animate-in slide-in-from-right-4 duration-500 space-y-8">
+                <SectionHeader title="Journal Entry Testing (JET) - Substantivo" icon={<BarChart3 className="text-emerald-500" />} />
+                
+                <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
+                  <div className="flex items-center justify-between mb-10">
+                    <div>
+                      <h4 className="text-sm font-black text-slate-900">Audit Data Analytics (ADA)</h4>
+                      <p className="text-xs text-slate-500">Critérios aplicados para identificar amostragem de alto risco.</p>
+                    </div>
+                    <div className="bg-emerald-50 text-emerald-700 p-2 rounded-lg"><Zap className="w-5 h-5" /></div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <CriteriaInput label="Who (Quem)" desc="Utilizadores não autorizados" />
+                    <CriteriaInput label="When (Quando)" desc="Finais de semana / Feriados" />
+                    <CriteriaInput label="What (O Quê)" desc="Lançamentos redondos (>10k)" />
+                  </div>
+
+                  <div className="mt-12 p-8 bg-slate-900 rounded-[2rem] text-white flex items-center justify-between">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest">Resultado da Seleção</p>
+                      <h3 className="text-2xl font-black">128 Lançamentos de Alto Risco</h3>
+                      <p className="text-xs text-slate-400">População total: 1.2M lançamentos analisados via script.</p>
+                    </div>
+                    <button className="bg-white text-slate-900 px-6 py-3 rounded-xl font-black text-xs hover:bg-slate-100 transition shadow-lg shadow-white/5">
+                      Documentar Amostra
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 6. CONCLUSÃO */}
+            {activeTab === 'conclusion' && (
+              <div className="animate-in zoom-in-95 duration-500 space-y-8">
+                <SectionHeader title="Conclusão e Parecer de Auditoria" icon={<CheckCircle2 className="text-emerald-600" />} />
+                
+                <div className="bg-white p-12 rounded-[2.5rem] border border-slate-100 shadow-sm text-center">
+                  <div className="bg-emerald-50 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 border-4 border-white shadow-xl">
+                    <CheckCircle2 className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <h2 className="text-3xl font-black text-slate-900 mb-4">Parecer Final do Trabalho</h2>
+                  <p className="text-slate-500 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
+                    Com base nos procedimentos realizados, conclui-se que os controlos sobre os lançamentos de diário são adequados e a amostragem substantiva não revelou erros ou indícios de fraude relevantes.
+                  </p>
+                  
+                  <textarea className="w-full h-64 bg-slate-50 border-2 border-slate-100 rounded-[2.5rem] p-10 text-sm focus:ring-2 focus:ring-amber-500 outline-none leading-relaxed shadow-inner" placeholder="Escreva a sua conclusão técnica detalhada aqui..."></textarea>
+                  
+                  <div className="mt-12 flex justify-center gap-4">
+                    <button className="bg-slate-900 text-white px-10 py-4 rounded-2xl font-black hover:bg-slate-800 transition shadow-xl shadow-slate-200">
+                      Assinar Digitalmente
+                    </button>
+                    <button className="bg-white border border-slate-200 text-slate-500 px-10 py-4 rounded-2xl font-black hover:bg-slate-50 transition">
+                      Submeter para Revisão
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+// --- SUB-COMPONENTES AUXILIARES ---
+
+const SectionHeader = ({ title, icon }) => (
+  <div className="flex items-center gap-4 mb-2">
+    <div className="p-3 bg-white rounded-2xl shadow-sm">{icon}</div>
+    <h2 className="text-3xl font-black text-slate-900 tracking-tight">{title}</h2>
+  </div>
+);
+
+const ELCCard = ({ label, score }) => (
+  <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+    <p className="text-[10px] font-black uppercase text-slate-400 mb-2">{label}</p>
+    <div className="flex items-center justify-between">
+      <span className="text-xs font-bold text-slate-700">{score}</span>
+      <div className={`w-2 h-2 rounded-full ${score === 'Forte' ? 'bg-green-500' : 'bg-amber-500'}`}></div>
+    </div>
+  </div>
+);
+
+const AuditRow = ({ id, risk, tod, toe }) => (
+  <tr className="hover:bg-slate-50 transition group">
+    <td className="py-5 font-black text-xs text-slate-400 group-hover:text-amber-600">{id}</td>
+    <td className="py-5 font-bold text-xs text-slate-700">{risk}</td>
+    <td className="py-5">
+      <span className="text-[10px] font-black uppercase text-green-600 bg-green-50 px-3 py-1 rounded-full">{tod}</span>
+    </td>
+    <td className="py-5">
+      <span className={`text-[10px] font-black uppercase px-3 py-1 rounded-full ${toe === 'Efetivo' ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50'}`}>{toe}</span>
+    </td>
+  </tr>
+);
+
+const ITCheckCard = ({ title, desc }) => (
+  <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-indigo-500 transition-all">
+    <h5 className="text-xs font-black text-slate-900 mb-2 uppercase tracking-tight">{title}</h5>
+    <p className="text-[11px] text-slate-500 leading-relaxed mb-4">{desc}</p>
+    <div className="flex gap-2">
+      <button className="px-3 py-1.5 bg-white text-[10px] font-black uppercase text-indigo-600 rounded-lg border border-slate-200">Testar</button>
+      <button className="px-3 py-1.5 bg-white text-[10px] font-black uppercase text-slate-400 rounded-lg border border-slate-200">N/A</button>
+    </div>
+  </div>
+);
+
+const CriteriaInput = ({ label, desc }) => (
+  <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+    <div className="flex items-center gap-2 mb-2">
+      <UserCheck className="w-4 h-4 text-emerald-500" />
+      <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{label}</span>
+    </div>
+    <p className="text-xs font-bold text-slate-900 mb-4">{desc}</p>
+    <div className="flex items-center gap-2">
+      <input type="checkbox" className="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500" defaultChecked />
+      <span className="text-[10px] font-bold text-slate-500">Incluir no Script</span>
+    </div>
+  </div>
+);
+
+export default App;
