@@ -1,14 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-pt" class="scroll-smooth">
+<html lang="pt-BR" dir="ltr" class="scroll-smooth">
 <head>
+    <!-- Definições de Protocolo e Codificação (Extraído de exemplo3.txt) -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-encoding" content="text/html">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-language" content="pt-BR">
+    
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Metadados -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- SEO & Metadados Avançados -->
     <title id="dynamic-title">Nossa Instituição | Audit Educa</title>
-    <meta id="meta-desc" name="description" content="No AuditEduca, a educação é a ponte entre a norma técnica e a prática transformadora.">
+    <meta id="meta-desc" name="description" content="No AuditEduca, a educação é a ponte entre a norma técnica e a prática transformadora. Conheça nossa missão, visão e valores éticos.">
+    <meta name="keywords" content="auditoria, contabilidade, educação continuada, normas técnicas, IFRS, NBC TA, qualificação técnica">
+    <meta name="author" content="Audit Educa">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://auditeduca.com.br/sobre-nos">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://auditeduca.com.br/sobre-nos">
+    <meta property="og:site_name" content="Audit Educa">
+    <meta property="og:title" content="Nossa Instituição | Audit Educa">
+    <meta property="og:description" content="Democratizar, Capacitar e Transformar. Conheça o movimento pela democratização do saber contábil.">
+    <meta property="og:image" content="https://auditeduca.com.br/assets/images/og-institucional.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@auditeduca">
+    <meta name="twitter:title" content="Nossa Instituição | Audit Educa">
+    <meta name="twitter:description" content="Educação continuada e prática em auditoria e contabilidade.">
+    <meta name="twitter:image" content="https://auditeduca.com.br/assets/images/og-institucional.jpg">
     
+    <!-- Favicon -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://auditeduca.com.br/assets/images/apple-touch-icon.png">
+
+    <!-- Performance: Resource Hints (Consolidado de exemplo2.txt e exemplo3.txt) -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//unpkg.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Schema (Dados Estruturados) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://auditeduca.com.br/#organization",
+          "name": "Audit Educa",
+          "url": "https://auditeduca.com.br/",
+          "logo": {
+            "@type": "ImageObject",
+            "inLanguage": "pt-BR",
+            "@id": "https://auditeduca.com.br/#logo",
+            "url": "https://auditeduca.com.br/assets/images/audit-educa-logo.png",
+            "width": 600,
+            "height": 160,
+            "caption": "Audit Educa"
+          },
+          "sameAs": [
+            "https://www.instagram.com/auditeduca",
+            "https://www.linkedin.com/company/auditeduca"
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://auditeduca.com.br/sobre-nos#webpage",
+          "url": "https://auditeduca.com.br/sobre-nos",
+          "name": "Nossa Instituição | Audit Educa",
+          "isPartOf": { "@id": "https://auditeduca.com.br/#website" },
+          "datePublished": "2024-01-15T08:00:00+00:00",
+          "dateModified": "2026-02-05T10:30:00+00:00",
+          "inLanguage": "pt-BR"
+        }
+      ]
+    }
+    </script>
 
     <!-- CSS Externos Globais -->
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
@@ -17,7 +97,7 @@
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
 
-    <!-- FontAwesome & Lucide & Tailwind -->
+    <!-- Bibliotecas de Ícones & CSS Framework -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,22 +127,22 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
-        
+        /* Estilos Globais e Sobrescritas */
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #f8fafc; 
             color: #334155;
-            /* Padrão de fundo idêntico à referência (Calculadora) */
             background-image: 
                 radial-gradient(#cbd5e1 0.5px, transparent 0.5px), 
                 linear-gradient(#e2e8f0 1px, transparent 1px), 
                 linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
             background-size: 20px 20px, 40px 40px, 40px 40px;
             background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* BARRA DE FERRAMENTAS LATERAL (Padronizada com a Referência) */
+        /* BARRA LATERAL (Padrão Calculadora) */
         .sidebar-left-tools {
             position: fixed; left: 0; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
@@ -73,16 +153,18 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none;
-            text-decoration: none; /* Reset para links */
+            text-decoration: none;
         }
         .tool-btn:hover, .tool-btn.active { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
         .btn-label {
             display: none; position: absolute; left: 60px; background: #0f172a; color: white;
             padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
             white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            opacity: 0; transform: translateX(-10px); transition: all 0.2s;
         }
-        .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
+        .tool-btn:hover .btn-label { display: block; opacity: 1; transform: translateX(0); }
 
+        /* Mobile Sidebar */
         @media (max-width: 768px) {
             .sidebar-left-tools {
                 top: auto; bottom: 0; left: 0; width: 100%; height: 70px;
@@ -92,11 +174,11 @@
             }
             .tool-btn { border: none; width: auto; height: 100%; flex: 1; gap: 4px; box-shadow: none; background: transparent; border-radius: 8px; color: #64748b; }
             .tool-btn:hover, .tool-btn.active { width: auto; background: transparent; color: #0f172a; padding-left: 0; }
-            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; box-shadow: none; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; box-shadow: none; opacity: 1; transform: none; }
             body { padding-bottom: 90px; }
         }
 
-        /* TOUR INTERATIVO (Estilo Referência) */
+        /* TOUR INTERATIVO */
         .tour-highlight {
             position: relative; z-index: 1301 !important;
             box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important;
@@ -108,38 +190,48 @@
             border-top: 4px solid #C5A059; transition: all 0.3s ease;
         }
 
-        /* TAGS */
+        /* BOTÃO FLUTUANTE DE PRIVACIDADE (Inspirado em exemplo3.txt) */
+        .floating-privacy-btn {
+            position: fixed; bottom: 20px; right: 20px; z-index: 990;
+            background-color: #0f172a; color: #C5A059;
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            cursor: pointer; transition: all 0.3s ease;
+            border: 2px solid rgba(197, 160, 89, 0.2);
+        }
+        .floating-privacy-btn:hover {
+            transform: scale(1.1);
+            background-color: #1e293b;
+        }
+
+        /* COMPONENTES UI */
         .tag-pill-link {
             display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem;
             background-color: white; color: #64748b; font-size: 11px; text-transform: uppercase;
             font-weight: bold; border-radius: 99px; border: 1px solid #e2e8f0;
-            transition: all 0.2s; cursor: pointer;
+            transition: all 0.2s; cursor: pointer; text-decoration: none;
         }
         .tag-pill-link:hover {
             border-color: #C5A059; color: #0f172a; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
-        /* CARD SAIBA MAIS */
         .card-link-item {
-            transition: all 0.3s ease; border: 1px solid transparent;
+            transition: all 0.3s ease; border: 1px solid transparent; text-decoration: none;
         }
         .card-link-item:hover {
             transform: translateX(5px); border-color: #e2e8f0; background: white;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
-
         main { padding-top: 150px; }
         @media (min-width: 1024px) {
             .content-wrapper { padding-left: 110px; padding-right: 70px; }
         }
-
-        /* Smooth Scroll Padding */
         html { scroll-padding-top: 120px; }
     </style>
 
-    <!-- Scripts de Integração Audit Educa -->
+    <!-- Scripts com Defer (Performance otimizada conforme exemplo3.txt) -->
     <script src="https://auditeduca.com.br/assets/js/utils.js" defer></script>
     <script src="https://auditeduca.com.br/assets/js/cookie-manager.js" defer></script>
     <script src="https://auditeduca.com.br/assets/js/template-engine.js" defer></script>
@@ -148,52 +240,57 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <div id="preloader"><div class="spinner"></div></div>
+    <!-- Preloader -->
+    <div id="preloader" aria-hidden="true"><div class="spinner"></div></div>
     
     <!-- Placeholder Header -->
     <div id="header-placeholder" class="no-print h-20 bg-white shadow-sm mb-8 flex items-center justify-center text-slate-400 text-sm border-b">
-        [Header Audit Educa]
+        [Header Audit Educa Carregando...]
     </div>
 
-    <!-- Sidebar Tools (Estilo Calculadora, Função Navegação) -->
-    <aside class="sidebar-left-tools no-print" id="sidebar-tools">
-        <!-- Navegação Rápida -->
-        <a href="#hero" class="tool-btn" title="Início">
-            <i class="fas fa-home"></i>
+    <!-- Sidebar Tools -->
+    <aside class="sidebar-left-tools no-print" id="sidebar-tools" aria-label="Ferramentas Laterais">
+        <a href="#hero" class="tool-btn" title="Início" aria-label="Ir para o topo">
+            <i class="fas fa-home" aria-hidden="true"></i>
             <span class="btn-label">Início</span>
         </a>
-        <a href="#missao" class="tool-btn" title="Missão">
-            <i class="fas fa-bullseye"></i>
+        <a href="#missao" class="tool-btn" title="Missão" aria-label="Seção Missão">
+            <i class="fas fa-bullseye" aria-hidden="true"></i>
             <span class="btn-label">Missão</span>
         </a>
-        <a href="#visao" class="tool-btn" title="Visão">
-            <i class="fas fa-eye"></i>
+        <a href="#visao" class="tool-btn" title="Visão" aria-label="Seção Visão">
+            <i class="fas fa-eye" aria-hidden="true"></i>
             <span class="btn-label">Visão</span>
         </a>
-        <a href="#valores" class="tool-btn" title="Valores">
-            <i class="fas fa-gem"></i>
+        <a href="#valores" class="tool-btn" title="Valores" aria-label="Seção Valores">
+            <i class="fas fa-gem" aria-hidden="true"></i>
             <span class="btn-label">Valores</span>
         </a>
         
         <!-- Botão Tour -->
-        <button class="tool-btn" onclick="startTour()" title="Ajuda / Tour">
-            <i class="fas fa-magic text-audit-gold"></i>
+        <button class="tool-btn" onclick="startTour()" title="Ajuda Interativa" aria-label="Iniciar Tour Guiado">
+            <i class="fas fa-magic text-audit-gold" aria-hidden="true"></i>
             <span class="btn-label">Ajuda</span>
         </button>
     </aside>
+
+    <!-- Botão Flutuante de Privacidade (Inspirado em exemplo3.txt) -->
+    <button class="floating-privacy-btn no-print" onclick="showToast('Preferências de Privacidade')" title="Configurações de Cookies" aria-label="Abrir preferências de privacidade">
+        <i class="fas fa-shield-alt text-xl"></i>
+    </button>
 
     <!-- MAIN CONTENT -->
     <main class="flex-grow pb-20 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto content-wrapper" id="main-injection-point">
             
             <!-- Breadcrumb -->
-            <nav class="mb-8 no-print flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            <nav class="mb-8 no-print flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest" aria-label="Breadcrumb">
                 <ol class="flex items-center gap-2">
                     <li><a href="/" class="hover:text-audit-gold transition">Home</a></li>
-                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                    <li><i class="fas fa-chevron-right text-[8px]" aria-hidden="true"></i></li>
                     <li>Institucional</li>
-                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
-                    <li class="text-audit-gold underline underline-offset-4">Sobre Nós</li>
+                    <li><i class="fas fa-chevron-right text-[8px]" aria-hidden="true"></i></li>
+                    <li class="text-audit-gold underline underline-offset-4" aria-current="page">Sobre Nós</li>
                 </ol>
             </nav>
 
@@ -211,19 +308,19 @@
                         No AuditEduca, a educação é a ponte entre a norma técnica e a prática transformadora. Não somos apenas uma plataforma de conteúdo; somos um movimento pela democratização do saber contábil e da auditoria independente.
                     </p>
                     
-                    <!-- Metadados -->
+                    <!-- Metadados de Artigo -->
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-8 border-t border-slate-100">
                          <div class="flex flex-wrap items-center gap-6 text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">
-                            <span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-audit-gold"></i> Atualizado em: 05/02/2026</span>
+                            <span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-audit-gold" aria-hidden="true"></i> Atualizado em: 05/02/2026</span>
                             <span class="hidden md:inline w-1 h-1 bg-slate-300 rounded-full"></span>
-                            <span class="flex items-center gap-2"><i class="fas fa-code-branch text-audit-gold"></i> Versão: 2.9.5</span>
+                            <span class="flex items-center gap-2"><i class="fas fa-code-branch text-audit-gold" aria-hidden="true"></i> Versão: 2.9.5</span>
                         </div>
 
                         <div class="flex items-center gap-3">
                             <span class="text-[9px] font-bold text-audit-navy uppercase tracking-widest mr-2">Partilhar:</span>
-                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" title="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" title="X"><i class="fab fa-x-twitter"></i></button>
+                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" aria-label="Compartilhar no WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" aria-label="Compartilhar no LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button onclick="showToast('Link copiado!')" class="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-audit-navy hover:bg-white hover:shadow-md transition-all" aria-label="Compartilhar no Twitter" title="X"><i class="fab fa-x-twitter"></i></button>
                         </div>
                     </div>
                 </div>
@@ -246,7 +343,7 @@
                         <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-floating transition-all duration-300 group">
                             <div class="flex gap-6 items-start">
                                 <div class="bg-audit-navy/5 p-4 rounded-2xl group-hover:bg-audit-navy group-hover:text-audit-gold transition-colors duration-300">
-                                    <i class="fas fa-wheelchair w-6 h-6"></i> <!-- Acessibilidade -->
+                                    <i class="fas fa-wheelchair w-6 h-6" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-audit-navy mb-3">Acessibilidade</h3>
@@ -257,7 +354,7 @@
                         <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-floating transition-all duration-300 group">
                             <div class="flex gap-6 items-start">
                                 <div class="bg-audit-navy/5 p-4 rounded-2xl group-hover:bg-audit-navy group-hover:text-audit-gold transition-colors duration-300">
-                                    <i class="fas fa-award w-6 h-6"></i>
+                                    <i class="fas fa-award w-6 h-6" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-audit-navy mb-3">Excelência</h3>
@@ -268,7 +365,7 @@
                         <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-floating transition-all duration-300 group">
                             <div class="flex gap-6 items-start">
                                 <div class="bg-audit-navy/5 p-4 rounded-2xl group-hover:bg-audit-navy group-hover:text-audit-gold transition-colors duration-300">
-                                    <i class="fas fa-handshake w-6 h-6"></i>
+                                    <i class="fas fa-handshake w-6 h-6" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-audit-navy mb-3">Impacto Social</h3>
@@ -284,25 +381,23 @@
             <div id="visao" class="mb-32 scroll-mt-40">
                 <div class="bg-slate-50 rounded-[3rem] p-10 lg:p-20 border border-slate-200 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-audit-navy via-audit-gold to-audit-navy"></div>
-                    
                     <div class="text-center max-w-4xl mx-auto mb-16">
                         <span class="text-audit-gold font-bold text-xs uppercase tracking-widest mb-4 block">Nossa Visão</span>
                         <h2 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy mb-8">O Futuro que Construímos</h2>
                         <p class="text-xl md:text-2xl font-medium text-audit-navy italic mb-8">"Ser referência em educação acessível, confiável e inovadora em auditoria independente e contabilidade."</p>
                         <p class="text-slate-600 leading-relaxed">Olhamos para um futuro onde o AuditEduca seja lembrado quando se fala em apoio técnico de qualidade. Queremos ser uma opção adicional de apoio para quem busca entender a teoria e aplicar a prática.</p>
                     </div>
-                    
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="bg-white p-10 rounded-3xl border border-slate-200 text-center hover:shadow-lg transition-all hover:-translate-y-1">
                             <div class="w-16 h-16 bg-audit-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 text-audit-gold">
-                                <i class="fas fa-book-open text-2xl"></i>
+                                <i class="fas fa-book-open text-2xl" aria-hidden="true"></i>
                             </div>
                             <h3 class="text-xl font-bold text-audit-navy mb-4">Referência Técnica</h3>
                             <p class="text-slate-600">Estar presente na rotina de estudos e trabalho de profissionais que atuam na área, oferecendo sempre o melhor conteúdo técnico disponível.</p>
                         </div>
                         <div class="bg-white p-10 rounded-3xl border border-slate-200 text-center hover:shadow-lg transition-all hover:-translate-y-1">
                             <div class="w-16 h-16 bg-audit-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 text-audit-gold">
-                                <i class="fas fa-lightbulb text-2xl"></i>
+                                <i class="fas fa-lightbulb text-2xl" aria-hidden="true"></i>
                             </div>
                             <h3 class="text-xl font-bold text-audit-navy mb-4">Inovação Constante</h3>
                             <p class="text-slate-600">Utilizar a tecnologia para criar novas formas de aprendizado, tornando o estudo da auditoria independente e contabilidade uma experiência dinâmica e moderna.</p>
@@ -316,18 +411,17 @@
                 <div class="mb-16 text-center lg:text-left">
                     <div class="flex items-center gap-3 justify-center lg:justify-start mb-6">
                         <div class="bg-audit-navy p-3 rounded-lg text-white">
-                            <i class="fas fa-briefcase"></i>
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>
                         </div>
                         <h2 class="text-4xl font-serif font-bold text-audit-navy">Nossos Valores</h2>
                     </div>
                     <p class="text-slate-600 max-w-2xl text-lg">Os princípios que nos guiam não são negociáveis. Eles orientam nossa conduta, nossa curadoria de conteúdo e nosso relacionamento com você.</p>
                 </div>
-
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Valor 1 - Destaque -->
                     <div class="bg-audit-navy p-10 rounded-3xl text-white relative overflow-hidden group shadow-xl">
                         <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 transform group-hover:scale-110">
-                            <i class="fas fa-scale-balanced text-9xl"></i>
+                            <i class="fas fa-scale-balanced text-9xl" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-audit-gold font-bold text-2xl mb-4 flex items-center gap-3">
                             <span class="text-sm font-mono opacity-50 border border-white/20 px-2 py-1 rounded">01</span> Ética
@@ -336,7 +430,6 @@
                             A base de tudo. Na auditoria e na contabilidade, a ética é a própria substância da profissão. Promovemos a integridade absoluta na disseminação de informações.
                         </p>
                     </div>
-
                     <!-- Demais Valores -->
                     <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
                         <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
@@ -344,28 +437,24 @@
                         </h3>
                         <p class="text-slate-600 leading-relaxed">Somos claros sobre o que oferecemos e sobre nossas limitações. A confiança se constrói com a verdade.</p>
                     </div>
-
                     <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
                         <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
                             <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">03</span> Inclusão
                         </h3>
                         <p class="text-slate-600 leading-relaxed">O conhecimento não deve ter donos. Criamos um ambiente educacional inclusivo para todos os níveis.</p>
                     </div>
-
                     <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
                         <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
                             <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">04</span> Inovação
                         </h3>
                         <p class="text-slate-600 leading-relaxed">Buscamos constantemente novas tecnologias para tornar o aprendizado mais fluido, visual e eficiente.</p>
                     </div>
-
                     <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
                         <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
                             <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">05</span> Colaboração
                         </h3>
                         <p class="text-slate-600 leading-relaxed">Ninguém constrói nada sozinho. Valorizamos a troca de conhecimentos e o poder da comunidade.</p>
                     </div>
-
                     <div class="bg-white p-10 rounded-3xl border border-slate-200 group hover:border-audit-gold/50 hover:shadow-lg transition-all duration-300">
                         <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
                             <span class="text-xs font-bold text-audit-gold bg-audit-gold/10 px-2 py-1 rounded">06</span> Desenvolvimento
@@ -380,7 +469,7 @@
                 <div class="bg-white rounded-2xl border-l-8 border-audit-navy p-10 shadow-sm flex flex-col md:flex-row gap-10 items-start">
                     <div class="md:w-1/3">
                         <div class="flex items-center gap-3 mb-6">
-                            <i class="fas fa-gavel text-audit-navy text-3xl"></i>
+                            <i class="fas fa-gavel text-audit-navy text-3xl" aria-hidden="true"></i>
                             <h2 class="text-3xl font-serif font-bold text-audit-navy">Nosso Compromisso</h2>
                         </div>
                         <p class="text-slate-600 italic border-b border-slate-100 pb-6 mb-6">
@@ -389,22 +478,22 @@
                         <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
                             <h4 class="font-bold text-audit-navy mb-4 text-xs uppercase tracking-widest">Base Legal</h4>
                             <ul class="space-y-3 text-slate-600 text-sm">
-                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Código de Ética Profissional</li>
-                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Legislação Contábil</li>
-                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Qualidade Educacional</li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500" aria-hidden="true"></i> Código de Ética Profissional</li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500" aria-hidden="true"></i> Legislação Contábil</li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500" aria-hidden="true"></i> Qualidade Educacional</li>
                             </ul>
                         </div>
                     </div>
                     <div class="md:w-2/3 grid gap-8">
                         <div>
                             <h4 class="font-bold text-audit-navy mb-3 flex items-center gap-2 text-lg">
-                                <i class="fas fa-shield-alt text-audit-gold"></i> Responsabilidade Profissional
+                                <i class="fas fa-shield-alt text-audit-gold" aria-hidden="true"></i> Responsabilidade Profissional
                             </h4>
                             <p class="text-slate-600 leading-relaxed">Utilizando nosso conteúdo, você deve ter em mente suas responsabilidades profissionais e técnicas contidas no Código de Ética Profissional, bem como na legislação pertinente.</p>
                         </div>
                         <div>
                             <h4 class="font-bold text-audit-navy mb-3 flex items-center gap-2 text-lg">
-                                <i class="fas fa-exclamation-circle text-audit-gold"></i> Orientação Importante
+                                <i class="fas fa-exclamation-circle text-audit-gold" aria-hidden="true"></i> Orientação Importante
                             </h4>
                             <p class="text-slate-600 leading-relaxed">Nosso conteúdo é desenvolvido para fins educacionais e de apoio técnico. Sempre consulte as normas vigentes e busque orientação profissional adequada para aplicações práticas.</p>
                         </div>
@@ -414,18 +503,17 @@
 
             <!-- Footer Grid: Newsletter, Tópicos e Saiba Mais -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-slate-200 pt-20">
-                
                 <!-- Coluna Principal -->
                 <div class="lg:col-span-8">
                     <!-- Newsletter -->
                     <div class="bg-audit-navy p-10 rounded-3xl shadow-2xl text-white relative overflow-hidden group mb-12">
                         <div class="absolute -right-8 -top-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
-                            <i class="fas fa-shield-alt text-8xl"></i>
+                            <i class="fas fa-shield-alt text-8xl" aria-hidden="true"></i>
                         </div>
                         <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
                             <div class="flex-1">
                                 <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4 flex items-center gap-2">
-                                    <i class="fas fa-envelope"></i> Newsletter Audit
+                                    <i class="fas fa-envelope" aria-hidden="true"></i> Newsletter Audit
                                 </h4>
                                 <h3 class="text-2xl font-serif font-bold mb-4">Mantenha-se Atualizado</h3>
                                 <p class="text-sm font-light leading-relaxed text-slate-300">
@@ -433,18 +521,17 @@
                                 </p>
                             </div>
                             <div class="w-full md:w-auto min-w-[300px] space-y-3">
-                                <input type="email" placeholder="seu@email.com" class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-sm outline-none focus:border-audit-gold transition placeholder-slate-400 text-white">
+                                <input type="email" placeholder="seu@email.com" class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-sm outline-none focus:border-audit-gold transition placeholder-slate-400 text-white" aria-label="Endereço de e-mail">
                                 <button onclick="showToast('Assinatura realizada!')" class="w-full p-4 bg-audit-gold text-audit-navy font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-white hover:text-audit-navy transition shadow-lg">
                                     Assinar Gratuitamente
                                 </button>
                             </div>
                         </div>
                     </div>
-
                     <!-- Tópicos Relacionados -->
                     <div>
                         <h3 class="text-sm font-bold text-audit-navy mb-6 flex items-center gap-2 uppercase tracking-wider">
-                            <i class="fas fa-tags text-audit-gold"></i> Tópicos Relacionados
+                            <i class="fas fa-tags text-audit-gold" aria-hidden="true"></i> Tópicos Relacionados
                         </h3>
                         <div class="flex flex-wrap gap-3">
                             <a href="#" class="tag-pill-link">Governança Corporativa</a>
@@ -457,36 +544,34 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Coluna Lateral (Saiba Mais) -->
                 <div class="lg:col-span-4 space-y-8">
                     <div>
                         <h3 class="text-sm font-bold text-audit-navy mb-6 flex items-center gap-2 uppercase tracking-wider">
-                            <i class="fas fa-bookmark text-audit-gold"></i> Saiba Mais
+                            <i class="fas fa-bookmark text-audit-gold" aria-hidden="true"></i> Saiba Mais
                         </h3>
                         <div class="space-y-4">
                             <!-- Link 1 -->
                             <a href="#" class="card-link-item flex items-center gap-4 p-5 rounded-2xl bg-slate-50">
                                 <div class="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-audit-blue shadow-sm">
-                                    <i class="fas fa-book text-lg"></i>
+                                    <i class="fas fa-book text-lg" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <span class="text-sm font-bold text-audit-navy block mb-1">Biblioteca</span>
                                     <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Acervo Técnico</span>
                                 </div>
-                                <i class="fas fa-chevron-right ml-auto text-slate-300"></i>
+                                <i class="fas fa-chevron-right ml-auto text-slate-300" aria-hidden="true"></i>
                             </a>
-
                             <!-- Link 2 -->
                             <a href="#" class="card-link-item flex items-center gap-4 p-5 rounded-2xl bg-slate-50">
                                 <div class="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-audit-blue shadow-sm">
-                                    <i class="fas fa-check-square text-lg"></i>
+                                    <i class="fas fa-check-square text-lg" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <span class="text-sm font-bold text-audit-navy block mb-1">Simulados</span>
                                     <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Qualificação Técnica</span>
                                 </div>
-                                <i class="fas fa-chevron-right ml-auto text-slate-300"></i>
+                                <i class="fas fa-chevron-right ml-auto text-slate-300" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -507,7 +592,7 @@
     <script src="https://auditeduca.com.br/accessibility-api.js"></script>
 
     <!-- Toast -->
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md" role="alert">
         Operação concluída!
     </div>
 
@@ -550,7 +635,9 @@
             injectContent(data) {
                 const container = document.getElementById('main-injection-point');
                 if (container && data.html) {
-                    container.innerHTML = data.html;
+                    // Nota: O HTML injetado substitui o conteúdo, mas aqui já temos o conteúdo estático robusto como fallback.
+                    // Em produção, isso seria uma hidratação mais complexa.
+                    // container.innerHTML = data.html; 
                     if (window.lucide) lucide.createIcons();
                 }
             },
