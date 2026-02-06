@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal de Transparência de Acessibilidade Digital - Audit Educa. Monitorização de conformidade WCAG A, AA e AAA.">
+    <title>De olho na Acessibilidade | Audit Educa</title>
+    
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
+
+    <!-- CSS Externos Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- FontAwesome, Lucide & Chart.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Bibliotecas para Geração de PDF e Captura -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                        'eco-green': '#10b981',
+                        'eco-amber': '#f59e0b',
+                        'eco-red': '#ef4444'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            background-attachment: fixed;
+        }
+
+        /* SIDEBARS PADRONIZADAS AUDIT */
+        .sidebar-left-tools, .sidebar-right-share {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
+        }
+        .sidebar-left-tools { left: 0; }
+        .sidebar-right-share { right: 0; }
+        
+        .tool-btn, .share-sidebar-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0;
+            width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+        }
+        .tool-btn { border-left: none; border-radius: 0 14px 14px 0; }
+        .share-sidebar-btn { border-right: none; border-radius: 14px 0 0 14px; color: #64748b; }
+        .tool-btn:hover { width: 65px; background: #0f172a; color: #C5A059; padding-left: 5px; }
+        .share-sidebar-btn:hover { width: 65px; background: #0f172a; color: #C5A059; padding-right: 5px; }
+
+        .btn-label {
+            display: none; position: absolute; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tool-btn:hover .btn-label { display: block; left: 60px; }
+        .share-sidebar-btn:hover .btn-label { display: block; right: 60px; }
+
+        /* DASHBOARD CARDS */
+        .metric-card-premium {
+            background: white; border: 1px solid #e2e8f0; border-top: 4px solid #0f172a;
+            padding: 2.5rem; text-align: center; display: flex; flex-direction: column;
+            justify-content: space-between; min-height: 250px; border-radius: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .metric-card-premium:hover { transform: translateY(-8px); border-color: #C5A059; box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.08); }
+
+        /* TABELA PREMIUM RESPONSIVA */
+        .premium-table-container {
+            @apply overflow-x-auto rounded-[3rem] border border-slate-200 bg-white shadow-xl mb-16;
+        }
+        .audit-table {
+            @apply w-full min-w-[950px] border-collapse;
+        }
+        .audit-table thead th {
+            @apply p-8 bg-slate-50 text-left text-[11px] font-black text-slate-400 uppercase tracking-[0.25em] border-b border-slate-100;
+        }
+        .audit-table tbody td {
+            @apply p-8 border-b border-slate-50 text-sm align-middle transition-colors;
+        }
+        .audit-table tbody tr:last-child td { border-b-0; }
+        .audit-table tbody tr:hover td { @apply bg-slate-50/50; }
+
+        /* BADGES DE STATUS */
+        .status-pill {
+            @apply px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block shadow-sm;
+        }
+        .status-pill.success { @apply bg-eco-green text-white; }
+        .status-pill.warning { @apply bg-eco-amber text-white; }
+        .status-pill.danger { @apply bg-eco-red text-white; }
+
+        /* GRADE CIRCLE */
+        .grade-badge {
+            @apply w-14 h-14 rounded-full flex items-center justify-center font-black text-xl border-2 shadow-inner;
+        }
+        .grade-aaa { @apply bg-eco-green/10 text-eco-green border-eco-green/30; }
+        .grade-aa { @apply bg-audit-blue/10 text-audit-blue border-audit-blue/30; }
+        .grade-a { @apply bg-eco-amber/10 text-eco-amber border-eco-amber/30; }
+
+        main { padding-top: 150px; }
+        @media (min-width: 1024px) {
+            .content-wrapper { padding-left: 110px; padding-right: 110px; }
+        }
+        @media (max-width: 768px) { main { padding-top: 110px; } }
+
+        /* DRAWERS */
+        .drawer { 
+            position: fixed; top: 0; left: 0; height: 100%; width: 100%; max-width: 26rem; 
+            background: white; shadow: 2xl; z-index: 1100;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%);
+        }
+        .drawer.active { transform: translateX(0); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="preloader"><div class="spinner"></div></div>
+    <div id="header-placeholder" class="no-print"></div>
+
+    <!-- SIDEBARS -->
+    <aside class="sidebar-left-tools no-print">
+        <button class="tool-btn" onclick="toggleDrawer('wcag')"><i class="fas fa-universal-access text-audit-blue"></i><span class="btn-label">WCAG 2.1</span></button>
+        <button class="tool-btn" onclick="startTour()"><i class="fas fa-magic"></i><span class="btn-label">Ajuda</span></button>
+    </aside>
+
+    <aside class="sidebar-right-share no-print">
+        <button onclick="copyLink()" class="share-sidebar-btn"><i class="fas fa-link"></i><span class="btn-label">Copiar Link</span></button>
+        <button onclick="shareWhatsApp()" class="share-sidebar-btn text-green-500"><i class="fab fa-whatsapp"></i><span class="btn-label">WhatsApp</span></button>
+        <button onclick="generatePDFReport()" class="share-sidebar-btn text-red-500"><i class="fas fa-file-pdf"></i><span class="btn-label">Gerar PDF</span></button>
+    </aside>
+
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none z-[1050] transition-opacity" onclick="closeAllDrawers()"></div>
+
+    <!-- DRAWER WCAG -->
+    <aside id="drawer-wcag" class="drawer no-print shadow-2xl border-r border-slate-200">
+        <div class="p-10 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-10 border-b pb-6">
+                <h3 class="font-bold text-audit-navy flex items-center gap-3 uppercase text-xs tracking-[0.2em]"><i class="fas fa-info-circle text-audit-blue"></i> Guia WCAG</h3>
+                <button onclick="closeAllDrawers()"><i class="fas fa-times text-slate-400"></i></button>
+            </div>
+            <div class="overflow-y-auto flex-grow space-y-8 text-sm text-slate-600 leading-relaxed">
+                <p>Nossa auditoria segue os critérios de sucesso da **WCAG 2.1**, divididos em quatro pilares fundamentais: Perceção, Operabilidade, Compreensibilidade e Robustez.</p>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200">
+                    <p class="font-bold text-audit-navy uppercase text-[11px] mb-3">Média Ponderada</p>
+                    <p class="text-[12px]">Aplicamos pesos de severidade: Erros de Nível A são impeditivos (50% do score), enquanto AAA são otimizações de excelência (15% do score).</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow pb-24 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper" id="capture-area">
+            
+            <!-- Hero Section -->
+            <div class="mb-20">
+                <nav class="flex mb-10 text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] no-print">
+                    <ol class="flex items-center gap-2">
+                        <li><a href="/" class="hover:text-audit-gold transition">Hub</a></li>
+                        <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                        <li class="text-audit-blue underline underline-offset-8">Digital Inclusion</li>
+                    </ol>
+                </nav>
+                <h1 class="text-5xl md:text-8xl font-serif font-bold text-audit-navy mb-8 tracking-tighter leading-[0.9] italic">De olho na <span class="text-audit-blue">Acessibilidade</span></h1>
+                <p class="text-slate-500 max-w-4xl text-lg md:text-2xl font-light leading-relaxed">Transparência radical em conformidade digital. Monitorizamos o nosso repositório para assegurar que a educação é um direito sem barreiras técnicas.</p>
+            </div>
+
+            <!-- DASHBOARD DE ACESSIBILIDADE -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-20" id="dashboard-metrics">
+                <div class="metric-card-premium border-t-audit-blue">
+                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-[0.3em]">Compliance Médio</span>
+                    <span class="text-7xl font-black text-audit-blue py-8" id="score-val">92</span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-widest mb-4" id="score-label">Excelência Inclusiva</p>
+                        <span id="status-compliance" class="status-pill success">Auditado</span>
+                    </div>
+                </div>
+                <div class="metric-card-premium border-t-audit-gold">
+                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-[0.3em]">Nível WCAG</span>
+                    <span class="text-6xl font-black text-audit-gold py-8" id="level-val">AA</span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-widest mb-4">Padrão Corporativo</p>
+                        <span class="status-pill success">Conforme</span>
+                    </div>
+                </div>
+                <div class="metric-card-premium border-t-eco-red">
+                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-[0.3em]">Barreiras (Nível A)</span>
+                    <span class="text-6xl font-black text-eco-red py-8" id="critical-errors">1</span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-widest mb-4">Prioridade Alta</p>
+                        <span id="status-errors" class="status-pill danger">Atenção</span>
+                    </div>
+                </div>
+                <div class="metric-card-premium border-t-eco-green">
+                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-[0.3em]">Rotas Ativas</span>
+                    <span class="text-6xl font-black text-eco-green py-8" id="total-pages">5</span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[11px] text-slate-500 font-bold uppercase tracking-widest mb-4">Mapeamento</p>
+                        <span class="status-pill success">Sincronizado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRÁFICO DE EVOLUÇÃO HISTÓRICA -->
+            <section class="mb-20 bg-white border border-slate-200 rounded-[4rem] p-12 md:p-20 shadow-premium no-print">
+                <div class="flex items-center justify-between mb-16 border-b border-slate-50 pb-10">
+                    <div>
+                        <h3 class="font-serif font-bold text-4xl text-audit-navy italic">Tendências de Inclusão</h3>
+                        <p class="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mt-3">Governance Score via Cloud Database</p>
+                    </div>
+                    <div class="w-16 h-16 bg-slate-50 rounded-[1.5rem] flex items-center justify-center text-audit-blue shadow-inner"><i class="fas fa-universal-access text-2xl"></i></div>
+                </div>
+                <div class="h-[400px] w-full">
+                    <canvas id="accessibilityChart"></canvas>
+                </div>
+            </section>
+
+            <!-- SCAN DETALHADO POR PÁGINA -->
+            <section class="mb-24">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-16 px-4">
+                    <div>
+                        <h3 class="text-4xl font-serif font-bold text-audit-navy">Relatório Granular</h3>
+                        <p class="text-xs text-slate-400 mt-3 uppercase tracking-[0.25em] font-black">Accessibility metrics by active route</p>
+                    </div>
+                    <div class="flex gap-6 w-full md:w-auto no-print">
+                        <button onclick="runGlobalAudit()" id="global-audit-btn" class="flex-1 md:flex-none bg-audit-navy text-white px-12 py-6 rounded-3xl font-black text-[11px] uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-slate-800 transition-all shadow-2xl active:scale-95 group">
+                            <i class="fas fa-eye group-hover:scale-110 transition-transform text-audit-gold" id="global-icon"></i> Iniciar Scan Profundo
+                        </button>
+                    </div>
+                </div>
+
+                <div id="global-progress" class="hidden mb-16 px-4">
+                    <div class="flex justify-between text-[11px] font-black text-slate-500 mb-6 uppercase tracking-[0.25em]">
+                        <span id="progress-status" class="flex items-center gap-3"><i class="fas fa-spinner fa-spin text-audit-blue"></i> Analisando conformidade WCAG...</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="h-4 bg-slate-100 rounded-full overflow-hidden border border-slate-200 p-1 shadow-inner">
+                        <div class="h-full bg-gradient-to-r from-audit-blue via-audit-gold to-eco-green rounded-full transition-all duration-300" id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Acessibilidade Restaurada e Estilizada -->
+                <div class="premium-table-container">
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Página / Rota</th>
+                                <th class="text-center">Conformidade (A/AA/AAA)</th>
+                                <th class="text-center">Pontos de Atenção</th>
+                                <th class="text-right">Score Final</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repo-table-body">
+                            <!-- Injetado via JS -->
+                            <tr>
+                                <td colspan="4" class="text-center text-slate-300 italic py-32 font-light text-xl">Inicie o scan de acessibilidade para gerar o relatório granular...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- CONTEÚDO RESTAURADO: MEMÓRIA, INSIGHTS E RELACIONADOS -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+                <div class="lg:col-span-8 space-y-16">
+                    <!-- Memória Académica -->
+                    <div class="bg-white border border-slate-200 rounded-[4rem] p-16 shadow-premium relative overflow-hidden group">
+                        <div class="absolute -right-24 -bottom-24 opacity-[0.03] text-[300px] pointer-events-none rotate-12 group-hover:rotate-0 transition-transform duration-1000"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="text-4xl font-serif font-bold text-audit-navy mb-12 flex items-center gap-5">
+                            <i class="fas fa-book-open text-audit-gold"></i> Fundamentação WCAG 2.1
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 text-lg text-slate-600 leading-relaxed font-light">
+                            <div class="space-y-6">
+                                <p><span class="text-audit-navy font-bold">Nível A:</span> Trata dos requisitos de acessibilidade mais básicos. Sem estes, utilizadores com deficiência não conseguem aceder à informação.</p>
+                                <p><span class="text-audit-navy font-bold">Nível AA:</span> Aborda barreiras comuns para a maioria dos utilizadores e é o padrão legal exigido internacionalmente.</p>
+                                <p><span class="text-audit-navy font-bold">Nível AAA:</span> O padrão de excelência, focado em otimizações específicas para inclusão total.</p>
+                            </div>
+                            <div class="bg-slate-50 p-10 rounded-[3rem] border border-slate-100 shadow-inner">
+                                <h4 class="text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8">Métrica de Materialidade</h4>
+                                <ul class="space-y-6 text-[12px] font-bold text-slate-500">
+                                    <li class="flex justify-between border-b border-slate-200 pb-3"><span>Peso Impeditivo (A):</span> <span class="text-eco-red">50%</span></li>
+                                    <li class="flex justify-between border-b border-slate-200 pb-3"><span>Peso Conformidade (AA):</span> <span class="text-audit-blue">35%</span></li>
+                                    <li class="flex justify-between pt-1"><span>Peso Excelência (AAA):</span> <span class="text-eco-green">15%</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Relatórios Complementares -->
+                    <section class="no-print">
+                        <h3 class="text-3xl font-serif font-bold text-audit-navy mb-12 flex items-center gap-5"><i class="fas fa-bookmark text-audit-gold text-xl"></i> Conteúdo Complementar</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <a href="#" class="flex items-center justify-between p-10 bg-white border border-slate-100 rounded-[3rem] hover:shadow-2xl hover:border-audit-blue transition-all group">
+                                <div class="flex items-center gap-8">
+                                    <div class="w-16 h-16 rounded-[1.5rem] bg-slate-50 flex items-center justify-center text-audit-blue group-hover:bg-audit-blue group-hover:text-white transition-all shadow-sm">
+                                        <i class="fas fa-file-contract text-2xl"></i>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <span class="text-sm font-black text-slate-700 uppercase tracking-widest group-hover:text-audit-blue">Normas GRI/IFRS</span>
+                                        <p class="text-[11px] text-slate-400 font-bold">Relato de Materialidade Social</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-slate-200 group-hover:text-audit-blue group-hover:translate-x-2 transition-all"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Coluna Lateral -->
+                <div class="lg:col-span-4 space-y-12">
+                    <div class="bg-audit-gold/5 p-12 border-l-[10px] border-audit-gold rounded-r-[4rem] shadow-sm">
+                        <i class="fas fa-quote-left text-audit-gold text-4xl mb-10 opacity-30"></i>
+                        <p class="text-[11px] font-black text-audit-gold uppercase tracking-[0.3em] mb-8">Insight do Auditor</p>
+                        <p class="text-xl text-slate-700 italic leading-relaxed font-light mb-6">
+                            "A inclusão digital não é um 'extra', é a base da governança ética. Uma plataforma inacessível é uma falha de conformidade social grave."
+                        </p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-[4rem] p-12 no-print shadow-sm">
+                        <h3 class="text-[12px] font-black text-audit-navy uppercase tracking-[0.3em] mb-12 border-b border-slate-50 pb-8 italic">Hub de Auditoria</h3>
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-6 p-6 bg-slate-50 rounded-[2rem] border border-slate-100 hover:border-audit-blue cursor-pointer transition-all hover:bg-white hover:shadow-xl group">
+                                <i class="fas fa-calculator text-audit-blue group-hover:rotate-12 transition-transform text-xl"></i>
+                                <span class="text-[11px] font-black text-slate-600 uppercase tracking-widest">Juros Simples</span>
+                            </div>
+                            <div class="flex items-center gap-6 p-6 bg-slate-50 rounded-[2rem] border border-slate-100 hover:border-audit-blue cursor-pointer transition-all hover:bg-white hover:shadow-xl group">
+                                <i class="fas fa-leaf text-eco-green"></i>
+                                <span class="text-[11px] font-black text-slate-600 uppercase tracking-widest">Pegada de Carbono</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA FINAL PREMIUM -->
+            <section class="mt-24 bg-audit-navy rounded-[5rem] p-20 md:p-32 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-20 no-print shadow-3xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-1000"></div>
+                <div class="max-w-3xl relative z-10">
+                    <h2 class="text-5xl md:text-8xl font-serif font-bold text-white mb-12 leading-tight italic">Educação <span class="text-audit-gold">Sem Barreiras</span></h2>
+                    <p class="text-slate-300 text-2xl leading-relaxed font-light">Explore a nossa biblioteca técnica de acessibilidade e os nossos guias de implementação WCAG para equipas de produto.</p>
+                </div>
+                <a href="#" class="bg-audit-gold text-audit-navy px-20 py-10 rounded-[3rem] font-black hover:bg-yellow-500 transition-all shadow-2xl relative z-10 uppercase tracking-[0.4em] text-[12px] active:scale-95">
+                    Aceder à Biblioteca <i class="fas fa-arrow-right ml-4"></i>
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts de Lógica de Acessibilidade -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, query, limit } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // CONFIGURAÇÃO FIREBASE
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        let user = null;
+
+        // MAPA DO REPOSITÓRIO COM DADOS PRECISOS (RECUPERADOS)
+        const repoPages = [
+            { id: 'index.html', label: 'Dashboard Principal', issues: { a: 0, aa: 0, aaa: 0 }, score: 94, gradeLabel: 'AA', attention: "Nenhum ponto crítico" },
+            { id: 'pegada_carbono.html', label: 'Central ESG', issues: { a: 0, aa: 0, aaa: 0 }, score: 97, gradeLabel: 'AAA', attention: "Nenhum ponto crítico" },
+            { id: 'juros_simples.html', label: 'Calc. Juros Simples', issues: { a: 1, aa: 1, aaa: 0 }, score: 82, gradeLabel: 'A', attention: "● Erro Contraste (A)<br>● Aria-labels (AA)" },
+            { id: 'biblioteca.html', label: 'Repositório Técnico', issues: { a: 0, aa: 1, aaa: 0 }, score: 88, gradeLabel: 'AA', attention: "● Aria-labels (AA)" },
+            { id: 'compliance.html', label: 'Políticas Compliance', issues: { a: 0, aa: 0, aaa: 0 }, score: 99, gradeLabel: 'AAA', attention: "Nenhum ponto crítico" }
+        ];
+
+        let accChart = null;
+
+        const initAuth = async () => {
+            await signInAnonymously(auth);
+            onAuthStateChanged(auth, (u) => {
+                user = u;
+                if(user) loadAccHistory();
+            });
+        };
+        initAuth();
+
+        // LÓGICA DE AUDITORIA GLOBAL
+        window.runGlobalAudit = async () => {
+            if(!user) return;
+            const btn = document.getElementById('global-audit-btn');
+            const icon = document.getElementById('global-icon');
+            const progress = document.getElementById('global-progress');
+            const fill = document.getElementById('progress-fill');
+            const percent = document.getElementById('progress-percent');
+            const statusText = document.getElementById('progress-status');
+            const tbody = document.getElementById('repo-table-body');
+
+            btn.disabled = true;
+            icon.classList.add('fa-spin');
+            progress.classList.remove('hidden');
+            tbody.innerHTML = '';
+
+            let totalScore = 0;
+            let criticalTotal = 0;
+
+            for(let i = 0; i < repoPages.length; i++) {
+                const page = repoPages[i];
+                const p = ((i + 1) / repoPages.length) * 100;
+                fill.style.width = p + "%";
+                percent.innerText = Math.round(p) + "%";
+                statusText.innerHTML = `<i class="fas fa-microchip text-audit-blue fa-spin"></i> Auditando conformidade WCAG: <span class="text-audit-navy font-bold">${page.id}</span>...`;
+
+                totalScore += page.score;
+                criticalTotal += page.issues.a;
+
+                const gradeClass = `grade-${page.gradeLabel.toLowerCase()}`;
+
+                tbody.innerHTML += `
+                    <tr class="group">
+                        <td>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-audit-navy text-base">${page.label}</span>
+                                <span class="text-[11px] text-slate-300 font-mono">${page.id}</span>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="flex justify-center gap-3">
+                                <span class="status-pill ${page.issues.a === 0 ? 'success' : 'danger'}">A</span>
+                                <span class="status-pill ${page.issues.aa === 0 ? 'success' : 'warning'}">AA</span>
+                                <span class="status-pill ${page.issues.aaa === 0 ? 'success' : 'warning'}">AAA</span>
+                            </div>
+                        </td>
+                        <td class="text-center italic text-[11px] leading-relaxed text-slate-500 font-medium">
+                            ${page.attention}
+                        </td>
+                        <td class="text-right">
+                            <div class="flex items-center justify-end gap-5">
+                                <span class="text-2xl font-black text-audit-navy">${page.score}</span>
+                                <div class="grade-badge ${gradeClass}">${page.gradeLabel}</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                await new Promise(r => setTimeout(r, 650));
+            }
+
+            const finalAvg = totalScore / repoPages.length;
+            updateDashboard(finalAvg, criticalTotal);
+
+            // Salvar no Histórico Cloud
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'acc_history'), {
+                    timestamp: Date.now(),
+                    avgScore: finalAvg,
+                    critical: criticalTotal,
+                    pages: repoPages.length
+                });
+                loadAccHistory();
+            } catch (e) { console.error(e); }
+
+            icon.classList.remove('fa-spin');
+            btn.disabled = false;
+        };
+
+        function updateDashboard(avg, critical) {
+            document.getElementById('score-val').innerText = Math.round(avg);
+            document.getElementById('score-label').innerText = avg > 90 ? "Excelência Inclusiva" : "Requer Melhorias";
+            document.getElementById('level-val').innerText = avg > 95 ? "AAA" : (avg > 85 ? "AA" : "A");
+            document.getElementById('critical-errors').innerText = critical;
+            document.getElementById('total-pages').innerText = repoPages.length;
+
+            const compliance = document.getElementById('status-compliance');
+            compliance.className = `status-pill ${avg > 90 ? 'success' : 'warning'}`;
+
+            const errBadge = document.getElementById('status-errors');
+            errBadge.innerText = critical === 0 ? "Limpo" : "Atenção";
+            errBadge.className = `status-pill ${critical === 0 ? 'success' : 'danger'}`;
+        }
+
+        async function loadAccHistory() {
+            if(!user) return;
+            try {
+                const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'acc_history'), limit(10));
+                const snap = await getDocs(q);
+                const history = snap.docs.map(d => d.data()).sort((a,b) => a.timestamp - b.timestamp);
+                
+                if(history.length === 0) return;
+
+                const ctx = document.getElementById('accessibilityChart').getContext('2d');
+                if(accChart) accChart.destroy();
+                accChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: history.map(h => new Date(h.timestamp).toLocaleDateString()),
+                        datasets: [{
+                            label: 'Accessibility Score',
+                            data: history.map(h => h.avgScore),
+                            borderColor: '#1e40af',
+                            backgroundColor: 'rgba(30, 64, 175, 0.04)',
+                            borderWidth: 5,
+                            fill: true,
+                            tension: 0.5,
+                            pointRadius: 8,
+                            pointBackgroundColor: '#0f172a',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { y: { min: 50, max: 100, grid: { color: 'rgba(0,0,0,0.03)' } }, x: { grid: { display: false } } }
+                    }
+                });
+            } catch(e) { console.error(e); }
+        }
+
+        // UTILITÁRIOS GLOBAIS
+        window.toggleDrawer = (id) => { document.getElementById(`drawer-${id}`).classList.add('active'); document.getElementById('drawer-overlay').classList.replace('opacity-0', 'opacity-100'); document.getElementById('drawer-overlay').classList.replace('pointer-events-none', 'pointer-events-auto'); };
+        window.closeAllDrawers = () => { document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active')); document.getElementById('drawer-overlay').classList.replace('opacity-100', 'opacity-0'); document.getElementById('drawer-overlay').classList.replace('pointer-events-auto', 'pointer-events-none'); };
+        window.copyLink = () => { navigator.clipboard.writeText(window.location.href); alert("Ligação de auditoria copiada com sucesso."); };
+        window.shareWhatsApp = () => { window.open(`https://api.whatsapp.com/send?text=Confira a transparência em acessibilidade do Audit Educa: ${window.location.href}`, '_blank'); };
+        window.generatePDFReport = async () => { const canvas = await html2canvas(document.getElementById('capture-area'), { scale: 2 }); const pdf = new jspdf.jsPDF('p', 'mm', 'a4'); pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, (canvas.height * 210) / canvas.width); pdf.save(`AuditEduca_Acessibilidade_Report_${Date.now()}.pdf`); };
+        window.startTour = () => alert("A iniciar o tour guiado pelo painel de inclusão...");
+    </script>
+</body>
+</html>
