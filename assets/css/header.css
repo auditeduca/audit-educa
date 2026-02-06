@@ -1,5 +1,6 @@
 /* =====================================================
-   ESTILOS ESPECÍFICOS DO HEADER
+   ESTILOS ESPECÍFICOS DO HEADER - VERSÃO CORRIGIDA
+   Todas as diretivas @apply foram convertidas para CSS padrão
    ===================================================== */
 
 /* ========= CSS EXTRAÍDO DO HEADER.HTML ATUALIZADO ========= */
@@ -51,6 +52,7 @@
 .mobile-menu-backdrop {
     transition: opacity 0.3s ease;
 }
+
 .mobile-menu-drawer {
     transition: transform 0.3s ease;
 }
@@ -61,6 +63,7 @@
     transition: max-height 0.3s ease-in-out;
     visibility: hidden; /* Acessibilidade: esconde conteúdo colapsado */
 }
+
 .mobile-submenu.open {
     max-height: 800px;
     visibility: visible;
@@ -70,6 +73,7 @@
     display: none;
     animation: fadeIn 0.3s ease-in-out;
 }
+
 .tab-content.active {
     display: block;
 }
@@ -86,141 +90,419 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateX(5px); }
-    to { opacity: 1; transform: translateX(0); }
+    from { 
+        opacity: 0; 
+        transform: translateX(5px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
 }
 
+/* Scrollbar personalizada - usando apenas propriedades padrão suportadas */
+.custom-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 rgba(0,0,0,0.05);
+}
+
+/* Mantém webkit apenas como fallback para navegadores que suportam */
 .custom-scroll::-webkit-scrollbar {
     width: 6px;
 }
+
 .custom-scroll::-webkit-scrollbar-track {
     background: rgba(0,0,0,0.05);
 }
+
 .custom-scroll::-webkit-scrollbar-thumb {
     background-color: #cbd5e1;
     border-radius: 20px;
 }
+
+.dark .custom-scroll {
+    scrollbar-color: #475569 rgba(255,255,255,0.05);
+}
+
 .dark .custom-scroll::-webkit-scrollbar-track {
     background: rgba(255,255,255,0.05);
 }
+
 .dark .custom-scroll::-webkit-scrollbar-thumb {
     background-color: #475569;
 }
 
 /* ========= GLASSMORPHISM & LINHA DOURADA ========= */
-.glass {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-.dark .glass {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
 .golden-line {
     height: 4px;
-    background: linear-gradient(90deg, var(--audit-gold-dark) 0%, var(--audit-gold) 50%, var(--audit-gold-dark) 100%);
+    background: linear-gradient(90deg, #b8904a 0%, #C5A059 50%, #b8904a 100%);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
 /* ========= BOTÕES DE NAVEGAÇÃO DESKTOP ========= */
+/* Substituindo @apply por CSS padrão */
 .menu-trigger {
-    @apply px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-goldDark transition border-b-2 border-transparent hover:border-audit-gold flex items-center gap-1 focus:outline-none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    transition-property: all;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.menu-trigger:hover {
+    color: #b8904a;
+    border-bottom-color: #C5A059;
+}
+
+.menu-trigger:focus {
+    outline: none;
+}
+
+.dark .menu-trigger {
+    color: #e5e7eb;
+}
+
+.dark .menu-trigger:hover {
+    color: #b8904a;
 }
 
 /* ========= MEGA PAINÉIS DESKTOP ========= */
 .desktop-panel {
-    @apply absolute top-full left-0 w-full bg-audit-glassLight dark:bg-audit-glassDark border-t border-gray-200/20 shadow-xl backdrop-blur-xl p-8 z-40 origin-top;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(229, 231, 235, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    z-index: 40;
+    transform-origin: top;
     animation: fadeInDown 0.3s ease-out forwards;
 }
+
+.dark .desktop-panel {
+    background-color: rgba(15, 23, 42, 0.95);
+}
+
 .menu-title {
-    @apply font-bold text-audit-navy dark:text-audit-gold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 text-sm;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
 }
+
+.dark .menu-title {
+    color: #C5A059;
+    border-bottom-color: #374151;
+}
+
 .menu-link {
-    @apply block p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-audit-gold/20 dark:hover:bg-audit-blue/30 font-medium transition duration-150 flex justify-between items-center group;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    color: #374151;
+    font-weight: 500;
+    transition: all 150ms ease-in-out;
 }
+
+.menu-link:hover {
+    background-color: rgba(197, 160, 89, 0.2);
+}
+
+.dark .menu-link {
+    color: #d1d5db;
+}
+
+.dark .menu-link:hover {
+    background-color: rgba(30, 64, 175, 0.3);
+}
+
 .menu-icon {
-    @apply text-[10px] opacity-0 group-hover:opacity-100 transition-opacity;
+    font-size: 0.625rem;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+.menu-link:hover .menu-icon {
+    opacity: 1;
 }
 
 /* Detalhes Dinâmicos */
 .detail-pane {
-    @apply w-1/3 p-8 overflow-y-auto bg-gray-50 dark:bg-audit-bgDark;
+    width: 33.333333%;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: #f9fafb;
 }
+
+.dark .detail-pane {
+    background-color: #0f172a;
+}
+
 .detail-desc {
-    @apply text-sm text-gray-600 dark:text-gray-300 mb-4;
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
 }
+
+.dark .detail-desc {
+    color: #d1d5db;
+}
+
 .detail-list {
-    @apply space-y-2 text-sm;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.875rem;
 }
+
 .detail-link {
-    @apply text-audit-goldDark hover:text-audit-blue transition font-semibold flex items-center gap-2;
+    color: #b8904a;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 150ms ease-in-out;
+}
+
+.detail-link:hover {
+    color: #1e40af;
 }
 
 /* CTA Coluna */
 .menu-cta-column {
-    @apply relative hidden md:block;
+    position: relative;
+    display: none;
 }
+
+@media (min-width: 768px) {
+    .menu-cta-column {
+        display: block;
+    }
+}
+
 .menu-cta-icon {
-    @apply bg-audit-gold w-16 h-16 rounded-full flex items-center justify-center shadow-2xl text-audit-navy text-3xl mb-4;
+    background-color: #C5A059;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    color: #0f172a;
+    font-size: 1.875rem;
+    margin-bottom: 1rem;
 }
+
 .menu-cta-title {
-    @apply font-bold text-white text-xl mb-3 text-center drop-shadow-md;
+    font-weight: 700;
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
+
 .menu-cta-text {
-    @apply text-sm text-white/90 mb-4 text-center;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+    text-align: center;
 }
+
 .menu-cta-btn {
-    @apply bg-audit-gold text-audit-navy font-bold py-3 px-6 rounded-full shadow-lg hover:bg-audit-goldDark hover:text-white transition uppercase text-sm;
+    background-color: #C5A059;
+    color: #0f172a;
+    font-weight: 700;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 150ms ease-in-out;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.menu-cta-btn:hover {
+    background-color: #b8904a;
+    color: white;
 }
 
 /* Estilos adicionais para idioma e tema escuro */
 .lang-option {
-    @apply flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-audit-gold/20 dark:hover:bg-white/10 cursor-pointer transition-all duration-300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
 }
 
 .lang-option:hover {
-    @apply transform scale-105 shadow-lg;
+    background-color: rgba(197, 160, 89, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.dark .lang-option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Melhorias para tema escuro */
 .dark .golden-line {
-    background: linear-gradient(90deg, var(--audit-gold-dark) 0%, var(--audit-gold) 30%, var(--audit-gold-dark) 70%, #f59e0b 100%);
+    background: linear-gradient(90deg, #b8904a 0%, #C5A059 30%, #b8904a 70%, #f59e0b 100%);
 }
 
 /* Ajuste para melhor contraste no tema escuro */
 .dark .menu-link:hover {
-    @apply bg-white/20;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .dark .detail-content.active {
-    @apply text-gray-100;
+    color: #f3f4f6;
 }
-
 
 /* ========= MENU MOBILE (ACORDEÃO) ========= */
 .mobile-accordion-trigger {
-    @apply w-full flex justify-between items-center px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition group;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    transition: all 150ms ease-in-out;
 }
+
+.mobile-accordion-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.dark .mobile-accordion-trigger {
+    color: #e5e7eb;
+}
+
+.dark .mobile-accordion-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .mobile-submenu-content {
-    @apply pl-4 border-l-2 border-audit-gold/30 ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-300 ease-in-out;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(197, 160, 89, 0.3);
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    overflow: hidden;
+    transition: all 300ms ease-in-out;
 }
+
 .mobile-link {
-    @apply block px-4 py-3 rounded-lg hover:bg-white/40 dark:hover:bg-white/10 font-bold text-gray-800 dark:text-gray-200 transition;
+    display: block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    transition: all 150ms ease-in-out;
 }
+
+.mobile-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.dark .mobile-link {
+    color: #e5e7eb;
+}
+
+.dark .mobile-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .mobile-sublink {
-    @apply block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-audit-blue;
+    display: block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+    transition: color 150ms ease-in-out;
 }
+
+.mobile-sublink:hover {
+    color: #1e40af;
+}
+
+.dark .mobile-sublink {
+    color: #d1d5db;
+}
+
 .mobile-sublink-small {
-    @apply block px-4 py-1 text-sm text-gray-600 dark:text-gray-300 hover:text-audit-blue;
+    display: block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+    transition: color 150ms ease-in-out;
 }
+
+.mobile-sublink-small:hover {
+    color: #1e40af;
+}
+
+.dark .mobile-sublink-small {
+    color: #d1d5db;
+}
+
 .mobile-submenu-title {
-    @apply px-4 pt-2 text-xs font-semibold text-audit-goldDark dark:text-audit-gold uppercase;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #b8904a;
+    text-transform: uppercase;
 }
+
+.dark .mobile-submenu-title {
+    color: #C5A059;
+}
+
 .icon-chevron {
-    transition: transform var(--transition-fast);
+    transition: transform 200ms ease-in-out;
 }
+
 .rotate-chevron {
     transform: rotate(180deg);
 }
@@ -232,6 +514,7 @@
     overflow: hidden;
     transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
+
 .search-slide-active {
     max-height: 100px; /* Suficiente para a barra */
     opacity: 1;
@@ -239,7 +522,14 @@
 
 /* Botão de Idioma Mobile */
 .lang-btn-mobile {
-    @apply hover:scale-110 transition p-1 rounded hover:bg-white/20;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    transition: all 150ms ease-in-out;
+}
+
+.lang-btn-mobile:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* --- Animações --- */
@@ -253,7 +543,14 @@
         transform: translateY(0);
     }
 }
+
 .animate-fade-in-down { 
     animation: fadeInDown 0.3s ease-out forwards; 
 }
 
+/* Fallback para navegadores sem suporte a scrollbar-color */
+@supports not (scrollbar-color: auto) {
+    .custom-scroll {
+        overflow: auto;
+    }
+}
