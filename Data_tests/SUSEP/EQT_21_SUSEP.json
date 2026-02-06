@@ -1,0 +1,217 @@
+{
+    "edition": "21",
+    "category": "SUSEP",
+    "questions": [
+        {
+            "number": "1",
+            "type": "discursiva",
+            "text": "- Para a garantia das suas operações, as Sociedades de\nCapitalização devem constituir provisões técnicas. Analise as provisões nas\nopções abaixo e indique a que deverá ser constituída enquanto não ocorrido o\nevento gerador de resgate do título e abrange a parcela dos valores arrecadados\npara capitalização:\n\n\n         Provisão para Resgate (PR).\n         Resposta: Provisão Matemática para Capitalização (PMC).\n         Provisão para Sorteios a Realizar (PSR).\n         Provisão de Prêmios Não Ganhos (PPNG).",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "2",
+            "type": "discursiva",
+            "text": "- As Seguradoras, as Entidades Abertas de Previdência\nComplementar e os Resseguradores Locais podem deduzir os valores de\ndireitos creditórios da necessidade de cobertura das suas provisões técnicas.\nEm relação aos Direitos Creditórios, julgue os itens abaixo e, em seguida,\nassinale a opção CORRETA:\n\n\n   I.        Os valores de direitos creditórios correspondem ao montante de prêmios a\n             receber, referente às parcelas vencidas, na proporção dos prazos dos\n             riscos a decorrer, considerando cada parcela, na data-base de cálculo.\n   II.       Poderão ser consideradas, para a apuração dos valores de direitos\n             creditórios, as parcelas a vencer, cujo risco já tenha decorrido, e as\n             parcelas vencidas e não pagas.\n   III.      A base de cálculo utilizada para a apuração dos direitos creditórios deve\n             corresponder à mesma base de cálculo da Provisão de Prêmios Não\n             Ganhos (PPNG).\n   IV.       As seguradoras que utilizarem direitos creditórios referentes a riscos\n             vigentes e não emitidos deverão manter um estudo atualizado que\n             comprove a adequação e a consistência desse saldo constituído.\n\n   Estão CORRETOS os itens:\n\n\n\n         Resposta: III e IV, apenas.\n         I e II, apenas.\n         I e III, apenas.\n         I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "3",
+            "type": "discursiva",
+            "text": "- A Seguradora ABC apresenta insuficiência de 65% do Patrimônio\nLíquido Ajustado (PLA) em relação ao Capital Mínimo Requerido. De acordo com\nas disposições do regulador, assinale a opção CORRETA:\n\n\n      A Seguradora ABC deverá apresentar somente o Plano de Recuperação de\n       Solvência (PRS) propondo o plano de ação para a recomposição da situação\n       de enquadramento.\n      A Seguradora ABC somente apresentará o Plano de Recuperação de\n       Solvência se a insuficiência permanecer por mais de 6 meses consecutivos.\n      A Seguradora ABC será imediatamente enquadrada em processo de liquidação\n       extrajudicial.\n      Resposta: A Seguradora ABC estará sujeita ao regime especial de\n       direção-fiscal.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "4",
+            "type": "discursiva",
+            "text": "- Em atendimento à Resolução em vigor, a Seguradora XYZ\napresentou as seguintes informações na nota explicativa correspondente ao\nPatrimônio Líquido Ajustado e Adequação do Capital:\n\n       Patrimônio Líquido Ajustado: R$474.362\n\n       Capital Base: R$15.000\n\n       Capital de Risco: R$ 395.318\n\n       Capital Adicional de Risco de Subscrição: R$78.300\n\n       Capital Adicional de Risco de Crédito: R$257.498\n\n       Capital Adicional de Risco de Mercado: R$179.446\n\n       Capital Adicional de Risco Operacional: R$1.708\n\n       Efeito de Correlação (Benefício): (R$121.634)\n\n       Considerando as informações apresentadas acima, assinale o valor da\n       suficiência (insuficiência) de capital:\n\n      R$459.362\n      R$396.062\n      Resposta: R$79.044\n      (R$316.274)",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "5",
+            "type": "discursiva",
+            "text": "- Em relação ao Teste de Adequação dos Passivos (TAP), julgue os\nitens abaixo e, em seguida, assinale a opção CORRETA:\n\f   I.            As deficiências do passivo por contrato de seguro, à luz dos fluxos de caixa\n                 futuros estimados, deverão ser reconhecidas no resultado.\n   II.           A insuficiência apurada na Provisão de Prêmio Não Ganho (PPNG) terá\n                 como contrapartida do lançamento contábil do resultado a Provisão\n                 Complementar de Cobertura (PCC).\n   III.          A insuficiência apurada nas provisões relacionadas a sinistros terá como\n                 contrapartida do lançamento contábil do resultado a Provisão\n                 Complementar de Cobertura (PCC).\n   IV.           O resultado do TAP será apurado pela diferença entre o valor das\n                 estimativas correntes dos fluxos de caixa e a soma do saldo contábil das\n                 provisões técnicas na data-base, incluindo os custos de aquisição diferidos\n                 e os ativos intangíveis diretamente relacionados às provisões técnicas.\n\n   Estão CORRETOS os itens:\n\n         I, II e IV, apenas.\n         II e III, apenas.\n         Resposta: I e II, apenas.\n         I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "6",
+            "type": "discursiva",
+            "text": "- Em relação aos conceitos das provisões técnicas aplicáveis às\nSociedades Seguradoras e às Entidades Abertas de Previdência Complementar,\nanalise, nos itens abaixo, os conceitos corretos sobre provisão e, em seguida,\nassinale a opção CORRETA.\n\n\n          I.        Provisão de Sinistros a Liquidar (PSL) - constituída para a cobertura\n                    dos valores a pagar relativos a sinistros e despesas a ocorrer.\n          II.       Provisão de Sinistros Ocorridos mas Não Avisados (IBNR) - constituída\n                    para a cobertura dos valores a liquidar relativos a sinistros ocorridos e\n                    não avisados.\n          III.      Provisão de Excedentes Técnicos (PET) - constituída para garantir os\n                    valores destinados à distribuição de excedentes decorrentes de\n                    superávit técnico na operacionalização de seus contratos, caso haja\n                    sua previsão contratual.\n          IV.       Provisão Complementar de Cobertura (PCC) - constituída para a\n                    cobertura das despesas relacionadas a sinistros.\n\n\n   Está(ão) CORRETOS(S) o(s) item(ns):\n\n         I e IV, apenas.\n         Resposta: II e III, apenas.\n         III, apenas.\n         I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "7",
+            "type": "discursiva",
+            "text": "- Os ativos garantidores correspondem aos ativos vinculados à\ngarantia das provisões técnicas, conforme as diretrizes estabelecidas pelo\nConselho Monetário Nacional. Em relação aos ativos garantidores, analise as\nalternativas abaixo e, em seguida, assinale a opção CORRETA:\n\n\n      Os ativos oferecidos como redutores da necessidade de cobertura das\n       provisões técnicas podem ser oferecidos em garantia de outras operações.\n      Somente serão aceitos, como ativos garantidores de provisões técnicas,\n       imóveis urbanos, terrenos e imóveis em construção de titularidade exclusiva da\n       Seguradora.\n      A Seguradora deverá manter o controle dos ativos garantidores registrados na\n       Susep que forem alienados no decorrer das suas atividades e informar\n       mensalmente à Susep em formulário próprio.\n      Resposta: Ativos e direitos somente poderão ser oferecidos como ativos\n       garantidores de provisões técnicas se estiverem livres e desembaraçados\n       de ônus ou gravames judiciais ou extrajudiciais de qualquer natureza.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "8",
+            "type": "discursiva",
+            "text": "- Capitalização é a operação que tem por objetivo promover a\nconstituição de capital mínimo, perfeitamente determinado em cada plano e\npago em moeda corrente nacional, ao titular do direito de resgate e do direito\naos prêmios de sorteio. Considerando os objetivos de cada uma das\nmodalidades em que os títulos de capitalização podem ser estruturados, analise\nas opções abaixo e, em seguida, assinale a alternativa CORRETA:\n\n\n      Resposta: A modalidade tradicional tem por objetivo restituir ao titular, ao\n       final do prazo de vigência, no mínimo, o valor total das contribuições\n       efetuadas pelo subscritor, desde que todas as contribuições previstas\n       tenham sido realizadas nas datas programadas.\n      A modalidade compra-programada tem por objetivo propiciar a capitalização da\n       contribuição e a participação do titular em sorteios, sem que haja devolução\n       integral do valor pago.\n      A modalidade popular tem por objetivo a vinculação a um evento promocional\n       de caráter comercial instituído pelo subscritor para alavancar a venda de seus\n       produtos ou serviços ou para fidelizar seus clientes.\n      A modalidade incentivo é destinada ao subscritor interessado em contribuir\n       com entidades beneficentes de assistência sociais.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "9",
+            "type": "discursiva",
+            "text": "- O Conselho Federal de Contabilidade (CFC) emitiu comunicado\ncom objetivo de orientar os auditores para a emissão do relatório\ncircunstanciado sobre os controles internos aos riscos suportados pelas\nSeguradoras e Sociedades de Capitalização. Considerando os procedimentos\nmínimos que deverão ser adotados pelos auditores para cada tipo de operação,\njulgue os itens abaixo e, em seguida, assinale a opção CORRETA:\n\f   I.        Em relação ao processo de subscrição de riscos e emissão de apólice, o\n             auditor deve inspecionar a conciliação dos registros oficiais (operacionais)\n             de prêmios emitidos com os registros contábeis para as datas base de 30\n             de junho e 31 de dezembro.\n\n   II.       Em relação ao processo de subscrição de títulos de capitalização, o auditor\n             deve obter entendimento dos processos utilizados na subscrição de títulos\n             de capitalização e selecionar uma amostra de 5% nos registros oficiais dos\n             títulos de capitalização subscritos no período em análise.\n\n   III.      Em relação ao processo de sorteios e resgate de títulos, o auditor deve\n             verificar os manuais, organogramas e fluxogramas da área de sorteios e\n             resgates de títulos de capitalização, fazer indagações à administração e\n             obter evidências da segregação de funções.\n\n\n   IV.       Em relação ao processo de concessão de benefícios, o auditor deve\n             conciliar os dados da solicitação de benefício com os do certificado, fazer a\n             inspeção da identidade dos beneficiários e conciliar os registros oficiais\n             (operacionais) com os registros contábeis.\n\n\n   Estão CORRETOS apenas os itens:\n\n         I e IV, apenas.\n         Resposta: III e IV apenas.\n         I e II, apenas.\n         II e III, apenas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "10",
+            "type": "discursiva",
+            "text": "- Em relação à divulgação obrigatória nas notas explicativas das\nentidades supervisionadas pela Susep, analise as alternativas abaixo e assinale\na opção CORRETA:\n\n\n         Em relação aos prêmios a receber, devem apresentar apenas o quadro de\n          movimentação de um período para o outro.\n         Em relação aos salvados e ressarcimentos, devem apresentar um quadro\n          único com a inclusão dos principais ramos com a movimentação dos direitos a\n          salvados e aos ressarcimentos estimados.\n         Resposta: Em relação aos Títulos e Valores Mobiliários, devem divulgar,\n          no mínimo, o percentual classificado por categoria, taxas de juros\n          contratadas, valor de mercado dos títulos, indicação dos valores\n          mobiliários avaliados pela curva e quadro de movimentação de um\n          período para o outro.\n         Em relação à solvência, devem apresentar somente o capital mínimo\n          requerido, o capital base e o capital de risco.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "11",
+            "type": "discursiva",
+            "text": "- Considerando os registros contábeis das principais operações de\nSeguro, Previdência, Resseguro e Capitalização, julgue os itens abaixo e, em\nseguida, assinale a opção CORRETA:\n\n\n        I.     O fato gerador da receita dos produtos de risco, para fins de\n               reconhecimento inicial, é a emissão do prêmio/contribuição ou o início\n               da vigência do risco, o que ocorrer primeiro.\n        II.    O fato gerador da receita dos produtos de acumulação financeira é o\n               recebimento das contribuições.\n               Para os seguros em que o controle dos componentes do grupo\n               segurado é realizado por estipulantes e a seguradora toma\n               conhecimento das entradas e saídas apenas posteriormente, as\n               receitas de prêmios deverão ser registradas somente no momento em\n               que a Seguradora tiver conhecimento do efetivo valor da\n               movimentação.\n        III.   O fato gerador da receita dos produtos de risco, para fins de\n               reconhecimento inicial, refere-se somente ao início da vigência do risco.\n\n   Estão CORRETOS apenas os itens:\n\n       I e IV.\n       III e IV.\n       II e III.\n       Resposta: I e II.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "12",
+            "type": "discursiva",
+            "text": "- A Provisão de Sinistros a Liquidar (PSL) deverá ser constituída\npara a cobertura dos valores esperados a liquidar relativos a pagamentos únicos\ne rendas vencidas de sinistros avisados até a data-base de cálculo. Em relação à\nPSL, os itens abaixo e, em seguida, assinale a opção CORRETA:\n\n\n   I.   A PSL não abrange os valores relativos a indenizações, pecúlios e rendas\n        vencidas.\n   II. Os valores esperados a liquidar referentes às ações judiciais para pagamentos\n        de rendas a vencer que excederem os valores concedidos deverão ser\n        contemplados no cálculo da PSL, enquanto não houver sentença transitada em\n        julgado, quando então deverão ser consideradas na Provisão Matemática de\n        Benefícios Concedidos.\n   III. Não inclui atualizações monetárias, juros, variações cambiais, multas\n        contratuais e montantes estimados referentes às ações judiciais e os\n        resultantes de sentença transitada em julgado.\n   IV. A expectativa de recebimento de salvados e ressarcidos deverá ser apurada\n        com base em metodologia definida em nota técnica atuarial e registrada como\n        ajuste de salvados e ressarcidos na PSL.\n\f   Estão CORRETOS apenas os itens:\n\n         I e IV.\n         Resposta: II e IV.\n         II e III.\n         I e III.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "13",
+            "type": "discursiva",
+            "text": "- A modalidade “filantropia premiável” é destinada ao subscritor\ninteressado em contribuir com entidades beneficentes de assistência social em\nparticipar de sorteios. Considerando as características desta modalidade,\nassinale a opção CORRETA:\n\n\n         Os títulos de capitalização poderão ser estruturados na forma de pagamento\n          único e pagamentos mensais.\n         Os títulos de capitalização deverão ser estruturados com prazo de vigência\n          igual ou inferior a 60 (sessenta) dias.\n         Resposta: O resgate do título somente poderá ser efetuado depois de\n          decorridos 60 dias da data da sua aquisição.\n         A modalidade filantropia premiável pode ter a previsão da cessão do direito de\n          sorteio e do resgate.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "14",
+            "type": "discursiva",
+            "text": "- Assistência financeira é o empréstimo concedido com recursos\npróprios da Entidade Aberta de Previdência Complementar ou da Sociedade\nSeguradora ao titular ou assistido de plano de previdência complementar aberta\nou a titular de plano de seguro. Julgue os itens com relação às regras vigentes\npara a concessão de Assistência Financeira e, em seguida, assinale a opção\nCORRETA:\n\n\n   I.        O contrato de assistência financeira deverá estar vinculado a\n             apólice/certificado de seguro de pessoas ou de previdência complementar\n             aberta.\n   II.       As assistências financeiras poderão ser concedidas com recursos de\n             provisões, reservas técnicas e fundos e deverão ser informadas à SUSEP,\n             em formulário próprio, ao final de cada trimestre.\n   III.      Os contratos de assistência financeira poderão ser cedidos ou alienados\n             desde que observados os limites percentuais previstos na legislação\n             vigente.\n   IV.       É vedado à Entidade Aberta de Previdência Complementar ou à Sociedade\n             Seguradora cobrar multas de mora decorrentes do inadimplemento das\n             contraprestações superiores a 2% (dois por cento) do valor da\n             contraprestação.\n\n   Estão CORRETOS apenas os itens:\n\f      II e III.\n      II e IV.\n      I e III.\n      Resposta: I e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "15",
+            "type": "discursiva",
+            "text": "- Em relação à contratação de especialista para o cálculo atuarial\nreferente aos contratos de seguro e aos planos de benefícios a empregados por\nparte do auditor independente, analise as alternativas abaixo e assinale a opção\nCORRETA:\n\n\n      No relatório do auditor, deverá haver referência ao trabalho do especialista no\n       parágrafo de outros assuntos.\n      Resposta: O auditor deve avaliar se o especialista por ele contratado\n       possui competência, habilidades e objetividade necessárias para fins da\n       auditoria.\n      No relatório do auditor, deverá haver a indicação da limitação da sua\n       responsabilidade referente ao trabalho do especialista.\n      É vedada qualquer referência ao trabalho de especialista do auditor em seu\n       relatório.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "16",
+            "type": "discursiva",
+            "text": "- O Patrimônio Líquido Ajustado (PLA) é calculado com base no\npatrimônio líquido contábil ajustado por adições e exclusões para apurar os\nrecursos disponíveis que possibilitem às Seguradoras e Entidades Abertas de\nPrevidência Complementar (EAPC) executarem suas atividades diante de\noscilações e situações adversas. Em relação às adições e exclusões para o\ncálculo do Patrimônio Líquido Ajustado, analise as alternativas abaixo e assinale\na opção CORRETA:\n\n\n\n      Adição do valor das participações societárias em sociedades financeiras e não\n       financeiras classificadas como investimentos de caráter permanente, nacionais\n       ou no exterior.\n      Dedução do passivo resultante da diferença temporária associada ao ágio\n       derivado da expectativa de rentabilidade futura.\n      Resposta: Dedução dos ativos intangíveis.\n      Acréscimo dos créditos tributários de diferenças temporárias que excederem\n       30% do Capital Mínimo Requerido.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "17",
+            "type": "discursiva",
+            "text": "- As Seguradoras deverão manter organizados e à disposição da\nSusep os registros, cadastros, análises de risco e demais documentos relativos\na todas as operações com clientes, beneficiários, terceiros e outras partes\nrelacionadas, inclusive aqueles referentes a todos os pagamentos realizados,\ncom identificação do beneficiário final. Analise as alternativas abaixo e, em\n\fseguida, assinale a opção que apresenta operações(ões) que deverá(ão) ser\ncomunicada(s) à Susep, no prazo de 24 (vinte e quatro) horas contada(s) da\noperação ou do conhecimento de condição, independentemente de qualquer\nanálise:\n\n\n         Pagamento a beneficiário sem aparente relação com o segurado, sem razão\n          justificável.\n         Propostas ou operações incompatíveis com o perfil socioeconômico,\n          capacidade financeira ou ocupação profissional do cliente, beneficiário,\n          terceiros, e outras partes relacionadas.\n         Propostas ou operações discrepantes das condições normais de mercado.\n         Resposta: Sorteio de título de capitalização de valor igual ou superior a\n          R$100.000,00 (cem mil) reais.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "18",
+            "type": "discursiva",
+            "text": "- Em relação às orientações da Susep para a contabilização do\nDPVAT, a partir do ano de 2020, julgue os itens abaixo e, em seguida, assinale a\nopção CORRETA:\n\n\n   I.        As seguradoras consorciadas devem registrar a despesa com a\n             contratação de reguladora para prestação do serviço de regulação de\n             sinistros do consórcio DPVAT no momento do pagamento pelo serviço.\n   II.       As seguradoras consorciadas devem registrar a receita com a prestação do\n             serviço de recepção e regulação de sinistros do consórcio DPVAT no\n             momento da prestação do serviço, independentemente, do momento em\n             que os valores são ressarcidos pela Seguradora Líder.\n   III.      As seguradoras consorciadas devem registrar a receita com a prestação do\n             serviço de recepção e regulação de sinistros do consórcio DPVAT quando\n             os valores são ressarcidos pela Seguradora Líder.\n   IV.       As seguradoras consorciadas devem registrar a despesa com a\n             contratação de reguladora para prestação do serviço de regulação de\n             sinistros do consórcio DPVAT no momento da ocorrência da prestação do\n             serviço, independentemente do momento em que ocorra o pagamento pelo\n             serviço.\n\n\n\n   Estão CORRETOS apenas os itens:\n\n         I e II.\n         III e I.\n         Resposta: II e IV.\n         I e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "19",
+            "type": "discursiva",
+            "text": "- As seguradoras e entidades abertas de previdência\ncomplementar deverão elaborar o Teste de Adequação de Passivos (TAP) para\navaliar as obrigações decorrentes dos seus contratos e certificados, utilizando\nmétodos estatísticos e atuariais com base em considerações realistas. Com\nrelação ao TAP, assinale a opção CORRETA.\n\n\n      É aplicável a todos os contratos inclusive aos ramos DPVAT, DPEM e seguro\n       habitacional do sistema financeiro da habitação.\n      Resposta: É calculado através da diferença entre o valor das estimativas\n       correntes dos fluxos de caixa e a soma do saldo contábil das provisões\n       técnicas na data-base, deduzida dos custos de aquisição diferidos e dos\n       ativos intangíveis diretamente relacionados às provisões técnicas.\n      É calculado pela diferença entre o valor das estimativas correntes dos fluxos de\n       caixa e a soma do saldo contábil das provisões técnicas na data-base,\n       adicionados os custos de aquisição diferidos e os ativos intangíveis\n       diretamente relacionados às provisões técnicas.\n      É calculado pelo somatório do valor das estimativas correntes dos fluxos de\n       caixa, do saldo contábil das provisões técnicas na data-base e dos custos de\n       aquisição diferidos deduzidos dos ativos intangíveis diretamente relacionados\n       às provisões técnicas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "20",
+            "type": "discursiva",
+            "text": "- A seguradora pode ser considerada apta a utilizar fatores\nreduzidos de risco, no cálculo dos capitais de risco na Susep. Em relação aos\ncritérios para ser considerada apta, analise as alternativas abaixo e assinale a\nopção CORRETA.\n\n\n      Resposta: Obter um total de 75 pontos ou mais nos critérios de\n       pontuação estabelecidos para as características do conselho de\n       administração, gestor de riscos e estrutura de gestão de riscos.\n      Possuir estrutura de riscos cujas funções do gestor de risco são\n       desempenhadas por empresa terceirizada.\n      Obter um total de 50 pontos ou mais nos critérios de pontuação estabelecidos\n       para as características do conselho de administração, gestor de riscos e\n       estrutura de gestão de riscos.\n      Possuir estrutura de gestão de riscos, podendo inclusive ser desempenhada\n       por empresa terceirizada ou área especializada em gestão de riscos localizada\n       em matriz estrangeira.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "21",
+            "type": "discursiva",
+            "text": "- A seguir, estão apresentadas, as informações correspondentes à\nSeguradora XYZ:\n\n\n                                                                      Em reais Mil\n       Patrimônio Líquido Contábil                                    41.866.242\n       Participações Societárias                                      39.872.770\n       Despesas Antecipadas                                             26.206\n\f            Ativos intangíveis                                            1.009.386\n            Superávit entre provisões e fluxo            realista   de\n                                                                            12.380\n            prêmios/contribuições registradas\n            Capital Base                                                    15.000\n            Capital adicional de risco de subscrição                        78.300\n            Capital adicional de risco de crédito                          257.498\n            Capital adicional de risco de mercado                          179.446\n            Capital adicional de risco operacional                          1.708\n            Efeito de correlação (benefício)                              (121.634)\n            Ativos Líquidos                                                740.212\n\n\nCom base nas informações acima, analise as alternativas abaixo e assinale valor\ncorrespondente à suficiência de capital:\n\n           930.500.\n           Resposta: 574.942.\n           2.524.492.\n           550.182.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "22",
+            "type": "discursiva",
+            "text": "- Analise as alternativas abaixo e assinale a opção que apresenta\nas modalidades de investimentos que poderão ser realizados pelas seguradoras\ne entidades abertas de previdência complementar:\n\n           Operações de venda de opção a descoberto.\n           Operações com derivativos que gerem, a qualquer tempo, a possibilidade de\n            perda superior ao valor do patrimônio líquido da entidade.\n           Carteiras administradas por pessoas físicas.\n           Resposta: Participações acionárias de caráter permanente em sociedades\n            de capitalização.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "23",
+            "type": "discursiva",
+            "text": "– QUESTÃO ANULADA - Identifique, nos itens abaixo, as\ninformações referentes à gestão de riscos que a Entidade deve dificultar nas\nnotas explicativas às demonstrações individuais e, em seguida, assinale a opção\nCORRETA.\n\n   I.       Informação sobre gestão de riscos de seguro (antes e depois do resseguro).\n  II.       Concentração de riscos de seguros (carteira, área geográfica, moeda).\n III.       Discriminação dos resseguradores, no mínimo por classe (local, admitida e\n            eventual) e por categoria de risco.\nIV.         Informação sobre risco de liquidez, risco de mercado e risco de crédito.\n\nEstão CORRETOS os itens:\n\n           I e III, apenas.\n           II e IV, apenas.\n           II, III e IV, apenas.\n           I, II, III, IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "24",
+            "type": "discursiva",
+            "text": "- Em relação à divulgação das informações sobre as políticas de\ngestão de riscos, identifique nas opções abaixo a informação que NÃO deve ser\nincluída nas notas explicativas.\n\n         Resposta: Apenas a informação sobre gestão de riscos de seguro depois\n          do resseguro.\n         Concentração de riscos de seguros (carteira, área geográfica, moeda).\n         Informação sobre risco de liquidez, risco de mercado e risco de crédito.\n         Análise de sensibilidade, considerando principalmente as seguintes variáveis:\n          sinistralidade, taxas de juros, índice de conversibilidade, mortalidade\n          (frequência e severidade), sobrevivência e inflação.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "25",
+            "type": "discursiva",
+            "text": "- Em relação às condições que caracterizam o descumprimento do\nPlano de Regularização de Solvência (PRS), identifique, nos itens abaixo, essas\ncondições e, em seguida, assinale a opção CORRETA.\n\n   I.        O Patrimônio Líquido Ajustado (PLA) inferior ao Capital Mínimo Requerido -\n             CMR, ao final do prazo estabelecido, no correspondente plano, para a\n             solução da insuficiência.\n   II.       O atingimento de redução mínima de insuficiência de 40% ou 70% ao final\n             do 1.º e 2.º semestre do Plano de Regularização de Solvência (PRS),\n             respectivamente.\n   III.      O não atingimento de duas metas trimestrais consecutivas de redução do\n             percentual de insuficiência do Patrimônio Líquido Ajustado (PLA),\n             estabelecidas no correspondente plano, em relação ao Capital Mínimo\n             Requerido (CMR).\n   IV.       O Patrimônio Líquido Ajustado (PLA) menos aporte de capital “em\n             aprovação” superior ao Capital Mínimo Requerido (CMR) ao final do prazo\n             estabelecido no Plano de Regularização de Solvência (PRS) para a solução\n             da insuficiência.\n\nEstão CORRETOS os itens:\n\n         II e IV, apenas.\n         Resposta: I e III, apenas.\n         III e IV, apenas.\n         I, II, III, IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "26",
+            "type": "discursiva",
+            "text": "- Assinale a opção CORRETA que corresponde ao processo que\navalia a qualidade da performance do sistema ao longo do tempo, por meio de\num acompanhamento contínuo das atividades, avaliações separadas, ou uma\ncombinação dos dois.\n\n         Avaliação de riscos.\n         Atividades de controle.\n         Resposta: Monitoração.\n         Revisão.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "27",
+            "type": "discursiva",
+            "text": "- Com relação à análise da avaliação de riscos e do ambiente de\ncontrole da supervisionada, o auditor independente deve incluir alguns fatores\nno seu trabalho e no relatório circunstanciado. Em relação a esse assunto,\nidentifique esses fatores nos itens abaixo e, em seguida, assinale a opção\nCORRETA.\n\n\n  I.          Capacidade da supervisionada na análise de fatores internos e externos.\n II.          Integridade e valores éticos.\nIII.          Competência e experiência dos administradores.\nIV.           Planejamento estratégico.\n\n\nEstão CORRETOS os itens:\n\n             I e II, apenas.\n             II e IV, apenas.\n             III e IV, apenas.\n             Resposta: I, II, III, IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "28",
+            "type": "discursiva",
+            "text": "- No que se refere ao processo de tesouraria e investimentos, o\nrelatório circunstanciado deverá conter observações sobre a existência, a\neficácia e a eficiência de determinadas atividades de controles. Acerca dos\nprocedimentos mínimos a serem analisados, identifique os itens abaixo como\nVerdadeiros (V) ou Falsos (F) e, em seguida, assinale a opção CORRETA.\n\n         I.     Análise técnico-financeira, com base na proposta, dados estatísticos e\n                cadastros de terceiros.\n        II.     Análise de risco-retorno dos investimentos.\n       III.     Casamento de ativos e passivos.\n       IV.      Vínculo para os ativos garantidores.\n\nA sequência correta é:\n\n             F, F, V, F.\n             Resposta: F, V, V, V.\n             F, V, F, V.\n             V, V, V, F.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "29",
+            "type": "discursiva",
+            "text": "- Em relação aos estudos técnicos para a contabilização da\nredução do valor recuperável dos ativos, assinale a opção INCORRETA.\n\n             Quando não houver o estudo técnico, no caso de créditos de prêmios a receber\n              vencidos relativos a riscos decorridos, deverá ser efetuada a redução ao valor\n              recuperável pela totalidade dos créditos vencidos.\n\f       As entidades que não tiverem elaborado os estudos técnicos deverão efetuar a\n        redução ao valor recuperável, quando o período de inadimplência superar 60\n        (sessenta) dias da data do vencimento do crédito.\n       Resposta: A aplicação dos estudos técnicos deve ser realizada\n        trimestralmente e deverá ser mantida documentação para apresentação\n        aos auditores independentes e à Susep.\n       O montante da redução corresponderá à totalidade dos valores a receber de\n        determinado devedor, independentemente de existirem outros valores a vencer\n        deste mesmo devedor.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "30",
+            "type": "discursiva",
+            "text": "- Na elaboração dos estudos técnicos de redução ao valor\nrecuperável, a provisão deve ser constituída levando em consideração o\nhistórico de perdas e os riscos de inadimplência, entre outros fatores, em\nrelação aos ativos de qualquer natureza e origem. No estudo técnico, alguns\nprocedimentos mínimos adicionais devem ser adotados e documentados.\nAcerca desses procedimentos mínimos, identifique os itens abaixo como\nVerdadeiros (V) ou Falsos (F) e, em seguida, assinale a opção CORRETA.\n\n   I.   Conciliação de valores inadimplentes com os controles da tesouraria.\n  II.   A revisão da metodologia no mínimo a cada período de reporte ou quando\n        houver indicação de alteração nas características do negócio ou dos\n        recebimentos.\n III.   A utilização de base de dados histórica que permita a verificação do histórico\n        de perdas e dos riscos de inadimplência.\nIV.     A verificação quanto ao montante de redução ao valor recuperável que deverá\n        corresponder à totalidade dos créditos vencidos há mais de 90 (noventa) dias,\n        quando forem ressegurados.\n\nA sequência correta é:\n\n       F, F, V, F.\n       F, V, V, V.\n       Resposta: F, V, V, F.\n       V, V, V, F.\n\n\n\n                                   DISSERTATIVAS",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {}
+}

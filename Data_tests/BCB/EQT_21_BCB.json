@@ -1,0 +1,217 @@
+{
+    "edition": "21",
+    "category": "BCB",
+    "questions": [
+        {
+            "number": "1",
+            "type": "discursiva",
+            "text": "- De acordo com as normas do Banco Central do Brasil (BCB), na\nadoção de uma política de segurança cibernética, devem ser consideradas\nalgumas diretrizes. Em relação a essas diretrizes, analise os itens abaixo como\nverdadeiros (V) ou falsos (F) e, em seguida, assinale a opção CORRETA.\n\n\nI.         Considera-se diretriz a elaboração de cenários de incidentes considerados nos\n           testes de continuidade de negócios.\nII.        Considera-se diretriz a definição de procedimentos e de controles voltados à\n           prevenção e ao tratamento dos incidentes a serem adotados por empresas\n           prestadoras de serviços a terceiros que manuseiem dados ou informações\n           sensíveis ou que sejam relevantes para a condução das atividades operacionais\n           da instituição.\nIII.       Considera-se diretriz a classificação dos dados e das informações quanto à\n           relevância.\nIV.        Considera-se diretriz o uso da definição dos parâmetros determinados pelo BCB\n           na avaliação da relevância dos incidentes.\n\n\nA sequência CORRETA é:\n\n          F,V,V,F.\n          V,F,V,F.\n          F,V,V,V.\n          Resposta: V,V,V,F.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "2",
+            "type": "discursiva",
+            "text": "- O Banco XX contratou os serviços de processamento e\narmazenamento de dados e de computação em nuvem com a empresa DEF, que é\numa empresa internacional e mantém suas operações no exterior. De acordo com\nas normas emitidas pelo Banco Central do Brasil (BCB), analise os itens abaixo\ncomo verdadeiros (V) ou falsos (F) e, em seguida, assinale a opção CORRETA.\n\nI.         É necessária a existência de convênio para troca de informações entre o BCB e\n           as autoridades supervisoras dos países onde os serviços poderão ser prestados.\nII.        A instituição contratante deve assegurar que a prestação dos serviços\n           acordados não cause prejuízos ao seu regular funcionamento nem embaraço à\n           atuação do BCB.\nIII.       A instituição contratante deve definir, previamente à contratação, os países e as\n           regiões em cada país onde os serviços poderão ser prestados e os dados\n           poderão ser armazenados, processados e gerenciados.\nIV.        A instituição contratante deve prever alternativas para a continuidade dos\n           negócios, no caso de impossibilidade de manutenção ou extinção do contrato de\n           prestação de serviços.\n\fA sequência CORRETA é:\n\n         Resposta: F,V,V,V.\n         V,F,V,F.\n         F,V,F,V.\n         V,F,V,V.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "3",
+            "type": "discursiva",
+            "text": "- Em relação à exigência de inclusão dos principais assuntos de\nauditoria no relatório de auditoria sobre demonstrações contábeis de Instituições\nFinanceiras constituídas sob a forma de companhia aberta ou que sejam\nenquadradas no Segmento 1 (S1), no Segmento 2 (S2) ou no Segmento 3 (S3),\nconforme regulamentação vigente é CORRETO afirmar que:\n\n         a obrigação de incluir a seção relativa aos principais assuntos de auditoria é\n          necessária apenas nos relatórios de demonstrações consolidadas anuais.\n         Resposta: a obrigação de incluir a seção relativa aos principais assuntos\n          de auditoria é necessária para os relatórios de auditoria que acompanham\n          as demonstrações contábeis semestrais e anuais.\n         a obrigação de incluir a seção relativa aos principais assuntos de auditoria é\n          necessária para os relatórios de auditoria que acompanham as demonstrações\n          intermediárias, semestrais e anuais.\n         não existe obrigação de incluir a seção relativa aos principais assuntos de\n          auditoria nos relatórios de auditores independentes que acompanham as\n          demonstrações contábeis elaboradas de acordo com as normas do Banco\n          Central do Brasil.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "4",
+            "type": "discursiva",
+            "text": "- Em relação ao reconhecimento contábil de operações de\narrendamento mercantil, analise os itens abaixo e, em seguida, assinale a opção\nCORRETA.\n\n\n\n   I.        As operações de arrendamento mercantil financeiro devem ser apresentadas\n             pelo valor presente dos montantes totais a receber previstos em contrato.\n   II.       As operações de arrendamento mercantil financeiro devem ser\n             apresentadas, deduzidas da respectiva provisão para perdas esperadas\n             associadas ao risco de crédito.\n   III.      No cálculo do valor presente, deve ser utilizada taxa equivalente aos\n             encargos financeiros previstos no contrato ou, se não houver previsão\n             contratual, a taxa que equaliza o valor do bem arrendado, na data da\n             contratação, ao valor presente de todos os recebimentos e pagamentos\n             previstos ao longo do prazo contratual, incluindo o valor residual garantido ou\n             o valor presente provável de realização do bem arrendado no final do\n             contrato, deduzidos os custos de venda, no caso de inexistência de valor\n             residual garantido.\n   IV.       O custo de aquisição do ativo objeto do arrendamento deve ser reconhecido\n             no imobilizado de arrendamento.\n\fEstá(ão) CORRETO(S) apenas o(s) item(ns):\n\n      IV.\n      I e III.\n      Resposta: I, II e III.\n      II.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "5",
+            "type": "discursiva",
+            "text": "- Em relação à composição das movimentações que devem ser\napresentadas na demonstração das mutações do patrimônio líquido de instituição\nautorizada pelo Banco Central do Brasil (BCB), analise as opções abaixo e, em\nseguida, assinale a alternativa CORRETA:\n\n       I.         Deve incluir o resultado abrangente do período, segregando o valor total\n                  atribuível aos proprietários da instituição controladora e a participação de\n                  não controladores, no caso de demonstrações contábeis consolidadas.\n       II.        Deve incluir o valor da remuneração do capital reconhecido como\n                  distribuição aos proprietários durante o período, apresentando a soma\n                  dos montantes relativos a dividendos e a juros sobre capital próprio, sem\n                  especificação de forma segregada.\n       III.       Deve demonstrar os efeitos de eventuais aplicações retrospectivas de\n                  políticas contábeis ou de reapresentações retrospectivas de itens\n                  patrimoniais, reconhecidos de acordo com a regulamentação em vigor,\n                  para cada componente do patrimônio líquido.\n       IV.        É preciso demonstrar a conciliação do saldo no início e no final do\n                  período para cada componente do patrimônio líquido, demonstrando\n                  separadamente as modificações decorrentes do lucro líquido, de cada\n                  item dos outros resultados abrangentes, e de transações com\n                  proprietários, segregando as integralizações e as distribuições realizadas.\n\n\n\n       Está(ão) CORRETO(S) apenas o(s) item(ns):\n\n                 IV.\n                 Resposta: I, III e IV.\n                 II e III.\n                 I e II.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "6",
+            "type": "discursiva",
+            "text": "- Considerando os modelos de apresentação de demonstrações\ncontábeis, as respectivas notas explicativas e os períodos-base, assinale a\nalternativa CORRETA:\n\n      Nas demonstrações contábeis anuais, devem ser apresentados os quadros\n       completos acompanhados das notas explicativas selecionadas.\n      Resposta: Nas demonstrações contábeis semestrais, devem ser\n       apresentados os quadros completos e as notas explicativas na sua\n       totalidade ou notas selecionadas.\n      Nas demonstrações contábeis intermediárias, devem ser apresentados somente\n       os quadros completos acompanhados de notas explicativas selecionadas.\n\f      Nas demonstrações contábeis semestrais, devem ser apresentados os quadros\n       e as notas explicativas condensadas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "7",
+            "type": "discursiva",
+            "text": "- Em relação ao conteúdo das notas explicativas selecionadas,\nanalise as opções abaixo (I a IV) e, em seguida, assinale a alternativa CORRETA.\n\n       I.      As notas explicativas devem incluir a descrição da natureza e dos efeitos\n               de eventuais alterações nas políticas contábeis e métodos de cálculo\n               utilizados na elaboração das demonstrações ou, se não houver\n               alterações, declaração de que essas políticas e métodos são os mesmos\n               utilizados nas demonstrações contábeis anuais mais recentes.\n       II.     As notas explicativas devem conter as explicações necessárias para a\n               compreensão de operações intermediárias sazonais ou cíclicas, se\n               houver.\n       III.    As notas explicativas sobre a natureza e os valores de itens não usuais\n               em função de sua natureza, tamanho ou incidência que afetaram os\n               ativos, os passivos, o patrimônio líquido, o resultado líquido ou os fluxos\n               de caixa.\n       IV.     As notas explicativas devem conter o total da remuneração do capital\n               paga conjuntamente por ações ordinárias e por outros tipos e classes de\n               ações.\n       Está(ão) CORRETO(S) apenas o(s) item(ns):\n\n       IV.\n       I e IV.\n       Resposta: I, II e III.\n       II e III.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "8",
+            "type": "discursiva",
+            "text": "- Considerando o conteúdo da divulgação em notas explicativas\nsobre a gestão de capital, analise as opções abaixo e, em seguida, assinale a\nalternativa CORRETA:\n\n       I.      Informações qualitativas sobre os seus objetivos, políticas e processos,\n               incluindo a descrição dos elementos compreendidos pela gestão do\n               capital e a natureza dos requisitos de capital impostos pela\n               regulamentação em vigor e a forma como são integrados na gestão de\n               capital.\n       II.     A forma como estão sendo cumpridos os objetivos da gestão de capital,\n               incluindo dados quantitativos relevantes sobre os elementos incluídos\n               nessa gestão e eventuais alterações nas informações quanto aos\n               elementos utilizados na gestão de capital em relação ao período\n               precedente.\n       III.    Quando ocorrer o descumprimento durante e no final do período, dos\n               requisitos de capital previstos na regulamentação em vigor, informar que\n               a administração aguarda manifestação do Banco Central do Brasil (BCB)\n               para analisar as consequências do descumprimento.\n       IV.     Os instrumentos elegíveis a capital, incluindo os objetivos, as políticas e\n               os processos de gerenciamento da obrigação de recompra ou resgaste\n\f                    dos instrumentos quando requerido a fazer pelos detentores desses\n                    instrumentos, incluindo quaisquer alterações em relação a período\n                    anterior e os fluxos de caixa esperados na recompra ou no resgaste\n                    dessa classe de instrumentos financeiros.\n          Está(ão) CORRETO(S) apenas o(s) item(ns):\n\n         IV.\n         II e III.\n         Resposta: I, II e IV.\n         I e III.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "9",
+            "type": "discursiva",
+            "text": "- O Banco XX apresentou as seguintes informações em suas\ndemonstrações contábeis e registros auxiliares, as quais foram devidamente\nauditadas relativas ao exercício findo em 31 de dezembro de 2XX0:\n\n                                                                 Valores em milhares de\n          reais\n\n          I.        Capital Social                                            60.000\n          II.       Reservas de lucros                                        30.125\n          III.      Ações em tesouraria                                          498\n          IV.       Ativos intangíveis                                           686\n          V.        Créditos tributários decorrentes de prejuízos\n                    Fiscais, líquidos da provisão de IR/CS                     6.122\n          VI.       Caixa e equivalentes de caixa                             18.652\n          VII.      Ativos ponderados de risco de mercado                     40.000\n          VIII.     Ativos ponderados de risco de crédito                     20.000\n          IX.       Ativos ponderados de risco operacional                    14.950\n\n\n\nBaseado nas informações, o Patrimônio de Referência (PR) é:\n\n         Resposta: R$82.819.\n         R$101.471.\n         R$97.431.\n         R$116.083.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "10",
+            "type": "discursiva",
+            "text": "- O Banco XX apresentou as seguintes informações em suas\ndemonstrações contábeis e registros auxiliares, as quais foram devidamente\nauditadas relativas ao exercício findo em 31 de dezembro de 2XX0:\n\n                                                                 Valores em milhares de reais\n\n   I.            Capital Social                                                60.000\n   II.           Reservas de lucros                                            30.125\n   III.          Ações em tesouraria                                              498\n   IV.           Ativos intangíveis                                              686\n   V.            Créditos tributários decorrentes de prejuízos\n\f                      Fiscais, líquidos da provisão de IR/CS                6.122\n   VI.            Caixa e equivalentes de caixa                            18.652\n   VII.           Ativos ponderados de risco de mercado                    40.000\n   VIII.          Ativos ponderados de risco de crédito                    20.000\n   IX.            Ativos ponderados de risco operacional                   14.950\nBaseado nestas informações, o requerimento mínimo de patrimônio de referência\n(PR) é:\n\n       R$74.950.\n       R$82.445.\n       R$89.940.\n       Resposta: R$80.946.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "11",
+            "type": "discursiva",
+            "text": "- Sobre a escrituração contábil das instituições financeiras, analise\nos itens abaixo e, em seguida, assinale a opção CORRETA.\n\n\n   I.      Cabe ao Banco Central do Brasil (BCB) e à Comissão de Valores Mobiliários\n           (CVM) a expedição de normas para avaliação dos valores mobiliários\n           registrados nos ativos das sociedades corretoras e distribuidoras de títulos e\n           valores mobiliários.\n\n   II. A forma de classificação contábil de quaisquer bens, direitos e obrigações não\n        altera, de forma alguma, as suas características para efeitos fiscais e tributários,\n        que se regem por regulamentação própria.\n   III. Em estágio de consultas sobre a interpretação de normas regulamentares\n        vigentes ou até mesmo sugestões para o reexame de determinado assunto a\n        instituição financeira interessada estará desobrigada a cumprir a norma naquele\n        assunto.\n   IV. O fornecimento de informações inexatas, a falta ou atraso de conciliações\n        contábeis e a escrituração mantida em atraso por período superior a 15 (quinze)\n        dias, subsequentes ao encerramento de cada mês, ou processados em\n        desacordo com as normas consubstanciadas no Plano Contábil das instituições\n        autorizadas a funcionar pelo Banco Central do Brasil, colocam a instituição,\n        seus administradores, gerentes, membros do conselho de administração, fiscal\n        e semelhantes sujeitos a penalidades cabíveis, nos termos da lei.\n\n           Está(ão) CORRETO(S) apenas o(s) item(ns):\n\n          II, III e IV.\n          Resposta: I, II e IV.\n          III.\n          I.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "12",
+            "type": "discursiva",
+            "text": "- O Plano de Contas das Instituições Financeiras prevê os critérios\nde avaliação e apropriação contábil em operações financeiras com taxas\nprefixadas. Analise as opções abaixo e, em seguida, assinale a alternativa\nCORRETA.\n\f  I.    As operações ativas e passivas contratadas com rendas e encargos prefixados\n        contabilizam-se pelo valor presente, registrando-se as rendas e os encargos a\n        apropriar em subtítulo de uso interno do próprio título ou subtítulo contábil\n        utilizado para registrar a operação.\n  II. Apropriação das rendas e dos encargos mensais das operações financeira com\n        taxa prefixadas faz-se mediante a utilização do método linear, admitindo-se a\n        apropriação, segundo o método exponencial naquelas contratadas com cláusula\n        de juros simples.\n   III. As rendas e os encargos dessas operações são apropriados mensalmente, a\n        crédito ou a débito das contas efetivas de receitas ou despesas, conforme o\n        caso, em razão da fluência de seus prazos, admitindo-se a apropriação em\n        períodos inferiores a um mês.\n       IV. As rendas e os encargos proporcionais aos dias decorridos no mês da\n          contratação da operação devem ser apropriados dentro do próprio mês, \"pro rata\n          temporis\", considerando-se o número de dias corridos.\n\n\n           Está(ão) CORRETO(S) apenas o(s) item(ns):\n\n          II.\n          I, II e III.\n          III e IV.\n          Resposta: I, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "13",
+            "type": "discursiva",
+            "text": "- Os registros das aplicações em ouro efetuados pelas Instituições\nFinanceiras deverão ser efetuados de acordo com as normas do Banco Central do\nBrasil (BCB). Acerca desse assunto, assinale a opção CORRETA.\n\n          Resposta: As aquisições de ouro no mercado físico registram-se em\n           Aplicações Temporárias em Ouro pelo custo total, em subtítulos de uso\n           interno que identifiquem suas características de quantidade, procedência e\n           qualidade.\n          O saldo das aplicações em ouro físico ou certificado de custódia de ouro e o\n           saldo dos contratos de mútuo de ouro devem ser ajustados por ocasião dos\n           balancetes e balanços, apenas quanto negativos.\n          A contrapartida do ajuste positivo, referente à atualização do saldo das\n           aplicações em ouro, efetuado na forma das normas do           BCB, deve ser\n           registrada em conta de ajuste a valor patrimonial em sub conta do patrimônio\n           líquido.\n          As despesas de transporte, custódia, refino, chancela, impostos e outras\n           inerentes ao ciclo operacional de negociação do metal, bem como de\n           corretagem, são debitadas diretamente em contas de resultado.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "14",
+            "type": "discursiva",
+            "text": "- Os títulos e valores mobiliários classificados nas categorias\ndisponíveis para venda e para negociação devem ser ajustados pelo valor de\nmercado. Sobre esse assunto, assinale a opção CORRETA:\n\f      Os ajustes periódicos dos títulos classificados para negociação devem ser\n       registrados à conta destacada do patrimônio líquido.\n      Os ajustes periódicos dos títulos disponíveis para venda devem ser registrados à\n       conta destacada de receita ou despesa.\n      Resposta: Os ganhos ou perdas não realizadas registrados em conta\n       destacada do patrimônio líquido, na forma dos títulos disponíveis para\n       venda, devem ser transferidos para o resultado do período quando da\n       venda definitiva dos títulos e valores mobiliários classificados na categoria\n       “títulos disponíveis para venda”.\n      As ações não resgatáveis, classificadas na categoria “títulos mantidos até o\n       vencimento”, devem ser avaliadas pelos respectivos custos de aquisição,\n       acrescidos dos rendimentos auferidos, os quais não devem impactar o resultado\n       do período, tendo como contrapartida a conta adequada do patrimônio líquido.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "15",
+            "type": "discursiva",
+            "text": "- Existem critérios de avaliação e apropriação contábil em\noperações financeiras com taxas pós-fixadas, conforme prevê o Plano de Contas\ndas Instituições Financeiras. Com relação a esse assunto, assinale a opção\nCORRETA.\n\n\n      As operações ativas e passivas contratadas com rendas e encargos pós-fixados\n       ou flutuantes contabilizam-se pelo valor do principal, a débito ou a crédito das\n       contas que as registram. Os juros e os ajustes mensais decorrentes das\n       variações da unidade de correção ou dos encargos contratados, principalmente\n       no caso de taxas flutuantes, os registros contábeis deverão ocorrer em contas\n       distintas do registro do valor principal.\n      Resposta: As rendas e os encargos das operações com títulos pós-fixados\n       são apropriados mensalmente, a crédito ou a débito das contas efetivas de\n       receitas ou despesas, conforme o caso, em razão da fluência de seus\n       prazos, admitindo-se a apropriação em períodos inferiores a um mês.\n      As rendas e os encargos proporcionais aos dias decorridos em operações com\n       títulos pós-fixados, devem ser apropriados \"pro rata temporis\" a partir do mês\n       seguinte ao da contratação, considerando-se o número de dias corridos.\n      A apropriação das rendas e dos encargos mensais em operações com taxas\n       pós-fixadas faz-se mediante a utilização do método linear, admitindo-se a\n       apropriação segundo o método exponencial naquelas contratadas com cláusula\n       de juros simples, segundo o indexador utilizado para correção do mês seguinte\n       em relação ao mês corrente, \"pro rata temporis\" no caso de operações com\n       taxas pós-fixadas, ou com observância às taxas contratadas, no caso de\n       operações com encargos fixos.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "16",
+            "type": "discursiva",
+            "text": "- As operações com instrumentos financeiros derivativos realizadas\npor conta própria pelas Instituições Financeiras devem ser registradas após\nobservados alguns procedimentos. Analise as opções abaixo e assinale a\nalternativa CORRETA:\n\f      Nas operações a termo, deve ser registrado, na data da operação, o valor final\n       contratado acrescido da diferença entre esse valor e o preço a prazo do bem ou\n       direito em subtítulo retificador de uso interno da adequada conta de ativo ou\n       passivo, reconhecendo as receitas e despesas em razão do prazo de fluência\n       dos contratos.\n      Nas operações com “swap”, deve ser registrado, na data da operação, o valor\n       dos prêmios pagos ou recebidos na adequada conta de ativo ou passivo,\n       respectivamente, nela permanecendo até resgate antecipado, se for o caso,\n       quando então deve ser baixado como redução ou aumento do custo pelo efetivo\n       exercício do direito de negociação, ou como receita ou despesa.\n      Nas operações com outros instrumentos financeiros derivativos, deve ser\n       realizado registro em contas de ativo ou passivo, de acordo com as\n       características do contrato, com exceção daqueles embutidos, que devem ser\n       registrados separadamente em relação ao contrato a que estejam vinculados.\n      Resposta: Nas operações de futuro, deve ser registrado o valor dos ajustes\n       diários na adequada conta de ativo ou passivo, devendo ser apropriados\n       como receita ou despesa, no mínimo, por ocasião dos balancetes mensais\n       e balanços.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "17",
+            "type": "discursiva",
+            "text": "- Dentre as modalidades da classificação das operações de crédito,\nanalise as afirmativas abaixo e, em seguida, assinale a opção CORRETA.\n\n        I. Empréstimos são as operações realizadas sem destinação específica ou\n           vínculo à comprovação da aplicação dos recursos, como empréstimos para\n           capital de giro, empréstimos pessoais e os adiantamentos a depositantes.\n\n       II. Títulos descontados são as operações de desconto de títulos.\n\n       III. Financiamentos são as operações realizadas com destinação específica,\n            vinculadas à comprovação da aplicação dos recursos, com os\n            financiamentos de parques industriais, máquinas e equipamentos, bens de\n            consumo durável, rurais e imobiliários.\n\n       IV. Na classificação das operações de crédito, pelos diversos títulos contábeis,\n           deve-se ter em conta a aplicação dada aos recursos,por tipo ou modalidade\n           de operação e por atividade predominante do tomador do crédito.\n\n\nEstão CORRETOS os itens:\n\n\n      Resposta: I, II, III e IV.\n      I, II, III, apenas.\n      II e IV, apenas.\n      I, III e IV, apenas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "18",
+            "type": "discursiva",
+            "text": "- No critério de classificação das operações de crédito por nível de\nrisco e provisionamento, assinale a opção CORRETA:\n\n      As instituições financeiras devem classificar as operações de crédito, em ordem\n       decrescente de risco, nos seguintes níveis: nível AA; nível A; nível B; nível C;\n       nível D; nível E; nível F; nível G e nível H.\n      A classificação da operação de crédito nos níveis de risco deve ser efetuada por\n       ocasião dos balanços e, eventualmente, por ocasião dos balancetes mensais,\n       quando for detectado atraso superior a 30 dias.\n      Resposta: É vedado o reconhecimento, no resultado do período, de\n       receitas e encargos de qualquer natureza relativos a operações de crédito\n       que apresentem atraso igual ou superior a 60 (sessenta) dias, no\n       pagamento de parcela de principal ou encargos.\n      Os créditos titulados por empresas concordatárias devem ser classificados,\n       levando-se em conta os prazos originais, desconsiderando-se os novos prazos e\n       as condições estabelecidos nas sentenças judiciais homologatórias das\n       respectivas concordatas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "19",
+            "type": "discursiva",
+            "text": "- Entre a classificação das operações envolvendo créditos\ntributários em instituições financeiras, analise as alternativas abaixo e, em\nseguida, assinale a opção CORRETA:\n\n\n           I.     O registro de créditos tributários deve ser acompanhado pelo registro de\n                  obrigações fiscais diferidas, quando existentes, observado ainda que\n                  quando previsto na legislação tributária, havendo compatibilidade de\n                  prazos na previsão de realização e de exigibilidade, os valores ativos e\n                  passivos referentes a créditos e obrigações tributárias devem ser\n                  compensados.\n\n           II. Caracterizam-se como diferenças temporárias as despesas apropriadas\n               no exercício que já tenham sido deduzidas para fins de imposto de renda\n               e contribuição social, mas cujas exclusões ou compensações futuras,\n               para fins de apuração de lucro real, estejam explicitamente estabelecidas\n               ou autorizadas pela legislação tributária.\n\n           III. O auditor independente, ao emitir a sua opinião sobre as demonstrações\n                contábeis, deve manifestar-se quanto à adequação dos procedimentos\n                para a constituição e manutenção dos créditos tributários e obrigações\n                fiscais diferidas, quando relevantes, inclusive no que se refere às\n                premissas utilizadas para a elaboração e revisão semestral do estudo\n                técnico que justifique sua realização.\n\n           IV. Para fins de reconhecimento e avaliação do crédito tributário, devem ser\n               adotados os critérios e alíquotas vigentes no exercício anterior à\n               elaboração das demonstrações financeiras.\n\n\n       Estão CORRETOS apenas os itens:\n\n      II e IV.\n      I e IV.\n\f        II e III.\n        Resposta: I e III.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "20",
+            "type": "discursiva",
+            "text": "- Com relação à auditoria das Cooperativas de Crédito, assinale a\nopção CORRETA:\n\n\n        Resposta: A auditoria das Cooperativas de Crédito poderá ser realizada por\n         entidade de auditoria cooperativa destinada à prestação de serviços de\n         auditoria externa, constituída e integrada por cooperativas centrais de\n         crédito e/ou por suas confederações.\n        É necessário o registro da entidade de auditoria cooperativa na CVM.\n        Representa impedimento à realização de auditoria a existência de vínculo\n         societário entre a entidade de auditoria cooperativa e a cooperativa auditada.\n        A vinculação temporária entre membro de órgão estatutário, empregado ou\n         prestador de serviço da cooperativa auditada e a entidade de auditoria só poderá\n         ser mantida quando aprovada em Assembleia Geral de Cooperados.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "21",
+            "type": "discursiva",
+            "text": "– QUESTÃO ANULADA - No encerramento do exercício social do\nBanco DCE, em 31 de dezembro, o auditor identificou um erro na classificação de\ntítulos mobiliários na categoria “Títulos para Negociação”, considerados na\ncontabilidade erroneamente na categoria “Disponíveis para Venda”. Esses títulos\ngeraram uma valorização de R$50 mil, pela “marcação a mercado” que foi assim\ncontabilizada. Assinale a opção que apresenta o procedimento que o auditor\ndeveria ter adotado diante da situação.\n\n\n        Recomendar o ajuste do valor a débito da conta da Receita Operacional\n         anteriormente creditada, para crédito na adequada conta Ajuste ao Valor de\n         Mercado TVM e Instrumentos Financeiros Derivativos.\n        Sugerir o ajuste do valor a débito da conta Ajuste a Valor de Mercado TVM e\n         Instrumentos Financeiros Derivativos anteriormente creditada, para crédito em\n         adequada conta de Receita Operacional.\n        Determinar o ajuste do valor a débito da conta de Receita Operacional\n         anteriormente creditada, para crédito em adequada conta de Rendas a\n         Apropriar.\n        Não há necessidade de qualquer ajuste em contas de resultados ou\n         patrimoniais.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "22",
+            "type": "discursiva",
+            "text": "- Acerca do acompanhamento sistemático das atividades\nrelacionadas com o sistema de controles internos, devem ser objetos de\nrelatórios:\n\n\n\n       I.      As conclusões dos exames efetuados.\n       II.     Os resultados dos testes periódicos de segurança para os sistemas de\n               informações, em especial para os mantidos em meio eletrônico, a cada 5\n               (cinco) anos.\n\f        III.    As recomendações a respeito de eventuais deficiências, com o\n                estabelecimento de cronograma de saneamento das mesmas, quando for\n                o caso.\n        IV.     A manifestação dos responsáveis pelas correspondentes áreas a respeito\n                das deficiências encontradas em verificações anteriores e das medidas\n                efetivamente adotadas para saná-las.\n\n          Estão CORRETOS apenas os itens:\n\n\n         II e III.\n         III e IV.\n         I e II.\n         Resposta: I, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "23",
+            "type": "discursiva",
+            "text": "- Além do disposto pelo Banco Central do Brasil (BCB), o auditor\ndeverá observar as normas, regulamentos e procedimentos da Comissão de\nValores Mobiliários (CVM) e do Conselho Federal de Contabilidade (CFC) no que\ndiz respeito a seus deveres e responsabilidades. Acerca desse assunto, analise\nas alternativas abaixo e, em seguida, assinale a opção CORRETA.\n\n\n\n  I.      O auditor deve possuir o exame de qualificação técnica e submeter-se à revisão\n          externa.\n  II.     O auditor deve manter processo de rodízio de 3 (três) anos dos auditores\n          independentes.\n III.     O auditor deve manter responsáveis técnicos, com no mínimo 3 (três) anos de\n          experiência, em Instituições financeiras.\nIV.       O auditor deve manter programas de educação continuada, inclusive com\n          atividades específicas relativas a auditorias independentes em instituições\n          financeiras.\n\n\nEsta(ão) CORRETOS apenas os itens:\n\n\n\n         I e II.\n         II e III.\n         Resposta: I, III e IV.\n         III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "24",
+            "type": "discursiva",
+            "text": "- Sobre as reservas de lucros a realizar, de acordo com as normas\ndo Banco Central (BCB), assinale a alternativa CORRETA:\n\n\n         As parcelas realizadas das Reservas de Lucros a Realizar não podem ser\n          utilizadas para compensar prejuízos, quando estes ultrapassarem os lucros\n          acumulados.\n\f           O aumento do valor de investimentos em coligadas e controladas, no país e no\n            exterior, e a parcela efetiva do “hedge” de fluxo de caixa, são considerados\n            Lucros a Realizar.\n           Quando os lucros a realizar ultrapassarem, no período, o total deduzido do lucro\n            líquido destinado à constituição de Reserva Legal, Reservas Estatutárias,\n            Reservas de Contingências, Reservas para Expansão e Reservas Especiais de\n            Lucros, quando for o caso, não poderá, em nenhuma hipótese, destinar parcela\n            correspondente ao excesso para constituição de Reservas de Lucros a Realizar.\n           Resposta: O aumento do valor de investimentos em coligadas e\n            controladas, no país ou no exterior, e o lucro em venda de bens a prazo,\n            realizável após o término do exercício seguinte, considera-se como lucros\n            a realizar.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "25",
+            "type": "discursiva",
+            "text": "- Entre a classificação das operações de Resultados de Exercícios\nFuturos em instituições financeiras, analise as alternativas abaixo e, em seguida,\nassinale a opção CORRETA:\n\n I.        Enquadram-se como rendas antecipadas aquelas recebidas antes do\n           cumprimento da obrigação que lhes deu origem, sobre os quais não haja\n           quaisquer perspectivas de exigibilidade e cuja apropriação, como renda efetiva,\n           depende, apenas, da fluência do prazo.\n\n II.       As rendas da espécie, correspondente a cada operação de valor até R$511,00\n           (quinhentos e onze reais), na data de sua ocorrência, podem ser apropriadas\n           diretamente como rendas efetivas no ato do recebimento.\n\n III. Os custos ou despesas que excederem às correspondentes rendas antecipadas\n      devem ser apropriadas no mesmo período da apuração da receita em decorrência\n      da fluência do prazo.\n\n IV. As comissões por corretagens e taxas de colocação recebidas pelo serviço de\n     distribuição de títulos e valores mobiliários que excederem a 2% (dois por cento)\n     a.a., calculados sobre o valor dos títulos, registram-se em Rendas Antecipadas e\n     apropriam-se em Rendas de Comissões de Colocação de Títulos em razão da\n     fluência do prazo dos respectivos papéis, \"pro rata temporis\".\n\n\nEstão CORRETOS apenas os itens:\n\n\n           I, III e IV.\n           I, II e III.\n           Resposta: I, II e IV.\n           III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "26",
+            "type": "discursiva",
+            "text": "- O Banco Central do Brasil (BCB) poderá adotar medidas\nprudenciais preventivas destinadas a assegurar a solidez, a estabilidade e o\nregular funcionamento do Sistema Financeiro Nacional (SFN). Para tanto, deverá\nconsiderar, na sua análise e na avaliação das situações e circunstâncias apuradas\n\fnos processos de supervisão/fiscalização das referidas instituições, indicadores\ncomo os elencados abaixo, EXCETO o de:\n\n\n         liquidez.\n         concentração de operações ativas e/ou passivas.\n         Resposta: grau de dispersão do controle acionário.\n         alavancagem.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "27",
+            "type": "discursiva",
+            "text": "- Nas opções abaixo, são apresentadas algumas medidas\nprudenciais que o Banco Central do Brasil (BCB) pode determinar como adoção\nobrigatória para Instituição Financeira que apresente indicadores de ocorrência\nde situações que comprometam ou possam comprometer o regular\nfuncionamento do Sistema Financeiro Nacional (SFN), EXCETO:\n\n         a restrita observância dos limites operacionais.\n         Resposta: o aumento do grau de risco das exposições.\n         o cumprimento dos procedimentos operacionais e de controles internos\n          regulamentares.\n         a limitação ou suspensão da distribuição de resultados.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "28",
+            "type": "discursiva",
+            "text": "- A aplicação no exterior de disponibilidades em moeda estrangeira\nde bancos autorizados a operar no mercado de câmbio deve limitar-se a algumas\nmodalidades. Com relação a esse assunto, aponte, entre os itens abaixo, quais\nsão essas modalidades.\n\n   I.          Títulos de emissão do governo brasileiro.\n   II.         Títulos de dívida soberana emitidos por governos estrangeiros.\n   III.        Ações de companhias abertas negociadas em bolsa.\n   IV.         Debêntures emitidas por empresas privadas.\n\n\n\nEstão CORRETOS apenas os itens\n         Resposta: I e II.\n         II e III.\n         I e IV.\n         III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "29",
+            "type": "discursiva",
+            "text": "- Em 31 de janeiro de 20X1, o Banco RST deferiu operação de\ncrédito para reforçar o capital de giro da Rioverdense Industrial de Alimentos\nLtda. em R$1.000.000,00, com taxa prefixada de 2,3% a.m. (dois vírgula três por\ncento ao mês) e pagamento de juros e principal ao final de um prazo de seis\nmeses. Qual o impacto dessa operação nas adequadas contas (patrimonial e de\nresultados) constantes no balancete de 30/4/20X1 do Banco?\n\f      Financiamentos com R$1.069.000,00 e Rendas de Financiamentos com\n       R$69.000,00.\n      Resposta: Empréstimos com R$1.070.599,17 e Rendas de Empréstimos\n       com R$70.599,17.\n      Financiamentos com R$1.070.599,17 e Rendas de Financiamentos com\n       R$70.599,17.\n      Empréstimos com R$1.069.000,00 e Rendas de Empréstimos com R$69.000,00.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "30",
+            "type": "discursiva",
+            "text": "- A Cia. Trespassense, para financiar projeto de expansão de seu\nparque industrial, contatou o Banco DEF e teve deferida operação de crédito por\nrepasse de recursos do BNDES/Finame, na ordem de R$3.000.000.000,00. As\ncondições foram de liberação em 31 de março de 20X4, com carência de seis\nmeses para amortização do principal, mas com pagamento de juros mensais e\nsaldo em 60 prestações mensais consecutivas de amortização de principal e\njuros, sendo pactuada taxa pós-fixada, vinculada a TJLP e mais juros 0,4% a.m.\n\nO que deve constar no balancete de 31 de maio de 20X4 do Banco DEF, como\nreflexo dessa operação, nas respectivas e adequadas contas do sistema\npatrimonial e de resultados? (Considerar a TJLP de 0,5% a.m. no período para\nefeitos de cálculo)\n\n\n      Empréstimos com R$3.054.255,30 e Rendas de Empréstimos com R$54.255,30.\n      Empréstimos com R$3.030.075,00 e Rendas de Empréstimos com R$54.255,30.\n      Financiamentos com R$3.054.255,30 e Rendas de Financiamentos com\n       R$54.255,30.\n      Resposta: Financiamentos com R$3.030.075,00 e Rendas de\n       Financiamentos com R$54.255,30.\n\n\n\n\n                               DISSERTATIVAS",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {}
+}

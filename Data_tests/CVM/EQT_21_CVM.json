@@ -1,0 +1,217 @@
+{
+    "edition": "21",
+    "category": "CVM",
+    "questions": [
+        {
+            "number": "1",
+            "type": "discursiva",
+            "text": "- De acordo com a norma de Receita de contrato com cliente, quando\nse fala da alocação do preço da transação com base em preço de venda individual,\nos métodos adequados para estimar esse preço compreendem diversas\nabordagens. Acerca desse assunto, assinale a opção CORRETA:\n\n Com a “abordagem residual, a entidade pode estimar o preço de venda individual por\nreferência ao preço de transação total mais a soma dos preços de venda individuais\nobserváveis de outros bens ou serviços prometidos no contrato.\n Com a “abordagem de avaliação de mercado sem qualquer ajuste”, a entidade pode\navaliar o mercado no qual vende bens ou serviços e estimar o preço que o cliente nesse\nmercado estaria disposto a pagar por esses bens ou serviços.\n Resposta: Com a abordagem do custo esperado mais margem, mediante o qual\na entidade pode prever seus custos esperados para satisfazer à obrigação de\nperformance e então adicionar a margem apropriada para esse bem ou serviço.\n Com a “abordagem residual”, a entidade pode estimar o preço de venda individual por\nreferência ao preço de transação total como proporção da soma dos preços de venda\nindividuais observáveis de outros bens ou serviços prometidos no contrato.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "2",
+            "type": "discursiva",
+            "text": "- A Comissão de Valores Mobiliários (CVM) reconhece expressamente\nque as normas contábeis utilizadas na preparação das demonstrações contábeis\ndevem ser subordinadas:\n\n aos princípios da competência e revelação.\n às melhores práticas dos mercados local e internacional.\n Resposta: aos princípios da representação verdadeira e apropriada e da\n  primazia da essência sobre a forma.\n à forma prevalecendo sobre os efeitos econômicos, independentemente do tratamento\n  jurídico.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "3",
+            "type": "discursiva",
+            "text": "- Em relação à nota de declaração de conformidade constante nas\nnotas explicativas às demonstrações contábeis das companhias abertas, julgue os\nitens abaixo a serem afirmados pela administração nesta nota e, em seguida,\nassinale a opção CORRETA.\n\n   I.     Todas as informações relevantes próprias da entidade e somente elas estão\n          sendo evidenciadas.\n   II.    Todas as informações relevantes próprias da entidade ou não estão sendo\n          evidenciadas.\n   III.   As informações evidenciadas correspondem às utilizadas pela administração\n          na sua gestão.\n   IV.    As informações evidenciadas correspondem às utilizadas pela administração e\n          por analistas de mercado.\n\n  Está(ão) CORRETO(S) apenas o(s) item(ns):\n\f         I.\n         Resposta: I e III.\n         II e IV.\n         I e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "4",
+            "type": "discursiva",
+            "text": "- Em relação ao período de mensuração envolvendo combinação de\nnegócios, assinale a opção CORRETA.\n\n         Resposta: Durante o período de mensuração, o adquirente deve reconhecer,\n          adicionalmente, ativos ou passivos, quando nova informação for obtida\n          acerca de fatos e circunstâncias existentes na data da aquisição.\n         Durante o período de mensuração, o adquirente deve ajustar, prospectivamente,\n          os valores provisórios reconhecidos na data da aquisição.\n         O período de mensuração termina assim que o adquirente obtiver as informações\n          que buscava sobre fatos e circunstâncias existentes na data de encerramento das\n          demonstrações contábeis do exercício anterior e não poderá ser estendido.\n         Em raras circunstâncias, o período de mensuração poderá exceder a um ano da\n          data de aquisição.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "5",
+            "type": "discursiva",
+            "text": "- Como poderíamos definir o valor justo de um determinado\ncomponente do balanço patrimonial, considerando as Normas Contábeis em vigor?\nAcerca desse assunto, julgue os itens abaixo e, em seguida, assinale a opção\nCORRETA.\n\n   I.        Valor justo é o preço que seria recebido pela venda de um ativo ou pago pela\n             transferência de um passivo em uma transação não forçada no mercado.\n   II.       É o melhor valor alcançado pela companhia no momento da valorização inicial\n             da transação.\n   III.      O preço no mercado principal (ou mais vantajoso) utilizado para mensurar o\n             valor justo do ativo ou passivo não deve ser ajustado para refletir custos de\n             transação.\n   IV.       O valor justo deve ser estabelecido, tão somente, por laudo específico\n             contratado pela administração.\n\n  Está(ão) CORRETO(S) o(s) item(ns):\n\n         I, apenas.\n         II e III, apenas.\n         Resposta: I e III, apenas.\n         I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "6",
+            "type": "discursiva",
+            "text": "- Quando um passivo e instrumentos patrimoniais são mantidos por\noutras partes como ativos, como deverá ser realizada tal mensuração pela entidade\nemissora, considerando a norma contábil em vigor. Sobre esse assunto, julgue os\nitens abaixo e, em seguida, assinale a alternativa CORRETA.\n\nI.     A mensuração deverá ser embasada em laudo técnico elaborado pelo\nresponsável pela governança.\nII.    Deve-se utilizar o preço cotado em mercado ativo para o item idêntico mantido por\noutra parte como ativo, se esse preço estiver disponível.\n\fIII.   Deve-se utilizar a abordagem de receita técnica de valor presente que leve em\nconta o fluxo de caixa futuro que um participante do mercado esperaria receber por deter\no passivo ou o instrumento patrimonial como ativo.\nIV.    Deve-se usar uma abordagem que seja financeiramente viável e que leve em\nconta se o uso do ativo pela outra parte gera receita ou fluxos de caixa adequados.\n\nEstá(ão) CORRETO(S) o(s) item(ns):\n\n       I, apenas.\n       Resposta: II e III, apenas.\n       I e III, apenas.\n       I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "7",
+            "type": "discursiva",
+            "text": "- Sobre a regra de desreconhecimento de ativos financeiros prevista\nna norma de instrumentos financeiros, identifique os itens abaixo que resultam no\ndesreconhecimento de ativos financeiros e, em seguida, assinale a opção\nCORRETA:\n\n\n   I.   Os direitos de recebimento dos fluxos de caixa do ativo cessaram.\n  II.   A Cia. assumiu uma obrigação de pagar fluxos de caixa do ativo transferido.\n III.   A Cia. transferiu substancialmente todos os riscos e benefícios.\n IV.    A Cia. manteve o controle do ativo.\nEstão CORRETO(S) os itens:\n\n       I e II, apenas.\n       Resposta: I e III, apenas.\n       II, III e IV, apenas.\n       I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "8",
+            "type": "discursiva",
+            "text": "- A Entidade XYZ adquiriu a Entidade ABC, resultando em uma\ncombinação de negócios. Os seguintes valores são relacionados a esta\ncombinação:\na. Contraprestação efetivamente transferida R$1.600,00.\nb. Valor justo líquido de ativos identificáveis e passivos da Entidade ABC:\n        (i) ativos circulantes R$500,00;\n        (ii) ativos não circulantes R$1.500,00;\n        (iii) passivos circulantes R$300,00;\n        (iv) passivos não circulantes R$400,00.\n\n\nCom base nos valores acima apresentados, o valor do ágio a ser reconhecido por\nexpectativa de rentabilidade futura (goodwill) é de:\n       R$400,00.\n       R$900,00.\n       R$500,00.\n\f       Resposta: R$300,00.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "9",
+            "type": "discursiva",
+            "text": "- Com relação à Incerteza sobre Tratamento de Tributos sobre o Lucro,\njulgue os itens abaixo e, em seguida, assinale a opção CORRETA.\n  I.    A entidade deve reconhecer todos os efeitos de um tratamento fiscal incerto,\n        considerando a legislação vigente e seguindo os normativos fiscais existentes.\n  II.   Ao avaliar se e como o tratamento fiscal incerto afeta a determinação de lucro\n        tributável (prejuízo fiscal), a entidade deve assumir que a autoridade fiscal\n        examinará os valores que tem direito de examinar e tenha pleno conhecimento de\n        todas as informações relacionadas ao realizar esses exames.\n III.   Se a entidade concluir que é provável que a autoridade fiscal aceite o tratamento\n        fiscal incerto, a entidade deve determinar o lucro tributável (prejuízo fiscal),\n        consistentemente com o tratamento fiscal utilizado ou planejado para ser utilizado\n        em sua declaração de tributos sobre o lucro.\nIV.     A entidade deve refletir o efeito da incerteza para cada tratamento fiscal incerto,\n        utilizando o método do valor mais provável, o único valor mais provável em um\n        conjunto de resultados possíveis.\n\n        Estão CORRETOS os itens:\n\n\n       III e IV, apenas.\n       I e IV, apenas.\n       Resposta: II e III, apenas.\n       I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "10",
+            "type": "discursiva",
+            "text": "- O montante do ágio resultante da aquisição do controle da\ncompanhia aberta que vier a incorporar sua controladora (incorporação\nreversa) será contabilizado, na incorporadora, nas seguintes contas contábeis,\nquando o fundamento econômico tiver sido a diferença entre o valor de mercado\ndos bens e o seu valor contábil:\n\n       Em conta específica do ativo imobilizado.\n       Em conta específica do ativo diferido.\n       Resposta: Nas contas representativas dos bens que lhe deram origem.\n       Em conta específica do ativo não circulante.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "11",
+            "type": "discursiva",
+            "text": "- A Companhia A criou uma subsidiária B para a aquisição do\ncontrole da Companhia Z. No processo de aquisição, houve geração de ágio\nbaseado em rentabilidade futura e reconhecimento de mais valia de ativos. O ágio\ngerado na aquisição encontra-se devidamente fundamentado, e a operação foi\nrealizada com terceiros. Posteriormente à aquisição, a Companhia Z procedeu à\nincorporação da controladora B. Com base nas normas contábeis em vigor e na\nlegislação CVM e com relação ao reconhecimento do ágio, julgue os itens abaixo e,\nem seguida, assinale a opção CORRETA.\n  I.    O ágio deve ser reconhecido em conta específica do ativo diferido (ágio) ou em\n        conta específica de resultado de exercício futuro (deságio), quando o fundamento\n\f        for expectativa de resultado futuro pelo valor justo apurado em laudo de avaliação,\n        não requerendo, portanto, qualquer provisão.\n  II.   O ágio decorrente da mais valia de ativos deve ser reconhecido em contrapartida\n        no patrimônio líquido em conta de reserva especial de ágio na incorporação pelo\n        valor justo apurado em laudo de avaliação.\n III.   O ágio decorrente do direito de exploração ou concessão delegadas pelo Poder\n        Público assim como o ágio baseado em rentabilidade futura devem ser\n        provisionados, na incorporada, no mínimo, pela diferença entre o seu valor e o\n        benefício fiscal decorrente de sua amortização. O seu valor líquido deve ser\n        registrado em contrapartida da conta de reserva especial de ágio no patrimônio\n        líquido.\nIV.     O ágio decorrente da mais valia de ativos deve ser reconhecido em contrapartida\n        no patrimônio líquido em conta de reserva especial de ágio na incorporação,\n        provisionado na incorporada, no mínimo, pela diferença entre o seu valor e o\n        benefício fiscal decorrente de sua amortização.\n\n        Estão CORRETOS os itens:\n\n\n       III e IV, apenas.\n       Resposta: II e III, apenas.\n       I e III, apenas.\n       I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "12",
+            "type": "discursiva",
+            "text": "- Identifique nos itens abaixo, o tipo de transação que poderia\nrepresentar uma transação em moeda estrangeira e, em seguida, assinale a opção\nCORRETA.\n  I.    Quando a entidade compra ou vende bens ou serviços cujo preço é fixado em\n        moeda funcional.\n  II.   Quando a entidade compra ou vende bens ou serviços cujo preço é fixado em\n        moeda estrangeira.\n III.   Quando a entidade obtém ou concede empréstimos, quando os valores a pagar\n        ou a receber são variáveis em moeda estrangeira.\nIV.     Quando a entidade obtém ou concede empréstimos, quando os valores a pagar\n        ou a receber são fixados em moeda estrangeira.\n\n\nEstá(ão) CORRETO(S) apenas o(s) item(ns):\n\n       II.\n       Resposta: II e IV.\n       I e III.\n       IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "13",
+            "type": "discursiva",
+            "text": "- Qual é a definição de moeda estrangeira?\n\n       Resposta: Qualquer moeda diferente da moeda funcional da entidade.\n       Qualquer moeda diferente da moeda de apresentação da entidade.\n       Qualquer moeda diferente das moedas funcional e de apresentação da entidade.\n\f         Qualquer moeda diferente da moeda utilizada no país sede da entidade.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "14",
+            "type": "discursiva",
+            "text": "- O Auditor Independente - Pessoa Física, o Auditor Independente\nPessoa Jurídica e seus responsáveis técnicos poderão ter, respectivamente, o\nregistro e o cadastro na Comissão de Valores Mobiliários (CVM) suspenso ou\ncancelado, sem prejuízo de outras sanções legais cabíveis. O que poderá\nproporcionar tal situação?\n\n\n\n         Terem deixado de apresentar as informações anuais à CVM.\n         Resposta: Terem sofrido pena de suspensão ou cancelamento do registro\n          profissional, transitada em julgado, aplicada pelo órgão fiscalizador da\n          profissão.\n         Terem emitido relatório circunstanciado sobre os trabalhos de auditoria realizados\n          e não terem disponibilizado, tempestivamente, para a CVM.\n         Terem recebido relatório adverso na revisão de pares.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "15",
+            "type": "discursiva",
+            "text": "- A ABC Auditores Independentes apresentou proposta de auditoria\nem uma Companhia aberta, para auditar o exercício corrente. Entretanto, o sócio,\nao analisar a sua carteira de investimentos, verificou que possui ações da referida\ncompanhia. Considerando as regras sobre independência, qual seria a atitude que\no sócio deveria tomar a respeito deste assunto?\n\n         Declinar do trabalho e repassá-lo ao seu outro sócio.\n         Comunicar ao outro sócio que não poderia participar dos trabalhos.\n         Resposta: Desfazer-se de suas ações da companhia, caso venha a ser\n          contratado para realizar a auditoria do exercício corrente.\n         Aceitar o trabalho, pois suas ações são irrelevantes dentro de sua carteira de\n          investimentos.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "16",
+            "type": "discursiva",
+            "text": "- O auditor independente, ao desenvolver seu trabalho no âmbito do\nmercado de valores mobiliários, além dos procedimentos já executados no curso\nde sua auditoria, deverá, adicionalmente, verificar outros itens. Acerca desse\nassunto, julgue os itens abaixo e, em seguida, assinale a opção CORRETA:\n\n\n\n   I.        O auditor independente deve verificar se as demonstrações contábeis e o\n             relatório de auditoria foram divulgados nos meios de comunicação em que\n             seja obrigatória a sua publicação e se estes correspondem às demonstrações\n             contábeis auditadas e ao relatório originalmente emitido.\n   II.       O auditor independente deve verificar se o relatório integrado foi devidamente\n             preparado e publicado.\n   III.      O auditor independente deve verificar se as informações e análises contábeis\n             e financeiras apresentadas no relatório da administração da entidade estão\n             em consonância com as demonstrações contábeis auditadas.\n\f    IV.      O auditor independente deve verificar se as destinações do resultado da\n             entidade estão de acordo com as disposições da lei societária, com o seu\n             estatuto social e com as normas emanadas da CVM.\n\n\nEstá(ão) CORRETO(S) o(s) item(ns):\n\n         I, apenas.\n         II e III, apenas.\n         Resposta: I, III e IV, apenas.\n         I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "17",
+            "type": "discursiva",
+            "text": "– QUESTÃO ANULADA - No reconhecimento do imposto de renda\ndiferido ativo, de acordo com as normas contábeis vigentes e normativos CVM,\njulgue os itens abaixo e, em seguida, assinale a opção CORRETA.\n\n\n  I.      O ativo fiscal diferido deve ser reconhecido para todas as diferenças temporárias\n          dedutíveis na medida em que seja provável a existência de lucro tributável contra\n          o qual a diferença temporária dedutível possa ser utilizada.\n  II.     O ativo fiscal diferido deve ser reconhecido mediante as seguintes condições: (a) -\n          apresentar histórico de rentabilidade; e (b) - apresentar expectativa de geração de\n          lucros tributáveis futuros, trazidos a valor presente, fundamentada em estudo\n          técnico de viabilidade, que permitam a realização do ativo fiscal diferido em um\n          prazo máximo de dez anos.\n III.     O ativo fiscal diferido independente do prazo de sua realização, pode ser\n          reconhecido com base em estudo técnico que deve ser aprovado pelos órgãos da\n          administração da companhia, revisado a cada exercício, ajustando-se o valor do\n          ativo fiscal diferido sempre que houver alteração na expectativa da sua realização.\nIV.       O ativo fiscal diferido pode ser reconhecido para todas as diferenças temporárias\n          dedutíveis e prejuízos fiscais existentes com base na norma fiscal,\n          independentemente do prazo de realização, desde que a sua utilização seja\n          devidamente suportada pelos registros fiscais auxiliares que lhe deram origem.\n\n\nEstão CORRETOS os itens:\n\n         III e IV, apenas.\n         I e II, apenas.\n         II e IV, apenas.\n         I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "18",
+            "type": "discursiva",
+            "text": "- A Companhia aberta DD S.A., durante o exercício de 20X9, apurou\num Lucro de R$300.000,00. A administração, tendo em vista a determinação da\nlegislação societária, apresentou a seguinte proposta de destinação do resultado\napurado: Reserva legal: R$15.000,00; Reserva estatutária: R$30.000,00; dividendos\nobrigatórios: R$71.250,00; e o restante, no montante de R$183.750,00, foi para\nconstituição da Reserva de retenção de lucros. Acerca do que fundamenta a\nconstituição da reserva de retenção de lucros, assinale a opção CORRETA.\n\f       A proposta do órgão da Administração deverá indicar a causa da perda prevista e\n        justificar, com as razões de prudência que a recomendem, a constituição da\n        reserva.\n       Na sua constituição, deverá constar em Estatuto, de modo preciso e completo, a\n        sua finalidade, critérios e prazo.\n       Resposta: A Assembleia-geral poderá, por proposta dos órgãos da\n        administração, deliberar reter parcela do Lucro líquido do exercício prevista\n        em orçamento de capital por ela previamente aprovada.\n       A destinação do resultado, exceto a reserva legal até atingir vinte por cento do\n        capital, é de responsabilidade dos administradores.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "19",
+            "type": "discursiva",
+            "text": "- Em relação à determinação dos principais assuntos de auditoria,\nconstantes no relatório do auditor independente, quais fatores o auditor deve levar\nem consideração?\n\n       As divulgações constantes em notas explicativas às demonstrações contábeis do\n        período anterior, as estimativas contábeis e os eventos subsequentes.\n       Os riscos de negócios identificados, os envolvimentos de especialistas da\n        administração e as representações da administração.\n       Todos os assuntos que foram discutidos pela equipe de auditoria, incluindo\n        aqueles que não foram comunicados aos responsáveis pela governança da\n        entidade.\n       Resposta: As áreas avaliadas como de maior risco de distorção relevante ou\n        riscos significativos identificados; os julgamentos significativos do auditor\n        relativos às áreas das demonstrações contábeis que também envolveram\n        julgamento significativo por parte da administração, inclusive estimativas\n        contábeis identificadas que apresentam alto grau de incerteza na estimativa;\n        e efeito sobre a auditoria de fatos ou transações significativos ocorridos\n        durante o período.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "20",
+            "type": "discursiva",
+            "text": "- A avaliação do auditor dos riscos identificados no nível de\nafirmações fornece base para a consideração da abordagem de auditoria\napropriada para planejar e executar procedimentos adicionais de auditoria. Nesse\ncontexto, em relação à abordagem que o auditor deve utilizar, julgue os itens\nabaixo e, em seguida, assinale a opção CORRETA.\n\n\n  I.    Somente mediante a execução de testes de controle é que o auditor pode obter\n        resposta eficaz ao risco avaliado de distorção relevante em uma afirmação em\n        particular.\n  II.   Somente a execução de procedimentos substantivos é apropriada para\n        afirmações em particular e, portanto, o auditor exclui o efeito dos controles da\n        avaliação de risco relevante. Isso pode ser porque os procedimentos de avaliação\n        de risco do auditor não identificaram nenhum controle eficaz relevante para a\n        afirmação ou porque o teste dos controles seria ineficaz e, portanto, o auditor não\n        pretende confiar na efetividade operacional dos controles para determinar a\n        natureza, época e extensão dos procedimentos substantivos.\n III.   Uma abordagem combinada, que usa tanto testes de controle como\n        procedimentos substantivos é uma abordagem eficaz.\n\f  IV.   Independentemente da abordagem selecionada, o auditor planeja e executa os\n        procedimentos substantivos para cada classe de transações, saldos de contas e\n        divulgações relevantes.\n Está(ão) CORRETO(S) o(s) item(ns):\n\n\n       I, apenas.\n       III e IV, apenas.\n       I e II, apenas.\n       Resposta: I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "21",
+            "type": "discursiva",
+            "text": "- Em relação a exemplos de procedimentos adicionais de auditoria\n quando são identificados eventos ou condições que possam levantar dúvida\n significativa quanto à capacidade da entidade de manter sua continuidade\n operacional, julgue os itens abaixo e, em seguida, assinale a opção CORRETA.\n\n\n  I. No caso em que a administração ainda não realizou a avaliação da capacidade de\n     continuidade operacional da entidade, deve-se solicitar que a administração faça essa\n     avaliação.\n II. Deve-se avaliar os planos da administração para ações futuras em relação à avaliação\n     da continuidade operacional, se for provável que o resultado desses planos melhore a\n     situação e se os planos da administração forem viáveis nessas circunstâncias.\nIII. Deve-se verificar se algum fato ou informação adicional foi disponibilizado desde a\n     data em que a administração fez sua avaliação.\nIV. Deve-se solicitar representações formais da administração e, quando apropriado, dos\n     responsáveis pela governança, com relação a seus planos para ações futuras e a\n     viabilidade desses planos.\n\n Estão CORRETOS os itens:\n\n       I, II e III, apenas.\n       II e IV, apenas.\n       I e III, apenas.\n       Resposta: I, II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "22",
+            "type": "discursiva",
+            "text": "- A administração da entidade está em posição privilegiada para\n perpetrar fraudes em função de sua capacidade para manipular registros contábeis\n e elaborar demonstrações contábeis fraudulentas, burlando controles que sob\n outros aspectos parecem funcionar de forma efetiva. Em relação à existência deste\n risco nas entidades, assinale a opção CORRETA.\n\n\n       Este risco pode não existir quando os membros da equipe de trabalho estão\n        convictos de que a administração e os responsáveis pela governança são\n        honestos e íntegros.\n\f      Este risco pode não existir quando na avaliação da equipe de trabalho a entidade\n       possui controles internos eficazes adotados em nível da entidade.\n      Resposta: Este risco está presente em todas as entidades, e o auditor deve\n       executar procedimentos específicos de auditoria para responder a esse\n       risco.\n      Este risco está presente em todas as entidades apenas quando os controles\n       internos em nível da entidade foram avaliados como ineficazes pelo auditor.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "23",
+            "type": "discursiva",
+            "text": "- O auditor independente deve tomar precauções quando são\ndetectados desvios de controles nos quais ele pretende confiar. O auditor deve\nfazer indagações específicas para entender esses assuntos e suas potenciais\nconsequências, bem como usar uma das afirmações abaixo. Sobre esse assunto,\nassinale a opção CORRETA.\n\n      Resposta: Os testes de controle executados fornecem uma base apropriada\n       para se confiar nos controles.\n      A confiança do auditor por trabalhos anteriores é de tal magnitude que não são\n       necessários testes adicionais de controle.\n      O nível de controle de fronteira pode ser levado em consideração.\n      O auditor deve considerar o seu julgamento e não usar abordagem substantiva.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "24",
+            "type": "discursiva",
+            "text": "- Considerando as normas de auditoria aprovadas pelo Conselho\nFederal de Contabilidade, existe a necessidade da descrição da responsabilidade\nda administração nas representações formais?\n\n      Não há necessidade da descrição da responsabilidade, pois os itens afirmados\n       são suficientes para o conforto do auditor independente.\n      Resposta: A responsabilidade da administração deve ser descrita nas\n       representações formais de maneira como esta responsabilidade é descrita\n       nos termos do trabalho de auditoria.\n      A assinatura do presidente, do diretor financeiro e do contador são suficientes\n       para garantir a fidedignidade da afirmação.\n      Quando o auditor confia na integridade das informações e sua confiança na\n       seriedade da administração, basta a assinatura do contador.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "25",
+            "type": "discursiva",
+            "text": "- No caso do teste de Recuperação de Ativos de Longo Prazo\nrealizado pela Companhia Aberta, identifique nos itens abaixo quais devem ser\ndivulgadas em notas explicativas e, em seguida, assinale a opção CORRETA:\n\nI.       As premissas chaves utilizada pela Administração para a determinação do valor\nrealizável, a justificativa de sua utilização e se estão a valores nominais ou reais.\nII.      Os períodos de projeções utilizados e se adotado o valor em uso, a justificativa de\nutilizar-se um período superior a cinco anos; as taxas de crescimento utilizadas nas\nprojeções de fluxo de caixa e a taxa de desconto aplicada.\nIII.     As bases utilizadas para as projeções que são aquelas preparadas pela\nAdministração considerando efeitos de melhorias (reestruturações e ou ampliações) e\n\feventuais sinergias futuras, mas que sejam devidamente aprovadas pela Administração\nda Companhia.\nIV.    Se uma possível e razoável mudança em uma premissa-chave sobre a qual a\nadministração tenha baseado sua determinação de valor recuperável da Unidade\nGeradora de Caixa puder resultar em valor contábil inferior ao seu valor recuperável.\n\nEstão CORRETOS apenas os itens:\n\n      III e IV.\n      II e III.\n      Resposta: I e II.\n      I, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "26",
+            "type": "discursiva",
+            "text": "- Há casos em que a obrigação da entidade não está limitada à\nquantia que ela concordou em contribuir para o fundo de pensão respectivo,\nconforme a norma sobre benefícios a empregados.         Assinale a opção que\napresente o caso em que a entidade tem uma obrigação legal ou construtiva que é\nexemplo dessa circunstância.\n\n\n      Resposta: Garantia de retorno especificado sobre contribuições, seja direta\n       ou indiretamente vinculada ao plano.\n      Fórmula de benefício de plano que não esteja exclusivamente vinculada ao valor\n       das contribuições e exija que a entidade forneça contribuições adicionais, mesmo\n       no caso de os ativos serem suficientes para cobrir os benefícios da fórmula de\n       benefício de plano.\n      Retorno específico, devidamente garantido, sobre contribuições não vinculadas ao\n       plano.\n      Práticas informais que não deem origem a uma obrigação legal ou construtiva.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "27",
+            "type": "discursiva",
+            "text": "- É mandatório que o auditor independente comunique formalmente\ncom a governança da entidade alguns aspectos. Assinale a opção que apresenta\num desses aspectos.\n\n\n      Responsabilidade do auditor em relação à emissão de uma opinião não\n       modificada, independentemente da supervisão geral dos responsáveis pela\n       governança.\n      Circunstâncias que possam afetar a forma e o conteúdo do relatório do auditor\n       não devem ser discutidos com a governança corporativa até o momento de\n       apresentação do relatório final.\n      Resposta: O fato de que a auditoria das demonstrações contábeis não\n       isenta a administração ou os responsáveis pela governança de suas\n       responsabilidades.\n      Uma declaração de que a equipe de trabalho e outras pessoas na firma de\n       auditoria, bem como a própria firma e, quando aplicável, as firmas da rede,\n       cumpriram as exigências éticas relevantes relativas à independência somente é\n       exigida no caso de o auditor independente ser filiado e rede internacional de\n       firmas de auditoria e consultoria.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "28",
+            "type": "discursiva",
+            "text": "- Em relação à norma sobre a demonstração do valor adicionado,\nassinale a opção CORRETA:\n\n\n      Valor adicionado representa a riqueza criada pela empresa, de forma geral\n       medida pela diferença entre o valor das vendas e os insumos adquiridos de\n       terceiros, sem incluir valores adicionados produzidos por terceiros e transferidos à\n       entidade.\n      Resposta: Receita de venda de mercadorias, produtos e serviços representa\n       os valores reconhecidos na contabilidade a esse título pelo regime de\n       competência e incluídos na demonstração do resultado do período.\n      Insumos adquiridos de terceiros representam os valores relativos às aquisições de\n       matérias-primas, mercadorias, materiais, energia, serviços, etc. que tenham sido\n       transformados em despesas do período ou que ainda permanecem nos estoques.\n      Depreciação, amortização e exaustão representam os valores acumulados desde\n       o início das depreciações etc., até o encerramento do exercício.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "29",
+            "type": "discursiva",
+            "text": "- As estimativas contábeis fazem parte do processo contábil e devem\nser destacadas em notas explicativas às demonstrações contábeis. Na visão do\nauditor independente, assinale a opção CORRETA:\n\n      Quando a administração não reconhecer uma estimativa contábil relevante nas\n       demonstrações contábeis, o foco do auditor é obter a melhor mensuração da\n       estimativa contábil, quantificá-la e colocá-la em notas explicativas.\n      Com relação a estimativas contábeis reconhecidas, o auditor deve divulgar as\n       circunstâncias nas notas explicativas às demonstrações contábeis e incluir no\n       relatório do auditor independente como principal assunto de auditoria e incluir um\n       parágrafo de ênfase no seu relatório.\n      Com relação a estimativas contábeis do valor justo, algumas estruturas de\n       relatórios financeiros presumem que o valor justo pode ser mensurado de maneira\n       confiável como pré-requisito para requerer ou permitir mensurações e divulgações\n       do valor justo. Nesse caso, o assunto é determinado como sendo um principal\n       assunto de auditoria e o auditor deve incluir parágrafo de ênfase no seu relatório.\n      Resposta: Para estimativas contábeis que geram riscos significativos, o\n       auditor deve obter evidência de auditoria apropriada e suficiente quanto à\n       decisão da administração de reconhecer ou não reconhecer as estimativas\n       nas demonstrações contábeis, bem como se a base de mensuração\n       selecionada para as estimativas está de acordo com as exigências da\n       estrutura de relatório financeiro aplicável.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "30",
+            "type": "discursiva",
+            "text": "– QUESTÃO ANULADA - Conforme disposto na norma sobre\npropriedade para investimento, assinale a opção CORRETA:\n\n\n      Se a entidade tiver várias propriedades para investimento, ela pode escolher, a\n       seu critério, para cada uma dessas propriedades, a mensuração pelo custo ou\n       pelo valor justo.\n\f      A entidade pode escolher o método do valor justo ou o método do custo para\n       todas as propriedades para investimento que suportem passivos que pagam\n       retorno diretamente associado ao valor justo de, ou aos retornos de ativos\n       especificados incluindo essa propriedade para investimento e escolher o método\n       do valor justo ou o método do custo para todas as restantes propriedades para\n       investimento.\n      Inexiste a exigência que a entidade utilize, para mensurar o valor justo das\n       propriedades para investimento, avaliação de avaliador independente que tenha\n       qualificação profissional relevante e reconhecida e que tenha experiência recente\n       no local e na categoria da propriedade para investimento que esteja sendo\n       avaliada.\n      No caso de seguradoras e outras entidades que operam fundos de propriedades\n       que emitem cotas nacionais, é permitido que a entidade mensure a propriedade\n       detida pelo fundo parcialmente pelo custo e parcialmente pelo valor justo.\n\n\n\n\n                            QUESTÕES DISSERTATIVAS",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {}
+}

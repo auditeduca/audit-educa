@@ -1,0 +1,217 @@
+{
+    "edition": "21",
+    "category": "QTG",
+    "questions": [
+        {
+            "number": "1",
+            "type": "discursiva",
+            "text": "- De acordo com a ‘Estrutura conceitual para trabalhos de asseguração’, o\nobjeto do trabalho de asseguração pode ter várias formas, tais como as exemplificadas\nabaixo. Acerca desse assunto, assinale a opção que apresenta essa forma.\n\n      Condições ou desempenhos não financeiros (por exemplo, desempenho da entidade),\n       sendo vedado que as informações do objeto sejam indicadores de eficácia e\n       eficiência.\n      Comportamento (desde que não seja incluída a conformidade da governança\n       corporativa com regulamentações, políticas de recursos humanos).\n      Resposta: Histórico de desempenho ou condição financeira (por exemplo,\n       histórico de posição financeira, desempenho financeiro e fluxos de caixa) para o\n       qual a informação do objeto pode ser o reconhecimento, a mensuração, a\n       apresentação e a divulgação representada nas demonstrações contábeis.\n      Características físicas dos estabelecimentos dos principais fornecedores (por\n       exemplo, capacidade máxima de ocupação do prédio) para o qual a informação do\n       objeto pode ser documento de especificações.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "2",
+            "type": "discursiva",
+            "text": "- Conforme a norma de responsabilidade do auditor em relação à fraude, ao\ndefinir e aplicar procedimentos de auditoria para testar a adequação dos lançamentos\ncontábeis registrados na contabilidade e os ajustes efetuados na elaboração das\ndemonstrações contábeis, o auditor deve aplicar uma série de procedimentos. Dentre\nos procedimentos listados abaixo, assinale a opção que apresenta o procedimento\nCORRETO.\n\n      Fazer indagações a indivíduos envolvidos no processo de informação financeira, a\n       respeito de atividade inadequada ou não usual referente ao negócio da companhia e\n       de seus clientes.\n      Resposta: Selecionar e testar lançamentos contábeis e outros ajustes feitos no\n       final do período sob exame.\n      Desconsiderar a necessidade de testar os lançamentos contábeis e outros ajustes\n       durante o período.\n      Aceitar os julgamentos e as decisões da administração na determinação das\n       estimativas contábeis incluídas nas demonstrações contábeis, mesmo que possam\n       indicar uma possível tendenciosidade da administração da entidade que possa\n       representar risco de distorção relevante decorrente de fraude.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "3",
+            "type": "discursiva",
+            "text": "- De acordo com a norma sobre ‘Consideração de leis e regulamentos’, qual\ndos procedimentos abaixo está entre aqueles que o auditor deve aplicar quando da\nidentificação ou da suspeita de não conformidade?\n\f      Não ventilar o assunto, dependendo da lei ou regulamento, com qualquer nível da\n       administração nem com os responsáveis pela governança.\n      Se a administração ou, quando apropriado, os responsáveis pela governança não\n       fornecerem informações suficientes que comprovem que a entidade está cumprindo\n       com leis e regulamentos e, no julgamento do auditor, o efeito da suspeita de não\n       conformidade puder ser relevante para as demonstrações contábeis, ele deve\n       preparar um memorando confidencial e arquivá-lo nos papéis de trabalho.\n      Se o auditor tomar conhecimento de informações referentes a caso de não\n       conformidade, ou a suspeita de não conformidade com leis e regulamentos, o auditor\n       deve mencionar esse aspecto no seu relatório, antes do parágrafo de opinião.\n      Resposta: Se não puderem ser obtidas informações suficientes a respeito da\n       suspeita de não conformidade, o auditor deve avaliar o efeito, na formação da\n       sua opinião, da falta de evidência de auditoria apropriada e suficiente.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "4",
+            "type": "discursiva",
+            "text": "- Analisando as disposições da norma sobre ‘Planejamento de auditoria’,\nexamine as afirmações abaixo e assinale a resposta INCORRETA:\n\n      Resposta: Ao definir a estratégia global de auditoria, o auditor deve identificar\n       as características do trabalho depois de ter definido o seu alcance.\n      Ao definir a estratégia global de auditoria, o auditor deve definir os objetivos do\n       relatório do trabalho, de forma a planejar a época da auditoria e a natureza das\n       comunicações requeridas.\n      Ao definir a estratégia global de auditoria, o auditor deve considerar os fatores que, no\n       julgamento profissional do auditor, são significativos para orientar os esforços da\n       equipe do trabalho.\n      Ao definir a estratégia global de auditoria, o auditor deve considerar os resultados das\n       atividades preliminares do trabalho de auditoria e, quando aplicável, se é relevante o\n       conhecimento obtido em outros trabalhos realizados pelo sócio do trabalho para a\n       entidade.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "5",
+            "type": "discursiva",
+            "text": "- Conforme a norma sobre ‘Avaliação das distorções identificadas durante a\nauditoria’, o auditor deve considerar as distorções identificadas durante o exame de\nauditoria e tomar uma das atitudes/aplicar um dos procedimentos abaixo listados.\nAssinale a opção que apresenta uma dessas atitudes/aplicação/circunstância.\n\n      Se o conjunto de distorções detectadas durante a auditoria é muito inferior que a\n       materialidade determinada de acordo com a NBC TA 320, existe a possibilidade de\n       risco maior do que o risco baixo aceitável.\n      Resposta: Prestar atenção às evidências de que possam existir outras\n       distorções, o que inclui, por exemplo, quando o auditor identifica a ocorrência\n       de distorção decorrente de falha no controle interno ou de premissas ou\n       métodos de avaliação inadequados largamente aplicados pela entidade.\n      Decidir que é desprezível a possibilidade de existirem distorções não detectadas\n       devido à presença do risco de amostragem e do risco de não amostragem.\n      Nunca solicitar à administração que examine uma classe de transações, saldos\n       contábeis ou divulgação para que a administração entenda a causa de distorção\n       identificada pelo auditor.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "6",
+            "type": "discursiva",
+            "text": "- Conforme a norma sobre representações formais, o auditor pode ter\ndúvidas quanto à confiabilidade das representações formais. Analise as afirmações\nabaixo e assinale a resposta CORRETA:\n\n      Resposta: Se o auditor tem preocupação a respeito da competência, integridade,\n       valores éticos ou diligência da administração ou do seu comprometimento com\n       estes ou com sua aplicação, ele deve determinar o efeito que tais preocupações\n       podem ter sobre a confiabilidade das representações (verbais ou escritas) e da\n       evidência de auditoria em geral.\n      Se o auditor tem preocupação a respeito da competência, integridade, valores éticos\n       ou diligência da administração ou do seu comprometimento com estes ou com sua\n       aplicação, ele deve preparar um memorando para os papéis de trabalho e não\n       requerer representações por escrito da administração.\n      Se o auditor tem preocupação a respeito da competência, integridade, valores éticos\n       ou diligência da administração ou do seu comprometimento com estes ou com sua\n       aplicação, ele deve emitir uma opinião adversa.\n      Se o auditor tem preocupação a respeito da competência, integridade, valores éticos\n       ou diligência da administração ou do seu comprometimento com estes ou com sua\n       aplicação, ele deve discutir o assunto com a administração e solicitar que as\n       representações sejam também assinadas pelo consultor jurídico.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "7",
+            "type": "discursiva",
+            "text": "- De acordo com a norma sobre a formação da sua opinião, o auditor deve\nformar uma opinião sobre se as demonstrações contábeis são elaboradas, em todos os\naspectos relevantes, de acordo com a estrutura de relatório financeiro aplicável. Para\nformar essa opinião, o auditor deve concluir se obteve segurança razoável de que as\ndemonstrações contábeis tomadas em conjunto estão livres de distorção relevante,\nindependentemente se causada por fraude ou erro. Essa conclusão deve levar em\nconsideração um dos fatores abaixo listados. Acerca desses fatores, assinale a opção\nCORRETA.\n\n      Resposta: Se, na conclusão do auditor, de acordo com a norma sobre ‘Resposta\n       do Auditor aos Riscos Avaliados’, foi obtida evidência de auditoria apropriada e\n       suficiente; e se, na conclusão do auditor, de acordo com a norma sobre\n       ‘Avaliação das Distorções Identificadas durante a Auditoria’, distorções não\n       corrigidas são relevantes, individualmente ou em conjunto; e outras avaliações\n       exigidas pelas normas de auditoria.\n      Essa avaliação não deve incluir a consideração dos aspectos qualitativos das políticas\n       contábeis da entidade, nem indicadores de possível tendenciosidade nos julgamentos\n       da administração.\n      Se, segundo os requisitos da estrutura de relatório financeiro aplicável, as\n       demonstrações contábeis divulgam apropriadamente as principais políticas contábeis\n       selecionadas e aplicadas, mesmo que sejam inconsistentes com a estrutura do\n       relatório financeiro.\n      A apresentação geral das demonstrações contábeis foi prejudicada pela inclusão de\n       informações relevantes ou que permitem que os usuários previstos entendam o efeito\n       de transações e eventos relevantes sobre as informações incluídas nas\n       demonstrações contábeis.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "8",
+            "type": "discursiva",
+            "text": "- Conforme a norma sobre modificações à opinião do auditor, na\nimpossibilidade de se obter evidência de auditoria apropriada e suficiente devido à\nlimitação imposta pela administração depois da aceitação do trabalho pelo auditor, este\ndeve tomar uma das atitudes descritas na relação abaixo. Analise as afirmações e\nassinale a resposta CORRETA:\n\n      Se a administração se recusar a retirar a limitação por ela imposta, o auditor deve\n       emitir um relatório com abstenção de opinião.\n      Se o auditor concluir que os possíveis efeitos de distorções não detectadas sobre as\n       demonstrações contábeis, se houver, poderiam ser relevantes, mas não\n       generalizados, o auditor deve emitir uma opinião adversa.\n      Resposta: Se, depois de aceitar o trabalho, o auditor tomar conhecimento que a\n       administração impôs uma limitação ao alcance da auditoria que tem, segundo\n       ele, probabilidade de resultar na necessidade de expressar uma “Opinião com\n       ressalva” ou abster-se de expressar uma opinião sobre as demonstrações\n       contábeis, o auditor deve solicitar que a administração retire a limitação.\n      Se o auditor renunciar, conforme previsto na, antes da renúncia, ele está\n       impossibilitado comunicar aos responsáveis pela governança ou ao eventual auditor\n       sucessor quaisquer assuntos relativos a distorções identificadas durante a auditoria\n       que dariam origem a uma opinião modificada.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "9",
+            "type": "discursiva",
+            "text": "- Na formação da opinião e emissão do relatório do auditor independente\nsobre demonstrações contábeis para propósitos especiais, o auditor deve aplicar os\nrequisitos da norma sobre ‘Formação da Opinião e Emissão do Relatório do Auditor\nIndependente sobre as Demonstrações Contábeis’. Essa norma requer que o auditor\navalie se as demonstrações contábeis fazem referência ou descrevem, adequadamente,\na estrutura de relatório financeiro aplicável. No caso de demonstrações contábeis\nelaboradas de acordo com outras estruturas conceituais, o auditor deve avaliar se as\ndemonstrações contábeis descrevem, adequadamente, as interpretações significativas\ndo contrato sobre o qual estão baseadas as demonstrações contábeis. Analise as\nafirmações abaixo e assinale a resposta CORRETA:\n\n      No caso do relatório de auditoria sobre demonstrações contábeis para propósitos\n       especiais o relatório do auditor independente não poderá descrever o objetivo para o\n       qual foram elaboradas as demonstrações contábeis.\n      No caso do relatório de auditoria sobre demonstrações contábeis para propósitos\n       especiais, o relatório do auditor independente deverá conter ressalva sobre este\n       assunto.\n      No caso do relatório de auditoria sobre demonstrações contábeis para propósitos\n       especiais, é vedado ao auditor incluir um parágrafo de ênfase, alertando os usuários\n       desse relatório de que as demonstrações contábeis foram elaboradas de acordo com\n       a estrutura de relatório financeiro para propósitos especiais e que, consequentemente,\n       as demonstrações contábeis podem não ser adequadas para outro fim, pois isto\n       poderá confundir os usuários.\n      Resposta: No caso do relatório de auditoria sobre demonstrações contábeis\n       para propósitos especiais, o relatório do auditor independente também deve\n       descrever o objetivo para o qual foram elaboradas as demonstrações contábeis\n       e, se necessário, os usuários previstos, ou referir-se à nota explicativa nas\n       demonstrações contábeis para propósitos especiais que contêm essas\n       informações.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "10",
+            "type": "discursiva",
+            "text": "- Ao avaliar se há alguma indicação de que perda por desvalorização\nreconhecida em períodos anteriores para um ativo, exceto o ágio por expectativa de\nrentabilidade futura (goodwill), possa ter diminuído ou possa não mais existir, a\nentidade deve considerar diversos fatores. Dentre eles, uns dos mais importantes são\nas fontes externas de informação. A respeito dessas fontes, assinale a opção que\napresenta essas informações.\n\n      Há indicações observáveis de que o valor do ativo tenha decrescido significativamente\n       durante o período.\n      Resposta: Mudanças significativas, com efeito favorável sobre a entidade,\n       tenham ocorrido durante o período, ou ocorrerão em futuro próximo, no\n       ambiente tecnológico, de mercado, econômico ou legal no qual ela opera ou no\n       mercado para o qual o ativo é destinado.\n      As taxas de juros de mercado ou outras taxas de mercado de retorno sobre\n       investimentos tenham aumentado durante o período.\n      Esses aumentos possivelmente tenham afetado a taxa de desconto utilizada no\n       cálculo do valor em uso do ativo e diminuído seu valor recuperável materialmente.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "11",
+            "type": "discursiva",
+            "text": "- A afirmações abaixo baseiam-se nas disposições da norma sobre\n‘Arrendamentos’ relacionadas com venda e arrendamento subsequente (chamadas de\n“leaseback”). Acerca desse assunto, analise as afirmações e assinale a resposta\nCORRETA.\n\n      Resposta: Se o valor justo da contraprestação pela venda do ativo não equivale\n       ao valor justo do ativo, ou se os pagamentos pelo arrendamento não são a taxas\n       de mercado, a entidade deve fazer os seguintes ajustes para mensurar os\n       rendimentos da venda ao valor justo: (a) quaisquer termos abaixo do mercado\n       devem ser contabilizados como pagamentos antecipados de pagamentos do\n       arrendamento; e (b) quaisquer condições acima do mercado devem ser\n       contabilizadas como financiamento adicional fornecido pelo comprador-\n       arrendador ao vendedor-arrendatário.\n      A entidade deve mensurar qualquer potencial ajuste necessário que seja maior que o\n       valor da diferença entre o valor justo da contraprestação pela venda e o valor justo do\n       ativo.\n      A entidade deve mensurar qualquer potencial ajuste necessário que seja menor que o\n       valor da diferença entre o valor justo da contraprestação pela venda e o valor justo do\n       ativo.\n      A entidade deve mensurar qualquer potencial ajuste necessário que seja igual ao valor\n       da diferença entre o valor justo da contraprestação pela venda e o valor justo do ativo.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "12",
+            "type": "discursiva",
+            "text": "- A norma de ‘Combinação de negócios’ contém normas específicas a\nrespeito do reconhecimento de passivos contingentes e ativos de indenização. De\nacordo com uma das indicações abaixo, assinale a resposta CORRETA:\n\f      Nenhum passivo deve ser reconhecido, já que os passivos contingentes não devem\n       ser reconhecidos.\n      Resposta: Após o reconhecimento inicial e até que o passivo seja liquidado,\n       cancelado ou extinto, o adquirente deve mensurar qualquer passivo contingente\n       reconhecido em combinação de negócios pelo maior valor entre: (a) o montante\n       pelo qual esse passivo seria reconhecido pelo disposto na norma sobre\n       provisões, passivos contingentes e ativos contingentes; e (b) o montante pelo\n       qual o passivo foi inicialmente reconhecido, deduzido, quando cabível, da\n       receita reconhecida conforme os princípios da norma sobre ‘Receita de Contrato\n       com Cliente’.\n      Eventuais ativos de indenização adquiridos numa combinação de negócios não devem\n       ser reconhecidos contabilmente, dado o grau de incerteza da sua realização.\n      O adquirente deve mensurar qualquer ativo de indenização reconhecido na data da\n       aquisição pelo seu valor justo.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "13",
+            "type": "discursiva",
+            "text": "- Segundo a norma sobre demonstrações intermediárias, a entidade deve\naplicar as mesmas políticas contábeis nas suas demonstrações contábeis\nintermediárias que são aplicadas nas demonstrações contábeis anuais, com exceção\nde alterações de políticas contábeis feitas depois da data da mais recente\ndemonstração contábil anual, as quais irão ser refletidas nas próximas demonstrações\ncontábeis anuais. Acerca desse assunto, assinale a opção CORRETA:\n\n      As mensurações anuais não podem envolver alterações em estimativas de montantes\n       divulgados em períodos intermediários anteriores do período financeiro corrente.\n      Os custos que não se enquadram na definição de ativo ao final de um período\n       intermediário podem ser diferidos no balanço patrimonial, seja para aguardar\n       informações futuras quanto ao seu enquadramento na definição de ativo, seja para\n       fins de nivelamento de resultados ao longo dos períodos intermediários dentro do\n       exercício social.\n      Resposta: O requerimento de que as entidades apliquem, nas suas\n       demonstrações contábeis intermediárias, as mesmas políticas contábeis que\n       são aplicadas nas demonstrações contábeis anuais pode parecer sugerir que as\n       mensurações do período intermediário são feitas como se cada período\n       intermediário se comportasse como se fosse um período de reporte\n       independente.\n      Despesa com tributo sobre o lucro e contribuição social é reconhecida em cada\n       período intermediário com base no resultado desse período, sem levar em conta a\n       alíquota média efetiva ponderada anual esperada para o exercício social completo.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "14",
+            "type": "discursiva",
+            "text": "- Seguem-se afirmações baseadas na leitura da norma sobre ativo\nimobilizado. Analise as afirmações abaixo e assinale a resposta CORRETA:\n\n      A entidade não pode escolher depreciar separadamente os componentes de um item\n       que não tenham custo significativo em relação ao custo total do item.\n      A despesa de depreciação de cada período deve ser reconhecida no resultado mesmo\n       que seja incluída no valor contábil de outro ativo.\n\f      A depreciação de ativos imobilizados usados para atividades de desenvolvimento não\n       pode ser incluída no custo de um ativo intangível reconhecido de acordo com a norma\n       de ‘Ativo Intangível’.\n      Resposta: Um componente significativo de um item do ativo imobilizado pode\n       ter a vida útil e o método de depreciação que sejam os mesmos que a vida útil e\n       o método de depreciação de outro componente significativo do mesmo item.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "15",
+            "type": "discursiva",
+            "text": "- As demonstrações separadas devem ser apresentadas de acordo com\ntodas as normas, interpretações e comunicados técnicos do CFC aplicáveis, exceto\numa das circunstâncias daquelas listadas em (a) a (d) abaixo. Analise as afirmações e\nassinale a resposta CORRETA:\n\n      Se a entidade eleger, de acordo com a norma sobre Investimento em Coligada, em\n       Controlada e em Empreendimento Controlado em Conjunto, mensurar seus\n       investimentos em controladas, em coligadas e em empreendimentos controlados em\n       conjunto ao valor justo por meio do resultado, ela não poderá contabilizá-los nos\n       mesmos moldes em suas demonstrações separadas.\n      Quando deixar de ser entidade de investimento ou quando se tornar entidade de\n       investimento, a controladora deve contabilizar o investimento na controlada somente\n       pelo custo histórico.\n      A entidade não poderá aplicar as mesmas práticas contábeis para cada categoria de\n       investimentos.\n      Resposta: Quando a entidade elaborar demonstrações separadas, neste caso,\n       ela deve contabilizar os seus investimentos em controladas, em coligadas e em\n       empreendimentos controlados em conjunto (a) com base no custo histórico; (b)\n       em consonância com a norma sobre Investimento em Coligada, em Controlada e\n       em Empreendimento Controlado em Conjunto; ou (c) utilizando o método da\n       equivalência patrimonial.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "16",
+            "type": "discursiva",
+            "text": "- De acordo com a norma de Receita de contrato com cliente, quando se\nfala da alocação do preço da transação com base em preço de venda individual, os\nmétodos adequados pra estimar esse preço compreendem diversas abordagens.\nAcerca desse assunto, assinale a opção CORRETA:\n\n      Abordagem residual – a entidade pode estimar o preço de venda individual por\n       referência ao preço de transação total mais a soma dos preços de venda individuais\n       observáveis de outros bens ou serviços prometidos no contrato.\n      Abordagem de avaliação de mercado sem qualquer ajuste – a entidade pode avaliar o\n       mercado no qual vende bens ou serviços e estimar o preço que o cliente nesse\n       mercado estaria disposto a pagar por esses bens ou serviços.\n      Resposta: Abordagem do custo esperado mais margem, mediante o qual a\n       entidade pode prever seus custos esperados para satisfazer à obrigação de\n       performance e então adicionar a margem apropriada para esse bem ou serviço.\n      Abordagem residual – a entidade pode estimar o preço de venda individual por\n       referência ao preço de transação total como proporção da soma dos preços de venda\n       individuais observáveis de outros bens ou serviços prometidos no contrato.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "17",
+            "type": "discursiva",
+            "text": "- De acordo com a Seção 110 da norma NBC PG 100 (R1), Código de Ética,\nexistem cinco princípios fundamentais de ética para os profissionais da contabilidade.\nIdentifique esses princípios e, em seguida, assinale a opção CORRETA.\n\n      integridade; assertividade; competência profissional e devido zelo; confidencialidade; e\n       comportamento profissional.\n      Resposta: integridade; objetividade; competência profissional e devido zelo;\n       confidencialidade; e comportamento profissional.\n      integridade; objetividade; competência profissional e devido zelo; seriedade; e\n       comportamento profissional.\n      conhecimento técnico; objetividade; competência profissional e devido zelo;\n       confidencialidade; e comportamento profissional.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "18",
+            "type": "discursiva",
+            "text": "- Conforme as disposições da Lei das Sociedades por Ações, a duração do\nexercício social está sujeita a alguns prazos. Assinale a opção que apresenta esse\nprazo.\n\n      Resposta: O exercício social terá duração de 1 (um) ano e a data do término será\n       fixada no estatuto.\n      O exercício social deve aderir ao ano calendário.\n      Na constituição da companhia, o exercício social terá um ano; eventual ajuste de\n       datas deverá ser feito em exercícios subsequentes, por meio de assembleia geral\n       extraordinária.\n      Não é permitida qualquer alteração estatutária que possa modificar a duração do\n       exercício.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "19",
+            "type": "discursiva",
+            "text": "- Segundo as disposições da Lei das Sociedades por Ações, dentro do\npatrimônio líquido podem encontrar-se os seguintes conceitos. Identifique abaixo\nesses conceitos e, em seguida, assinale a opção CORRETA.\n\n      A conta do capital social pelo seu montante subscrito; a parcela ainda não realizada\n       será considerada na rubrica Contas a Receber, no ativo circulante.\n      Resposta: Dentro das reservas de capital, a contribuição do subscritor de ações\n       que ultrapassar o valor nominal e a parte do preço de emissão das ações sem\n       valor nominal que ultrapassar a importância destinada à formação do capital\n       social, inclusive nos casos de conversão em ações de debêntures ou partes\n       beneficiárias.\n      Ajustes de avaliação patrimonial, já computados no resultado do exercício em\n       obediência ao regime de competência e as contrapartidas de aumentos ou\n       diminuições de valor atribuídos a elementos do ativo e do passivo, em decorrência da\n       sua avaliação a valor justo, nos casos previstos em lei.\n      Nas reservas restritas de capital, as contas constituídas pela apropriação de lucros da\n       companhia.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "20",
+            "type": "discursiva",
+            "text": "- Segundo a norma contábil que trata dos eventos subsequentes, a\nentidade deve ajustar os valores reconhecidos em suas demonstrações contábeis na\npresença de certas condições. Costuma-se dizer que essas condições determinam o\nque se denomina ‘eventos subsequentes ajustáveis’. Sobre esse assunto, identifique\na seguir a condição para determinar que as demonstrações contábeis sejam ajustadas\ne, em seguida, assinale a opção CORRETA.\n\n      Decisão ou pagamento em processo judicial após o final do período contábil a que se\n       referem as demonstrações contábeis, confirmando que a entidade não tinha a\n       obrigação presente ao final daquele período contábil.\n      Obtenção de informação após o período contábil a que se referem as demonstrações\n       contábeis, indicando que um ativo desvalorizou-se por causa de eventos ocorridos\n       após o final daquele período contábil.\n      Declínio do valor justo de investimentos ocorrido no período compreendido entre o\n       final do período contábil a que se referem as demonstrações e a data de autorização\n       de emissão dessas demonstrações.\n      Resposta: Determinação, após o período contábil a que se referem as\n       demonstrações contábeis, do custo de ativos comprados ou do valor de ativos\n       recebidos em troca de ativos vendidos antes do final daquele período.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "21",
+            "type": "discursiva",
+            "text": "- Conforme a norma de auditoria que trata de informações comparativas,\nvalores correspondentes e demonstrações contábeis comparativas, se as\ndemonstrações contábeis do período anterior foram examinadas por auditor\nindependente antecessor e o auditor atual não está proibido por lei ou regulamento de\nmencionar o relatório do auditor independente antecessor sobre os valores\ncorrespondentes e decide fazer isso, ele deve especificar em um parágrafo de Outros\nAssuntos no seu relatório de auditoria independente uma das circunstâncias abaixo\nlistadas. Acerca desse assunto, assinale a resposta CORRETA:\n\n      A data em que o auditor antecessor tinha sido contratado.\n      A data em que o auditor antecessor entregou a minuta do relatório final.\n      Resposta: O tipo de opinião expressa pelo auditor independente antecessor e,\n       se essa opinião conteve modificação, as razões para a modificação.\n      Se o auditor antecessor tinha sido também contratado para fazer uma revisão limitada\n       das entidades controladas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "22",
+            "type": "discursiva",
+            "text": "- De acordo com a norma de auditoria relacionada com a utilização do\ntrabalho da auditoria interna da entidade auditada, o auditor independente deve\ndeterminar se o trabalho da auditoria interna pode ser utilizado para os fins da\nauditoria. Considerando uma das condições abaixo enumeradas, assinale a resposta\nCORRETA:\n\n      Resposta: Se a função de auditoria interna aplica uma abordagem sistemática e\n       disciplinada, incluindo controle de qualidade.\n      A função da auditoria interna não tem suficiente competência.\n      A posição hierárquica da auditoria interna na organização e suas políticas e\n       procedimentos não propiciam adequada objetividade dos auditores internos.\n\f      A função não aplica uma abordagem sistemática e disciplinada, incluindo controle de\n       qualidade.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "23",
+            "type": "discursiva",
+            "text": "- A norma contábil sobre ativos intangíveis se aplica na presença de uma\ndas condições abaixo listadas. Analise as condições citadas e assinale a resposta\nCORRETA:\n\n      No reconhecimento e mensuração de ativos advindos da exploração e avaliação de\n       recursos minerais.\n      Ativos financeiros.\n      Gastos com desenvolvimento e extração de minerais, óleo, gás natural e recursos\n       naturais não renováveis similares.\n      Resposta: Direitos detidos por arrendatário por meio de contratos de\n       licenciamento para itens como filmes cinematográficos, gravações em vídeo,\n       peças, manuscritos, patentes e direitos autorais.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "24",
+            "type": "discursiva",
+            "text": "- De acordo com a norma sobre estrutura conceitual para trabalhos de\nasseguração existem dois tipos de trabalhos de asseguração cuja execução é\npermitida ao auditor independente: trabalho de asseguração razoável e trabalho de\nasseguração limitada. Analise as afirmações abaixo, que descrevem o objetivo do\ntrabalho do auditor independente e assinale a opção CORRETA.\n\n      Asseguração razoável representa a eliminação do risco do trabalho de asseguração a\n       um nível adequado, considerando as circunstâncias do trabalho como base para uma\n       forma razoável da opinião para a base de conclusão do auditor independente.\n      Resposta: Asseguração razoável é reduzir o risco do trabalho de asseguração a\n       um nível aceitavelmente baixo, considerando as circunstâncias do trabalho\n       como base para uma forma positiva de expressão da conclusão do auditor\n       independente.\n      Asseguração limitada refere-se à aplicação de procedimentos visando eliminar o risco\n       de erro no trabalho de asseguração, atingindo um nível que seja aceitável,\n       considerando as circunstâncias do trabalho, mas em que o risco seja maior do que no\n       trabalho de asseguração razoável, como base para uma forma positiva de expressão\n       da conclusão do auditor independente.\n      Asseguração limitada refere-se à aplicação de procedimentos visando reduzir o risco\n       de erro no trabalho de asseguração, atingindo um nível que seja aceitável,\n       considerando as circunstâncias do trabalho, mas em que o risco seja menor àquele\n       executado no trabalho de asseguração razoável, como base para uma forma positiva\n       de expressão da conclusão do auditor independente.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "25",
+            "type": "discursiva",
+            "text": "- Ao planejar e executar os testes de controle, é CORRETO afirmar que o\nauditor:\n\n      pode executar como procedimento apenas a indagação para obter evidência de\n       auditoria sobre a efetividade operacional dos controles, uma vez que o auditor parte\n       da premissa que as respostas da administração são corretas e verdadeiras.\n\f       deve testar apenas os controles diretos, ou seja, mesmo que os controles a serem\n        testados dependam de outros controles (controles indiretos), não é necessário obter\n        evidência de auditoria que suporte a operação efetiva destes controles.\n       obtém evidência de auditoria sobre o funcionamento sistemático dos controles apenas\n        no período final, não sendo necessário evidências adicionais de auditoria.\n       Resposta: obtém evidência de auditoria sobre a efetividade operacional dos\n        controles durante período intermediário, sendo que o auditor deve obter\n        evidência de auditoria das alterações significativas nesses controles após o\n        período intermediário e determinar a evidência de auditoria adicional a ser\n        obtida para o período remanescente.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "26",
+            "type": "discursiva",
+            "text": "- Em relação à aceitação do trabalho pelo auditor independente, existem\n certas condições prévias que são da responsabilidade da administração e/ou dos\n responsáveis pela governança, que o auditor deve se certificar antecipadamente à sua\n contratação. Sobre esse assunto, julgue os itens abaixo e, em seguida, assinale a\n opção CORRETA.\n\n I. O auditor deve determinar se a estrutura de relatório financeiro a ser aplicada na\n   elaboração das demonstrações contábeis é aceitável.\nII. O auditor deve obter a concordância da administração de que ela reconhece e entende sua\n   responsabilidade pelo controle interno que a administração determinou como necessário\n   para permitir a elaboração de demonstrações contábeis livres de distorções relevantes,\n   independentemente se causadas por fraude ou erro.\nIII. O auditor deve obter a concordância da administração de que ela reconhece e entende sua\n    responsabilidade pela elaboração das demonstrações contábeis, de acordo com a estrutura\n    de relatório financeiro aplicável, incluindo, quando relevante, sua adequada apresentação.\nIV. O auditor deve obter a concordância da administração no acesso a todas as informações\n   relevantes de que a administração tem conhecimento para a elaboração das demonstrações\n   contábeis, como registros, documentação e outros assuntos.\n\n\n Estão CORRETOS os itens:\n       I, II e III, apenas.\n       Resposta: I, II, III e IV.\n       I, II e IV, apenas.\n       III e IV, apenas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "27",
+            "type": "discursiva",
+            "text": "- De acordo com a norma sobre Controle de Qualidade da Auditoria de\n Demonstrações Contábeis, o revisor do controle de qualidade do trabalho deve realizar\n uma avaliação objetiva dos julgamentos significativos feitos pela equipe de trabalho e\n as conclusões atingidas ao elaborar o relatório. Essa avaliação NÃO deve envolver:\n\n     a discussão de assuntos significativos com o sócio encarregado do trabalho.\n\f    a revisão da documentação selecionada de auditoria relativa aos julgamentos\n       significativos feitos pela equipe de trabalho e das conclusões obtidas.\n    a revisão das demonstrações contábeis e do relatório proposto.\n    Resposta: a revisão do planejamento da auditoria para mitigar as\n     responsabilidades do sócio encarregado do trabalho e sua execução.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "28",
+            "type": "discursiva",
+            "text": "- De acordo com a norma sobre utilização do trabalho da Auditoria interna,\npara que seja possível a utilização desse trabalho, o auditor independente deve avaliar\nos seguintes aspectos da função da auditoria interna. Acerca desse assunto,\nidentifique nos itens abaixo esses aspectos e, em seguida, assinale a opção CORRETA.\n\n   I.   A extensão na qual a posição hierárquica da auditoria interna naorganização e suas\n        políticas e procedimentos propiciam objetividade dos auditores internos.\n  II.   O nível de competência da função de auditoria interna.\n III.   Se a função de auditoria interna aplica uma abordagem sistemática e disciplinada,\n        incluindo controle de qualidade.\n IV.    Se a qualificação de todos os auditores internos atende ao requisito de formação\n        em Ciências Contábeis.\n\nEstão CORRETOS os itens:\n\n\n       I, II, III e IV.\n       I, II e IV, apenas.\n       III e IV, apenas.\n       Resposta: I, II e III, apenas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "29",
+            "type": "discursiva",
+            "text": "- De acordo com a norma sobre procedimentos analíticos, a confiabilidade\ndos dados é influenciada por sua fonte e natureza e depende das circunstâncias em\nque foram obtidos. Indique qual dos aspectos abaixo deve ser considerado como de\nMAIOR confiabilidade dos dados a serem utilizados nos procedimentos analíticos\nsubstantivos e, em seguida, assinale a opção CORRETA.\n\n       O auditor considera apenas informações internas disponíveis apoiadas em afirmações\n        da administração.\n       Resposta: O auditor considera informações internas disponíveis comparando\n        essas informações em relação às suas expectativas desenvolvidas.\n       O auditor se restringe a analisar a natureza e relevância das informações disponíveis,\n        somente em relação com as controladas.\n       O auditor considera apenas informações de fontes             internas,   mesmo    que\n        inconsistentes com informações externas disponíveis.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "30",
+            "type": "discursiva",
+            "text": "- Qual é a conduta que o auditor independente pode adotar quando avaliar\nque, pelo volume e relevância, as transações com partes relacionadas, divulgadas em\nNota Explicativa, são relevantes como informação para os usuários das demonstrações\ncontábeis?\n\n      Emitir relatório adverso, dada a relevância dos valores.\n      Resposta: Se julgar necessário, incluir em seu relatório parágrafo de ênfase,\n       indicando que a empresa realiza volume relevante de operações com partes\n       relacionadas.\n      Registrar o fato em seu relatório repetindo o texto da nota explicativa e alterando o\n       parágrafo de opinião.\n      Incluir parágrafo de Outros Assuntos em seu relatório, devido aos efeitos relevantes\n       nas demonstrações contábeis.\n\n\n                              QUESTÕES DISSERTATIVAS",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {}
+}

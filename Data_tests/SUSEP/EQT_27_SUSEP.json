@@ -1,0 +1,23 @@
+{
+    "edition": "27",
+    "category": "SUSEP",
+    "questions": [
+        {
+            "number": "Discursiva 1",
+            "type": "discursiva",
+            "text": "O Banco Central do Brasil (BACEN), como órgão executor da política traçada pelo Conselho Monetário Nacional (CMN), fixa os\nlimites e os ativos a serem oferecidos como ativos garantidores pelas seguradoras. Atualmente, a norma que regulamenta a\ncobertura das provisões técnicas é a Resolução CMN nº 4.994 de 2022. Além dessa Resolução, o Conselho Nacional de Seguros\nPrivados regulamenta outros aspectos dos ativos garantidores por meio das Resoluções editadas pela Superintendência de\nSeguros Privados. Mais especificamente, o tema “ativos garantidores” é matéria da Circular SUSEP nº 648 de 2021, assim como\nda Circular SUSEP nº 678 de 2022.\n\nCom base no caso descrito, responda, em no máximo 30 (trinta) linhas, ao que se pede a seguir.\nA) Explique o que é o ativo garantidor e qual a sua função com relação às provisões técnicas.\nB) Discuta a relação entre os ativos garantidores e os ativos financeiros e apresente alguns exemplos de ativos garantidores.\nC) Avalie se a afirmação “Existe uma necessidade de diversificação dos títulos que não são do governo no cálculo de ativos\n   garantidores.” é verdadeira ou falsa. Justifique sua resposta.\nD) Apresente e explique quais são os ativos redutores de necessidade de ativos garantidores de acordo com a Circular SUSEP\n   nº 648 de 2021 e alterações.\n\n\n\n\n  SUPERINTENDÊNCIA DE SEGUROS PRIVADOS (SUSEP)",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "Discursiva 2",
+            "type": "discursiva",
+            "text": "O Comunicado Técnico CTA 17, publicado em 31 de julho de 2013, foi emitido para orientar os auditores independentes na\nemissão de relatórios financeiros devido às mudanças regulatórias introduzidas pela Superintendência de Seguros Privados\n(SUSEP) no Teste de Adequação de Passivos (TAP). O principal objetivo do TAP é garantir que as seguradoras mantenham\npassivos adequados em relação aos seus compromissos futuros, promovendo maior transparência e segurança financeira no\nsetor de seguros.\nO TAP exige que as seguradoras avaliem se suas provisões técnicas são suficientes para cobrir as obrigações futuras. Essa\navaliação envolve o uso de premissas atuariais e financeiras, como taxas de juros, tabelas de mortalidade, entre outras, para\ndeterminar o valor adequado das provisões. O auditor independente desempenha um papel crucial, revisando e avaliando se\nas premissas e métodos utilizados pelas seguradoras são apropriados e se as demonstrações contábeis refletem de forma justa\na posição financeira da entidade.\n\nEm relação ao tema, responda, em no máximo 30 (trinta) linhas, ao que se pede a seguir.\nA) Explique o papel do auditor independente no contexto do Teste de Adequação de Passivos (TAP) exigido pela SUSEP,\n   conforme descrito no CTA 17, indicando as principais responsabilidades do auditor ao avaliar se as provisões técnicas de\n   uma seguradora são adequadas.\nB) Apresente as principais alterações introduzidas pela SUSEP para o Teste de Adequação de Passivos (TAP) que afetam a\n   emissão do relatório do auditor independente, conforme descrito no CTA 17. Explique como essas alterações impactam\n   o trabalho do auditor.\n\n\n\n\n  SUPERINTENDÊNCIA DE SEGUROS PRIVADOS (SUSEP)",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {
+        "20": "C"
+    }
+}

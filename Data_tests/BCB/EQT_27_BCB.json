@@ -1,0 +1,23 @@
+{
+    "edition": "27",
+    "category": "BCB",
+    "questions": [
+        {
+            "number": "Discursiva 1",
+            "type": "discursiva",
+            "text": "As principais operações das instituições financeiras são as operações de crédito, as quais podem ser divididas em três\nmodalidades. Além disso, deve-se considerar que essas operações de crédito podem ser classificadas de acordo com a escala\nrating de crédito tratada na Resolução n o 2.682, de 1999, e suas alterações.\n\nEm relação ao tema, responda, em no máximo 30 (trinta) linhas, ao que se pede a seguir.\nA) Apresente e explique as modalidades das operações de crédito.\nB) Diga o que são e para que servem as escalas ratings de crédito e indique os níveis dessas escalas.\nC) Explique por que os critérios de classificação das operações de crédito se relacionam com a constituição de provisão para\n   créditos de liquidação duvidosa.\nD) Discorra sobre o que são e para que servem as contas de compensação. É possível um lançamento em conta de\n   compensação ter como contrapartida uma conta patrimonial ou de resultado? Justifique a sua resposta com base na\n   relação entre as contas de compensação e as escalas rating de crédito.\n\n\n\n\n  BANCO CENTRAL DO BRASIL (BCB)",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "Discursiva 2",
+            "type": "discursiva",
+            "text": "No âmbito da regulação financeira, o Índice de Basileia desempenha um papel crucial na avaliação da solidez e da adequação\nde capital das instituições financeiras. As Resoluções CMN n o 4.955/2021 e no 4.958/2013 foram instituídas para alinhar as\npráticas brasileiras aos padrões internacionais e garantir que as instituições bancárias mantenham um capital adequado para\nenfrentar riscos e garantir a estabilidade do sistema financeiro. O Patrimônio de Referência (PR) e o Patrimônio de Referência\nExigido (PRE) são componentes essenciais dessa regulamentação.\n\nEm relação ao tema, responda, em no máximo 30 (trinta) linhas, ao que se pede a seguir.\nA) Explique a diferença entre o Patrimônio de Referência (PR) e o Patrimônio de Referência Exigido (PRE) conforme\n   estabelecido nas Resoluções CMN nº 4.955/2021 e no 4.958/2013. Em sua resposta, indique como cada um é calculado e\n   qual a sua importância para a análise da solidez financeira das instituições financeiras.\nB) Analise o impacto das alterações introduzidas pelas Resoluções CMN nº 4.955/2021 e nº 4.958/2013 sobre o cálculo do\n   Patrimônio de Referência (PR) e do Patrimônio de Referência Exigido (PRE). Explique como essas alterações afetam a\n   gestão de risco e a regulação das instituições financeiras.\n\n\n\n\n  BANCO CENTRAL DO BRASIL (BCB)",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {
+        "25": "C"
+    }
+}

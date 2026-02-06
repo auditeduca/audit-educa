@@ -1,0 +1,182 @@
+{
+    "edition": "26",
+    "category": "QTG",
+    "questions": [
+        {
+            "number": "01",
+            "type": "discursiva",
+            "text": "O Código de Ética Profissional do Contador (NBC PG 01) tem por objetivo fixar a conduta do contador, quando no exercício de suas\n  atividades, dispondo sobre deveres, vedações e permissibilidades. À luz de suas disposições, analise as afirmativas a seguir.\n  I. Abster-se da aceitação de encargo profissional em substituição a colega que dele tenha desistido para preservar a dignidade\n       ou os interesses da profissão ou da classe.\n  II. Aceitar o desempenho de cargo de dirigente nas entidades de classe.\n  III. Informar aos órgãos competentes sobre irregularidades comprovadamente ocorridas na administração de entidade da\n       classe contábil.\n  IV. Zelar pelo cumprimento do Código de Ética, pelo prestígio da classe, pela dignidade profissional e pelo aperfeiçoamento de\n       suas instituições.\n  São consideradas obrigações do profissional contábil as condutas descritas apenas em:\n  A) I e III.\n  B) I e IV.\n  C) II e III.\n  D) II e IV.\n  E) III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "02",
+            "type": "discursiva",
+            "text": "Jorge é um contador que atua como perito judicial, tendo se especializado em trabalhos na área trabalhista. Por estar regularmente\n  registrado no Cadastro Nacional de Peritos Contábeis (CNPC), ele foi designado por um juiz para realizar determinada trabalho pericial\n  na área tributária. Apesar de não se julgar capacitado para a especialização requerida, Jorge aceitou o encargo, visto que trabalha há\n  20 anos com perícias e sempre conta com a ajuda de diversos colegas de classe reconhecidamente competentes, que o auxiliam em\n  trabalhos que não são de sua especialidade. À luz do Código de Ética Profissional do Contador, quanto à conduta de Jorge, o profissio-\n  nal agiu de forma:\n  A) Incorreta, uma vez que o profissional deveria escusar-se do trabalho, alegando impedimento.\n  B) Correta, uma vez que está regularizado no CPNC e tem vasta experiência no trabalho como perito.\n  C) Correta, uma vez que se utiliza do trabalho de profissionais com alta capacidade técnica ou científica.\n  D) Incorreta, uma vez que o contador deve recusar sua indicação em trabalho quando reconheça não se achar capacitado.\n  E) Incorreta, uma vez que a responsabilidade pelo trabalho é do profissional, sendo vedada a execução por órgãos técnicos ou\n     científicos.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "03",
+            "type": "discursiva",
+            "text": "De acordo com a NBC PA 11 – DOU: 13/12/2017 – Revisão Externa de Qualidade pelos Pares, o auditor deve submeter-se à\n  Revisão pelos Pares, no mínimo, uma vez a cada ciclo de quatro anos. No entanto, em decorrência de problemas específicos,\n  o Comitê Administrador da Revisão Externa de Qualidade (CRE) pode decidir por determinar períodos menores para a revisão\n  nos trabalhos do revisado. Os seguintes casos indicam situações em que o revisado precisará submeter-se à nova versão no\n  ano subsequente, com EXCEÇÃO de um; assinale-o.\n  A) Os prazos estabelecidos pelo CRE não foram atendidos.\n  B) O revisor emitir relatório de revisão de sistema de qualidade inadequado.\n  C) O revisor emitiu relatório de revisão de sistema de qualidade com deficiências.\n  D) O relatório de revisão ou o plano de ação não foram aprovados pelo CRE no ano em que foi submetido à revisão.\n  E) Não houve indicação de revisor para efetuar os trabalhos de revisão externa de qualidade nos prazos estabelecidos pelo CRE.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "04",
+            "type": "discursiva",
+            "text": "Alguns dos requisitos e do material de aplicação descritos na NBC PA 400 – Independência para Trabalho de Auditoria e Revisão\n  refletem a extensão do interesse público em certas entidades que são definidas como sendo entidades de interesse público. As\n  firmas são incentivadas a determinar se devem tratar entidades adicionais, ou certas categorias de entidades, como entidades de\n  interesse público considerando os seguintes fatores:\n  A) Localização; porte; e, número de empregados.\n  B) Número de empregados; anos de existência; e, porte.\n  C) Anos de existência; natureza do negócio; e, localização.\n  D) Porte; número de empregados; e, natureza do negócio.\n  E) Idade média dos empregados; localização; e, natureza do negócio.\n\n\nPROVA: QUALIFICAÇÃO TÉCNICA GERAL (QTG) – TIPO 1 –\n                                                                                                        ₤                         2\nBRANCA (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "05",
+            "type": "discursiva",
+            "text": "De acordo com a NBC PO 900 – Independência para Trabalho de Asseguração Diferente de Auditoria e Revisão, se o serviço que\n  não é de asseguração foi prestado para cliente de asseguração durante, ou após, o período coberto pelas informações do objeto,\n  mas antes de a equipe de asseguração começar a executar os serviços de asseguração, e o serviço não seria permitido durante o\n  período de contratação, cria-se ameaça:\n  A) À integridade.\n  B) À tempestividade.\n  C) À independência.\n  D) Ao conservadorismo.\n  E) Ao ceticismo profissional.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "06",
+            "type": "discursiva",
+            "text": "Com base na NBC TA – Estrutura Conceitual para Trabalhos de Asseguração, avalie as afirmações a seguir, marque V para as\n  afirmativas verdadeiras e F para as falsas.\n  ( ) No trabalho de asseguração limitada, o auditor independente reduz o risco do trabalho para um nível aceitavelmente\n        baixo nas circunstâncias do trabalho como base para a sua conclusão.\n  ( ) No trabalho de asseguração razoável, o auditor independente reduz o risco do trabalho para um nível que é aceitável nas\n        circunstâncias do trabalho, mas que ainda é maior do que para um trabalho de asseguração limitada.\n  ( ) A natureza, a época e a extensão dos procedimentos executados no trabalho de asseguração razoável são restritos (menos\n        extensos), quando comparados com os que são necessários no trabalho de asseguração limitada, mas são planejados para\n        obter um nível de segurança que seja, no julgamento profissional do auditor independente, significativo.\n  ( ) Em toda a gama de trabalhos de asseguração limitada, o sentido de segurança significativa pode variar de um nível que é\n        logo acima de asseguração que seja capaz de aumentar a confiança dos usuários previstos sobre a informação do objeto,\n        em nível que seja claramente maior do que irrelevante, até um nível que é logo abaixo da segurança razoável.\n  A sequência está correta em\n  A) V, V, F, F.\n  B) F, V, V, F.\n  C) V, F, F, V.\n  D) V, V, V, F.\n  E) F, F, F, V.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "07",
+            "type": "discursiva",
+            "text": "A NBC TA Estrutura Conceitual define que critérios são referências usadas para mensurar ou avaliar o objeto. Ilustrativamen-\n  te, na elaboração das demonstrações contábeis, as normas internacionais de relatórios financeiros podem ser os critérios. A\n  referida norma pondera que critérios adequados são requeridos para mensuração ou avaliação razoável consistente com o\n  objeto dentro do contexto do julgamento profissional. De acordo com a Estrutura Conceitual, as características de critérios\n  adequados são:\n  A) Objetividade e relevância.\n  B) Integridade; objetividade; e, materialidade.\n  C) Confiabilidade; materialidade; e, neutralidade.\n  D) Relevância; integralidade; confiabilidade; neutralidade; e, compreensibilidade.\n  E) Compreensibilidade; integridade; objetividade; materialidade; eficácia; e, relevância.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "08",
+            "type": "discursiva",
+            "text": "Na condução de um processo de auditoria, um auditor independente está suscetível ao chamado “risco do trabalho”. Em\n  relação ao risco do trabalho e às disposições da NBC TA Estrutura Conceitual – DOU: 25/11/2015, marque V para as afirmati-\n  vas verdadeiras e F para as falsas.\n  ( ) Risco do trabalho é o risco de o auditor independente expressar uma conclusão inadequada quando a informação do objeto\n        estiver distorcida de forma relevante.\n  ( ) O risco do trabalho se refere e inclui os riscos de negócio do auditor independente, tais como perdas em litígios, publicidade\n        adversa, ou outros eventos que surjam em conexão com a informação específica do objeto.\n  ( ) Eliminar totalmente o risco do trabalho é raramente alcançável ou possui um custo altíssimo em relação ao benefício.\n  ( ) O risco de detecção e o risco de mensuração ou avaliação não são influenciados diretamente pelas atitudes do auditor\n        independente.\n  A sequência está correta em\n  A) V, F, V, F.\n  B) F, V, F, V.\n  C) V, F, F, V.\n  D) F, V, V, F.\n  E) V, V, V, F.\n\n\nPROVA: QUALIFICAÇÃO TÉCNICA GERAL (QTG) – TIPO 1 –\n                                                                                                     ₤                        3\nBRANCA (T)\n\f                                            CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "09",
+            "type": "discursiva",
+            "text": "Matilde está trabalhando na auditoria da empresa XYZ. Ao longo do curso do trabalho, e por meio do seu julgamento profissional,\n  encontrou informações do objeto relevantemente distorcidas. Matilde, ao analisar tais informações, concluiu que os efeitos\n  ou possíveis efeitos das distorções são relevantes, mas não generalizados. Nesse caso, ela deve apresentar uma conclusão:\n  A) Adversa.\n  B) Com ressalvas.\n  C) Sem modificações.\n  D) Abstenção de conclusão.\n  E) Deve se retirar do trabalho.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "10",
+            "type": "discursiva",
+            "text": "A NBC TA 500 (R1) – Evidência de Auditoria, destaca que a confiabilidade das informações a serem utilizadas como evidência de\n  auditoria e, portanto, da própria auditoria, é influenciada pela sua fonte e sua natureza, e pelas circunstâncias nas quais são obtidas,\n  incluindo os controles sobre sua elaboração e manutenção, quando relevante. De acordo com tal normativa, assinale a afirmativa\n  correta.\n  A) A confiabilidade da evidência de auditoria é menor quando é obtida de fontes independentes fora da entidade.\n  B) A confiabilidade da evidência de auditoria gerada internamente é menor quando os controles relacionados, incluindo os\n     controles sobre sua elaboração e manutenção, impostos pela entidade, são efetivos.\n  C) A evidência de auditoria fornecida por documentos originais é tão confiável quanto as evidências de auditoria fornecidas por fotocópias\n     ou fac-símiles ou por documentos que foram filmados, digitalizados ou transpostos de outra maneira para forma eletrônica.\n  D) A evidência de auditoria obtida diretamente pelo auditor (por exemplo, a observação da aplicação de controle) é mais confiável do\n     que a evidência de auditoria obtida indiretamente ou por inferência (por exemplo, indagação a respeito da aplicação de controle).\n  E) A evidência de auditoria em forma de documentos, em papel, mídia eletrônica ou de outro tipo não é mais confiável do que\n     a evidência obtida verbalmente (por exemplo, uma ata de reunião elaborada tempestivamente não é mais confiável do que\n     uma representação verbal subsequente dos assuntos discutidos).",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "11",
+            "type": "discursiva",
+            "text": "A Lei nº 6.404/1976 e suas alterações regidas pelas Leis nº 11.638/2007 e 11.941/2009 determinam que a escrituração das companhias\n  deve ser mantida em registros permanentes, obedecendo aos preceitos legais e princípios de contabilidade. As companhias devem\n  observar os métodos ou critérios contábeis uniformes no tempo e registrar as mutações patrimoniais segundo o regime de competên-\n  cia. Quanto à escrituração das companhias, à luz da Lei nº 6.404/1976 e suas alterações, assinale a afirmativa correta.\n  A) As demonstrações financeiras serão assinadas pelos administradores e por auditores legalmente habilitados.\n  B) As companhias fechadas deverão observar as normas sobre demonstrações financeiras expedidas pela Comissão de Valores\n      Mobiliários para as companhias abertas.\n  C) As normas expedidas pela Comissão de Valores Mobiliários deverão ser elaboradas em consonância com os padrões interna-\n      cionais de contabilidade, publicados pelo IPSAS Board.\n  D) A companhia observará, preferencialmente em livros ou registros auxiliares, as disposições da lei tributária que prescrevam,\n      conduzam ou incentivem a utilização de métodos ou critérios contábeis diferentes.\n  E) As demonstrações financeiras das companhias abertas observarão as normas expedidas pela Comissão de Valores Mobiliá-\n      rios e serão obrigatoriamente submetidas à auditoria por auditores independentes nela registrados.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "12",
+            "type": "discursiva",
+            "text": "A revisão das demonstrações contábeis históricas é um serviço de asseguração, em que o auditor expressa uma conclusão que tem\n  como objetivo aumentar o grau de confiança dos usuários previstos sobre a elaboração das demonstrações contábeis da entidade,\n  de acordo com a estrutura de relatório financeiro aplicável. Na formação da conclusão sobre as demonstrações contábeis, o auditor\n  deve considerar diversos aspectos, emitindo uma conclusão com ou sem modificação. Quanto à conclusão emitida em um trabalho\n  de revisão das demonstrações contábeis, à luz da NBC TR 2400 – Trabalhos de Revisão de Demonstrações Contábeis, assinale a\n  afirmativa correta.\n  A) O auditor deve se abster de apresentar conclusão quando determina, com base nos procedimentos executados e nas evidências\n      obtidas, que as demonstrações contábeis apresentam distorções relevantes.\n  B) O auditor deve expressar conclusão com modificação nas situações em que ele não consiga formar sua conclusão sobre as\n      demonstrações contábeis devido à impossibilidade de obter evidência apropriada e suficiente.\n  C) O auditor deve expressar conclusão com modificação nas situações em que conclui que os possíveis efeitos das distorções\n      não detectadas, se houver, sobre as demonstrações contábeis, poderiam ser relevantes e generalizados.\n  D) O auditor deve se abster de apresentar conclusão quando não é capaz de obter evidência apropriada e suficiente em relação\n      a um ou mais itens nas demonstrações contábeis, que sejam relevantes em relação a essas demonstrações tomadas em\n      conjunto.\n  E) O auditor deve expressar conclusão sem modificação quando obtiver segurança limitada para concluir que nenhum fato\n      chegou ao seu conhecimento que o leve a acreditar que as demonstrações contábeis não foram elaboradas de acordo com\n      a estrutura de relatório financeiro aplicável.\n\n\nPROVA: QUALIFICAÇÃO TÉCNICA GERAL (QTG) – TIPO 1 –\n                                                                                                           ₤                          4\nBRANCA (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "13",
+            "type": "discursiva",
+            "text": "As informações intermediárias são as informações contábeis elaboradas e apresentadas de acordo com a estrutura de relatório\n  financeiro aplicável e incluem o conjunto completo ou condensado de demonstrações contábeis para um período menor que o\n  exercício financeiro da entidade. Com base na NBC TR 2410 – Revisão de Informações Intermediárias Executada pelo Auditor da\n  Entidade, assinale a afirmativa correta.\n  A) A revisão de informações intermediárias é planejada para obter segurança razoável de que as informações intermediárias\n     não apresentam distorções relevantes.\n  B) Na época da revisão intermediária, o auditor não pode executar procedimentos de auditoria que teriam que ser executados\n     para fins da auditoria das demonstrações contábeis.\n  C) Ao final do trabalho de revisão de informações intermediárias, deve ser emitido o Relatório do Auditor Independente sobre\n     Demonstrações Contábeis Individuais e Consolidadas.\n  D) Em seu relatório, o auditor não deve expressar conclusão alguma, ainda que tome conhecimento de assunto que o leve a acreditar\n     que deva ser feito ajuste relevante nas informações intermediárias.\n  E) Deve ser emitido relatório evidenciando se as informações intermediárias foram elaboradas de acordo com uma estrutura\n     de relatório financeiro planejada para obter uma apresentação adequada.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "14",
+            "type": "discursiva",
+            "text": "A NBC TO 3000 – Trabalho de Asseguração Diferente de Auditoria e Revisão, abrange trabalhos de asseguração que não sejam\n  trabalhos de auditoria e revisão de informações financeiras históricas, definidos na NBC TA Estrutura Conceitual. Nos casos em que\n  uma segurança razoável ou limitada, conforme apropriado, não puder ser obtida e uma conclusão com ressalvas no relatório de\n  asseguração do auditor independente for insuficiente nas circunstâncias para os propósitos do relatório aos usuários previstos, a\n  NBC TO 3000 requer que o auditor independente:\n  A) Exija que seja incluído um “evento subsequente” para evidenciar o fato.\n  B) Torne pública a situação, de modo a proteger os usuários interessados na informação.\n  C) Informe, com urgência, o fato às entidades reguladoras, fundamentando a sua posição.\n  D) Verifique, com os auditores independentes que já prestaram serviços à entidade, quando teve início a situação.\n  E) Abstenha-se de emitir uma conclusão ou se retire do trabalho, quando for possível de acordo com as leis ou regulamentos\n     aplicáveis.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "15",
+            "type": "discursiva",
+            "text": "De acordo com o CTO 05 (R2), o trabalho sobre a avaliação do enquadramento dos projetos na atividade de pesquisa e desenvolvi-\n  mento e Processo Produtivo Básico (PPB) requer especialização, o que demandará o uso de especialistas com capacidade técnica\n  e experiência em projetos de PD&I e/ou na área de Tecnologias da Informação e Comunicações (TICs), que podem ser internos\n  e/ou externos. No âmbito desses trabalhos, quando o trabalho de especialista for utilizado, o auditor independente deverá adotar\n  as seguintes medidas, EXCETO:\n  A) Obter o suficiente entendimento da área de especialidade do especialista.\n  B) Acordar com o especialista a natureza, o alcance e a extensão do trabalho dele.\n  C) Transferir a responsabilidade pela conclusão em relação às informações sobre o objeto.\n  D) Avaliar a adequação do trabalho do especialista para os propósitos do auditor independente.\n  E) Avaliar se o especialista possui a competência, a capacidade e a objetividade necessárias para os seus propósitos.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "16",
+            "type": "discursiva",
+            "text": "O CTO 07 tem o objetivo de orientar os auditores independentes quanto à norma a ser aplicada e os procedimentos a serem executa-\n  dos para a emissão de relatório de asseguração limitada sobre as informações não-financeiras contidas no Relato Integrado para\n  fins de cumprimento da Resolução CVM nº 14/2020, que tornou obrigatória a adoção da Orientação Técnica CPC 09 para as compa-\n  nhias abertas que decidirem elaborar e divulgar seu Relato Integrado. De acordo com a OCPC09, para determinar quais temas são\n  relevantes e como eles são divulgados, é preciso que os responsáveis pela elaboração e apresentação do Relato Integrado, dadas as\n  circunstâncias específicas da organização:\n  A) Exercitem o julgamento profissional.\n  B) Sigam as decisões dos usuários externos.\n  C) Trabalhem em conjunto com os gestores.\n  D) Façam uso da normatização contábil disponível.\n  E) Aprofundem os seus conhecimentos específicos em relação à entidade.\n\n\n\n\nPROVA: QUALIFICAÇÃO TÉCNICA GERAL (QTG) – TIPO 1 –\n                                                                                                     ₤                        5\nBRANCA (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "17",
+            "type": "discursiva",
+            "text": "De acordo com o CTO 07 – Trabalhos de Asseguração Limitada Referente às Informações não Financeiras Contidas no Relato\n  Integrado, a estrutura internacional cita, entre os objetivos do Relato Integrado, promover uma abordagem mais coesa e eficiente\n  do relato corporativo, que aproveite as diversas vertentes de relato e comunique a gama completa de fatores que afetam, de forma\n  material, a capacidade da organização de, ao longo do tempo:\n  A) Gerar valor.\n  B) Manter-se superavitária.\n  C) Expandir para outros países.\n  D) Ampliar sua presença no mercado.\n  E) Investir em planejamento tributário.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "18",
+            "type": "discursiva",
+            "text": "A NBC TSC 4400 trata dos trabalhos de procedimentos previamente acordados, em que o auditor deve realizar os procedimentos\n  que foram acordados por ele e pela parte contratante, no qual a parte contratante reconheceu que os procedimentos realizados\n  são adequados para os fins do trabalho. À luz da referida norma, quanto às características dos procedimentos previamente\n  acordados, assinale a afirmativa correta.\n  A) Trata-se de um trabalho de asseguração.\n  B) Requer que o auditor verifique a exatidão das informações fornecidas.\n  C) Envolve a obtenção de evidências para que o auditor expresse uma opinião.\n  D) A parte contratante tira suas próprias conclusões a partir do trabalho realizado pelo auditor.\n  E) As constatações são os resultados factuais desses procedimentos, em que o auditor apresenta uma conclusão.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "19",
+            "type": "discursiva",
+            "text": "Rafael é um auditor que está tratando com a empresa ABC S/A para um possível acordo para realizar um trabalho de procedi-\n  mentos previamente acordados. No momento, as partes estão discutindo os termos do trabalho e formulando uma carta de\n  contratação para formalização do acordo. Com base na NBC TSC 4400, quanto ao acordo sobre os termos do trabalho, é correto\n  afirmar que deve figurar na carta de contratação o seguinte item:\n  A) O reconhecimento dos requisitos éticos relevantes que serão cumpridos pela contratante.\n  B) O reconhecimento pelo auditor de que os procedimentos previamente acordados são adequados para os fins do trabalho.\n  C) Uma declaração sobre se o auditor é requerido a cumprir com requisitos de suspeição e, em caso afirmativo, os requisitos de\n      suspeição relevantes.\n  D) Declaração de que o trabalho é realizado com base no fato de que o auditor é responsável pelos objetos sobre os quais os\n      procedimentos são realizados.\n  E) A natureza, a época e a extensão dos procedimentos a serem realizados, descritas em termos claros, não enganosos e não\n      sujeitos a diferentes interpretações.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "20",
+            "type": "discursiva",
+            "text": "Tendo sido formalizado o acordo entre o auditor Rafael e a empresa ABC S/A, foi realizado todo o trabalho de procedimentos previa-\n  mente acordados, obedecendo aos termos da carta de contratação. No momento, Rafael está elaborando o relatório de procedi-\n  mentos previamente acordados, peça escrita destinada à parte contratante, em que o auditor comunica suas constatações. Com\n  base na NBC TSC 4400, assinale a alternativa que representa um item que deve figurar no relatório de procedimentos previamente\n  acordados a ser emitido pelo auditor.\n  A) Uma declaração de que o auditor está de acordo com a adequação dos procedimentos previamente acordados.\n  B) Uma declaração de que, por ser um trabalho de asseguração, o auditor expressa uma conclusão de asseguração.\n  C) A identificação do objetivo do relatório de procedimentos previamente acordados e uma declaração de que o relatório pode\n     ser adequado para outras finalidades.\n  D) Uma declaração de que, para os fins do trabalho, não há requisitos de independência que têm que ser cumpridos pelo auditor,\n     caso o auditor não tenha que ser independente.\n  E) Uma declaração da isenção de responsabilidade do auditor sobre as constatações emitidas por especialista, nos casos em\n     que fizer referência ao trabalho realizado por um.\n\n\n\n\nPROVA: QUALIFICAÇÃO TÉCNICA GERAL (QTG) – TIPO 1 –\n                                                                                                     ₤                        6\nBRANCA (T)\n\f                                           CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "21",
+            "type": "discursiva",
+            "text": "O CTA 30 apresenta orientações aos auditores independentes sobre a abordagem e os impactos na auditoria de demonstrações\n  contábeis de entidades envolvidas em assuntos relacionados a não conformidade ou suspeita de não conformidade com leis e\n  regulamentos, incluindo atos ilegais ou fraude. À luz da referida normativa, marque V para as afirmativas verdadeiras e F para as\n  falsas.\n  ( ) O auditor é responsável pela prevenção de não conformidade e se pode esperar que ele detecte suspeita ou mesmo confir-\n        mação de não conformidade com todas as leis e regulamentos.\n  ( ) Mesmo que a auditoria seja adequadamente planejada e executada de acordo com as normas brasileiras e internacionais de\n        auditoria, existem limitações inerentes a uma auditoria de que algumas distorções relevantes nas demonstrações contábeis podem\n        não ser detectadas.\n  ( ) Uma auditoria independente é planejada e executada para identificar fraudes.\n  ( ) O planejamento de uma auditoria recorrente, no âmbito da NBC TA 210 – Concordância com os termos do trabalho de auditoria,\n        considera procedimentos para obter evidência de auditoria apropriada e suficiente em relação a suspeitas de não conformidade\n        e fraudes.\n  A sequência está correta em\n  A) V, V, F, F.\n  B) V, F, V, F.\n  C) V, F, F, V.\n  D) F, V, V, F.\n  E) F, V, F, V.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "22",
+            "type": "discursiva",
+            "text": "Um auditor, após efetuar os requerimentos e considerar os aspectos da NBC TA 250 – Consideração de Leis e Regulamentos na\n  Auditoria de Demonstrações Contábeis, constatou informações referentes a caso de não conformidade ou suspeita de não conformi-\n  dade com leis e regulamentos, incluindo atos ilegais. Após discutir o assunto com a administração, o auditor concluiu que o assunto\n  não é inconsequente e irrelevante para a auditoria. Nesse caso, de acordo com o fluxograma presente na CTA 30, assinale o que o\n  auditor deverá fazer.\n  A) Considerar os requerimentos de comunicação.\n  B) Deve documentar o racional para concluir que o ato é claramente inconsequente.\n  C) Deve executar procedimentos para avaliar a não conformidade ou suspeita de não conformidade e avaliar as implicações em relação\n     aos aspectos de auditoria.\n  D) O auditor deve considerar retirar-se imediatamente do trabalho, sem realizar procedimentos adicionais para avaliar a não\n     conformidade ou suspeita de não conformidade.\n  E) Não precisa executar procedimentos para avaliar a não conformidade ou suspeita de não conformidade; precisa apenas comunicar\n     a administração ou responsáveis pela governança.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "23",
+            "type": "discursiva",
+            "text": "O CTA 30 – Relatório de auditoria de demonstrações contábeis de entidades envolvidas ou suspeitas de não conformidade com leis\n  e regulamentos, estabelece orientações aos auditores independentes sobre a abordagem e impactos na auditoria de demonstrações\n  contábeis de entidades envolvidas em assuntos relacionados a não conformidade ou suspeitas de não conformidade com leis e\n  regulamentos, incluindo atos ilegais ou fraude. De acordo com tal normativa, analise as afirmativas a seguir a respeito das evidências\n  que devem ser obtidas por um auditor sobre a conclusão em relação à suspeita de não conformidade e possíveis impactos nos\n  relatórios de auditoria.\n  I. Os impactos nos controles internos e respostas/ações da administração e/ou governança em função dos resultados da investigação,\n       no contexto da auditoria das demonstrações contábeis.\n  II. A capacidade de obtenção de representações da administração e/ou governança da entidade, excluindo-se as pessoas com\n       funções significativas no controle interno ou envolvidas no processo de elaboração das demonstrações contábeis.\n  III. A avaliação sobre reconhecimento e mensuração dos efeitos da suspeita de não conformidade identificada, incluindo aspectos de\n       divulgação, nos termos dos requisitos das normas contábeis relevantes para as demonstrações contábeis.\n  IV. A adequação da investigação, no contexto da auditoria das demonstrações contábeis.\n  As evidências encontradas na CTA 30 estão descritas corretamente em\n  A) I, II, III e IV.\n  B) I e II, apenas.\n  C) I, II e III, apenas.\n  D) I, III e IV, apenas.\n  E) II, III e IV, apenas.\n\n\n\n\nPROVA: QUALIFICAÇÃO TÉCNICA GERAL (QTG) – TIPO 1 –\n                                                                                                        ₤                         7\nBRANCA (T)\n\f                                          CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "24",
+            "type": "discursiva",
+            "text": "O CTA 13 é um Comunicado Técnico (CT) que tem por objetivo orientar os auditores independentes na emissão do seu relatório\n  sobre as demonstrações contábeis individuais e consolidadas de entidades supervisionadas pela ANS (Agência Nacional de Saúde\n  Suplementar), referentes aos exercícios findos em, ou a partir de, 31 de dezembro de 2011. Segundo esse comunicado, a conclusão\n  dos relatórios de auditoria a serem emitidos por auditores independentes sobre as demonstrações contábeis dessas entidades\n  devem usar a expressão:\n  A) Práticas contábeis adotadas no Brasil.\n  B) Aprovado pela Agência Nacional de Saúde Suplementar.\n  C) O Comunicado Técnico não especifica nenhuma expressão.\n  D) Práticas contábeis adotadas no Brasil aplicáveis às entidades supervisionadas pela Agência Nacional de Saúde Suplementar.\n  E) Práticas contábeis adequadas as normas internacionais de contabilidade e aplicáveis às entidades supervisionadas pela Agência\n     Nacional de Saúde Suplementar.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "25",
+            "type": "discursiva",
+            "text": "Analise as afirmativas a seguir.\n  I. A fraude é o ato intencional de um ou mais indivíduos da administração, dos responsáveis pela governança, empregados ou terceiros,\n       que envolva dolo para obtenção de vantagem injusta ou ilegal.\n  II. O termo “relevante para a auditoria” no contexto de suspeita de não conformidade é equivalente a “material”, especialmente em\n       relação ao aspecto quantitativo.\n  III. Dois tipos de distorções intencionais são pertinentes para o auditor – distorções decorrentes de informações contábeis fraudu-\n       lentas e da apropriação indébita de ativos.\n  IV. O planejamento de uma auditoria recorrente, no âmbito da NBC TA 210 – Concordância com os termos do trabalho de auditoria,\n       considera procedimentos para obter evidência de auditoria apropriada e suficiente em relação a suspeitas de não conformidade\n       e fraudes.\n  De acordo com a Norma Brasileira de Contabilidade – CTA 30, de 17 de junho de 2021, está correto o que se afirma apenas em\n  A) I e II.\n  B) III e IV.\n  C) II e III.\n  D) I, III e IV.\n  E) II, III e IV.\n\n\n\n\nPROVA: QUALIFICAÇÃO TÉCNICA GERAL (QTG) – TIPO 1 –\n                                                                                                        ₤                        8\nBRANCA (T)\n\f                                          CONSELHO FEDERAL DE CONTABILIDADE – CFC\n                                                   QUESTÕES DISSERTATIVAS\n\n                                                       ORIENTAÇÕES GERAIS\n\n  ➢ Os textos das respostas das questões dissertativas serão avaliados quanto ao domínio do conteúdo dos temas abordados\n    (demonstração de conhecimento aplicado) e da Língua Portuguesa aplicada.\n  ➢ Para a avaliação serão atribuídos, no máximo, 25 (vinte e cinco) pontos para cada questão.\n  ➢ A resposta deverá ser manuscrita em letra legível, com caneta esferográfica de corpo transparente e de tinta azul ou preta, não\n    sendo permitida a interferência e/ou a participação de outras pessoas, salvo nos casos em que o examinando tenha solicitado\n    condição especial e, ainda, ser, obrigatoriamente, transcrita para a Folha de Texto Definitivo. Deverá ser observado o limite\n    máximo de 30 (trinta) linhas.\n  ➢ As folhas de respostas dos textos definitivos das questões dissertativas não poderão ser assinadas, rubricadas e/ou conter qual-\n    quer palavra e/ou marca que as identifiquem em outro local que não seja o estabelecido para isso, sob pena de anulação da\n    resposta elaborada pelo examinando. Elas serão os únicos documentos válidos para a avaliação das questões dissertativas.\n  ➢ As folhas para rascunho constantes no caderno de provas são de preenchimento facultativo e não serão consideradas para\n    fins de avaliação. Assim, a detecção de qualquer marca identificadora (nome, apelido, número de registro profissional, UF,\n    dentre outros) na folha destinada à transcrição de texto definitivo acarretará a anulação do texto.",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {}
+}

@@ -1,0 +1,24 @@
+{
+    "edition": "27",
+    "category": "QTG",
+    "questions": [
+        {
+            "number": "Discursiva 1",
+            "type": "discursiva",
+            "text": "Um auditor independente realiza anualmente a auditoria externa de uma sociedade empresária, de grande porte, que trabalha\ndiretamente com o público.\nPara identificar litígios e reclamações envolvendo a empresa, que podem gerar um risco de distorção relevante, o auditor\nindependente definiu e executou procedimentos de auditoria.\n\nCom base na NBC TA 501 – EVIDÊNCIA DE AUDITORIA- CONSIDERAÇÕES ESPECÍFICAS PARA ITENS SELECIONADOS, responda,\nem no máximo 30 (trinta) linhas, ao que se pede a seguir.\nA) Indique três procedimentos de auditoria que o auditor pode executar para identificar os litígios e reclamações\n   envolvendo a empresa.\nB) Indique o procedimento adequado do auditor, caso identifique riscos de distorção relevante com relação aos litígios e\n   reclamações.\nC) Explique quando o auditor deve modificar a opinião em seu relatório de auditoria em relação aos litígios e reclamações.\n\n\n\n\n  QUALIFICAÇÃO TÉCNICA GERAL (QTG)",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "Discursiva 2",
+            "type": "discursiva",
+            "text": "A NBC TA 520 - PROCEDIMENTOS ANALÍTICOS estabelece a necessidade de realização de tais procedimentos na auditoria, além\nde destacar a importância do seu uso na fase de planejamento, para fins de obtenção de evidências e para a formação da\nopinião da Auditoria.\n\nEm relação ao tema, responda, em no máximo 30 (trinta) linhas, ao que se pede a seguir.\nA) Defina procedimentos analíticos, de acordo com a NBC TA 520.\nB) Indique o que os procedimentos analíticos compreendem.\nC) Se os procedimentos analíticos executados de acordo com essa Norma identificarem flutuações ou relações que são\n   inconsistentes com outras informações relevantes ou que diferem dos valores esperados de maneira significativa,\n   explique como o auditor deve examinar essas diferenças.\nD) Explique sucintamente como os Procedimentos Analíticos podem auxiliar o auditor na formação da opinião da Auditoria.\n\n\n\n\n  QUALIFICAÇÃO TÉCNICA GERAL (QTG)",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {
+        "20": "B",
+        "25": "A"
+    }
+}

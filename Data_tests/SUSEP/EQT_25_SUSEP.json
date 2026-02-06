@@ -1,0 +1,182 @@
+{
+    "edition": "25",
+    "category": "SUSEP",
+    "questions": [
+        {
+            "number": "01",
+            "type": "discursiva",
+            "text": "A Norma Brasileira de Contabilidade NBC PG 01 (R1), que normatiza o Código de Ética Profissional do Contador, tem por\n  objetivo fixar a conduta do contador mediante o exercício da sua atividade e assuntos relacionados à profissão e à classe. De\n  acordo com a NBC PG 01 (R1), está correto o que se afirma em:\n  A) Um contador pode executar trabalhos profissionais sem a devida competência técnica, desde que haja urgência na realização\n     destes.\n  B) O contador pode, conforme sua discricionariedade, ignorar princípios fundamentais da contabilidade, caso acredite que eles\n     comprometem a rentabilidade de sua prática profissional.\n  C) O contador, ao adquirir uma participação significativa nos negócios de um cliente, pode continuar a exercer serviços profis-\n     sionais para ele, uma vez que o Código de Ética não veda tal prática.\n  D) O contador deve manter total liberdade e imparcialidade, evitando conflitos de interesse e subjetividades; não deve permitir\n     que preconceitos e opiniões comprometam a qualidade e as exceções de seu trabalho.\n  E) O contador pode utilizar informações privilegiadas adquiridas durante o exercício de sua função para fornecer vantagens\n     pessoais, uma vez que a normativa não aborda a temática do uso de informações confidenciais.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "02",
+            "type": "discursiva",
+            "text": "De acordo com a Norma Brasileira de Contabilidade NBC PG (R1), que trata do Código de Ética Profissional do Contador,\n  analise as afirmativas a seguir.\n  I. A utilização de metodologias técnicas pouco reconhecidas durante a elaboração de relatórios contábeis.\n  II. Uma comunicação clara e transparente ao cliente sobre potenciais conflitos de interesse na prestação de serviços contábeis.\n  III. A promoção de treinamentos e atualizações constantes para garantir excelência e atualidade do conhecimento técnico,\n       prestando um serviço contábil de alta qualidade e em conformidade com as normas e regulamentações vigentes.\n  IV. O uso de informações fornecidas pelo cliente para obtenção de vantagem pessoal ou para benefício de terceiros sem a devida\n       autorização.\n  V. A negação do fornecimento de informações ou documentos solicitados às entidades reguladoras no exercício das suas fun-\n       ções de fiscalização.\n  São VEDADAS ao contador, no exercício da profissão, as práticas descritas apenas em\n  A) I e V.\n  B) I e IV.\n  C) II e III.\n  D) I, IV e V.\n  E) II, III e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "03",
+            "type": "discursiva",
+            "text": "Em relação às normas de conduta tendo em vista o Código de Ética Profissional do Contador (CEPC), analise as afirmativas a\n  seguir.\n  I. Fazer referências relevantes ou desabonadoras sobre os colegas, se elas forem baseadas em fatos verídicos.\n  II. Evitar desentendimentos com o colega que substituir ou com o seu substituto no exercício profissional.\n  III. Evitar aceitar encargo profissional em substituição a um colega que tenha desistido por razões ligadas à dignidade ou aos\n       interesses da profissão ou da classe, a menos que as condições que provocaram essa desistência tenham sido alteradas.\n  IV. Apropriar-se de trabalhos ou soluções de colegas, desde que ele os otimize ou melhore em sua apresentação.\n  De acordo com o CEPC, são VEDADAS ao contador as práticas descritas apenas em\n  A) II.\n  B) I e IV.\n  C) II e III.\n  D) II e IV.\n  E) III e IV.\n\n\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                   ⌂                       2\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "04",
+            "type": "discursiva",
+            "text": "De acordo com a NBC PA 11– Revisão externa de qualidade pelos pares, tal revisão constitui-se em processo de acompanhamento\n  do controle de qualidade dos trabalhos realizados pelos auditores independentes. Neste sentido, as atividades operacionais do\n  Comitê Administrador da Revisão Externa de Qualidade (CRE) são responsabilidade do(a):\n  A) Revisor.\n  B) Auditor independente.\n  C) Conselho Federal de Contabilidade.\n  D) Administração do programa de revisão.\n  E) Instituto de auditores independentes do Brasil.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "05",
+            "type": "discursiva",
+            "text": "De acordo com a NBC PA 11 – Revisão externa de qualidade pelos pares, o revisor e os demais membros da sua equipe devem\n  ter independência em relação ao revisado e aos clientes selecionados. Neste sentido, assinale a afirmativa correta.\n  A) As revisões recíprocas são permitidas entre auditores independentes que são pessoas físicas.\n  B) As revisões recíprocas são permitidas entre auditores independentes que são pessoas jurídicas.\n  C) Os membros da equipe revisora não podem possuir investimentos ou grau de parentesco com executivos em posições-chave\n     nos clientes do revisado.\n  D) Os membros da equipe revisora podem possuir investimentos com executivos em posições-chave do revisado, podendo, ainda,\n     participar do processo de revisão dos clientes.\n  E) Os membros da equipe revisora podem possuir grau de parentesco com executivos em posições-chave nos clientes do revisado,\n     mas não podem participar do processo de revisão destes clientes.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "06",
+            "type": "discursiva",
+            "text": "Alguns dos requisitos do material de aplicação descritos na NBC PA 400 – Independência para trabalho de auditoria e revisão,\n  refletem a extensão do interesse público em certas entidades definidas como sendo entidades de interesse público. As firmas\n  são incentivadas a determinar se devem tratar entidades adicionais ou certas categorias de entidades como entidades de\n  interesse público, haja vista que elas têm grande número e ampla gama de partes interessadas. Em relação aos fatores a serem\n  considerados, analise as alternativas a seguir.\n  I. Porte.\n  II. Número de empregados.\n  III. Natureza do negócio, como a detenção de ativos na qualidade de agente fiduciário para um grande número de partes inte-\n       ressadas.\n  Está correto o que se afirma em\n  A) I, II e III.\n  B) I, apenas.\n  C) I e II, apenas.\n  D) I e III, apenas.\n  E) II e III, apenas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "07",
+            "type": "discursiva",
+            "text": "De acordo com a NBC PO 900 – Independência para trabalho de asseguração diferente de auditoria e revisão, os trabalhos\n  de asseguração envolvem três partes distintas: a firma; a parte responsável; e, os usuários pretendidos. Considerando o trabalho\n  de asseguração baseado em afirmações,\n  A) a firma realiza diretamente avaliação ou mensuração do objeto.\n  B) a avaliação ou mensuração do objeto é realizada pelos usuários pretendidos.\n  C) a firma realiza trabalho de asseguração e de auditoria ou de revisão para o mesmo cliente de modo simultâneo.\n  D) as informações do objeto estão na forma de afirmação pela parte responsável disponibilizada aos usuários pretendidos.\n  E) a firma obtém uma declaração da parte responsável que realizou avaliação ou mensuração de que ela não está disponível para os\n     usuários pretendidos.\n\n\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                    ⌂                       3\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "08",
+            "type": "discursiva",
+            "text": "Como garantia de renome, João, um atuário experiente, é encarregado de elaborar uma Nota Técnica Atuarial de Registro\n  de Produto (NTRP) para um novo produto de seguro. Tendo em vista que ele está bastante ocupado devido a vários projetos\n  simultâneos e fornece as informações a seguir:\n  • objetivo com análise meticulosa das informações de mercado com destaque dos diferenciais do novo produto de seguro com\n     prazo de validade do preço de 24 meses;\n  • fontes de dados descrevendo minuciosamente o processo com estimativas, críticas e validação com comentários técnicos;\n  • método de custeio e financeiro atuarial escolhido informado e justificado tecnicamente com indicação de observações e carac-\n     terísticas do modelo adotado;\n  • todos os aspectos metodológicos relativos aos processos de estimação do preço amplamente descritos, com apresentação dos\n     modelos matemáticos adotados e correspondentes parâmetros e variáveis, acompanhados das justificativas técnicas cabíveis; e,\n  • despesas administrativas, intermediação, marketing, comerciais, margem de lucro e detalhamento dos resultados.\n  João observou os elementos do relatório, segundo as melhores e atuais práticas e princípios. Porém, o relatório elaborado foi de-\n  volvido. Diante do exposto, o item do relatório que ocasionou a devolução foi:\n  A) Objetivo.\n  B) Metodologia.\n  C) Prazo de validade.\n  D) Regime financeiro atuarial.\n  E) Carregamento não assistencial.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "09",
+            "type": "discursiva",
+            "text": "De acordo com a Circular SUSEP nº 678/2022, o registro contábil dos serviços de assistência técnica deverá considerar a respon-\n  sabilidade pelos riscos da operação se\n  I. for de responsabilidade da supervisionada, o valor arrecadado deverá ser contabilizado como prêmio e o custo do serviço\n       de assistência deverá ser contabilizado como sinistros.\n  II. o valor calculado estiver conforme regra de diferimento do prêmio de resseguro/retrocessão.\n  III. a responsabilidade de quem presta o serviço tiver valor repassado como ativo.\n  IV. for de responsabilidade da prestadora de serviços, conforme disciplinado em regulamentação específica, o valor a ser repassado\n       para o prestador de serviços deverá ser contabilizado como passivo.\n  Está correto o que se afirma apenas em\n  A) I.\n  B) III.\n  C) I e IV.\n  D) II e III.\n  E) II e IV.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "10",
+            "type": "discursiva",
+            "text": "De acordo com a Circular SUSEP nº 678/2022, a sociedade seguradora deverá elaborar estudo técnico atualizado, no mínimo,\n  nas datas-base de elaboração das demonstrações contábeis, aprovado pelo diretor responsável pela contabilidade, e dis-\n  ponível para a SUSEP sempre que solicitado, que contemple, no mínimo:\n  I. Indicação dos agrupamentos de prêmios a receber utilizados pela sociedade seguradora para fins de constituição de RVR de\n       prêmios a receber.\n  II. Análise do risco de inadimplência do débito, nas situações em que esta opção seja mais aderente à operação da supervisio-\n       nada.\n  III. Dados históricos por agrupamento utilizados no cálculo da probabilidade somente de adimplência.\n  IV. Estimativa de perda histórica de agrupamentos de prêmios a pagar exclusivamente para riscos decorridos.\n  V. Variáveis econômicas utilizadas no cálculo da probabilidade de inadimplência se utilizadas.\n  Está correto o que se afirma apenas em\n  A) I e V.\n  B) II e III.\n  C) II e IV.\n  D) I, III e V.\n  E) II, III e IV.\n\n\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                     ⌂                        4\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "11",
+            "type": "discursiva",
+            "text": "O Comitê de Pronunciamentos Atuariais (CPA) tem como principal função decidir sobre os pronunciamentos atuariais co-\n  nhecidos como pronunciamentos técnicos. No contexto do CPA 010, que trata da precificação de planos de saúde, assinale a\n  afirmativa correta.\n  A) Desencoraja o uso de modelos estatísticos e atuariais na precificação.\n  B) Os fatores de risco, como morbimortalidade, não precisam ser considerados na precificação dos planos de saúde já que eles\n     têm impacto mínimo no cálculo do prêmio.\n  C) Destaca a importância da análise de sensibilidade na precificação, a qual avalia o impacto de variações em situações e hipó-\n     teses atuais utilizadas no cálculo do prêmio.\n  D) Para garantir a solidez financeira da operadora, orienta que a taxa de juros utilizada na precificação deverá ser arbitrária e\n     baseada no julgamento subjetivo da operadora.\n  E) Estabelece que os planos de saúde devem ser precificados com base unicamente na experiência histórica do beneficiário,\n     sem considerar fatores externos, como mudanças demográficas e tecnológicas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "12",
+            "type": "discursiva",
+            "text": "Consideram-se operações de seguros privados os seguros de coisas, pessoas, bens, responsabilidades, obrigações, direitos e\n  garantias. De acordo com o Decreto-Lei nº 73, de 21 de novembro de 1966, a política de seguros privados possui os seguintes\n  objetivos, EXCETO:\n  A) Preservar a liquidez e a solvência das sociedades seguradoras.\n  B) Reger seguros do âmbito da previdência social, promovendo o seu aperfeiçoamento.\n  C) Evitar evasão de divisas, pelo equilíbrio do balanço dos resultados do intercâmbio, de negócios com o exterior.\n  D) Promover expansão do mercado de seguros e propiciar condições operacionais necessárias para sua integração no processo\n     econômico e social do país.\n  E) Coordenar a política de seguros com a política de investimentos do governo federal, observados os critérios estabelecidos\n     para as políticas monetária; creditícia; e, fiscal.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "13",
+            "type": "discursiva",
+            "text": "De acordo com a Lei nº 6.404/1976, a conta do capital social discriminará o montante subscrito e, por dedução, a parcela\n  ainda não realizada. A contribuição do subscritor de ações, que ultrapassar o valor nominal, e a parte do preço de emissão\n  das ações sem valor nominal, que ultrapassar a importância destinada à formação do capital social, inclusive nos casos de\n  conversão em ações de debêntures ou partes beneficiárias, serão classificadas como:\n  A) Reserva de capital.\n  B) Reserva estatutária.\n  C) Resultado abrangente.\n  D) Reserva para contingências.\n  E) Ajuste de avaliação patrimonial.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "14",
+            "type": "discursiva",
+            "text": "De acordo com a Lei nº 4.594/1964, as sociedades de seguros somente poderão receber proposta de contrato de seguros por\n  intermédio de corretor de seguros devidamente habilitado ou diretamente dos proponentes ou seus legítimos representan-\n  tes. Nos casos de aceitação de propostas diretamente dos proponentes ou seus legítimos representantes, a importância\n  habitualmente cobrada a título de comissão e calculada de acordo com a tarifa respectiva será recolhida ao Fundo de Desen-\n  volvimento Educacional do Seguro, administrado pela Fundação Escola Nacional de Seguros (FUNENSEG) e será destinada à\n  criação e manutenção de bibliotecas especializadas, bem como:\n  A) Programas destinados a jovens estudantes, que não conhecem a profissão.\n  B) Fundos de aposentadoria a corretores de seguros que não mais exercem a profissão.\n  C) Propagandas institucionais que ressaltam a importância do corretor de seguros para a sociedade.\n  D) Escolas e cursos de formação e aperfeiçoamento profissional de corretores de seguros e prepostos.\n  E) Grupos de trabalhos que visam o desenvolvimento da convergência às normas internacionais de seguros.\n\n\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                     ⌂                       5\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                          CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "15",
+            "type": "discursiva",
+            "text": "O manual de práticas e procedimentos contábeis do mercado segurador, emitido pela SUSEP (2022), apresenta um quadro com os\n  princípios de contabilidade da Resolução CFC nº 750/1993 revogados e os conceitos equivalentes enunciados pelo CPC 00 (R2).\n  Dentro do conceito mais abrangente do CPC 00 (R2), a mensuração consiste em determinar os montantes monetários por\n  meio dos quais os elementos das demonstrações contábeis devem ser reconhecidos e apresentados no balanço patrimonial e na\n  demonstração do resultado. Esse processo envolve a seleção da base específica de mensuração. Um número variado de bases de\n  mensuração é empregado em diferentes graus e em variadas combinações. A base de mensuração mais comumente adotada pelas\n  entidades e normalmente combinada com outras bases de mensuração na elaboração de suas demonstrações contábeis é:\n  A) Valor de troca.\n  B) Custo corrente.\n  C) Valor presente.\n  D) Custo histórico.\n  E) Valor realizável.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "16",
+            "type": "discursiva",
+            "text": "De acordo com o manual de práticas e procedimentos contábeis do mercado segurador, emitido pela SUSEP (2022), além das\n  normas citadas no documento, a técnica contábil de escrituração das operações de seguro deverá atender aos seguintes\n  aspectos formais estabelecidos pela Circular SUSEP nº 648/2021:\n  I. A escrituração deve ser completa, mantendo-se em registros permanentes todos os atos e fatos administrativos que modifi-\n       quem ou venham a modificar, imediatamente ou não, sua composição patrimonial.\n  II. O simples registro contábil constitui elemento suficientemente comprobatório, de modo que a escrituração não necessita\n       ser fundamentada em documentos hábeis para a perfeita validade dos atos e fatos administrativos.\n  III. A contabilização será centralizada na sede da seguradora; utilizará registros auxiliares de contabilidade, com observância\n       das disposições previstas em leis, regulamentos, resoluções do Conselho Nacional de Seguros (CNSP) exceto as circulares\n       da Susep.\n  IV. As conciliações das rubricas contábeis com os respectivos controles analíticos deverão ser realizadas mensalmente e manti-\n       das atualizadas.\n  Está correto o que se afirma em\n  A) I, II, III e IV.\n  B) III, apenas.\n  C) I e IV, apenas.\n  D) II e IV, apenas.\n  E) I, II e III, apenas.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "17",
+            "type": "discursiva",
+            "text": "Conforme a Circular SUSEP nº 648/2021 e suas alterações, as estimativas correntes dos fluxos de caixa deverão considerar todos\n  os riscos assumidos até a data-base do teste, sendo brutas de resseguro para as sociedades seguradoras e Entidades Abertas de\n  Previdência Complementar (EAPCs) e de retrocessão para os resseguradores locais. Diante do exposto, analise as afirmativas a\n  seguir.\n  I. Devem ser projetados tanto os fluxos relacionados a prêmios e contribuições registradas quanto os fluxos relacionados a prêmios\n       e contribuições não registradas.\n  II. Todos os fluxos relacionados a prêmios e contribuições não registradas devem ser considerados, exceto aqueles que se referirem\n       a novos contratos ou renovações cuja supervisionada possa repactuar livremente o valor do prêmio/contribuição.\n  III. As premissas relacionadas a despesas, resgates, persistência, portabilidade, seguro prolongado, benefício prolongado, saldamento\n       e opção de conversão em renda deverão ser baseadas na experiência observada pela sociedade seguradora, EAPC, ou ressegu-\n       rador local, ou na de mercado, quando não houver experiência própria, limitada ao período máximo de cinco anos.\n  IV. Para as estimativas correntes dos fluxos de caixa em valores nominais, deverão ser empregadas as Estruturas a Termos da\n       Taxa de Juros (ETTJ) livres de risco pós-fixadas.\n  Está correto o que se afirma apenas em\n  A) III.\n  B) I e II.\n  C) II e IV.\n  D) III e IV.\n  E) I, II e III.\n\n\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                        ⌂                        6\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                                 CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "18",
+            "type": "discursiva",
+            "text": "No contexto das Normas Brasileiras de Contabilidade (NBCs) e especificamente no CPC 00 – Estrutura conceitual para a\n  preparação e apresentação das demonstrações contábeis, o princípio da oportunidade se refere à tempestividade e integri-\n  dade do registro contábil e de suas divulgações, mesmo que a certeza não seja absoluta. Considerando a referência do princí-\n  pio e o que estabelece o CPC 00, analise as afirmativas a seguir.\n  I. A informação contábil deverá ser disponibilizada em tempo hábil para que possa influenciar as decisões dos usuários.\n  II. No caso de incertezas que influenciem o valor de um ativo ou passivo, o registro contábil deverá ser postergado até que a\n       incerteza seja totalmente resolvida.\n  III. A integridade do registro contabilístico denota que toda a informação significativa deverá ser registrada, independentemente\n       de outras considerações, como efeito que o reconhecimento, a mensuração ou a divulgação poderão ter sobre a imagem\n       da entidade perante o mercado.\n  IV. O princípio da oportunidade não considera as estimativas contábeis, uma vez que elas são baseadas em juízos subjetivos e\n       não em fatos objetivos.\n  Está correto o que se afirma apenas em\n  A) II.\n  B) IV.\n  C) I e III.\n  D) II e IV.\n  E) I, II e III.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "19",
+            "type": "discursiva",
+            "text": "A Provisão de Prêmios Não Ganhos (PPNG) deve ser constituída para operações estruturadas no regime financeiro de reparti-\n  ção simples ou repartição de capitais de cobertura, mensalmente; abrange tanto os riscos assumidos e emitidos quanto\n  vigentes e não emitidos. A Circular SUSEP nº 648/2021 prevê o ajuste da PPNG em decorrência da variação cambial. A conta\n  de ajuste somente deverá ser utilizada nos casos em que a PPNG estiver constituída com base em alguma moeda estrangeira\n  e adequadamente registrada no quadro de provisões técnicas em moeda estrangeira do FIP/Susep. Para o cálculo do ajuste\n  de PPNG decorrente de variação cambial foram disponibilizados os seguintes dados:\n  • Prêmio comercial em dólar na data de emissão                US$ 150,00\n  • Prêmio comercial em reais na data de emissão                R$ 600,00\n  • Data de emissão                                             01/01/20xx\n  • Data de início de vigência                                  01/01/20xx\n  • Data de fim de vigência                                    31/12/20xx\n  • Custos iniciais de contratação                              US$ 40,00\n  • Despesas de corretagem                                      US$ 90,00\n  • Data da base de cálculo                                     30/04/20xx\n  • Taxa de câmbio na data de emissão                           R$ 4,00 = US$1\n  • Taxa de câmbio em 30/04/20xx                                R$ 5,00 = US$1\n  O ajuste de PPNG decorrente de variação cambial, na data-base de cálculo, será igual ao valor, em reais, de:\n  (Considere o mês de fevereiro com 28 dias e o número total de dias no ano de 365 dias.)\n  A) R$ 13,43.\n  B) R$ 20,10.\n  C) R$ 68,11.\n  D) R$ 80,00.\n  E) R$ 100,00.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "20",
+            "type": "discursiva",
+            "text": "De acordo com a Circular SUSEP nº 648, de 12 de novembro de 2021, seção V, que dispõe sobre “ativos depositados no exterior\n  redutores”, os resseguradores locais poderão reduzir a necessidade de cobertura de suas provisões técnicas por ativos garantidores:\n  A) Os ativos registrados e aceitos em qualquer instituição independente do país onde é realizada sua emissão.\n  B) Os ativos aceitos como passivos garantidores, conforme as diretrizes estabelecidas pelo Conselho Monetário Nacional (CMN).\n  C) Os ativos depositados fora do país com objetivo de garantir, exclusivamente, operações de resseguro ou retrocessão com\n     cedentes no exterior, nos termos da regulação vigente, no país do cedente.\n  D) Os ativos depositados no exterior redutores, que devem determinar o valor dos ativos remanescentes revertidos automatica-\n     mente aos resseguradores externos quando estipulado devidamente no contrato.\n  E) Os ativos depositados no exterior no rol de ativos redutores e ativos depositados em instituições financeiras fora e dentro\n     do país como garantia de crédito para assegurar operações de resseguro ou retrocessão com cedentes locais.\n\n\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                      ⌂                        7\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                          CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "21",
+            "type": "discursiva",
+            "text": "Em 4 de julho de 2012, a SUSEP emitiu a Circular SUSEP nº 446, que suspendeu os efeitos, na apuração das demonstrações contábeis\n  intermediárias individuais referentes ao exercício de 2012, da Circular SUSEP nº 410, de 22 de dezembro de 2010, que havia instituído\n  o teste de adequação de passivos para fins de elaboração das demonstrações contábeis das entidades supervisionadas pela SUSEP e\n  definição de regras e procedimentos para sua realização. A Circular SUSEP nº 446/2012, ao suspender temporariamente os efeitos do\n  requerido pela Circular SUSEP nº 410/10, modifica determinado requerimento para as demonstrações contábeis intermediárias de\n  2012, que faz parte do conjunto de critérios contábeis e que serve de base às entidades supervisionadas pela SUSEP para elaborar\n  suas demonstrações contábeis intermediárias individuais. A suspensão de tal requerimento, de acordo com o CTA 15 – Emissão do\n  relatório do auditor independente sobre as demonstrações contábeis intermediárias individuais de entidades supervisionadas pela\n  SUSEP, referente ao semestre findo em 30 de junho de 2012, em decorrência da edição da Circular SUSEP nº 446/2012:\n  A) Desobriga o auditor independente de mencionar o assunto em seu relatório de auditoria.\n  B) Permite que as entidades elaborem o teste de adequação, desde que utilizem preceitos e parâmetros diferentes dos esta-\n     belecidos pela Circular.\n  C) Reduz a responsabilidade de seus administradores pela adequada apresentação da posição financeira e dos resultados das\n     suas operações, incluindo a adequada apresentação dos seus passivos.\n  D) Permite que as entidades que desejarem elaborar o teste de adequação utilizem os mesmos preceitos, parâmetros e regras\n     estabelecidas pela Circulante de outros que considerem mais adequados.\n  E) Impede que as entidades elaborem o teste de adequação e determina que sejam utilizados outros mecanismos de revisão\n     dos passivos relacionados a contratos de seguros, como avaliação da necessidade de constituição de provisão para insu-\n     ficiência de prêmios e de contribuições e avaliação atuarial anual.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "22",
+            "type": "discursiva",
+            "text": "De acordo com a CTA 17 – Emissão do relatório do auditor independente sobre as demonstrações contábeis individuais e\n  consolidadas em decorrência de alterações introduzidas para o teste de adequação de passivos pela SUSEP, a SUSEP emitiu, em 22\n  de dezembro de 2010, a Circular SUSEP nº 410, que instituiu o teste de adequação de passivos, definindo regras e procedimentos\n  que deverão ser observados pelas sociedades seguradoras, entidades abertas de previdência complementar e ressegurado-\n  res locais. Ainda, de acordo com o documento, durante 2012, a SUSEP suspendeu os efeitos da Circular SUSEP nº 410 para as\n  demonstrações contábeis intermediárias de 30 de junho de 2012 e subsequentemente a revogou, emitindo, em 14 de dezembro\n  de 2012, a Circular SUSEP nº 457, que estabelece as novas regras e procedimentos para a realização do teste de adequação de\n  passivos pelas sociedades supervisionadas. Podemos afirmar que tal fato se deu em função de alterações no cenário econômico\n  brasileiro, principalmente da:\n  A) Expressiva redução das taxas de juros no Brasil.\n  B) Grande volatilidade do mercado brasileiro de ações.\n  C) Valorização da moeda norte-americana frente ao real.\n  D) Convergência das normas brasileiras às internacionais.\n  E) Crise econômica que prevaleceu no cenário político internacional.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "23",
+            "type": "discursiva",
+            "text": "De acordo com a CTA – Emissão do relatório do auditor independente sobre as demonstrações contábeis individuais e consolidadas\n  em decorrência de alterações introduzidas para o teste de adequação de passivos pela SUSEP, o teste de adequação do passivo\n  trata-se de um requerimento introduzido pela NBC TG 11 – Contratos de seguro, que não define, no entanto, qual taxa de desconto\n  deverá ser utilizada. Desse modo, a utilização, bem como a revisão das taxas, que refletem o retorno estimado dos ativos garantido-\n  res, devem ser tratadas, em cada data-base, como:\n  A) Erro, de forma retrospectiva.\n  B) Mudança de estimativa, de forma prospectiva.\n  C) Mudança de estimativa, de forma retrospectiva.\n  D) Mudança de política contábil, de forma prospectiva.\n  E) Mudança de política contábil, de forma retrospectiva.",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "24",
+            "type": "discursiva",
+            "text": "A CTA 31 tem por finalidade orientar os auditores independentes no atendimento aos requerimentos específicos da Circular\n  SUSEP nº 517/2015 (alterada pela Circular SUSEP nº 616/2020), que estabelece que o auditor independente deverá considerar,\n  na determinação da materialidade no planejamento e na execução da auditoria das demonstrações contábeis individuais de cada\n  entidade auditada supervisionada pela SUSEP, a suficiência de:\n  A) Receita total em relação ao capital.\n  B) Ativo total em relação à receita mínima requerida.\n  C) Ativo total em relação ao capital mínimo requerido.\n  D) Patrimônio líquido ajustado em relação à receita mínima requerida.\n  E) Patrimônio líquido ajustado em relação ao capital mínimo requerido.\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                        ⌂                        8\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC",
+            "options": [],
+            "gabarito": null
+        },
+        {
+            "number": "25",
+            "type": "discursiva",
+            "text": "De acordo com a CTA 31– Orientação aos auditores independentes no atendimento aos requerimentos específicos da Circular SUSEP\n  nº 517/2015, alterada pela Circular SUSEP nº 616/2020, a NBC TA 320 prevê que o auditor contábil independente determine a\n  materialidade para a execução da auditoria com o objetivo de avaliar os riscos de distorções relevantes e determinar a natureza, a\n  época e a extensão de procedimentos de auditoria. A materialidade para a execução da auditoria é fixada para:\n  A) Eliminar a existência de fraude e de erro nas demonstrações contábeis como um todo.\n  B) Eliminar as distorções que, se não fossem detectadas e corrigidas, produziriam demonstrações contábeis sem confiabilidade.\n  C) Reduzir, a um nível adequadamente baixo, a possibilidade de existência de fraude e de erro nas demonstrações contábeis,\n     individuais e em conjunto.\n  D) Reduzir, a um nível adequadamente baixo, a existência de distorções que, se não fossem individualmente detectadas e corri-\n     gidas, prejudicariam a confiabilidade das demonstrações contábeis como um todo.\n  E) Reduzir, a um nível adequadamente baixo, a probabilidade de que as distorções não corrigidas e não detectadas em conjunto\n     nas demonstrações contábeis excedam a materialidade para as demonstrações contábeis como um todo.\n\n\n\n\nPROVA: ATUAÇÃO EM AUD. INDEP. NAS SOC. SUPERV.\n                                                                                                     ⌂                        9\nPELA SUP. DE SEGUROS PRIVADOS (SUSEP) – (T)\n\f                                         CONSELHO FEDERAL DE CONTABILIDADE – CFC\n                                                   QUESTÕES DISSERTATIVAS\n\n                                                      ORIENTAÇÕES GERAIS\n\n  ➢ Os textos das respostas das questões dissertativas serão avaliados quanto ao domínio do conteúdo dos temas abordados\n    (demonstração de conhecimento aplicado) e da Língua Portuguesa aplicada.\n  ➢ Para a avaliação, serão atribuídos, no máximo, 25 (vinte e cinco) pontos para cada questão.\n  ➢ A resposta deverá ser manuscrita em letra legível, com caneta esferográfica de corpo transparente e de tinta azul ou preta, não\n    sendo permitida a interferência e/ou a participação de outras pessoas, salvo nos casos em que o examinando tenha solicitado\n    condição especial e, ainda, ser, obrigatoriamente, transcrita para a Folha de Texto Definitivo. Deverá ser observado o limite\n    máximo de 30 (trinta) linhas.\n  ➢ As folhas de respostas dos textos definitivos das questões dissertativas não poderão ser assinadas, rubricadas e/ou conter qual-\n    quer palavra e/ou marca que as identifiquem em outro local que não seja o estabelecido para isso, sob pena de anulação da\n    resposta elaborada pelo examinando. Elas serão os únicos documentos válidos para a avaliação das questões dissertativas.\n  ➢ As folhas para rascunho constantes no caderno de provas são de preenchimento facultativo e não serão consideradas para\n    fins de avaliação. Assim, a detecção de qualquer marca identificadora (nome, apelido, número de registro profissional, UF,\n    dentre outros) na folha destinada à transcrição de texto definitivo acarretará a anulação do texto.",
+            "options": [],
+            "gabarito": null
+        }
+    ],
+    "gabarito_referencia": {}
+}
