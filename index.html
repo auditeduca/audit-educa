@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="scroll-smooth">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P6GKJ7BF');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PN1VH0CF79"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PN1VH0CF79');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Audit Educa - Hub de ferramentas para auditoria, contabilidade e qualificação profissional.">
     <title>Audit Educa | Hub de Auditoria e Contabilidade</title>
-    <link rel="icon" type="image/webp" href="assets/images/audit-educa-favicon.webp">
+    
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
 
-    <!-- CSS Externos Globais -->
-    <link rel="stylesheet" href="assets/css/preloader.css">
-    <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
+    <!-- CSS Externos Globais (URLs Absolutas) -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
 
-    <!-- Font Awesome & Lucide -->
+    <!-- Font Awesome & Lucide Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- API de Acessibilidade -->
+    <script src="https://auditeduca.com.br/accessibility-api.js"></script>
+
     <!-- Configuração Tailwind -->
     <script>
         tailwind.config = {
@@ -42,45 +63,134 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #334155; }
-        .hero-section {
-            background-color: #f8fafc;
-            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #ffffff; 
+            color: #334155; 
         }
-        /* Cards */
+
+        /* Link de Salto para Acessibilidade */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0f172a;
+            color: #C5A059;
+            padding: 12px 24px;
+            z-index: 999;
+            font-weight: bold;
+            border: 2px solid #C5A059;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            transition: top 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: none;
+        }
+
+        /* Hero Section Full Width */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            background-color: #f8fafc;
+            background-image: 
+                linear-gradient(rgba(226, 232, 240, 0.4) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow: hidden;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 85% 15%, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        /* Consistência dos Cards */
         .pro-card {
-            background: white; border: 1px solid #e2e8f0; transition: all 0.3s ease; position: relative; overflow: hidden;
+            background: white; 
+            border: 1px solid #e2e8f0; 
+            transition: all 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            border-radius: 4px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .pro-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #C5A059;
             transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
         }
-        .pro-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+        .pro-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05); 
+            border-color: #cbd5e1; 
+        }
         .pro-card:hover::before { transform: scaleX(1); }
 
         .edu-card {
-            background: white; border: 1px solid #e2e8f0; border-left: 4px solid #1e40af; transition: all 0.3s ease;
+            background: white; 
+            border: 1px solid #e2e8f0; 
+            border-left: 4px solid #1e40af; 
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-        .edu-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -5px rgba(30, 64, 175, 0.1); }
-    </style>
+        .edu-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 20px -5px rgba(30, 64, 175, 0.1); 
+        }
 
-    <!-- Scripts -->
-    <script src="assets/js/cookie-manager.js" defer></script>
-    <script src="assets/js/template-engine.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+        .category-tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 14px;
+            background: #ffffff;
+            color: #475569;
+            border-radius: 99px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+            cursor: default;
+        }
+        .category-tag:hover {
+            background: #0f172a;
+            color: #C5A059;
+            border-color: #0f172a;
+        }
+    </style>
 </head>
 <body class="flex flex-col min-h-screen">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6GKJ7BF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-    <div id="preloader"><div class="spinner"></div></div>
-    
-    <!-- HEADER -->
-    <div id="header-placeholder" class="no-print sticky top-0 z-50 bg-white min-h-[80px] border-b border-gray-100"></div>
+    <!-- Link de Salto -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-    <main class="flex-grow">
-        <!-- Hero Section (Padding reduzido de pt-24 para pt-10) -->
-        <section class="hero-section pt-10 pb-20 px-4 border-b border-gray-200">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <!-- HEADER MODULAR -->
+    <div id="header-placeholder" class="no-print sticky top-0 z-50 bg-white border-b border-gray-100"></div>
+
+    <main id="main-content" class="flex-grow outline-none" tabindex="-1">
+        
+        <!-- Hero Section -->
+        <section class="hero-section pt-0 pb-20 border-b border-gray-200">
+            <div class="hero-decoration"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 relative z-10 pt-8 md:pt-12">
                 <div class="md:w-1/2 text-left">
                     <div class="inline-flex items-center gap-2 mb-6">
                         <span class="h-px w-8 bg-audit-gold"></span>
@@ -90,82 +200,106 @@
                         A Convergência entre <br><span class="text-audit-blue">Prática e Teoria</span>.
                     </h1>
                     <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg font-light">
-                        Ferramentas de auditoria para o mercado e simuladores de qualificação para a carreira.
+                        Ferramentas de auditoria para o mercado e simuladores de qualificação para a carreira profissional.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#ferramentas" class="bg-audit-navy text-white px-8 py-3 rounded hover:bg-slate-800 transition flex items-center gap-2">Explorar Soluções</a>
-                        <a href="biblioteca.html" class="px-8 py-3 border border-slate-300 rounded text-audit-navy hover:bg-slate-50 transition">Biblioteca</a>
+                        <a href="ferramentas.html" class="bg-audit-navy text-white px-8 py-3 rounded hover:bg-slate-800 transition flex items-center gap-2 shadow-lg">Explorar Soluções</a>
+                        <a href="biblioteca.html" class="px-8 py-3 border border-slate-300 rounded text-audit-navy hover:bg-slate-50 transition font-medium">Biblioteca Digital</a>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center relative">
-                    <div class="relative w-full max-w-md bg-white p-6 rounded shadow-xl border border-gray-100 z-10">
-                        <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-2">
-                            <span class="text-xs font-bold text-slate-400">STATUS DO SISTEMA</span>
-                            <div class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+                
+                <div class="md:w-1/2 flex justify-center relative w-full">
+                    <!-- Status do Sistema Box -->
+                    <div class="relative w-full max-w-md bg-white p-8 rounded shadow-2xl border border-gray-100 z-10">
+                        <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-3">
+                            <span class="text-xs font-bold text-slate-400 tracking-widest uppercase">Status do Sistema</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] font-bold text-green-600">ONLINE</span>
+                                <div class="h-2.5 w-2.5 bg-green-500 rounded-full animate-pulse"></div>
+                            </div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="p-4 bg-slate-50 rounded border border-slate-100">
-                                <div class="text-2xl font-serif font-bold text-audit-navy">PTAX</div>
-                                <div class="text-xs text-slate-500 mt-1">Cotação Oficial</div>
+                            <div class="p-4 bg-slate-50 rounded border border-slate-100 group hover:border-audit-blue transition-colors">
+                                <div class="text-xl font-serif font-bold text-audit-navy">Conversor</div>
+                                <div class="text-[9px] text-slate-500 mt-1 uppercase font-bold tracking-tighter">Câmbio BCB</div>
                             </div>
-                            <div class="p-4 bg-slate-50 rounded border border-slate-100">
-                                <div class="text-2xl font-serif font-bold text-audit-blue">PEPC</div>
-                                <div class="text-xs text-slate-500 mt-1">Calculadora</div>
+                            <div class="p-4 bg-slate-50 rounded border border-slate-100 group hover:border-audit-blue transition-colors">
+                                <div class="text-xl font-serif font-bold text-audit-blue">PEPC</div>
+                                <div class="text-[9px] text-slate-500 mt-1 uppercase font-bold tracking-tighter">Calculadora PEC</div>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded border border-slate-100 group hover:border-audit-blue transition-colors">
+                                <div class="text-xl font-serif font-bold text-audit-navy">Arrendamento</div>
+                                <div class="text-[9px] text-slate-500 mt-1 uppercase font-bold tracking-tighter">Gestão CPC 06</div>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded border border-slate-100 group hover:border-audit-blue transition-colors">
+                                <div class="text-xl font-serif font-bold text-audit-blue">Circularização</div>
+                                <div class="text-[9px] text-slate-500 mt-1 uppercase font-bold tracking-tighter">Carta Inteligente</div>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute top-4 -right-4 w-full h-full bg-slate-100 border border-slate-200 rounded -z-0"></div>
+                    <div class="absolute top-6 -right-6 w-full h-full bg-slate-100 border border-slate-200 rounded -z-0 opacity-40"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Ferramentas Corporativas -->
+        <!-- Toolbox Section -->
         <section id="ferramentas" class="py-20 bg-slate-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-end justify-between mb-12">
+            <div class="max-w-7xl mx-auto px-4">
+                
+                <!-- Categorias Superiores -->
+                <div class="flex flex-wrap gap-3 mb-10">
+                    <span class="category-tag">Reforma Tributária</span>
+                    <span class="category-tag">ESG</span>
+                    <span class="category-tag">Arrendamento Mercantil</span>
+                    <span class="category-tag">Demonstrações Financeiras</span>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                     <div>
                         <h2 class="text-3xl font-serif font-bold text-audit-navy">Toolbox do Auditor</h2>
-                        <div class="h-1 w-16 bg-audit-gold mt-4"></div>
-                        <p class="mt-4 text-slate-600 max-w-2xl">Ferramentas de compliance e validação.</p>
+                        <div class="h-1.5 w-20 bg-audit-gold mt-4 rounded-full"></div>
+                        <p class="mt-6 text-slate-600 max-w-2xl font-light">Soluções tecnológicas para otimizar processos de compliance, circularização e análise financeira.</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Card PTAX -->
+                    <!-- Conversor de Moedas -->
                     <a href="moedas-bcb.html" class="pro-card p-8 group">
                         <div class="flex justify-between items-start mb-6">
-                            <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
-                                <i data-lucide="coins" class="w-6 h-6"></i>
+                            <div class="p-4 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300">
+                                <i data-lucide="coins" class="w-7 h-7"></i>
                             </div>
                             <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-audit-navy mb-2">Cotação PTAX Oficial</h3>
-                        <div class="text-xs font-semibold text-audit-blue uppercase">Financeiro</div>
+                        <h3 class="text-xl font-bold text-audit-navy mb-2">Conversor de Moedas</h3>
+                        <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Acesso direto às taxas de câmbio oficiais PTAX do Banco Central para fechamentos financeiros.</p>
+                        <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Financeiro & Auditoria</div>
                     </a>
 
-                    <!-- Card Validador -->
-                    <a href="ferramentas/auditoria-externa/validador-dominio-email.html" class="pro-card p-8 group">
+                    <!-- Validador de Domínio -->
+                    <a href="validador-dominio-email.html" class="pro-card p-8 group">
                         <div class="flex justify-between items-start mb-6">
-                            <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
-                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            <div class="p-4 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300">
+                                <i data-lucide="shield-check" class="w-7 h-7"></i>
                             </div>
                             <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-audit-navy mb-2">Validador de Domínio</h3>
-                        <div class="text-xs font-semibold text-audit-blue uppercase">Compliance</div>
+                        <h3 class="text-xl font-bold text-audit-navy mb-2">Validador de Domínio</h3>
+                        <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Verificação técnica de servidores MX para segurança em procedimentos de circularização externa.</p>
+                        <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Compliance & TI</div>
                     </a>
 
-                    <!-- Card PEPC (ADICIONADO) -->
-                    <a href="calculadora-pepc.html" class="pro-card p-8 group">
+                    <!-- Calculadora PEC -->
+                    <a href="calculadora-pec.html" class="pro-card p-8 group">
                         <div class="flex justify-between items-start mb-6">
-                            <div class="p-3 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-colors">
-                                <i data-lucide="calculator" class="w-6 h-6"></i>
+                            <div class="p-4 bg-audit-gray rounded border border-gray-200 text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300">
+                                <i data-lucide="calculator" class="w-7 h-7"></i>
                             </div>
                             <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-audit-navy mb-2">Calculadora PEPC</h3>
-                        <p class="text-sm text-slate-500 mb-6">Simule sua pontuação no Programa de Educação Profissional Continuada (NBC PG 12).</p>
-                        <div class="text-xs font-semibold text-audit-blue uppercase">Carreira</div>
+                        <h3 class="text-xl font-bold text-audit-navy mb-2">Calculadora PEC</h3>
+                        <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Simule sua pontuação no Programa de Educação Profissional Continuada (NBC PG 12).</p>
+                        <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Carreira Profissional</div>
                     </a>
                 </div>
             </div>
@@ -173,38 +307,36 @@
 
         <!-- Área do Estudante -->
         <section id="estudantes" class="py-20 bg-white border-t border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row gap-12">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex flex-col md:flex-row gap-16">
                     <div class="md:w-1/3">
                         <div class="sticky top-32">
-                            <span class="text-xs font-bold text-audit-gold uppercase tracking-widest mb-2 block">Área do Estudante</span>
-                            <h2 class="text-3xl font-serif font-bold text-audit-navy mb-6">Qualificação Profissional</h2>
-                            <p class="text-slate-600 mb-8">Preparação para os exames mais rigorosos da carreira contábil.</p>
+                            <span class="text-xs font-bold text-audit-gold uppercase tracking-widest mb-3 block">Educação Executiva</span>
+                            <h2 class="text-4xl font-serif font-bold text-audit-navy mb-6">Qualificação de Excelência</h2>
+                            <p class="text-slate-600 mb-8 font-light leading-relaxed">Preparação estratégica para os exames de qualificação técnica e suficiência contábil.</p>
                         </div>
                     </div>
 
-                    <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Card CRC -->
-                        <div class="edu-card p-6 flex flex-col h-full relative group cursor-pointer hover:bg-slate-50">
-                            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-audit-blue mb-4 group-hover:bg-audit-blue group-hover:text-white transition-colors">
-                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="edu-card p-8 group">
+                            <div class="w-14 h-14 bg-blue-50 rounded flex items-center justify-center text-audit-blue mb-6 group-hover:bg-audit-blue group-hover:text-white transition-colors">
+                                <i data-lucide="graduation-cap" class="w-7 h-7"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-audit-navy mb-2">Simulador CRC</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow">Banco de questões do Exame de Suficiência.</p>
-                            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                                <span class="text-sm font-bold text-audit-blue">Iniciar <i data-lucide="play" class="w-3 h-3 inline ml-1"></i></span>
+                            <h3 class="text-xl font-bold text-audit-navy mb-3">Simulador Exame de Suficiência</h3>
+                            <p class="text-sm text-slate-500 mb-6 flex-grow font-light leading-relaxed">Banco completo de questões atualizadas para aprovação no registro profissional (CRC).</p>
+                            <div class="pt-5 border-t border-gray-100 flex items-center justify-between mt-auto">
+                                <a href="simulador-exame-de-suficiencia.html" class="text-sm font-bold text-audit-blue group-hover:underline flex items-center gap-2">Acessar Plataforma <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
                             </div>
                         </div>
 
-                        <!-- Card CNAI -->
-                        <div class="edu-card p-6 flex flex-col h-full relative group cursor-pointer hover:bg-slate-50">
-                            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-audit-blue mb-4 group-hover:bg-audit-blue group-hover:text-white transition-colors">
-                                <i data-lucide="award" class="w-6 h-6"></i>
+                        <div class="edu-card p-8 group">
+                            <div class="w-14 h-14 bg-blue-50 rounded flex items-center justify-center text-audit-blue mb-6 group-hover:bg-audit-blue group-hover:text-white transition-colors">
+                                <i data-lucide="award" class="w-7 h-7"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-audit-navy mb-2">Simulador QTG (CNAI)</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow">Preparatório para Qualificação Técnica Geral.</p>
-                            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-                                <span class="text-sm font-bold text-audit-blue">Iniciar <i data-lucide="play" class="w-3 h-3 inline ml-1"></i></span>
+                            <h3 class="text-xl font-bold text-audit-navy mb-3">Simulador QTG (CNAI)</h3>
+                            <p class="text-sm text-slate-500 mb-6 flex-grow font-light leading-relaxed">Treinamento avançado focado na Qualificação Técnica Geral para auditores independentes.</p>
+                            <div class="pt-5 border-t border-gray-100 flex items-center justify-between mt-auto">
+                                <a href="simulador-cnai-qtg.html" class="text-sm font-bold text-audit-blue group-hover:underline flex items-center gap-2">Acessar Plataforma <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
                             </div>
                         </div>
                     </div>
@@ -213,11 +345,45 @@
         </section>
     </main>
 
+    <!-- FOOTER MODULAR -->
     <div id="footer-placeholder" class="no-print mt-auto"></div>
-    <div id="modals-placeholder"></div>
+
+    <!-- Scripts Globais e Modulares -->
+    <script src="https://auditeduca.com.br/assets/js/utils.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/seo-manager.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/main.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => { if (window.lucide) lucide.createIcons(); });
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+
+            async function loadComponent(url, element) {
+                try {
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        const html = await response.text();
+                        element.innerHTML = html;
+                        setTimeout(() => { if (window.lucide) lucide.createIcons(); }, 150);
+                    }
+                } catch (err) {
+                    console.error("Erro no carregamento modular:", url, err);
+                }
+            }
+
+            if (headerPlaceholder && headerPlaceholder.innerHTML.trim() === "") {
+                loadComponent('https://auditeduca.com.br/assets/components/header.html', headerPlaceholder);
+            }
+            if (footerPlaceholder && footerPlaceholder.innerHTML.trim() === "") {
+                loadComponent('https://auditeduca.com.br/assets/components/footer.html', footerPlaceholder);
+            }
+        });
     </script>
 </body>
 </html>
