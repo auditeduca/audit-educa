@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr" class="scroll-smooth">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P6GKJ7BF');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Metadados Injetáveis -->
+    <title>Busca e Conteúdo - Audit Educa | Índice Inteligente</title>
+    <meta name="description" content="Encontre conteúdos, ferramentas e políticas da plataforma Audit Educa. Navegação inteligente por tags e hashtags de auditoria, contabilidade e ESG.">
+    <meta name="keywords" content="busca, hashtags, tags, auditoria, contabilidade, esg, acessibilidade, audit educa">
+    <link rel="canonical" href="https://www.auditeduca.com.br/busca.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Busca Inteligente - Audit Educa">
+    <meta property="og:description" content="Explore nosso conteúdo através de tags e categorias integradas.">
+    <meta property="og:image" content="https://auditeduca.github.io/audit-educa/Logotipo-Audit-Educa-Versao-Oficial.webp">
+
+    <!-- CSS Externos Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- Fontes e Frameworks -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            background-attachment: fixed;
+        }
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+        }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; }
+
+        .tag-pill {
+            cursor: pointer; transition: all 0.2s;
+            display: inline-flex; align-items: center;
+            padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;
+        }
+        .tag-pill:hover { transform: scale(1.05); filter: brightness(0.9); }
+
+        .result-card {
+            background: white; border-radius: 1.5rem; padding: 2rem;
+            border: 1px solid #e2e8f0; transition: all 0.3s;
+        }
+        .result-card:hover { border-color: #1e40af; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05); }
+
+        main { padding-top: 150px; }
+        @media (min-width: 1024px) { .content-wrapper { padding-left: 110px; padding-right: 70px; } }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Sidebar Navegação -->
+    <aside class="sidebar-left-tools no-print">
+        <a href="index.html" class="tool-btn" title="Home"><i class="fas fa-home"></i></a>
+        <a href="institucional.html" class="tool-btn" title="Institucional"><i class="fas fa-building"></i></a>
+        <button class="tool-btn" onclick="clearSearch()" title="Limpar"><i class="fas fa-eraser text-audit-blue"></i></button>
+    </aside>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder" class="h-20 bg-white border-b flex items-center justify-center text-slate-300 text-xs font-bold uppercase tracking-widest">
+        [Header Audit Educa]
+    </div>
+
+    <main class="flex-grow pb-24">
+        <div class="max-w-7xl mx-auto content-wrapper">
+            
+            <!-- Breadcrumb -->
+            <nav class="mb-8 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                <ol class="flex items-center gap-2">
+                    <li><a href="index.html" class="hover:text-audit-gold transition">Home</a></li>
+                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                    <li class="text-audit-blue underline underline-offset-4">Busca de Conteúdo</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Search -->
+            <div class="mb-16">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-audit-navy mb-6">
+                    O que você está <span class="text-audit-blue">procurando?</span>
+                </h1>
+                <div class="relative max-w-2xl">
+                    <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="main-search" oninput="handleSearch(this.value)" placeholder="Busque por termos, hashtags ou políticas..." 
+                           class="w-full pl-14 pr-6 py-5 bg-white border border-slate-200 rounded-2xl shadow-sm outline-none focus:border-audit-blue focus:ring-4 focus:ring-audit-blue/5 transition text-slate-700">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- ÁREA DE RESULTADOS (8 Colunas) -->
+                <div class="lg:col-span-8 space-y-8">
+                    
+                    <!-- Filtro Ativo Header -->
+                    <div id="filter-header" class="hidden flex items-center justify-between border-b pb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                            Filtrando por: <span id="active-filter-name" class="text-audit-blue">#tag</span>
+                        </span>
+                        <button onclick="clearSearch()" class="text-[10px] font-bold text-red-500 uppercase hover:underline">Remover Filtro</button>
+                    </div>
+
+                    <!-- Container de Resultados -->
+                    <div id="results-container" class="space-y-6">
+                        <!-- Gerado via JS -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="empty-state" class="hidden text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300">
+                        <i class="fas fa-search text-slate-200 text-5xl mb-4"></i>
+                        <h3 class="font-bold text-audit-navy">Nenhum resultado encontrado</h3>
+                        <p class="text-xs text-slate-500">Tente buscar por termos mais genéricos ou use as hashtags sugeridas.</p>
+                    </div>
+                </div>
+
+                <!-- SIDEBAR (4 Colunas) -->
+                <div class="lg:col-span-4 space-y-8">
+                    
+                    <!-- Trending Tags Widget -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+                        <div class="flex items-center gap-2 mb-6 border-b pb-4">
+                            <i class="fas fa-hashtag text-audit-gold text-[10px]"></i>
+                            <span class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Tags em Alta</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2" id="trending-tags">
+                            <!-- Injetado via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Help Widget -->
+                    <div class="bg-audit-navy p-8 rounded-2xl text-white shadow-xl relative overflow-hidden group">
+                        <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition duration-500">
+                            <i class="fas fa-question-circle text-6xl"></i>
+                        </div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">Dúvida Técnica?</h4>
+                        <p class="text-xs font-light text-slate-300 mb-6 leading-relaxed">Não encontrou a norma ou política desejada? Entre em contato com nosso suporte regulatório.</p>
+                        <a href="contato.html" class="block w-full p-3 bg-audit-gold text-audit-navy font-bold text-center text-[10px] uppercase tracking-widest rounded-lg hover:bg-yellow-500 transition">Falar Conosco</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder" class="h-32 bg-audit-navy mt-auto flex items-center justify-center text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
+        [Audit Educa - Search Protocol]
+    </div>
+
+    <!-- Script de Busca e Consolidação -->
+    <script>
+        // Base de Dados do Site (Consolidada)
+        const siteContent = [
+            {
+                id: 1,
+                title: "Página Institucional",
+                desc: "Conheça a missão, visão e o corpo docente técnico do AuditEduca, focado em excelência educacional.",
+                link: "institucional.html",
+                tags: ["institucional", "equipe", "educacao", "transparencia"]
+            },
+            {
+                id: 2,
+                title: "Política de Acessibilidade",
+                desc: "Nossas diretrizes de conformidade WCAG 2.1 nível AAA para garantir inclusão digital total.",
+                link: "politica-acessibilidade.html",
+                tags: ["acessibilidade", "wcag", "compliance", "inclusao"]
+            },
+            {
+                id: 3,
+                title: "Recursos Assistivos",
+                desc: "Guia prático de ferramentas, leitores de tela e configurações para navegação inclusiva.",
+                link: "recursos-assistivos.html",
+                tags: ["acessibilidade", "ferramentas", "tutorial", "inclusao"]
+            },
+            {
+                id: 4,
+                title: "Nossa Pegada de Carbono",
+                desc: "Transparência ambiental sobre o consumo de energia da nossa infraestrutura digital (Metodologia SWD).",
+                link: "pegada-de-carbono.html",
+                tags: ["sustentabilidade", "esg", "meioambiente", "transparencia"]
+            },
+            {
+                id: 5,
+                title: "Mapa do Site",
+                desc: "Índice estruturado de todas as páginas e recursos disponíveis na plataforma.",
+                link: "mapa-do-site.html",
+                tags: ["navegacao", "estrutura", "indice"]
+            },
+            {
+                id: 6,
+                title: "Tecnologia Verde",
+                desc: "Nossa arquitetura de desenvolvimento sustentável focada em baixo consumo de processamento.",
+                link: "tecnologia-verde.html",
+                tags: ["sustentabilidade", "tecnologia", "desenvolvimento"]
+            }
+        ];
+
+        // Cores das Tags por Categoria
+        const tagColors = {
+            'acessibilidade': 'bg-blue-100 text-blue-700',
+            'sustentabilidade': 'bg-emerald-100 text-emerald-700',
+            'transparencia': 'bg-amber-100 text-amber-700',
+            'compliance': 'bg-slate-100 text-slate-700',
+            'default': 'bg-slate-50 text-slate-500 border border-slate-200'
+        };
+
+        function renderResults(filtered) {
+            const container = document.getElementById('results-container');
+            const empty = document.getElementById('empty-state');
+            container.innerHTML = '';
+
+            if (filtered.length === 0) {
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'result-card animate-fade-in';
+                card.innerHTML = `
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-serif font-bold text-xl text-audit-navy">${item.title}</h3>
+                            <a href="${item.link}" class="text-audit-blue hover:text-audit-gold transition">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-sm text-slate-500 leading-relaxed">${item.desc}</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            ${item.tags.map(t => `<span onclick="filterByTag('${t}')" class="tag-pill ${tagColors[t] || tagColors.default}">#${t}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderTrending() {
+            const allTags = [...new Set(siteContent.flatMap(item => item.tags))];
+            const container = document.getElementById('trending-tags');
+            container.innerHTML = allTags.map(tag => `
+                <span onclick="filterByTag('${tag}')" class="tag-pill bg-slate-50 text-slate-600 hover:bg-audit-blue hover:text-white border border-slate-100">
+                    #${tag}
+                </span>
+            `).join('');
+        }
+
+        function filterByTag(tag) {
+            const header = document.getElementById('filter-header');
+            const name = document.getElementById('active-filter-name');
+            const searchInput = document.getElementById('main-search');
+
+            searchInput.value = ''; // Limpa busca manual
+            name.innerText = '#' + tag;
+            header.classList.remove('hidden');
+
+            const filtered = siteContent.filter(item => item.tags.includes(tag));
+            renderResults(filtered);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleSearch(query) {
+            const header = document.getElementById('filter-header');
+            header.classList.add('hidden');
+
+            if (!query) {
+                renderResults(siteContent);
+                return;
+            }
+
+            const q = query.toLowerCase();
+            const filtered = siteContent.filter(item => 
+                item.title.toLowerCase().includes(q) || 
+                item.desc.toLowerCase().includes(q) ||
+                item.tags.some(t => t.toLowerCase().includes(q))
+            );
+            renderResults(filtered);
+        }
+
+        function clearSearch() {
+            document.getElementById('main-search').value = '';
+            document.getElementById('filter-header').classList.add('hidden');
+            renderResults(siteContent);
+        }
+
+        // Inicialização
+        window.onload = () => {
+            renderResults(siteContent);
+            renderTrending();
+
+            // Checar parâmetro na URL (?tag=...)
+            const params = new URLSearchParams(window.location.search);
+            const tagParam = params.get('tag');
+            if (tagParam) filterByTag(tagParam);
+        };
+    </script>
+</body>
+</html>
