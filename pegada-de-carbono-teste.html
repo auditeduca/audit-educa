@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nossa Pegada de Carbono - Transparência Ambiental Digital e Auditoria ESG do Audit Educa.">
+    <title>Pegada de Carbono Digital | Audit Educa</title>
+    
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
+
+    <!-- CSS Externos Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- FontAwesome, Lucide & Chart.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Bibliotecas para Geração de PDF e Captura -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                        'eco-green': '#10b981',
+                        'eco-amber': '#f59e0b',
+                        'eco-red': '#ef4444'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            background-attachment: fixed;
+        }
+
+        /* SIDEBARS PADRONIZADAS AUDIT */
+        .sidebar-left-tools, .sidebar-right-share {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
+        }
+        .sidebar-left-tools { left: 0; }
+        .sidebar-right-share { right: 0; }
+        
+        .tool-btn, .share-sidebar-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0;
+            width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+        }
+        .tool-btn { border-left: none; border-radius: 0 14px 14px 0; }
+        .share-sidebar-btn { border-right: none; border-radius: 14px 0 0 14px; color: #64748b; }
+        .tool-btn:hover { width: 65px; background: #0f172a; color: #C5A059; padding-left: 5px; }
+        .share-sidebar-btn:hover { width: 65px; background: #0f172a; color: #C5A059; padding-right: 5px; }
+
+        /* DASHBOARD CARDS */
+        .metric-card-premium {
+            background: white; border: 1px solid #e2e8f0; border-top: 4px solid #0f172a;
+            padding: 2rem; text-align: center; display: flex; flex-direction: column;
+            justify-content: space-between; min-height: 240px; border-radius: 2rem;
+            transition: all 0.3s ease; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .metric-card-premium:hover { transform: translateY(-5px); border-color: #C5A059; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+
+        /* TABELA PREMIUM RESPONSIVA */
+        .premium-table-container {
+            @apply overflow-x-auto rounded-[2.5rem] border border-slate-200 bg-white shadow-xl mb-12;
+        }
+        .audit-table {
+            @apply w-full min-w-[800px] border-collapse;
+        }
+        .audit-table thead th {
+            @apply p-6 bg-slate-50 text-left text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-100;
+        }
+        .audit-table tbody td {
+            @apply p-6 border-b border-slate-50 text-sm align-middle transition-colors;
+        }
+        .audit-table tbody tr:last-child td { border-b-0; }
+        .audit-table tbody tr:hover td { @apply bg-slate-50/50; }
+
+        /* BADGES DE RATING */
+        .rating-badge {
+            @apply w-10 h-10 rounded-full flex items-center justify-center font-black text-lg shadow-sm;
+        }
+        .rating-a { @apply bg-eco-green/10 text-eco-green border border-eco-green/20; }
+        .rating-b { @apply bg-eco-amber/10 text-eco-amber border border-eco-amber/20; }
+        .rating-c { @apply bg-eco-red/10 text-eco-red border border-eco-red/20; }
+
+        /* STATUS BADGE */
+        .status-pill {
+            @apply px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest inline-block;
+        }
+        .status-pill.success { @apply bg-eco-green text-white; }
+        .status-pill.warning { @apply bg-eco-amber text-white; }
+        .status-pill.danger { @apply bg-eco-red text-white; }
+
+        main { padding-top: 150px; }
+        @media (min-width: 1024px) {
+            .content-wrapper { padding-left: 110px; padding-right: 110px; }
+        }
+        @media (max-width: 768px) { main { padding-top: 110px; } }
+
+        /* DRAWERS */
+        .drawer { 
+            position: fixed; top: 0; left: 0; height: 100%; width: 100%; max-width: 24rem; 
+            background: white; shadow: 2xl; z-index: 1100;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%);
+        }
+        .drawer.active { transform: translateX(0); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="preloader"><div class="spinner"></div></div>
+    <div id="header-placeholder" class="no-print"></div>
+
+    <!-- SIDEBARS -->
+    <aside class="sidebar-left-tools no-print">
+        <button class="tool-btn" onclick="toggleDrawer('teoria')"><i class="fas fa-leaf text-eco-green"></i></button>
+        <button class="tool-btn" onclick="startTour()"><i class="fas fa-magic"></i></button>
+    </aside>
+
+    <aside class="sidebar-right-share no-print">
+        <button onclick="copyLink()" class="share-sidebar-btn"><i class="fas fa-link"></i></button>
+        <button onclick="shareWhatsApp()" class="share-sidebar-btn text-green-500"><i class="fab fa-whatsapp"></i></button>
+        <button onclick="generatePDFReport()" class="share-sidebar-btn text-red-500"><i class="fas fa-file-pdf"></i></button>
+    </aside>
+
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none z-[1050] transition-opacity" onclick="closeAllDrawers()"></div>
+
+    <main class="flex-grow pb-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper" id="capture-area">
+            
+            <!-- Hero Section -->
+            <div class="mb-16">
+                <nav class="flex mb-8 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] no-print">
+                    <ol class="flex items-center gap-2">
+                        <li><a href="/" class="hover:text-audit-gold transition">Hub</a></li>
+                        <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                        <li class="text-eco-green underline underline-offset-4">Transparência ESG</li>
+                    </ol>
+                </nav>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold text-audit-navy mb-6 tracking-tight leading-tight italic">Pegada de Carbono <span class="text-audit-gold">Premium</span></h1>
+                <p class="text-slate-600 max-w-3xl text-lg md:text-xl font-light leading-relaxed">Auditoria granular do ecossistema digital Audit Educa. Monitorização técnica baseada no protocolo SWD para ativos de alto impacto.</p>
+            </div>
+
+            <!-- DASHBOARD DE MÉTRICAS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16" id="dashboard-metrics">
+                <div class="metric-card-premium border-t-audit-gold">
+                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">Rating Geral</span>
+                    <span class="text-6xl font-black text-eco-green py-6" id="grade-val">A+</span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-3" id="grade-label">Eficiência Máxima</p>
+                        <span id="status-rating" class="status-pill success">Auditado</span>
+                    </div>
+                </div>
+                <div class="metric-card-premium border-t-audit-navy">
+                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">Média gCO2</span>
+                    <span class="text-4xl font-black text-audit-navy py-6" id="co2-val">0.082</span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-3">Meta: < 0.200g</p>
+                        <span id="status-co2" class="status-pill success">Dentro da Meta</span>
+                    </div>
+                </div>
+                <div class="metric-card-premium border-t-purple-500">
+                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">Peso Médio</span>
+                    <span class="text-4xl font-black text-audit-navy py-6" id="transfer-val">1.27<span class="text-base ml-1 font-normal opacity-40">MB</span></span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-3">Payload Sessão</p>
+                        <span id="status-transfer" class="status-pill success">Otimizado</span>
+                    </div>
+                </div>
+                <div class="metric-card-premium border-t-eco-green">
+                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">Rotas Ativas</span>
+                    <span class="text-4xl font-black text-audit-navy py-6" id="total-pages-count">5</span>
+                    <div class="flex flex-col items-center">
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-3">Repositório</p>
+                        <span class="status-pill success">Sincronizado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TENDÊNCIAS HISTÓRICAS -->
+            <section class="mb-16 bg-white border border-slate-200 rounded-[3rem] p-10 md:p-16 shadow-premium no-print">
+                <div class="flex items-center justify-between mb-12 border-b border-slate-50 pb-8">
+                    <div>
+                        <h3 class="font-serif font-bold text-3xl text-audit-navy italic">Tendências ESG</h3>
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-2">Histórico Digital via Firestore</p>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-audit-blue shadow-inner"><i class="fas fa-chart-line text-xl"></i></div>
+                </div>
+                <div class="h-[380px] w-full">
+                    <canvas id="auditChart"></canvas>
+                </div>
+            </section>
+
+            <!-- SCAN DETALHADO E TABELA PREMIUM -->
+            <section class="mb-16">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12 px-2">
+                    <div>
+                        <h3 class="text-3xl font-serif font-bold text-audit-navy">Auditoria Granular</h3>
+                        <p class="text-xs text-slate-400 mt-2 uppercase tracking-[0.2em] font-black">Scan results by active route</p>
+                    </div>
+                    <div class="flex gap-4 w-full md:w-auto no-print">
+                        <button onclick="runAudit()" class="flex-1 md:flex-none border-2 border-slate-100 bg-white px-8 py-5 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:border-audit-navy transition-all shadow-sm">Sinc. Sessão</button>
+                        <button onclick="runGlobalAudit()" id="global-audit-btn" class="flex-1 md:flex-none bg-audit-navy text-white px-10 py-5 rounded-2xl font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-slate-800 transition-all shadow-xl active:scale-95 group">
+                            <i class="fas fa-bolt group-hover:scale-110 transition-transform text-audit-gold" id="global-icon"></i> Scan Profundo
+                        </button>
+                    </div>
+                </div>
+
+                <div id="global-progress" class="hidden mb-12 px-2">
+                    <div class="flex justify-between text-[10px] font-black text-slate-500 mb-4 uppercase tracking-[0.2em]">
+                        <span id="progress-status" class="flex items-center gap-2"><i class="fas fa-spinner fa-spin text-audit-gold"></i> Lendo metadados...</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                        <div class="h-full bg-gradient-to-r from-eco-green via-audit-gold to-eco-green transition-all duration-300" id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Auditoria Premium -->
+                <div class="premium-table-container">
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Página / Rota</th>
+                                <th class="text-center">Tamanho Payload</th>
+                                <th class="text-center">Impacto gCO2</th>
+                                <th class="text-right">Rating ESG</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repo-table-body">
+                            <!-- Injetado via JS -->
+                            <tr>
+                                <td colspan="4" class="text-center text-slate-300 italic py-20 font-light">Inicie o scan profundo para popular o relatório detalhado...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- CONTEÚDO RESTAURADO -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+                <div class="lg:col-span-8 space-y-12">
+                    <!-- Memória Acadêmica -->
+                    <div class="bg-white border border-slate-200 rounded-[3rem] p-12 shadow-sm relative overflow-hidden group">
+                        <div class="absolute -right-20 -bottom-20 opacity-[0.02] text-[250px] pointer-events-none rotate-12 group-hover:rotate-0 transition-transform duration-700"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="text-3xl font-serif font-bold text-audit-navy mb-10 flex items-center gap-4">
+                            <i class="fas fa-book-open text-audit-gold"></i> Memória Acadêmica SWD
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-base text-slate-600 leading-relaxed font-light">
+                            <p>O protocolo <span class="text-audit-navy font-bold">Sustainable Web Design</span> define que o consumo médio de energia é de 0,81 kWh por GB transferido. Esta métrica é fundamental para o cálculo de materialidade ambiental em relatórios de sustentabilidade digital.</p>
+                            <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 shadow-inner">
+                                <ul class="space-y-4 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
+                                    <li class="flex justify-between items-center border-b border-slate-200 pb-3"><span>Energia:</span> <span class="text-audit-navy">0,81 kWh/GB</span></li>
+                                    <li class="flex justify-between items-center pt-1"><span>CO2 Factor:</span> <span class="text-audit-navy">442g/kWh</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conteúdo Relacionado -->
+                    <section class="no-print">
+                        <h3 class="text-2xl font-serif font-bold text-audit-navy mb-10 flex items-center gap-4"><i class="fas fa-bookmark text-audit-gold text-lg"></i> Relatórios Complementares</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <a href="#" class="flex items-center justify-between p-8 bg-white border border-slate-100 rounded-[2rem] hover:shadow-xl hover:border-audit-blue transition-all group">
+                                <div class="flex items-center gap-6">
+                                    <div class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-audit-blue group-hover:bg-audit-blue group-hover:text-white transition-all shadow-sm">
+                                        <i class="fas fa-file-signature text-xl"></i>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <span class="text-sm font-black text-slate-700 uppercase tracking-widest group-hover:text-audit-blue">Normas GRI</span>
+                                        <p class="text-[10px] text-slate-400 font-medium">Compliance Ambiental Digital</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-slate-200 group-hover:text-audit-blue group-hover:translate-x-1 transition-all"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Coluna Lateral -->
+                <div class="lg:col-span-4 space-y-10">
+                    <div class="bg-audit-blue/5 p-12 border-l-8 border-audit-blue rounded-r-[3rem] shadow-sm">
+                        <i class="fas fa-quote-left text-audit-blue text-3xl mb-8 opacity-20"></i>
+                        <p class="text-[10px] font-black text-audit-blue uppercase tracking-[0.2em] mb-6">Insight do Auditor</p>
+                        <p class="text-lg text-slate-700 italic leading-relaxed font-light mb-4">
+                            "A pegada digital compõe o Escopo 3 de emissões. Otimizar o repositório não é apenas uma questão de performance, mas de ética ambiental."
+                        </p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-[3rem] p-10 no-print shadow-sm">
+                        <h3 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em] mb-10 border-b border-slate-50 pb-6">Hub de Auditoria</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-5 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:border-audit-blue cursor-pointer transition-all hover:bg-white hover:shadow-md group">
+                                <i class="fas fa-calculator text-audit-blue group-hover:rotate-12 transition-transform"></i>
+                                <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Juros Simples</span>
+                            </div>
+                            <div class="flex items-center gap-5 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:border-audit-blue cursor-pointer transition-all hover:bg-white hover:shadow-md group">
+                                <i class="fas fa-chart-pie text-audit-blue"></i>
+                                <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Materialidade</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA FINAL PREMIUM -->
+            <section class="mt-20 bg-audit-navy rounded-[4rem] p-16 md:p-32 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-16 no-print shadow-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-1000"></div>
+                <div class="max-w-2xl relative z-10">
+                    <h2 class="text-5xl md:text-7xl font-serif font-bold text-white mb-10 leading-tight italic">Excelência em <span class="text-audit-gold">Compliance</span> Digital</h2>
+                    <p class="text-slate-300 text-xl leading-relaxed font-light">Aceda à biblioteca técnica completa de sustentabilidade e guias de otimização energética.</p>
+                </div>
+                <a href="#" class="bg-audit-gold text-audit-navy px-16 py-8 rounded-[2.5rem] font-black hover:bg-yellow-500 transition-all shadow-xl relative z-10 uppercase tracking-[0.3em] text-[11px] active:scale-95">
+                    Biblioteca Técnica <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts e Lógica -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, query, limit } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // CONFIGURAÇÃO FIREBASE
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        let user = null;
+
+        // MAPA DO REPOSITÓRIO (Dados fornecidos no prompt)
+        const repoPages = [
+            { id: 'index.html', label: 'Dashboard Principal', size: 1.45 },
+            { id: 'pegada_carbono.html', label: 'Central ESG (Atual)', size: 1.27 },
+            { id: 'juros_simples.html', label: 'Calc. Juros Simples', size: 0.82 },
+            { id: 'biblioteca.html', label: 'Repositório Técnico', size: 2.15 },
+            { id: 'compliance.html', label: 'Políticas Compliance', size: 0.65 }
+        ];
+
+        let myChart = null;
+
+        const initAuth = async () => {
+            await signInAnonymously(auth);
+            onAuthStateChanged(auth, (u) => {
+                user = u;
+                if(user) loadHistoryAndChart();
+            });
+        };
+        initAuth();
+
+        // Lógica de Rating Padronizada
+        function calculateMetrics(payloadMB) {
+            const co2 = (payloadMB / 1024) * 0.81 * 442;
+            let grade, gradeColor, label, statusClass;
+
+            // Limites Audit Educa: 0.20 (A+), 0.30 (B), 0.30+ (C)
+            if (co2 < 0.200) {
+                grade = "A+"; gradeColor = "text-eco-green"; label = "Eficiência Máxima"; statusClass = "success";
+            } else if (co2 < 0.300) {
+                grade = "B"; gradeColor = "text-eco-amber"; label = "Eficiência Média"; statusClass = "warning";
+            } else {
+                grade = "C"; gradeColor = "text-eco-red"; label = "Baixa Eficiência"; statusClass = "danger";
+            }
+            return { co2, grade, gradeColor, label, statusClass, payloadMB };
+        }
+
+        function updateUI(data) {
+            document.getElementById('co2-val').innerText = data.co2.toFixed(3);
+            document.getElementById('grade-val').innerText = data.grade;
+            document.getElementById('grade-val').className = `text-6xl font-black py-6 ${data.gradeColor}`;
+            document.getElementById('grade-label').innerText = data.label;
+            document.getElementById('transfer-val').innerHTML = `${data.payloadMB.toFixed(2)}<span class="text-base ml-1 font-normal opacity-40">MB</span>`;
+            
+            // Atualizar Badges
+            document.getElementById('status-co2').innerText = data.co2 < 0.2 ? "Dentro da Meta" : (data.co2 < 0.3 ? "Meta em Alerta" : "Fora da Meta");
+            document.getElementById('status-co2').className = `status-pill ${data.statusClass}`;
+            document.getElementById('status-rating').className = `status-pill ${data.statusClass}`;
+            document.getElementById('status-transfer').className = `status-pill ${data.statusClass}`;
+        }
+
+        // SCAN DO REPOSITÓRIO
+        window.runGlobalAudit = async () => {
+            if(!user) return;
+            const btn = document.getElementById('global-audit-btn');
+            const icon = document.getElementById('global-icon');
+            const progress = document.getElementById('global-progress');
+            const fill = document.getElementById('progress-fill');
+            const percent = document.getElementById('progress-percent');
+            const statusText = document.getElementById('progress-status');
+            const tbody = document.getElementById('repo-table-body');
+
+            btn.disabled = true;
+            icon.classList.add('fa-spin');
+            progress.classList.remove('hidden');
+            tbody.innerHTML = '';
+
+            let totalCO2 = 0;
+            let totalMB = 0;
+
+            for(let i = 0; i < repoPages.length; i++) {
+                const page = repoPages[i];
+                const p = ((i + 1) / repoPages.length) * 100;
+                fill.style.width = p + "%";
+                percent.innerText = Math.round(p) + "%";
+                statusText.innerHTML = `<i class="fas fa-spinner fa-spin text-audit-gold"></i> Auditando Rota: <span class="text-audit-navy font-bold">${page.id}</span>...`;
+
+                const m = calculateMetrics(page.size);
+                totalCO2 += m.co2;
+                totalMB += page.size;
+
+                tbody.innerHTML += `
+                    <tr class="group">
+                        <td>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-audit-navy text-sm">${page.label}</span>
+                                <span class="text-[10px] text-slate-300 font-mono">${page.id}</span>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span class="font-mono font-bold text-slate-700">${page.size.toFixed(2)} MB</span>
+                        </td>
+                        <td class="text-center">
+                            <span class="font-mono font-bold text-slate-700">${m.co2.toFixed(3)}g</span>
+                        </td>
+                        <td class="text-right">
+                            <div class="flex items-center justify-end gap-3">
+                                <span class="text-[9px] font-black uppercase tracking-widest ${m.gradeColor} hidden sm:inline">${m.label}</span>
+                                <div class="rating-badge rating-${m.grade.charAt(0).toLowerCase()}">${m.grade}</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                await new Promise(r => setTimeout(r, 600));
+            }
+
+            const avgData = calculateMetrics(totalMB / repoPages.length);
+            updateUI(avgData);
+            document.getElementById('total-pages-count').innerText = repoPages.length;
+
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'audit_history'), {
+                    timestamp: Date.now(),
+                    avgCO2: avgData.co2,
+                    totalMB: totalMB,
+                    pages: repoPages.length
+                });
+                loadHistoryAndChart();
+            } catch (e) { console.error(e); }
+
+            icon.classList.remove('fa-spin');
+            btn.disabled = false;
+        };
+
+        window.runAudit = () => {
+            const m = calculateMetrics(1.27 + (Math.random() * 0.05));
+            updateUI(m);
+        };
+
+        // GRÁFICO
+        async function loadHistoryAndChart() {
+            if(!user) return;
+            try {
+                const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'audit_history'), limit(12));
+                const snap = await getDocs(q);
+                const history = snap.docs.map(d => d.data()).sort((a,b) => a.timestamp - b.timestamp);
+                
+                if(history.length === 0) return;
+
+                const ctx = document.getElementById('auditChart').getContext('2d');
+                if(myChart) myChart.destroy();
+                myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: history.map(h => new Date(h.timestamp).toLocaleDateString()),
+                        datasets: [{
+                            label: 'Emissões gCO2',
+                            data: history.map(h => h.avgCO2),
+                            borderColor: '#C5A059',
+                            backgroundColor: 'rgba(197, 160, 89, 0.05)',
+                            borderWidth: 4,
+                            fill: true,
+                            tension: 0.5,
+                            pointRadius: 6,
+                            pointBackgroundColor: '#0f172a',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { 
+                            y: { 
+                                beginAtZero: false, 
+                                grid: { color: 'rgba(0,0,0,0.03)' },
+                                ticks: { font: { size: 10 } }
+                            }, 
+                            x: { 
+                                grid: { display: false },
+                                ticks: { font: { size: 10 } }
+                            } 
+                        }
+                    }
+                });
+            } catch(e) { console.error(e); }
+        }
+
+        // UTILITÁRIOS
+        window.toggleDrawer = (id) => { document.getElementById(`drawer-${id}`).classList.add('active'); document.getElementById('drawer-overlay').classList.replace('opacity-0', 'opacity-100'); document.getElementById('drawer-overlay').classList.replace('pointer-events-none', 'pointer-events-auto'); };
+        window.closeAllDrawers = () => { document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active')); document.getElementById('drawer-overlay').classList.replace('opacity-100', 'opacity-0'); document.getElementById('drawer-overlay').classList.replace('pointer-events-auto', 'pointer-events-none'); };
+        window.copyLink = () => { navigator.clipboard.writeText(window.location.href); alert("Link de auditoria copiado para a área de transferência."); };
+        window.shareWhatsApp = () => { window.open(`https://api.whatsapp.com/send?text=Confira a transparência ambiental Audit Educa: ${window.location.href}`, '_blank'); };
+        window.generatePDFReport = async () => { const canvas = await html2canvas(document.getElementById('capture-area'), { scale: 2 }); const pdf = new jspdf.jsPDF('p', 'mm', 'a4'); pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, (canvas.height * 210) / canvas.width); pdf.save(`AuditEduca_ESG_Report_${Date.now()}.pdf`); };
+    </script>
+</body>
+</html>
