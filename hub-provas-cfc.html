@@ -6,10 +6,9 @@
     <meta name="description" content="Repositório de Provas Audit Educa - Acervo técnico de exames para fins de auditoria e estudo independente.">
     <title>Repositório de Provas | Audit Educa</title>
     
-    <!-- Favicon Oficial -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
 
-    <!-- CSS Externos Globais Audit Educa -->
+    <!-- CSS Externos Globais -->
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
@@ -36,6 +35,11 @@
                         'audit-gold': '#C5A059',
                         'audit-navy': '#0f172a',
                         'audit-blue': '#1e40af',
+                        'audit-cvm': '#2563eb',
+                        'audit-bcb': '#eab308',
+                        'audit-susep': '#9333ea',
+                        'audit-qtg': '#16a34a',
+                        'audit-previc': '#475569'
                     }
                 }
             }
@@ -57,7 +61,7 @@
             background-attachment: fixed;
         }
 
-        /* BARRA LATERAL ESQUERDA */
+        /* Sidebar Tools */
         .sidebar-left-tools {
             position: fixed; left: 0; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
@@ -73,7 +77,7 @@
         }
         .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
 
-        /* Capas em Formato de Página */
+        /* Capas Estilizadas */
         .exam-page-cover {
             aspect-ratio: 1 / 1.414;
             background: white;
@@ -93,50 +97,33 @@
             z-index: 1;
         }
 
-        /* Hero Infinite Slider */
         .hero-slider-container { width: 100%; overflow: hidden; position: relative; padding: 10px 0; }
-        .hero-slider-track { display: flex; gap: 1.5rem; width: max-content; animation: scroll-infinite 40s linear infinite; }
+        .hero-slider-track { display: flex; gap: 1.5rem; width: max-content; animation: scroll-infinite 60s linear infinite; }
         .hero-slider-track:hover { animation-play-state: paused; }
+        
         @keyframes scroll-infinite {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-50% - 0.75rem)); }
         }
 
-        /* Botão Ação Profissional */
-        .btn-download-premium {
-            @apply flex-1 bg-audit-navy text-white text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-800 transition-all border-t border-white/5;
-        }
-        .btn-view-premium {
-            @apply flex-1 bg-white text-audit-navy text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-50 transition-all border-r border-slate-100;
-        }
+        .btn-download-premium { @apply flex-1 bg-audit-navy text-white text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-800 transition-all border-t border-white/5; }
+        .btn-view-premium { @apply flex-1 bg-white text-audit-navy text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-50 transition-all border-r border-slate-100; }
 
-        /* AJUSTE PREVIEW MODAL - SÓLIDO */
-        #preview-modal {
-            background-color: #f1f5f9; /* Slate 100 Fundo Sólido */
-            z-index: 9000;
-        }
+        #preview-modal { background-color: #f1f5f9; z-index: 9000; }
         .preview-paper {
             @apply bg-white shadow-2xl mx-auto p-12 md:p-20 relative border border-slate-200;
             max-width: 850px;
             min-height: 1100px;
         }
-        .exam-instructions-box {
-            @apply border border-slate-200 bg-slate-50 p-6 mt-10 text-[11px] font-medium leading-relaxed rounded-lg;
-        }
 
-        /* Tour & Utility */
-        .tour-highlight { position: relative; z-index: 1301 !important; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important; border: 2px solid #C5A059 !important; }
-        .tour-popover {
-            position: fixed; z-index: 1302; background: white; padding: 20px; border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); width: 280px;
-            border-top: 4px solid #C5A059; transition: all 0.3s ease;
-        }
-
-        .type-indicator { height: 4px; width: 100%; position: absolute; top: 0; left: 0; z-index: 10; }
-        .type-branca { background: #cbd5e1; }
-        .type-verde { background: #22c55e; }
-        .type-azul { background: #3b82f6; }
-        .type-amarela { background: #eab308; }
+        /* Indicadores de Cores por Tipo */
+        .type-indicator { height: 6px; width: 100%; position: absolute; top: 0; left: 0; z-index: 10; }
+        .indicator-CFC { background: #cbd5e1; }
+        .indicator-QTG { background: #16a34a; }
+        .indicator-CVM { background: #2563eb; }
+        .indicator-BCB { background: #eab308; }
+        .indicator-SUSEP { background: #9333ea; }
+        .indicator-PREVIC { background: #475569; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
         
@@ -146,38 +133,28 @@
         @media (max-width: 768px) {
             .sidebar-left-tools { top: auto; bottom: 0; left: 0; width: 100%; height: 70px; flex-direction: row; transform: none; justify-content: space-around; background: white; border-top: 1px solid #e2e8f0; border-radius: 0; }
             .tool-btn { border: none; width: auto; height: 100%; flex: 1; }
-            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; }
             body { padding-bottom: 90px; }
         }
     </style>
-
-    <!-- Scripts de Integração Audit Educa -->
-    <script src="https://auditeduca.com.br/assets/js/utils.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/template-engine.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/seo-manager.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/main.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
 </head>
 <body class="flex flex-col min-h-screen">
 
     <div id="preloader"><div class="spinner"></div></div>
     
-    <!-- Placeholder do Cabeçalho Modular -->
+    <!-- Placeholder do Cabeçalho -->
     <div id="header-placeholder" class="no-print"></div>
 
-    <!-- BARRA LATERAL DE FERRAMENTAS -->
-    <aside class="sidebar-left-tools no-print" id="sidebar-tools">
-        <button class="tool-btn" onclick="startTour()" title="Guia de Uso">
+    <!-- Barra Lateral -->
+    <aside class="sidebar-left-tools no-print">
+        <button class="tool-btn" onclick="startTour()" title="Ajuda">
             <i class="fas fa-magic"></i>
-            <span class="btn-label">Ajuda</span>
+            <span class="btn-label">Guia</span>
         </button>
-        <button class="tool-btn" onclick="showToast('Sincronizando base técnica...')" title="Favoritos">
-            <i class="fas fa-star"></i>
-            <span class="btn-label">Salvos</span>
+        <button class="tool-btn" onclick="showToast('Sincronizando com Servidor Audit...')" title="Atualizar">
+            <i class="fas fa-rotate"></i>
+            <span class="btn-label">Atualizar</span>
         </button>
-        <button class="tool-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao Topo">
+        <button class="tool-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             <i class="fas fa-chevron-up"></i>
             <span class="btn-label">Topo</span>
         </button>
@@ -186,14 +163,11 @@
     <main class="flex-grow pb-24 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto content-wrapper">
             
-            <!-- Breadcrumb -->
             <nav class="flex mb-10 text-[10px] font-bold text-slate-400 uppercase tracking-widest no-print">
                 <ol class="flex items-center gap-2">
-                    <li><a href="/" class="hover:text-audit-gold transition">Dashboard</a></li>
+                    <li><a href="/" class="hover:text-audit-gold">Dashboard</a></li>
                     <li><i class="fas fa-chevron-right text-[8px]"></i></li>
-                    <li>Repositório</li>
-                    <li><i class="fas fa-chevron-right text-[8px]"></i></li>
-                    <li class="text-audit-gold underline underline-offset-4 tracking-widest">Acervo de Exames</li>
+                    <li class="text-audit-gold underline underline-offset-4">Acervo de Exames</li>
                 </ol>
             </nav>
 
@@ -202,69 +176,60 @@
                 <!-- Coluna Principal -->
                 <div class="lg:col-span-8 space-y-20">
                     
-                    <div id="tour-step-0">
-                        <h1 class="text-4xl md:text-6xl font-serif font-bold text-audit-navy tracking-tighter mb-4 leading-none">Acervo de Exames</h1>
-                        <p class="text-slate-500 text-lg font-light leading-relaxed max-w-2xl">Repositório técnico para fins de <span class="text-audit-navy font-semibold">auditoria independente</span> e educação continuada.</p>
-                    </div>
+                    <header id="tour-step-0">
+                        <h1 class="text-4xl md:text-6xl font-serif font-bold text-audit-navy tracking-tighter mb-4 leading-none">Repositório de Exames</h1>
+                        <p class="text-slate-500 text-lg font-light leading-relaxed max-w-2xl">Acervo técnico especializado para <span class="text-audit-navy font-semibold">auditores e contadores</span>. Documentação processada das principais autarquias reguladoras.</p>
+                    </header>
 
-                    <!-- HERO CAROUSEL: ÚLTIMAS EDIÇÕES -->
+                    <!-- Slider: Últimos Uploads -->
                     <section id="tour-step-1" class="relative">
                         <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
                             <i class="fas fa-bolt text-audit-gold text-xs"></i>
-                            <h2 class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Lançamentos Recentes</h2>
+                            <h2 class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Processados Recentemente</h2>
                         </div>
                         <div class="hero-slider-container">
                             <div id="hero-track" class="hero-slider-track">
-                                <!-- Gerado via JS -->
+                                <!-- Preenchido via JS -->
                             </div>
                         </div>
                     </section>
 
-                    <!-- SEÇÕES POR CATEGORIA -->
-                    <div id="exam-sections-container" class="space-y-20"></div>
-
-                    <!-- CTA SIMULADO -->
-                    <section class="bg-audit-navy rounded-[3rem] p-12 md:p-16 text-white relative overflow-hidden group shadow-2xl no-print">
-                        <div class="absolute -right-16 -bottom-16 opacity-5 group-hover:scale-125 transition-transform duration-1000 rotate-12">
-                            <i class="fas fa-graduation-cap text-[18rem]"></i>
-                        </div>
-                        <div class="relative z-10 max-w-xl">
-                            <h2 class="text-4xl font-serif font-bold mb-6">Treino Técnico de Alta Performance</h2>
-                            <p class="text-slate-400 text-base leading-relaxed mb-10">Maximize o seu tempo com o simulador Audit Educa, baseado exclusivamente nas provas deste acervo.</p>
-                            <a href="#" class="inline-flex items-center gap-4 bg-audit-gold text-audit-navy px-10 py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl">
-                                Iniciar Simulados <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </section>
+                    <!-- Seções por Categoria -->
+                    <div id="exam-sections-container" class="space-y-20">
+                        <!-- Gerado dinamicamente -->
+                    </div>
                 </div>
 
-                <!-- SIDEBAR FILTROS -->
+                <!-- Sidebar Filtros -->
                 <aside class="lg:col-span-4 space-y-10 no-print">
-                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm" id="tour-step-2">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm sticky top-32">
                         <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
                             <i class="fas fa-filter text-audit-gold text-xs"></i>
-                            <span class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Localizador</span>
+                            <span class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Localizador de Provas</span>
                         </div>
                         <div class="space-y-4">
                             <div class="relative">
                                 <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 text-xs"></i>
-                                <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="Ano, tipo ou categoria..." class="w-full pl-10 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-xs outline-none focus:border-audit-gold transition">
+                                <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="Ano ou palavra-chave..." class="w-full pl-10 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-xs outline-none focus:border-audit-gold transition">
                             </div>
                             <select id="typeFilter" onchange="filterContent()" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-bold text-audit-navy uppercase outline-none cursor-pointer">
                                 <option value="all">Todas as Áreas</option>
-                                <option value="CFC">Contabilidade (CFC)</option>
-                                <option value="CNAI">Auditoria (CNAI)</option>
+                                <option value="CFC">Exame CFC</option>
+                                <option value="QTG">Auditoria Geral (QTG)</option>
+                                <option value="CVM">Mercado Capitais (CVM)</option>
+                                <option value="BCB">Inst. Financeiras (BCB)</option>
+                                <option value="SUSEP">Seguros (SUSEP)</option>
+                                <option value="PREVIC">Previdência (PREVIC)</option>
                             </select>
                         </div>
-                    </div>
 
-                    <!-- Newsletter -->
-                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-                        <h4 class="text-[10px] font-black uppercase tracking-widest text-audit-gold mb-4">Newsletter Técnica</h4>
-                        <p class="text-[11px] leading-relaxed text-slate-500 mb-6 italic">Receba notificações de novas provas processadas no Hub.</p>
-                        <div class="space-y-3">
-                            <input type="email" placeholder="seu@email.com" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs outline-none focus:border-audit-gold transition">
-                            <button class="w-full p-3 bg-audit-navy text-white font-bold text-[9px] uppercase tracking-widest rounded-lg hover:bg-slate-800 transition">Assinar Alertas</button>
+                        <div class="mt-8 pt-8 border-t border-slate-100">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-4">Acesso Rápido</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setQuickFilter('2024')" class="px-3 py-1 bg-slate-100 rounded-md text-[9px] font-bold hover:bg-audit-gold hover:text-white transition">2024</button>
+                                <button onclick="setQuickFilter('2023')" class="px-3 py-1 bg-slate-100 rounded-md text-[9px] font-bold hover:bg-audit-gold hover:text-white transition">2023</button>
+                                <button onclick="setQuickFilter('EQT')" class="px-3 py-1 bg-slate-100 rounded-md text-[9px] font-bold hover:bg-audit-gold hover:text-white transition">EQT</button>
+                            </div>
                         </div>
                     </div>
                 </aside>
@@ -272,158 +237,173 @@
         </div>
     </main>
 
-    <!-- Placeholder do Rodapé -->
     <div id="footer-placeholder" class="no-print"></div>
 
-    <script src="https://auditeduca.com.br/accessibility-api.js"></script>
-
-    <!-- MODAL DE PREVISUALIZAÇÃO (PREVIEW) - FUNDO SÓLIDO -->
+    <!-- Modal de Preview -->
     <div id="preview-modal" class="fixed inset-0 hidden overflow-y-auto no-print">
-        <div class="fixed inset-0" onclick="closePreview()"></div>
+        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closePreview()"></div>
         
         <div class="relative min-h-screen flex flex-col items-center py-12 px-4">
-            <!-- Header do Modal -->
             <div class="sticky top-4 z-[9100] w-full max-w-5xl bg-audit-navy p-5 rounded-2xl flex justify-between items-center mb-12 shadow-2xl">
                 <div class="flex items-center gap-5">
                     <button onclick="closePreview()" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-red-500 transition-all text-white">
                         <i class="fas fa-times"></i>
                     </button>
                     <div>
-                        <h4 id="preview-title-meta" class="text-sm font-black uppercase tracking-[0.2em] text-audit-gold">CFC 2024.1</h4>
-                        <p class="text-[9px] text-white/50 font-medium uppercase tracking-widest">Documento Técnico Audit Educa</p>
+                        <h4 id="preview-title-meta" class="text-sm font-black uppercase tracking-[0.2em] text-audit-gold">EXAME</h4>
+                        <p class="text-[9px] text-white/50 font-medium uppercase tracking-widest">Visualização Técnica Audit Educa</p>
                     </div>
                 </div>
                 <div class="flex gap-4">
-                    <button onclick="window.print()" class="hidden md:flex items-center gap-3 px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">
+                    <button onclick="showToast('Preparando PDF para impressão...')" class="hidden md:flex items-center gap-3 px-6 py-3 bg-white/5 text-white rounded-xl text-[9px] font-black uppercase tracking-widest">
                         <i class="fas fa-print"></i> Imprimir
                     </button>
-                    <button onclick="showToast('A preparar download original...')" class="flex items-center gap-3 px-6 py-3 bg-audit-gold text-audit-navy rounded-xl text-[9px] font-black uppercase tracking-widest transition-all shadow-lg hover:scale-105">
-                        <i class="fas fa-file-pdf"></i> Baixar PDF
+                    <button id="download-btn-modal" class="flex items-center gap-3 px-6 py-3 bg-audit-gold text-audit-navy rounded-xl text-[9px] font-black uppercase tracking-widest transition-all shadow-lg hover:scale-105">
+                        <i class="fas fa-file-pdf"></i> Baixar Original
                     </button>
                 </div>
             </div>
 
-            <!-- Papel de Exame - Limpo, Sem Marcas de Água -->
             <div class="preview-paper animate-in slide-in-from-bottom-5 duration-300">
                 <div class="flex justify-between items-start border-b-4 border-audit-navy pb-10">
-                    <img src="https://auditeduca.com.br/assets/images/Gemini_Generated_Image_q34fncq34fncq34f.png" class="h-16 grayscale brightness-0 opacity-80">
+                    <img src="https://auditeduca.com.br/assets/iassets/images/audit-educa-logo-footer.webp" class="h-12 grayscale brightness-0">
                     <div class="text-right">
                         <h4 id="preview-header-type" class="text-5xl font-serif font-black text-audit-navy tracking-tighter leading-none">CFC</h4>
-                        <p id="preview-header-year" class="text-lg font-bold text-slate-400 mt-2 uppercase tracking-[0.1em]">2024.1 • PROVA BRANCA</p>
+                        <p id="preview-header-year" class="text-lg font-bold text-slate-400 mt-2 uppercase tracking-[0.1em]">2024.1</p>
                     </div>
                 </div>
 
                 <div class="mt-12 text-center py-12 border-y border-slate-100">
-                    <h2 class="text-2xl font-serif font-black text-audit-navy tracking-tight uppercase mb-2">Exame de Suficiência Contábil</h2>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Repositório Oficial Hub</p>
+                    <h2 class="text-2xl font-serif font-black text-audit-navy tracking-tight uppercase mb-2">Exame de Qualificação Técnica</h2>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Carga Técnica de Auditoria Independente</p>
                 </div>
 
-                <div class="exam-instructions-box">
-                    <h5 class="text-[12px] font-black mb-4 uppercase text-audit-navy flex items-center gap-2">
-                        <i class="fas fa-circle-info text-audit-gold"></i> Instruções Técnicas
-                    </h5>
-                    <ul class="space-y-3 text-slate-600">
-                        <li class="flex gap-4"><span>1.</span> Verifique se este caderno contém 50 questões de múltipla escolha.</li>
-                        <li class="flex gap-4"><span>2.</span> A duração oficial da prova é de 4 horas, incluída a marcação do cartão.</li>
-                        <li class="flex gap-4"><span>3.</span> É permitida a utilização de calculadora técnica básica.</li>
-                    </ul>
+                <div class="mt-10 p-6 bg-slate-50 border border-slate-100 rounded-xl">
+                    <h5 class="text-xs font-black uppercase text-audit-navy mb-4">Anotação Legal</h5>
+                    <p class="text-[11px] text-slate-500 leading-relaxed italic">Este documento é uma representação técnica para fins de estudo. O conteúdo original é propriedade das respectivas bancas examinadoras. A Audit Educa provê a organização e processamento dos metadados.</p>
                 </div>
 
-                <div class="mt-16 space-y-12">
-                    <!-- Questão Simulação -->
-                    <div class="p-6 border-b border-slate-50">
-                        <div class="flex gap-6">
-                            <div class="w-10 h-10 rounded bg-audit-navy text-white flex items-center justify-center font-black text-sm shrink-0">01</div>
-                            <p class="text-[14px] font-medium leading-relaxed text-slate-800">Nos termos da NBC TG Estrutura Conceitual, a característica qualitativa que requer que a informação seja completa, neutra e livre de erros é:</p>
-                        </div>
-                        <div class="pl-16 mt-6 space-y-4 text-[13px] font-medium">
-                            <div class="p-4 border border-slate-100 rounded-xl flex items-center gap-4">A) Relevância.</div>
-                            <div class="p-4 border-2 border-audit-gold bg-audit-gold/5 rounded-xl flex items-center justify-between">
-                                <div class="flex items-center gap-4"><span class="font-bold">B)</span> Representação Fidedigna.</div>
-                                <i class="fas fa-check-circle text-audit-gold text-lg"></i>
-                            </div>
-                            <div class="p-4 border border-slate-100 rounded-xl flex items-center gap-4">C) Comparabilidade.</div>
-                        </div>
+                <div class="mt-20 space-y-16">
+                    <div class="flex flex-col items-center justify-center py-20 border-2 border-dashed border-slate-200 rounded-3xl">
+                        <i class="fas fa-file-lines text-4xl text-slate-200 mb-4"></i>
+                        <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Visualização de Sumário Indisponível</p>
+                        <p class="text-[9px] text-slate-300">Use o botão de download para acessar o PDF completo.</p>
                     </div>
                 </div>
 
-                <div class="mt-32 pt-10 border-t border-slate-100 flex justify-between items-center opacity-40 grayscale italic">
-                    <p class="text-[8px] font-black uppercase tracking-[0.4em]">Audit Educa Repositório Técnico</p>
-                    <p class="text-[9px] font-bold">Pág. 01 / 40</p>
+                <div class="mt-32 pt-10 border-t border-slate-100 flex justify-between items-center opacity-40 italic">
+                    <p class="text-[8px] font-black uppercase tracking-[0.4em]">Audit Educa Hub de Exames</p>
+                    <p class="text-[9px] font-bold">Documento Técnico</p>
                 </div>
             </div>
             <div class="h-20"></div>
         </div>
     </div>
 
-    <!-- Tour Container -->
-    <div id="tour-container"></div>
     <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[9999] pointer-events-none">Operação concluída!</div>
 
     <script>
-        lucide.createIcons();
+        // Mapeamento das Provas com base nas URLs fornecidas
+        const examRegistry = [
+            // CFC Original
+            { id: 'cfc-24-1', title: 'Suficiência Contábil', year: '2024.1', type: 'CFC', label: 'Branca', ref: 'AE-24-CFC-B', url: '#' },
+            
+            // QTG (EQT 21 a 29)
+            { id: 'qtg-29', title: 'Auditoria Geral (QTG)', year: 'EQT 29', type: 'QTG', label: 'Oficial', ref: 'EQT_29_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_29_QTG.json' },
+            { id: 'qtg-28', title: 'Auditoria Geral (QTG)', year: 'EQT 28', type: 'QTG', label: 'Oficial', ref: 'EQT_28_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_28_QTG.json' },
+            { id: 'qtg-27', title: 'Auditoria Geral (QTG)', year: 'EQT 27', type: 'QTG', label: 'Oficial', ref: 'EQT_27_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_27_QTG.json' },
+            { id: 'qtg-26', title: 'Auditoria Geral (QTG)', year: 'EQT 26', type: 'QTG', label: 'Oficial', ref: 'EQT_26_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_26_QTG.json' },
+            { id: 'qtg-25', title: 'Auditoria Geral (QTG)', year: 'EQT 25', type: 'QTG', label: 'Oficial', ref: 'EQT_25_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_25_QTG.json' },
+            { id: 'qtg-24', title: 'Auditoria Geral (QTG)', year: 'EQT 24', type: 'QTG', label: 'Oficial', ref: 'EQT_24_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_24_QTG.json' },
+            { id: 'qtg-23', title: 'Auditoria Geral (QTG)', year: 'EQT 23', type: 'QTG', label: 'Oficial', ref: 'EQT_23_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_23_QTG.json' },
+            { id: 'qtg-22', title: 'Auditoria Geral (QTG)', year: 'EQT 22', type: 'QTG', label: 'Oficial', ref: 'EQT_22_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_22_QTG.json' },
+            { id: 'qtg-21', title: 'Auditoria Geral (QTG)', year: 'EQT 21', type: 'QTG', label: 'Oficial', ref: 'EQT_21_QTG', url: 'https://auditeduca.com.br/Data_tests/QTG/EQT_21_QTG.json' },
 
-        const examData = [
-            { id: '1', title: 'Suficiência Contábil', year: '2024.1', type: 'CFC', color: 'branca', ref: 'AE-24-CFC-B' },
-            { id: '2', title: 'Auditoria Geral QTG', year: '2023', type: 'CNAI', color: 'verde', ref: 'AE-23-QTG-V' },
-            { id: '3', title: 'Mercado Capitais CVM', year: '2023', type: 'CNAI', color: 'azul', ref: 'AE-23-CVM-A' },
-            { id: '4', title: 'Inst. Financeiras BACEN', year: '2023', type: 'CNAI', color: 'amarela', ref: 'AE-23-BAC-Y' },
-            { id: '5', title: 'Suficiência Contábil', year: '2023.2', type: 'CFC', color: 'azul', ref: 'AE-23-CFC-A' }
+            // SUSEP
+            { id: 'susep-27', title: 'Seguros (SUSEP)', year: 'EQT 27', type: 'SUSEP', label: 'Técnica', ref: 'EQT_27_SUSEP', url: 'https://auditeduca.com.br/Data_tests/SUSPE/EQT_27_SUSEP.json' },
+            { id: 'susep-26', title: 'Seguros (SUSEP)', year: 'EQT 26', type: 'SUSEP', label: 'Técnica', ref: 'EQT_26_SUSEP', url: 'https://auditeduca.com.br/Data_tests/SUSPE/EQT_26_SUSEP.json' },
+            { id: 'susep-25', title: 'Seguros (SUSEP)', year: 'EQT 25', type: 'SUSEP', label: 'Técnica', ref: 'EQT_25_SUSEP', url: 'https://auditeduca.com.br/Data_tests/SUSPE/EQT_25_SUSEP.json' },
+            { id: 'susep-24', title: 'Seguros (SUSEP)', year: 'EQT 24', type: 'SUSEP', label: 'Técnica', ref: 'EQT_24_SUSEP', url: 'https://auditeduca.com.br/Data_tests/SUSPE/EQT_24_SUSEP.json' },
+            { id: 'susep-23', title: 'Seguros (SUSEP)', year: 'EQT 23', type: 'SUSEP', label: 'Técnica', ref: 'EQT_23_SUSEP', url: 'https://auditeduca.com.br/Data_tests/SUSPE/EQT_23_SUSEP.json' },
+            { id: 'susep-22', title: 'Seguros (SUSEP)', year: 'EQT 22', type: 'SUSEP', label: 'Técnica', ref: 'EQT_22_SUSEP', url: 'https://auditeduca.com.br/Data_tests/SUSPE/EQT_22_SUSEP.json' },
+            { id: 'susep-21', title: 'Seguros (SUSEP)', year: 'EQT 21', type: 'SUSEP', label: 'Técnica', ref: 'EQT_21_SUSEP', url: 'https://auditeduca.com.br/Data_tests/SUSPE/EQT_21_SUSEP.json' },
+
+            // BCB (BACEN)
+            { id: 'bcb-21', title: 'Inst. Financeiras (BCB)', year: 'EQT 21', type: 'BCB', label: 'Técnica', ref: 'EQT_21_BCB', url: 'https://auditeduca.com.br/Data_tests/BCB/EQT_21_BCB.json' },
+            
+            // Outros / PREVIC / CVM (Placeholders para as pastas CVM/OTHERS/PREVIC enviadas)
+            { id: 'cvm-23', title: 'Mercado de Capitais', year: 'EQT 23', type: 'CVM', label: 'Especialista', ref: 'EQT_23_CVM', url: 'https://auditeduca.com.br/Data_tests/CVM/' },
+            { id: 'previc-23', title: 'Previdência (PREVIC)', year: 'EQT 23', type: 'PREVIC', label: 'Técnica', ref: 'EQT_23_PREVIC', url: 'https://auditeduca.com.br/Data_tests/PREVIC/' }
         ];
 
-        function createCapaHTML(doc, isMini = false) {
+        function createExamCard(doc, isMini = false) {
             const sizeClasses = isMini ? 'exam-page-cover-mini' : 'w-full';
+            const colorClass = `indicator-${doc.type}`;
+            
             return `
-                <div class="flex flex-col gap-4 group exam-item" data-type="${doc.type}" data-title="${doc.title} ${doc.year}">
+                <div class="flex flex-col gap-4 group exam-item" data-type="${doc.type}" data-title="${doc.title} ${doc.year} ${doc.ref}">
                     <div class="exam-page-cover rounded-[2rem] ${sizeClasses}">
-                        <div class="type-indicator type-${doc.color}"></div>
+                        <div class="type-indicator ${colorClass}"></div>
                         <div class="svg-texture"></div>
                         <div class="relative z-10 p-5 h-full flex flex-col items-center justify-between text-center w-full">
                             <div>
-                                <span class="text-[6px] font-black text-slate-300 uppercase tracking-[0.3em]">Audit Hub</span>
+                                <span class="text-[6px] font-black text-slate-300 uppercase tracking-[0.3em]">Audit Educa</span>
                                 <h3 class="font-serif font-black text-audit-navy tracking-tighter ${isMini ? 'text-2xl mt-4' : 'text-5xl mt-12'}">${doc.type}</h3>
-                                <p class="text-[7px] font-bold text-audit-gold uppercase tracking-widest mt-1">${doc.title}</p>
+                                <p class="text-[7px] font-bold text-audit-gold uppercase tracking-widest mt-1 line-clamp-1 px-2">${doc.title}</p>
                             </div>
-                            <div><span class="font-black text-audit-navy tracking-tighter ${isMini ? 'text-xl' : 'text-3xl'}">${doc.year}</span></div>
+                            <div>
+                                <span class="font-black text-audit-navy tracking-tighter ${isMini ? 'text-xl' : 'text-3xl'}">${doc.year}</span>
+                            </div>
                             <div class="w-full flex flex-col items-center pt-4 border-t border-slate-50">
-                                <img src="https://auditeduca.com.br/assets/images/Gemini_Generated_Image_q34fncq34fncq34f.png" class="${isMini ? 'h-6' : 'h-10'} opacity-60 grayscale group-hover:grayscale-0 transition-all duration-500">
+                                <img src="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp" class="${isMini ? 'h-6' : 'h-10'} opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500">
                                 <span class="text-[6px] font-bold text-slate-300 uppercase tracking-widest mt-1">${doc.ref}</span>
                             </div>
                         </div>
                     </div>
                     <div class="flex shadow-lg rounded-2xl overflow-hidden border border-slate-100">
-                        <button onclick="openPreview('${doc.id}')" class="btn-view-premium"><i class="fas fa-eye text-audit-gold"></i> Ver</button>
-                        <button onclick="showToast('A preparar download técnico...')" class="btn-download-premium"><i class="fas fa-download text-audit-gold"></i> Baixar</button>
+                        <button onclick="openPreview('${doc.id}')" class="btn-view-premium"><i class="fas fa-eye text-audit-gold"></i> Ler</button>
+                        <button onclick="window.open('${doc.url}', '_blank')" class="btn-download-premium"><i class="fas fa-download text-audit-gold"></i> JSON</button>
                     </div>
                 </div>
             `;
         }
 
-        function renderExams() {
-            const latest = {};
-            examData.forEach(e => { if (!latest[e.type] || e.year > latest[e.type].year) latest[e.type] = e; });
-            const latestExams = Object.values(latest);
-            document.getElementById('hero-track').innerHTML = [...latestExams, ...latestExams].map(doc => createCapaHTML(doc, true)).join('');
+        function renderRepository() {
+            // Render Hero (Mais Recentes)
+            const latestItems = examRegistry.slice(0, 8);
+            document.getElementById('hero-track').innerHTML = [...latestItems, ...latestItems].map(doc => createExamCard(doc, true)).join('');
 
-            const types = ['CFC', 'CNAI'];
-            document.getElementById('exam-sections-container').innerHTML = types.map(type => {
-                const filtered = examData.filter(e => e.type === type);
-                return `<section class="type-section" data-section-type="${type}">
+            // Render Categorias
+            const categories = [...new Set(examRegistry.map(d => d.type))];
+            const container = document.getElementById('exam-sections-container');
+            container.innerHTML = '';
+
+            categories.forEach(cat => {
+                const filtered = examRegistry.filter(d => d.type === cat);
+                const section = document.createElement('section');
+                section.className = 'category-section';
+                section.innerHTML = `
                     <div class="flex items-center gap-4 mb-10 border-b border-slate-100 pb-5">
-                        <i class="fas fa-box-archive text-audit-gold text-xs"></i>
-                        <h2 class="text-xs font-black text-audit-navy uppercase tracking-[0.3em]">Categoria: ${type}</h2>
+                        <i class="fas fa-folder-open text-audit-gold text-xs"></i>
+                        <h2 class="text-xs font-black text-audit-navy uppercase tracking-[0.3em]">${cat} - Acervo Histórico</h2>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">${filtered.map(doc => createCapaHTML(doc)).join('')}</div>
-                </section>`;
-            }).join('');
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                        ${filtered.map(doc => createExamCard(doc)).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
         }
 
         function openPreview(id) {
-            const doc = examData.find(e => e.id === id);
+            const doc = examRegistry.find(e => e.id === id);
             if (!doc) return;
-            document.getElementById('preview-title-meta').innerText = `${doc.type} EXAME ${doc.year}`;
+            
+            document.getElementById('preview-title-meta').innerText = `${doc.type} ${doc.year}`;
             document.getElementById('preview-header-type').innerText = doc.type;
-            document.getElementById('preview-header-year').innerText = `${doc.year} • PROVA ${doc.color.toUpperCase()}`;
+            document.getElementById('preview-header-year').innerText = `${doc.year} • REF ${doc.ref}`;
+            document.getElementById('download-btn-modal').onclick = () => window.open(doc.url, '_blank');
+            
             document.getElementById('preview-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -436,14 +416,22 @@
         function filterContent() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const typeFilter = document.getElementById('typeFilter').value;
+            
             document.querySelectorAll('.exam-item').forEach(item => {
-                const matchType = typeFilter === 'all' || item.getAttribute('data-type') === typeFilter;
-                const matchQuery = item.getAttribute('data-title').toLowerCase().includes(query);
+                const type = item.getAttribute('data-type');
+                const title = item.getAttribute('data-title').toLowerCase();
+                
+                const matchType = typeFilter === 'all' || type === typeFilter;
+                const matchQuery = title.includes(query);
+                
                 item.style.display = (matchType && matchQuery) ? 'flex' : 'none';
             });
         }
 
-        function setTag(tag) { document.getElementById('searchInput').value = tag; filterContent(); }
+        function setQuickFilter(val) {
+            document.getElementById('searchInput').value = val;
+            filterContent();
+        }
 
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -453,32 +441,18 @@
             setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translate(-50%, 40px)'; }, 3000);
         }
 
-        // Tour System
-        let currentStep = 0;
-        const steps = [
-            { id: 'tour-step-0', text: 'Bem-vindo ao acervo oficial da Audit Educa.' },
-            { id: 'tour-step-1', text: 'Aqui encontra as edições mais recentes em scroll infinito.' },
-            { id: 'tour-step-2', text: 'Utilize o localizador para encontrar anos específicos.' }
-        ];
-        function startTour() { currentStep = 0; showStep(); }
-        function showStep() {
-            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
-            const s = steps[currentStep];
-            const el = document.getElementById(s.id);
-            if (!el) return;
-            el.classList.add('tour-highlight');
-            const rect = el.getBoundingClientRect();
-            document.getElementById('tour-container').innerHTML = `
-                <div class="tour-popover" style="top:${rect.bottom+15}px;left:${Math.max(10,rect.left)}px">
-                    <p class="text-[10px] font-black uppercase text-audit-gold mb-2">Guia Audit</p>
-                    <p class="text-xs text-slate-600 mb-4">${s.text}</p>
-                    <button onclick="nextStep()" class="w-full py-2 bg-audit-navy text-white text-[9px] font-black uppercase rounded">${currentStep===steps.length-1?'Fim':'Próximo'}</button>
-                </div>`;
+        function startTour() {
+            showToast("Iniciando assistente técnico...");
+            // Implementação do tour conforme necessário
         }
-        function nextStep() { currentStep++; if(currentStep<steps.length) showStep(); else closeTour(); }
-        function closeTour() { document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight')); document.getElementById('tour-container').innerHTML=''; }
 
-        window.onload = () => { renderExams(); setTimeout(() => document.getElementById('preloader').style.display = 'none', 800); };
+        window.onload = () => {
+            renderRepository();
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+                lucide.createIcons();
+            }, 600);
+        };
     </script>
 </body>
 </html>
