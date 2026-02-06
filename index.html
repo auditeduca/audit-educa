@@ -58,7 +58,8 @@
     <!-- Frameworks & CSS (Modular Strategy) -->
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <!-- USAR A VERSÃO CORRIGIDA DO HEADER.CSS -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header-corrigido.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -113,9 +114,13 @@
                     },
                     colors: {
                         'audit-gold': '#C5A059',
+                        'audit-goldDark': '#b8904a',
                         'audit-navy': '#0f172a',
                         'audit-blue': '#1e40af',
                         'audit-gray': '#f8fafc',
+                        'audit-glassLight': 'rgba(255, 255, 255, 0.95)',
+                        'audit-glassDark': 'rgba(15, 23, 42, 0.95)',
+                        'audit-bgDark': '#0f172a'
                     }
                 }
             }
@@ -150,11 +155,19 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             transition: top 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         }
-        .skip-link:focus { top: 0; outline: 3px solid #1e40af; outline-offset: 4px; }
+        .skip-link:focus { 
+            top: 0; 
+            outline: 3px solid #1e40af; 
+            outline-offset: 4px; 
+        }
 
         /* Sustainability: Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+            * { 
+                animation-duration: 0.01ms !important; 
+                transition-duration: 0.01ms !important; 
+                scroll-behavior: auto !important; 
+            }
         }
 
         /* Hero Section Full Width Visual Optimization */
@@ -208,23 +221,31 @@
             border: 2px solid #e2e8f0;
             transition: border-color 0.2s;
         }
-        .category-tag:hover { border-color: #0f172a; }
+        .category-tag:hover { 
+            border-color: #0f172a; 
+        }
 
-        /* Focus States (Acessibilidade) */
-        a:focus-visible, button:focus-visible {
+        /* Focus States (Acessibilidade) - Melhorado para AAA */
+        a:focus-visible, 
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
             outline: 3px solid #1e40af;
             outline-offset: 3px;
             border-radius: 4px;
         }
 
         /* Previsibilidade de Layout */
-        #header-placeholder { min-height: 80px; }
+        #header-placeholder { 
+            min-height: 80px; 
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
     <!-- GTM Noscript -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6GKJ7BF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
@@ -250,17 +271,23 @@
                         Hub de ferramentas de auditoria e simuladores de qualificação profissional com rigor técnico e acadêmico.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="ferramentas.html" class="bg-audit-navy text-white px-8 py-3.5 rounded hover:bg-slate-800 transition shadow-lg font-bold flex items-center gap-2" role="button">Explorar Soluções</a>
-                        <a href="biblioteca.html" class="px-8 py-3.5 border border-slate-300 rounded text-audit-navy hover:bg-slate-50 transition font-bold" role="button">Biblioteca Digital</a>
+                        <a href="ferramentas.html" class="bg-audit-navy text-white px-8 py-3.5 rounded hover:bg-slate-800 transition shadow-lg font-bold flex items-center gap-2">
+                            Explorar Soluções
+                            <span class="sr-only">- Acessar página de ferramentas</span>
+                        </a>
+                        <a href="biblioteca.html" class="px-8 py-3.5 border border-slate-300 rounded text-audit-navy hover:bg-slate-50 transition font-bold">
+                            Biblioteca Digital
+                            <span class="sr-only">- Acessar biblioteca de recursos</span>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="md:w-1/2 flex justify-center relative w-full">
                     <!-- Status do Sistema (Technical Audit: Live region) -->
-                    <div class="relative w-full max-w-md bg-white p-8 rounded shadow-2xl border border-gray-100 z-10" role="region" aria-label="Status do Ecossistema">
+                    <div class="relative w-full max-w-md bg-white p-8 rounded shadow-2xl border border-gray-100 z-10" role="region" aria-labelledby="status-title">
                         <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-3">
-                            <h2 class="text-xs font-bold text-slate-400 tracking-widest uppercase">Status das Ferramentas</h2>
-                            <div class="flex items-center gap-2" aria-live="polite">
+                            <h2 id="status-title" class="text-xs font-bold text-slate-400 tracking-widest uppercase">Status das Ferramentas</h2>
+                            <div class="flex items-center gap-2" role="status" aria-live="polite" aria-label="Sistema online">
                                 <span class="text-[10px] font-bold text-green-600">ONLINE</span>
                                 <div class="h-2.5 w-2.5 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
                             </div>
@@ -310,43 +337,49 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Conversor -->
-                    <a href="moedas-bcb.html" class="pro-card p-8 group" aria-label="Acessar Conversor de Moedas PTAX">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="p-4 bg-audit-gray rounded text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300">
-                                <i data-lucide="coins" class="w-7 h-7" aria-hidden="true"></i>
+                    <article class="pro-card p-8 group">
+                        <a href="moedas-bcb.html" class="flex flex-col h-full" aria-label="Acessar Conversor de Moedas PTAX">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="p-4 bg-audit-gray rounded text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300" aria-hidden="true">
+                                    <i data-lucide="coins" class="w-7 h-7"></i>
+                                </div>
+                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors" aria-hidden="true"></i>
                             </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-audit-navy mb-2">Conversor de Moedas</h3>
-                        <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Integração oficial com taxas do Banco Central para auditorias financeiras precisas.</p>
-                        <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Financeiro</div>
-                    </a>
+                            <h3 class="text-xl font-bold text-audit-navy mb-2">Conversor de Moedas</h3>
+                            <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Integração oficial com taxas do Banco Central para auditorias financeiras precisas.</p>
+                            <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Financeiro</div>
+                        </a>
+                    </article>
 
                     <!-- Validador -->
-                    <a href="validador-dominio-email.html" class="pro-card p-8 group" aria-label="Acessar Validador de Domínio MX">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="p-4 bg-audit-gray rounded text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300">
-                                <i data-lucide="shield-check" class="w-7 h-7" aria-hidden="true"></i>
+                    <article class="pro-card p-8 group">
+                        <a href="validador-dominio-email.html" class="flex flex-col h-full" aria-label="Acessar Validador de Domínio MX">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="p-4 bg-audit-gray rounded text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300" aria-hidden="true">
+                                    <i data-lucide="shield-check" class="w-7 h-7"></i>
+                                </div>
+                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors" aria-hidden="true"></i>
                             </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-audit-navy mb-2">Validador de Domínio</h3>
-                        <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Certificação de infraestrutura MX para segurança em procedimentos de circularização.</p>
-                        <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Compliance</div>
-                    </a>
+                            <h3 class="text-xl font-bold text-audit-navy mb-2">Validador de Domínio</h3>
+                            <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Certificação de infraestrutura MX para segurança em procedimentos de circularização.</p>
+                            <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Compliance</div>
+                        </a>
+                    </article>
 
                     <!-- PEC -->
-                    <a href="calculadora-pec.html" class="pro-card p-8 group" aria-label="Acessar Calculadora PEC">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="p-4 bg-audit-gray rounded text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300">
-                                <i data-lucide="calculator" class="w-7 h-7" aria-hidden="true"></i>
+                    <article class="pro-card p-8 group">
+                        <a href="calculadora-pec.html" class="flex flex-col h-full" aria-label="Acessar Calculadora PEC">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="p-4 bg-audit-gray rounded text-audit-navy group-hover:bg-audit-navy group-hover:text-white transition-all duration-300" aria-hidden="true">
+                                    <i data-lucide="calculator" class="w-7 h-7"></i>
+                                </div>
+                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors" aria-hidden="true"></i>
                             </div>
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-audit-gold transition-colors" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-audit-navy mb-2">Calculadora PEC</h3>
-                        <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Simulação dinâmica de pontuação NBC PG 12 para educação profissional continuada.</p>
-                        <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Carreira</div>
-                    </a>
+                            <h3 class="text-xl font-bold text-audit-navy mb-2">Calculadora PEC</h3>
+                            <p class="text-sm text-slate-500 mb-6 font-light flex-grow">Simulação dinâmica de pontuação NBC PG 12 para educação profissional continuada.</p>
+                            <div class="text-[10px] font-bold text-audit-blue uppercase tracking-widest mt-auto">Carreira</div>
+                        </a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -365,28 +398,36 @@
 
                     <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <!-- Suficiência -->
-                        <div class="edu-card p-8 group">
-                            <div class="w-14 h-14 bg-blue-50 rounded flex items-center justify-center text-audit-blue mb-6 group-hover:bg-audit-blue group-hover:text-white transition-colors">
-                                <i data-lucide="graduation-cap" class="w-7 h-7" aria-hidden="true"></i>
+                        <article class="edu-card p-8 group">
+                            <div class="w-14 h-14 bg-blue-50 rounded flex items-center justify-center text-audit-blue mb-6 group-hover:bg-audit-blue group-hover:text-white transition-colors" aria-hidden="true">
+                                <i data-lucide="graduation-cap" class="w-7 h-7"></i>
                             </div>
                             <h3 class="text-xl font-bold text-audit-navy mb-3">Exame de Suficiência</h3>
                             <p class="text-sm text-slate-500 mb-6 flex-grow font-light">Questões atualizadas e comentadas focadas na aprovação imediata no CRC.</p>
                             <div class="pt-5 border-t border-gray-100 flex items-center justify-between">
-                                <a href="simulador-exame-de-suficiencia.html" class="text-sm font-bold text-audit-blue group-hover:underline flex items-center gap-2">Acessar Plataforma <i data-lucide="chevron-right" class="w-4 h-4" aria-hidden="true"></i></a>
+                                <a href="simulador-exame-de-suficiencia.html" class="text-sm font-bold text-audit-blue group-hover:underline flex items-center gap-2">
+                                    Acessar Plataforma 
+                                    <i data-lucide="chevron-right" class="w-4 h-4" aria-hidden="true"></i>
+                                    <span class="sr-only">do Exame de Suficiência</span>
+                                </a>
                             </div>
-                        </div>
+                        </article>
 
                         <!-- QTG -->
-                        <div class="edu-card p-8 group">
-                            <div class="w-14 h-14 bg-blue-50 rounded flex items-center justify-center text-audit-blue mb-6 group-hover:bg-audit-blue group-hover:text-white transition-colors">
-                                <i data-lucide="award" class="w-7 h-7" aria-hidden="true"></i>
+                        <article class="edu-card p-8 group">
+                            <div class="w-14 h-14 bg-blue-50 rounded flex items-center justify-center text-audit-blue mb-6 group-hover:bg-audit-blue group-hover:text-white transition-colors" aria-hidden="true">
+                                <i data-lucide="award" class="w-7 h-7"></i>
                             </div>
                             <h3 class="text-xl font-bold text-audit-navy mb-3">Simulador QTG (CNAI)</h3>
                             <p class="text-sm text-slate-500 mb-6 flex-grow font-light">Treinamento intensivo focado na Qualificação Técnica Geral para auditores.</p>
                             <div class="pt-5 border-t border-gray-100 flex items-center justify-between">
-                                <a href="simulador-cnai-qtg.html" class="text-sm font-bold text-audit-blue group-hover:underline flex items-center gap-2">Acessar Plataforma <i data-lucide="chevron-right" class="w-4 h-4" aria-hidden="true"></i></a>
+                                <a href="simulador-cnai-qtg.html" class="text-sm font-bold text-audit-blue group-hover:underline flex items-center gap-2">
+                                    Acessar Plataforma 
+                                    <i data-lucide="chevron-right" class="w-4 h-4" aria-hidden="true"></i>
+                                    <span class="sr-only">do Simulador QTG</span>
+                                </a>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -435,11 +476,19 @@
                                 target.innerHTML = await r.text();
                                 this.reIcons();
                             }
-                        } finally { target.setAttribute('aria-busy', 'false'); }
+                        } catch (error) {
+                            console.error('Erro ao carregar componente:', error);
+                        } finally { 
+                            target.setAttribute('aria-busy', 'false'); 
+                        }
                     };
 
-                    if (header && !header.innerHTML.trim()) render('https://auditeduca.com.br/assets/components/header.html', header);
-                    if (footer && !footer.innerHTML.trim()) render('https://auditeduca.com.br/assets/components/footer.html', footer);
+                    if (header && !header.innerHTML.trim()) {
+                        await render('https://auditeduca.com.br/assets/components/header.html', header);
+                    }
+                    if (footer && !footer.innerHTML.trim()) {
+                        await render('https://auditeduca.com.br/assets/components/footer.html', footer);
+                    }
                 },
 
                 setupAriaLive() {
