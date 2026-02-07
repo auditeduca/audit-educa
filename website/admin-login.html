@@ -3,204 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audit Educa | Portal</title>
+    <title>Portal de Serviços | Audit Educa</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
 
-    <!-- Estilos Globais Audit Educa -->
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
-    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
-    
-    <!-- Tailwind CSS -->
+    <!-- Estilos Externos -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        'audit-gold': '#C5A059',
-                        'audit-navy': '#0f172a',
-                        'audit-blue': '#1e40af',
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: { 'audit-gold': '#C5A059', 'audit-navy': '#0f172a' }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
         
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; overflow-x: hidden; min-height: 100vh; }
-
-        main {
-            min-height: calc(100vh - 80px); 
-            padding-top: 80px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Estados Iniciais: Tudo oculto para validação de segurança */
+        /* Ocultar containers para processamento de segurança */
         #redirect-screen, #login-container, #vault-container, #dashboard-container { display: none; }
-
+        
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80');
             background-size: cover;
             background-position: center;
         }
 
-        /* Loader para o Redirecionamento */
-        .loader-bar {
-            width: 100%; height: 3px; background: #e2e8f0; overflow: hidden; position: relative;
-        }
+        .loader-bar { width: 100%; height: 3px; background: #e2e8f0; position: relative; overflow: hidden; }
         .loader-bar::after {
             content: ''; position: absolute; left: -50%; height: 100%; width: 50%;
             background: #C5A059; animation: loading 1.5s infinite linear;
         }
         @keyframes loading { 0% { left: -50%; } 100% { left: 100%; } }
 
-        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
         .token-dot { width: 14px; height: 14px; border-radius: 50%; background: #e2e8f0; transition: all 0.2s; }
         .token-dot.active { background: #C5A059; transform: scale(1.2); box-shadow: 0 0 10px rgba(197, 160, 89, 0.5); }
     </style>
-
-    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
-    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="min-h-screen flex items-center justify-center p-4">
 
-    <div id="header-placeholder"></div>
+    <!-- 0. ECRÃ DE REDIRECIONAMENTO (Furtivo) -->
+    <div id="redirect-screen" class="flex-col items-center text-center max-w-sm">
+        <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logo" class="h-16 mb-10 grayscale opacity-40">
+        <p class="text-slate-400 text-sm mb-8">A carregar os serviços do portal...</p>
+        <div class="loader-bar rounded-full w-48"></div>
+    </div>
 
-    <main class="flex-grow p-4 relative">
-        
-        <!-- TOAST DE NOTIFICAÇÃO -->
-        <div id="toast" class="fixed top-24 right-5 z-[9999] transform transition-all duration-300 translate-x-full opacity-0">
-            <div class="bg-audit-navy text-white px-6 py-4 rounded-lg shadow-xl border-l-4 border-audit-gold flex items-center gap-3">
-                <i class="fas fa-info-circle text-audit-gold"></i>
-                <span id="toast-msg" class="text-sm font-medium">Notificação</span>
+    <!-- 1. LOGIN (ETAPA 1) -->
+    <div id="login-container" class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+        <div class="md:w-5/12 hero-bg p-10 text-white flex flex-col justify-between">
+            <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logo" class="h-12 mb-10 brightness-0 invert">
+            <div class="mb-10">
+                <h2 class="text-3xl font-serif font-bold mb-2">Portal de Serviços</h2>
+                <p class="text-slate-300 text-sm">Identifique-se para prosseguir.</p>
             </div>
+            <div class="text-[10px] text-slate-400 uppercase tracking-widest"><i class="fas fa-shield-alt mr-2"></i>Ambiente Seguro</div>
         </div>
-
-        <!-- 0. SNIPPET DE REDIRECIONAMENTO (Furtivo) -->
-        <div id="redirect-screen" class="flex-col items-center text-center max-w-sm fade-in">
-            <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Audit Educa" class="h-16 mb-10 grayscale opacity-40">
-            <div class="mb-8">
-                <p class="text-slate-400 text-sm font-medium">A carregar os serviços do portal...</p>
-            </div>
-            <div class="loader-bar rounded-full w-48 mx-auto"></div>
-        </div>
-
-        <!-- 1. TELA DE LOGIN (ETAPA 1 - Portal de Serviços) -->
-        <div id="login-container" class="w-full max-w-4xl bg-white rounded-2xl shadow-soft overflow-hidden flex flex-col md:flex-row fade-in-up my-auto">
-            <div class="md:w-5/12 hero-bg p-10 text-white flex flex-col justify-between relative min-h-[350px] md:min-h-0">
-                <div class="relative z-10">
-                    <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logo" class="h-12 mb-10 brightness-0 invert opacity-100">
-                    <div class="mb-6">
-                        <h2 class="text-3xl font-serif font-bold leading-tight mb-2 text-white">Portal de Serviços</h2>
-                        <p class="text-slate-300 text-sm leading-relaxed">Autenticação de identidade para o ecossistema Audit Educa.</p>
-                    </div>
+        <div class="md:w-7/12 p-10 md:p-14 bg-white flex flex-col justify-center">
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-2">E-mail Corporativo</label>
+                    <input type="email" id="email" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 outline-none focus:border-audit-gold transition-all" required>
                 </div>
-                <div class="relative z-10 mt-8 text-[10px] text-slate-400 flex items-center gap-2">
-                    <i class="fas fa-shield-alt"></i> Ambiente Verificado
+                <div>
+                    <label class="block text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-2">Senha</label>
+                    <input type="password" id="password" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 outline-none focus:border-audit-gold transition-all" required>
                 </div>
-            </div>
-
-            <div class="md:w-7/12 p-10 md:p-14 bg-white flex flex-col justify-center">
-                <h1 class="text-2xl font-bold text-audit-navy mb-2">Bem-vindo</h1>
-                <p class="text-slate-500 text-sm mb-8">Introduza as suas credenciais para prosseguir.</p>
-                <form id="login-form" class="space-y-5">
-                    <div>
-                        <label class="block text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-1.5">Identificador</label>
-                        <input type="email" id="email" class="w-full px-4 py-3 rounded-xl text-sm bg-slate-50 border border-slate-200 focus:border-audit-gold outline-none transition-all" placeholder="exemplo@auditeduca.com.br" required>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-1.5">Chave Digital</label>
-                        <input type="password" id="password" class="w-full px-4 py-3 rounded-xl text-sm bg-slate-50 border border-slate-200 focus:border-audit-gold outline-none transition-all" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" id="btn-login" class="w-full bg-audit-navy hover:bg-slate-800 text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-3 mt-4 text-sm">
-                        <span>Entrar no Portal</span>
-                        <i class="fas fa-arrow-right text-xs"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- 2. TELA DO COFRE (ETAPA 2 - Verificação Adicional) -->
-        <div id="vault-container" class="w-full max-w-md bg-white rounded-3xl shadow-soft p-12 flex-col items-center text-center fade-in-up my-auto">
-            <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logo" class="h-10 mb-8 mx-auto opacity-80">
-            <h2 class="text-2xl font-bold text-audit-navy mb-3">Verificação</h2>
-            <p class="text-slate-500 text-sm mb-10">Introduza o código de segurança para libertar a sua área de trabalho.</p>
-            
-            <form id="vault-form" class="w-full space-y-8">
-                <div class="flex justify-center gap-4 mb-2">
-                    <div class="token-dot"></div><div class="token-dot"></div><div class="token-dot"></div>
-                    <div class="token-dot"></div><div class="token-dot"></div><div class="token-dot"></div>
-                </div>
-                <input type="password" id="token-input" maxlength="6" pattern="\d*" inputmode="numeric" class="w-full text-center text-3xl font-bold tracking-[0.8em] py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-audit-gold" placeholder="••••••" autofocus>
-                
-                <button type="submit" class="w-full bg-audit-gold hover:bg-[#b08e4d] text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 text-sm">
-                    <span>Confirmar Identidade</span>
-                    <i class="fas fa-check-circle text-xs"></i>
+                <button type="submit" id="btn-login" class="w-full bg-audit-navy text-white font-bold py-4 rounded-xl shadow-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-3">
+                    Continuar <i class="fas fa-arrow-right text-[10px]"></i>
                 </button>
             </form>
-            <button id="btn-cancel-vault" class="mt-8 text-[11px] text-slate-400 hover:text-red-500 font-medium transition-colors">Encerrar sessão e sair</button>
         </div>
+    </div>
 
-        <!-- 3. PAINEL ADMINISTRATIVO -->
-        <div id="dashboard-container" class="w-full max-w-7xl h-full flex-col md:flex-row gap-6">
-            <aside class="w-full md:w-64 bg-audit-navy rounded-2xl p-8 flex flex-col justify-between text-white shadow-2xl h-[80vh] sticky top-24">
-                <div>
-                    <div class="flex items-center gap-3 mb-12 px-2">
-                         <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logo" class="h-8 brightness-0 invert">
-                    </div>
-                    <nav class="space-y-3">
-                        <a href="#" class="flex items-center gap-4 px-4 py-3 bg-white/10 rounded-xl text-audit-gold font-bold"><i class="fas fa-th-large w-5"></i> Geral</a>
-                        <a href="#" class="flex items-center gap-4 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition"><i class="fas fa-user-friends w-5"></i> Leads</a>
-                    </nav>
-                </div>
-                <button id="btn-logout" class="flex items-center gap-4 px-4 py-3 text-red-300 hover:bg-red-500/10 rounded-xl transition w-full font-bold">
-                    <i class="fas fa-power-off"></i> Sair
-                </button>
-            </aside>
-
-            <div class="flex-1 flex flex-col gap-6">
-                <header class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex justify-between items-center">
-                    <div>
-                        <h2 class="text-xl font-bold text-audit-navy">Painel de Controlo</h2>
-                        <p class="text-xs text-slate-400">Utilizador: <span id="user-display" class="font-bold text-audit-gold">---</span></p>
-                    </div>
-                    <div class="w-10 h-10 rounded-xl bg-audit-gold text-white flex items-center justify-center font-bold shadow-md">AD</div>
-                </header>
-                <div class="bg-white p-16 rounded-3xl shadow-sm border-dashed border-2 border-slate-200 text-center flex-1 flex flex-col justify-center items-center">
-                    <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-6 text-3xl">
-                        <i class="fas fa-check-double"></i>
-                    </div>
-                    <h3 class="text-audit-navy font-bold text-2xl">Sessão Ativa</h3>
-                    <p class="text-slate-400 text-sm max-w-sm mt-3 leading-relaxed">Bem-vindo à sua área de gestão. Todos os sistemas e ferramentas Audit Educa estão prontos para utilização.</p>
-                </div>
+    <!-- 2. COFRE (ETAPA 2) -->
+    <div id="vault-container" class="w-full max-w-md bg-white rounded-3xl shadow-2xl p-12 flex-col items-center text-center">
+        <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logo" class="h-10 mb-8 mx-auto opacity-80">
+        <h2 class="text-2xl font-bold text-audit-navy mb-3">Verificação</h2>
+        <p class="text-slate-500 text-sm mb-10">Introduza o código de segurança.</p>
+        <form id="vault-form" class="w-full space-y-8">
+            <div class="flex justify-center gap-4">
+                <div class="token-dot"></div><div class="token-dot"></div><div class="token-dot"></div>
+                <div class="token-dot"></div><div class="token-dot"></div><div class="token-dot"></div>
             </div>
+            <input type="password" id="token-input" maxlength="6" pattern="\d*" inputmode="numeric" class="w-full text-center text-3xl font-bold tracking-[0.8em] py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-audit-gold" placeholder="••••••">
+            <button type="submit" class="w-full bg-audit-gold text-white font-bold py-4 rounded-xl shadow-lg hover:bg-[#b08e4d] transition-all">Confirmar Identidade</button>
+        </form>
+        <button id="btn-cancel" class="mt-8 text-[11px] text-slate-400 hover:text-red-500 transition-colors">Sair e encerrar</button>
+    </div>
+
+    <!-- 3. PAINEL (ETAPA 3) -->
+    <div id="dashboard-container" class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl p-16 flex-col items-center text-center">
+        <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-6 text-3xl mx-auto">
+            <i class="fas fa-check-double"></i>
         </div>
+        <h1 class="text-3xl font-serif font-bold text-audit-navy">Sessão Validada</h1>
+        <p class="text-slate-400 mt-4">Bem-vindo ao centro de gestão da Audit Educa.</p>
+        <button id="btn-logout" class="mt-10 text-xs font-bold text-red-500 uppercase tracking-widest hover:underline">Encerrar Sessão</button>
+    </div>
 
-    </main>
-
-    <div id="footer-placeholder"></div>
-
-    <!-- FIREBASE E LÓGICA DE SEGURANÇA -->
+    <!-- LOGICA FIREBASE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
+        // CONFIGURAÇÃO FIREBASE
         const firebaseConfig = {
             apiKey: "SUA_API_KEY_AQUI", 
             authDomain: "seu-projeto.firebaseapp.com",
@@ -212,84 +126,57 @@
         const auth = getAuth(app);
 
         // CONFIGURAÇÕES DE TOKENS
-        const MASTER_TOKEN = "778899"; 
-        const VAULT_URL_KEY = "35*25&"; 
+        const MASTER_TOKEN = "778899"; // O PIN de 6 dígitos
+        const VAULT_URL_KEY = "35*25&"; // Chave da URL
 
-        const loginContainer = document.getElementById('login-container');
-        const vaultContainer = document.getElementById('vault-container');
-        const dashboardContainer = document.getElementById('dashboard-container');
-        const redirectScreen = document.getElementById('redirect-screen');
-        const toast = document.getElementById('toast');
+        // --- FUNÇÕES DE INTERFACE ---
+        function showUI(view) {
+            document.getElementById('redirect-screen').style.display = 'none';
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('vault-container').style.display = 'none';
+            document.getElementById('dashboard-container').style.display = 'none';
 
-        function showToast(message, error = false) {
-            document.getElementById('toast-msg').innerText = message;
-            toast.classList.remove('translate-x-full', 'opacity-0');
-            toast.firstElementChild.className = error ? 
-                "bg-red-600 text-white px-6 py-4 rounded-lg shadow-xl flex items-center gap-3" : 
-                "bg-audit-navy text-white px-6 py-4 rounded-lg shadow-xl border-l-4 border-audit-gold flex items-center gap-3";
-            setTimeout(() => { toast.classList.add('translate-x-full', 'opacity-0'); }, 3000);
+            if(view === 'redirect') document.getElementById('redirect-screen').style.display = 'flex';
+            if(view === 'login') document.getElementById('login-container').style.display = 'flex';
+            if(view === 'vault') document.getElementById('vault-container').style.display = 'flex';
+            if(view === 'dashboard') document.getElementById('dashboard-container').style.display = 'flex';
         }
 
-        // --- GATEKEEPER (Verificação de URL Furtiva) ---
-        function checkGate() {
+        // --- CONTROLO DE ACESSO (GATEKEEPER) ---
+        onAuthStateChanged(auth, (user) => {
             const params = new URLSearchParams(window.location.search);
-            const hasUrlKey = params.get('vault') === "35*25" || window.location.search.includes("vault=35*25&");
-            const isAlreadyCleared = sessionStorage.getItem('audit_vault_cleared') === 'true';
+            const hasUrlKey = window.location.search.includes("vault=35*25&");
+            const isCleared = sessionStorage.getItem('audit_vault_cleared') === 'true';
 
-            if (!hasUrlKey && !isAlreadyCleared) {
+            // 1. Verificação de URL
+            if (!hasUrlKey && !isCleared) {
                 showUI('redirect');
                 setTimeout(() => window.location.href = "/", 3500);
-                return false;
+                return;
             }
-            return true;
-        }
 
-        // --- OBSERVAÇÃO DE ESTADO ---
-        onAuthStateChanged(auth, (user) => {
-            if (!checkGate()) return;
-
-            const tokenVerified = sessionStorage.getItem('audit_token_verified') === 'true';
-
+            // 2. Verificação de Firebase + Token
             if (user) {
-                if (tokenVerified) {
+                if (sessionStorage.getItem('audit_token_verified') === 'true') {
                     showUI('dashboard');
-                    document.getElementById('user-display').innerText = user.email;
                 } else {
                     showUI('vault');
                 }
             } else {
                 showUI('login');
-                sessionStorage.removeItem('audit_token_verified');
             }
         });
 
-        function showUI(view) {
-            [loginContainer, vaultContainer, dashboardContainer, redirectScreen].forEach(el => el.style.display = 'none');
-            dashboardContainer.classList.remove('flex');
-
-            if(view === 'login') loginContainer.style.display = 'flex';
-            if(view === 'vault') vaultContainer.style.display = 'flex';
-            if(view === 'redirect') { redirectScreen.style.display = 'flex'; redirectScreen.classList.add('flex'); }
-            if(view === 'dashboard') {
-                dashboardContainer.style.display = 'flex';
-                dashboardContainer.classList.add('flex');
-            }
-        }
-
-        // Eventos
+        // --- EVENTOS ---
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btn-login');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> A validar...';
-            btn.disabled = true;
-
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             try {
                 await signInWithEmailAndPassword(auth, email.value, password.value);
-                showToast("Identidade confirmada.");
-            } catch (error) {
-                showToast("Falha na autenticação.", true);
-                btn.innerHTML = '<span>Entrar no Portal</span> <i class="fas fa-arrow-right text-xs"></i>';
-                btn.disabled = false;
+            } catch (err) {
+                alert("Erro: " + err.message);
+                btn.innerText = "Continuar";
             }
         });
 
@@ -301,26 +188,24 @@
 
         document.getElementById('vault-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            if (tokenInput.value === MASTER_TOKEN) {
+            if (tokenInput.value === ?vault=35*25&) {
                 sessionStorage.setItem('audit_token_verified', 'true');
                 sessionStorage.setItem('audit_vault_cleared', 'true');
-                showToast("Sessão validada.");
-                location.reload(); 
+                location.reload();
             } else {
-                showToast("Token inválido.", true);
+                alert("Token Inválido");
                 tokenInput.value = "";
-                dots.forEach(d => d.classList.remove('active'));
             }
         });
 
-        const handleLogout = async () => {
+        const logout = async () => {
             await signOut(auth);
             sessionStorage.clear();
-            window.location.reload();
+            window.location.href = "/";
         };
 
-        document.getElementById('btn-logout').addEventListener('click', handleLogout);
-        document.getElementById('btn-cancel-vault').addEventListener('click', handleLogout);
+        document.getElementById('btn-logout').addEventListener('click', logout);
+        document.getElementById('btn-cancel').addEventListener('click', logout);
 
     </script>
 </body>
