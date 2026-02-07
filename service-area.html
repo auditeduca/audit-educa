@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Administrativo | Audit Educa</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
+
+    <!-- Estilos Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Ajustes de Layout para Header/Footer Injetados */
+        main {
+            padding-top: 80px; /* Espaço para o header fixo */
+            min-height: calc(100vh - 300px); /* Garante que o footer vá para baixo */
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        .input-audit {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .input-audit:focus {
+            border-color: #C5A059;
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+            outline: none;
+        }
+
+        /* Animação Suave */
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        .loader {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #C5A059;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Estilo do Hero Lateral */
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+    <!-- Scripts de Integração Audit Educa -->
+    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Placeholders para Injeção Dinâmica -->
+    <div id="header-placeholder"></div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow flex items-center justify-center p-4 md:p-8">
+        
+        <!-- TOAST DE NOTIFICAÇÃO -->
+        <div id="toast" class="fixed top-24 right-5 z-[9999] transform transition-all duration-300 translate-x-full opacity-0">
+            <div class="bg-audit-navy text-white px-6 py-4 rounded-lg shadow-xl border-l-4 border-audit-gold flex items-center gap-3">
+                <i class="fas fa-info-circle text-audit-gold"></i>
+                <span id="toast-msg" class="text-sm font-medium">Notificação</span>
+            </div>
+        </div>
+
+        <!-- TELA DE LOGIN (SPLIT SCREEN) -->
+        <div id="login-container" class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[600px] fade-in-up">
+            
+            <!-- COLUNA ESQUERDA: HERO / CONTEÚDO -->
+            <div class="md:w-1/2 hero-bg p-8 md:p-12 text-white flex flex-col justify-between relative">
+                <div class="relative z-10">
+                    <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Audit Educa Logo" class="h-10 mb-8 brightness-0 invert opacity-90">
+                    
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 leading-tight">
+                        Gestão Estratégica & <br><span class="text-audit-gold">Controle de Auditoria</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Bem-vindo ao portal administrativo. Esta área é restrita a parceiros e auditores autorizados para o gerenciamento de métricas, controle de leads e administração de conteúdo técnico.
+                    </p>
+                    
+                    <div class="space-y-4 mt-8">
+                        <div class="flex items-center gap-4 bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                            <div class="w-10 h-10 rounded-full bg-audit-gold flex items-center justify-center text-audit-navy"><i class="fas fa-database"></i></div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase tracking-widest">Base de Dados</div>
+                                <div class="font-bold text-sm">Gestão de Leads</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/10">
+                            <div class="w-10 h-10 rounded-full bg-audit-gold flex items-center justify-center text-audit-navy"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase tracking-widest">Analytics</div>
+                                <div class="font-bold text-sm">Métricas de Acesso</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 mt-8 text-xs text-slate-400">
+                    &copy; 2026 Audit Educa. Sistema Seguro.
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA: FORMULÁRIO -->
+            <div class="md:w-1/2 p-8 md:p-12 bg-white flex flex-col justify-center">
+                <div class="max-w-md mx-auto w-full">
+                    <div class="mb-8">
+                        <h1 class="text-2xl font-bold text-audit-navy mb-2">Acesso ao Painel</h1>
+                        <p class="text-slate-500 text-sm">Insira suas credenciais corporativas para continuar.</p>
+                    </div>
+
+                    <form id="login-form" class="space-y-5">
+                        <div class="fade-in-up delay-100">
+                            <label class="block text-xs font-bold text-audit-navy uppercase tracking-widest mb-2">E-mail Corporativo</label>
+                            <div class="relative">
+                                <i class="fas fa-envelope absolute left-3 top-3.5 text-slate-400"></i>
+                                <input type="email" id="email" class="input-audit w-full pl-10 pr-4 py-3 rounded-lg text-sm bg-slate-50 focus:bg-white" placeholder="admin@auditeduca.com.br" required>
+                            </div>
+                        </div>
+
+                        <div class="fade-in-up delay-200">
+                            <label class="block text-xs font-bold text-audit-navy uppercase tracking-widest mb-2">Credencial de Acesso</label>
+                            <div class="relative">
+                                <i class="fas fa-lock absolute left-3 top-3.5 text-slate-400"></i>
+                                <input type="password" id="password" class="input-audit w-full pl-10 pr-4 py-3 rounded-lg text-sm bg-slate-50 focus:bg-white" placeholder="••••••••" required>
+                            </div>
+                            <div class="flex justify-end mt-2">
+                                <a href="#" class="text-xs text-audit-gold hover:underline">Esqueceu a senha?</a>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="btn-login" class="w-full bg-audit-navy hover:bg-slate-800 text-white font-bold py-3.5 rounded-lg transition-all duration-300 shadow-lg transform active:scale-95 flex items-center justify-center gap-2 mt-4 fade-in-up delay-200">
+                            <span>Autenticar Acesso</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </form>
+
+                    <div class="mt-8 pt-8 border-t border-slate-100 text-center text-xs text-slate-400">
+                        <p>Acesso monitorado por IP. Tentativas não autorizadas serão reportadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAINEL ADMINISTRATIVO (Inicialmente Oculto) -->
+        <div id="dashboard-container" class="hidden w-full max-w-7xl h-full flex-col md:flex-row gap-6">
+            
+            <!-- Sidebar -->
+            <aside class="w-full md:w-64 bg-audit-navy rounded-2xl p-6 flex flex-col justify-between text-white shadow-2xl h-[80vh] sticky top-24">
+                <div>
+                    <div class="flex items-center gap-3 mb-10 px-2">
+                         <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" alt="Logo" class="h-8 brightness-0 invert">
+                    </div>
+                    
+                    <nav class="space-y-2">
+                        <a href="#" class="flex items-center gap-3 px-4 py-3 bg-white/10 rounded-lg text-audit-gold font-medium">
+                            <i class="fas fa-chart-pie w-5"></i> Dashboard
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-white/5 rounded-lg transition">
+                            <i class="fas fa-users w-5"></i> Usuários
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-white/5 rounded-lg transition">
+                            <i class="fas fa-file-invoice-dollar w-5"></i> Relatórios
+                        </a>
+                    </nav>
+                </div>
+
+                <button id="btn-logout" class="flex items-center gap-3 px-4 py-3 text-red-300 hover:bg-red-500/10 rounded-lg transition w-full">
+                    <i class="fas fa-sign-out-alt"></i> Encerrar Sessão
+                </button>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="flex-1 flex flex-col gap-6">
+                <!-- Header do Dashboard -->
+                <header class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-bold text-audit-navy">Visão Geral</h2>
+                        <p class="text-xs text-slate-500">Logado como: <span id="user-display" class="font-bold text-audit-gold">Auditor</span></p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-audit-gold text-white flex items-center justify-center font-bold shadow-md">AD</div>
+                </header>
+
+                <!-- Cards de Métricas -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-blue-50 p-3 rounded-lg text-audit-blue"><i class="fas fa-eye"></i></div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+12%</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-audit-navy">24.5k</h3>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Visualizações Totais</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-amber-50 p-3 rounded-lg text-amber-600"><i class="fas fa-calculator"></i></div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+5%</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-audit-navy">1,204</h3>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Cálculos Realizados</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="bg-purple-50 p-3 rounded-lg text-purple-600"><i class="fas fa-users"></i></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-audit-navy">85</h3>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Leads Capturados</p>
+                    </div>
+                </div>
+
+                 <!-- Área de Conteúdo Vazia -->
+                 <div class="flex-1 bg-white rounded-2xl p-8 flex items-center justify-center border-dashed border-2 border-slate-200 min-h-[300px]">
+                    <div class="text-center text-slate-400">
+                        <i class="fas fa-layer-group text-4xl mb-4 opacity-50"></i>
+                        <p>Selecione um módulo no menu lateral para começar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Placeholder Rodapé -->
+    <div id="footer-placeholder"></div>
+
+    <!-- API DE ACESSIBILIDADE INJETADA -->
+    <script>
+        /**
+         * Audit Educa - Accessibility API & Controller v2.1
+         * Integrates assistive resources with index.html style
+         */
+        window.AccessControl = (function() {
+            const state = {
+                fontSize: 0, fontStyle: 0, bold: false, contrast: 0,
+                saturation: 0, readingMask: 0, links: false, colorblind: 0,
+                panelOpen: false
+            };
+
+            const config = {
+                fontSizes: ['100%', '115%', '130%', '150%'],
+                contrasts: ['none', 'contrast(1.5)', 'contrast(2)', 'invert(1) hue-rotate(180deg)'],
+                saturations: ['none', 'grayscale(1)', 'saturate(2.5)'],
+                maskHeights: [0, 50, 80, 120],
+                colorblindFilters: [
+                    '', 
+                    'url(#protanopia-filter)', 
+                    'url(#deuteranopia-filter)', 
+                    'url(#tritanopia-filter)'
+                ]
+            };
+
+            function init() {
+                createSVGFilters();
+                createElements();
+                loadState();
+                setupEventListeners();
+                apply();
+            }
+
+            function createSVGFilters() {
+                if (!document.getElementById('acc-svg-filters')) {
+                    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    svg.id = 'acc-svg-filters';
+                    svg.setAttribute('style', 'position:absolute; width:0; height:0;');
+                    svg.setAttribute('aria-hidden', 'true');
+                    svg.innerHTML = `
+                        <defs>
+                            <filter id="protanopia-filter"><feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"></feColorMatrix></filter>
+                            <filter id="deuteranopia-filter"><feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"></feColorMatrix></filter>
+                            <filter id="tritanopia-filter"><feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"></feColorMatrix></filter>
+                        </defs>
+                    `;
+                    document.body.appendChild(svg);
+                }
+            }
+
+            function createElements() {
+                if (!document.querySelector('.side-widgets-container')) {
+                    const container = document.createElement('div');
+                    container.className = 'side-widgets-container fixed right-0 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-[99999] items-flex-end';
+                    
+                    const librasBtn = document.createElement('div');
+                    librasBtn.className = 'accessibility-widget-item libras bg-[#ffde39] hover:bg-[#f7d000] flex items-center justify-end relative cursor-pointer transition-all duration-400 rounded-l-full p-1.5 w-[56px] h-[56px] overflow-hidden shadow-lg border-2 border-transparent group';
+                    librasBtn.onclick = () => window.toggleLibras();
+                    librasBtn.innerHTML = `<span class="widget-label text-black text-[0.85rem] font-bold mr-3 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Tradutor de Libras</span><div class="widget-icon w-10 h-10 min-w-[40px] rounded-full flex items-center justify-center text-xl text-black bg-black/5"><i class="fas fa-sign-language"></i></div>`;
+
+                    const accBtn = document.createElement('div');
+                    accBtn.id = 'accessibility-btn';
+                    accBtn.className = 'accessibility-widget-item bg-[#0f172a] hover:bg-[#C5A059] flex items-center justify-end relative cursor-pointer transition-all duration-400 rounded-l-full p-1.5 w-[56px] h-[56px] overflow-hidden shadow-lg border-2 border-transparent group';
+                    accBtn.onclick = () => togglePanel();
+                    accBtn.innerHTML = `<span class="widget-label text-white text-[0.85rem] font-bold mr-3 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Recursos Assistivos</span><div class="widget-icon w-10 h-10 min-w-[40px] rounded-full flex items-center justify-center text-xl text-white bg-white/10"><i class="fas fa-eye"></i></div>`;
+
+                    container.appendChild(librasBtn);
+                    container.appendChild(accBtn);
+                    document.body.appendChild(container);
+                }
+
+                if (!document.getElementById('accessibility-panel')) {
+                    const panel = document.createElement('div');
+                    panel.id = 'accessibility-panel';
+                    panel.className = 'fixed top-5 right-20 w-[400px] max-h-[90vh] bg-white rounded-2xl shadow-2xl z-[100000] flex flex-col overflow-hidden transition-all duration-400 translate-x-[150%] opacity-0 pointer-events-none border border-gray-200';
+                    panel.innerHTML = `
+                        <div class="panel-header bg-white px-6 py-4 flex justify-between items-center border-b-4 border-[#C5A059]">
+                            <div class="font-bold text-[#0f172a] text-lg">Audit <span class="text-[#C5A059]">Educa</span></div>
+                            <button onclick="window.AccessControl.togglePanel()" class="w-10 h-10 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="panel-body p-6 overflow-y-auto flex-1 custom-scrollbar">
+                            <div class="mb-6"><div class="text-[0.65rem] font-extrabold uppercase tracking-wider text-gray-400 mb-4 border-b border-gray-100 pb-2">Fonte</div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="acc-card p-4 bg-gray-50 rounded-xl border-2 border-transparent text-center cursor-pointer hover:bg-gray-100 transition-all relative group" onclick="window.AccessControl.updateStep('fontSize', 3)">
+                                        <div class="dots absolute top-2 right-2 flex gap-1"></div><i class="fas fa-text-height text-[#0f172a] mb-2"></i><div class="text-[0.7rem] font-bold text-[#0f172a]">Tamanho</div>
+                                    </div>
+                                    <div class="acc-card p-4 bg-gray-50 rounded-xl border-2 border-transparent text-center cursor-pointer hover:bg-gray-100 transition-all relative group" onclick="window.AccessControl.updateStep('fontStyle', 3)">
+                                        <div class="dots absolute top-2 right-2 flex gap-1"></div><i class="fas fa-font text-[#0f172a] mb-2"></i><div class="text-[0.7rem] font-bold text-[#0f172a]">Estilo</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-6"><div class="text-[0.65rem] font-extrabold uppercase tracking-wider text-gray-400 mb-4 border-b border-gray-100 pb-2">Visual</div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="acc-card p-4 bg-gray-50 rounded-xl border-2 border-transparent text-center cursor-pointer hover:bg-gray-100 transition-all relative group" onclick="window.AccessControl.updateStep('contrast', 3)">
+                                        <div class="dots absolute top-2 right-2 flex gap-1"></div><i class="fas fa-circle-half-stroke text-[#0f172a] mb-2"></i><div class="text-[0.7rem] font-bold text-[#0f172a]">Contraste</div>
+                                    </div>
+                                    <div class="acc-card p-4 bg-gray-50 rounded-xl border-2 border-transparent text-center cursor-pointer hover:bg-gray-100 transition-all relative group" onclick="window.AccessControl.updateStep('saturation', 2)">
+                                        <div class="dots absolute top-2 right-2 flex gap-1"></div><i class="fas fa-droplet text-[#0f172a] mb-2"></i><div class="text-[0.7rem] font-bold text-[#0f172a]">Saturação</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-6"><div class="text-[0.65rem] font-extrabold uppercase tracking-wider text-gray-400 mb-4 border-b border-gray-100 pb-2">Leitura & Daltonismo</div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="acc-card p-4 bg-gray-50 rounded-xl border-2 border-transparent text-center cursor-pointer hover:bg-gray-100 transition-all relative group" onclick="window.AccessControl.updateStep('readingMask', 3)">
+                                        <div class="dots absolute top-2 right-2 flex gap-1"></div><i class="fas fa-mask text-[#0f172a] mb-2"></i><div class="text-[0.7rem] font-bold text-[#0f172a]">Máscara</div>
+                                    </div>
+                                    <div class="acc-card p-4 bg-gray-50 rounded-xl border-2 border-transparent text-center cursor-pointer hover:bg-gray-100 transition-all relative group" onclick="window.AccessControl.updateStep('colorblind', 3)">
+                                        <div class="dots absolute top-2 right-2 flex gap-1"></div><i class="fas fa-eye-dropper text-[#0f172a] mb-2"></i><div class="text-[0.7rem] font-bold text-[#0f172a]">Daltonismo</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="window.AccessControl.resetAll()" class="w-full py-4 bg-[#0f172a] text-white rounded-xl font-bold hover:bg-[#1e40af] transition-colors mt-4">REDEFINIR TUDO</button>
+                        </div>
+                    `;
+                    document.body.appendChild(panel);
+                }
+
+                if (!document.getElementById('reading-mask')) {
+                    const mask = document.createElement('div');
+                    mask.id = 'reading-mask';
+                    mask.className = 'fixed top-0 left-0 w-full h-full bg-black/70 z-[99998] pointer-events-none hidden';
+                    document.body.appendChild(mask);
+                }
+            }
+
+            function togglePanel() {
+                state.panelOpen = !state.panelOpen;
+                const panel = document.getElementById('accessibility-panel');
+                if (state.panelOpen) { panel.classList.remove('translate-x-[150%]', 'opacity-0', 'pointer-events-none'); }
+                else { panel.classList.add('translate-x-[150%]', 'opacity-0', 'pointer-events-none'); }
+            }
+
+            function updateStep(key, max) {
+                state[key] = (state[key] + 1) > max ? 0 : state[key] + 1;
+                apply();
+            }
+
+            function apply() {
+                const b = document.body;
+                b.style.fontSize = config.fontSizes[state.fontSize];
+                
+                let filter = "";
+                if (state.contrast > 0) filter += config.contrasts[state.contrast] + " ";
+                if (state.saturation > 0) filter += config.saturations[state.saturation] + " ";
+                if (state.colorblind > 0) filter += config.colorblindFilters[state.colorblind] + " ";
+                b.style.filter = filter.trim() || "none";
+
+                document.getElementById('reading-mask').style.display = state.readingMask > 0 ? 'block' : 'none';
+
+                const textStyle = document.getElementById('acc-text-style') || document.createElement('style');
+                textStyle.id = 'acc-text-style';
+                let css = '';
+                if (state.fontStyle === 1) css = '* { font-family: serif !important; }';
+                else if (state.fontStyle === 2) css = '* { font-weight: 900 !important; }';
+                else if (state.fontStyle === 3) css = '* { font-family: serif !important; font-weight: 900 !important; }';
+                textStyle.textContent = css;
+                document.head.appendChild(textStyle);
+
+                updateUI();
+                saveState();
+            }
+
+            function updateUI() {
+                const cards = document.querySelectorAll('.acc-card');
+                cards.forEach(card => {
+                    const onclick = card.getAttribute('onclick');
+                    const key = ['fontSize', 'fontStyle', 'contrast', 'saturation', 'readingMask', 'colorblind'].find(k => onclick.includes(k));
+                    if (key) {
+                        const val = state[key];
+                        card.classList.toggle('border-[#C5A059]', val > 0);
+                        card.classList.toggle('bg-blue-50', val > 0);
+                        const dots = card.querySelector('.dots');
+                        if (dots) {
+                            dots.innerHTML = '';
+                            const max = (key === 'saturation') ? 2 : 3;
+                            for (let i = 1; i <= max; i++) {
+                                const dot = document.createElement('div');
+                                dot.className = `w-1.5 h-1.5 rounded-full ${i <= val ? 'bg-[#C5A059] shadow-[0_0_4px_#C5A059]' : 'bg-gray-300'}`;
+                                dots.appendChild(dot);
+                            }
+                        }
+                    }
+                });
+                const hasActive = Object.keys(state).some(k => k !== 'panelOpen' && !!state[k]);
+                const btn = document.getElementById('accessibility-btn');
+                if (btn) btn.classList.toggle('animate-pulse', hasActive);
+            }
+
+            function resetAll() {
+                Object.keys(state).forEach(k => { if (k !== 'panelOpen') state[k] = 0; });
+                apply();
+            }
+
+            function saveState() { localStorage.setItem('audit_acc_v2.1', JSON.stringify(state)); }
+            function loadState() {
+                const saved = localStorage.getItem('audit_acc_v2.1');
+                if (saved) { Object.assign(state, JSON.parse(saved)); state.panelOpen = false; }
+            }
+
+            function setupEventListeners() {
+                window.addEventListener('mousemove', (e) => {
+                    if (state.readingMask > 0) {
+                        const mask = document.getElementById('reading-mask');
+                        const y = e.clientY;
+                        const h = config.maskHeights[state.readingMask];
+                        mask.style.clipPath = `polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 0% 0%, 0% ${y-h}px, 100% ${y-h}px, 100% ${y+h}px, 0% ${y+h}px, 0% ${y-h}px)`;
+                    }
+                });
+            }
+
+            return { init, togglePanel, updateStep, resetAll };
+        })();
+
+        window.toggleLibras = function() { const btn = document.querySelector('[vw-access-button]'); if (btn) btn.click(); };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!document.querySelector('script[src*="vlibras-plugin.js"]')) {
+                const script = document.createElement('script');
+                script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+                script.onload = () => { new window.VLibras.Widget('https://vlibras.gov.br/app'); };
+                document.head.appendChild(script);
+            }
+            window.AccessControl.init();
+        });
+    </script>
+
+    <!-- SCRIPT FIREBASE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // ============================================================
+        // ⚠️ COLOQUE AQUI A SUA CONFIGURAÇÃO
+        // ============================================================
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY_AQUI",
+            authDomain: "seu-projeto.firebaseapp.com",
+            projectId: "seu-projeto",
+            storageBucket: "seu-projeto.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef123456"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginContainer = document.getElementById('login-container');
+        const dashboardContainer = document.getElementById('dashboard-container');
+        const loginForm = document.getElementById('login-form');
+        const btnLogin = document.getElementById('btn-login');
+        const btnLogout = document.getElementById('btn-logout');
+        const userDisplay = document.getElementById('user-display');
+
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toast-msg');
+            
+            msg.innerText = message;
+            toast.classList.remove('translate-x-full', 'opacity-0');
+            
+            if(type === 'error') {
+                toast.firstElementChild.classList.remove('border-audit-gold');
+                toast.firstElementChild.classList.add('border-red-500');
+            } else {
+                toast.firstElementChild.classList.add('border-audit-gold');
+                toast.firstElementChild.classList.remove('border-red-500');
+            }
+
+            setTimeout(() => {
+                toast.classList.add('translate-x-full', 'opacity-0');
+            }, 3000);
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginContainer.classList.add('hidden');
+                loginContainer.classList.remove('flex'); // Remove flex para esconder
+                dashboardContainer.classList.remove('hidden');
+                dashboardContainer.classList.add('flex');
+                userDisplay.innerText = user.email;
+            } else {
+                loginContainer.classList.remove('hidden');
+                loginContainer.classList.add('flex'); // Adiciona flex para exibir
+                dashboardContainer.classList.add('hidden');
+                dashboardContainer.classList.remove('flex');
+            }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const originalText = btnLogin.innerHTML;
+            btnLogin.innerHTML = '<span class="loader"></span> Validando...';
+            btnLogin.disabled = true;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                showToast('Acesso autorizado. Bem-vindo!', 'success');
+            } catch (error) {
+                console.error(error);
+                let msg = "Erro ao acessar.";
+                if(error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                    msg = "E-mail ou senha incorretos.";
+                } else if (error.code === 'auth/too-many-requests') {
+                    msg = "Muitas tentativas. Aguarde um momento.";
+                }
+                showToast(msg, 'error');
+                btnLogin.innerHTML = originalText;
+                btnLogin.disabled = false;
+            }
+        });
+
+        btnLogout.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                showToast('Sessão encerrada com segurança.');
+                btnLogin.innerHTML = `<span>Autenticar Acesso</span><i class="fas fa-arrow-right text-xs"></i>`;
+                btnLogin.disabled = false;
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
