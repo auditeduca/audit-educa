@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Audit Accounts Receivable - Ferramenta Profissional para Testes de Auditoria em Contas a Receber.">
+    <title>Audit Accounts Receivable | Audit Educa</title>
+    
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/iassets/images/audit-educa-favicon.webp">
+
+    <!-- CSS Globais Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & Stack Técnico -->
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.5.0/umd/Recharts.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+        }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tool-btn:hover { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
+        
+        .drawer { 
+            position: fixed; top: 0; left: 0; height: 100%; width: 100%; max-width: 32rem; 
+            background: white; z-index: 1100; transition: transform 0.4s ease;
+            transform: translateX(-100%);
+        }
+        .drawer.active { transform: translateX(0); }
+
+        .calculator-card {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);
+            border: 1px solid #e2e8f0; border-top: 4px solid #0f172a;
+        }
+        .result-card-premium {
+            background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #C5A059;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .input-audit {
+            @apply w-full h-11 px-4 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:ring-1 focus:ring-audit-gold outline-none transition-all;
+        }
+        @media print { .no-print { display: none !important; } }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useMemo } = React;
+        const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip: RechartsTooltip, ResponsiveContainer, Cell, Legend } = Recharts;
+
+        const COLORS = ['#1e40af', '#C5A059', '#0f172a', '#64748b', '#94a3b8', '#334155', '#475569'];
+
+        const Badge = ({ children, color = 'blue' }) => {
+            const colors = {
+                blue: 'bg-blue-50 text-blue-700 border-blue-100',
+                red: 'bg-red-50 text-red-700 border-red-100',
+                green: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+                amber: 'bg-amber-50 text-amber-700 border-amber-100'
+            };
+            return (
+                <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold border ${colors[color]}`}>
+                    {children}
+                </span>
+            );
+        };
+
+        const App = () => {
+            const [step, setStep] = useState(1);
+            const [data, setData] = useState(() => {
+                const saved = localStorage.getItem('audit_ar_v3');
+                return saved ? JSON.parse(saved) : [];
+            });
+            const [reportDate, setReportDate] = useState('2025-12-31');
+            const [accountingBalance, setAccountingBalance] = useState('');
+            const [currentProvision, setCurrentProvision] = useState(''); // Provisão já contabilizada pelo cliente
+            const [relatedPartiesInput, setRelatedPartiesInput] = useState('');
+            const [excludeInput, setExcludeInput] = useState(''); 
+            const [toast, setToast] = useState(null);
+            const [activeDrawer, setActiveDrawer] = useState(null);
+
+            // Manual Entry Form
+            const [manualEntry, setManualEntry] = useState({
+                clienteCodigo: '', clienteNome: '', titulo: '', emissao: '', vencimento: '', valor: ''
+            });
+
+            // Aging Config (Editável)
+            const [agingConfig, setAgingConfig] = useState([
+                { id: 1, label: 'A vencer', min: -9999, max: 0, prov: 0 },
+                { id: 2, label: '01-30 dias', min: 1, max: 30, prov: 1.5 },
+                { id: 3, label: '31-60 dias', min: 31, max: 60, prov: 3.0 },
+                { id: 4, label: '61-90 dias', min: 61, max: 90, prov: 5.0 },
+                { id: 5, label: '91-180 dias', min: 91, max: 180, prov: 20.0 },
+                { id: 6, label: '181-360 dias', min: 181, max: 360, prov: 50.0 },
+                { id: 7, label: '> 360 dias', min: 361, max: 9999, prov: 100.0 }
+            ]);
+
+            useEffect(() => {
+                localStorage.setItem('audit_ar_v3', JSON.stringify(data));
+            }, [data]);
+
+            const showToast = (msg) => {
+                setToast(msg);
+                setTimeout(() => setToast(null), 3000);
+            };
+
+            const resetAudit = () => {
+                if(confirm("Deseja limpar todos os dados?")) {
+                    setData([]);
+                    setAccountingBalance('');
+                    setCurrentProvision('');
+                    setStep(1);
+                    showToast("Dados resetados.");
+                }
+            };
+
+            const handleManualAdd = (e) => {
+                e.preventDefault();
+                if(!manualEntry.clienteCodigo || !manualEntry.valor) return showToast("Preencha Código e Valor.");
+                setData([...data, { ...manualEntry, id: Date.now() }]);
+                setManualEntry({ clienteCodigo: '', clienteNome: '', titulo: '', emissao: '', vencimento: '', valor: '' });
+                showToast("Título adicionado manualmente.");
+            };
+
+            // Lógica de Auditoria Master
+            const auditResults = useMemo(() => {
+                if (!data.length) return null;
+
+                const dtBase = new Date(reportDate);
+                const relatedList = relatedPartiesInput.split(',').map(s => s.trim().toUpperCase()).filter(s => s);
+                const exclusions = excludeInput.split(',').map(s => s.trim().toUpperCase()).filter(s => s);
+                
+                let totalBruto = 0;
+                let negativeTotal = 0;
+                let circulante = 0;
+                let naoCirculante = 0;
+                let provisionCalculated = 0;
+                
+                const findings = data.map((row, idx) => {
+                    const valor = parseFloat(row.valor);
+                    totalBruto += valor;
+
+                    const dtEmissao = new Date(row.emissao);
+                    const dtVenc = new Date(row.vencimento);
+                    
+                    // 1. Aging (Base vs Vencimento)
+                    const diffTime = dtBase - dtVenc;
+                    const overdueDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    // 2. Segregação (Vencimento vs Base)
+                    const daysToMaturity = Math.ceil((dtVenc - dtBase) / (1000 * 60 * 60 * 24));
+                    const isNC = daysToMaturity > 365;
+                    if (isNC) naoCirculante += valor; else circulante += valor;
+
+                    // 3. Flags
+                    const isRelated = relatedList.some(n => row.clienteNome.toUpperCase().includes(n));
+                    const isManualExcluded = exclusions.some(f => row.clienteNome.toUpperCase().includes(f) || row.clienteCodigo.toUpperCase().includes(f));
+                    
+                    const errors = [];
+                    if (valor < 0) { errors.push("Valor Negativo"); negativeTotal += valor; }
+                    if (dtEmissao > dtVenc) errors.push("Emissão > Vencimento");
+                    
+                    // Duplicidade (Otimizado)
+                    const isDuplicate = data.some((other, oIdx) => 
+                        oIdx !== idx && 
+                        other.clienteCodigo === row.clienteCodigo && 
+                        other.emissao === row.emissao && 
+                        other.vencimento === row.vencimento && 
+                        Math.abs(parseFloat(other.valor) - valor) < 0.01
+                    );
+                    if (isDuplicate) errors.push("Possível Duplicidade");
+
+                    // 4. Provisionamento
+                    const range = agingConfig.find(r => overdueDays >= r.min && overdueDays <= r.max);
+                    const rate = range ? range.prov : 0;
+                    
+                    // Regra: Exclui da provisão se for negativo ou se estiver na lista de exclusão/Related
+                    const canProvision = !isManualExcluded && !isRelated && valor > 0;
+                    const itemProvision = canProvision ? (valor * (rate / 100)) : 0;
+                    provisionCalculated += itemProvision;
+
+                    // Análise Vagão: Vencido mas sem provisão
+                    const isWagon = overdueDays > 0 && itemProvision === 0;
+
+                    return {
+                        ...row,
+                        valor,
+                        overdueDays,
+                        isNC,
+                        isRelated,
+                        isManualExcluded,
+                        isWagon,
+                        errors,
+                        rangeLabel: range ? range.label : 'Fora do Range',
+                        itemProvision
+                    };
+                });
+
+                const agingSummary = agingConfig.map(range => {
+                    const sum = findings.filter(f => f.rangeLabel === range.label).reduce((a, b) => a + b.valor, 0);
+                    return { name: range.label, value: sum };
+                });
+
+                const adjustmentRequired = provisionCalculated - (parseFloat(currentProvision) || 0);
+
+                return {
+                    findings, totalBruto, negativeTotal, circulante, naoCirculante,
+                    provisionCalculated, agingSummary, adjustmentRequired,
+                    diffContabil: totalBruto - (parseFloat(accountingBalance) || 0)
+                };
+            }, [data, reportDate, accountingBalance, relatedPartiesInput, excludeInput, agingConfig, currentProvision]);
+
+            const handleFileUpload = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const text = event.target.result;
+                    const lines = text.split('\n').filter(l => l.trim());
+                    const rows = lines.slice(1).map(line => {
+                        const cols = line.split(';').map(c => c.trim().replace(/"/g, ''));
+                        return { clienteCodigo: cols[0], clienteNome: cols[1], titulo: cols[2], emissao: cols[3], vencimento: cols[4], valor: cols[5].replace(',', '.') };
+                    });
+                    setData(rows);
+                    showToast(`${rows.length} registros importados.`);
+                };
+                reader.readAsText(file);
+            };
+
+            const formatBRL = (v) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
+
+            return (
+                <div className="flex flex-col min-h-screen">
+                    
+                    {/* SIDEBAR */}
+                    <aside className="sidebar-left-tools no-print">
+                        <button className="tool-btn" onClick={() => setActiveDrawer('Teoria')}><i className="fas fa-book-open"></i></button>
+                        <button className="tool-btn" onClick={() => setActiveDrawer('Políticas')}><i className="fas fa-shield-halved"></i></button>
+                    </aside>
+
+                    {/* DRAWERS */}
+                    {activeDrawer && <div className="fixed inset-0 bg-black/40 z-[1050] backdrop-blur-sm" onClick={() => setActiveDrawer(null)}></div>}
+                    <aside className={`drawer no-print shadow-2xl ${activeDrawer ? 'active' : ''}`}>
+                        <div className="p-8 h-full flex flex-col">
+                            <div className="flex justify-between items-center mb-8 border-b pb-4">
+                                <h3 className="font-bold text-audit-navy uppercase text-[10px] tracking-widest">{activeDrawer} de Auditoria</h3>
+                                <button onClick={() => setActiveDrawer(null)}><i className="fas fa-times"></i></button>
+                            </div>
+                            <div className="overflow-y-auto flex-grow text-xs text-slate-600 space-y-6 leading-relaxed">
+                                {activeDrawer === 'Teoria' && (
+                                    <>
+                                        <p><strong>IFRS 9 / CPC 48:</strong> Exige o reconhecimento de perdas esperadas em vez de perdas incorridas.</p>
+                                        <p><strong>NIF C-3 (México):</strong> Reconocimiento posterior de las cuentas por cobrar considerando el riesgo de crédito.</p>
+                                        <p><strong>Aging List:</strong> Essencial para classificar o risco com base no tempo de atraso.</p>
+                                    </>
+                                )}
+                                {activeDrawer === 'Políticas' && (
+                                    <div className="space-y-4">
+                                        <p className="font-bold uppercase text-audit-navy">Configuração de Aging e PECLD</p>
+                                        {agingConfig.map((r, i) => (
+                                            <div key={r.id} className="p-3 bg-slate-50 border rounded-xl flex items-center justify-between">
+                                                <span className="font-bold">{r.label}</span>
+                                                <input type="number" value={r.prov} onChange={e => {
+                                                    const n = [...agingConfig]; n[i].prov = parseFloat(e.target.value); setAgingConfig(n);
+                                                }} className="w-16 border rounded text-right p-1 font-bold text-red-600" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </aside>
+
+                    {/* MAIN */}
+                    <main className="flex-grow pt-24 pb-12 px-4 md:px-12 md:pl-24">
+                        <div className="max-w-7xl mx-auto">
+                            
+                            <header className="mb-10 no-print">
+                                <div className="flex justify-between items-end">
+                                    <div>
+                                        <div className="text-[10px] font-bold text-audit-gold uppercase tracking-[0.3em] mb-2">Audit Educa Advanced</div>
+                                        <h1 className="text-4xl font-serif font-bold text-audit-navy">Teste de Auditoria AR</h1>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <button onClick={resetAudit} className="px-4 py-2 bg-red-600 text-white rounded-lg font-bold text-[10px] uppercase">Limpar Base</button>
+                                        {step > 1 && <button onClick={() => setStep(step - 1)} className="px-4 py-2 bg-audit-navy text-white rounded-lg font-bold text-[10px] uppercase">Voltar</button>}
+                                    </div>
+                                </div>
+                                <div className="flex gap-4 mt-8">
+                                    {[1,2,3].map(s => (
+                                        <div key={s} className={`px-6 py-2 rounded-xl border font-bold text-[10px] uppercase tracking-widest ${step === s ? 'bg-audit-navy text-white' : 'bg-white text-slate-300'}`}>Etapa {s}</div>
+                                    ))}
+                                </div>
+                            </header>
+
+                            {/* ETAPA 1: INPUT E CONCILIAÇÃO */}
+                            {step === 1 && (
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                                    <div className="lg:col-span-4 space-y-6">
+                                        <section className="calculator-card p-8 rounded-3xl shadow-xl space-y-6">
+                                            <h3 className="text-xs font-bold text-audit-navy uppercase tracking-widest border-b pb-4">Parâmetros Gerais</h3>
+                                            <div className="space-y-4">
+                                                <div>
+                                                    <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Data-Base Auditoria</label>
+                                                    <select value={reportDate} onChange={e => setReportDate(e.target.value)} className="input-audit font-bold">
+                                                        <option value="2025-03-31">31/03 (Revisão Limitada)</option>
+                                                        <option value="2025-06-30">30/06 (Revisão Limitada)</option>
+                                                        <option value="2025-09-30">30/09 (Revisão Limitada)</option>
+                                                        <option value="2025-12-31">31/12 (Auditoria Final)</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Saldo Contábil Razão (R$)</label>
+                                                    <input type="number" value={accountingBalance} onChange={e => setAccountingBalance(e.target.value)} className="input-audit font-mono font-bold" placeholder="0,00" />
+                                                </div>
+                                                <div>
+                                                    <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Filtros (Partes Relac. / Exclusão)</label>
+                                                    <textarea value={relatedPartiesInput} onChange={e => setRelatedPartiesInput(e.target.value)} className="input-audit !h-20 p-3" placeholder="Ex: HOLDING, MATRIZ, GOVERNO" />
+                                                </div>
+                                            </div>
+
+                                            <div className="pt-4 border-t space-y-4">
+                                                <h4 className="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Inserção Manual</h4>
+                                                <form onSubmit={handleManualAdd} className="grid grid-cols-2 gap-3">
+                                                    <input type="text" placeholder="Cód. Cliente" value={manualEntry.clienteCodigo} onChange={e => setManualEntry({...manualEntry, clienteCodigo: e.target.value})} className="input-audit col-span-1" />
+                                                    <input type="text" placeholder="Nome Cliente" value={manualEntry.clienteNome} onChange={e => setManualEntry({...manualEntry, clienteNome: e.target.value})} className="input-audit col-span-1" />
+                                                    <input type="date" value={manualEntry.emissao} onChange={e => setManualEntry({...manualEntry, emissao: e.target.value})} className="input-audit col-span-1" />
+                                                    <input type="date" value={manualEntry.vencimento} onChange={e => setManualEntry({...manualEntry, vencimento: e.target.value})} className="input-audit col-span-1" />
+                                                    <input type="number" placeholder="Valor" value={manualEntry.valor} onChange={e => setManualEntry({...manualEntry, valor: e.target.value})} className="input-audit col-span-2" />
+                                                    <button type="submit" className="col-span-2 h-10 bg-slate-100 rounded-xl text-[10px] font-bold uppercase hover:bg-audit-gold transition">Adicionar Título</button>
+                                                </form>
+                                            </div>
+
+                                            <div className="pt-4">
+                                                <label className="w-full h-14 bg-audit-navy text-white rounded-2xl flex items-center justify-center gap-3 cursor-pointer hover:bg-slate-800 transition">
+                                                    <i className="fas fa-file-csv text-audit-gold"></i>
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest">Importar Base CSV</span>
+                                                    <input type="file" accept=".csv" onChange={handleFileUpload} className="hidden" />
+                                                </label>
+                                            </div>
+                                        </section>
+                                    </div>
+
+                                    <div className="lg:col-span-8">
+                                        {auditResults ? (
+                                            <div className="result-card-premium rounded-[2.5rem] overflow-hidden">
+                                                <div className="bg-slate-50 px-8 py-5 border-b flex justify-between items-center">
+                                                    <h4 className="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Resultado da Conciliação</h4>
+                                                    <button onClick={() => setStep(2)} className="h-10 px-6 bg-audit-navy text-white rounded-xl text-[10px] font-bold uppercase">Passo 2 <i className="fas fa-arrow-right ml-2"></i></button>
+                                                </div>
+                                                <div className="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                                    <div className="p-4 bg-slate-50 rounded-2xl text-center border">
+                                                        <span className="text-[9px] font-bold text-slate-400 uppercase block mb-1">Diferença Razão</span>
+                                                        <div className={`text-xl font-bold font-mono ${Math.abs(auditResults.diffContabil) > 0.01 ? 'text-red-600' : 'text-emerald-600'}`}>{formatBRL(auditResults.diffContabil)}</div>
+                                                    </div>
+                                                    <div className="p-4 bg-slate-50 rounded-2xl text-center border">
+                                                        <span className="text-[9px] font-bold text-slate-400 uppercase block mb-1">Itens Negativos</span>
+                                                        <div className="text-xl font-bold font-mono text-red-500">{formatBRL(auditResults.negativeTotal)}</div>
+                                                    </div>
+                                                    <div className="p-4 bg-slate-50 rounded-2xl text-center border">
+                                                        <span className="text-[9px] font-bold text-slate-400 uppercase block mb-1">Total de Títulos</span>
+                                                        <div className="text-xl font-bold font-mono text-audit-navy">{formatBRL(auditResults.totalBruto)}</div>
+                                                    </div>
+                                                </div>
+                                                <div className="px-8 pb-8 overflow-x-auto">
+                                                    <table className="w-full text-left text-xs">
+                                                        <thead className="text-[9px] font-bold text-slate-400 uppercase border-b">
+                                                            <tr><th className="py-3">Cliente</th><th className="py-3 text-right">Saldo</th><th className="py-3 text-center">Auditoria</th></tr>
+                                                        </thead>
+                                                        <tbody className="divide-y divide-slate-100">
+                                                            {auditResults.findings.slice(0, 8).map((f, i) => (
+                                                                <tr key={i} className="hover:bg-slate-50">
+                                                                    <td className="py-4">
+                                                                        <div className="font-bold">{f.clienteNome}</div>
+                                                                        <div className="text-[9px] text-slate-400">Cod: {f.clienteCodigo}</div>
+                                                                    </td>
+                                                                    <td className={`py-4 text-right font-mono font-bold ${f.valor < 0 ? 'text-red-500' : ''}`}>{formatBRL(f.valor)}</td>
+                                                                    <td className="py-4 text-center space-x-1">
+                                                                        {f.errors.map((e, ei) => <Badge key={ei} color="red">{e}</Badge>)}
+                                                                        {f.isRelated && <Badge color="amber">Partes Relac.</Badge>}
+                                                                    </td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="h-full border-2 border-dashed border-slate-200 rounded-[2.5rem] flex flex-col items-center justify-center p-20 text-slate-300">
+                                                <i className="fas fa-file-invoice text-5xl mb-4"></i>
+                                                <p className="font-bold uppercase text-[10px] tracking-widest">Aguardando Importação ou Inserção</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* ETAPA 2: AGING E PECLD */}
+                            {step === 2 && auditResults && (
+                                <div className="space-y-8 animate-in fade-in duration-500">
+                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                                        <div className="lg:col-span-8 space-y-8">
+                                            <section className="result-card-premium p-8 rounded-[2.5rem]">
+                                                <h4 className="text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-8 text-center">Concentração de Risco por Aging</h4>
+                                                <div className="h-64 w-full">
+                                                    <ResponsiveContainer>
+                                                        <BarChart data={auditResults.agingSummary}>
+                                                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                                            <XAxis dataKey="name" fontSize={10} axisLine={false} tickLine={false} />
+                                                            <YAxis fontSize={10} axisLine={false} tickLine={false} tickFormatter={v => (v/1000) + 'k'} />
+                                                            <RechartsTooltip formatter={v => formatBRL(v)} />
+                                                            <Bar dataKey="value" radius={[6, 6, 0, 0]}>
+                                                                {auditResults.agingSummary.map((_, index) => <Cell key={index} fill={COLORS[index % COLORS.length]} />)}
+                                                            </Bar>
+                                                        </BarChart>
+                                                    </ResponsiveContainer>
+                                                </div>
+                                            </section>
+
+                                            <section className="result-card-premium p-8 rounded-[2.5rem] border-red-100">
+                                                <div className="flex items-center gap-3 mb-6">
+                                                    <div className="w-10 h-10 bg-red-50 text-red-600 rounded-full flex items-center justify-center"><i className="fas fa-train"></i></div>
+                                                    <div>
+                                                        <h4 className="text-xs font-bold text-audit-navy uppercase tracking-widest">Análise Vagão (High Risk Exclusions)</h4>
+                                                        <p className="text-[9px] text-slate-400 font-bold uppercase tracking-tight">Vencidos sem provisão estimada (Inadimplência não tratada)</p>
+                                                    </div>
+                                                </div>
+                                                <div className="overflow-x-auto">
+                                                    <table className="w-full text-[10px] border-collapse">
+                                                        <thead><tr className="bg-slate-50 text-slate-400 font-bold uppercase"><th className="px-4 py-3">Cliente</th><th className="px-4 py-3 text-right">Saldo Vencido</th><th className="px-4 py-3">Motivo Exclusão</th></tr></thead>
+                                                        <tbody>
+                                                            {auditResults.findings.filter(f => f.isWagon).slice(0, 6).map((f, i) => (
+                                                                <tr key={i} className="border-b">
+                                                                    <td className="px-4 py-4 font-bold">{f.clienteNome}</td>
+                                                                    <td className="px-4 py-4 text-right text-red-600 font-bold">{formatBRL(f.valor)}</td>
+                                                                    <td className="px-4 py-4 italic text-slate-400">{f.isRelated ? "Partes Relacionadas" : "Filtro Manual de Exclusão"}</td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </section>
+                                        </div>
+
+                                        <div className="lg:col-span-4 space-y-6">
+                                            <section className="result-card-premium p-8 rounded-[2.5rem]">
+                                                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Cálculo de Provisão (PECLD)</h4>
+                                                <div className="space-y-6">
+                                                    <div className="p-4 bg-slate-50 rounded-2xl border">
+                                                        <span className="text-[9px] font-bold text-slate-400 uppercase block mb-1">Provisão Atual do Cliente</span>
+                                                        <input type="number" value={currentProvision} onChange={e => setCurrentProvision(e.target.value)} className="w-full h-10 bg-white border rounded-xl px-3 font-mono font-bold text-audit-navy" placeholder="R$ 0,00" />
+                                                    </div>
+                                                    <div className="p-6 bg-red-50 rounded-2xl border border-red-100 text-center">
+                                                        <span className="text-[9px] font-bold text-red-400 uppercase block mb-1">Provisão Auditada (Cálculo)</span>
+                                                        <div className="text-3xl font-serif font-bold text-red-600 leading-none">{formatBRL(auditResults.provisionCalculated)}</div>
+                                                    </div>
+                                                    <div className="p-6 bg-audit-navy rounded-2xl text-center text-white">
+                                                        <span className="text-[9px] font-bold text-audit-gold uppercase block mb-1">Ajuste Proposto (Auditoria)</span>
+                                                        <div className="text-2xl font-bold font-mono">{formatBRL(auditResults.adjustmentRequired)}</div>
+                                                    </div>
+                                                    <button onClick={() => setStep(3)} className="w-full h-14 bg-audit-gold text-audit-navy font-bold uppercase text-[10px] tracking-widest rounded-2xl shadow-lg hover:bg-opacity-90 transition">Finalizar e Gerar Nota</button>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* ETAPA 3: NOTA EXPLICATIVA MULTINACIONAL */}
+                            {step === 3 && auditResults && (
+                                <div className="space-y-8 animate-in slide-in-from-bottom duration-500">
+                                    <section className="result-card-premium p-12 rounded-[3rem] bg-white shadow-2xl">
+                                        <div className="flex justify-between items-center mb-10 border-b pb-8">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-14 h-14 bg-audit-navy rounded-full flex items-center justify-center text-audit-gold shadow-lg"><i className="fas fa-file-contract text-2xl"></i></div>
+                                                <h3 className="text-2xl font-serif font-bold text-audit-navy">Relatório de Divulgação & Notas</h3>
+                                            </div>
+                                            <button onClick={() => window.print()} className="px-6 py-3 bg-slate-100 rounded-xl font-bold text-[10px] uppercase hover:bg-audit-gold transition">Imprimir PDF</button>
+                                        </div>
+                                        
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                            <div className="space-y-8">
+                                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                                                    <h5 className="text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-4 border-b pb-2 flex items-center gap-2">
+                                                        <img src="https://flagcdn.com/w20/br.png" className="w-4 h-3 object-cover rounded-sm" /> Brasil (CPC 48 / IFRS 9)
+                                                    </h5>
+                                                    <p className="text-[11px] leading-relaxed text-slate-600 font-mono italic">
+                                                        "A Companhia adota o modelo de perda de crédito esperada. Em {new Date(reportDate).toLocaleDateString('pt-BR')}, a carteira bruta de clientes totaliza {formatBRL(auditResults.totalBruto)}, segregada em Circulante ({formatBRL(auditResults.circulante)}) e Não Circulante ({formatBRL(auditResults.naoCirculante)}). A PECLD calculada de {formatBRL(auditResults.provisionCalculated)} reflete o risco de crédito da carteira."
+                                                    </p>
+                                                </div>
+                                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                                                    <h5 className="text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-4 border-b pb-2 flex items-center gap-2">
+                                                        <img src="https://flagcdn.com/w20/mx.png" className="w-4 h-3 object-cover rounded-sm" /> México (NIF C-3)
+                                                    </h5>
+                                                    <p className="text-[11px] leading-relaxed text-slate-600 font-mono italic">
+                                                        "Las cuentas por cobrar se reconocen por su valor nominal. La estimación para cuentas incobrables se determina mediante el estudio de la recuperabilidad de los saldos vencidos. Al cierre, el ajuste propuesto por auditoría es de {formatBRL(auditResults.adjustmentRequired)}."
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="space-y-8">
+                                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                                                    <h5 className="text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-4 border-b pb-2 flex items-center gap-2">
+                                                        <i className="fas fa-globe text-audit-gold text-[10px]"></i> International (IAS 1 / IFRS 7)
+                                                    </h5>
+                                                    <p className="text-[11px] leading-relaxed text-slate-600 font-mono italic">
+                                                        "Financial assets are measured at amortized cost. Trade receivables are subject to credit risk assessment using a provision matrix. The Aging analysis reveals that {((auditResults.naoCirculante / auditResults.totalBruto)*100).toFixed(1)}% of receivables have maturities exceeding 12 months."
+                                                    </p>
+                                                </div>
+                                                <div className="p-6 bg-slate-50 border border-slate-200 rounded-3xl">
+                                                    <h5 className="text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-4 border-b pb-2 flex items-center gap-2">
+                                                        <img src="https://flagcdn.com/w20/us.png" className="w-4 h-3 object-cover rounded-sm" /> US GAAP (ASC 310)
+                                                    </h5>
+                                                    <p className="text-[11px] leading-relaxed text-slate-600 font-mono italic">
+                                                        "Receivables are carried at net realizable value. The allowance for credit losses (CECL model) is calculated based on historical loss experience and adjusted for current conditions. Management has reviewed specific accounts for individual impairment."
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            )}
+
+                        </div>
+                    </main>
+
+                    {/* TOAST */}
+                    {toast && (
+                        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[2000] animate-bounce">
+                            <div className="bg-audit-navy text-white px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl border border-white/10 flex items-center gap-3">
+                                <i className="fas fa-check-circle text-audit-gold"></i> {toast}
+                            </div>
+                        </div>
+                    )}
+
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
