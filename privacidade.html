@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr" class="scroll-smooth">
+<head>
+    <!-- Definições de Protocolo e Compliance -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-language" content="pt-BR">
+    
+    <!-- CSP: Ajustada para permitir os scripts do domínio auditeduca -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://auditeduca.com.br; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://auditeduca.com.br; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- SEO & Metadados -->
+    <title>Política de Cookies e Privacidade | Audit Educa</title>
+    <meta name="description" content="Política de Privacidade e Cookies do Audit Educa. Tratamento de dados com o rigor de uma auditoria independente baseada na LGPD e normas NBC TA.">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- CSS Institucional (Audit Educa) -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- CSS Externos de Apoio (Fontes e Ícones) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Bibliotecas de Layout (Mantidas para o conteúdo interno da política) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuração Tailwind (Específica para o conteúdo interno) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-goldDark': '#856a32', 
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'floating': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos Globais de Apoio */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #334155;
+            background-image: 
+                radial-gradient(#cbd5e1 0.5px, transparent 0.5px), 
+                linear-gradient(#e2e8f0 1px, transparent 1px), 
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Sidebar Tools (Navegação Interna da Página) */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 900; padding: 10px 0;
+        }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none; text-decoration: none;
+        }
+        .tool-btn:focus-visible { outline: 2px solid #C5A059; outline-offset: 2px; }
+        .tool-btn:hover, .tool-btn.active { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            opacity: 0; transform: translateX(-10px); transition: all 0.2s;
+        }
+        .tool-btn:hover .btn-label { display: block; opacity: 1; transform: translateX(0); }
+
+        /* Mobile Sidebar */
+        @media (max-width: 768px) {
+            .sidebar-left-tools {
+                top: auto; bottom: 0; left: 0; width: 100%; height: 70px;
+                flex-direction: row; transform: none; justify-content: space-around;
+                align-items: center; background: white; border-top: 1px solid #e2e8f0;
+                border-radius: 0; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08); padding: 0 5px; z-index: 1001;
+            }
+            .tool-btn { border: none; width: auto; height: 100%; flex: 1; gap: 4px; box-shadow: none; background: transparent; border-radius: 8px; color: #64748b; }
+            .tool-btn:hover, .tool-btn.active { width: auto; background: transparent; color: #0f172a; padding-left: 0; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; box-shadow: none; opacity: 1; transform: none; }
+            body { padding-bottom: 90px; }
+        }
+
+        /* Tour UI */
+        .tour-highlight {
+            position: relative; z-index: 1301 !important;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important;
+            pointer-events: none; border: 2px solid #C5A059 !important;
+        }
+        .tour-popover {
+            position: fixed; z-index: 1302; background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); width: 280px;
+            border-top: 4px solid #C5A059; transition: all 0.3s ease;
+        }
+
+        /* Layout */
+        main { padding-top: 120px; } /* Ajustado para compensar o header fixo injetado */
+        @media (min-width: 1024px) { .content-wrapper { padding-left: 110px; padding-right: 70px; } }
+        html { scroll-padding-top: 140px; }
+
+        /* Table Styles */
+        .audit-table th { background-color: #f8fafc; color: #0f172a; font-family: 'Playfair Display', serif; }
+        .audit-table tr:hover { background-color: #f1f5f9; transition: background-color 0.2s; }
+        .audit-table td { border-bottom: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="preloader" aria-hidden="true" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center transition-opacity duration-500">
+        <div class="animate-pulse text-audit-gold text-2xl font-serif font-bold">Audit Educa...</div>
+    </div>
+    
+    <!-- Header Container (Injeção via JS) -->
+    <div id="header"></div>
+    <!-- Fallback/Container para o template engine -->
+    <header id="main-header"></header>
+
+    <!-- Sidebar Tools (Navegação da Política) -->
+    <aside class="sidebar-left-tools no-print" id="sidebar-tools" aria-label="Navegação da Política">
+        <a href="#hero" class="tool-btn" title="Visão Geral" aria-label="Visão Geral">
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            <span class="btn-label">Geral</span>
+        </a>
+        <a href="#abordagem" class="tool-btn" title="Abordagem" aria-label="Nossa Abordagem">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="btn-label">Escopo</span>
+        </a>
+        <a href="#honorarios" class="tool-btn" title="Cookies" aria-label="Cookies e Honorários">
+            <i class="fas fa-coins" aria-hidden="true"></i>
+            <span class="btn-label">Cookies</span>
+        </a>
+        <a href="#especialistas" class="tool-btn" title="Especialistas" aria-label="Uso de Especialistas">
+            <i class="fas fa-users-cog" aria-hidden="true"></i>
+            <span class="btn-label">Parceiros</span>
+        </a>
+        
+        <button class="tool-btn" onclick="startTour()" title="Resumo Guiado" aria-label="Iniciar resumo guiado da política">
+            <i class="fas fa-magic text-audit-gold" aria-hidden="true"></i>
+            <span class="btn-label">Resumo</span>
+        </button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow pb-20 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper">
+            
+            <!-- Breadcrumb -->
+            <nav class="mb-8 no-print flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest" aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2">
+                    <li><a href="/" class="hover:text-audit-goldDark transition focus:outline-none focus:underline">Home</a></li>
+                    <li><i class="fas fa-chevron-right text-[8px]" aria-hidden="true"></i></li>
+                    <li>Institucional</li>
+                    <li><i class="fas fa-chevron-right text-[8px]" aria-hidden="true"></i></li>
+                    <li class="text-audit-goldDark underline underline-offset-4" aria-current="page">Privacidade</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Section -->
+            <div id="hero" class="bg-white rounded-3xl p-10 md:p-16 shadow-card border border-slate-200 relative overflow-hidden mb-20 group">
+                <!-- Imagem Decorativa de Fundo -->
+                <div class="absolute inset-0 z-0 opacity-5">
+                    <img src="https://placehold.co/1200x800/0f172a/ffffff?text=Padrao+Seguranca+Digital" 
+                         alt="" 
+                         class="w-full h-full object-cover" 
+                         loading="lazy">
+                </div>
+                
+                <div class="relative z-10 max-w-4xl">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-green-50 text-green-700 text-[10px] font-bold tracking-widest uppercase mb-6 border border-green-200">
+                        <i class="fas fa-circle text-[6px] align-middle mr-2 mb-0.5"></i> Status: Em Vigor
+                    </span>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-audit-navy mb-6 leading-tight">
+                        Política de <span class="text-audit-gold">Privacidade</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-8 font-light max-w-3xl">
+                        No Audit Educa, aplicamos ao tratamento de dados digitais o mesmo rigor ético e ceticismo profissional exigidos em uma auditoria independente.
+                    </p>
+                    
+                    <!-- Metadados Normativos -->
+                    <div class="flex flex-wrap gap-4 text-xs font-bold text-slate-500 uppercase tracking-wider pt-8 border-t border-slate-100">
+                        <span class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                            <i class="fas fa-book text-audit-gold"></i> LGPD (Lei 13.709)
+                        </span>
+                        <span class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                            <i class="fas fa-balance-scale text-audit-gold"></i> NBC TA 200
+                        </span>
+                        <span class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                            <i class="fas fa-user-shield text-audit-gold"></i> NBC PG 100
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1. Abordagem (Materialidade) -->
+            <div id="abordagem" class="mb-32 scroll-mt-40">
+                <div class="flex flex-col lg:flex-row gap-16 items-start">
+                    <div class="lg:w-1/3 lg:sticky lg:top-40">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-1 bg-audit-gold rounded-full"></div>
+                            <span class="text-audit-goldDark font-bold text-xs uppercase tracking-widest">Nossa Abordagem</span>
+                        </div>
+                        <h2 class="text-3xl font-serif font-bold text-audit-navy mb-6 leading-tight">O Sigilo como Padrão de Auditoria</h2>
+                        <blockquote class="text-slate-600 italic border-l-4 border-audit-gold pl-6 py-2 text-lg leading-relaxed font-light">
+                            "Entendemos o consentimento de cookies como a nossa 'Carta de Contratação' (NBC TA 210)."
+                        </blockquote>
+                    </div>
+                    
+                    <div class="lg:w-2/3 space-y-8">
+                        <div class="prose text-slate-600 max-w-none mb-8">
+                            <p>Assim como não iniciamos um trabalho de asseguração sem os pré-requisitos acordados, não ativamos rastreadores de marketing sem o seu "de acordo" prévio.</p>
+                        </div>
+
+                        <!-- Card de Materialidade (Warning) -->
+                        <div class="bg-red-50 p-8 rounded-3xl border border-red-100 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-6 opacity-5">
+                                <i class="fas fa-shield-virus text-8xl text-red-900"></i>
+                            </div>
+                            <div class="relative z-10">
+                                <h3 class="text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
+                                    <i class="fas fa-exclamation-triangle"></i> Escopo e Materialidade (Dados Sensíveis)
+                                </h3>
+                                <p class="text-red-800 leading-relaxed mb-4">
+                                    <strong>Testes Substantivos:</strong> Nós <span class="underline decoration-red-400 decoration-2 underline-offset-2">não coletamos</span> dados pessoais sensíveis (financeiros, saúde, biometria) através de cookies. Nosso foco é puramente estatístico.
+                                </p>
+                                <div class="bg-white/60 p-4 rounded-xl border border-red-100 flex items-center gap-4 text-sm font-semibold text-red-900">
+                                    <i class="fab fa-whatsapp text-2xl"></i>
+                                    <span>Não realizamos contato telefônico (Ligação/WhatsApp). Canal oficial: <strong>contato@auditeduca.com.br</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Honorários (Cookies) - Tabela Comparativa -->
+            <div id="honorarios" class="mb-32 scroll-mt-40">
+                <div class="bg-slate-50 rounded-[3rem] p-10 lg:p-16 border border-slate-200 relative overflow-hidden">
+                    <div class="text-center max-w-4xl mx-auto mb-12">
+                        <span class="text-audit-goldDark font-bold text-xs uppercase tracking-widest mb-4 block">Remuneração do Site</span>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-audit-navy mb-6">Níveis de Experiência e Honorários</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            O custo financeiro para você é <strong>zero</strong>. Nosso modelo é baseado na visualização de publicidade. Ao gerenciar suas preferências, você define o nível de "asseguração" da experiência:
+                        </p>
+                    </div>
+
+                    <!-- Tabela Estilo Papel de Trabalho -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left audit-table">
+                                <thead>
+                                    <tr>
+                                        <th class="p-6 text-sm font-bold uppercase tracking-wider text-audit-navy">Sua Escolha</th>
+                                        <th class="p-6 text-sm font-bold uppercase tracking-wider text-audit-navy">Analogia com Auditoria</th>
+                                        <th class="p-6 text-sm font-bold uppercase tracking-wider text-audit-navy">O que acontece?</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-slate-600 text-sm">
+                                    <tr class="group">
+                                        <td class="p-6 font-bold text-green-700 bg-green-50/30 group-hover:bg-green-50 transition-colors">
+                                            <i class="fas fa-check-circle mr-2"></i> Aceitar Todos
+                                        </td>
+                                        <td class="p-6 font-medium text-audit-navy">Auditoria Externa <br><span class="text-xs text-slate-400 font-normal">(Segurança Razoável)</span></td>
+                                        <td class="p-6 leading-relaxed">
+                                            <strong>Honorários Totais:</strong> Obtemos evidências completas de navegação para fornecer uma experiência personalizada e garantir a continuidade do serviço gratuito.
+                                        </td>
+                                    </tr>
+                                    <tr class="group">
+                                        <td class="p-6 font-bold text-slate-500 bg-slate-50/30 group-hover:bg-slate-50 transition-colors">
+                                            <i class="fas fa-cog mr-2"></i> Rejeitar / Configurar
+                                        </td>
+                                        <td class="p-6 font-medium text-audit-navy">Revisão Trimestral/ITR <br><span class="text-xs text-slate-400 font-normal">(Segurança Limitada)</span></td>
+                                        <td class="p-6 leading-relaxed">
+                                            <strong>Honorários Parciais:</strong> O site funciona com escopo reduzido. Você acessa o conteúdo, mas sem a personalização e assertividade dos anúncios.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Categorias Técnicas (Grid Cards) -->
+            <div id="categorias" class="mb-32 scroll-mt-40">
+                <div class="flex items-center gap-3 justify-center lg:justify-start mb-10">
+                    <div class="bg-audit-navy p-3 rounded-lg text-white">
+                        <i class="fas fa-layer-group" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="text-3xl font-serif font-bold text-audit-navy">Categorias de Cookies</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Essenciais -->
+                    <div class="bg-audit-navy p-8 rounded-3xl text-white relative overflow-hidden group shadow-xl">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                            <i class="fas fa-lock text-8xl"></i>
+                        </div>
+                        <h3 class="text-audit-gold font-bold text-xl mb-4 flex items-center gap-3">
+                            <i class="fas fa-shield-alt"></i> Controle Interno
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            <strong>Estritamente Necessários.</strong> Assim como a administração deve fornecer documentos para a auditoria, estes cookies permitem o funcionamento básico (segurança, login).
+                        </p>
+                        <span class="inline-block bg-white/10 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-green-400">
+                            Consentimento: Dispensado
+                        </span>
+                    </div>
+
+                    <!-- Analytics -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 group hover:border-audit-goldDark hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
+                            <i class="fas fa-chart-line text-audit-blue"></i> Analytics (GA4)
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Utilizamos o Google Analytics para realizar "testes analíticos" sobre o comportamento da audiência. Utilizamos mascaramento de IP (IP Anonymization).
+                        </p>
+                        <span class="inline-block bg-slate-100 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-audit-blue">
+                            Requer Opt-in
+                        </span>
+                    </div>
+
+                    <!-- Ads -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 group hover:border-audit-goldDark hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-audit-navy font-bold text-xl mb-4 flex items-center gap-3">
+                            <i class="fas fa-bullhorn text-audit-gold"></i> AdSense
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Para manter o portal gratuito. Na "Revisão Limitada", anúncios são contextuais (baseados na página IFRS, por exemplo), não no seu histórico.
+                        </p>
+                        <span class="inline-block bg-slate-100 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-audit-goldDark">
+                            Requer Opt-in
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Especialistas e Retenção -->
+            <div id="especialistas" class="mb-24 scroll-mt-40">
+                <div class="bg-white rounded-2xl border-l-8 border-audit-navy p-10 shadow-sm flex flex-col md:flex-row gap-10 items-start">
+                    <div class="md:w-1/2">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fas fa-user-tie text-audit-navy text-3xl"></i>
+                            <h2 class="text-3xl font-serif font-bold text-audit-navy">Uso de Especialistas (NBC TA 620)</h2>
+                        </div>
+                        <p class="text-slate-600 mb-6">
+                            Contratamos "Especialistas do Auditor" (Parceiros Globais) para obter evidência de auditoria apropriada. O especialista processa metadados com algoritmos avançados para classificar interesses e proteger contra fraudes.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <div class="bg-white p-2 rounded-lg shadow-sm"><i class="fab fa-google text-2xl"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-audit-navy text-sm">Google Ireland Ltd.</h4>
+                                    <p class="text-xs text-slate-500">Analytics, AdSense, Tag Manager</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2 border-t md:border-t-0 md:border-l border-slate-100 md:pl-10 pt-8 md:pt-0">
+                        <h3 class="font-serif font-bold text-audit-navy text-xl mb-4">Retenção de Papéis de Trabalho</h3>
+                        <p class="text-slate-600 text-sm mb-6">
+                            Diferentemente de um trabalho estatutário (5 anos), nesta relação digital, você pode "recolher" a documentação a qualquer momento.
+                        </p>
+                        
+                        <div class="bg-audit-navy/5 p-6 rounded-xl border border-audit-navy/10">
+                            <h4 class="font-bold text-audit-navy text-sm uppercase tracking-widest mb-3">Sua Autonomia</h4>
+                            <p class="text-slate-600 text-xs mb-4">Ao limpar os cookies ou revogar o consentimento, você encerra a coleta de novas evidências para a auditoria em curso.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <button onclick="showToast('Abrindo Preferências...')" class="px-4 py-2 bg-audit-navy text-white text-xs font-bold rounded-lg hover:bg-audit-gold hover:text-audit-navy transition-colors">
+                                    Gerenciar Preferências
+                                </button>
+                                <a href="https://adssettings.google.com" target="_blank" class="px-4 py-2 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded-lg hover:border-audit-navy transition-colors">
+                                    Ads Settings (Google)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-slate-200 pt-20">
+                <!-- Coluna Principal -->
+                <div class="lg:col-span-8">
+                    <!-- Newsletter -->
+                    <div class="bg-audit-navy p-10 rounded-3xl shadow-2xl text-white relative overflow-hidden group mb-12">
+                        <div class="absolute inset-0 opacity-10 z-0">
+                             <img src="https://placehold.co/800x400/0f172a/ffffff?text=Privacidade+Seguranca" alt="" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-serif font-bold mb-2">Transparência Total</h3>
+                                <p class="text-sm font-light leading-relaxed text-slate-300">
+                                    Tem dúvidas sobre como tratamos seus dados? Nossa equipe de DPO (Encarregado de Dados) está pronta para responder.
+                                </p>
+                            </div>
+                            <div class="w-full md:w-auto">
+                                <a href="mailto:contato@auditeduca.com.br" class="inline-block w-full text-center p-4 bg-audit-gold text-audit-navy font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-white hover:text-audit-navy transition shadow-lg">
+                                    Falar com DPO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Referências -->
+                    <div>
+                        <h3 class="text-sm font-bold text-audit-navy mb-6 flex items-center gap-2 uppercase tracking-wider">
+                            <i class="fas fa-book text-audit-gold" aria-hidden="true"></i> Referências Bibliográficas
+                        </h3>
+                        <ul class="text-xs text-slate-500 space-y-2 font-mono bg-slate-50 p-6 rounded-xl border border-slate-200">
+                            <li>BRASIL. Lei nº 13.709/2018 (LGPD).</li>
+                            <li>CFC. NBC PG 100 (R1): Ética Profissional.</li>
+                            <li>CFC. NBC TA 200 (R1): Objetivos Gerais do Auditor.</li>
+                            <li>CFC. NBC TA 620: Utilização do Trabalho de Especialistas.</li>
+                            <li>GOOGLE. Privacy & Terms: Technologies. Acesso em: 06 fev. 2026.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Container (Injeção via JS) -->
+    <div id="footer"></div>
+    <footer id="main-footer"></footer>
+
+    <!-- Tour Container -->
+    <div id="tour-container"></div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
+        Ação Confirmada
+    </div>
+
+    <!-- Scripts Institucionais e Modulação -->
+    <script src="https://auditeduca.com.br/assets/js/utils.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/seo-manager.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/main.js"></script>
+    <script src="https://auditeduca.com.br/accessibility-api.js"></script>
+
+    <script>
+        // Init Icons
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+
+        // Loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('preloader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }
+        });
+
+        // Toast Logic
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.replace('opacity-0', 'opacity-100');
+            t.classList.replace('translate-y-10', 'translate-y-0');
+            setTimeout(() => {
+                t.classList.replace('opacity-100', 'opacity-0');
+                t.classList.replace('translate-y-0', 'translate-y-10');
+            }, 3000);
+        }
+
+        // Tour Logic
+        let currentTourStep = 0;
+        const tourSteps = [
+            { id: 'hero', text: 'Esta política segue o rigor das normas de auditoria (NBC TAs).' },
+            { id: 'abordagem', text: 'Nossa "Carta de Contratação": Só ativamos cookies com seu aceite.' },
+            { id: 'honorarios', text: 'Entenda como os anúncios (Cookies) financiam este conteúdo gratuito.' },
+            { id: 'categorias', text: 'Veja os tipos de dados: Essenciais vs Analytics.' },
+            { id: 'especialistas', text: 'Utilizamos o Google como "Especialista do Auditor".' }
+        ];
+
+        function startTour() {
+            currentTourStep = 0;
+            showTourStep();
+        }
+
+        function showTourStep() {
+            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+            
+            const step = tourSteps[currentTourStep];
+            const el = document.getElementById(step.id);
+            if (!el) return;
+
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            setTimeout(() => {
+                el.classList.add('tour-highlight');
+                const rect = el.getBoundingClientRect();
+                const container = document.getElementById('tour-container');
+                
+                let topPos = rect.bottom + 15;
+                if (window.innerHeight - rect.bottom < 200) topPos = rect.top - 180;
+
+                container.innerHTML = `
+                    <div class="tour-popover" style="top: ${topPos}px; left: ${Math.max(10, rect.left)}px;">
+                        <p class="text-xs font-bold text-audit-navy mb-3 uppercase tracking-widest">Guia de Privacidade (${currentTourStep + 1}/${tourSteps.length})</p>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">${step.text}</p>
+                        <div class="flex justify-between items-center">
+                            <button onclick="document.getElementById('tour-container').innerHTML = ''; document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));" class="text-[10px] font-bold text-slate-400 uppercase hover:text-red-500">Sair</button>
+                            <button onclick="currentTourStep++; if(currentTourStep >= ${tourSteps.length}) { document.getElementById('tour-container').innerHTML=''; document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight')); } else { startTour(); }" class="bg-audit-gold text-audit-navy px-4 py-2 rounded-lg text-[10px] font-bold uppercase shadow-sm">Próximo</button>
+                        </div>
+                    </div>
+                `;
+            }, 500);
+        }
+
+        // Scroll Spy para Sidebar
+        window.addEventListener('scroll', () => {
+            const sections = ['hero', 'abordagem', 'honorarios', 'categorias', 'especialistas'];
+            const scrollPos = window.scrollY + 200;
+            
+            sections.forEach(sec => {
+                const el = document.getElementById(sec);
+                const link = document.querySelector(`a[href="#${sec}"]`);
+                if(el && link) {
+                    if(el.offsetTop <= scrollPos && (el.offsetTop + el.offsetHeight) > scrollPos) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
