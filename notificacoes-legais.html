@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr" class="scroll-smooth">
+<head>
+    <!-- Definições de Protocolo e Compliance -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-language" content="pt-BR">
+    
+    <!-- CSP: Ajustada para permitir os scripts do domínio auditeduca -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://auditeduca.com.br; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://auditeduca.com.br; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- SEO & Metadados -->
+    <title>Notificações Legais e Termos de Uso | Audit Educa</title>
+    <meta name="description" content="Termos de Uso, Direitos Autorais e Isenção de Responsabilidade do Audit Educa. Diretrizes sobre o uso de nosso material educacional e propriedade intelectual.">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- CSS Institucional (Audit Educa) -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- CSS Externos de Apoio (Fontes e Ícones) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Bibliotecas de Layout -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuração Tailwind (Específica para o conteúdo interno) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-goldDark': '#856a32', 
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'floating': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos Globais de Apoio */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #334155;
+            background-image: 
+                radial-gradient(#cbd5e1 0.5px, transparent 0.5px), 
+                linear-gradient(#e2e8f0 1px, transparent 1px), 
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Sidebar Tools (Navegação Interna da Página) */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 900; padding: 10px 0;
+        }
+        .tool-btn {
+            background-color: white; color: #0f172a; border: 1px solid #e2e8f0; border-left: none;
+            width: 54px; height: 54px; border-radius: 0 14px 14px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none; text-decoration: none;
+        }
+        .tool-btn:focus-visible { outline: 2px solid #C5A059; outline-offset: 2px; }
+        .tool-btn:hover, .tool-btn.active { width: 65px; background-color: #0f172a; color: #C5A059; padding-left: 5px; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            opacity: 0; transform: translateX(-10px); transition: all 0.2s;
+        }
+        .tool-btn:hover .btn-label { display: block; opacity: 1; transform: translateX(0); }
+
+        /* Mobile Sidebar */
+        @media (max-width: 768px) {
+            .sidebar-left-tools {
+                top: auto; bottom: 0; left: 0; width: 100%; height: 70px;
+                flex-direction: row; transform: none; justify-content: space-around;
+                align-items: center; background: white; border-top: 1px solid #e2e8f0;
+                border-radius: 0; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08); padding: 0 5px; z-index: 1001;
+            }
+            .tool-btn { border: none; width: auto; height: 100%; flex: 1; gap: 4px; box-shadow: none; background: transparent; border-radius: 8px; color: #64748b; }
+            .tool-btn:hover, .tool-btn.active { width: auto; background: transparent; color: #0f172a; padding-left: 0; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 9px; padding: 0; box-shadow: none; opacity: 1; transform: none; }
+            body { padding-bottom: 90px; }
+        }
+
+        /* Tour UI */
+        .tour-highlight {
+            position: relative; z-index: 1301 !important;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7) !important;
+            pointer-events: none; border: 2px solid #C5A059 !important;
+        }
+        .tour-popover {
+            position: fixed; z-index: 1302; background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); width: 280px;
+            border-top: 4px solid #C5A059; transition: all 0.3s ease;
+        }
+
+        /* Layout & Content Specifics */
+        main { padding-top: 120px; }
+        @media (min-width: 1024px) { .content-wrapper { padding-left: 110px; padding-right: 70px; } }
+        html { scroll-padding-top: 140px; }
+
+        /* Legal Specific Styles */
+        .legal-clause { border-left: 3px solid #e2e8f0; padding-left: 1.5rem; transition: all 0.3s; }
+        .legal-clause:hover { border-left-color: #C5A059; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="preloader" aria-hidden="true" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center transition-opacity duration-500">
+        <div class="animate-pulse text-audit-gold text-2xl font-serif font-bold">Audit Educa...</div>
+    </div>
+    
+    <!-- Header Container (Injeção via JS) -->
+    <div id="header"></div>
+    <!-- Fallback/Container para o template engine -->
+    <header id="main-header"></header>
+
+    <!-- Sidebar Tools (Navegação Interna) -->
+    <aside class="sidebar-left-tools no-print" id="sidebar-tools" aria-label="Navegação Legal">
+        <a href="#hero" class="tool-btn" title="Visão Geral" aria-label="Visão Geral">
+            <i class="fas fa-gavel" aria-hidden="true"></i>
+            <span class="btn-label">Geral</span>
+        </a>
+        <a href="#propriedade" class="tool-btn" title="Propriedade Intelectual" aria-label="Direitos Autorais">
+            <i class="fas fa-copyright" aria-hidden="true"></i>
+            <span class="btn-label">Autoria</span>
+        </a>
+        <a href="#responsabilidade" class="tool-btn" title="Isenção de Responsabilidade" aria-label="Limitação de Responsabilidade">
+            <i class="fas fa-balance-scale-right" aria-hidden="true"></i>
+            <span class="btn-label">Isenção</span>
+        </a>
+        <a href="#termos" class="tool-btn" title="Termos de Uso" aria-label="Regras de Uso">
+            <i class="fas fa-file-contract" aria-hidden="true"></i>
+            <span class="btn-label">Termos</span>
+        </a>
+        
+        <button class="tool-btn" onclick="startTour()" title="Resumo Guiado" aria-label="Iniciar resumo guiado">
+            <i class="fas fa-magic text-audit-gold" aria-hidden="true"></i>
+            <span class="btn-label">Resumo</span>
+        </button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow pb-20 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper">
+            
+            <!-- Breadcrumb -->
+            <nav class="mb-8 no-print flex mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest" aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2">
+                    <li><a href="/" class="hover:text-audit-goldDark transition focus:outline-none focus:underline">Home</a></li>
+                    <li><i class="fas fa-chevron-right text-[8px]" aria-hidden="true"></i></li>
+                    <li>Institucional</li>
+                    <li><i class="fas fa-chevron-right text-[8px]" aria-hidden="true"></i></li>
+                    <li class="text-audit-goldDark underline underline-offset-4" aria-current="page">Notificações Legais</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Section -->
+            <div id="hero" class="bg-white rounded-3xl p-10 md:p-16 shadow-card border border-slate-200 relative overflow-hidden mb-20 group">
+                <!-- Imagem Decorativa de Fundo -->
+                <div class="absolute inset-0 z-0 opacity-5">
+                    <img src="https://placehold.co/1200x800/0f172a/ffffff?text=Legal+Compliance" 
+                         alt="" 
+                         class="w-full h-full object-cover" 
+                         loading="lazy">
+                </div>
+                
+                <div class="relative z-10 max-w-4xl">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold tracking-widest uppercase mb-6 border border-slate-200">
+                        <i class="fas fa-check-double text-[8px] align-middle mr-2 mb-0.5 text-audit-gold"></i> Última Revisão: Fev/2026
+                    </span>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-audit-navy mb-6 leading-tight">
+                        Notificações <span class="text-audit-gold">Legais</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-8 font-light max-w-3xl">
+                        A transparência é a base de qualquer auditoria. Aqui definimos os limites de escopo, responsabilidades e a proteção dos nossos ativos intelectuais.
+                    </p>
+                    
+                    <!-- Metadados Normativos -->
+                    <div class="flex flex-wrap gap-4 text-xs font-bold text-slate-500 uppercase tracking-wider pt-8 border-t border-slate-100">
+                        <span class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                            <i class="fas fa-gavel text-audit-gold"></i> Lei 9.610/98 (Direitos Autorais)
+                        </span>
+                        <span class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                            <i class="fas fa-globe text-audit-gold"></i> Marco Civil da Internet
+                        </span>
+                        <span class="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+                            <i class="fas fa-code-branch text-audit-gold"></i> Licenciamento
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1. Propriedade Intelectual (Ativos Intangíveis) -->
+            <div id="propriedade" class="mb-32 scroll-mt-40">
+                <div class="flex flex-col lg:flex-row gap-16 items-start">
+                    <div class="lg:w-1/3 lg:sticky lg:top-40">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-1 bg-audit-navy rounded-full"></div>
+                            <span class="text-audit-goldDark font-bold text-xs uppercase tracking-widest">Ativos Intangíveis</span>
+                        </div>
+                        <h2 class="text-3xl font-serif font-bold text-audit-navy mb-6 leading-tight">Direitos Autorais e Propriedade Intelectual</h2>
+                        <blockquote class="text-slate-600 italic border-l-4 border-audit-navy pl-6 py-2 text-lg leading-relaxed font-light">
+                            "Todo o conteúdo deste portal constitui ativo intelectual protegido, análogo a um Ativo Intangível (CPC 04 / IAS 38)."
+                        </blockquote>
+                    </div>
+                    
+                    <div class="lg:w-2/3 space-y-8">
+                        <div class="prose text-slate-600 max-w-none mb-8">
+                            <p>O Audit Educa detém a titularidade exclusiva sobre textos, imagens, logotipos, vídeos e códigos-fonte presentes neste domínio, salvo indicação expressa em contrário (conteúdo de terceiros devidamente creditado).</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Permitido -->
+                            <div class="bg-green-50 p-6 rounded-2xl border border-green-100">
+                                <h3 class="text-green-800 font-bold mb-3 flex items-center gap-2">
+                                    <i class="fas fa-check-circle"></i> Uso Permitido
+                                </h3>
+                                <ul class="text-sm text-green-700 space-y-2">
+                                    <li>• Citação de pequenos trechos com link direto para a fonte (backlink).</li>
+                                    <li>• Uso para fins de estudo pessoal e intransferível.</li>
+                                    <li>• Compartilhamento de links nas redes sociais.</li>
+                                </ul>
+                            </div>
+                            <!-- Proibido -->
+                            <div class="bg-red-50 p-6 rounded-2xl border border-red-100">
+                                <h3 class="text-red-800 font-bold mb-3 flex items-center gap-2">
+                                    <i class="fas fa-ban"></i> Uso Proibido
+                                </h3>
+                                <ul class="text-sm text-red-700 space-y-2">
+                                    <li>• Reprodução total ou parcial sem autorização prévia (Clonagem de UI).</li>
+                                    <li>• Uso comercial de materiais gratuitos.</li>
+                                    <li>• Data mining ou uso de bots para extração de dados.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Isenção de Responsabilidade (Limitação de Escopo) -->
+            <div id="responsabilidade" class="mb-32 scroll-mt-40">
+                <div class="bg-slate-50 rounded-[3rem] p-10 lg:p-16 border border-slate-200 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-12 opacity-5">
+                        <i class="fas fa-balance-scale text-9xl text-audit-navy"></i>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto relative z-10">
+                        <span class="text-audit-goldDark font-bold text-xs uppercase tracking-widest mb-4 block">Limitação de Escopo</span>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-audit-navy mb-8">Natureza Educacional vs. Consultoria Profissional</h2>
+                        
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border-l-4 border-audit-gold mb-8">
+                            <p class="text-slate-700 leading-relaxed font-medium">
+                                <i class="fas fa-exclamation-circle text-audit-gold mr-2"></i> Aviso Importante:
+                            </p>
+                            <p class="text-slate-600 mt-2 leading-relaxed">
+                                O conteúdo disponibilizado no Audit Educa tem caráter estritamente <strong>informativo e educacional</strong>. Embora busquemos a máxima precisão técnica baseada nas normas (NBCs, IFRS, ISA), as informações aqui contidas <strong>não substituem o julgamento profissional</strong> de um auditor independente ou consultor contábil em casos concretos.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4 text-slate-600 text-sm">
+                            <div class="legal-clause">
+                                <strong class="text-audit-navy block mb-1">1. Atualização Normativa</strong>
+                                Normas contábeis e fiscais mudam frequentemente. Não garantimos que todo o conteúdo esteja sincronizado em tempo real com as últimas revisões do CFC/CVM.
+                            </div>
+                            <div class="legal-clause">
+                                <strong class="text-audit-navy block mb-1">2. Decisões de Negócio</strong>
+                                O Audit Educa e seus autores não se responsabilizam por quaisquer perdas ou danos (diretos ou indiretos) decorrentes do uso das informações aqui publicadas para tomada de decisões financeiras.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Termos de Uso (Checklist) -->
+            <div id="termos" class="mb-32 scroll-mt-40">
+                <div class="flex items-center gap-3 justify-center lg:justify-start mb-10">
+                    <div class="bg-audit-navy p-3 rounded-lg text-white">
+                        <i class="fas fa-file-signature" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="text-3xl font-serif font-bold text-audit-navy">Termos de Uso do Portal</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-audit-goldDark transition-all duration-300 shadow-sm hover:shadow-lg">
+                        <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-audit-navy mb-6 text-xl">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3 class="font-bold text-audit-navy text-lg mb-3">Acesso e Cadastro</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Ao se cadastrar, você garante que as informações fornecidas são verdadeiras. O compartilhamento de credenciais de acesso (login) é estritamente proibido e pode levar à suspensão da conta.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-audit-goldDark transition-all duration-300 shadow-sm hover:shadow-lg">
+                        <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-audit-navy mb-6 text-xl">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="font-bold text-audit-navy text-lg mb-3">Conduta nos Comentários</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Promovemos um ambiente de debate técnico. Comentários ofensivos, spam, ou que violem a ética profissional (NBC PG 100) serão removidos sem aviso prévio.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-audit-goldDark transition-all duration-300 shadow-sm hover:shadow-lg">
+                        <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-audit-navy mb-6 text-xl">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-audit-navy text-lg mb-3">Links Externos</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Podemos conter links para sites de terceiros (ex: Planalto, CFC). Não exercemos controle e não assumimos responsabilidade pelo conteúdo ou práticas dessas "Entidades Relacionadas".
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Grid (Contato Legal) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-slate-200 pt-20">
+                <div class="lg:col-span-8">
+                    <!-- Box de Dúvidas -->
+                    <div class="bg-audit-navy p-10 rounded-3xl shadow-2xl text-white relative overflow-hidden group mb-12">
+                        <div class="absolute inset-0 opacity-10 z-0">
+                             <img src="https://placehold.co/800x400/0f172a/ffffff?text=Juridico+Compliance" alt="" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-serif font-bold mb-2">Dúvidas?</h3>
+                                <p class="text-sm font-light leading-relaxed text-slate-300">
+                                    Para notificações de infração de direitos autorais ou esclarecimentos sobre nossos termos, entre em contato conosco.
+                                </p>
+                            </div>
+                            <div class="w-full md:w-auto">
+                                <a href="mailto:juridico@auditeduca.com.br" class="inline-block w-full text-center p-4 bg-white text-audit-navy font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-audit-gold transition shadow-lg">
+                                    Entre em contato
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coluna de Foro -->
+                <div class="lg:col-span-4">
+                     <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 h-full">
+                        <h3 class="text-sm font-bold text-audit-navy mb-4 uppercase tracking-wider">
+                            <i class="fas fa-map-marker-alt text-audit-gold mr-2"></i> Foro e Jurisdição
+                        </h3>
+                        <p class="text-xs text-slate-500 leading-relaxed font-mono">
+                            Fica eleito o Foro da Comarca de São Paulo/SP para dirimir quaisquer questões oriundas destes Termos de Uso, com renúncia expressa a qualquer outro, por mais privilegiado que seja.
+                        </p>
+                     </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Container (Injeção via JS) -->
+    <div id="footer"></div>
+    <footer id="main-footer"></footer>
+
+    <!-- Tour Container -->
+    <div id="tour-container"></div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[2000] pointer-events-none border border-white/10 backdrop-blur-md">
+        Ação Confirmada
+    </div>
+
+    <!-- Scripts Institucionais e Modulação -->
+    <script src="https://auditeduca.com.br/assets/js/utils.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/cookie-manager.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/seo-manager.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/main.js"></script>
+    <script src="https://auditeduca.com.br/accessibility-api.js"></script>
+
+    <script>
+        // Init Icons
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+
+        // Loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('preloader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }
+        });
+
+        // Toast Logic
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.replace('opacity-0', 'opacity-100');
+            t.classList.replace('translate-y-10', 'translate-y-0');
+            setTimeout(() => {
+                t.classList.replace('opacity-100', 'opacity-0');
+                t.classList.replace('translate-y-0', 'translate-y-10');
+            }, 3000);
+        }
+
+        // Tour Logic - Adaptado para Notificações Legais
+        let currentTourStep = 0;
+        const tourSteps = [
+            { id: 'hero', text: 'Bem-vindo aos Termos de Uso e Notificações Legais do Audit Educa.' },
+            { id: 'propriedade', text: 'Entenda como protegemos nosso Ativo Intangível (Direitos Autorais).' },
+            { id: 'responsabilidade', text: 'Limitação de Escopo: Nosso conteúdo é educacional, não consultoria.' },
+            { id: 'termos', text: 'Regras de convivência, cadastro e uso ético da plataforma.' }
+        ];
+
+        function startTour() {
+            currentTourStep = 0;
+            showTourStep();
+        }
+
+        function showTourStep() {
+            document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));
+            
+            const step = tourSteps[currentTourStep];
+            const el = document.getElementById(step.id);
+            if (!el) return;
+
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            setTimeout(() => {
+                el.classList.add('tour-highlight');
+                const rect = el.getBoundingClientRect();
+                const container = document.getElementById('tour-container');
+                
+                let topPos = rect.bottom + 15;
+                if (window.innerHeight - rect.bottom < 200) topPos = rect.top - 180;
+
+                container.innerHTML = `
+                    <div class="tour-popover" style="top: ${topPos}px; left: ${Math.max(10, rect.left)}px;">
+                        <p class="text-xs font-bold text-audit-navy mb-3 uppercase tracking-widest">Guia Legal (${currentTourStep + 1}/${tourSteps.length})</p>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">${step.text}</p>
+                        <div class="flex justify-between items-center">
+                            <button onclick="document.getElementById('tour-container').innerHTML = ''; document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight'));" class="text-[10px] font-bold text-slate-400 uppercase hover:text-red-500">Sair</button>
+                            <button onclick="currentTourStep++; if(currentTourStep >= ${tourSteps.length}) { document.getElementById('tour-container').innerHTML=''; document.querySelectorAll('.tour-highlight').forEach(e => e.classList.remove('tour-highlight')); } else { startTour(); }" class="bg-audit-gold text-audit-navy px-4 py-2 rounded-lg text-[10px] font-bold uppercase shadow-sm">Próximo</button>
+                        </div>
+                    </div>
+                `;
+            }, 500);
+        }
+
+        // Scroll Spy para Sidebar
+        window.addEventListener('scroll', () => {
+            const sections = ['hero', 'propriedade', 'responsabilidade', 'termos'];
+            const scrollPos = window.scrollY + 200;
+            
+            sections.forEach(sec => {
+                const el = document.getElementById(sec);
+                const link = document.querySelector(`a[href="#${sec}"]`);
+                if(el && link) {
+                    if(el.offsetTop <= scrollPos && (el.offsetTop + el.offsetHeight) > scrollPos) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
