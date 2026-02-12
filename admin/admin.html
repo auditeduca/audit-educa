@@ -2,7 +2,7 @@
 <html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Portal Administrativo | Audit Educa</title>
     
     <!-- Favicon -->
@@ -42,11 +42,18 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
         
+        /* Reset rigoroso para evitar scroll */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden !important;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
-            overflow: hidden; /* Força a ausência de scroll */
-            height: 100vh;
             display: flex;
             flex-direction: column;
         }
@@ -56,8 +63,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.5rem; /* Padding reduzido para ganhar espaço */
-            overflow: hidden;
+            padding: 0.5rem;
+            overflow: hidden !important;
+            position: relative;
         }
 
         .input-audit {
@@ -90,6 +98,10 @@
             background-size: cover;
             background-position: center;
         }
+
+        /* Esconder scrollbars em elementos com overflow interno se necessário */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 
     <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
@@ -107,38 +119,38 @@
             </div>
         </div>
 
-        <!-- CONTENTOR COMPACTO -->
-        <div id="login-container" class="w-full max-w-4xl bg-white rounded-2xl shadow-soft overflow-hidden flex flex-col md:flex-row fade-in-up border border-slate-100 max-h-[85vh]">
+        <!-- CONTENTOR COMPACTO E SEM OVERFLOW -->
+        <div id="login-container" class="w-full max-w-4xl bg-white rounded-2xl shadow-soft overflow-hidden flex flex-col md:flex-row fade-in-up border border-slate-100 max-h-[80vh]">
             
-            <!-- Lado Esquerdo: Identidade (Compacto) -->
+            <!-- Lado Esquerdo: Identidade -->
             <div class="hidden md:flex md:w-5/12 hero-bg p-6 lg:p-8 text-white flex-col justify-between relative">
                 <div class="relative z-10">
                     <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" 
                          alt="Audit Educa Logo" 
-                         class="h-10 lg:h-12 w-auto mb-5 brightness-0 invert opacity-100 drop-shadow-md">
+                         class="h-10 lg:h-12 w-auto mb-4 brightness-0 invert opacity-100 drop-shadow-md">
                     
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <span class="inline-block py-0.5 px-2 rounded bg-audit-gold/20 text-audit-gold text-[8px] font-bold uppercase tracking-widest mb-2 border border-audit-gold/30">Area Administrativa</span>
                         <h2 class="text-xl lg:text-2xl font-serif font-bold leading-tight mb-2 text-audit-gold">Gestão <br>AuditEduca</h2>
-                        <p class="text-slate-300 text-[11px] leading-relaxed">Portal Administrativo AuditEduca</p>
+                        <p class="text-slate-300 text-[10px] leading-relaxed">Portal Administrativo AuditEduca</p>
                     </div>
 
-                    <blockquote class="border-l border-audit-gold pl-3 italic text-slate-300 text-[10px]">
+                    <blockquote class="border-l border-audit-gold pl-3 italic text-slate-300 text-[9px]">
                         "Qualidade significa fazer certo quando ninguém está olhando."
-                        <footer class="text-audit-gold text-[9px] font-bold not-italic mt-1 tracking-wider uppercase">— Henry Ford</footer>
+                        <footer class="text-audit-gold text-[8px] font-bold not-italic mt-1 tracking-wider uppercase">— Henry Ford</footer>
                     </blockquote>
                 </div>
-                <div class="relative z-10 mt-3 text-[8px] text-slate-400 flex items-center gap-2 font-medium tracking-wide">
+                <div class="relative z-10 mt-2 text-[8px] text-slate-400 flex items-center gap-2 font-medium tracking-wide">
                     <i class="fas fa-shield-alt text-audit-gold text-[10px]"></i> AMBIENTE SEGURO
                 </div>
             </div>
 
-            <!-- Lado Direito: Formulário (Denso) -->
-            <div class="w-full md:w-7/12 p-6 lg:p-10 bg-white flex flex-col justify-center overflow-hidden">
+            <!-- Lado Direito: Formulário -->
+            <div class="w-full md:w-7/12 p-6 lg:p-8 bg-white flex flex-col justify-center overflow-hidden">
                 <div class="w-full max-w-sm mx-auto">
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <h1 class="text-lg lg:text-xl font-bold text-audit-navy mb-0.5 leading-tight">Acessando um mundo de conhecimento</h1>
-                        <p class="text-slate-400 text-[10px]">Área restrita para colaboradores</p>
+                        <p class="text-slate-400 text-[9px]">Área restrita para colaboradores</p>
                     </div>
 
                     <form id="login-form" class="space-y-3 lg:space-y-4">
@@ -146,24 +158,24 @@
                             <label class="block text-[9px] font-bold text-audit-navy uppercase tracking-widest mb-1 ml-1">E-mail Corporativo</label>
                             <div class="relative group">
                                 <i class="fas fa-user-circle absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-audit-gold transition-colors text-xs"></i>
-                                <input type="email" id="email" class="input-audit w-full pl-9 pr-3 py-2.5 rounded-lg text-xs bg-slate-50 focus:bg-white transition-colors" placeholder="admin@auditeduca.com.br" required>
+                                <input type="email" id="email" class="input-audit w-full pl-9 pr-3 py-2 rounded-lg text-xs bg-slate-50 focus:bg-white transition-colors" placeholder="admin@auditeduca.com.br" required>
                             </div>
                         </div>
 
                         <div>
                             <div class="flex justify-between items-center mb-1 px-1">
                                 <label class="text-[9px] font-bold text-audit-navy uppercase tracking-widest">Chave de Acesso</label>
-                                <a href="#" class="text-[9px] text-audit-gold hover:underline font-bold tracking-tight">Esqueceu?</a>
+                                <a href="#" class="text-[9px] text-audit-gold font-bold tracking-tight">Esqueceu?</a>
                             </div>
                             <div class="relative group">
                                 <i class="fas fa-key absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-audit-gold transition-colors text-xs"></i>
-                                <input type="password" id="password" class="input-audit w-full pl-9 pr-3 py-2.5 rounded-lg text-xs bg-slate-50 focus:bg-white transition-colors" placeholder="••••••••••••" required>
+                                <input type="password" id="password" class="input-audit w-full pl-9 pr-3 py-2 rounded-lg text-xs bg-slate-50 focus:bg-white transition-colors" placeholder="••••••••••••" required>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-2 px-1">
                             <input type="checkbox" id="remember" class="w-3 h-3 rounded border-slate-300 text-audit-navy focus:ring-audit-gold">
-                            <label for="remember" class="text-[10px] text-slate-500 font-medium cursor-pointer">Manter conectado</label>
+                            <label for="remember" class="text-[9px] text-slate-500 font-medium cursor-pointer">Manter conectado</label>
                         </div>
 
                         <button type="submit" id="btn-login" class="w-full bg-audit-navy hover:bg-slate-800 text-white font-bold py-3 rounded-lg transition-all duration-300 shadow-md shadow-audit-navy/10 transform active:scale-[0.98] flex items-center justify-center gap-2 mt-1">
@@ -172,10 +184,10 @@
                         </button>
                     </form>
 
-                    <!-- Logótipo Rodapé (Compacto) -->
-                    <div class="mt-6 pt-5 border-t border-slate-50 text-center flex justify-center">
+                    <!-- Logótipo Rodapé -->
+                    <div class="mt-4 lg:mt-6 pt-4 border-t border-slate-50 text-center flex justify-center">
                         <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" 
-                             class="h-8 lg:h-10 w-auto opacity-70 hover:opacity-100 transition-all duration-300" 
+                             class="h-8 lg:h-10 w-auto opacity-70" 
                              alt="AuditEduca Logo">
                     </div>
                 </div>
@@ -192,19 +204,19 @@
             const msg = document.getElementById('toast-msg');
             msg.innerText = message;
             toast.classList.remove('translate-x-full', 'opacity-0');
-            setTimeout(() => { toast.classList.add('translate-x-full', 'opacity-0'); }, 2500);
+            setTimeout(() => { toast.classList.add('translate-x-full', 'opacity-0'); }, 2000);
         }
 
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('btn-login');
-            btn.innerHTML = `<span class="loader mr-2"></span>`;
+            btn.innerHTML = `<span class="loader"></span>`;
             btn.disabled = true;
 
             setTimeout(() => {
                 showToast('Redirecionando...', 'success');
-                setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
-            }, 800);
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 500);
+            }, 600);
         });
     </script>
 </body>
