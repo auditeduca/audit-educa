@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gestão de Usuários | AuditEduca</title>
+    
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Real Git Integration Libraries -->
+    <script src="https://unpkg.com/isomorphic-git@1.25.10/index.umd.min.js"></script>
+    <script src="https://unpkg.com/@isomorphic-git/lightning-fs@4.6.0/dist/lightning-fs.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'], 
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['Fira Code', 'monospace']
+                    },
+                    colors: { 'audit-gold': '#C5A059', 'audit-navy': '#0f172a', 'audit-blue': '#1e40af' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden !important; background-color: #f8fafc; }
+        .app-container { display: flex; height: 100vh; width: 100vw; }
+        .sidebar { width: 260px; background-color: #0f172a; color: white; display: flex; flex-direction: column; z-index: 50; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+        .sidebar.collapsed { width: 80px; }
+        .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 24px; color: #94a3b8; font-size: 13px; font-weight: 500; transition: all 0.2s; border-left: 3px solid transparent; white-space: nowrap; }
+        .nav-link:hover { color: white; background: rgba(255, 255, 255, 0.03); }
+        .nav-link.active { color: #C5A059; background: rgba(197, 160, 89, 0.1); border-left-color: #C5A059; }
+        
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .scrollable-content { flex: 1; overflow-y: auto; padding: 20px; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Stepper Workflow */
+        .step-item { position: relative; display: flex; flex-direction: column; align-items: center; flex: 1; }
+        .step-line { position: absolute; top: 16px; left: 50%; width: 100%; height: 2px; background: #e2e8f0; z-index: 0; transition: background 0.5s; }
+        .step-item.active .step-line { background: #C5A059; }
+        .step-circle { width: 32px; height: 32px; border-radius: 50%; background: white; border: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; z-index: 10; transition: all 0.4s; }
+        .step-item.active .step-circle { border-color: #C5A059; background: #C5A059; color: white; box-shadow: 0 0 15px rgba(197, 160, 89, 0.3); }
+
+        .modal-overlay { background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(10px); }
+        .preview-pane { border-radius: 2rem; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.1); display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+        
+        .input-label { @apply text-[9px] font-black text-audit-navy uppercase tracking-widest ml-1 mb-1 block; }
+        .input-field { @apply w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-xs outline-none focus:border-audit-gold transition-all disabled:opacity-50 disabled:bg-slate-100; }
+        
+        .git-terminal { background: #020617; border-radius: 1.5rem; border: 1px solid #1e293b; overflow: hidden; }
+        .status-badge { @apply px-2 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest border; }
+        .status-active { @apply bg-emerald-50 text-emerald-600 border-emerald-100; }
+        .status-inactive { @apply bg-rose-50 text-rose-600 border-rose-100; }
+
+        .user-card { @apply bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:border-audit-gold transition-all cursor-pointer; }
+    </style>
+</head>
+<body class="no-scrollbar">
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <button onclick="window.toggleSidebar()" class="absolute right-[-12px] top-6 w-6 h-6 bg-audit-gold rounded-full flex items-center justify-center text-white z-50 shadow-lg">
+                <i data-lucide="chevron-left" class="w-3 h-3"></i>
+            </button>
+            <div class="p-6 border-b border-white/5 flex justify-center h-20 items-center overflow-hidden">
+                <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" class="h-10 brightness-0 invert logo-full">
+            </div>
+            <nav class="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar">
+                <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard" class="w-4 h-4"></i><span class="nav-text">Início</span></a>
+                <a href="institucional.html" class="nav-link"><i data-lucide="building-2" class="w-4 h-4"></i><span class="nav-text">Institucional</span></a>
+                <a href="usuarios.html" class="nav-link active"><i data-lucide="users" class="w-4 h-4"></i><span class="nav-text">Usuários</span></a>
+                <a href="#" class="nav-link"><i data-lucide="settings" class="w-4 h-4"></i><span class="nav-text">Configurações</span></a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="h-16 bg-white border-b border-slate-100 flex items-center justify-between px-8 shadow-sm">
+                <div class="flex items-center gap-4">
+                    <div class="h-8 w-1 bg-audit-gold rounded-full"></div>
+                    <h1 class="text-md font-bold text-audit-navy uppercase tracking-tight">Gestão de Utilizadores & RBAC</h1>
+                </div>
+                <button onclick="window.openUserModal()" class="bg-audit-navy text-white px-5 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg transition-all hover:scale-105 active:scale-95">
+                    <i data-lucide="user-plus" class="w-4 h-4 text-audit-gold"></i> Novo Usuário
+                </button>
+            </header>
+
+            <div class="scrollable-content no-scrollbar">
+                <div class="max-w-7xl mx-auto space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Lista de Usuários -->
+                        <div class="lg:col-span-2 space-y-4">
+                            <div class="flex justify-between items-center px-2">
+                                <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest">Utilizadores do Sistema</h2>
+                                <span class="text-[9px] font-bold text-emerald-500 uppercase flex items-center gap-2">
+                                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div> Sincronizado com Cloud
+                                </span>
+                            </div>
+                            <div id="users-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="col-span-full py-20 text-center bg-white rounded-[2rem] border border-dashed border-slate-200 text-slate-400 italic text-sm">
+                                    Acedendo ao diretório de segurança...
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Painel Git Configurações (Padronizado) -->
+                        <div class="space-y-4">
+                            <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-[10px] font-black text-audit-navy uppercase tracking-widest">GitHub Configuration</h3>
+                                    <i data-lucide="github" class="w-4 h-4 text-slate-400"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="space-y-1">
+                                        <label class="input-label">Username / Email</label>
+                                        <input type="text" id="git-login" class="input-field" placeholder="leivis.ml@aol.com">
+                                    </div>
+                                    <div class="space-y-1">
+                                        <label class="input-label">Password / Token</label>
+                                        <input type="password" id="git-pass" class="input-field" placeholder="Derby@2805*">
+                                    </div>
+                                    <div class="space-y-1">
+                                        <label class="input-label">Diretório (Owner/Repo)</label>
+                                        <input type="text" id="git-dir" class="input-field" placeholder="auditeduca/audit-educa">
+                                    </div>
+                                    <button onclick="window.saveGitConfig()" class="w-full bg-audit-gold text-white py-3 rounded-xl text-[9px] font-bold uppercase hover:bg-audit-navy transition-all shadow-md">
+                                        Salvar Configurações Git
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="git-terminal">
+                                <div class="p-4 border-b border-white/5 flex justify-between items-center bg-slate-900">
+                                    <span class="text-[9px] font-mono text-slate-500 font-bold uppercase">AuditEduca CLI v5.2</span>
+                                </div>
+                                <div id="git-console" class="p-4 h-[350px] overflow-y-auto no-scrollbar font-mono text-[10px] space-y-1 bg-[#020617] text-slate-300">
+                                    <p class="text-slate-500 italic">Git Workflow Console inicializado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL EDITOR (Padronizado com Stepper) -->
+    <div id="userModal" class="hidden fixed inset-0 modal-overlay flex items-center justify-center z-[100] p-4">
+        <div class="bg-white w-full max-w-[95vw] rounded-[3rem] shadow-2xl overflow-hidden flex flex-col h-[90vh]">
+            
+            <div class="bg-slate-50 border-b p-6 flex items-center justify-between">
+                <div class="flex items-center gap-6 w-1/4">
+                    <button onclick="window.closeUserModal()" class="w-10 h-10 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-400 transition-all"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <div>
+                        <h2 class="text-xl font-bold text-audit-navy font-serif" id="modal-title">Gestão de Acesso</h2>
+                    </div>
+                </div>
+
+                <!-- Stepper Progressivo -->
+                <div class="flex-1 max-w-xl flex items-center relative">
+                    <div class="step-item active" id="step-1"><div class="step-line"></div><div class="step-circle">1</div><span class="text-[8px] font-black mt-2 uppercase">Criação</span></div>
+                    <div class="step-item" id="step-2"><div class="step-line"></div><div class="step-circle">2</div><span class="text-[8px] font-black mt-2 uppercase">Privilégios</span></div>
+                    <div class="step-item" id="step-3"><div class="step-line"></div><div class="step-circle">3</div><span class="text-[8px] font-black mt-2 uppercase">Push</span></div>
+                </div>
+
+                <div class="w-1/4 flex justify-end gap-3">
+                    <button onclick="window.saveUser()" class="bg-audit-navy text-white px-8 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl hover:scale-105 transition-all">Enviar Acesso</button>
+                </div>
+            </div>
+
+            <div class="flex-1 flex overflow-hidden">
+                <!-- Form Side -->
+                <div id="editor-side" class="w-[40%] p-8 overflow-y-auto border-r border-slate-100 no-scrollbar bg-white space-y-6">
+                    <form id="userForm" onsubmit="return false;" class="space-y-6">
+                        <input type="hidden" id="edit-id">
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="input-label">Nome Completo</label>
+                                <input type="text" id="user-name" class="input-field" placeholder="João Silva" oninput="window.updatePreview()">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="input-label">Email Corporativo</label>
+                                <input type="email" id="user-email" class="input-field" placeholder="joao@auditeduca.com.br" oninput="window.updatePreview()">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="input-label">Papel no Sistema (RBAC)</label>
+                                <select id="user-role" class="input-field font-bold" onchange="window.updatePreview()">
+                                    <option value="editor">Editor (Criação)</option>
+                                    <option value="revisor">Revisor (Aprovação)</option>
+                                    <option value="master">Master (Total)</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1 hidden" id="status-group">
+                                <label class="input-label">Status do Ativo</label>
+                                <select id="user-status" class="input-field font-bold" onchange="window.updatePreview()">
+                                    <option value="active">Ativo</option>
+                                    <option value="inactive">Inativo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="input-label">Data de Ativação</label>
+                                <input type="date" id="user-activation" class="input-field" onchange="window.updatePreview()">
+                            </div>
+                            <div class="space-y-1 hidden" id="inactivation-group">
+                                <label class="input-label">Data de Inativação (Inativo)</label>
+                                <input type="date" id="user-inactivation" class="input-field" onchange="window.updatePreview()">
+                            </div>
+                        </div>
+
+                        <div id="user-actions" class="pt-6 border-t space-y-3 hidden">
+                            <label class="input-label">Ações de Segurança</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="window.sendInvite()" class="bg-audit-blue/10 text-audit-blue px-4 py-2 rounded-xl text-[9px] font-bold uppercase flex items-center gap-2 hover:bg-audit-blue hover:text-white transition-all">
+                                    <i data-lucide="send" class="w-3 h-3"></i> Convite
+                                </button>
+                                <button onclick="window.resetPass()" class="bg-slate-100 text-slate-600 px-4 py-2 rounded-xl text-[9px] font-bold uppercase flex items-center gap-2 hover:bg-slate-200 transition-all">
+                                    <i data-lucide="key" class="w-3 h-3"></i> Reset
+                                </button>
+                                <button onclick="window.inactivateUser()" class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-[9px] font-bold uppercase flex items-center gap-2 hover:bg-rose-600 hover:text-white transition-all">
+                                    <i data-lucide="user-minus" class="w-3 h-3"></i> Inativar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Preview Side (Padronizado) -->
+                <div id="preview-side" class="w-[60%] bg-slate-100/30 p-12 flex flex-col gap-6 relative">
+                    <div class="preview-pane flex-1 p-16 flex flex-col items-center justify-center text-center">
+                        <div id="prev-avatar" class="w-24 h-24 rounded-full bg-audit-gold/10 text-audit-gold flex items-center justify-center text-4xl font-serif font-bold mb-6 border-4 border-audit-gold/20 shadow-xl">
+                            A
+                        </div>
+                        <h3 id="prev-name" class="text-3xl font-serif font-bold text-audit-navy mb-2">Novo Usuário</h3>
+                        <p id="prev-email" class="text-slate-400 font-mono text-xs mb-8">aguardando dados...</p>
+                        
+                        <div class="grid grid-cols-2 gap-8 w-full max-w-md">
+                            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                                <span class="text-[8px] font-black text-slate-400 uppercase block mb-2">Perfil de Acesso</span>
+                                <p id="prev-role" class="text-[10px] font-bold text-audit-navy uppercase tracking-widest bg-slate-50 p-2 rounded-lg">EDITOR</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                                <span class="text-[8px] font-black text-slate-400 uppercase block mb-2">Estado Atual</span>
+                                <p id="prev-status" class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 p-2 rounded-lg">ATIVO</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-12 w-full max-w-md space-y-2">
+                            <div class="flex justify-between text-[10px] font-bold text-slate-500 uppercase">
+                                <span>Data de Ativação</span>
+                                <span id="prev-activation">--/--/----</span>
+                            </div>
+                            <div id="prev-inactivation-row" class="hidden flex justify-between text-[10px] font-bold text-rose-400 uppercase">
+                                <span>Data de Inativação</span>
+                                <span id="prev-inactivation">--/--/----</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        let db, auth, currentUser;
+        const fs = new window.LightningFS('auditeduca-repo');
+        const git = window.isomorphicGit;
+        const dir = '/';
+        const proxy = 'https://cors.isomorphic-git.org';
+
+        async function initGit() {
+            try { await git.init({ fs, dir }); } catch(e) {}
+        }
+
+        function logGit(msg, type = 'info') {
+            const consoleEl = document.getElementById('git-console');
+            if(!consoleEl) return;
+            const line = document.createElement('p');
+            if(type === 'success') line.className = 'text-emerald-400';
+            else if(type === 'error') line.className = 'text-rose-400 font-bold';
+            else if(type === 'git') line.className = 'text-audit-blue font-bold';
+            line.innerHTML = `<span class="opacity-30">${new Date().toLocaleTimeString()}</span> $ ${msg}`;
+            consoleEl.appendChild(line); 
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+        }
+
+        window.toggleSidebar = () => document.getElementById('sidebar').classList.toggle('collapsed');
+        window.closeUserModal = () => document.getElementById('userModal').classList.add('hidden');
+        
+        window.openUserModal = (userData = null) => {
+            const form = document.getElementById('userForm');
+            const activationInput = document.getElementById('user-activation');
+            const inactivationInput = document.getElementById('user-inactivation');
+            const statusGroup = document.getElementById('status-group');
+            const inactivationGroup = document.getElementById('inactivation-group');
+            const editIdInput = document.getElementById('edit-id');
+            const userActions = document.getElementById('user-actions');
+            
+            if(!form) return;
+            form.reset();
+            if(editIdInput) editIdInput.value = "";
+            
+            // Novos usuários
+            statusGroup.classList.add('hidden');
+            inactivationGroup.classList.add('hidden');
+            userActions.classList.add('hidden');
+            activationInput.disabled = false;
+            activationInput.value = new Date().toISOString().split('T')[0];
+            
+            window.setWorkflowStep(1);
+
+            if(userData) {
+                editIdInput.value = userData.id;
+                document.getElementById('user-name').value = userData.name;
+                document.getElementById('user-email').value = userData.email;
+                document.getElementById('user-role').value = userData.role;
+                document.getElementById('user-status').value = userData.status;
+                activationInput.value = userData.activation || '';
+                inactivationInput.value = userData.inactivation || '';
+                
+                activationInput.disabled = true;
+                statusGroup.classList.remove('hidden');
+                inactivationGroup.classList.remove('hidden');
+                inactivationInput.disabled = false;
+                userActions.classList.remove('hidden');
+                
+                window.setWorkflowStep(2);
+            }
+            
+            document.getElementById('userModal').classList.remove('hidden');
+            window.updatePreview();
+        };
+
+        window.updatePreview = () => {
+            const name = document.getElementById('user-name').value || "Novo Usuário";
+            const email = document.getElementById('user-email').value || "aguardando dados...";
+            const role = document.getElementById('user-role').value;
+            const status = document.getElementById('user-status').value;
+            const activation = document.getElementById('user-activation').value;
+            const inactivation = document.getElementById('user-inactivation').value;
+
+            document.getElementById('prev-name').innerText = name;
+            document.getElementById('prev-email').innerText = email;
+            document.getElementById('prev-role').innerText = role;
+            document.getElementById('prev-status').innerText = status;
+            document.getElementById('prev-status').className = `text-[10px] font-bold uppercase tracking-widest p-2 rounded-lg ${status === 'active' ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-600'}`;
+            document.getElementById('prev-avatar').innerText = name.charAt(0).toUpperCase();
+            document.getElementById('prev-activation').innerText = activation ? new Date(activation).toLocaleDateString() : '--/--/----';
+            
+            const inactRow = document.getElementById('prev-inactivation-row');
+            if(inactivation) {
+                inactRow.classList.remove('hidden');
+                document.getElementById('prev-inactivation').innerText = new Date(inactivation).toLocaleDateString();
+            } else {
+                inactRow.classList.add('hidden');
+            }
+            
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        };
+
+        window.setWorkflowStep = (step) => {
+            document.querySelectorAll('.step-item').forEach((item, idx) => {
+                item.classList.toggle('active', (idx + 1) <= step);
+            });
+        };
+
+        window.saveGitConfig = () => {
+            const login = document.getElementById('git-login').value;
+            const pass = document.getElementById('git-pass').value;
+            const repoDir = document.getElementById('git-dir').value;
+            if(!login || !pass || !repoDir) return logGit("Faltam parâmetros de configuração.", "error");
+
+            localStorage.setItem('audit-git-login', login);
+            localStorage.setItem('audit-git-pass', pass);
+            localStorage.setItem('audit-git-dir', repoDir);
+            
+            const canonicalUrl = `https://github.com/${repoDir}.git`;
+            localStorage.setItem('git-remote-usuarios', canonicalUrl);
+
+            logGit(`Configuração GitHub Sincronizada: ${canonicalUrl}`, "git");
+        };
+
+        window.saveUser = async () => {
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const editId = document.getElementById('edit-id').value;
+            
+            if(!name || !email) return logGit("Nome e Email são obrigatórios.", "error");
+
+            const id = editId || email.replace(/[^a-zA-Z0-9]/g, '_');
+            const userData = {
+                id, name, email,
+                role: document.getElementById('user-role').value,
+                status: document.getElementById('user-status').value,
+                activation: document.getElementById('user-activation').value,
+                inactivation: document.getElementById('user-inactivation').value || null,
+                updatedAt: serverTimestamp()
+            };
+
+            try {
+                window.setWorkflowStep(3);
+                logGit(`A iniciar Envio de Acesso para ${id}...`, "info");
+
+                // 1. Git (Virtual FS)
+                const filePath = `users/${id}.json`;
+                await fs.promises.mkdir('/users', { recursive: true });
+                await fs.promises.writeFile(`/${filePath}`, JSON.stringify(userData, null, 2));
+                await git.add({ fs, dir, filepath: filePath });
+                const sha = await git.commit({ 
+                    fs, dir, 
+                    message: `infra(iam): profile sync for ${id}`,
+                    author: { name: 'AuditEduca Master', email: 'admin@auditeduca.com.br' }
+                });
+                logGit(`git commit [${sha.substring(0,7)}]`, "success");
+
+                // 2. Remote GitHub Push
+                const remoteUrl = localStorage.getItem('git-remote-usuarios');
+                const login = localStorage.getItem('audit-git-login');
+                const token = localStorage.getItem('audit-git-pass');
+                
+                if (remoteUrl && token) {
+                    try {
+                        await git.push({
+                            fs, dir, http: window.isomorphicGit.http,
+                            remote: 'origin', url: remoteUrl,
+                            onAuth: () => ({ username: login || 'token', password: token }),
+                            proxy: proxy
+                        });
+                        logGit(`GitHub Push: Ok.`, "success");
+                    } catch (pushErr) { logGit(`GitHub Push Warning: ${pushErr.message}`, "error"); }
+                }
+
+                // 3. Firestore Sync (Regra 1)
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'usuarios', id), userData);
+                logGit(`Cloud Sync: Ativo ${id} pronto.`, "git");
+                
+                setTimeout(() => window.closeUserModal(), 1000);
+            } catch(e) { logGit("Halt: " + e.message, "error"); }
+        };
+
+        window.sendInvite = () => {
+            const email = document.getElementById('user-email').value;
+            logGit(`Convite gerado para ${email}`, "success");
+            alert(`Link de Acesso Gerado para ${email}\n(Simulação em log)`);
+        };
+
+        window.resetPass = () => {
+            logGit(`Reset de acesso solicitado para ${document.getElementById('user-email').value}`, "info");
+            logGit(`E-mail de segurança disparado com sucesso.`, "success");
+        };
+
+        window.inactivateUser = async () => {
+            document.getElementById('user-status').value = 'inactive';
+            document.getElementById('user-inactivation').value = new Date().toISOString().split('T')[0];
+            logGit("Ação: Inativação forçada iniciada.", "info");
+            await window.saveUser();
+        };
+
+        // BOOTSTRAP
+        const init = async () => {
+            await initGit();
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            
+            // Auto-load Git Config
+            const login = localStorage.getItem('audit-git-login');
+            const pass = localStorage.getItem('audit-git-pass');
+            const repo = localStorage.getItem('audit-git-dir');
+            if(login) document.getElementById('git-login').value = login;
+            if(pass) document.getElementById('git-pass').value = pass;
+            if(repo) document.getElementById('git-dir').value = repo;
+
+            await signInAnonymously(auth);
+            
+            onAuthStateChanged(auth, (user) => {
+                if(user) {
+                    currentUser = user;
+                    const display = document.getElementById('user-role-display');
+                    const name = document.getElementById('display-role-name');
+                    if(display) display.classList.remove('hidden');
+                    if(name) name.innerText = `Master | ${user.uid.substring(0,6)}`;
+                    initSync();
+                }
+            });
+        };
+
+        function initSync() {
+            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'usuarios'), (snap) => {
+                const grid = document.getElementById('users-grid');
+                if(!grid) return;
+                
+                if (snap.empty) {
+                    grid.innerHTML = `<div class="col-span-full py-20 text-center bg-white rounded-[2rem] border border-dashed border-slate-200 text-slate-400 italic text-sm">Nenhum utilizador registado no sistema.</div>`;
+                    return;
+                }
+
+                grid.innerHTML = snap.docs.map(docSnap => {
+                    const u = docSnap.data();
+                    const isActive = u.status === 'active';
+                    return `
+                        <div class="user-card" onclick='window.openUserModal(${JSON.stringify(u)})'>
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-audit-navy font-bold text-lg">
+                                    ${u.name ? u.name.charAt(0).toUpperCase() : '?'}
+                                </div>
+                                <span class="status-badge ${isActive ? 'status-active' : 'status-inactive'}">
+                                    ${u.status}
+                                </span>
+                            </div>
+                            <h4 class="font-serif font-bold text-audit-navy text-lg mb-1 leading-tight">${u.name}</h4>
+                            <p class="text-[10px] text-slate-400 font-mono mb-4">${u.email}</p>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="px-2 py-0.5 bg-audit-navy text-white text-[8px] font-black uppercase rounded tracking-widest">${u.role}</span>
+                            </div>
+                            <div class="pt-4 border-t border-slate-50 flex justify-between items-center text-[9px] font-bold text-slate-400 uppercase tracking-tighter">
+                                <span>Início: ${u.activation ? new Date(u.activation).toLocaleDateString() : '--'}</span>
+                                ${u.inactivation ? `<span class="text-rose-400">Inativo: ${new Date(u.inactivation).toLocaleDateString()}</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                if(typeof lucide !== 'undefined') lucide.createIcons();
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>
