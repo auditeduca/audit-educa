@@ -1,0 +1,6 @@
+// firebase.json - configuração para deploy das functions
+{
+  "functions": {
+    "source": "firebase-functions"
+  }
+}

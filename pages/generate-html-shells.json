@@ -1,0 +1,5 @@
+{
+  "title": "generate-html-shells.js",
+  "description": "Script para geração automática de páginas HTML casca a partir de JSON aprovado.",
+  "html": "<main><section><h1>Automação de Páginas HTML</h1><p>Este script automatiza a criação de páginas HTML casca para cada JSON aprovado no Firebase. Documentação e instruções de uso disponíveis no repositório.</p></section></main>"
+}

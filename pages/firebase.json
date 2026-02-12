@@ -1,0 +1,5 @@
+{
+  "title": "firebase.json",
+  "description": "Arquivo de configuração do Firebase para o projeto Audit Educa.",
+  "html": "<main><section><h1>Configuração Firebase</h1><p>Este arquivo representa a configuração do Firebase para o projeto. Não é uma página de conteúdo, mas pode ser documentado aqui para referência administrativa.</p></section></main>"
+}
