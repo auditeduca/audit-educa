@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Geração de PDF e Captura -->
+    <!-- PDF Generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
@@ -42,33 +42,26 @@
         .scrollable-content { flex: 1; overflow-y: auto; padding: 20px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         
-        .git-terminal { background: #020617; border-radius: 16px; border: 1px solid #1e293b; display: flex; flex-direction: column; }
-        .policy-card { transition: all 0.3s; border: 1px solid #f1f5f9; cursor: pointer; border-radius: 2rem; background: white; padding: 1.5rem; }
-        .policy-card:hover { border-color: #C5A059; transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-
-        .modal-overlay { background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(15px); }
-        .policy-editor { height: 260px; resize: none; font-family: 'Fira Code', monospace; }
-        
-        /* Stepper Workflow Animado */
+        /* Stepper Workflow */
         .step-item { position: relative; display: flex; flex-direction: column; align-items: center; flex: 1; }
         .step-line { position: absolute; top: 16px; left: 50%; width: 100%; height: 2px; background: #e2e8f0; z-index: 0; transition: background 0.5s; }
         .step-item.active .step-line { background: #C5A059; }
-        .step-circle { width: 32px; height: 32px; border-radius: 50%; background: white; border: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; z-index: 10; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .step-item.active .step-circle { border-color: #C5A059; background: #C5A059; color: white; transform: scale(1.1); box-shadow: 0 0 20px rgba(197, 160, 89, 0.4); }
+        .step-circle { width: 32px; height: 32px; border-radius: 50%; background: white; border: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; z-index: 10; transition: all 0.4s; }
+        .step-item.active .step-circle { border-color: #C5A059; background: #C5A059; color: white; box-shadow: 0 0 15px rgba(197, 160, 89, 0.3); }
 
-        .preview-pane { border-radius: 2rem; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
-        
-        .pdf-sim { width: 100%; aspect-ratio: 1/1.41; background: white; padding: 60px; position: relative; max-width: 650px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.05); }
+        .modal-overlay { background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(10px); }
+        .preview-pane { border-radius: 2rem; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.1); display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+        .pdf-sim { width: 100%; aspect-ratio: 1/1.41; background: white; padding: 60px; position: relative; max-width: 650px; margin: 0 auto; }
         .pdf-header-bar { height: 6px; background: #0f172a; width: 100%; position: absolute; top: 0; left: 0; }
-
-        .input-group { @apply space-y-1; }
-        .input-label { @apply text-[9px] font-black text-audit-navy uppercase tracking-widest ml-1; }
+        
+        .input-label { @apply text-[9px] font-black text-audit-navy uppercase tracking-widest ml-1 mb-1 block; }
         .input-field { @apply w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-xs outline-none focus:border-audit-gold transition-all; }
+        .policy-editor { height: 260px; resize: none; font-family: 'Fira Code', monospace; }
 
-        /* Estilos de Fontes do Portal */
-        .font-sans-preview { font-family: 'Inter', sans-serif; }
-        .font-serif-preview { font-family: 'Playfair Display', serif; }
-        .font-mono-preview { font-family: 'Fira Code', monospace; }
+        .status-badge { @apply px-2 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest; }
+        .status-draft { @apply bg-slate-100 text-slate-500; }
+        .status-pending { @apply bg-amber-100 text-amber-600; }
+        .status-approved { @apply bg-emerald-100 text-emerald-600; }
     </style>
 </head>
 <body class="no-scrollbar">
@@ -83,34 +76,26 @@
                 <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" class="h-10 brightness-0 invert logo-full">
                 <div class="logo-icon text-audit-gold"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
             </div>
-
             <nav class="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar">
-                <div class="px-6 mb-2 mt-4"><p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">Menu</p></div>
                 <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard" class="w-4 h-4"></i><span class="nav-text">Início</span></a>
                 <a href="institucional.html" class="nav-link active"><i data-lucide="building-2" class="w-4 h-4"></i><span class="nav-text">Institucional</span></a>
                 <a href="conteudo.html" class="nav-link"><i data-lucide="book-open" class="w-4 h-4"></i><span class="nav-text">Conteúdo</span></a>
                 <a href="ferramentas.html" class="nav-link"><i data-lucide="wrench" class="w-4 h-4"></i><span class="nav-text">Ferramentas</span></a>
-                <a href="carreiras.html" class="nav-link"><i data-lucide="briefcase" class="w-4 h-4"></i><span class="nav-text">Carreiras</span></a>
-                <a href="contato.html" class="nav-link"><i data-lucide="mail" class="w-4 h-4"></i><span class="nav-text">Fale Conosco</span></a>
-
-                <div class="px-6 mb-2 mt-6"><p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">Administração</p></div>
                 <a href="usuarios.html" class="nav-link"><i data-lucide="users" class="w-4 h-4"></i><span class="nav-text">Usuários</span></a>
                 <a href="configuracoes.html" class="nav-link"><i data-lucide="settings" class="w-4 h-4"></i><span class="nav-text">Configurações</span></a>
             </nav>
         </aside>
 
-        <!-- Conteúdo Principal -->
+        <!-- Main Content -->
         <main class="main-content">
-            <header class="h-16 bg-white border-b border-slate-100 flex items-center justify-between px-8 z-20 shadow-sm">
+            <header class="h-16 bg-white border-b border-slate-100 flex items-center justify-between px-8 shadow-sm">
                 <div class="flex items-center gap-4">
                     <div class="h-8 w-1 bg-audit-gold rounded-full"></div>
                     <h1 class="text-md font-bold text-audit-navy uppercase tracking-tight">Ativos de Conformidade - Biblioteca de Políticas</h1>
                 </div>
-                <div class="flex items-center gap-3">
-                    <button onclick="window.openPolicyModal()" class="bg-audit-navy text-white px-5 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg hover:bg-slate-800 transition-all">
-                        <i data-lucide="plus" class="w-4 h-4 text-audit-gold"></i> Nova Política
-                    </button>
-                </div>
+                <button onclick="window.openPolicyModal()" class="bg-audit-navy text-white px-5 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg">
+                    <i data-lucide="plus" class="w-4 h-4 text-audit-gold"></i> Nova Política
+                </button>
             </header>
 
             <div class="scrollable-content no-scrollbar">
@@ -124,13 +109,12 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="git-terminal">
                             <div class="p-4 border-b border-white/5 flex justify-between items-center">
                                 <span class="text-[9px] font-mono text-slate-500 font-bold uppercase">Git Workflow Console</span>
                             </div>
                             <div id="git-console" class="p-4 h-[400px] overflow-y-auto no-scrollbar console-line text-[10px] space-y-1 bg-[#020617] text-slate-300">
-                                <p class="text-slate-500 italic">AuditEduca CLI v4.8 initialized.</p>
+                                <p class="text-slate-500 italic">AuditEduca CLI v5.0 initialized.</p>
                             </div>
                         </div>
                     </div>
@@ -145,143 +129,119 @@
             
             <!-- Workflow Header -->
             <div class="bg-slate-50 border-b p-6 flex items-center justify-between">
-                <div class="flex items-center gap-6 w-1/3">
+                <div class="flex items-center gap-6 w-1/4">
                     <button onclick="window.closePolicyModal()" class="w-10 h-10 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-400"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
                     <div>
                         <h2 class="text-xl font-bold text-audit-navy font-serif" id="modal-mode">Editor Normativo</h2>
-                        <p class="text-[9px] font-black text-audit-gold uppercase tracking-[0.2em]">Compliance Asset Management</p>
                     </div>
                 </div>
 
-                <!-- Animação de Fluxo de Aprovação -->
+                <!-- Stepper -->
                 <div class="flex-1 max-w-xl flex items-center relative">
-                    <div class="step-item active" id="step-1">
-                        <div class="step-line"></div>
-                        <div class="step-circle">1</div>
-                        <span class="text-[8px] font-black mt-2 text-slate-500 uppercase">Criação</span>
-                    </div>
-                    <div class="step-item" id="step-2">
-                        <div class="step-line"></div>
-                        <div class="step-circle">2</div>
-                        <span class="text-[8px] font-black mt-2 text-slate-500 uppercase">Revisão</span>
-                    </div>
-                    <div class="step-item" id="step-3">
-                        <div class="step-circle">3</div>
-                        <span class="text-[8px] font-black mt-2 text-slate-500 uppercase">Aprovação</span>
-                    </div>
+                    <div class="step-item active" id="step-1"><div class="step-line"></div><div class="step-circle">1</div><span class="text-[8px] font-black mt-2 uppercase">Criação</span></div>
+                    <div class="step-item" id="step-2"><div class="step-line"></div><div class="step-circle">2</div><span class="text-[8px] font-black mt-2 uppercase">Revisão</span></div>
+                    <div class="step-item" id="step-3"><div class="step-circle">3</div><span class="text-[8px] font-black mt-2 uppercase">Aprovação</span></div>
                 </div>
 
-                <div class="w-1/3 flex justify-end gap-3">
-                    <button id="wf-save" onclick="window.saveAction('draft')" class="bg-slate-200 text-slate-600 px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-slate-300">Salvar Rascunho</button>
+                <div class="w-1/4 flex justify-end gap-3">
+                    <button id="wf-save" onclick="window.saveAction('draft')" class="bg-slate-200 text-slate-600 px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest">Salvar</button>
                     <button id="wf-review" onclick="window.saveAction('pending')" class="bg-audit-blue text-white px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl">Enviar p/ Revisão</button>
-                    <button id="wf-approve" onclick="window.saveAction('approved')" class="hidden bg-emerald-600 text-white px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl shadow-emerald-500/20">Aprovar & Publicar</button>
+                    <button id="wf-approve" onclick="window.saveAction('approved')" class="hidden bg-emerald-600 text-white px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl">Aprovar & Publicar</button>
                 </div>
             </div>
 
             <div class="flex-1 flex overflow-hidden">
-                <!-- Painel de Inputs (Editor) -->
-                <div id="editor-side" class="w-[40%] p-8 overflow-y-auto border-r border-slate-100 no-scrollbar bg-white space-y-8">
-                    
-                    <form id="policyForm" onsubmit="return false;" class="space-y-8">
+                <!-- Editor Side -->
+                <div id="editor-side" class="w-[35%] p-8 overflow-y-auto border-r border-slate-100 no-scrollbar bg-white space-y-6">
+                    <form id="policyForm" onsubmit="return false;" class="space-y-6">
                         <input type="hidden" id="edit-id">
                         
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="input-group">
-                                <label class="input-label">Slug de Identificação</label>
+                            <div class="space-y-1">
+                                <label class="input-label">Identificador (Slug)</label>
                                 <input type="text" id="policy-type" class="input-field" placeholder="ex: politica-dados">
                             </div>
-                            <div class="input-group">
-                                <label class="input-label">Tipo de Ativo</label>
+                            <div class="space-y-1">
+                                <label class="input-label">Tipo de Política</label>
                                 <select id="policy-category" class="input-field font-bold">
-                                    <option value="geral">Normativa Geral</option>
-                                    <option value="privacidade">Privacidade & Dados</option>
-                                    <option value="seguranca">Segurança Digital</option>
-                                    <option value="conduta">Ética & Conduta</option>
-                                    <option value="compliance">Compliance Legal</option>
+                                    <option value="Privacidade">Privacidade & Dados</option>
+                                    <option value="Seguranca">Segurança da Informação</option>
+                                    <option value="Conduta">Código de Conduta</option>
+                                    <option value="Compliance">Compliance & Ética</option>
+                                    <option value="Operacional">Operacional</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="input-group">
-                                <label class="input-label">Título do Ativo</label>
+                            <div class="space-y-1">
+                                <label class="input-label">Título Oficial</label>
                                 <input type="text" id="policy-title" oninput="window.updatePreview()" class="input-field" placeholder="Título Portal">
                             </div>
-                            <div class="input-group">
+                            <div class="space-y-1">
                                 <label class="input-label">Versão (Auto)</label>
                                 <input type="text" id="policy-version" readonly class="input-field bg-slate-100 font-black text-audit-gold">
                             </div>
                         </div>
 
-                        <div class="input-group">
+                        <div class="space-y-1">
                             <label class="input-label">Tags (Busca)</label>
                             <input type="text" id="policy-tags" oninput="window.updatePreview()" class="input-field" placeholder="juridico, ti, lgpd">
                         </div>
 
-                        <div class="input-group">
-                            <label class="input-label">Corpo Normativo</label>
-                            <textarea id="policy-content" oninput="window.updatePreview()" class="input-field policy-editor" placeholder="Markdown suportado..."></textarea>
+                        <div class="space-y-1">
+                            <label class="input-label">Conteúdo Normativo</label>
+                            <textarea id="policy-content" oninput="window.updatePreview()" class="input-field policy-editor"></textarea>
                         </div>
 
-                        <!-- Leia Também Estruturado -->
-                        <div class="pt-6 border-t border-slate-100 space-y-4">
-                            <h4 class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Configuração: Leia Também</h4>
-                            <div id="related-items-container" class="space-y-4"></div>
-                            <button onclick="window.addRelatedItem()" class="text-[9px] font-bold text-audit-gold uppercase flex items-center gap-2 hover:opacity-70 transition">
-                                <i data-lucide="plus-circle" class="w-4 h-4"></i> Adicionar Recomendação
-                            </button>
+                        <!-- Leia Também -->
+                        <div class="pt-6 border-t space-y-4">
+                            <label class="input-label">Configuração: Leia Também</label>
+                            <div id="related-items-container" class="space-y-3"></div>
+                            <button onclick="window.addRelatedItem()" class="text-[9px] font-bold text-audit-gold uppercase flex items-center gap-2"><i data-lucide="plus-circle" class="w-3 h-3"></i> Adicionar Recomendação</button>
                         </div>
 
-                        <!-- Referências ABNT -->
-                        <div class="pt-6 border-t border-slate-100 space-y-4">
+                        <!-- Referências -->
+                        <div class="pt-6 border-t space-y-4">
                             <div class="flex justify-between items-center">
-                                <h4 class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Referências (ABNT)</h4>
-                                <select id="font-style-select" onchange="window.updatePreview()" class="text-[9px] bg-slate-50 p-2 border rounded-xl font-bold outline-none">
-                                    <option value="font-sans-preview">Sans Serif (Inter)</option>
-                                    <option value="font-serif-preview">Serif (Playfair)</option>
-                                    <option value="font-mono-preview">Monospace (Fira)</option>
+                                <label class="input-label">Referências (ABNT)</label>
+                                <select id="font-style-select" onchange="window.updatePreview()" class="text-[9px] bg-slate-50 p-1 border rounded font-bold">
+                                    <option value="font-sans">Inter (Sans)</option>
+                                    <option value="font-serif">Playfair (Serif)</option>
+                                    <option value="font-mono">Fira (Mono)</option>
                                 </select>
                             </div>
-                            <div id="references-container" class="space-y-4"></div>
-                            <button onclick="window.addReference()" class="text-[9px] font-bold text-audit-gold uppercase flex items-center gap-2 hover:opacity-70 transition">
-                                <i data-lucide="plus-circle" class="w-4 h-4"></i> Adicionar Referência Técnica
-                            </button>
+                            <div id="references-container" class="space-y-3"></div>
+                            <button onclick="window.addReference()" class="text-[9px] font-bold text-audit-gold uppercase flex items-center gap-2"><i data-lucide="plus-circle" class="w-3 h-3"></i> Adicionar Referência</button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Painel de Preview Duplo -->
-                <div id="preview-side" class="w-[60%] bg-slate-100/30 p-8 flex flex-col gap-6 relative">
+                <!-- Preview Side -->
+                <div id="preview-side" class="w-[65%] bg-slate-100/30 p-8 flex flex-col gap-6 relative">
                     <div class="flex items-center gap-2 bg-white p-2 rounded-2xl w-fit shadow-xl border border-slate-200 self-center z-10">
-                        <button onclick="window.setPreviewMode('shell')" id="tab-shell" class="px-6 py-2 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all bg-audit-gold text-white shadow-lg">Interface Portal</button>
-                        <button onclick="window.setPreviewMode('pdf')" id="tab-pdf" class="px-6 py-2 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all text-slate-400">Relatório PDF</button>
+                        <button onclick="window.setPreviewMode('shell')" id="tab-shell" class="px-6 py-2 text-[10px] font-black uppercase rounded-xl transition-all bg-audit-gold text-white shadow-lg">Interface Portal</button>
+                        <button onclick="window.setPreviewMode('pdf')" id="tab-pdf" class="px-6 py-2 text-[10px] font-black uppercase rounded-xl transition-all text-slate-400">Relatório PDF</button>
                     </div>
 
-                    <!-- Preview Portal (template-policy.html) -->
+                    <!-- Preview Portal -->
                     <div id="view-shell" class="preview-pane flex-1">
                         <div class="flex-1 overflow-y-auto p-16 bg-white no-scrollbar" id="shell-render">
-                            <!-- Injeção de Template -->
-                            <div class="max-w-4xl mx-auto">
-                                <header class="flex justify-between items-center mb-16 pb-8 border-b border-slate-100">
-                                    <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" class="h-8">
-                                    <div class="text-right">
-                                        <span class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Compliance Asset</span>
-                                        <p class="text-[8px] text-slate-400">Última Revisão: <span id="shell-date">--/--/--</span></p>
-                                    </div>
-                                </header>
-                                <h1 class="text-5xl font-serif font-bold text-audit-navy mb-8 leading-tight" id="shell-title">Título</h1>
-                                <div id="shell-tags" class="flex flex-wrap gap-2 mb-10"></div>
-                                <div class="prose prose-slate max-w-none text-sm text-slate-600 leading-loose" id="shell-content"></div>
-                                
-                                <div class="mt-20 pt-10 border-t border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-12">
-                                    <div>
-                                        <h4 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em] mb-6">Referências Técnicas</h4>
-                                        <div id="shell-references" class="space-y-4 text-[11px] text-slate-500 leading-relaxed"></div>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em] mb-6">Leia Também:</h4>
-                                        <div id="shell-related" class="space-y-4"></div>
-                                    </div>
+                            <header class="flex justify-between items-center mb-16 pb-8 border-b border-slate-100">
+                                <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" class="h-8">
+                                <span class="text-[10px] font-black text-audit-navy uppercase tracking-widest">Compliance Asset</span>
+                            </header>
+                            <h1 class="text-5xl font-serif font-bold text-audit-navy mb-8 leading-tight" id="shell-title">Título</h1>
+                            <div id="shell-tags" class="flex flex-wrap gap-2 mb-10"></div>
+                            <div class="prose prose-slate max-w-none text-sm text-slate-600 leading-loose" id="shell-content"></div>
+                            <div class="mt-20 pt-10 border-t border-slate-100 grid grid-cols-2 gap-12">
+                                <div>
+                                    <h4 class="text-[11px] font-black text-audit-navy uppercase mb-6">Referências Técnicas</h4>
+                                    <div id="shell-references" class="space-y-2 text-[11px] text-slate-500 italic"></div>
+                                </div>
+                                <div>
+                                    <h4 class="text-[11px] font-black text-audit-navy uppercase mb-6">Leia Também</h4>
+                                    <div id="shell-related" class="space-y-4"></div>
                                 </div>
                             </div>
                         </div>
@@ -292,126 +252,80 @@
                         <div class="flex-1 overflow-y-auto bg-slate-400/10 p-10 flex flex-col no-scrollbar">
                             <div class="pdf-sim shadow-2xl" id="pdf-export-area">
                                 <div class="pdf-header-bar"></div>
-                                <div class="flex justify-between items-start mb-16">
-                                    <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" class="h-6 opacity-30">
-                                    <div class="text-right">
-                                        <p class="text-[9px] font-black text-audit-navy uppercase tracking-widest">Ativo Normativo</p>
-                                        <p class="text-[8px] text-slate-400" id="pdf-date-field">Data: --/--/----</p>
-                                    </div>
-                                </div>
                                 <h2 class="text-3xl font-serif font-bold text-audit-navy mb-4 border-b pb-4" id="pdf-title">Título</h2>
                                 <p class="text-[10px] font-bold text-audit-gold mb-10 uppercase tracking-widest" id="pdf-ver-field">v1.0.0</p>
                                 <div class="text-[11px] text-slate-700 leading-relaxed text-justify space-y-4" id="pdf-content"></div>
-                                
                                 <div class="mt-20 pt-10 border-t border-slate-100">
                                     <p class="text-[9px] font-black text-audit-navy uppercase mb-4">Referências (ABNT):</p>
-                                    <div id="pdf-references" class="space-y-2 text-[8px] text-slate-500 italic"></div>
+                                    <div id="pdf-references" class="space-y-2 text-[8px] text-slate-500"></div>
                                 </div>
-
-                                <footer class="absolute bottom-12 left-12 right-12 border-t pt-8 flex justify-between items-center">
-                                    <span class="text-[8px] text-slate-300">© AuditEduca Hub de Conformidade Jurídica</span>
-                                    <span class="text-[8px] text-audit-navy font-black tracking-widest uppercase">auditeduca.com.br</span>
-                                </footer>
+                                <footer class="absolute bottom-12 left-12 right-12 border-t pt-8 text-[8px] text-slate-300">© AuditEduca Hub de Conformidade</footer>
                             </div>
-                        </div>
-                        <div class="p-6 bg-white border-t flex justify-center">
-                            <button onclick="window.exportPDF()" class="bg-audit-navy text-white px-10 py-4 rounded-2xl font-bold uppercase text-[11px] tracking-widest flex items-center gap-3 shadow-2xl">
-                                <i data-lucide="download" class="w-5 h-5 text-audit-gold"></i> Exportar Ativo Jurídico
-                            </button>
+                            <button onclick="window.exportPDF()" class="mt-10 mx-auto bg-audit-navy text-white px-12 py-4 rounded-2xl font-bold uppercase text-[11px] flex items-center gap-4"><i data-lucide="download"></i> Exportar PDF Jurídico</button>
                         </div>
                     </div>
 
-                    <button onclick="window.returnToEdit()" id="btn-return-edit" class="absolute top-8 right-8 bg-audit-gold text-white p-3 rounded-full shadow-2xl hover:scale-110 transition-all z-20" title="Retornar para Edição">
-                        <i data-lucide="edit-3" class="w-6 h-6"></i>
-                    </button>
+                    <button onclick="window.returnToEdit()" id="btn-return-edit" class="absolute top-8 right-8 bg-audit-gold text-white p-3 rounded-full shadow-2xl z-20"><i data-lucide="edit-3"></i></button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase & Lógica -->
+    <!-- Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, doc, setDoc, getDoc, deleteDoc, collection, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : { apiKey: "" };
+        // FALLBACK CONFIG PARA EVITAR CRASH
+        const rawConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : null;
+        const firebaseConfig = rawConfig ? JSON.parse(rawConfig) : { projectId: "audit-educa-fallback" };
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
 
+        let db, auth, currentUser;
         const consoleEl = document.getElementById('git-console');
-        let currentUser = null;
         let relatedItems = [];
         let references = [];
 
         function logGit(msg, type = 'info') {
             const line = document.createElement('p');
-            let label = `<span class="opacity-30">[${new Date().toLocaleTimeString()}]</span> `;
-            switch(type) {
-                case 'success': label += `<span class="text-emerald-500 font-bold">DEPLOY:</span> `; break;
-                case 'error': label += `<span class="text-rose-500 font-bold">HALT:</span> `; break;
-                case 'git': label += `<span class="text-blue-400 font-bold">COMMIT:</span> `; break;
-                default: label += `<span class="text-slate-500 font-bold">LOG:</span> `;
-            }
-            line.innerHTML = `${label} ${msg}`;
+            line.innerHTML = `<span class="opacity-30">[${new Date().toLocaleTimeString()}]</span> ${msg}`;
             consoleEl.appendChild(line);
             consoleEl.scrollTop = consoleEl.scrollHeight;
         }
 
-        // --- HANDLERS GLOBAIS ---
+        // EXPOSIÇÃO GLOBAL DE FUNÇÕES
         window.toggleSidebar = () => document.getElementById('sidebar').classList.toggle('collapsed');
-        
-        window.setPreviewMode = (mode) => {
-            const isShell = mode === 'shell';
-            document.getElementById('view-shell').classList.toggle('hidden', !isShell);
-            document.getElementById('view-pdf').classList.toggle('hidden', isShell);
-            
-            const tabShell = document.getElementById('tab-shell');
-            const tabPdf = document.getElementById('tab-pdf');
-            
-            if(isShell) {
-                tabShell.className = "px-6 py-2 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all bg-audit-gold text-white shadow-lg";
-                tabPdf.className = "px-6 py-2 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all text-slate-400";
-            } else {
-                tabShell.className = "px-6 py-2 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all text-slate-400";
-                tabPdf.className = "px-6 py-2 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all bg-audit-gold text-white shadow-lg";
-            }
-        };
+        window.closePolicyModal = () => document.getElementById('policyModal').classList.add('hidden');
+        window.returnToEdit = () => document.getElementById('editor-side').scrollTo({top: 0, behavior: 'smooth'});
 
         window.openPolicyModal = () => {
             const form = document.getElementById('policyForm');
             if(form) form.reset();
-            
             document.getElementById('edit-id').value = "";
             document.getElementById('policy-version').value = "v1.0.0";
-            relatedItems = [];
-            references = [];
+            relatedItems = []; references = [];
             window.renderLists();
             window.setWorkflowStep(1);
             window.updatePreview();
             document.getElementById('policyModal').classList.remove('hidden');
         };
 
-        window.closePolicyModal = () => document.getElementById('policyModal').classList.add('hidden');
-        window.returnToEdit = () => document.getElementById('editor-side').scrollTo({ top: 0, behavior: 'smooth' });
-
-        window.setWorkflowStep = (step) => {
-            document.querySelectorAll('.step-item').forEach((item, idx) => {
-                item.classList.toggle('active', (idx + 1) <= step);
-            });
-            document.getElementById('wf-approve').classList.toggle('hidden', step < 3);
+        window.setPreviewMode = (mode) => {
+            const isShell = mode === 'shell';
+            document.getElementById('view-shell').classList.toggle('hidden', !isShell);
+            document.getElementById('view-pdf').classList.toggle('hidden', isShell);
+            document.getElementById('tab-shell').className = isShell ? "px-6 py-2 text-[10px] font-black uppercase rounded-xl bg-audit-gold text-white" : "px-6 py-2 text-[10px] font-black uppercase rounded-xl text-slate-400";
+            document.getElementById('tab-pdf').className = !isShell ? "px-6 py-2 text-[10px] font-black uppercase rounded-xl bg-audit-gold text-white" : "px-6 py-2 text-[10px] font-black uppercase rounded-xl text-slate-400";
         };
 
-        // --- CAMPOS DINÂMICOS ---
         window.addRelatedItem = () => {
             relatedItems.push({ u: '', t: '', d: '', i: 'link' });
             window.renderLists();
         };
 
         window.addReference = () => {
-            references.push({ author: '', title: '', edition: '', city: '', pub: '', year: '' });
+            references.push({ author: '', title: '', city: '', year: '' });
             window.renderLists();
         };
 
@@ -423,221 +337,130 @@
         };
 
         window.renderLists = () => {
-            const relContainer = document.getElementById('related-items-container');
-            relContainer.innerHTML = relatedItems.map((item, idx) => `
-                <div class="bg-slate-50 p-4 rounded-2xl space-y-3 border border-slate-100">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[8px] font-black text-slate-300">LINK RELACIONADO #${idx + 1}</span>
-                        <button onclick="window.removeItem('related', ${idx})" class="text-rose-400"><i data-lucide="x-circle" class="w-3 h-3"></i></button>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" placeholder="Título" class="input-field p-2" value="${item.t}" oninput="relatedItems[${idx}].t = this.value; window.updatePreview()">
-                        <input type="text" placeholder="URL" class="input-field p-2" value="${item.u}" oninput="relatedItems[${idx}].u = this.value; window.updatePreview()">
-                    </div>
-                    <input type="text" placeholder="Explicação Curta" class="input-field p-2" value="${item.d}" oninput="relatedItems[${idx}].d = this.value; window.updatePreview()">
-                    <select class="input-field p-2" onchange="relatedItems[${idx}].i = this.value; window.updatePreview()">
-                        <option value="link" ${item.i === 'link' ? 'selected' : ''}>Ícone: Link</option>
-                        <option value="file-text" ${item.i === 'file-text' ? 'selected' : ''}>Ícone: Arquivo</option>
-                        <option value="shield" ${item.i === 'shield' ? 'selected' : ''}>Ícone: Seguro</option>
-                        <option value="info" ${item.i === 'info' ? 'selected' : ''}>Ícone: Info</option>
-                    </select>
-                </div>
-            `).join('');
+            const relCont = document.getElementById('related-items-container');
+            relCont.innerHTML = relatedItems.map((item, idx) => `
+                <div class="bg-slate-50 p-3 rounded-xl space-y-2 border">
+                    <div class="flex justify-between items-center"><span class="text-[8px] font-bold opacity-30">RECOMENDAÇÃO #${idx+1}</span><button onclick="window.removeItem('related', ${idx})" class="text-rose-400"><i data-lucide="x"></i></button></div>
+                    <div class="grid grid-cols-2 gap-2"><input type="text" placeholder="Título" class="input-field p-2" value="${item.t}" oninput="relatedItems[${idx}].t=this.value; window.updatePreview()">
+                    <input type="text" placeholder="URL" class="input-field p-2" value="${item.u}" oninput="relatedItems[${idx}].u=this.value; window.updatePreview()"></div>
+                </div>`).join('');
 
-            const refContainer = document.getElementById('references-container');
-            refContainer.innerHTML = references.map((ref, idx) => `
-                <div class="bg-slate-50 p-4 rounded-2xl space-y-2 border border-slate-100">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[8px] font-black text-slate-300">REF ABNT #${idx + 1}</span>
-                        <button onclick="window.removeItem('ref', ${idx})" class="text-rose-400"><i data-lucide="x-circle" class="w-3 h-3"></i></button>
-                    </div>
-                    <input type="text" placeholder="AUTOR (SOBRENOME, Nome)" class="input-field p-2" value="${ref.author}" oninput="references[${idx}].author = this.value; window.updatePreview()">
-                    <input type="text" placeholder="Título da Obra" class="input-field p-2" value="${ref.title}" oninput="references[${idx}].title = this.value; window.updatePreview()">
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" placeholder="Cidade" class="input-field p-2" value="${ref.city}" oninput="references[${idx}].city = this.value; window.updatePreview()">
-                        <input type="text" placeholder="Ano" class="input-field p-2" value="${ref.year}" oninput="references[${idx}].year = this.value; window.updatePreview()">
-                    </div>
-                </div>
-            `).join('');
-            if(typeof lucide !== 'undefined') lucide.createIcons();
+            const refCont = document.getElementById('references-container');
+            refCont.innerHTML = references.map((ref, idx) => `
+                <div class="bg-slate-50 p-3 rounded-xl space-y-2 border">
+                    <div class="flex justify-between items-center"><span class="text-[8px] font-bold opacity-30">ABNT #${idx+1}</span><button onclick="window.removeItem('ref', ${idx})" class="text-rose-400"><i data-lucide="x"></i></button></div>
+                    <input type="text" placeholder="Autor" class="input-field p-2" value="${ref.author}" oninput="references[${idx}].author=this.value; window.updatePreview()">
+                    <div class="grid grid-cols-2 gap-2"><input type="text" placeholder="Obra" class="input-field p-2" value="${ref.title}" oninput="references[${idx}].title=this.value; window.updatePreview()">
+                    <input type="text" placeholder="Ano" class="input-field p-2" value="${ref.year}" oninput="references[${idx}].year=this.value; window.updatePreview()"></div>
+                </div>`).join('');
+            lucide.createIcons();
         };
 
-        // --- SYNC PREVIEW ---
         window.updatePreview = () => {
             const title = document.getElementById('policy-title').value || "Título";
             const content = document.getElementById('policy-content').value || "Corpo normativo...";
-            const fontClass = document.getElementById('font-style-select').value;
+            const fontStyle = document.getElementById('font-style-select').value;
             const tags = document.getElementById('policy-tags').value.split(',').filter(t => t.trim());
 
-            const renderArea = document.getElementById('shell-render');
-            renderArea.className = `flex-1 overflow-y-auto p-16 bg-white no-scrollbar ${fontClass}`;
-            document.getElementById('pdf-export-area').className = `pdf-sim shadow-2xl ${fontClass}`;
-
+            document.getElementById('shell-render').className = `flex-1 overflow-y-auto p-16 bg-white no-scrollbar ${fontStyle}`;
             document.getElementById('shell-title').innerText = title;
             document.getElementById('shell-content').innerHTML = content.replace(/\n/g, '<br>');
-            document.getElementById('shell-date').innerText = new Date().toLocaleDateString();
 
-            document.getElementById('shell-tags').innerHTML = tags.map(t => `
-                <a href="busca-e-conteudo.html?tag=${encodeURIComponent(t.trim())}" class="px-3 py-1 bg-audit-navy/5 text-audit-navy rounded-full text-[9px] font-black hover:bg-audit-gold hover:text-white transition uppercase tracking-widest">
-                    #${t.trim()}
-                </a>
-            `).join('');
+            document.getElementById('shell-tags').innerHTML = tags.map(t => `<a href="busca-e-conteudo.html?tag=${encodeURIComponent(t.trim())}" class="px-2 py-1 bg-slate-100 text-[8px] font-bold rounded-full">#${t.trim()}</a>`).join('');
+            document.getElementById('shell-related').innerHTML = relatedItems.map(i => `<div class="p-3 bg-slate-50 rounded-xl border"><strong>${i.t}</strong></div>`).join('');
 
-            document.getElementById('shell-related').innerHTML = relatedItems.map(item => `
-                <a href="${item.u || '#'}" class="p-4 bg-slate-50 border border-slate-100 rounded-2xl flex items-center gap-4 hover:border-audit-gold transition">
-                    <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-audit-gold shadow-sm"><i data-lucide="${item.i || 'link'}" class="w-5 h-5"></i></div>
-                    <div>
-                        <p class="text-[9px] font-black text-audit-navy uppercase tracking-widest">${item.t || 'Link'}</p>
-                        <p class="text-[8px] text-slate-400 font-medium">${item.d || 'Saber mais'}</p>
-                    </div>
-                </a>
-            `).join('');
-
-            const formattedRefs = references.map(r => {
-                if(!r.author) return '';
-                return `<strong>${r.author.toUpperCase()}.</strong> <em>${r.title}</em>. ${r.city}, ${r.year}.`;
-            }).filter(r => r).map(r => `<p class="mb-2">${r}</p>`).join('');
-            
-            document.getElementById('shell-references').innerHTML = formattedRefs;
-            document.getElementById('pdf-references').innerHTML = formattedRefs;
+            const refHtml = references.map(r => `<p>${r.author.toUpperCase()}. ${r.title}. ${r.year}.</p>`).join('');
+            document.getElementById('shell-references').innerHTML = refHtml;
+            document.getElementById('pdf-references').innerHTML = refHtml;
 
             document.getElementById('pdf-title').innerText = title;
             document.getElementById('pdf-content').innerHTML = content.replace(/\n/g, '<br>');
             document.getElementById('pdf-ver-field').innerText = `Versão: ${document.getElementById('policy-version').value}`;
-            document.getElementById('pdf-date-field').innerText = `Emissão: ${new Date().toLocaleDateString()}`;
-
-            if(typeof lucide !== 'undefined') lucide.createIcons();
+            
+            lucide.createIcons();
         };
 
-        // --- FIREBASE SAVE ---
+        window.setWorkflowStep = (step) => {
+            document.querySelectorAll('.step-item').forEach((item, idx) => item.classList.toggle('active', (idx+1) <= step));
+            document.getElementById('wf-approve').classList.toggle('hidden', step < 3);
+        };
+
         window.saveAction = async (status) => {
-            if (!currentUser) return logGit("Erro: Utilizador não autenticado.", "error");
-            
+            if(!currentUser) return logGit("Utilizador não autenticado", "error");
             const slug = document.getElementById('policy-type').value;
-            if (!slug) return logGit("Erro: Identificador (Slug) é obrigatório.", "error");
+            if(!slug) return logGit("Slug obrigatório", "error");
 
             const data = {
-                type: slug,
-                category: document.getElementById('policy-category').value,
-                version: document.getElementById('policy-version').value,
-                title: document.getElementById('policy-title').value,
-                content: document.getElementById('policy-content').value,
-                tags: document.getElementById('policy-tags').value.split(',').map(t => t.trim()).filter(t => t),
-                relatedItems,
-                references,
-                fontStyle: document.getElementById('font-style-select').value,
-                status,
-                updatedAt: serverTimestamp(),
-                author: currentUser.uid
+                type: slug, category: document.getElementById('policy-category').value, version: document.getElementById('policy-version').value,
+                title: document.getElementById('policy-title').value, content: document.getElementById('policy-content').value,
+                tags: document.getElementById('policy-tags').value.split(',').map(t=>t.trim()).filter(t=>t),
+                relatedItems, references, status, updatedAt: serverTimestamp()
             };
 
             try {
-                logGit(`Commit iniciado status=${status.toUpperCase()} para /${slug}.html`, "git");
                 await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'politicas', slug), data);
-                
-                if (status === 'approved') {
-                    logGit(`Deployment Final: Ficheiro template-policy.html gerado.`, "success");
-                    logGit(`Acesso live em auditeduca.com.br/sobre-nos/${slug}`, "success");
-                } else {
-                    logGit(`Ativo legal guardado como ${status}.`, "success");
-                }
-                
+                logGit(`Ativo ${slug} guardado como ${status}`, "success");
                 window.closePolicyModal();
-            } catch (err) { logGit("Database Halt: " + err.message, "error"); }
-        };
-
-        window.editPolicy = async (id) => {
-            logGit(`A ler referências do Ativo: ${id}...`);
-            const snap = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'politicas', id));
-            if (snap.exists()) {
-                const d = snap.data();
-                document.getElementById('edit-id').value = id;
-                document.getElementById('policy-type').value = d.type || id;
-                document.getElementById('policy-category').value = d.category || 'geral';
-                document.getElementById('policy-title').value = d.title || '';
-                document.getElementById('policy-content').value = d.content || '';
-                document.getElementById('policy-tags').value = (d.tags || []).join(', ');
-                document.getElementById('font-style-select').value = d.fontStyle || 'font-sans-preview';
-                
-                relatedItems = d.relatedItems || [];
-                references = d.references || [];
-                
-                // Versionamento automático
-                const oldVer = d.version || 'v1.0.0';
-                const parts = oldVer.replace('v', '').split('.').map(Number);
-                parts[2]++; // Bump patch
-                document.getElementById('policy-version').value = `v${parts.join('.')}`;
-                
-                const stepsMap = { 'draft': 1, 'pending': 2, 'approved': 3 };
-                window.setWorkflowStep(stepsMap[d.status] || 1);
-                
-                window.renderLists();
-                window.updatePreview();
-                document.getElementById('policyModal').classList.remove('hidden');
-            }
+            } catch(e) { logGit("Erro ao guardar: " + e.message, "error"); }
         };
 
         window.exportPDF = async () => {
             const { jsPDF } = window.jspdf;
             const element = document.getElementById('pdf-export-area');
-            logGit("A processar renderização jurídica para PDF...");
             const canvas = await html2canvas(element, { scale: 2 });
-            const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const imgProps = pdf.getImageProperties(imgData);
-            const imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
-            
-            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, imgHeight);
-            pdf.save(`AuditEduca_Ativo_${document.getElementById('policy-type').value}.pdf`);
-            logGit("PDF exportado com selo de integridade AuditEduca.", "success");
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
+            pdf.save("Politica_AuditEduca.pdf");
         };
 
-        // --- AUTH & LIST ---
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                currentUser = user;
-                initSync();
-                logGit(`Auth Status: Ligação estabelecida (UID: ${user.uid.substring(0,6)}...)`);
-            } else {
-                signInAnonymously(auth).catch(err => logGit("Auth Fail: " + err.message, "error"));
+        // INICIALIZAÇÃO FIREBASE COM PROTEÇÃO
+        try {
+            if(!firebaseConfig.projectId || firebaseConfig.projectId.includes("fallback")) {
+                throw new Error("Configuração Firebase ausente. Verifique __firebase_config.");
             }
-        });
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            
+            onAuthStateChanged(auth, (user) => {
+                if(user) { currentUser = user; initSync(); } 
+                else { signInAnonymously(auth).catch(e => logGit("Auth Error: " + e.message)); }
+            });
+        } catch(e) {
+            logGit(e.message, "error");
+            console.error(e);
+        }
 
         function initSync() {
-            if (!currentUser) return;
-            const col = collection(db, 'artifacts', appId, 'public', 'data', 'politicas');
-            onSnapshot(col, (snap) => {
+            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'politicas'), (snap) => {
                 const grid = document.getElementById('policies-grid');
-                if (snap.empty) {
-                    grid.innerHTML = `<div class="col-span-full py-10 text-center bg-white rounded-[2rem] border border-dashed border-slate-200">Sem ativos na biblioteca.</div>`;
-                    return;
-                }
                 grid.innerHTML = snap.docs.map(docSnap => {
                     const d = docSnap.data();
-                    const statusColors = { 'draft': 'bg-slate-100 text-slate-400', 'pending': 'bg-amber-100 text-amber-600', 'approved': 'bg-emerald-100 text-emerald-600' };
-                    return `
-                        <div class="policy-card bg-white rounded-[2rem] p-6 shadow-sm flex flex-col justify-between" onclick="window.editPolicy('${docSnap.id}')">
-                            <div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <div class="w-10 h-10 bg-audit-navy/5 text-audit-navy rounded-xl flex items-center justify-center"><i data-lucide="file-check" class="w-5 h-5"></i></div>
-                                    <span class="text-[8px] font-black px-2 py-1 ${statusColors[d.status || 'draft']} rounded-lg uppercase tracking-widest">${d.status || 'draft'}</span>
-                                </div>
-                                <h4 class="text-sm font-bold text-audit-navy font-serif truncate mb-1">${d.title || 'Sem Título'}</h4>
-                                <p class="text-[9px] text-slate-400 italic">/${d.category || 'geral'}/${docSnap.id}</p>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-slate-50 flex justify-between items-center">
-                                <span class="text-[9px] font-black text-audit-gold uppercase">${d.version || 'v1.0.0'}</span>
-                                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-200"></i>
-                            </div>
-                        </div>
-                    `;
+                    return `<div class="policy-card shadow-sm" onclick="window.editPolicy('${docSnap.id}')">
+                        <h4 class="font-bold text-audit-navy">${d.title}</h4>
+                        <div class="mt-4 flex justify-between items-center"><span class="status-badge status-${d.status}">${d.status}</span><span class="text-[9px] font-black">${d.version}</span></div>
+                    </div>`;
                 }).join('');
-                if(typeof lucide !== 'undefined') lucide.createIcons();
-            }, (err) => logGit("Sync Stop: " + err.message, "error"));
+                lucide.createIcons();
+            });
         }
-        
-        if(typeof lucide !== 'undefined') lucide.createIcons();
+
+        window.editPolicy = async (id) => {
+            const snap = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'politicas', id));
+            if(snap.exists()) {
+                const d = snap.data();
+                document.getElementById('edit-id').value = id;
+                document.getElementById('policy-type').value = d.type || id;
+                document.getElementById('policy-title').value = d.title;
+                document.getElementById('policy-content').value = d.content;
+                document.getElementById('policy-tags').value = (d.tags || []).join(', ');
+                relatedItems = d.relatedItems || []; references = d.references || [];
+                window.renderLists(); window.updatePreview();
+                document.getElementById('policyModal').classList.remove('hidden');
+            }
+        };
+
+        lucide.createIcons();
     </script>
 </body>
 </html>
