@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrativo - Audit-Educa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-item:hover { background-color: rgba(255, 255, 255, 0.1); }
+        .active-link { background-color: rgba(255, 255, 255, 0.2); border-left: 4px solid #6366f1; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+    </style>
+</head>
+<body class="bg-[#f8fafc] flex h-screen overflow-hidden text-slate-900">
+
+    <!-- Sidebar Lateral -->
+    <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-2xl z-50">
+        <div class="p-8 flex items-center gap-3">
+            <div class="bg-indigo-600 p-2 rounded-xl shadow-lg shadow-indigo-500/20">
+                <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+            </div>
+            <div>
+                <span class="text-xl font-bold block tracking-tight">Audit-Educa</span>
+                <span class="text-[10px] text-indigo-400 uppercase font-bold tracking-widest">Painel Administrativo</span>
+            </div>
+        </div>
+
+        <nav class="flex-1 px-4 space-y-1">
+            <p class="px-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2">Principal</p>
+            <a href="#" class="sidebar-item active-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 text-indigo-400"></i>
+                <span class="font-semibold text-sm">Dashboard Geral</span>
+            </a>
+            
+            <p class="px-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-6 mb-2">Gestão de Conteúdo</p>
+            <a href="questoes.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all group">
+                <i data-lucide="database" class="w-5 h-5 text-slate-400 group-hover:text-white"></i>
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Banco de Questões</span>
+            </a>
+            <a href="provas.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all group">
+                <i data-lucide="file-text" class="w-5 h-5 text-slate-400 group-hover:text-white"></i>
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Simulados e Provas</span>
+            </a>
+            <a href="conteudos.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all group">
+                <i data-lucide="book-open" class="w-5 h-5 text-slate-400 group-hover:text-white"></i>
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Materiais de Estudo</span>
+            </a>
+
+            <p class="px-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-6 mb-2">Utilizadores</p>
+            <a href="usuarios.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all group">
+                <i data-lucide="users" class="w-5 h-5 text-slate-400 group-hover:text-white"></i>
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Alunos e Staff</span>
+            </a>
+        </nav>
+
+        <div class="p-6 bg-slate-800/50 m-4 rounded-2xl border border-slate-700/50">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="text-xs text-slate-400 font-medium">Servidor: Online</span>
+            </div>
+            <p class="text-[10px] text-slate-500 leading-tight">Versão: 2.4.0-stable<br>Último Backup: há 1h</p>
+        </div>
+
+        <div class="p-4 border-t border-slate-800">
+            <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-all group">
+                <i data-lucide="log-out" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                <span class="font-semibold text-sm">Sair do Sistema</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Área de Conteúdo Principal -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+        
+        <!-- Header Superior -->
+        <header class="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-10 shrink-0">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800">Dashboard de Controlo</h1>
+                <p class="text-xs text-slate-500 font-medium">Análise de Dados e Gestão</p>
+            </div>
+            
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex items-center bg-slate-100 px-4 py-2 rounded-full border border-slate-200">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400"></i>
+                    <input type="text" placeholder="Pesquisar..." class="bg-transparent border-none focus:ring-0 text-sm px-2 w-48 outline-none">
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <button class="relative p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-indigo-600 rounded-full border-2 border-white"></span>
+                    </button>
+                    
+                    <div class="h-8 w-[1px] bg-slate-200"></div>
+
+                    <div class="flex items-center gap-3 cursor-pointer group">
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition-colors">Admin Geral</p>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Acesso Total</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200 ring-2 ring-indigo-50">
+                            <i data-lucide="user-check" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Corpo do Dashboard -->
+        <div class="flex-1 overflow-y-auto p-10 bg-[#f8fafc]">
+            <div class="max-w-7xl mx-auto space-y-10">
+                
+                <!-- Secção de Destaque -->
+                <div class="bg-gradient-to-r from-indigo-600 to-violet-700 rounded-[2rem] p-8 text-white shadow-xl shadow-indigo-200 relative overflow-hidden">
+                    <div class="relative z-10 max-w-lg">
+                        <h2 class="text-3xl font-bold mb-2">Bem-vindo ao Dashboard</h2>
+                        <p class="text-indigo-100 text-sm leading-relaxed mb-6 opacity-90">
+                            Monitorize o progresso dos alunos e faça a gestão completa dos exames de qualificação técnica (QTG, CVM, BCB, etc) a partir daqui.
+                        </p>
+                        <div class="flex gap-4">
+                            <button class="bg-white text-indigo-700 px-6 py-2.5 rounded-xl font-bold text-sm shadow-sm hover:bg-indigo-50 transition-colors">Relatórios Semanais</button>
+                        </div>
+                    </div>
+                    <i data-lucide="activity" class="absolute right-10 top-1/2 -translate-y-1/2 w-48 h-48 text-white/10 rotate-12"></i>
+                </div>
+
+                <!-- Grelha de Estatísticas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="p-3 bg-indigo-50 text-indigo-600 rounded-2xl">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Total Questões</p>
+                        <p class="text-3xl font-black text-slate-800 mt-1">3,492</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="p-3 bg-rose-50 text-rose-600 rounded-2xl">
+                                <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Simulados Ativos</p>
+                        <p class="text-3xl font-black text-slate-800 mt-1">128</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="p-3 bg-amber-50 text-amber-600 rounded-2xl">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Online Agora</p>
+                        <p class="text-3xl font-black text-slate-800 mt-1">245</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="p-3 bg-emerald-50 text-emerald-600 rounded-2xl">
+                                <i data-lucide="trending-up" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Taxa de Sucesso</p>
+                        <p class="text-3xl font-black text-slate-800 mt-1">68.5%</p>
+                    </div>
+                </div>
+
+                <!-- Atividades Recentes -->
+                <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-8 border-b border-slate-50 flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-slate-800">Atividades do Sistema</h3>
+                        <button class="text-indigo-600 text-xs font-bold">Ver Histórico</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-slate-400 text-[10px] uppercase font-bold">
+                                <tr>
+                                    <th class="px-8 py-4">Responsável</th>
+                                    <th class="px-8 py-4">Ação Realizada</th>
+                                    <th class="px-8 py-4">Horário</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50">
+                                <tr class="hover:bg-slate-50/50 transition-colors">
+                                    <td class="px-8 py-5 flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold">FC</div>
+                                        <span class="text-sm font-semibold text-slate-700">Filipe Costa</span>
+                                    </td>
+                                    <td class="px-8 py-5 text-sm text-slate-600">Inseriu questões no módulo QTG</td>
+                                    <td class="px-8 py-5 text-xs text-slate-400">há 12 mins</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/50 transition-colors">
+                                    <td class="px-8 py-5 flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold">AS</div>
+                                        <span class="text-sm font-semibold text-slate-700">Ana Silva</span>
+                                    </td>
+                                    <td class="px-8 py-5 text-sm text-slate-600">Validou simulado CVM</td>
+                                    <td class="px-8 py-5 text-xs text-slate-400">há 45 mins</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Logout -->
+    <div id="logoutModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[100]">
+        <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl max-w-md w-full text-center">
+            <div class="w-20 h-20 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="log-out" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">Sair do Painel?</h3>
+            <p class="text-slate-500 text-sm mb-8">Deseja realmente encerrar a sua sessão administrativa?</p>
+            <div class="flex gap-4">
+                <button onclick="closeLogoutModal()" class="flex-1 px-6 py-3 border border-slate-200 rounded-2xl text-slate-600 font-bold hover:bg-slate-50 transition-colors">Cancelar</button>
+                <button onclick="confirmLogout()" class="flex-1 px-6 py-3 bg-slate-900 rounded-2xl text-white font-bold hover:bg-slate-800 transition-all">Sim, Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function logout() {
+            document.getElementById('logoutModal').classList.remove('hidden');
+        }
+
+        function closeLogoutModal() {
+            document.getElementById('logoutModal').classList.add('hidden');
+        }
+
+        function confirmLogout() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
