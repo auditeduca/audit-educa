@@ -45,7 +45,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
-            overflow: hidden; /* Remove scroll global */
+            overflow: hidden; /* Força a ausência de scroll */
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -56,7 +56,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 0.5rem; /* Padding reduzido para ganhar espaço */
             overflow: hidden;
         }
 
@@ -70,7 +70,7 @@
             outline: none;
         }
 
-        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; transform: translateY(10px); }
         
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
@@ -78,8 +78,8 @@
             border: 2px solid #f3f3f3;
             border-top: 2px solid #C5A059;
             border-radius: 50%;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             animation: spin 1s linear infinite;
             display: inline-block;
         }
@@ -97,86 +97,85 @@
 </head>
 <body>
 
-    <!-- Header AuditEduca (Se injetado, o flex-1 do main garante o ajuste) -->
     <div id="header-placeholder"></div>
 
     <main>
-        <!-- Toast Notificação -->
-        <div id="toast" class="fixed top-24 right-5 z-[9999] transform transition-all duration-300 translate-x-full opacity-0">
-            <div class="bg-audit-navy text-white px-6 py-4 rounded-lg shadow-xl border-l-4 border-audit-gold flex items-center gap-3">
+        <div id="toast" class="fixed top-20 right-5 z-[9999] transform transition-all duration-300 translate-x-full opacity-0">
+            <div class="bg-audit-navy text-white px-5 py-3 rounded-lg shadow-xl border-l-4 border-audit-gold flex items-center gap-3">
                 <i class="fas fa-info-circle text-audit-gold"></i>
-                <span id="toast-msg" class="text-sm font-medium">Notificação</span>
+                <span id="toast-msg" class="text-xs font-medium">Notificação</span>
             </div>
         </div>
 
-        <!-- TELA DE LOGIN FORMATO CARD -->
-        <div id="login-container" class="w-full max-w-4xl bg-white rounded-2xl shadow-soft overflow-hidden flex flex-col md:flex-row fade-in-up border border-slate-100 max-h-[90vh]">
+        <!-- CONTENTOR COMPACTO -->
+        <div id="login-container" class="w-full max-w-4xl bg-white rounded-2xl shadow-soft overflow-hidden flex flex-col md:flex-row fade-in-up border border-slate-100 max-h-[85vh]">
             
-            <!-- Lado Esquerdo: Hero/Identidade -->
-            <div class="hidden md:flex md:w-5/12 hero-bg p-8 text-white flex-col justify-between relative">
+            <!-- Lado Esquerdo: Identidade (Compacto) -->
+            <div class="hidden md:flex md:w-5/12 hero-bg p-6 lg:p-8 text-white flex-col justify-between relative">
                 <div class="relative z-10">
                     <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" 
                          alt="Audit Educa Logo" 
-                         class="h-12 lg:h-16 w-auto mb-6 brightness-0 invert opacity-100 drop-shadow-lg transition-all duration-300">
+                         class="h-10 lg:h-12 w-auto mb-5 brightness-0 invert opacity-100 drop-shadow-md">
                     
-                    <div class="mb-6">
-                        <span class="inline-block py-1 px-3 rounded bg-audit-gold/20 text-audit-gold text-[9px] font-bold uppercase tracking-widest mb-3 border border-audit-gold/30">Area Administrativa</span>
-                        <h2 class="text-2xl lg:text-3xl font-serif font-bold leading-tight mb-3 text-audit-gold">Gestão <br>AuditEduca</h2>
-                        <p class="text-slate-300 text-xs leading-relaxed">Portal Administrativo AuditEduca</p>
+                    <div class="mb-5">
+                        <span class="inline-block py-0.5 px-2 rounded bg-audit-gold/20 text-audit-gold text-[8px] font-bold uppercase tracking-widest mb-2 border border-audit-gold/30">Area Administrativa</span>
+                        <h2 class="text-xl lg:text-2xl font-serif font-bold leading-tight mb-2 text-audit-gold">Gestão <br>AuditEduca</h2>
+                        <p class="text-slate-300 text-[11px] leading-relaxed">Portal Administrativo AuditEduca</p>
                     </div>
 
-                    <blockquote class="border-l-2 border-audit-gold pl-4 italic text-slate-300 text-xs">
+                    <blockquote class="border-l border-audit-gold pl-3 italic text-slate-300 text-[10px]">
                         "Qualidade significa fazer certo quando ninguém está olhando."
-                        <footer class="text-audit-gold text-[10px] font-bold not-italic mt-1 tracking-wider uppercase">— Henry Ford</footer>
+                        <footer class="text-audit-gold text-[9px] font-bold not-italic mt-1 tracking-wider uppercase">— Henry Ford</footer>
                     </blockquote>
                 </div>
-                <div class="relative z-10 mt-4 text-[9px] text-slate-400 flex items-center gap-2 font-medium tracking-wide">
-                    <i class="fas fa-shield-alt text-audit-gold"></i> AMBIENTE SEGURO SSL/TLS
+                <div class="relative z-10 mt-3 text-[8px] text-slate-400 flex items-center gap-2 font-medium tracking-wide">
+                    <i class="fas fa-shield-alt text-audit-gold text-[10px]"></i> AMBIENTE SEGURO
                 </div>
             </div>
 
-            <!-- Lado Direito: Formulário -->
-            <div class="w-full md:w-7/12 p-8 lg:p-12 bg-white flex flex-col justify-center overflow-y-auto">
+            <!-- Lado Direito: Formulário (Denso) -->
+            <div class="w-full md:w-7/12 p-6 lg:p-10 bg-white flex flex-col justify-center overflow-hidden">
                 <div class="w-full max-w-sm mx-auto">
-                    <div class="mb-6">
-                        <h1 class="text-xl lg:text-2xl font-bold text-audit-navy mb-1 leading-tight">Acessando um mundo de conhecimento</h1>
+                    <div class="mb-5">
+                        <h1 class="text-lg lg:text-xl font-bold text-audit-navy mb-0.5 leading-tight">Acessando um mundo de conhecimento</h1>
+                        <p class="text-slate-400 text-[10px]">Área restrita para colaboradores</p>
                     </div>
 
-                    <form id="login-form" class="space-y-4 lg:space-y-5">
-                        <div class="fade-in-up">
-                            <label class="block text-[10px] font-bold text-audit-navy uppercase tracking-widest mb-1.5 ml-1">E-mail Corporativo</label>
+                    <form id="login-form" class="space-y-3 lg:space-y-4">
+                        <div>
+                            <label class="block text-[9px] font-bold text-audit-navy uppercase tracking-widest mb-1 ml-1">E-mail Corporativo</label>
                             <div class="relative group">
-                                <i class="fas fa-user-circle absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-audit-gold transition-colors text-sm"></i>
-                                <input type="email" id="email" class="input-audit w-full pl-11 pr-4 py-3 rounded-xl text-sm bg-slate-50 focus:bg-white transition-colors" placeholder="admin@auditeduca.com.br" required>
+                                <i class="fas fa-user-circle absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-audit-gold transition-colors text-xs"></i>
+                                <input type="email" id="email" class="input-audit w-full pl-9 pr-3 py-2.5 rounded-lg text-xs bg-slate-50 focus:bg-white transition-colors" placeholder="admin@auditeduca.com.br" required>
                             </div>
                         </div>
 
-                        <div class="fade-in-up">
-                            <div class="flex justify-between items-center mb-1.5 px-1">
-                                <label class="text-[10px] font-bold text-audit-navy uppercase tracking-widest">Chave de Acesso</label>
-                                <a href="#" class="text-[10px] text-audit-gold hover:underline font-bold tracking-tight">Esqueceu a senha?</a>
+                        <div>
+                            <div class="flex justify-between items-center mb-1 px-1">
+                                <label class="text-[9px] font-bold text-audit-navy uppercase tracking-widest">Chave de Acesso</label>
+                                <a href="#" class="text-[9px] text-audit-gold hover:underline font-bold tracking-tight">Esqueceu?</a>
                             </div>
                             <div class="relative group">
-                                <i class="fas fa-key absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-audit-gold transition-colors text-sm"></i>
-                                <input type="password" id="password" class="input-audit w-full pl-11 pr-4 py-3 rounded-xl text-sm bg-slate-50 focus:bg-white transition-colors" placeholder="••••••••••••" required>
+                                <i class="fas fa-key absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-audit-gold transition-colors text-xs"></i>
+                                <input type="password" id="password" class="input-audit w-full pl-9 pr-3 py-2.5 rounded-lg text-xs bg-slate-50 focus:bg-white transition-colors" placeholder="••••••••••••" required>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-2 px-1">
-                            <input type="checkbox" id="remember" class="w-3.5 h-3.5 rounded border-slate-300 text-audit-navy focus:ring-audit-gold">
-                            <label for="remember" class="text-[11px] text-slate-500 font-medium cursor-pointer">Manter conectado</label>
+                            <input type="checkbox" id="remember" class="w-3 h-3 rounded border-slate-300 text-audit-navy focus:ring-audit-gold">
+                            <label for="remember" class="text-[10px] text-slate-500 font-medium cursor-pointer">Manter conectado</label>
                         </div>
 
-                        <button type="submit" id="btn-login" class="w-full bg-audit-navy hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-audit-navy/10 transform active:scale-[0.98] flex items-center justify-center gap-3 mt-2">
-                            <span class="text-xs uppercase tracking-widest">Iniciar Sessão</span>
-                            <i class="fas fa-chevron-right text-[10px] opacity-60"></i>
+                        <button type="submit" id="btn-login" class="w-full bg-audit-navy hover:bg-slate-800 text-white font-bold py-3 rounded-lg transition-all duration-300 shadow-md shadow-audit-navy/10 transform active:scale-[0.98] flex items-center justify-center gap-2 mt-1">
+                            <span class="text-[10px] uppercase tracking-widest">Iniciar Sessão</span>
+                            <i class="fas fa-chevron-right text-[8px] opacity-60"></i>
                         </button>
                     </form>
 
-                    <!-- Logótipo Rodapé (Formulário) -->
-                    <div class="mt-8 pt-6 border-t border-slate-100 text-center flex justify-center">
+                    <!-- Logótipo Rodapé (Compacto) -->
+                    <div class="mt-6 pt-5 border-t border-slate-50 text-center flex justify-center">
                         <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" 
-                             class="h-10 lg:h-12 w-auto opacity-90 hover:opacity-100 transition-all duration-300 filter drop-shadow-sm" 
+                             class="h-8 lg:h-10 w-auto opacity-70 hover:opacity-100 transition-all duration-300" 
                              alt="AuditEduca Logo">
                     </div>
                 </div>
@@ -185,33 +184,27 @@
 
     </main>
 
-    <!-- Footer AuditEduca Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Scripts de Estilo e Redirecionamento -->
     <script>
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast');
             const msg = document.getElementById('toast-msg');
             msg.innerText = message;
             toast.classList.remove('translate-x-full', 'opacity-0');
-            setTimeout(() => { 
-                toast.classList.add('translate-x-full', 'opacity-0'); 
-            }, 3000);
+            setTimeout(() => { toast.classList.add('translate-x-full', 'opacity-0'); }, 2500);
         }
 
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('btn-login');
-            btn.innerHTML = `<span class="loader mr-2"></span> Processando...`;
+            btn.innerHTML = `<span class="loader mr-2"></span>`;
             btn.disabled = true;
 
             setTimeout(() => {
-                showToast('Acesso autorizado!', 'success');
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 800);
-            }, 1200);
+                showToast('Redirecionando...', 'success');
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+            }, 800);
         });
     </script>
 </body>
