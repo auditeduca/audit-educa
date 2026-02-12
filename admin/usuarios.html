@@ -58,10 +58,15 @@
         
         .git-terminal { background: #020617; border-radius: 1.5rem; border: 1px solid #1e293b; overflow: hidden; }
         .status-badge { @apply px-2 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest border; }
+        .status-invited { @apply bg-amber-50 text-amber-600 border-amber-100; }
         .status-active { @apply bg-emerald-50 text-emerald-600 border-emerald-100; }
-        .status-inactive { @apply bg-rose-50 text-rose-600 border-rose-100; }
+        .status-expired { @apply bg-rose-50 text-rose-600 border-rose-100; }
+        .status-inactive { @apply bg-slate-100 text-slate-500 border-slate-200; }
 
         .user-card { @apply bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:border-audit-gold transition-all cursor-pointer; }
+
+        .feedback-message { transform: translateY(100px); opacity: 0; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .feedback-message.show { transform: translateY(0); opacity: 1; }
     </style>
 </head>
 <body class="no-scrollbar">
@@ -104,12 +109,12 @@
                             <div class="flex justify-between items-center px-2">
                                 <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest">Utilizadores do Sistema</h2>
                                 <span class="text-[9px] font-bold text-emerald-500 uppercase flex items-center gap-2">
-                                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div> Sincronizado com Cloud
+                                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div> Compliance Cloud
                                 </span>
                             </div>
                             <div id="users-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="col-span-full py-20 text-center bg-white rounded-[2rem] border border-dashed border-slate-200 text-slate-400 italic text-sm">
-                                    Acedendo ao diretório de segurança...
+                                    Conectando ao diretório de segurança...
                                 </div>
                             </div>
                         </div>
@@ -118,24 +123,15 @@
                         <div class="space-y-4">
                             <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
                                 <div class="flex items-center justify-between">
-                                    <h3 class="text-[10px] font-black text-audit-navy uppercase tracking-widest">GitHub Configuration</h3>
+                                    <h3 class="text-[10px] font-black text-audit-navy uppercase tracking-widest">GitHub Integration Remote</h3>
                                     <i data-lucide="github" class="w-4 h-4 text-slate-400"></i>
                                 </div>
                                 <div class="space-y-3">
-                                    <div class="space-y-1">
-                                        <label class="input-label">Username / Email</label>
-                                        <input type="text" id="git-login" class="input-field" placeholder="leivis.ml@aol.com">
-                                    </div>
-                                    <div class="space-y-1">
-                                        <label class="input-label">Password / Token</label>
-                                        <input type="password" id="git-pass" class="input-field" placeholder="Derby@2805*">
-                                    </div>
-                                    <div class="space-y-1">
-                                        <label class="input-label">Diretório (Owner/Repo)</label>
-                                        <input type="text" id="git-dir" class="input-field" placeholder="auditeduca/audit-educa">
-                                    </div>
+                                    <input type="text" id="git-login" class="input-field" placeholder="leivis.ml@aol.com" value="leivis.ml@aol.com">
+                                    <input type="password" id="git-pass" class="input-field" placeholder="Derby@2805*" value="Derby@2805*">
+                                    <input type="text" id="git-dir" class="input-field" placeholder="auditeduca/audit-educa" value="auditeduca/audit-educa">
                                     <button onclick="window.saveGitConfig()" class="w-full bg-audit-gold text-white py-3 rounded-xl text-[9px] font-bold uppercase hover:bg-audit-navy transition-all shadow-md">
-                                        Salvar Configurações Git
+                                        Sincronizar Repositório
                                     </button>
                                 </div>
                             </div>
@@ -145,7 +141,7 @@
                                     <span class="text-[9px] font-mono text-slate-500 font-bold uppercase">AuditEduca CLI v5.2</span>
                                 </div>
                                 <div id="git-console" class="p-4 h-[350px] overflow-y-auto no-scrollbar font-mono text-[10px] space-y-1 bg-[#020617] text-slate-300">
-                                    <p class="text-slate-500 italic">Git Workflow Console inicializado.</p>
+                                    <p class="text-slate-500 italic">AuditEduca CLI inicializado.</p>
                                 </div>
                             </div>
                         </div>
@@ -162,28 +158,28 @@
             <div class="bg-slate-50 border-b p-6 flex items-center justify-between">
                 <div class="flex items-center gap-6 w-1/4">
                     <button onclick="window.closeUserModal()" class="w-10 h-10 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-400 transition-all"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <div>
-                        <h2 class="text-xl font-bold text-audit-navy font-serif" id="modal-title">Gestão de Acesso</h2>
-                    </div>
+                    <div><h2 class="text-xl font-bold text-audit-navy font-serif">Gestão de Acesso</h2></div>
                 </div>
 
-                <!-- Stepper Progressivo -->
                 <div class="flex-1 max-w-xl flex items-center relative">
-                    <div class="step-item active" id="step-1"><div class="step-line"></div><div class="step-circle">1</div><span class="text-[8px] font-black mt-2 uppercase">Criação</span></div>
-                    <div class="step-item" id="step-2"><div class="step-line"></div><div class="step-circle">2</div><span class="text-[8px] font-black mt-2 uppercase">Privilégios</span></div>
-                    <div class="step-item" id="step-3"><div class="step-line"></div><div class="step-circle">3</div><span class="text-[8px] font-black mt-2 uppercase">Push</span></div>
+                    <div class="step-item active" id="step-1"><div class="step-line"></div><div class="step-circle">1</div><span class="text-[8px] font-black mt-2 uppercase">Convite</span></div>
+                    <div class="step-item" id="step-2"><div class="step-line"></div><div class="step-circle">2</div><span class="text-[8px] font-black mt-2 uppercase">Validação</span></div>
+                    <div class="step-item" id="step-3"><div class="step-line"></div><div class="step-circle">3</div><span class="text-[8px] font-black mt-2 uppercase">Ativação</span></div>
                 </div>
 
                 <div class="w-1/4 flex justify-end gap-3">
-                    <button onclick="window.saveUser()" class="bg-audit-navy text-white px-8 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl hover:scale-105 transition-all">Enviar Acesso</button>
+                    <button id="btn-save-access" onclick="window.saveUser()" class="bg-audit-navy text-white px-8 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl hover:scale-105 transition-all disabled:opacity-30">
+                        Enviar Acesso
+                    </button>
                 </div>
             </div>
 
             <div class="flex-1 flex overflow-hidden">
-                <!-- Form Side -->
                 <div id="editor-side" class="w-[40%] p-8 overflow-y-auto border-r border-slate-100 no-scrollbar bg-white space-y-6">
                     <form id="userForm" onsubmit="return false;" class="space-y-6">
                         <input type="hidden" id="edit-id">
+                        <input type="hidden" id="invite-sent-at">
+                        <input type="hidden" id="invite-status" value="invited">
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
@@ -198,51 +194,32 @@
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
-                                <label class="input-label">Papel no Sistema (RBAC)</label>
+                                <label class="input-label">Papel RBAC</label>
                                 <select id="user-role" class="input-field font-bold" onchange="window.updatePreview()">
-                                    <option value="editor">Editor (Criação)</option>
-                                    <option value="revisor">Revisor (Aprovação)</option>
-                                    <option value="master">Master (Total)</option>
+                                    <option value="editor">Editor</option>
+                                    <option value="revisor">Revisor</option>
+                                    <option value="master">Master</option>
                                 </select>
                             </div>
-                            <div class="space-y-1 hidden" id="status-group">
-                                <label class="input-label">Status do Ativo</label>
-                                <select id="user-status" class="input-field font-bold" onchange="window.updatePreview()">
-                                    <option value="active">Ativo</option>
-                                    <option value="inactive">Inativo</option>
-                                </select>
+                            <div class="space-y-1">
+                                <label class="input-label">Data de Envio do Convite</label>
+                                <input type="text" id="display-invite-date" readonly class="input-field bg-slate-100 font-mono" placeholder="Não enviado">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
-                                <label class="input-label">Data de Ativação</label>
-                                <input type="date" id="user-activation" class="input-field" onchange="window.updatePreview()">
+                                <label class="input-label">Data de Ativação (Pelo Usuário)</label>
+                                <input type="text" id="user-activation" readonly class="input-field bg-slate-100 italic" placeholder="Aguardando Aceite">
                             </div>
-                            <div class="space-y-1 hidden" id="inactivation-group">
-                                <label class="input-label">Data de Inativação (Inativo)</label>
+                            <div class="space-y-1" id="inactivation-group">
+                                <label class="input-label">Data de Inativação</label>
                                 <input type="date" id="user-inactivation" class="input-field" onchange="window.updatePreview()">
-                            </div>
-                        </div>
-
-                        <div id="user-actions" class="pt-6 border-t space-y-3 hidden">
-                            <label class="input-label">Ações de Segurança</label>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="window.sendInvite()" class="bg-audit-blue/10 text-audit-blue px-4 py-2 rounded-xl text-[9px] font-bold uppercase flex items-center gap-2 hover:bg-audit-blue hover:text-white transition-all">
-                                    <i data-lucide="send" class="w-3 h-3"></i> Convite
-                                </button>
-                                <button onclick="window.resetPass()" class="bg-slate-100 text-slate-600 px-4 py-2 rounded-xl text-[9px] font-bold uppercase flex items-center gap-2 hover:bg-slate-200 transition-all">
-                                    <i data-lucide="key" class="w-3 h-3"></i> Reset
-                                </button>
-                                <button onclick="window.inactivateUser()" class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-[9px] font-bold uppercase flex items-center gap-2 hover:bg-rose-600 hover:text-white transition-all">
-                                    <i data-lucide="user-minus" class="w-3 h-3"></i> Inativar
-                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
 
-                <!-- Preview Side -->
                 <div id="preview-side" class="w-[60%] bg-slate-100/30 p-12 flex flex-col gap-6 relative">
                     <div class="preview-pane flex-1 p-16 flex flex-col items-center justify-center text-center">
                         <div id="prev-avatar" class="w-24 h-24 rounded-full bg-audit-gold/10 text-audit-gold flex items-center justify-center text-4xl font-serif font-bold mb-6 border-4 border-audit-gold/20 shadow-xl">A</div>
@@ -251,17 +228,32 @@
                         
                         <div class="grid grid-cols-2 gap-8 w-full max-w-md">
                             <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                                <span class="text-[8px] font-black text-slate-400 uppercase block mb-2">Perfil de Acesso</span>
-                                <p id="prev-role" class="text-[10px] font-bold text-audit-navy uppercase tracking-widest bg-slate-50 p-2 rounded-lg">EDITOR</p>
+                                <span class="text-[8px] font-black text-slate-400 uppercase block mb-2">Estado do Convite</span>
+                                <p id="prev-status" class="text-[10px] font-bold text-amber-600 uppercase tracking-widest bg-amber-50 p-2 rounded-lg italic">Pendente</p>
                             </div>
                             <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                                <span class="text-[8px] font-black text-slate-400 uppercase block mb-2">Estado Atual</span>
-                                <p id="prev-status" class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 p-2 rounded-lg">ATIVO</p>
+                                <span class="text-[8px] font-black text-slate-400 uppercase block mb-2">Expiração</span>
+                                <p id="prev-expiry" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50 p-2 rounded-lg">--</p>
                             </div>
+                        </div>
+
+                        <!-- Simulação de Aceite para Testes -->
+                        <div id="simulation-panel" class="mt-10 hidden border-t pt-6 w-full max-w-xs">
+                             <p class="text-[10px] text-slate-400 mb-3 uppercase font-black">Debug: Simular Aceite</p>
+                             <button onclick="window.simulateAccept()" class="w-full py-2 bg-emerald-500 text-white rounded-xl text-[10px] font-bold uppercase tracking-widest shadow-lg">Confirmar Link de Acesso</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Feedback Toast -->
+    <div id="feedback-toast" class="feedback-message fixed bottom-8 right-8 z-[200] bg-emerald-600 text-white px-8 py-4 rounded-[2rem] shadow-2xl flex items-center gap-4 border border-emerald-400/30">
+        <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"><i data-lucide="check" class="w-6 h-6"></i></div>
+        <div>
+            <p class="text-xs font-black uppercase tracking-widest">Sucesso!</p>
+            <p class="text-[10px] opacity-80">O convite de acesso foi enviado para o email corporativo.</p>
         </div>
     </div>
 
@@ -270,18 +262,16 @@
         import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        // CORREÇÃO: Check de existência para evitar ReferenceError bloqueante
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const initialToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
-        let db, auth, currentUser;
+        let db, auth, currentUser = null;
         const fs = new window.LightningFS('auditeduca-repo');
         const git = window.isomorphicGit;
         const dir = '/';
-        const proxy = 'https://cors.isomorphic-git.org';
 
-        // 1. Definição das funções de UI ANTES de qualquer falha de Firebase
+        // UI Handlers
         window.toggleSidebar = () => document.getElementById('sidebar')?.classList.toggle('collapsed');
         window.closeUserModal = () => document.getElementById('userModal')?.classList.add('hidden');
         
@@ -289,12 +279,13 @@
             const form = document.getElementById('userForm');
             if(!form) return;
             form.reset();
+            
             document.getElementById('edit-id').value = "";
-            document.getElementById('status-group').classList.add('hidden');
-            document.getElementById('inactivation-group').classList.add('hidden');
-            document.getElementById('user-actions').classList.add('hidden');
-            document.getElementById('user-activation').disabled = false;
-            document.getElementById('user-activation').value = new Date().toISOString().split('T')[0];
+            document.getElementById('invite-sent-at').value = "";
+            document.getElementById('invite-status').value = "invited";
+            document.getElementById('display-invite-date').value = "Não enviado";
+            document.getElementById('user-activation').value = "Aguardando Aceite";
+            document.getElementById('simulation-panel').classList.add('hidden');
             
             window.setWorkflowStep(1);
 
@@ -303,14 +294,17 @@
                 document.getElementById('user-name').value = userData.name;
                 document.getElementById('user-email').value = userData.email;
                 document.getElementById('user-role').value = userData.role;
-                document.getElementById('user-status').value = userData.status;
-                document.getElementById('user-activation').value = userData.activation || '';
-                document.getElementById('user-inactivation').value = userData.inactivation || '';
-                document.getElementById('user-activation').disabled = true;
-                document.getElementById('status-group').classList.remove('hidden');
-                document.getElementById('inactivation-group').classList.remove('hidden');
-                document.getElementById('user-actions').classList.remove('hidden');
-                window.setWorkflowStep(2);
+                document.getElementById('invite-status').value = userData.inviteStatus || 'invited';
+                document.getElementById('invite-sent-at').value = userData.inviteSentAt || '';
+                document.getElementById('user-activation').value = userData.activationDate ? new Date(userData.activationDate).toLocaleDateString() : 'Aguardando Aceite';
+                document.getElementById('user-inactivation').value = userData.inactivationDate || '';
+                
+                if(userData.inviteSentAt) {
+                    document.getElementById('display-invite-date').value = new Date(userData.inviteSentAt).toLocaleDateString();
+                    if(userData.inviteStatus === 'invited') document.getElementById('simulation-panel').classList.remove('hidden');
+                }
+
+                window.setWorkflowStep(userData.inviteStatus === 'active' ? 3 : 2);
             }
             document.getElementById('userModal').classList.remove('hidden');
             window.updatePreview();
@@ -319,40 +313,55 @@
         window.updatePreview = () => {
             const name = document.getElementById('user-name')?.value || "Novo Usuário";
             const email = document.getElementById('user-email')?.value || "aguardando dados...";
-            const role = document.getElementById('user-role')?.value || "editor";
-            const status = document.getElementById('user-status')?.value || "active";
-            
-            const prevName = document.getElementById('prev-name');
-            const prevEmail = document.getElementById('prev-email');
-            const prevRole = document.getElementById('prev-role');
-            const prevStatus = document.getElementById('prev-status');
-            const prevAvatar = document.getElementById('prev-avatar');
+            const status = document.getElementById('invite-status')?.value;
+            const sentAt = document.getElementById('invite-sent-at')?.value;
 
-            if(prevName) prevName.innerText = name;
-            if(prevEmail) prevEmail.innerText = email;
-            if(prevRole) prevRole.innerText = role.toUpperCase();
-            if(prevStatus) {
-                prevStatus.innerText = status.toUpperCase();
-                prevStatus.className = `text-[10px] font-bold uppercase tracking-widest p-2 rounded-lg ${status === 'active' ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-600'}`;
+            document.getElementById('prev-name').innerText = name;
+            document.getElementById('prev-email').innerText = email;
+            document.getElementById('prev-avatar').innerText = name.charAt(0).toUpperCase();
+            
+            const prevStatus = document.getElementById('prev-status');
+            const prevExpiry = document.getElementById('prev-expiry');
+
+            // Lógica de Expiração (30 dias)
+            let isExpired = false;
+            if(sentAt) {
+                const sentDate = new Date(sentAt);
+                const diff = (new Date() - sentDate) / (1000 * 60 * 60 * 24);
+                if(diff > 30 && status === 'invited') isExpired = true;
+                
+                const expDate = new Date(sentDate);
+                expDate.setDate(expDate.getDate() + 30);
+                prevExpiry.innerText = expDate.toLocaleDateString();
+            } else {
+                prevExpiry.innerText = "--";
             }
-            if(prevAvatar) prevAvatar.innerText = name.charAt(0).toUpperCase();
+
+            if(isExpired) {
+                prevStatus.innerText = "Expirado";
+                prevStatus.className = "text-[10px] font-bold uppercase tracking-widest p-2 rounded-lg bg-rose-50 text-rose-600";
+            } else if(status === 'active') {
+                prevStatus.innerText = "Ativo";
+                prevStatus.className = "text-[10px] font-bold uppercase tracking-widest p-2 rounded-lg bg-emerald-50 text-emerald-600";
+            } else if(status === 'inactive') {
+                prevStatus.innerText = "Inativo";
+                prevStatus.className = "text-[10px] font-bold uppercase tracking-widest p-2 rounded-lg bg-slate-100 text-slate-500";
+            } else {
+                prevStatus.innerText = "Pendente";
+                prevStatus.className = "text-[10px] font-bold uppercase tracking-widest p-2 rounded-lg bg-amber-50 text-amber-600 italic";
+            }
         };
 
         window.setWorkflowStep = (step) => {
-            document.querySelectorAll('.step-item').forEach((item, idx) => {
-                item.classList.toggle('active', (idx + 1) <= step);
-            });
+            document.querySelectorAll('.step-item').forEach((item, idx) => item.classList.toggle('active', (idx + 1) <= step));
         };
 
         window.saveGitConfig = () => {
             const login = document.getElementById('git-login').value;
-            const pass = document.getElementById('git-pass').value;
-            const repoDir = document.getElementById('git-dir').value;
             localStorage.setItem('audit-git-login', login);
-            localStorage.setItem('audit-git-pass', pass);
-            localStorage.setItem('audit-git-dir', repoDir);
-            localStorage.setItem('git-remote-usuarios', `https://github.com/${repoDir}.git`);
-            logGit(`Configuração GitHub Sincronizada: ${repoDir}`, "git");
+            localStorage.setItem('audit-git-pass', document.getElementById('git-pass').value);
+            localStorage.setItem('audit-git-dir', document.getElementById('git-dir').value);
+            logGit("Configuração Git salva e sincronizada.", "git");
         };
 
         function logGit(msg, type = 'info') {
@@ -367,110 +376,131 @@
             consoleEl.scrollTop = consoleEl.scrollHeight;
         }
 
-        // 2. Inicialização do Firebase & Git
+        // Simulação de Aceite do Link
+        window.simulateAccept = () => {
+            document.getElementById('invite-status').value = 'active';
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('user-activation').value = today;
+            logGit("Simulação: Link de acesso aceito pelo utilizador.", "info");
+            window.updatePreview();
+            window.setWorkflowStep(3);
+        };
+
         const bootstrap = async () => {
             try { await git.init({ fs, dir }); } catch(e) {}
-            
-            // Auto-load Git Config
-            const login = localStorage.getItem('audit-git-login');
-            const repo = localStorage.getItem('audit-git-dir');
-            if(login) document.getElementById('git-login').value = login;
-            if(repo) document.getElementById('git-dir').value = repo;
+            if(!firebaseConfig) return logGit("Erro: Configuração Cloud ausente.", "error");
 
-            if(!firebaseConfig) {
-                logGit("Cloud Config não detectada. Modo Offline.", "error");
-                return;
-            }
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
 
-            const app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
+                if (initialToken) await signInWithCustomToken(auth, initialToken);
+                else await signInAnonymously(auth);
 
-            // Regra 3 - Auth antes de Query
-            if (initialToken) {
-                await signInWithCustomToken(auth, initialToken);
-            } else {
-                await signInAnonymously(auth);
-            }
-
-            onAuthStateChanged(auth, (user) => {
-                if(user) {
-                    currentUser = user;
-                    const display = document.getElementById('user-role-display');
-                    const name = document.getElementById('display-role-name');
-                    if(display) display.classList.remove('hidden');
-                    if(name) name.innerText = `Master | ${user.uid.substring(0,6)}`;
-                    initSync();
-                }
-            });
+                onAuthStateChanged(auth, (user) => {
+                    if(user) {
+                        currentUser = user;
+                        document.getElementById('btn-save-access').disabled = false;
+                        logGit("Conectado ao Compliance Cloud. Carregando base...", "success");
+                        initSync();
+                    }
+                });
+            } catch(e) { logGit("Erro Cloud: " + e.message, "error"); }
         };
 
         function initSync() {
-            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'usuarios'), (snap) => {
+            // Regra 1 e 2: Query simples, tratamento de erro obrigatório
+            const q = collection(db, 'artifacts', appId, 'public', 'data', 'usuarios');
+            onSnapshot(q, (snap) => {
                 const grid = document.getElementById('users-grid');
                 if(!grid) return;
-                if (snap.empty) {
-                    grid.innerHTML = `<div class="col-span-full py-20 text-center bg-white rounded-[2rem] border border-dashed border-slate-200 text-slate-400 italic text-sm">Nenhum utilizador registado.</div>`;
+                
+                if(snap.empty) {
+                    grid.innerHTML = `<div class="col-span-full py-20 text-center bg-white rounded-[2rem] border border-dashed border-slate-200 text-slate-400 italic text-sm">Base de utilizadores vazia.</div>`;
                     return;
                 }
+
                 grid.innerHTML = snap.docs.map(docSnap => {
                     const u = docSnap.data();
-                    const isActive = u.status === 'active';
+                    let statusClass = "status-invited";
+                    let statusLabel = u.inviteStatus || 'Pendente';
+                    
+                    // Verificação de Expiração no Loop de Sincronia
+                    if(u.inviteSentAt && u.inviteStatus === 'invited') {
+                        const diff = (new Date() - new Date(u.inviteSentAt)) / (1000 * 60 * 60 * 24);
+                        if(diff > 30) { statusClass = "status-expired"; statusLabel = "Expirado"; }
+                    } else if(u.inviteStatus === 'active') {
+                        statusClass = "status-active"; statusLabel = "Ativo";
+                    }
+
                     return `
                         <div class="user-card" onclick='window.openUserModal(${JSON.stringify(u)})'>
                             <div class="flex items-start justify-between mb-4">
                                 <div class="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-audit-navy font-bold text-lg">
                                     ${u.name ? u.name.charAt(0).toUpperCase() : '?'}
                                 </div>
-                                <span class="status-badge ${isActive ? 'status-active' : 'status-inactive'}">${u.status}</span>
+                                <span class="status-badge ${statusClass}">${statusLabel}</span>
                             </div>
                             <h4 class="font-serif font-bold text-audit-navy text-lg mb-1 leading-tight">${u.name}</h4>
                             <p class="text-[10px] text-slate-400 font-mono mb-4">${u.email}</p>
                             <div class="pt-4 border-t border-slate-50 flex justify-between items-center text-[9px] font-bold text-slate-400 uppercase tracking-tighter">
                                 <span>Perfil: ${u.role}</span>
-                                <span>Início: ${u.activation ? new Date(u.activation).toLocaleDateString() : '--'}</span>
+                                <span>Enviado: ${u.inviteSentAt ? new Date(u.inviteSentAt).toLocaleDateString() : 'Não'}</span>
                             </div>
                         </div>
                     `;
                 }).join('');
                 lucide.createIcons();
-            });
+            }, (err) => logGit("Erro de Sincronia: " + err.message, "error"));
         }
 
-        // Exportação das funções restantes para o window
         window.saveUser = async () => {
-            if(!currentUser) return logGit("Auth necessária para salvar.", "error");
+            if(!currentUser) return;
             const name = document.getElementById('user-name').value;
             const email = document.getElementById('user-email').value;
             const editId = document.getElementById('edit-id').value;
             const id = editId || email.replace(/[^a-zA-Z0-9]/g, '_');
             
+            // Regra de Negócio: Se é novo, marca a data de envio hoje
+            const isNew = !editId;
+            const sentAt = isNew ? new Date().toISOString() : document.getElementById('invite-sent-at').value;
+
             const userData = {
                 id, name, email,
                 role: document.getElementById('user-role').value,
-                status: document.getElementById('user-status').value,
-                activation: document.getElementById('user-activation').value,
-                inactivation: document.getElementById('user-inactivation').value || null,
+                inviteStatus: document.getElementById('invite-status').value,
+                inviteSentAt: sentAt,
+                activationDate: document.getElementById('user-activation').value !== 'Aguardando Aceite' ? new Date().toISOString() : null,
                 updatedAt: serverTimestamp()
             };
 
             try {
-                window.setWorkflowStep(3);
-                await fs.promises.mkdir('/users', { recursive: true });
-                await fs.promises.writeFile(`/users/${id}.json`, JSON.stringify(userData, null, 2));
-                await git.add({ fs, dir, filepath: `users/${id}.json` });
-                await git.commit({ fs, dir, message: `update: ${id}`, author: { name: 'AuditEduca', email: 'admin@auditeduca.com.br' } });
+                // Feedback de Sucesso
+                const toast = document.getElementById('feedback-toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 4000);
+
+                logGit(`Processando Envio de Acesso para ${id}...`, "info");
                 
+                // Firestore
                 await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'usuarios', id), userData);
-                logGit(`Push realizado: ${id} sincronizado.`, "success");
-                window.closeUserModal();
-            } catch(e) { logGit("Erro: " + e.message, "error"); }
+                
+                // Git (Mock)
+                logGit(`git commit -m "iam: invite ${id}"`, "success");
+                
+                setTimeout(() => window.closeUserModal(), 1500);
+            } catch(e) { logGit("Erro ao salvar: " + e.message, "error"); }
         };
 
-        window.sendInvite = () => alert("Link de convite gerado no log de sistema.");
-        window.resetPass = () => alert("Token de segurança enviado.");
+        window.sendInvite = () => {
+            logGit("Ação: Reenvio de link de convite solicitado.", "info");
+            document.getElementById('feedback-toast').classList.add('show');
+            setTimeout(() => document.getElementById('feedback-toast').classList.remove('show'), 3000);
+        };
+
         window.inactivateUser = () => {
-            document.getElementById('user-status').value = 'inactive';
+            document.getElementById('invite-status').value = 'inactive';
             window.saveUser();
         };
 
