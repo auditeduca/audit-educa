@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Configurações | AuditEduca</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .app-container { display: flex; height: 100vh; width: 100vw; }
+        .sidebar { width: 260px; background-color: #0f172a; color: white; display: flex; flex-direction: column; transition: width 0.3s; position: relative; }
+        .sidebar.collapsed { width: 80px; }
+        .sidebar.collapsed .nav-text, .sidebar.collapsed .nav-section-title { display: none; }
+        .sidebar.collapsed .logo-full { display: none; }
+        .sidebar.collapsed .logo-icon { display: block; }
+        .logo-icon { display: none; }
+        
+        .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 24px; color: #94a3b8; font-size: 13px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; white-space: nowrap; }
+        .nav-link:hover { color: white; background: rgba(255, 255, 255, 0.03); }
+        .nav-link.active { color: #C5A059; background: rgba(197, 160, 89, 0.08); border-left-color: #C5A059; }
+
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .scrollable-content { flex: 1; overflow-y: auto; padding: 32px; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        .template-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .template-card:hover {
+            transform: translateY(-5px);
+            border-color: #C5A059;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+        .template-card i {
+            transition: transform 0.3s;
+        }
+        .template-card:hover i {
+            transform: scale(1.1) rotate(-5deg);
+        }
+    </style>
+</head>
+<body class="no-scrollbar">
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="p-6 border-b border-white/5 flex justify-center h-20 items-center overflow-hidden">
+                <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" class="h-10 brightness-0 invert logo-full">
+                <div class="logo-icon text-audit-gold"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
+            </div>
+
+            <nav class="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar">
+                <div class="px-6 mb-2 mt-4 nav-section-title">
+                    <p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">Menu Principal</p>
+                </div>
+                <!-- Rota: Início -->
+                <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard" class="w-4 h-4"></i><span class="nav-text">Início</span></a>
+                <!-- Rota: Institucional -->
+                <a href="institucional.html" class="nav-link"><i data-lucide="building-2" class="w-4 h-4"></i><span class="nav-text">Institucional</span></a>
+                <!-- Rota: Conteúdo -->
+                <a href="conteudo.html" class="nav-link"><i data-lucide="book-open" class="w-4 h-4"></i><span class="nav-text">Conteúdo</span></a>
+                <!-- Rota: Ferramentas -->
+                <a href="ferramentas.html" class="nav-link"><i data-lucide="wrench" class="w-4 h-4"></i><span class="nav-text">Ferramentas</span></a>
+                <!-- Rota: Carreiras -->
+                <a href="carreiras.html" class="nav-link"><i data-lucide="briefcase" class="w-4 h-4"></i><span class="nav-text">Carreiras</span></a>
+                <!-- Rota: Fale Conosco -->
+                <a href="contato.html" class="nav-link"><i data-lucide="mail" class="w-4 h-4"></i><span class="nav-text">Fale Conosco</span></a>
+
+                <div class="px-6 mb-2 mt-6 nav-section-title">
+                    <p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">Gestão</p>
+                </div>
+                <!-- Rota: Usuários -->
+                <a href="usuarios.html" class="nav-link"><i data-lucide="users" class="w-4 h-4"></i><span class="nav-text">Usuários</span></a>
+                <!-- Rota: Configurações -->
+                <a href="configuracoes.html" class="nav-link active"><i data-lucide="settings" class="w-4 h-4"></i><span class="nav-text">Configurações</span></a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="h-16 bg-white border-b border-slate-100 flex items-center px-8 justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="h-8 w-1 bg-audit-gold rounded-full"></div>
+                    <h1 class="text-md font-bold text-audit-navy uppercase tracking-tight">Configurações de Sistema</h1>
+                </div>
+            </header>
+
+            <div class="scrollable-content no-scrollbar">
+                <div class="max-w-6xl mx-auto">
+                    
+                    <!-- Secção Templates -->
+                    <div class="mb-12">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="p-3 bg-audit-navy text-audit-gold rounded-2xl shadow-lg">
+                                <i data-lucide="layout" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-black text-audit-navy">Gestão de Templates</h2>
+                                <p class="text-xs text-slate-400 font-medium">Configure a estrutura visual das páginas do portal</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Card: Página Inicial -->
+                            <div class="template-card" onclick="window.location.href='admin/templates/template-index.html'">
+                                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                                    <i data-lucide="home" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-audit-navy mb-1">Página Inicial</h3>
+                                <p class="text-[11px] text-slate-500 leading-relaxed mb-4">Gestão de banners, secções de destaque e estrutura da homepage.</p>
+                                <span class="text-[10px] font-bold text-audit-gold uppercase tracking-widest flex items-center gap-2">
+                                    Editar Layout <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+
+                            <!-- Card: Página de Políticas -->
+                            <div class="template-card" onclick="window.location.href='admin/templates/template-policy.html'">
+                                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+                                    <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-audit-navy mb-1">Página de Políticas</h3>
+                                <p class="text-[11px] text-slate-500 leading-relaxed mb-4">Termos de uso, privacidade e normativos internos.</p>
+                                <span class="text-[10px] font-bold text-audit-gold uppercase tracking-widest flex items-center gap-2">
+                                    Editar Layout <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+
+                            <!-- Card: Páginas Institucionais -->
+                            <div class="template-card" onclick="window.location.href='admin/templates/template-institucional.html'">
+                                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4">
+                                    <i data-lucide="building" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-audit-navy mb-1">Páginas Institucionais</h3>
+                                <p class="text-[11px] text-slate-500 leading-relaxed mb-4">Quem somos, missão, visão e histórico da empresa.</p>
+                                <span class="text-[10px] font-bold text-audit-gold uppercase tracking-widest flex items-center gap-2">
+                                    Editar Layout <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+
+                            <!-- Card: Página de Artigo -->
+                            <div class="template-card" onclick="window.location.href='admin/templates/template-article.html'">
+                                <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4">
+                                    <i data-lucide="file-text" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-audit-navy mb-1">Página de Artigo</h3>
+                                <p class="text-[11px] text-slate-500 leading-relaxed mb-4">Estrutura de leitura, blogs e notícias do ecossistema.</p>
+                                <span class="text-[10px] font-bold text-audit-gold uppercase tracking-widest flex items-center gap-2">
+                                    Editar Layout <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+
+                            <!-- Card: Calculadoras -->
+                            <div class="template-card" onclick="window.location.href='admin/templates/template-tools.html'">
+                                <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center mb-4">
+                                    <i data-lucide="calculator" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-audit-navy mb-1">Página Calculadoras</h3>
+                                <p class="text-[11px] text-slate-500 leading-relaxed mb-4">Layout para calculadoras trabalhistas e financeiras.</p>
+                                <span class="text-[10px] font-bold text-audit-gold uppercase tracking-widest flex items-center gap-2">
+                                    Editar Layout <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

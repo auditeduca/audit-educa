@@ -51,7 +51,7 @@
             width: 100vw;
         }
 
-        /* Sidebar Modernizada com Transição */
+        /* Sidebar Modernizada */
         .sidebar {
             width: 260px;
             background-color: #0f172a;
@@ -139,16 +139,6 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
         }
 
-        .loader-spin {
-            border: 2px solid rgba(197, 160, 89, 0.1);
-            border-top: 2px solid #C5A059;
-            border-radius: 50%;
-            width: 14px;
-            height: 14px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         /* Botão Retrair */
         .toggle-sidebar {
             position: absolute;
@@ -187,30 +177,20 @@
                 <img src="https://auditeduca.com.br/assets/images/logotipo-audit-educa-default.webp" 
                      alt="AuditEduca" 
                      class="h-10 brightness-0 invert logo-full transition-opacity">
-                <!-- Ícone simplificado para versão colapsada (escudo) -->
                 <div class="logo-icon text-audit-gold">
                     <i data-lucide="shield-check" class="w-8 h-8"></i>
                 </div>
             </div>
 
             <nav class="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar">
+                <!-- Seção 1: Navegação Principal -->
                 <div class="px-6 mb-2 mt-4 nav-section-title">
                     <p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">Menu Principal</p>
                 </div>
                 
-                <a href="#" class="nav-link active" title="Visão Geral">
+                <a href="dashboard.html" class="nav-link active" title="Início">
                     <i data-lucide="layout-dashboard" class="w-4 h-4 shrink-0"></i>
-                    <span class="nav-text">Visão Geral</span>
-                </a>
-
-                <a href="simulador.html" class="nav-link" title="Simulador">
-                    <i data-lucide="monitor" class="w-4 h-4 shrink-0"></i>
-                    <span class="nav-text">Simulador</span>
-                </a>
-
-                <a href="biblioteca.html" class="nav-link" title="Biblioteca">
-                    <i data-lucide="library" class="w-4 h-4 shrink-0"></i>
-                    <span class="nav-text">Biblioteca</span>
+                    <span class="nav-text">Início</span>
                 </a>
 
                 <a href="institucional.html" class="nav-link" title="Institucional">
@@ -218,13 +198,39 @@
                     <span class="nav-text">Institucional</span>
                 </a>
 
+                <a href="conteudo.html" class="nav-link" title="Conteúdo">
+                    <i data-lucide="book-open" class="w-4 h-4 shrink-0"></i>
+                    <span class="nav-text">Conteúdo</span>
+                </a>
+
+                <a href="ferramentas.html" class="nav-link" title="Ferramentas">
+                    <i data-lucide="wrench" class="w-4 h-4 shrink-0"></i>
+                    <span class="nav-text">Ferramentas</span>
+                </a>
+
+                <a href="carreiras.html" class="nav-link" title="Carreiras">
+                    <i data-lucide="briefcase" class="w-4 h-4 shrink-0"></i>
+                    <span class="nav-text">Carreiras</span>
+                </a>
+
+                <a href="contato.html" class="nav-link" title="Fale Conosco">
+                    <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+                    <span class="nav-text">Fale Conosco</span>
+                </a>
+
+                <!-- Seção 2: Administrativo -->
                 <div class="px-6 mb-2 mt-6 nav-section-title">
-                    <p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">Administração</p>
+                    <p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-50">Gestão</p>
                 </div>
 
                 <a href="usuarios.html" class="nav-link" title="Usuários">
                     <i data-lucide="users" class="w-4 h-4 shrink-0"></i>
                     <span class="nav-text">Usuários</span>
+                </a>
+
+                <a href="configuracoes.html" class="nav-link" title="Configurações">
+                    <i data-lucide="settings" class="w-4 h-4 shrink-0"></i>
+                    <span class="nav-text">Configurações</span>
                 </a>
             </nav>
 
@@ -243,7 +249,7 @@
                 <div class="flex items-center gap-4">
                     <div class="h-8 w-1 bg-audit-gold rounded-full"></div>
                     <div>
-                        <h1 class="text-md font-bold text-audit-navy font-sans tracking-tight">Dashboard Administrativo</h1>
+                        <h1 class="text-md font-bold text-audit-navy font-sans tracking-tight">Visão Geral do Ecossistema</h1>
                     </div>
                 </div>
 
@@ -267,7 +273,7 @@
                         <div class="stat-card">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="p-2 bg-indigo-50 text-indigo-600 rounded-lg"><i data-lucide="database" class="w-4 h-4"></i></span>
-                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Questões</span>
+                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Base Conteúdo</span>
                             </div>
                             <h3 class="text-2xl font-black text-audit-navy" id="stat-questoes">--</h3>
                         </div>
@@ -275,7 +281,7 @@
                         <div class="stat-card">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i data-lucide="file-check" class="w-4 h-4"></i></span>
-                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Simulados</span>
+                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Simuladores</span>
                             </div>
                             <h3 class="text-2xl font-black text-audit-navy" id="stat-provas">--</h3>
                         </div>
@@ -283,7 +289,7 @@
                         <div class="stat-card">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="p-2 bg-amber-50 text-amber-600 rounded-lg"><i data-lucide="users" class="w-4 h-4"></i></span>
-                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Contas</span>
+                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Utilizadores</span>
                             </div>
                             <h3 class="text-2xl font-black text-audit-navy" id="stat-usuarios">--</h3>
                         </div>
@@ -291,7 +297,7 @@
                         <div class="stat-card border-audit-gold/30 bg-audit-gold/5">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="p-2 bg-audit-gold text-white rounded-lg shadow-lg shadow-audit-gold/20"><i data-lucide="activity" class="w-4 h-4"></i></span>
-                                <span class="text-[8px] font-bold text-audit-gold uppercase tracking-widest">Ações/Hoje</span>
+                                <span class="text-[8px] font-bold text-audit-gold uppercase tracking-widest">Tráfego Ativo</span>
                             </div>
                             <h3 class="text-2xl font-black text-audit-navy" id="stat-atividades">--</h3>
                         </div>
@@ -302,7 +308,7 @@
                         <!-- Tabela Atividades -->
                         <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col max-h-[450px]">
                             <div class="p-6 border-b border-slate-50 flex justify-between items-center">
-                                <h3 class="text-sm font-bold text-audit-navy uppercase tracking-widest">Log de Atividades</h3>
+                                <h3 class="text-sm font-bold text-audit-navy uppercase tracking-widest">Monitorização de Logs</h3>
                                 <i data-lucide="clock" class="w-4 h-4 text-slate-300"></i>
                             </div>
                             <div class="flex-1 overflow-y-auto no-scrollbar">
@@ -310,8 +316,8 @@
                                     <thead class="sticky top-0 bg-slate-50 text-slate-400 text-[9px] uppercase font-bold tracking-tighter">
                                         <tr>
                                             <th class="px-6 py-3">Auditor</th>
-                                            <th class="px-6 py-3">Ação</th>
-                                            <th class="px-6 py-3 text-right">Data/Hora</th>
+                                            <th class="px-6 py-3">Ação Realizada</th>
+                                            <th class="px-6 py-3 text-right">Timestamp</th>
                                         </tr>
                                     </thead>
                                     <tbody id="atividades-list" class="divide-y divide-slate-50">
@@ -325,17 +331,15 @@
                         <div class="space-y-4">
                             <div class="bg-audit-navy p-6 rounded-2xl text-white shadow-xl relative overflow-hidden group">
                                 <i data-lucide="shield" class="absolute -right-4 -bottom-4 w-24 h-24 text-white/5 group-hover:rotate-12 transition-transform"></i>
-                                <h4 class="text-xs font-bold text-audit-gold uppercase tracking-[0.2em] mb-3">Conexão Segura</h4>
+                                <h4 class="text-xs font-bold text-audit-gold uppercase tracking-[0.2em] mb-3">Protocolo de Segurança</h4>
                                 <p class="text-[11px] text-slate-400 leading-relaxed">
-                                    Seus dados estão sendo sincronizados via criptografia AES-256 com o Google Cloud Firestore.
+                                    Navegação segura habilitada. Todas as rotas de Início a Configurações são auditadas em tempo real via Google Cloud.
                                 </p>
                                 <div class="mt-4 flex items-center gap-2 text-[9px] font-bold text-emerald-400">
                                     <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
-                                    Sincronização em tempo real
+                                    Monitor de Atividade: Online
                                 </div>
                             </div>
-
-                            <!-- Seção Acesso Rápido removida conforme solicitado -->
                         </div>
                     </div>
                 </div>
@@ -346,16 +350,16 @@
     <!-- Modals -->
     <div id="logoutModal" class="hidden fixed inset-0 bg-audit-navy/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
         <div class="bg-white p-8 rounded-[2rem] shadow-2xl max-w-sm w-full text-center border border-slate-100">
-            <h3 class="text-lg font-bold text-audit-navy mb-2">Deseja Sair?</h3>
-            <p class="text-slate-500 text-xs mb-6">Sua sessão será encerrada e precisará autenticar novamente.</p>
+            <h3 class="text-lg font-bold text-audit-navy mb-2">Encerrar Sessão?</h3>
+            <p class="text-slate-500 text-xs mb-6">Confirme se deseja sair do ambiente administrativo do AuditEduca.</p>
             <div class="flex gap-3">
-                <button onclick="closeLogoutModal()" class="flex-1 px-4 py-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest">Voltar</button>
-                <button onclick="confirmLogout()" class="flex-1 px-4 py-3 bg-audit-navy rounded-xl text-white font-bold text-[10px] uppercase tracking-widest shadow-lg shadow-audit-navy/20">Confirmar Saída</button>
+                <button onclick="closeLogoutModal()" class="flex-1 px-4 py-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest">Cancelar</button>
+                <button onclick="confirmLogout()" class="flex-1 px-4 py-3 bg-audit-navy rounded-xl text-white font-bold text-[10px] uppercase tracking-widest shadow-lg shadow-audit-navy/20">Confirmar</button>
             </div>
         </div>
     </div>
 
-    <!-- Firebase -->
+    <!-- Firebase Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -381,11 +385,7 @@
         };
 
         const initAuth = async () => {
-            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                // signInWithCustomToken...
-            } else {
-                await signInAnonymously(auth);
-            }
+            await signInAnonymously(auth);
         };
         initAuth();
 
@@ -396,24 +396,21 @@
                 
                 if (profileSnap.exists()) {
                     const data = profileSnap.data();
-                    ui.name.innerText = data.nome || "Usuário Audit";
-                    ui.level.innerText = `Acesso Nível ${data.nivel || '1'}`;
+                    ui.name.innerText = data.nome || "Auditor";
+                    ui.level.innerText = `Nível de Acesso ${data.nivel || '1'}`;
                     ui.initials.innerText = (data.nome || "AU").substring(0, 2).toUpperCase();
                 } else {
-                    ui.name.innerText = user.isAnonymous ? "Sessão Anónima" : (user.email || "Usuário");
-                    ui.level.innerText = "Acesso Nível 1";
+                    ui.name.innerText = "Sessão Administrativa";
+                    ui.level.innerText = "Nível de Acesso 1";
                     ui.initials.innerText = "AD";
                 }
 
                 startRealtimeData();
-            } else {
-                window.location.href = 'admin.html';
             }
         });
 
         function startRealtimeData() {
             const collections = ['questoes', 'provas', 'usuarios', 'atividades'];
-            
             collections.forEach(col => {
                 const q = collection(db, 'artifacts', appId, 'public', 'data', col);
                 onSnapshot(q, (snap) => {
@@ -437,7 +434,7 @@
                             <span class="text-[11px] font-semibold text-audit-navy">${item.auditor || 'Sistema'}</span>
                         </div>
                     </td>
-                    <td class="px-6 py-4 text-[10px] text-slate-500">${item.acao || 'Ação'}</td>
+                    <td class="px-6 py-4 text-[10px] text-slate-500">${item.acao || 'Ação Detectada'}</td>
                     <td class="px-6 py-4 text-[9px] text-slate-400 font-bold text-right">
                         ${item.timestamp ? new Date(item.timestamp.seconds * 1000).toLocaleTimeString() : '--:--'}
                     </td>
@@ -445,7 +442,7 @@
             `).join('');
             
             if (docs.length === 0) {
-                ui.atividadesList.innerHTML = `<tr><td colspan="3" class="p-10 text-center text-slate-300 text-xs">Sem logs recentes.</td></tr>`;
+                ui.atividadesList.innerHTML = `<tr><td colspan="3" class="p-10 text-center text-slate-300 text-xs">Aguardando dados...</td></tr>`;
             }
         }
     </script>
@@ -453,13 +450,12 @@
     <script>
         lucide.createIcons();
 
-        // Lógica de Toggle da Sidebar
+        // Sidebar logic
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebar-toggle');
         
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
-            // Re-render lucide icons if needed, or rotate chevron
         });
 
         function openLogoutModal() { document.getElementById('logoutModal').classList.remove('hidden'); }

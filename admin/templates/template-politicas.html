@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" id="meta-author" content="AuditEduca Governança">
+    <meta name="robots" id="meta-robots" content="index, follow">
+    <meta name="description" id="meta-description" content="Página Institucional Audit Educa - Transparência e Qualidade na Educação.">
+    <title id="shell-page-title">Título da Página | Audit Educa</title>
+    
+    <!-- Scripts de Integração Global (Injetados via templates.html) -->
+    <!-- [GTAG_PLACEHOLDER] -->
+    <!-- [ADSENSE_PLACEHOLDER] -->
+
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+
+    <!-- Estilos Globais -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/main.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: { 'audit-gold': '#C5A059', 'audit-navy': '#0f172a' }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        main { min-height: calc(100vh - 80px); padding-top: 80px; }
+        .hero-hub { background: linear-gradient(rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.98)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; padding: 80px 0 120px 0; border-bottom: 4px solid #C5A059; }
+        .content-card { background: #ffffff; border-radius: 28px; box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.08); border: 1px solid rgba(226, 232, 240, 0.8); margin-top: -60px; padding: 50px; position: relative; z-index: 10; }
+        .prose-audit h2 { font-family: 'Playfair Display', serif; color: #0f172a; font-weight: 700; font-size: 2.25rem; margin-top: 3rem; margin-bottom: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; }
+        .prose-audit p { line-height: 1.9; margin-bottom: 1.5rem; color: #475569; font-size: 1.125rem; text-align: justify; }
+        .breadcrumb-audit { display: flex; align-items: center; gap: 12px; font-size: 10px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.2em; color: #C5A059; margin-bottom: 24px; }
+        .share-btn { transition: all 0.3s ease; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #f1f5f9; color: #64748b; }
+        .share-btn:hover { background: #0f172a; color: #C5A059; transform: translateY(-2px); }
+        .tag-chip { transition: all 0.2s; background: #f8fafc; border: 1px solid #e2e8f0; padding: 6px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+        .tag-chip:hover { border-color: #C5A059; color: #0f172a; background: #fff; }
+    </style>
+
+    <script src="https://auditeduca.com.br/assets/js/preloader.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js" defer></script>
+    <script src="https://auditeduca.com.br/assets/js/accessibility-api.js" defer></script>
+</head>
+<body class="antialiased">
+
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-6 py-3 rounded-2xl shadow-2xl z-[100] opacity-0 transition-all duration-300 pointer-events-none translate-y-10">Link copiado!</div>
+    <div id="preloader-placeholder"></div>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero-hub text-white relative">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="max-w-4xl">
+                    <nav class="breadcrumb-audit">
+                        <a href="/">Home</a> <i class="fas fa-angle-right text-[8px] opacity-40"></i>
+                        <span>Institucional</span> <i class="fas fa-angle-right text-[8px] opacity-40"></i>
+                        <span id="bc-current">Documento</span>
+                    </nav>
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-serif font-bold mb-6 leading-tight" id="shell-title">Título</h1>
+                    <div class="flex flex-wrap items-center gap-6 text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                        <span><i class="far fa-calendar-check text-audit-gold mr-2"></i><span id="shell-date">--/--/--</span></span>
+                        <span class="border-l border-slate-700 pl-6"><i class="fas fa-code-branch text-audit-gold mr-2"></i><span id="shell-version">1.0.0</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-20 px-6">
+            <div class="container mx-auto max-w-5xl">
+                <div class="content-card">
+                    
+                    <div class="mb-10 flex items-center justify-between border-b border-slate-50 pb-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-audit-navy"><i data-lucide="user-check" class="w-6 h-6"></i></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Aprovado por</p>
+                                <p class="text-sm font-bold text-audit-navy" id="shell-approver">--</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="share('facebook')" class="share-btn"><i class="fab fa-facebook-f"></i></button>
+                            <button onclick="share('linkedin')" class="share-btn"><i class="fab fa-linkedin-in"></i></button>
+                            <button onclick="share('x')" class="share-btn"><i class="fab fa-x-twitter"></i></button>
+                            <button onclick="share('whatsapp')" class="share-btn"><i class="fab fa-whatsapp"></i></button>
+                            <button onclick="copyLink()" class="share-btn"><i class="fas fa-link"></i></button>
+                        </div>
+                    </div>
+
+                    <article class="prose-audit" id="shell-content">
+                        <!-- Conteúdo injetado -->
+                    </article>
+
+                    <!-- Tags -->
+                    <div class="mt-16 pt-10 border-t border-slate-100">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Tópicos Relacionados:</p>
+                        <div class="flex flex-wrap gap-2" id="shell-tags"></div>
+                    </div>
+                </div>
+
+                <!-- Leia Também -->
+                <div class="mt-20">
+                    <h3 class="text-xl font-serif font-bold text-audit-navy mb-8 border-l-4 border-audit-gold pl-4">Leia Também</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="related-grid"></div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="mt-16 bg-audit-navy rounded-[2.5rem] p-10 text-white relative overflow-hidden">
+                    <div class="relative z-10 max-w-2xl">
+                        <h3 class="text-2xl font-serif font-bold mb-4">Mantenha-se Atualizado</h3>
+                        <p class="text-slate-400 text-sm mb-8">Receba notificações institucionais no seu e-mail.</p>
+                        <div class="flex gap-4">
+                            <input type="email" placeholder="seu@email.com" class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm outline-none">
+                            <button class="bg-audit-gold text-audit-navy font-bold px-8 py-4 rounded-2xl text-[10px] uppercase tracking-widest">Inscrever</button>
+                        </div>
+                    </div>
+                    <i data-lucide="mail" class="absolute right-[-20px] top-1/2 -translate-y-1/2 w-64 h-64 text-white/5 rotate-12"></i>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+</body>
+</html>
