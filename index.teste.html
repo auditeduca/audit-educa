@@ -11,7 +11,32 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://www.auditeduca.com.br/">
 
-    <!-- Manifest PWA (apenas em produção ou localhost) -->
+    <!-- SCHEMA MARKUP (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Audit Educa",
+      "url": "https://www.auditeduca.com.br/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.auditeduca.com.br/busca-e-conteudo.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Audit Educa",
+      "url": "https://www.auditeduca.com.br/",
+      "logo": "https://auditeduca.com.br/assets/images/audit-educa-favicon.webp",
+      "description": "Hub gratuito de ferramentas e artigos para auditores e contadores."
+    }
+    </script>
+
+    <!-- Manifest PWA -->
     <script>
         if (location.protocol === 'https:' || location.hostname === 'localhost') {
             document.write('<link rel="manifest" href="/manifest.json">');
@@ -19,15 +44,13 @@
     </script>
     <meta name="theme-color" content="#0C1B33">
 
-    <!-- Fontes Oficiais Audit Educa -->
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- Favicon Oficial -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
 
-    <!-- TAILWIND CSS (ESSENCIAL para as classes utilitárias) -->
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,8 +58,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
-                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['DM Sans', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
                         mono: ['DM Mono', 'monospace'],
                     },
                     colors: {
@@ -49,26 +72,18 @@
         }
     </script>
 
-    <!-- CSS Modulares Audit Educa (complementam o Tailwind) -->
+    <!-- CSS Modulares -->
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
-
-    <!-- Ícones e Gráficos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://unpkg.com/lucide@0.412.0/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.412.0/dist/umd/lucide.min.js" defer></script>
 
-    <!-- Estilos específicos da página (não cobertos pelos módulos) -->
     <style>
-        /* ================================================================
-           AUDIT EDUCA — INDEX PAGE (estilos complementares)
-           ================================================================ */
-
         :root {
             --navy:      #0C1B33;
             --navy-2:    #162843;
-            --navy-3:    #1E3A5F;
             --gold:      #C9A84C;
             --gold-lt:   #E2C87A;
             --gold-dim:  rgba(201,168,76,.12);
@@ -85,12 +100,9 @@
             --green:     #065F46;
             --red:       #991B1B;
             --blue:      #1E40AF;
-            --purple:    #5B21B6;
-            --amber:     #B45309;
             --r:         4px;
             --shadow:    0 1px 4px rgba(0,0,0,.07);
             --shadow-2:  0 4px 20px rgba(12,27,51,.1);
-            --shadow-3:  0 12px 40px rgba(12,27,51,.15);
             --f-serif:   'Cormorant Garamond', Georgia, serif;
             --f-sans:    'DM Sans', system-ui, sans-serif;
             --f-mono:    'DM Mono', monospace;
@@ -99,16 +111,17 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        
         body {
-            font-family: var(--f-sans);
-            font-size: 1rem;
-            line-height: 1.65;
-            color: var(--text);
-            background: var(--bg);
+            font-family: var(--f-sans); font-size: 1rem; line-height: 1.65;
+            color: var(--text); background: var(--bg);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; /* Evita vazamento lateral absoluto */
         }
+        
         img { display: block; width: 100%; height: 100%; object-fit: cover; }
         a { text-decoration: none; color: inherit; }
+        h1, h2, h3, h4 { margin: 0; }
 
         @keyframes fadeUp {
             from { opacity:0; transform:translateY(18px); }
@@ -117,28 +130,33 @@
         .a1 { animation: fadeUp .65s var(--ease) both; }
         .a2 { animation: fadeUp .65s var(--ease) .12s both; }
         .a3 { animation: fadeUp .65s var(--ease) .24s both; }
-        .a4 { animation: fadeUp .65s var(--ease) .36s both; }
 
-        /* ===== DATE / TICKER BAR ===== */
+        /* ===== HEADER MODULAR (Posição 1: Sticky Supremo) ===== */
+        #header-placeholder {
+            position: sticky; top: 0; z-index: 1090; width: 100%; background: var(--navy);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            min-height: 90px; /* Garante espaço físico para empurrar o conteúdo para baixo */
+        }
+        
+        /* A trava de fluxo que forçava position:relative foi removida daqui. 
+           Isto liberta o menu hambúrguer (position: absolute/fixed) para sobrepor a página
+           livremente, sem impactar ou ser impactado pela Datebar. */
+
+        /* ===== DATEBAR (Posição 2: Flui abaixo do Header) ===== */
         .datebar {
-            background: var(--navy);
-            border-bottom: 1px solid rgba(201,168,76,.2);
-            padding: .45rem 0;
-            position: relative; /* Adicionado para garantir z-index */
-            z-index: 200;       /* Garante que fique acima de outros elementos na renderização */
+            background: var(--navy); 
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* Separador muito subtil */
+            padding: .65rem 0;
+            position: relative; 
+            z-index: 1060; 
         }
         .datebar-inner {
             max-width: 1320px; margin: 0 auto; padding: 0 2rem;
-            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-            flex-wrap: wrap;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
         }
-        .datebar-left {
-            display: flex; align-items: center; gap: 1.25rem;
-            font-size: .67rem; font-weight: 500; color: rgba(255,255,255,.4);
-            letter-spacing: .03em;
-        }
+        .datebar-left { display: flex; align-items: center; gap: 1.25rem; font-size: .67rem; font-weight: 500; color: rgba(255,255,255,.5); }
         .datebar-left b { color: var(--gold); font-weight: 700; }
-        .db-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.18); }
+        .db-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.2); }
         .datebar-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
         .db-tag {
             font-size: .59rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
@@ -146,126 +164,81 @@
         }
         .db-tag.on  { background: var(--gold); color: var(--navy); }
         .db-tag.off { background: rgba(255,255,255,.07); color: rgba(255,255,255,.45); }
-        .db-tag.off:hover { background: rgba(255,255,255,.13); color: white; }
+        .db-tag.off:hover { background: rgba(255,255,255,.15); color: white; }
+
+        /* ===== HEADER MODULAR (Posição 2: Sticky) ===== */
+        #header-placeholder {
+            position: sticky; top: 0; z-index: 1050; width: 100%; background: var(--navy);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
 
         /* ===== HERO ===== */
-        .hero-wrap {
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-        }
+        .hero-wrap { background: var(--surface); border-bottom: 1px solid var(--border); }
         .hero-gold-bar { height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-lt) 45%, transparent); }
-        .hero-grid {
-            max-width: 1320px; margin: 0 auto; padding: 2.5rem 2rem;
-            display: grid; grid-template-columns: 1fr 320px; gap: 0;
-            border-left: 1px solid var(--border); border-right: 1px solid var(--border);
-        }
+        .hero-grid { max-width: 1320px; margin: 0 auto; padding: 2.5rem 2rem; display: grid; grid-template-columns: 1fr 320px; gap: 0; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
         .hero-lead { padding-right: 2.5rem; border-right: 1px solid var(--border); }
-        .hero-img {
-            height: 400px; border-radius: var(--r); overflow: hidden;
-            margin-bottom: 1.5rem; position: relative; cursor: pointer;
-        }
+        .hero-img { height: 400px; border-radius: var(--r); overflow: hidden; margin-bottom: 1.5rem; position: relative; cursor: pointer; }
         .hero-img img { transition: transform .6s var(--ease); }
         .hero-img:hover img { transform: scale(1.03); }
-        .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(12,27,51,.88) 0%, rgba(12,27,51,.08) 55%);
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 1.75rem;
-        }
-        .h-cat {
-            font-size: .59rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-            color: var(--gold); margin-bottom: .45rem; display: flex; align-items: center; gap: .35rem;
-        }
-        .h-hl {
-            font-family: var(--f-serif); font-size: 1.9rem; font-weight: 700;
-            color: white; line-height: 1.2; margin-bottom: .4rem;
-        }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,27,51,.88) 0%, rgba(12,27,51,.08) 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.75rem; }
+        .h-cat { font-size: .59rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: .45rem; display: flex; align-items: center; gap: .35rem; }
+        .h-hl { font-family: var(--f-serif); font-size: 1.9rem; font-weight: 700; color: white; line-height: 1.2; margin-bottom: .4rem; }
         .h-meta { font-size: .7rem; color: rgba(255,255,255,.5); display: flex; align-items: center; gap: .6rem; }
         .hero-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
         .hero-text  { font-size: .93rem; color: var(--text); line-height: 1.78; font-weight: 300; }
         .hero-text p+p { margin-top: .65rem; }
-        .key-card {
-            background: var(--bg); border: 1px solid var(--border);
-            border-top: 2px solid #7C3AED; border-radius: var(--r); padding: 1.125rem;
-        }
-        .key-label {
-            font-size: .59rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-            color: #7C3AED; margin-bottom: .625rem; display: flex; align-items: center; gap: .35rem;
-        }
+        .key-card { background: var(--bg); border: 1px solid var(--border); border-top: 2px solid #7C3AED; border-radius: var(--r); padding: 1.125rem; }
+        .key-label { font-size: .59rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #7C3AED; margin-bottom: .625rem; display: flex; align-items: center; gap: .35rem; }
         .key-card ul { font-size: .79rem; color: var(--text); line-height: 1.72; padding-left: 1rem; font-weight: 300; }
-        .read-more {
-            display: inline-flex; align-items: center; gap: .35rem;
-            font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-            color: var(--navy); margin-top: .875rem; transition: color .2s, gap .2s; cursor: pointer;
-        }
+        .read-more { display: inline-flex; align-items: center; gap: .35rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); margin-top: .875rem; transition: color .2s, gap .2s; cursor: pointer; }
         .read-more:hover { color: var(--gold); gap: .65rem; }
-        .read-more i { font-size: .62rem; }
         .hero-stack { padding-left: 1.875rem; display: flex; flex-direction: column; }
-        .sec-art {
-            padding: 1.125rem 0; border-bottom: 1px solid var(--border); cursor: pointer;
-        }
+        .sec-art { padding: 1.125rem 0; border-bottom: 1px solid var(--border); cursor: pointer; }
         .sec-art:last-child { border-bottom: none; }
         .sec-art:hover .sec-title { color: var(--gold); }
         .sec-img { height: 108px; border-radius: var(--r); overflow: hidden; margin-bottom: .75rem; }
         .sec-img img { transition: transform .4s var(--ease); }
         .sec-art:hover .sec-img img { transform: scale(1.05); }
-        .sec-cat {
-            font-size: .57rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-            color: var(--gold); margin-bottom: .25rem; display: flex; align-items: center; gap: .3rem;
-        }
+        .sec-cat { font-size: .57rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .25rem; display: flex; align-items: center; gap: .3rem; }
         .sec-title { font-family: var(--f-serif); font-size: 1rem; font-weight: 600; color: var(--text-h); line-height: 1.3; margin-bottom: .25rem; transition: color .2s; }
         .sec-meta  { font-size: .67rem; color: var(--text-3); }
 
-        /* ===== TOPIC STRIP ===== */
+        /* ===== TOPIC STRIP (Filtros Responsivos Blindados) ===== */
         .topic-strip {
             background: rgba(248,247,244,.96); backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
-            padding: .65rem 0; position: sticky; top: 0; z-index: 200;
+            border-bottom: 1px solid var(--border); padding: .65rem 0; 
+            position: sticky; z-index: 1040; width: 100%;
         }
         .topic-inner {
             max-width: 1320px; margin: 0 auto; padding: 0 2rem;
-            display: flex; align-items: center; gap: .45rem; overflow-x: auto; scrollbar-width: none;
+            display: flex; align-items: center; gap: .45rem; 
+            overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none;
         }
         .topic-inner::-webkit-scrollbar { display: none; }
+        .topic-inner::after { content: ''; padding-right: 2rem; }
         .t-chip {
-            flex-shrink: 0; display: inline-flex; align-items: center; gap: .35rem;
-            font-size: .68rem; font-weight: 600; padding: .38rem .8rem;
-            border-radius: 100px; border: 1px solid var(--border-2);
-            background: var(--surface); color: var(--text-2);
-            cursor: pointer; transition: all .2s; white-space: nowrap;
+            flex: 0 0 auto; /* Impede que os botões esmaguem no mobile */
+            display: inline-flex; align-items: center; gap: .35rem; font-size: .68rem; font-weight: 600; 
+            padding: .38rem .8rem; border-radius: 100px; border: 1px solid var(--border-2);
+            background: var(--surface); color: var(--text-2); cursor: pointer; transition: all .2s;
         }
-        .t-chip i { font-size: .62rem; }
         .t-chip:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
         .t-chip.on { background: var(--navy); color: var(--gold); border-color: var(--navy); }
-        .t-div { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; }
+        .t-div { width: 1px; height: 18px; background: var(--border); flex: 0 0 auto; }
 
-        /* ===== MAIN TWO-COLUMN GRID (seções internas) ===== */
-        .main-wrap {
-            max-width: 1320px; margin: 0 auto; padding: 3rem 2rem 5rem;
-            display: grid; grid-template-columns: 1fr 296px; gap: 3.5rem; align-items: start;
-        }
-        .sec-hd {
-            display: flex; align-items: flex-end; justify-content: space-between;
-            margin-bottom: 1.25rem; padding-bottom: .875rem; border-bottom: 2px solid var(--navy);
-        }
+        /* ===== MAIN TWO-COLUMN GRID (Com novo Padding ampliado) ===== */
+        .main-wrap { max-width: 1320px; margin: 0 auto; padding: 4.5rem 2rem 5rem; display: grid; grid-template-columns: 1fr 310px; gap: 3.5rem; align-items: start; }
+        .sec-hd { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.25rem; padding-bottom: .875rem; border-bottom: 2px solid var(--navy); }
         .sec-hd-l { display: flex; flex-direction: column; gap: .2rem; }
-        .sec-eye {
-            font-size: .58rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-            color: var(--gold); display: flex; align-items: center; gap: .35rem;
-        }
+        .sec-eye { font-size: .58rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: .35rem; }
         .sec-ttl { font-family: var(--f-serif); font-size: 1.45rem; font-weight: 700; color: var(--text-h); line-height: 1.1; }
-        .see-all {
-            font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-            color: var(--text-2); display: flex; align-items: center; gap: .3rem;
-            cursor: pointer; transition: color .2s; flex-shrink: 0; padding-bottom: .1rem;
-        }
+        .see-all { font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); display: flex; align-items: center; gap: .3rem; cursor: pointer; transition: color .2s; flex-shrink: 0; padding-bottom: .1rem; }
         .see-all:hover { color: var(--gold); }
-        .art-h {
-            display: grid; grid-template-columns: 152px 1fr; gap: .875rem;
-            padding: 1.125rem 0; border-bottom: 1px solid var(--border); cursor: pointer;
-        }
+        
+        /* Artigos e Cards */
+        .art-h { display: grid; grid-template-columns: 152px 1fr; gap: .875rem; padding: 1.125rem 0; border-bottom: 1px solid var(--border); cursor: pointer; }
         .art-h:last-child { border-bottom: none; }
         .art-h:hover .art-ttl { color: var(--gold); }
-        .art-h:hover .art-arrow { color: var(--gold); }
         .a-thumb { height: 105px; border-radius: var(--r); overflow: hidden; flex-shrink: 0; }
         .a-thumb img { transition: transform .4s var(--ease); }
         .art-h:hover .a-thumb img { transform: scale(1.06); }
@@ -274,14 +247,11 @@
         .art-exc { font-size: .79rem; color: var(--text-2); line-height: 1.58; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .art-ft { display: flex; align-items: center; justify-content: space-between; margin-top: .45rem; }
         .art-meta { font-size: .64rem; color: var(--text-3); display: flex; align-items: center; gap: .4rem; }
-        .art-meta i { color: var(--gold); font-size: .6rem; }
         .art-arrow { font-size: .62rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-3); display: flex; align-items: center; gap: .25rem; transition: color .2s; }
-        .art-arrow i { font-size: .58rem; }
+        .art-h:hover .art-arrow { color: var(--gold); }
+        
         .vgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
-        .art-v {
-            background: var(--surface); padding: 1.375rem; cursor: pointer;
-            transition: background .2s; position: relative;
-        }
+        .art-v { background: var(--surface); padding: 1.375rem; cursor: pointer; transition: background .2s; position: relative; }
         .art-v::before { content:''; position:absolute; top:0; left:0; right:0; height:0; background: var(--gold); transition: height .25s; }
         .art-v:hover::before { height: 2px; }
         .art-v:hover { background: #fdfcf9; }
@@ -289,65 +259,36 @@
         .av-img { height: 142px; border-radius: var(--r); overflow: hidden; margin-bottom: .875rem; }
         .av-img img { transition: transform .45s var(--ease); }
         .art-v:hover .av-img img { transform: scale(1.05); }
-        .av-tag { display: inline-block; font-size: .57rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .15rem .48rem; border-radius: 2px; margin-bottom: .35rem; }
+        .av-tag, .ai-tag { display: inline-block; font-size: .57rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .15rem .48rem; border-radius: 2px; margin-bottom: .35rem; cursor: pointer; transition: all .2s; }
+        .av-tag:hover, .ai-tag:hover { filter: brightness(0.9); transform: translateY(-1px); }
         .av-cat { font-size: .57rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .3rem; }
         .av-ttl { font-family: var(--f-serif); font-size: 1.06rem; font-weight: 600; color: var(--text-h); line-height: 1.3; margin-bottom: .4rem; transition: color .2s; }
         .av-desc { font-size: .78rem; color: var(--text-2); line-height: 1.58; font-weight: 300; margin-bottom: .75rem; }
         .av-ft { display: flex; align-items: center; justify-content: space-between; font-size: .62rem; color: var(--text-3); }
-        .av-ft span:last-child { color: var(--gold); font-weight: 600; }
-        .ai-spot {
-            border: 1px solid var(--border); border-top: 3px solid #7C3AED;
-            border-radius: var(--r); overflow: hidden; margin-bottom: 3.25rem; cursor: pointer;
-        }
+        
+        /* Ferramentas / Spotlight */
+        .ai-spot { border: 1px solid var(--border); border-top: 3px solid #7C3AED; border-radius: var(--r); overflow: hidden; margin-bottom: 3.25rem; cursor: pointer; }
         .ai-spot:hover .ai-spot-img img { transform: scale(1.03); }
         .ai-spot-img { height: 265px; position: relative; overflow: hidden; }
         .ai-spot-img img { transition: transform .5s var(--ease); }
-        .ai-spot-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(12,27,51,.9) 0%, rgba(91,33,182,.35) 100%);
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 1.625rem;
-        }
-        .ai-badge {
-            display: inline-flex; align-items: center; gap: .35rem;
-            font-size: .58rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-            background: rgba(139,92,246,.22); border: 1px solid rgba(139,92,246,.4);
-            color: #c4b5fd; padding: .22rem .6rem; border-radius: 2px; margin-bottom: .65rem; width: fit-content;
-        }
+        .ai-spot-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,27,51,.9) 0%, rgba(91,33,182,.35) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.625rem; }
+        .ai-badge { display: inline-flex; align-items: center; gap: .35rem; font-size: .58rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(139,92,246,.22); border: 1px solid rgba(139,92,246,.4); color: #c4b5fd; padding: .22rem .6rem; border-radius: 2px; margin-bottom: .65rem; width: fit-content; }
         .ai-hl { font-family: var(--f-serif); font-size: 1.75rem; font-weight: 700; color: white; line-height: 1.2; margin-bottom: .4rem; }
         .ai-sub { font-size: .8rem; color: rgba(255,255,255,.6); font-weight: 300; line-height: 1.6; }
         .ai-body { padding: 1.375rem; background: var(--surface); }
         .ai-body-text { font-size: .87rem; color: var(--text); line-height: 1.78; font-weight: 300; margin-bottom: .875rem; }
         .ai-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .875rem; }
-        .ai-tag {
-            font-size: .59rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
-            padding: .18rem .52rem; border-radius: 2px; background: var(--bg);
-            border: 1px solid var(--border); color: var(--text-2);
-            cursor: pointer; transition: all .2s;
-        }
-        .ai-tag:hover { border-color: #7C3AED; color: #7C3AED; background: rgba(124,58,237,.07); }
-        .ai-cta {
-            display: inline-flex; align-items: center; gap: .45rem;
-            font-size: .7rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
-            color: #7C3AED; cursor: pointer; transition: gap .2s;
-        }
+        .ai-tag { background: var(--bg); border: 1px solid var(--border); color: var(--text-2); }
+        .ai-cta { display: inline-flex; align-items: center; gap: .45rem; font-size: .7rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #7C3AED; cursor: pointer; transition: gap .2s; }
         .ai-cta:hover { gap: .75rem; }
-        .ai-cta i { font-size: .62rem; }
         .tools-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
-        .tool-card {
-            background: var(--surface); overflow: hidden; cursor: pointer;
-            transition: background .2s; display: flex; flex-direction: column;
-        }
+        .tool-card { background: var(--surface); overflow: hidden; cursor: pointer; transition: background .2s; display: flex; flex-direction: column; }
         .tool-card:hover { background: #fdfcf9; }
         .tool-card:hover .tool-name { color: var(--gold); }
-        .tool-card:hover .tool-norm { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
         .t-preview { height: 152px; position: relative; overflow: hidden; background: var(--navy); }
         .t-preview img { opacity: .88; transition: transform .5s var(--ease), opacity .3s; }
         .tool-card:hover .t-preview img { transform: scale(1.05); opacity: 1; }
-        .t-prev-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to bottom, transparent 45%, rgba(12,27,51,.78));
-            display: flex; align-items: flex-end; padding: .8rem .875rem;
-        }
+        .t-prev-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 45%, rgba(12,27,51,.78)); display: flex; align-items: flex-end; padding: .8rem .875rem; }
         .t-prev-cat { font-size: .57rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: .3rem; }
         .t-info { padding: .875rem 1rem 1rem; flex: 1; }
         .tool-name { font-family: var(--f-serif); font-size: 1.02rem; font-weight: 600; color: var(--text-h); margin-bottom: .28rem; line-height: 1.25; transition: color .2s; }
@@ -355,17 +296,13 @@
         .tool-norms { display: flex; flex-wrap: wrap; gap: .28rem; }
         .tool-norm { font-family: var(--f-mono); font-size: .59rem; padding: .14rem .42rem; background: var(--bg); border: 1px solid var(--border); border-radius: 2px; color: var(--text-2); transition: all .2s; }
         .guide-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
-        .g-item {
-            background: var(--surface); display: grid; grid-template-columns: 68px 1fr auto;
-            gap: 1rem; padding: .875rem 1.125rem; align-items: center; cursor: pointer; transition: background .2s;
-        }
+        .g-item { background: var(--surface); display: grid; grid-template-columns: 68px 1fr auto; gap: 1rem; padding: .875rem 1.125rem; align-items: center; cursor: pointer; transition: background .2s; }
         .g-item:hover { background: #fdfcf9; }
         .g-item:hover .g-ttl { color: var(--gold); }
         .g-num { font-family: var(--f-serif); font-size: 2.6rem; font-weight: 700; color: var(--border-2); line-height: 1; text-align: center; transition: color .2s; }
         .g-item:hover .g-num { color: var(--gold-lt); }
         .g-ttl { font-family: var(--f-serif); font-size: 1.02rem; font-weight: 600; color: var(--text-h); margin-bottom: .2rem; transition: color .2s; }
         .g-meta { font-size: .68rem; color: var(--text-3); display: flex; align-items: center; gap: .55rem; }
-        .g-meta i { color: var(--gold); font-size: .62rem; }
         .g-badge { font-size: .57rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: .22rem .6rem; border-radius: 2px; flex-shrink: 0; }
         .badge-new  { background: rgba(201,168,76,.15); color: #7A5C10; }
         .badge-pop  { background: rgba(30,64,175,.12); color: #1E40AF; }
@@ -374,14 +311,34 @@
         /* ===== SIDEBAR ===== */
         .sidebar { display: flex; flex-direction: column; gap: 1.75rem; }
         .sw { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
-        .sw-head {
-            padding: .8rem 1.125rem; border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: space-between;
-        }
+        .sw-head { padding: .8rem 1.125rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
         .sw-title { font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--text-h); display: flex; align-items: center; gap: .35rem; }
         .sw-title i { color: var(--gold); font-size: .68rem; }
         .sw-link { font-size: .59rem; font-weight: 700; color: var(--text-3); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: color .2s; }
         .sw-link:hover { color: var(--gold); }
+        
+        /* Caixa Sugestões */
+        .sug-box { padding: 1.25rem; background: var(--bg-2); border-left: 3px solid var(--gold); }
+        .sug-desc { font-size: 0.75rem; color: var(--text-2); line-height: 1.5; margin-bottom: 0.75rem; }
+        .sug-textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: .8rem; padding: .6rem; border-radius: var(--r); outline: none; transition: border-color .2s; font-family: var(--f-sans); margin-bottom: .6rem; resize: vertical; min-height: 70px; }
+        .sug-textarea:focus { border-color: var(--gold); }
+        .sug-btn { width: 100%; background: transparent; border: 1px solid var(--border-2); color: var(--text); font-size: .65rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .5rem 1rem; border-radius: var(--r); cursor: pointer; transition: all .2s; font-family: var(--f-sans); }
+        .sug-btn:hover { background: var(--surface); border-color: var(--gold); color: var(--gold); }
+        #sug-ok { display:none; margin-top:.6rem; font-size:.7rem; color: var(--green); font-weight: 600; text-align: center; }
+
+        /* Blocos AdSense (Google) */
+        .ad-adsense { background: var(--bg-2); border: 1px dashed var(--border-2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; color: var(--text-3); font-size: 0.8rem; border-radius: var(--r); margin-bottom: 1.75rem; min-height: 250px; }
+        .ad-adsense i { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--border-2); }
+        .ad-label-tag { font-size: 0.5rem; font-weight: 700; text-transform: uppercase; color: var(--text-3); letter-spacing: 0.15em; margin-bottom: auto; align-self: flex-start; }
+
+        /* Índices Mercado (Preenche lacuna) */
+        .market-indices { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+        .mi-box { background: var(--surface); padding: 1.1rem; text-align: center; transition: background .2s; }
+        .mi-box:hover { background: var(--gold-dim); }
+        .mi-lbl { font-size: 0.6rem; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.1em; }
+        .mi-val { font-family: var(--f-mono); font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-top: 0.2rem; }
+        .mi-sub { font-size: 0.6rem; color: var(--green); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.2rem; margin-top: 0.1rem; }
+
         .trend-list { padding: .4rem 0; }
         .trend-item { display: flex; align-items: center; gap: .8rem; padding: .55rem 1.125rem; cursor: pointer; transition: background .15s; }
         .trend-item:hover { background: var(--bg); }
@@ -389,15 +346,13 @@
         .t-num { font-family: var(--f-serif); font-size: 1.4rem; font-weight: 700; color: var(--border-2); width: 26px; text-align: center; flex-shrink: 0; line-height: 1; }
         .t-ttl { font-size: .81rem; font-weight: 600; color: var(--text-h); line-height: 1.35; transition: color .2s; }
         .t-sub { font-size: .67rem; color: var(--text-3); margin-top: .08rem; }
+        
         .qt-list { padding: .65rem; display: flex; flex-direction: column; gap: .38rem; }
-        .qt-link {
-            display: flex; align-items: center; gap: .575rem; padding: .5rem .7rem;
-            border-radius: var(--r); border: 1px solid var(--border); background: var(--bg);
-            cursor: pointer; transition: all .2s;
-        }
+        .qt-link { display: flex; align-items: center; gap: .575rem; padding: .5rem .7rem; border-radius: var(--r); border: 1px solid var(--border); background: var(--bg); cursor: pointer; transition: all .2s; }
         .qt-link:hover { border-color: var(--gold); background: var(--gold-dim); }
         .qt-link:hover .qt-name { color: var(--gold); }
         .qt-icon { width: 28px; height: 28px; background: var(--navy); color: var(--gold); border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: .68rem; flex-shrink: 0; }
+        .qt-icon-sim { font-size: .75rem; border-radius: 50%; }
         .qt-name { font-size: .77rem; font-weight: 600; color: var(--text-h); transition: color .2s; }
         .qt-norm { font-family: var(--f-mono); font-size: .59rem; color: var(--text-3); }
         .qt-arr { margin-left: auto; color: var(--text-3); font-size: .63rem; transition: color .2s, transform .2s; }
@@ -407,87 +362,27 @@
         .n-cell:hover { background: var(--gold-dim); }
         .n-code { font-family: var(--f-mono); font-size: .73rem; font-weight: 500; color: var(--navy); margin-bottom: .18rem; }
         .n-name { font-size: .67rem; color: var(--text-2); line-height: 1.4; }
-        .sw-arts { padding: .4rem 0; }
-        .sw-art { display: flex; align-items: flex-start; gap: .875rem; padding: .6rem 1.125rem; cursor: pointer; transition: background .15s; }
-        .sw-art:hover { background: var(--bg); }
-        .sw-art:hover .sw-art-ttl { color: var(--gold); }
-        .sw-thumb { width: 58px; height: 48px; border-radius: var(--r); overflow: hidden; flex-shrink: 0; }
-        .sw-thumb img { height: 100%; }
-        .sw-art-ttl { font-size: .79rem; font-weight: 600; color: var(--text-h); line-height: 1.35; transition: color .2s; margin-bottom: .18rem; }
-        .sw-art-meta { font-size: .65rem; color: var(--text-3); }
-        .nl-box {
-            background: var(--navy); border: 1px solid rgba(201,168,76,.2);
-            border-radius: var(--r); padding: 1.375rem; position: relative; overflow: hidden;
-        }
-        .nl-box::before {
-            content: ''; position: absolute; top: -50px; right: -50px;
-            width: 130px; height: 130px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(201,168,76,.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .nl-eye { font-size: .57rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem; }
-        .nl-ttl { font-family: var(--f-serif); font-size: 1.12rem; font-weight: 700; color: white; line-height: 1.3; margin-bottom: .4rem; }
-        .nl-sub { font-size: .77rem; color: rgba(255,255,255,.48); font-weight: 300; line-height: 1.6; margin-bottom: .875rem; }
-        .nl-inp {
-            width: 100%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
-            color: white; font-size: .79rem; padding: .5rem .8rem; border-radius: var(--r);
-            outline: none; transition: border-color .2s; font-family: var(--f-sans); margin-bottom: .45rem;
-        }
-        .nl-inp::placeholder { color: rgba(255,255,255,.3); }
-        .nl-inp:focus { border-color: var(--gold); }
-        .nl-btn {
-            width: 100%; background: var(--gold); color: var(--navy); font-size: .7rem; font-weight: 700;
-            letter-spacing: .06em; text-transform: uppercase; padding: .55rem 1rem;
-            border: none; border-radius: var(--r); cursor: pointer; transition: background .2s; font-family: var(--f-sans);
-        }
-        .nl-btn:hover { background: var(--gold-lt); }
-        #nl-ok { display:none; margin-top:.6rem; font-size:.73rem; color:rgba(255,255,255,.6); }
 
-        /* ===== CTA BAND ===== */
-        .cta-band {
-            background: var(--navy); border-top: 1px solid rgba(201,168,76,.2);
-            padding: 3.75rem 0; position: relative; overflow: hidden;
-        }
-        .cta-band::before {
-            content: ''; position: absolute; top: 0; right: 0; width: 600px; height: 100%;
-            background: radial-gradient(ellipse at right center, rgba(201,168,76,.06) 0%, transparent 60%);
-            pointer-events: none;
-        }
-        .cta-inner {
-            max-width: 1320px; margin: 0 auto; padding: 0 2rem;
-            display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
-        }
-        .cta-eye { font-size: .59rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .65rem; }
-        .cta-ttl { font-family: var(--f-serif); font-size: clamp(1.75rem,3vw,2.5rem); font-weight: 700; color: white; line-height: 1.2; margin-bottom: .65rem; }
-        .cta-sub { font-size: .92rem; color: rgba(255,255,255,.48); font-weight: 300; line-height: 1.72; max-width: 500px; }
-        .cta-btns { display: flex; flex-direction: column; gap: .65rem; align-items: flex-end; }
-        .btn-gold {
-            display: inline-flex; align-items: center; gap: .45rem; background: var(--gold); color: var(--navy);
-            font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-            padding: .75rem 1.625rem; border-radius: var(--r); border: none; cursor: pointer;
-            transition: background .2s; white-space: nowrap; font-family: var(--f-sans);
-        }
-        .btn-gold:hover { background: var(--gold-lt); }
-        .btn-ghost {
-            display: inline-flex; align-items: center; gap: .45rem; background: transparent;
-            color: rgba(255,255,255,.58); font-size: .76rem; font-weight: 600;
-            padding: .75rem 1.625rem; border-radius: var(--r); border: 1px solid rgba(255,255,255,.15);
-            cursor: pointer; transition: all .2s; white-space: nowrap; font-family: var(--f-sans);
-        }
-        .btn-ghost:hover { border-color: rgba(255,255,255,.38); color: white; }
+        /* ===== CTA PLATAFORMA ABERTA (Design Prime Arredondado) ===== */
+        .cta-wrapper { background: var(--bg); padding: 4rem 2rem 5rem; }
+        .cta-card { max-width: 1060px; margin: 0 auto; background: #0B1627; border-radius: 28px; padding: 4.5rem 3rem; text-align: center; position: relative; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(11, 22, 39, 0.25); }
+        .cta-card::after { content: '\f559'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: -5%; top: 10%; font-size: 25rem; color: rgba(255,255,255,0.02); pointer-events: none; transform: rotate(-15deg); }
+        .cta-eye { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+        .cta-ttl { font-family: var(--f-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: white; line-height: 1.15; margin-bottom: 1.25rem; }
+        .cta-sub { font-size: .95rem; color: rgba(255,255,255,.6); font-weight: 300; line-height: 1.7; max-width: 680px; margin: 0 auto 2.5rem; }
+        .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 2; }
+        .btn-gold { display: inline-flex; align-items: center; gap: .5rem; background: var(--gold); color: #0B1627; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .9rem 2rem; border-radius: 8px; border: none; cursor: pointer; transition: transform .2s, background .2s; font-family: var(--f-sans); box-shadow: 0 4px 14px rgba(201,168,76,.2); }
+        .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+        .btn-ghost { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,0.05); color: rgba(255,255,255,.8); font-size: .75rem; font-weight: 600; padding: .9rem 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); cursor: pointer; transition: all .2s; font-family: var(--f-sans); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,.2); }
 
-        /* ===== SCROLL TOP ===== */
-        #scroll-top {
-            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-            width: 36px; height: 36px; background: var(--navy); border: 1px solid rgba(201,168,76,.3);
-            border-radius: var(--r); color: var(--gold); font-size: .72rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transform: translateY(8px); transition: all .25s var(--ease);
+        /* ===== GARANTIA DO MODAL DE COOKIES ===== */
+        /* Força qualquer aviso de cookies a sobrepor o Header (z-index 1090) e outras barras */
+        [id*="cookie"], [class*="cookie"], #cookie-notice, .cookie-banner {
+            z-index: 9999 !important;
         }
-        #scroll-top.vis { opacity: 1; transform: translateY(0); }
-        #scroll-top:hover { background: var(--gold); color: var(--navy); }
 
-        /* ===== RESPONSIVE (mantido do original) ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1100px) {
             .hero-grid { grid-template-columns: 1fr; gap: 0; }
             .hero-lead { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 0; }
@@ -495,8 +390,6 @@
             .sec-art { width: calc(33.333% - .75rem); border-bottom: none; }
             .main-wrap { grid-template-columns: 1fr; gap: 2rem; }
             .sidebar { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
-            .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
-            .cta-btns { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
             .vgrid { grid-template-columns: repeat(2,1fr); }
             .tools-grid { grid-template-columns: repeat(2,1fr); }
             .art-h { grid-template-columns: 130px 1fr; }
@@ -508,11 +401,13 @@
             .datebar-inner { flex-direction: column; align-items: flex-start; gap: .5rem; }
         }
         @media (max-width: 768px) {
-            .main-wrap { padding: 1.75rem 1rem 3.5rem; }
+            .main-wrap { padding: 3rem 1rem 3.5rem; } /* Padding ampliado no Mobile */
             .hero-grid { padding: 1.25rem 1rem 1.5rem; }
             .datebar-inner { padding: 0 1rem; }
             .topic-inner { padding: 0 1rem; }
-            .cta-inner { padding: 0 1rem; }
+            .topic-inner::after { padding-right: 1rem; }
+            .cta-wrapper { padding: 2.5rem 1rem 3.5rem; }
+            .cta-card { padding: 3rem 1.5rem; border-radius: 20px; }
             .hero-img { height: 240px; }
             .hero-body { grid-template-columns: 1fr; gap: 1rem; }
             .key-card { display: none; }
@@ -533,16 +428,14 @@
             .ai-spot-img { height: 200px; }
             .ai-hl { font-size: 1.3rem; }
             .ai-sub { display: none; }
-            .cta-inner { gap: 1.5rem; }
-            .cta-ttl { font-size: 1.6rem; }
             .cta-btns { flex-direction: column; width: 100%; }
             .btn-gold, .btn-ghost { width: 100%; justify-content: center; }
             .datebar-left > span:not(:first-child) { display: none; }
             .db-dot { display: none; }
             .datebar-tags { gap: .3rem; }
             .db-tag { font-size: .56rem; }
-            .nl-box { border-radius: 0; border-left: none; border-right: none; }
             .norm-grid { grid-template-columns: repeat(2,1fr); }
+            .market-indices { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 480px) {
             .hero-grid { padding: 1rem; }
@@ -556,20 +449,17 @@
             .qt-list .qt-link:nth-child(n+5) { display: none; }
         }
         @media print {
-            .topic-strip, #scroll-top, .cta-band { display: none !important; }
+            .topic-strip, .cta-wrapper, .ad-adsense { display: none !important; }
             body { background: white; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SKIP NAVIGATION (acessibilidade) -->
-    <a class="skip-nav" href="#main-content">Ir ao conteúdo principal</a>
+    <!-- CABEÇALHO MODULAR (Sticky - Agora no topo da hierarquia HTML para proteger os Mega-Menus) -->
+    <header id="header-placeholder" class="no-print"></header>
 
-    <!-- ==========================================
-         A BARRA DE DATA FOI MOVIDA PARA CA (ANTES DO HEADER)
-         ========================================== -->
-    <!-- BARRA DE DATA / TICKER -->
+    <!-- BARRA DE DATA / TICKER (Movida para BAIXO do cabeçalho) -->
     <div class="datebar">
         <div class="datebar-inner">
             <div class="datebar-left">
@@ -590,20 +480,17 @@
         </div>
     </div>
 
-    <!-- CABEÇALHO MODULAR (será preenchido pelo template-engine.js) -->
-    <div id="header-placeholder" class="no-print"></div>
-
-    <!-- HERO -->
+    <!-- HERO (Secção Principal) -->
     <section class="hero-wrap">
         <div class="hero-gold-bar"></div>
         <div class="hero-grid">
             <!-- Lead story -->
-            <div class="hero-lead a1">
-                <div class="hero-img">
+            <article class="hero-lead a1">
+                <div class="hero-img" onclick="location.href='biblioteca.html'">
                     <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1400&auto=format&fit=crop" alt="IA Agêntica em Auditoria — robôs e dados">
                     <div class="hero-overlay">
                         <div class="h-cat"><i class="fas fa-robot"></i> IA Agêntica · Hot Topic</div>
-                        <div class="h-hl">Agentes de IA na Auditoria: da Prova de Conceito à Execução Real de Testes</div>
+                        <h1 class="h-hl">Agentes de IA na Auditoria: da Prova de Conceito à Execução Real de Testes</h1>
                         <div class="h-meta">
                             <span><i class="fas fa-clock" style="color:var(--gold)"></i> 12 min</span>
                             <span>·</span><span>Audit Educa · Mar 2026</span>
@@ -628,39 +515,39 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- Secondary stack -->
-            <div class="hero-stack a2">
-                <div class="sec-art">
+            <aside class="hero-stack a2">
+                <article class="sec-art" onclick="location.href='biblioteca.html'">
                     <div class="sec-img">
                         <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=700&auto=format&fit=crop" alt="IFRS S1 S2 sustentabilidade">
                     </div>
                     <div class="sec-cat"><i class="fas fa-leaf"></i> IFRS S1 &amp; S2</div>
-                    <div class="sec-title">Relatório de Sustentabilidade: o que o Auditor Precisa Saber para 2026</div>
+                    <h2 class="sec-title">Relatório de Sustentabilidade: o que o Auditor Precisa Saber para 2026</h2>
                     <div class="sec-meta">8 min · Contabilidade</div>
-                </div>
-                <div class="sec-art">
+                </article>
+                <article class="sec-art" onclick="location.href='biblioteca.html'">
                     <div class="sec-img">
                         <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=700&auto=format&fit=crop" alt="NBC TA 600 grupos">
                     </div>
                     <div class="sec-cat"><i class="fas fa-file-alt"></i> NBC TA 600 Rev.</div>
-                    <div class="sec-title">Nova NBC TA 600: Auditoria de Grupos — Mudanças Críticas para o Auditor</div>
+                    <h2 class="sec-title">Nova NBC TA 600: Auditoria de Grupos — Mudanças Críticas para o Auditor</h2>
                     <div class="sec-meta">6 min · Auditoria Externa</div>
-                </div>
-                <div class="sec-art">
+                </article>
+                <article class="sec-art" onclick="location.href='biblioteca.html'">
                     <div class="sec-img">
                         <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=700&auto=format&fit=crop" alt="Perícia contábil digital">
                     </div>
                     <div class="sec-cat"><i class="fas fa-gavel"></i> Perícia Contábil</div>
-                    <div class="sec-title">Laudo Pericial com Uso de Dados: NBC PP 01 e o Perito Digital</div>
+                    <h2 class="sec-title">Laudo Pericial com Uso de Dados: NBC PP 01 e o Perito Digital</h2>
                     <div class="sec-meta">10 min · Perícia</div>
-                </div>
-            </div>
+                </article>
+            </aside>
         </div>
     </section>
 
-    <!-- TOPIC STRIP (filtro) -->
+    <!-- TOPIC STRIP (Filtro posicionado após o Hero, responsivo em todas as telas) -->
     <nav class="topic-strip" aria-label="Filtro por tópico">
         <div class="topic-inner">
             <button class="t-chip on" onclick="topicFilter(this,'all')"><i class="fas fa-th-large"></i> Todos</button>
@@ -680,7 +567,7 @@
     </nav>
 
     <!-- MAIN GRID (conteúdo completo) -->
-    <div class="main-wrap">
+    <main id="main-content" class="main-wrap">
 
         <!-- ── LEFT FEED ── -->
         <div>
@@ -690,105 +577,116 @@
                 <div class="sec-hd">
                     <div class="sec-hd-l">
                         <span class="sec-eye"><i class="fas fa-shield-alt"></i> Hot Topic</span>
-                        <span class="sec-ttl">Auditoria Interna</span>
+                        <h2 class="sec-ttl">Auditoria Interna</h2>
                     </div>
                     <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="art-h">
-                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop" alt="IPPF 2024"></div>
+                <article class="art-h" onclick="location.href='biblioteca.html'">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop" alt="IPPF 2024" loading="lazy"></div>
                     <div>
                         <div class="a-cat" style="color:#1D4ED8">IPPF 2024 · IIA Global</div>
-                        <div class="art-ttl">IPPF Atualizado: as Novas Exigências de Competência para o Auditor Interno</div>
+                        <h3 class="art-ttl">IPPF Atualizado: as Novas Exigências de Competência para o Auditor Interno</h3>
                         <div class="art-exc">O IPPF revisado em 2024 eleva o padrão de competências técnicas e comportamentais, com ênfase em ciência de dados, gestão de riscos e posicionamento estratégico do CAE.</div>
                         <div class="art-ft">
                             <div class="art-meta"><i class="fas fa-clock"></i> 9 min · Mar 2026</div>
                             <span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="art-h">
-                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" alt="Auditoria Contínua Power BI"></div>
+                <article class="art-h" onclick="location.href='biblioteca.html'">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" alt="Auditoria Contínua Power BI" loading="lazy"></div>
                     <div>
                         <div class="a-cat" style="color:#065F46">Auditoria Contínua · Data Analytics</div>
-                        <div class="art-ttl">Auditoria Contínua com Power BI e Python: Implementação Prática do Zero</div>
+                        <h3 class="art-ttl">Auditoria Contínua com Power BI e Python: Implementação Prática do Zero</h3>
                         <div class="art-exc">Como estruturar monitoramento contínuo integrando Power BI, scripts Python e APIs de ERP — com exemplos de alarmes para anomalias em contas a pagar e folha.</div>
                         <div class="art-ft">
                             <div class="art-meta"><i class="fas fa-clock"></i> 15 min · Fev 2026</div>
                             <span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="art-h">
-                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?q=80&w=600&auto=format&fit=crop" alt="COSO ERM risco"></div>
+                <article class="art-h" onclick="location.href='biblioteca.html'">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?q=80&w=600&auto=format&fit=crop" alt="COSO ERM risco" loading="lazy"></div>
                     <div>
                         <div class="a-cat" style="color:#B45309">Gestão de Riscos · COSO ERM 2017</div>
-                        <div class="art-ttl">Mapeamento de Riscos no COSO ERM: da Teoria ao Papel de Trabalho</div>
+                        <h3 class="art-ttl">Mapeamento de Riscos no COSO ERM: da Teoria ao Papel de Trabalho</h3>
                         <div class="art-exc">Guia prático para construção de mapas de calor, apetite a risco e planos de resposta integrados ao planejamento estratégico, com templates editáveis.</div>
                         <div class="art-ft">
                             <div class="art-meta"><i class="fas fa-clock"></i> 11 min · Jan 2026</div>
                             <span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </div>
+                </article>
             </section>
+            
+            <!-- ADSENSE MIDDLE BANNER -->
+            <div class="ad-adsense">
+                <span class="ad-label-tag">Publicidade</span>
+                <i class="fas fa-ad"></i>
+                <p>Espaço Google AdSense (In-Feed)</p>
+            </div>
 
             <!-- IA AGÊNTICA SPOTLIGHT -->
             <section class="a3" data-topic="ia" style="margin-bottom:3.25rem">
                 <div class="sec-hd" style="border-bottom-color:#7C3AED">
                     <div class="sec-hd-l">
                         <span class="sec-eye" style="color:#7C3AED"><i class="fas fa-robot"></i> Em Alta</span>
-                        <span class="sec-ttl">IA Agêntica &amp; Contabilidade</span>
+                        <h2 class="sec-ttl">IA Agêntica &amp; Contabilidade</h2>
                     </div>
                     <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="ai-spot">
+                <article class="ai-spot" onclick="location.href='biblioteca.html'">
                     <div class="ai-spot-img">
-                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop" alt="IA e Auditoria IFRS 16">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop" alt="IA e Auditoria IFRS 16" loading="lazy">
                         <div class="ai-spot-overlay">
                             <div class="ai-badge"><i class="fas fa-microchip"></i> IA Agêntica · Exclusivo</div>
-                            <div class="ai-hl">Como Agentes LLM Estão Revolucionando a Revisão de Contratos de Arrendamento (IFRS 16)</div>
+                            <h3 class="ai-hl">Como Agentes LLM Estão Revolucionando a Revisão de Contratos de Arrendamento (IFRS 16)</h3>
                             <div class="ai-sub">Da extração automática de cláusulas à geração do cronograma de amortização — sem intervenção humana.</div>
                         </div>
                     </div>
                     <div class="ai-body">
                         <p class="ai-body-text">Agentes LLM processam centenas de contratos PDF, extraem automaticamente taxa, prazo e índice, e alimentam o cálculo do passivo de arrendamento conforme IFRS 16 / CPC 06(R2). Este artigo demonstra a arquitetura end-to-end com LangGraph e GPT-4o, incluindo validação do cálculo pelo auditor.</p>
                         <div class="ai-tags">
-                            <span class="ai-tag">IFRS 16</span><span class="ai-tag">LangGraph</span><span class="ai-tag">GPT-4o</span>
-                            <span class="ai-tag">CPC 06(R2)</span><span class="ai-tag">Extração de Dados</span><span class="ai-tag">Auditoria Automatizada</span>
+                            <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="ai-tag">IFRS 16</a>
+                            <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="ai-tag">LangGraph</a>
+                            <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="ai-tag">GPT-4o</a>
+                            <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="ai-tag">CPC 06(R2)</a>
+                            <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="ai-tag">Extração de Dados</a>
+                            <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="ai-tag">Auditoria Automatizada</a>
                         </div>
-                        <a class="ai-cta" href="biblioteca.html">Ler artigo completo <i class="fas fa-arrow-right"></i></a>
+                        <span class="ai-cta">Ler artigo completo <i class="fas fa-arrow-right"></i></span>
                     </div>
-                </div>
+                </article>
 
                 <div class="vgrid" style="margin-top:1.375rem">
-                    <div class="art-v">
-                        <div class="av-img"><img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=600&auto=format&fit=crop" alt="NLP controles"></div>
-                        <span class="av-tag" style="background:rgba(124,58,237,.1);color:#7C3AED">IA · NLP</span>
+                    <article class="art-v" onclick="location.href='biblioteca.html'">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=600&auto=format&fit=crop" alt="NLP controles" loading="lazy"></div>
+                        <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="av-tag" style="background:rgba(124,58,237,.1);color:#7C3AED">IA · NLP</a>
                         <div class="av-cat" style="color:#7C3AED">NBC TA 265 · Deficiências</div>
-                        <div class="av-ttl">NLP para Detecção Automática de Deficiências em Controles Internos</div>
+                        <h3 class="av-ttl">NLP para Detecção Automática de Deficiências em Controles Internos</h3>
                         <div class="av-desc">Classificadores treinados em relatórios de auditoria identificam padrões de deficiências significativas com 87% de acurácia.</div>
                         <div class="av-ft"><span>7 min</span><span>→ Ler</span></div>
-                    </div>
-                    <div class="art-v">
-                        <div class="av-img"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt="Python PECLD ECL"></div>
-                        <span class="av-tag" style="background:rgba(4,120,87,.1);color:#065F46">Python · ECL</span>
+                    </article>
+                    <article class="art-v" onclick="location.href='biblioteca.html'">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt="Python PECLD ECL" loading="lazy"></div>
+                        <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="av-tag" style="background:rgba(4,120,87,.1);color:#065F46">Python · ECL</a>
                         <div class="av-cat" style="color:#065F46">IFRS 9 · CPC 48</div>
-                        <div class="av-ttl">Calculando a PECLD com ECL: Script Python para o Modelo de Perda Esperada</div>
+                        <h3 class="av-ttl">Calculando a PECLD com ECL: Script Python para o Modelo de Perda Esperada</h3>
                         <div class="av-desc">Implementação completa do modelo ECL do IFRS 9 com estimativas de PD, LGD e EAD por safra de crédito.</div>
                         <div class="av-ft"><span>10 min</span><span>→ Ler</span></div>
-                    </div>
-                    <div class="art-v">
-                        <div class="av-img"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop" alt="Regulação IA"></div>
-                        <span class="av-tag" style="background:rgba(29,78,216,.1);color:#1D4ED8">IA · Regulação</span>
+                    </article>
+                    <article class="art-v" onclick="location.href='biblioteca.html'">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop" alt="Regulação IA" loading="lazy"></div>
+                        <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="av-tag" style="background:rgba(29,78,216,.1);color:#1D4ED8">IA · Regulação</a>
                         <div class="av-cat" style="color:#1D4ED8">CVM · IASB · IAASB</div>
-                        <div class="av-ttl">O que os Reguladores Dizem sobre IA em Auditoria: CVM, IASB e IAASB</div>
+                        <h3 class="av-ttl">O que os Reguladores Dizem sobre IA em Auditoria: CVM, IASB e IAASB</h3>
                         <div class="av-desc">Análise comparada das posições regulatórias sobre uso de IA em auditoria e divulgação financeira.</div>
                         <div class="av-ft"><span>8 min</span><span>→ Ler</span></div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
@@ -797,7 +695,7 @@
                 <div class="sec-hd">
                     <div class="sec-hd-l">
                         <span class="sec-eye"><i class="fas fa-tools"></i> Plataforma SGG</span>
-                        <span class="sec-ttl">Ferramentas em Destaque</span>
+                        <h2 class="sec-ttl">Ferramentas em Destaque</h2>
                     </div>
                     <a class="see-all" href="busca-e-conteudo.html">Ver todas <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -805,11 +703,11 @@
 
                     <a href="circularizacao-bancos.html" class="tool-card">
                         <div class="t-preview">
-                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop" alt="Circularização bancos">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop" alt="Circularização bancos" loading="lazy">
                             <div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-envelope"></i> Circularização</span></div>
                         </div>
                         <div class="t-info">
-                            <div class="tool-name">Gerador de Cartas de Circularização Bancária</div>
+                            <h3 class="tool-name">Gerador de Cartas de Circularização Bancária</h3>
                             <div class="tool-desc">Gere, controle e exporte cartas de confirmação para bancos, clientes e advogados conforme NBC TA 505.</div>
                             <div class="tool-norms"><span class="tool-norm">NBC TA 505</span><span class="tool-norm">ISA 505</span></div>
                         </div>
@@ -817,11 +715,11 @@
 
                     <a href="arrendamento.html" class="tool-card">
                         <div class="t-preview">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="IFRS 16 arrendamento">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="IFRS 16 arrendamento" loading="lazy">
                             <div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-building"></i> IFRS 16</span></div>
                         </div>
                         <div class="t-info">
-                            <div class="tool-name">Calculadora IFRS 16 — Passivo e Direito de Uso</div>
+                            <h3 class="tool-name">Calculadora IFRS 16 — Passivo e Direito de Uso</h3>
                             <div class="tool-desc">Tabela de amortização com VPL do passivo, ROU asset e lançamentos por período.</div>
                             <div class="tool-norms"><span class="tool-norm">IFRS 16</span><span class="tool-norm">CPC 06(R2)</span></div>
                         </div>
@@ -829,11 +727,11 @@
 
                     <a href="analise-contas-a-receber.html" class="tool-card">
                         <div class="t-preview">
-                            <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=800&auto=format&fit=crop" alt="Análise contas a receber">
+                            <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=800&auto=format&fit=crop" alt="Análise contas a receber" loading="lazy">
                             <div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-chart-bar"></i> Análise Financeira</span></div>
                         </div>
                         <div class="t-info">
-                            <div class="tool-name">Teste de Auditoria — Contas a Receber e PECLD</div>
+                            <h3 class="tool-name">Teste de Auditoria — Contas a Receber e PECLD</h3>
                             <div class="tool-desc">Aging report, análise de concentração e estimativa de perda esperada (ECL) conforme IFRS 9.</div>
                             <div class="tool-norms"><span class="tool-norm">CPC 48</span><span class="tool-norm">IFRS 9</span><span class="tool-norm">NBC TA 330</span></div>
                         </div>
@@ -841,11 +739,11 @@
 
                     <a href="indicadores-financeiros.html" class="tool-card">
                         <div class="t-preview">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Indicadores financeiros">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Indicadores financeiros" loading="lazy">
                             <div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-chart-line"></i> Indicadores</span></div>
                         </div>
                         <div class="t-info">
-                            <div class="tool-name">Painel de Indicadores Financeiros</div>
+                            <h3 class="tool-name">Painel de Indicadores Financeiros</h3>
                             <div class="tool-desc">Liquidez, rentabilidade, endividamento e eficiência — com alertas de desvio para procedimentos analíticos.</div>
                             <div class="tool-norms"><span class="tool-norm">NBC TA 520</span><span class="tool-norm">IFRS 7</span></div>
                         </div>
@@ -853,11 +751,11 @@
 
                     <a href="calculadora-juros-simples.html" class="tool-card">
                         <div class="t-preview">
-                            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800&auto=format&fit=crop" alt="Calculadora juros">
+                            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800&auto=format&fit=crop" alt="Calculadora juros" loading="lazy">
                             <div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-percent"></i> Financeiro</span></div>
                         </div>
                         <div class="t-info">
-                            <div class="tool-name">Calculadora de Juros e Taxa Efetiva</div>
+                            <h3 class="tool-name">Calculadora de Juros e Taxa Efetiva</h3>
                             <div class="tool-desc">Recalcule encargos financeiros e verifique a taxa efetiva de contratos conforme CPC 08.</div>
                             <div class="tool-norms"><span class="tool-norm">CPC 08(R1)</span><span class="tool-norm">IFRS 9</span></div>
                         </div>
@@ -865,11 +763,11 @@
 
                     <a href="s-contigencias-teste-ifrc.html" class="tool-card">
                         <div class="t-preview">
-                            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop" alt="Contingências CPC 25">
+                            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop" alt="Contingências CPC 25" loading="lazy">
                             <div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-gavel"></i> IFRS / CPC</span></div>
                         </div>
                         <div class="t-info">
-                            <div class="tool-name">Teste de Provisões e Contingências</div>
+                            <h3 class="tool-name">Teste de Provisões e Contingências</h3>
                             <div class="tool-desc">Documente provisões fiscais, trabalhistas e cíveis. Classifique por probabilidade conforme CPC 25.</div>
                             <div class="tool-norms"><span class="tool-norm">CPC 25</span><span class="tool-norm">IAS 37</span></div>
                         </div>
@@ -883,32 +781,32 @@
                 <div class="sec-hd" style="border-bottom-color:#991B1B">
                     <div class="sec-hd-l">
                         <span class="sec-eye" style="color:#991B1B"><i class="fas fa-balance-scale"></i> Artigos Técnicos</span>
-                        <span class="sec-ttl">Perícia Contábil</span>
+                        <h2 class="sec-ttl">Perícia Contábil</h2>
                     </div>
                     <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="vgrid">
-                    <div class="art-v">
-                        <div class="av-img"><img src="https://images.unsplash.com/photo-1453945619913-79ec89a82c51?q=80&w=600&auto=format&fit=crop" alt="Laudo pericial"></div>
-                        <span class="av-tag" style="background:rgba(153,27,27,.1);color:#991B1B">NBC PP 01</span>
-                        <div class="av-ttl">Estrutura do Laudo Pericial: Requisitos e Armadilhas Comuns nas Impugnações</div>
+                    <article class="art-v" onclick="location.href='biblioteca.html'">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1453945619913-79ec89a82c51?q=80&w=600&auto=format&fit=crop" alt="Laudo pericial" loading="lazy"></div>
+                        <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="av-tag" style="background:rgba(153,27,27,.1);color:#991B1B">NBC PP 01</a>
+                        <h3 class="av-ttl">Estrutura do Laudo Pericial: Requisitos e Armadilhas Comuns nas Impugnações</h3>
                         <div class="av-desc">NBC PP 01 detalha os elementos obrigatórios. Veja o que os peritos erram com mais frequência nos laudos contestados.</div>
                         <div class="av-ft"><span>8 min · Fev 2026</span><span>→ Ler</span></div>
-                    </div>
-                    <div class="art-v">
-                        <div class="av-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Perícia trabalhista"></div>
-                        <span class="av-tag" style="background:rgba(180,83,9,.1);color:#B45309">Trabalhista · CLT</span>
-                        <div class="av-ttl">Quantificação de Danos em Perícia Trabalhista: Metodologia e Jurisprudência</div>
+                    </article>
+                    <article class="art-v" onclick="location.href='biblioteca.html'">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Perícia trabalhista" loading="lazy"></div>
+                        <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="av-tag" style="background:rgba(180,83,9,.1);color:#B45309">Trabalhista · CLT</a>
+                        <h3 class="av-ttl">Quantificação de Danos em Perícia Trabalhista: Metodologia e Jurisprudência</h3>
                         <div class="av-desc">Como calcular verbas com reflexos, corrigir pelo TRCT e documentar o raciocínio pericial para resistir a contestações.</div>
                         <div class="av-ft"><span>11 min · Jan 2026</span><span>→ Ler</span></div>
-                    </div>
-                    <div class="art-v">
-                        <div class="av-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&auto=format&fit=crop" alt="Perícia digital forense"></div>
-                        <span class="av-tag" style="background:rgba(29,78,216,.1);color:#1D4ED8">Forense · Digital</span>
-                        <div class="av-ttl">Perícia Contábil Digital: Evidências Eletrônicas e Cadeia de Custódia</div>
+                    </article>
+                    <article class="art-v" onclick="location.href='biblioteca.html'">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&auto=format&fit=crop" alt="Perícia digital forense" loading="lazy"></div>
+                        <a href="https://auditeduca.com.br/busca-e-conteudo.html" class="av-tag" style="background:rgba(29,78,216,.1);color:#1D4ED8">Forense · Digital</a>
+                        <h3 class="av-ttl">Perícia Contábil Digital: Evidências Eletrônicas e Cadeia de Custódia</h3>
                         <div class="av-desc">Hash, cadeia de custódia e conformidade com CPC/2015 e LGPD para perícias envolvendo provas eletrônicas.</div>
                         <div class="av-ft"><span>9 min · Mar 2026</span><span>→ Ler</span></div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
@@ -917,7 +815,7 @@
                 <div class="sec-hd">
                     <div class="sec-hd-l">
                         <span class="sec-eye"><i class="fas fa-graduation-cap"></i> Certificações &amp; Qualificação</span>
-                        <span class="sec-ttl">Guias de Estudo</span>
+                        <h2 class="sec-ttl">Guias de Estudo</h2>
                     </div>
                     <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -925,7 +823,7 @@
                     <a href="guia-qtg.html" class="g-item" style="text-decoration:none">
                         <div class="g-num">01</div>
                         <div>
-                            <div class="g-ttl">Guia Completo QTG — Qualificação Técnica em Auditoria Independente</div>
+                            <h3 class="g-ttl">Guia Completo QTG — Qualificação Técnica em Auditoria Independente</h3>
                             <div class="g-meta"><i class="fas fa-clock"></i> 6h estimado <i class="fas fa-file-alt"></i> 12 módulos <i class="fas fa-tag"></i> CNAI · CFC</div>
                         </div>
                         <span class="g-badge badge-key">Essencial</span>
@@ -933,7 +831,7 @@
                     <a href="guia-nbc-ta.html" class="g-item" style="text-decoration:none">
                         <div class="g-num">02</div>
                         <div>
-                            <div class="g-ttl">NBC TA Comentadas: do Planejamento ao Relatório de Auditoria</div>
+                            <h3 class="g-ttl">NBC TA Comentadas: do Planejamento ao Relatório de Auditoria</h3>
                             <div class="g-meta"><i class="fas fa-clock"></i> 8h estimado <i class="fas fa-file-alt"></i> 16 NBCs cobertas <i class="fas fa-tag"></i> NBC TA 200–800</div>
                         </div>
                         <span class="g-badge badge-pop">Popular</span>
@@ -941,7 +839,7 @@
                     <a href="guia-ifrs-auditores.html" class="g-item" style="text-decoration:none">
                         <div class="g-num">03</div>
                         <div>
-                            <div class="g-ttl">IFRS para Auditores: CPC 01, 03, 06, 25, 27, 48 — Questões Comentadas</div>
+                            <h3 class="g-ttl">IFRS para Auditores: CPC 01, 03, 06, 25, 27, 48 — Questões Comentadas</h3>
                             <div class="g-meta"><i class="fas fa-clock"></i> 5h estimado <i class="fas fa-file-alt"></i> 200 questões <i class="fas fa-tag"></i> IFRS · CPC</div>
                         </div>
                         <span class="g-badge badge-pop">Popular</span>
@@ -949,7 +847,7 @@
                     <a href="exame-suficiencia.html" class="g-item" style="text-decoration:none">
                         <div class="g-num">04</div>
                         <div>
-                            <div class="g-ttl">Exame de Suficiência CFC — Acervo 2017–2025 · Conteúdo Programático</div>
+                            <h3 class="g-ttl">Exame de Suficiência CFC — Acervo 2017–2025 · Conteúdo Programático</h3>
                             <div class="g-meta"><i class="fas fa-clock"></i> 4h estimado <i class="fas fa-archive"></i> 18 edições · provas e gabaritos <i class="fas fa-tag"></i> CRC · NBC</div>
                         </div>
                         <span class="g-badge badge-new">Novo</span>
@@ -957,7 +855,7 @@
                     <a href="guia-data-analytics.html" class="g-item" style="text-decoration:none">
                         <div class="g-num">05</div>
                         <div>
-                            <div class="g-ttl">Data Analytics para Auditores: SQL, Python e ACL do Zero</div>
+                            <h3 class="g-ttl">Data Analytics para Auditores: SQL, Python e ACL do Zero</h3>
                             <div class="g-meta"><i class="fas fa-clock"></i> 10h estimado <i class="fas fa-file-alt"></i> 5 projetos práticos <i class="fas fa-tag"></i> CAAT · NBC TA 330</div>
                         </div>
                         <span class="g-badge badge-new">Novo</span>
@@ -965,7 +863,7 @@
                     <a href="guia-pericia.html" class="g-item" style="text-decoration:none">
                         <div class="g-num">06</div>
                         <div>
-                            <div class="g-ttl">NBC PP 01 a 05: Guia Prático para o Perito Contábil Judicial</div>
+                            <h3 class="g-ttl">NBC PP 01 a 05: Guia Prático para o Perito Contábil Judicial</h3>
                             <div class="g-meta"><i class="fas fa-clock"></i> 3h estimado <i class="fas fa-file-alt"></i> Casos com gabarito <i class="fas fa-tag"></i> CPC/2015 · NBC PP</div>
                         </div>
                         <span class="g-badge badge-key">Essencial</span>
@@ -978,46 +876,67 @@
                 <div class="sec-hd" style="border-bottom-color:#7C3AED">
                     <div class="sec-hd-l">
                         <span class="sec-eye" style="color:#7C3AED"><i class="fas fa-book-open"></i> Normas Vigentes</span>
-                        <span class="sec-ttl">Contabilidade &amp; IFRS</span>
+                        <h2 class="sec-ttl">Contabilidade &amp; IFRS</h2>
                     </div>
                     <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="art-h">
-                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=600&auto=format&fit=crop" alt="IFRS sustentabilidade"></div>
+                <article class="art-h" onclick="location.href='biblioteca.html'">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=600&auto=format&fit=crop" alt="IFRS sustentabilidade" loading="lazy"></div>
                     <div>
                         <div class="a-cat" style="color:#7C3AED">IFRS S1 &amp; S2 · Sustentabilidade</div>
-                        <div class="art-ttl">IFRS S1 e S2: Como Auditar Divulgações de Sustentabilidade e Clima</div>
+                        <h3 class="art-ttl">IFRS S1 e S2: Como Auditar Divulgações de Sustentabilidade e Clima</h3>
                         <div class="art-exc">O IAASB emitiu o ISSA 5000 para asseguração de relatórios de sustentabilidade. Entenda o que muda e a linha do tempo de adoção no Brasil.</div>
                         <div class="art-ft"><div class="art-meta"><i class="fas fa-clock"></i> 9 min · Mar 2026</div><span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span></div>
                     </div>
-                </div>
+                </article>
 
-                <div class="art-h">
-                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=600&auto=format&fit=crop" alt="IFRS 15 receita"></div>
+                <article class="art-h" onclick="location.href='biblioteca.html'">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=600&auto=format&fit=crop" alt="IFRS 15 receita" loading="lazy"></div>
                     <div>
                         <div class="a-cat" style="color:#065F46">CPC 47 · IFRS 15</div>
-                        <div class="art-ttl">Receita Over-Time vs Point-in-Time: Testes de Auditoria para Cada Modelo</div>
+                        <h3 class="art-ttl">Receita Over-Time vs Point-in-Time: Testes de Auditoria para Cada Modelo</h3>
                         <div class="art-exc">As cinco etapas do IFRS 15 geram diferentes riscos de distorção. Mapeamos os principais testes substantivos para cada padrão de reconhecimento.</div>
                         <div class="art-ft"><div class="art-meta"><i class="fas fa-clock"></i> 12 min · Fev 2026</div><span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span></div>
                     </div>
-                </div>
+                </article>
 
-                <div class="art-h">
-                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop" alt="IFRIC 23 tributário"></div>
+                <article class="art-h" onclick="location.href='biblioteca.html'">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop" alt="IFRIC 23 tributário" loading="lazy"></div>
                     <div>
                         <div class="a-cat" style="color:#B45309">CPC 49 · IFRIC 23</div>
-                        <div class="art-ttl">Incerteza Tributária (IFRIC 23): Quando Registrar e Como Divulgar</div>
+                        <h3 class="art-ttl">Incerteza Tributária (IFRIC 23): Quando Registrar e Como Divulgar</h3>
                         <div class="art-exc">IFRIC 23 exige avaliação de probabilidade de posições fiscais incertas. Veja como documentar o raciocínio jurídico-contábil e os impactos no passivo.</div>
                         <div class="art-ft"><div class="art-meta"><i class="fas fa-clock"></i> 10 min · Jan 2026</div><span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span></div>
                     </div>
-                </div>
+                </article>
             </section>
 
         </div><!-- /left feed -->
 
         <!-- ── RIGHT SIDEBAR ── -->
         <aside class="sidebar">
+
+            <!-- Caixa de Sugestões Anónima -->
+            <div class="sw sug-box">
+                <div class="sw-head" style="padding-left:0; padding-top:0; border:none; margin-bottom:.5rem;">
+                    <span class="sw-title"><i class="fas fa-lightbulb"></i> Envie sua Sugestão</span>
+                </div>
+                <div class="sug-body">
+                    <p class="sug-desc">Sentiu falta de algum artigo, calculadora ou guia? Compartilhe sua ideia connosco de forma 100% segura.</p>
+                    <textarea class="sug-textarea" id="sug-text" placeholder="Escreva sua ideia de conteúdo ou ferramenta aqui..." rows="3"></textarea>
+                    <!-- Ajuste no botão conforme solicitado -->
+                    <button class="sug-btn" onclick="sendSug()"><i class="fas fa-paper-plane" style="margin-right:.4rem"></i>Enviar Sugestão</button>
+                    <div id="sug-ok">Recebemos a sua sugestão. Muito obrigado!</div>
+                </div>
+            </div>
+
+            <!-- Ad Placeholder AdSense 1 -->
+            <div class="ad-adsense sidebar-ad">
+                <span class="ad-label-tag">Publicidade</span>
+                <i class="fas fa-ad"></i>
+                <p>Espaço Google AdSense (300x250)</p>
+            </div>
 
             <!-- Trending -->
             <div class="sw">
@@ -1060,19 +979,33 @@
                         <div><div class="qt-name">Salário Líquido 2026</div><div class="qt-norm">IN RFB 2.141/2023</div></div>
                         <i class="fas fa-chevron-right qt-arr"></i>
                     </a>
-                    <a href="moedas-bcb.html" class="qt-link">
-                        <div class="qt-icon"><i class="fas fa-globe"></i></div>
-                        <div><div class="qt-name">Cotação Moedas BCB</div><div class="qt-norm">IAS 21 · PTAX</div></div>
-                        <i class="fas fa-chevron-right qt-arr"></i>
-                    </a>
                     <a href="calculadora-juros-simples.html" class="qt-link">
                         <div class="qt-icon"><i class="fas fa-percent"></i></div>
                         <div><div class="qt-name">Calculadora de Juros</div><div class="qt-norm">CPC 08(R1)</div></div>
                         <i class="fas fa-chevron-right qt-arr"></i>
                     </a>
-                    <a href="s-contigencias-teste-ifrc.html" class="qt-link">
-                        <div class="qt-icon"><i class="fas fa-gavel"></i></div>
-                        <div><div class="qt-name">Contingências CPC 25</div><div class="qt-norm">IAS 37</div></div>
+                </div>
+            </div>
+
+            <!-- Novo Módulo: Simulados -->
+            <div class="sw">
+                <div class="sw-head">
+                    <span class="sw-title"><i class="fas fa-laptop-code"></i> Simulados &amp; Testes</span>
+                </div>
+                <div class="qt-list">
+                    <a href="simulado-exame-suficiencia.html" class="qt-link">
+                        <div class="qt-icon qt-icon-sim" style="background: rgba(201,168,76,.15); color: var(--gold);"><i class="fas fa-check-double"></i></div>
+                        <div><div class="qt-name">Exame de Suficiência</div><div class="qt-norm">Simulado CFC</div></div>
+                        <i class="fas fa-chevron-right qt-arr"></i>
+                    </a>
+                    <a href="simulado-qtg.html" class="qt-link">
+                        <div class="qt-icon qt-icon-sim" style="background: rgba(30,64,175,.15); color: var(--blue);"><i class="fas fa-award"></i></div>
+                        <div><div class="qt-name">QTG / CNAI</div><div class="qt-norm">Simulado Auditoria</div></div>
+                        <i class="fas fa-chevron-right qt-arr"></i>
+                    </a>
+                    <a href="simulado-cvm.html" class="qt-link">
+                        <div class="qt-icon qt-icon-sim" style="background: rgba(6,95,70,.15); color: var(--green);"><i class="fas fa-chart-line"></i></div>
+                        <div><div class="qt-name">Auditor CVM</div><div class="qt-norm">Simulado Regulatório</div></div>
                         <i class="fas fa-chevron-right qt-arr"></i>
                     </a>
                 </div>
@@ -1091,68 +1024,98 @@
                     <div class="n-cell"><div class="n-code">NBC PP 01–05</div><div class="n-name">Perícia Contábil CFC</div></div>
                     <div class="n-cell"><div class="n-code">NBC PI 01</div><div class="n-name">Auditoria Interna CFC</div></div>
                     <div class="n-cell"><div class="n-code">IPPF 2024</div><div class="n-name">Padrões IIA Global</div></div>
-                    <div class="n-cell"><div class="n-code">ISSAI 100</div><div class="n-name">Auditoria Gov. INTOSAI</div></div>
-                    <div class="n-cell"><div class="n-code">ISSA 5000</div><div class="n-name">Sustentabilidade IAASB</div></div>
                 </div>
             </div>
 
-            <!-- Mini auditoria externa articles -->
-            <div class="sw" data-topic="auditoria">
+            <!-- Novo Módulo: Ocupação do Espaço em Branco -->
+            <div class="sw">
                 <div class="sw-head">
-                    <span class="sw-title"><i class="fas fa-search"></i> Auditoria Externa</span>
-                    <a class="sw-link" href="biblioteca.html">Ver mais</a>
+                    <span class="sw-title"><i class="fas fa-chart-pie"></i> Mercado &amp; Índices (BCB)</span>
                 </div>
-                <div class="sw-arts">
-                    <div class="sw-art">
-                        <div class="sw-thumb"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=200&auto=format&fit=crop" alt=""></div>
-                        <div><div class="sw-art-ttl">NBC TA 700: Formando e Comunicando a Opinião de Auditoria</div><div class="sw-art-meta">NBC TA 700 · Ênfase · 7 min</div></div>
+                <div class="market-indices">
+                    <div class="mi-box">
+                        <div class="mi-lbl">Taxa Selic</div>
+                        <div class="mi-val">10.75%</div>
+                        <div class="mi-sub"><i class="fas fa-caret-down"></i> -0.50 pp</div>
                     </div>
-                    <div class="sw-art">
-                        <div class="sw-thumb"><img src="https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=200&auto=format&fit=crop" alt=""></div>
-                        <div><div class="sw-art-ttl">Materialidade e Risco: NBC TA 320 na Prática</div><div class="sw-art-meta">NBC TA 320 · PM · TE · 9 min</div></div>
+                    <div class="mi-box">
+                        <div class="mi-lbl">IPCA (12m)</div>
+                        <div class="mi-val">4.52%</div>
+                        <div class="mi-sub" style="color:var(--red)"><i class="fas fa-caret-up"></i> +0.12 pp</div>
                     </div>
-                    <div class="sw-art">
-                        <div class="sw-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=200&auto=format&fit=crop" alt=""></div>
-                        <div><div class="sw-art-ttl">Papéis de Trabalho Digitais: Templates e Boas Práticas</div><div class="sw-art-meta">NBC TA 230 · PT · 8 min</div></div>
+                    <div class="mi-box">
+                        <div class="mi-lbl">Dólar PTAX</div>
+                        <div class="mi-val">R$ 5,02</div>
+                        <div class="mi-sub"><i class="fas fa-minus"></i> Estável</div>
+                    </div>
+                    <div class="mi-box">
+                        <div class="mi-lbl">Euro (BCE)</div>
+                        <div class="mi-val">R$ 5,45</div>
+                        <div class="mi-sub"><i class="fas fa-caret-down"></i> -0.05%</div>
                     </div>
                 </div>
             </div>
-
-            <!-- Newsletter -->
-            <div class="nl-box">
-                <div class="nl-eye">Digest Semanal</div>
-                <div class="nl-ttl">Auditoria &amp; Contabilidade em 5 minutos</div>
-                <div class="nl-sub">Atualizações normativas, artigos e novas ferramentas — toda semana, grátis.</div>
-                <input class="nl-inp" type="email" placeholder="seu@email.com.br" id="nl-email">
-                <button class="nl-btn" onclick="nlSubscribe()"><i class="fas fa-paper-plane" style="margin-right:.35rem"></i>Assinar Grátis</button>
-                <div id="nl-ok">✅ Perfeito! Confirme seu e-mail para ativar.</div>
+            
+            <!-- Ad Placeholder AdSense 2 (Para fechar o vagão em branco) -->
+            <div class="ad-adsense sidebar-ad" style="margin-top: 0; min-height: 400px;">
+                <span class="ad-label-tag">Publicidade</span>
+                <i class="fas fa-ad"></i>
+                <p>Espaço Google AdSense (Arranha-Céus / 300x600)</p>
             </div>
 
         </aside>
-    </div><!-- /main-wrap -->
+    </main><!-- /main-wrap -->
 
-    <!-- CTA BAND -->
-    <section class="cta-band">
-        <div class="cta-inner">
-            <div>
-                <div class="cta-eye">Plataforma Aberta</div>
-                <div class="cta-ttl">Ferramentas Gratuitas<br>Baseadas em Normas Reais.</div>
-                <p class="cta-sub">Sem cadastro. Sem custo. Conteúdo prático desenvolvido por auditores, para auditores e contadores.</p>
-            </div>
+    <!-- CTA BAND REDESENHADA -->
+    <section class="cta-wrapper">
+        <div class="cta-card">
+            <span class="cta-eye">Auditoria Descomplicada</span>
+            <h2 class="cta-ttl">Plataforma Aberta e Ferramentas Gratuitas!</h2>
+            <p class="cta-sub">O esforço técnico gerou resultados. Ferramentas sem cadastro, baseadas em normas reais. Conteúdo prático desenvolvido por auditores, para inspirar e facilitar o dia a dia de futuros profissionais.</p>
             <div class="cta-btns">
-                <button class="btn-gold" onclick="location.href='busca-e-conteudo.html'"><i class="fas fa-tools"></i> Explorar Ferramentas</button>
-                <button class="btn-ghost" onclick="location.href='biblioteca.html'"><i class="fas fa-book"></i> Biblioteca Técnica</button>
+                <button class="btn-gold" onclick="location.href='busca-e-conteudo.html'"><i class="fas fa-share-alt"></i> Explorar Ferramentas</button>
+                <button class="btn-ghost" onclick="location.href='biblioteca.html'">Biblioteca Técnica</button>
             </div>
         </div>
     </section>
 
     <!-- FOOTER MODULAR -->
-    <div id="footer-placeholder" class="no-print"></div>
+    <footer id="footer-placeholder" class="no-print"></footer>
 
-    <!-- SCROLL TOP -->
-    <button id="scroll-top" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+    <!-- PREVENÇÃO DE ERROS NO CONSOLE E CORREÇÃO DE URLs RELATIVAS -->
+    <script>
+        const origFetch = window.fetch;
+        window.fetch = function(url, options) {
+            let fetchUrl = url;
+            
+            if (typeof url === 'string') {
+                if (url.startsWith('assets/')) {
+                    fetchUrl = 'https://auditeduca.com.br/' + url;
+                } else if (url.startsWith('/assets/')) {
+                    fetchUrl = 'https://auditeduca.com.br' + url;
+                }
+            }
 
-    <!-- Scripts modulares do Audit Educa (na mesma ordem da página de referência) -->
+            if (window.location.protocol === 'file:') {
+                if (typeof fetchUrl === 'string' && (fetchUrl.includes('header.html') || fetchUrl.includes('footer.html'))) {
+                    const type = fetchUrl.includes('header') ? 'Header' : 'Footer';
+                    const mockHTML = `<div style="background:#0C1B33; border-bottom: 2px solid #C9A84C; padding:1.2rem; text-align:center; color:#FFF; font-weight:bold; font-family:sans-serif;">[ ${type} Modular (Modo Offline) ]</div>`;
+                    return Promise.resolve(new Response(mockHTML, { status: 200, headers: {'Content-Type': 'text/html'} }));
+                }
+            }
+            
+            try {
+                return origFetch(fetchUrl, options);
+            } catch (error) {
+                if (error && error.message && error.message.includes('Failed to parse URL')) {
+                    return Promise.resolve(new Response('<!-- Componente bloqueado pelo ambiente -->', { status: 200, headers: {'Content-Type': 'text/html'} }));
+                }
+                throw error;
+            }
+        };
+    </script>
+
+    <!-- Scripts modulares do Audit Educa -->
     <script src="https://auditeduca.com.br/assets/js/accessibility-api.js"></script>
     <script src="https://auditeduca.com.br/assets/js/header.js"></script>
     <script src="https://auditeduca.com.br/assets/js/footer.js"></script>
@@ -1164,20 +1127,13 @@
         (function(){
             'use strict';
 
-            // ===== DETECTA AMBIENTE FILE:// E APLICA FALLBACK =====
-            if (window.location.protocol === 'file:') {
-                console.warn('⚠️ Ambiente file:// detectado. Header e footer não serão carregados via fetch. Injetando conteúdo temporário.');
-                document.getElementById('header-placeholder').innerHTML = '<div style="background:#0C1B33; color:#C9A84C; padding:1rem; text-align:center;">[Header não carregado - use um servidor local]</div>';
-                document.getElementById('footer-placeholder').innerHTML = '<div style="background:#0C1B33; color:#C9A84C; padding:1rem; text-align:center;">[Footer não carregado - use um servidor local]</div>';
-                // Desabilita a tentativa de carregar componentes via fetch (sobrescreve a função)
-                window.loadHtmlComponent = function() { console.warn('loadHtmlComponent desabilitado em file://'); };
-            }
+            const headerPlaceholder = document.getElementById('header-placeholder');
 
             // Atualizar data na barra
             const d = document.getElementById('ae-date');
             if(d) d.textContent = new Date().toLocaleDateString('pt-BR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-            // Funções de filtro (dbFilter e topicFilter)
+            // Funções de filtro
             window.dbFilter = function(el, topic){
                 document.querySelectorAll('.db-tag').forEach(t=>{t.className='db-tag off';});
                 el.className='db-tag on';
@@ -1185,26 +1141,22 @@
             };
 
             window.topicFilter = function(btn, topic, fromDatebar){
-                if(!fromDatebar){
-                    document.querySelectorAll('.t-chip').forEach(c=>c.classList.remove('on'));
-                    if(btn) btn.classList.add('on');
-                }
-                document.querySelectorAll('[data-topic]').forEach(s=>{
-                    s.style.display = (topic==='all' || s.dataset.topic===topic) ? '' : 'none';
-                });
-            };
+            if(!fromDatebar){
+                document.querySelectorAll('.t-chip').forEach(c=>c.classList.remove('on'));
+                if(btn) btn.classList.add('on');
+            }
+            document.querySelectorAll('[data-topic]').forEach(s=>{
+                s.style.display = (topic==='all' || s.dataset.topic===topic) ? '' : 'none';
+            });
+        };
 
-            // Scroll top
-            const st = document.getElementById('scroll-top');
-            window.addEventListener('scroll', ()=>st.classList.toggle('vis', scrollY > 450), {passive:true});
-            st?.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
-
-            // Newsletter
-            window.nlSubscribe = function(){
-                const v = document.getElementById('nl-email').value.trim();
-                if(!v || !v.includes('@')){ alert('Informe um e-mail válido.'); return; }
-                document.getElementById('nl-ok').style.display = 'block';
-                document.getElementById('nl-email').value = '';
+        // Envio de Sugestão
+        window.sendSug = function(){
+            const v = document.getElementById('sug-text').value.trim();
+                if(!v){ alert('Por favor, escreva sua sugestão antes de enviar.'); return; }
+                document.getElementById('sug-ok').style.display = 'block';
+                document.getElementById('sug-text').value = '';
+                setTimeout(() => { document.getElementById('sug-ok').style.display = 'none'; }, 4000);
             };
 
             // IntersectionObserver para entradas suaves (cards)
@@ -1218,68 +1170,47 @@
                         }
                     });
                 }, {threshold: 0.08});
-                document.querySelectorAll('.art-v,.tool-card,.g-item,.sw-art').forEach(el => {
+                document.querySelectorAll('.art-v,.tool-card,.g-item,.sw-art, .ad-adsense, .market-indices').forEach(el => {
                     el.style.cssText += 'opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;';
                     io.observe(el);
                 });
             }
 
-            // Carregar componentes modulares (header e footer) - apenas se não estiver em file://
+            // Carregar componentes modulares
             if (window.location.protocol !== 'file:') {
-                // As funções loadHtmlComponent vêm do template-engine.js
                 if (typeof loadHtmlComponent === 'function') {
                     loadHtmlComponent('https://auditeduca.com.br/assets/components/header.html', 'header-placeholder');
                     loadHtmlComponent('https://auditeduca.com.br/assets/components/footer.html', 'footer-placeholder');
                 }
             }
 
-            // Inicializar ícones (se necessário)
+            // Inicializar ícones
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
 
-            // ===== AJUSTE PARA BARRA STICKY ABAIXO DO CABEÇALHO =====
+            // AJUSTE DINÂMICO PARA BARRA STICKY DOS FILTROS (Comporta altura do header original)
             (function adjustStickyElements() {
-                // Elementos que serão ajustados
                 const topicStrip = document.querySelector('.topic-strip');
-                const mainWrap = document.querySelector('.main-wrap');
-                const headerPlaceholder = document.getElementById('header-placeholder');
+                if (!topicStrip || !headerPlaceholder) return;
 
-                if (!topicStrip || !mainWrap || !headerPlaceholder) return;
-
-                // Função que calcula e aplica os ajustes
-                function applyStickyAdjustments() {
-                    // Tenta encontrar o elemento do cabeçalho (pode ser o primeiro filho do placeholder)
-                    const headerEl = headerPlaceholder.firstElementChild;
-                    if (!headerEl) return;
-
-                    const headerHeight = headerEl.offsetHeight;
-                    const headerStyles = window.getComputedStyle(headerEl);
-                    const isHeaderFixedOrSticky = headerStyles.position === 'fixed' || headerStyles.position === 'sticky';
-
-                    if (isHeaderFixedOrSticky) {
-                        // Barra gruda abaixo do cabeçalho
-                        topicStrip.style.top = headerHeight + 'px';
-                        // Conteúdo principal ganha padding igual à altura do cabeçalho
-                        mainWrap.style.paddingTop = headerHeight + 'px';
-                    } else {
-                        // Se cabeçalho não for fixo, volta ao normal
-                        topicStrip.style.top = '0';
-                        mainWrap.style.paddingTop = '';
-                    }
+                function applyAdjustments() {
+                    // OBTÉM A ALTURA EXATA DO CABEÇALHO INJETADO PARA RESTAURAR A POSIÇÃO DA BARRA
+                    const realHeader = headerPlaceholder.firstElementChild;
+                    const headerHeight = realHeader ? realHeader.offsetHeight : (headerPlaceholder.offsetHeight || 0);
+                    topicStrip.style.top = headerHeight + 'px';
                 }
 
-                // Observa quando o cabeçalho for carregado (via template-engine)
-                const observer = new MutationObserver(() => {
-                    if (headerPlaceholder.children.length > 0) {
-                        applyStickyAdjustments();
-                        observer.disconnect(); // para de observar após carregar
-                    }
-                });
-                observer.observe(headerPlaceholder, { childList: true });
+                const observer = new MutationObserver(() => applyAdjustments());
+                observer.observe(headerPlaceholder, { childList: true, subtree: true });
 
-                // Reaplica em caso de redimensionamento da janela
-                window.addEventListener('resize', applyStickyAdjustments);
+                if ('ResizeObserver' in window) {
+                    const resizeObs = new ResizeObserver(() => applyAdjustments());
+                    resizeObs.observe(headerPlaceholder);
+                }
+
+                window.addEventListener('resize', applyAdjustments);
+                applyAdjustments(); 
             })();
 
         })();
