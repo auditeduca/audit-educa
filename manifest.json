@@ -1,0 +1,21 @@
+{
+  "name": "Audit Educa",
+  "short_name": "AuditEduca",
+  "description": "Hub gratuito de ferramentas, artigos e guias de estudo para auditores e contadores. Baseado em IFRS, NBC TA, CPCs e normas vigentes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0C1B33",
+  "theme_color": "#0C1B33",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
