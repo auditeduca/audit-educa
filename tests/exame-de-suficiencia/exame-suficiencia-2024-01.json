@@ -1,0 +1,1202 @@
+[
+  {
+    "number": 1,
+    "text": "O escritor Érico Veríssimo falou sobre o consumidor:\nO objetivo do consumidor não é o de possuir coisas, mas de consumir cada vez mais e mais, a fim de com isso compensar seu\nvácuo interior, sua passividade, sua solidão, seu tédio e sua ansiedade.\nSeguindo a opinião do autor, o consumidor inveterado",
+    "options": [
+      {
+        "letter": "A",
+        "text": "pretende possuir cada vez mais."
+      },
+      {
+        "letter": "B",
+        "text": "procura compensar algumas deficiências."
+      },
+      {
+        "letter": "C",
+        "text": "mostra tendência a economizar exageradamente."
+      },
+      {
+        "letter": "D",
+        "text": "vive permanentemente com dificuldades econômicas."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 2,
+    "text": "Os adjetivos podem representar estados, características, qualidades ou relações.\nAssinale a frase em que o adjetivo sublinhado indica um estado.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Profetizar o futuro não é difícil, mas é perigoso."
+      },
+      {
+        "letter": "B",
+        "text": "Para o homem trabalhador, o tempo é elástico."
+      },
+      {
+        "letter": "C",
+        "text": "Estamos sempre preocupados com o que vai acontecer."
+      },
+      {
+        "letter": "D",
+        "text": "O futuro é a mais valiosa fonte de renda da imaginação."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 3,
+    "text": "Um determinado investimento foi realizado em 31/12/20X1, sob o regime de juros compostos, cuja taxa era de 2% ao mês.\nO aporte inicial foi de R$ 12.000.\nO valor total dos juros obtidos na operação, se ela for liquidada em 31/12/20X2, é de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 15.218,90."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 14.880,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 3.218,90."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 2.880,00."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 4,
+    "text": "Uma firma de auditoria foi contratada para realizar um trabalho em uma empresa do ramo automobilístico. Os auditores\nindependentes definiram, em seu processo de amostragem, que irão selecionar a partir do método aleatório (disposto como\num dos principais pela NBC TA 530 – Amostragem) apenas uma nota fiscal de venda por mês para sua posterior análise.\nPara o mês de novembro de 20X1, as notas fiscais de venda foram assim distribuídas:\n                                                                    Câmbio           Câmbio\n                                Cor do veículo / Tipo de câmbio\n                                                                    manual         automático\n                                Preto                                  5               7\n                                Prateado                               7               6\nConsiderando o exposto, a probabilidade de que seja selecionada uma nota fiscal referente à venda de um veículo de cor preta\ne de câmbio manual na amostragem de novembro de 20X1 é igual a",
+    "options": [
+      {
+        "letter": "A",
+        "text": "5%."
+      },
+      {
+        "letter": "B",
+        "text": "20%."
+      },
+      {
+        "letter": "C",
+        "text": "25%."
+      },
+      {
+        "letter": "D",
+        "text": "50%."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 5,
+    "text": "João comunicou a Maria que:\nI. a Lei nº X, editada pela União, disciplinou as situações em que poderia ocorrer a renúncia a determinada posição jurídica;\nII. a renúncia, para ser válida, deveria observar os estritos termos legais;\nIII. Pedro renunciou a um direito que deixou de integrar a sua esfera jurídica e, automaticamente, passou a integrar a esfera\n     jurídica de Maria.\nNas situações descritas por João em I, II e III, estamos perante, respectivamente, os denominados:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "poder estatal, direito positivo e direito natural."
+      },
+      {
+        "letter": "B",
+        "text": "direito objetivo, direito natural e faculdade jurídica."
+      },
+      {
+        "letter": "C",
+        "text": "direito positivo, direito objetivo e direito subjetivo."
+      },
+      {
+        "letter": "D",
+        "text": "direito subjetivo, direito natural e dinâmica relacional."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 6,
+    "text": "Pedro é empregado, há exatos três anos, da sociedade empresária Alfa, que cumpria todas as suas obrigações, a começar pelo\nrigoroso pagamento do salário mensal dos seus empregados. No entanto, Maria, sua superior hierárquica, decidiu que Pedro\nnão vinha cumprindo a contento suas obrigações, logo, deveria ser demitido.\nÀ luz desse quadro, Maria consultou o Departamento de Recursos Humanos em relação à concessão de aviso prévio a Pedro,\nsendo-lhe corretamente informado que",
+    "options": [
+      {
+        "letter": "A",
+        "text": "cabe a Alfa optar pela concessão de aviso prévio ou pela permanência de Pedro em casa, sem remuneração."
+      },
+      {
+        "letter": "B",
+        "text": "o aviso prévio a ser dado a Pedro é de 30 (trinta) dias."
+      },
+      {
+        "letter": "C",
+        "text": "é necessário o pagamento de indenização correspondente a um mês de trabalho."
+      },
+      {
+        "letter": "D",
+        "text": "o aviso prévio a ser dado a Pedro é de 39 (trinta e nove) dias."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 7,
+    "text": "A sociedade empresária Delta acabou de ser constituída, o que foi feito com estrita observância da sistemática legal, tendo por\nobjeto a venda de livros. No dia imediatamente anterior ao início de suas atividades, os sócios da Delta questionaram o seu\ncontador sobre a respectiva carga tributária, mais especificamente a respeito dos tributos que Delta estava obrigada a recolher.\nO contador respondeu corretamente que Delta, em razão do seu objeto social,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "não recolheria nenhum tributo."
+      },
+      {
+        "letter": "B",
+        "text": "somente recolheria impostos."
+      },
+      {
+        "letter": "C",
+        "text": "recolheria taxas."
+      },
+      {
+        "letter": "D",
+        "text": "somente recolheria contribuições de melhoria."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 8,
+    "text": "Na aplicação das sanções éticas, avalie os itens a seguir:\nI. A gravidade da infração.\nII. A punição ética anterior transitada em julgado.\nIII. A aplicação de salvaguardas.\nIV. A ação ou omissão que macule publicamente a imagem do contador.\nPodem ser considerados agravantes os itens",
+    "options": [
+      {
+        "letter": "A",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "I, II e III."
+      },
+      {
+        "letter": "C",
+        "text": "I, II e IV."
+      },
+      {
+        "letter": "D",
+        "text": "II, III e IV."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 9,
+    "text": "Avalie, com base no Código de Ética do contador, se os deveres do contador incluem, entre outros:\nI. exercer a profissão com zelo, diligência, honestidade e capacidade técnica, observando as Normas Brasileiras de\n     Contabilidade e a legislação vigente, resguardando o interesse público, os interesses de seus clientes ou empregadores,\n     sem prejuízo da dignidade e independência profissionais;\nII. recusar sua indicação em trabalho quando reconheça não se achar capacitado para a especialização requerida;\nIII. guardar sigilo sobre o que souber em razão do exercício profissional, inclusive no âmbito do serviço público, ressalvados os\n     casos previstos em lei ou quando solicitado por autoridades competentes, entre estas os Conselhos Federal e Regionais de\n     Contabilidade.\nEstá correto o que se afirma em:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "I e III, apenas."
+      },
+      {
+        "letter": "C",
+        "text": "II e III, apenas."
+      },
+      {
+        "letter": "D",
+        "text": "I, II e III."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 10,
+    "text": "A ética pode ser aplicada em praticamente todas as nossas ações. Em algumas, ela terá um peso maior que em outras e o\nimportante é buscar agir de acordo com princípios morais e valores alinhados ao que consideramos mais justo para nós e para\nos outros. Isto é, pensar no que faz mais sentido para o contexto e a melhoria de todos e não apenas em nosso próprio ganho\npessoal.\nhttps://mariaceciliagomes.com.br/entendendo-etica-e-sua-importancia-na-vida-de-cada-um/\nCom base na reflexão, avalie se as afirmativas a seguir são falsas (F) ou verdadeiras (V):\n( ) No ambiente de trabalho, a ética é fundamental para garantir um ambiente saudável e produtivo entre as pessoas.\n( ) Agir de forma ética pode ser ter uma postura respeitosa em relação aos colegas, clientes e fornecedores; manter a\n    confidencialidade das informações e evitar conflitos de interesse.\n( ) A ética envolve tomar decisões justas, cumprindo as leis e normas regulatórias e considerando o impacto de nossas ações\n    em relação aos outros.\nAs afirmativas são, respectivamente,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "V – V – V."
+      },
+      {
+        "letter": "B",
+        "text": "V – F – F."
+      },
+      {
+        "letter": "C",
+        "text": "F – V – V."
+      },
+      {
+        "letter": "D",
+        "text": "F – F – F."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 11,
+    "text": "Desreconhecimento é a retirada de parte ou da totalidade de ativo ou passivo reconhecido do balanço patrimonial da entidade.\nO desreconhecimento normalmente ocorre quando esse item não atende mais à definição de ativo ou passivo, que expirou,\nfoi consumido, recebido, executado ou transferido.\nA máquina utilizada para a produção do principal produto de uma determinada entidade deve ser desreconhecida quando",
+    "options": [
+      {
+        "letter": "A",
+        "text": "perder todo o potencial de produzir benefícios econômicos para a entidade."
+      },
+      {
+        "letter": "B",
+        "text": "estiver parcialmente depreciado."
+      },
+      {
+        "letter": "C",
+        "text": "sofrer perda de valor recuperável."
+      },
+      {
+        "letter": "D",
+        "text": "estiver sob controle da entidade."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 12,
+    "text": "Conforme a NBC TG – ESTRUTURA CONCEITUAL, uma Receita reflete aumento nos ativos, ou redução nos passivos, que\nresultam em aumentos no patrimônio líquido, exceto aqueles referentes a contribuições de detentores de direitos sobre o\npatrimônio.\nAvalie se são reconhecidos como Receita, nesse contexto, os seguintes itens:\nI. Ganho de aplicação financeira.\nII. Transferência de estoques a clientes.\nIII. Ganho na venda de imobilizado.\nIV. Entrada de recursos pela emissão/venda de debêntures.\nV. Entrada de recursos pela integralização do capital social.\nVI. Ganho na venda de ações em tesouraria.\nSão considerados receitas os itens",
+    "options": [
+      {
+        "letter": "A",
+        "text": "IV, V e VI."
+      },
+      {
+        "letter": "B",
+        "text": "II, III e VI."
+      },
+      {
+        "letter": "C",
+        "text": "I, III e IV."
+      },
+      {
+        "letter": "D",
+        "text": "I, II e III."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 13,
+    "text": "O conceito de Capital é adotado pela maioria das entidades na elaboração das Demonstrações Contábeis. A seleção do conceito\napropriado de Capital pela entidade deve ser baseada nas necessidades dos seus usuários, principalmente, os preocupados\ncom a manutenção de capital nominal investido ou com o poder de compra do capital investido.\nA manutenção do Capital em que o lucro é auferido somente se o montante dos ativos líquidos no final do período exceder o\nmontante dos ativos líquidos no início do período, após excluir quaisquer distribuições para, e contribuições de, sócios durante\no período, é a Manutenção do",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Capital Físico."
+      },
+      {
+        "letter": "B",
+        "text": "Capital Financeiro."
+      },
+      {
+        "letter": "C",
+        "text": "Capital Social."
+      },
+      {
+        "letter": "D",
+        "text": "Capital Integralizado."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 14,
+    "text": "As demonstrações contábeis são normalmente elaboradas com base na suposição de que a entidade que reporta está em\ncontinuidade operacional.\nDesse modo, presume-se que a entidade não tem a intenção e nem a necessidade de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "tornar-se internacional."
+      },
+      {
+        "letter": "B",
+        "text": "modificar a sua atividade-fim."
+      },
+      {
+        "letter": "C",
+        "text": "entrar em liquidação ou deixar de negociar."
+      },
+      {
+        "letter": "D",
+        "text": "expandir os seus negócios para outras localidades."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 15,
+    "text": "Conforme a NBC TG 04 (R4) – ATIVO INTANGÍVEL, não são exemplos de gastos a serem reconhecidos como despesa aqueles\nincorridos com",
+    "options": [
+      {
+        "letter": "A",
+        "text": "atividades pré-operacionais destinadas a constituir a empresa."
+      },
+      {
+        "letter": "B",
+        "text": "treinamento do pessoal próprio."
+      },
+      {
+        "letter": "C",
+        "text": "publicidade e atividades promocionais."
+      },
+      {
+        "letter": "D",
+        "text": "o desenvolvimento de ativos intangíveis gerados internamente."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 16,
+    "text": "A Sociedade A possui 65% de ações com direito a voto sobre a Sociedade B, cujo Patrimônio Líquido equivale a R$2.000.000.\nCom essa participação a Sociedade A exerce o controle da sociedade B. Durante o exercício de 2023, a Sociedade “B”\napresentou um lucro de R$200.000.\nDiante dos dados apresentados, e de acordo com a NBC TG 18 (R3) – INVESTIMENTO EM COLIGADA, em Controlada e em\nEmpreendimento Controlado em Conjunto, a Sociedade A efetuará, em suas demonstrações contábeis individuais, um registro\nde",
+    "options": [
+      {
+        "letter": "A",
+        "text": "débito em Caixa e crédito em Investimentos na Sociedade B no valor de R$130.000."
+      },
+      {
+        "letter": "B",
+        "text": "débito em Investimentos na Sociedade B e crédito em Receita de equivalência patrimonial no valor de R$200.000."
+      },
+      {
+        "letter": "C",
+        "text": "débito em Receita de equivalência patrimonial e crédito em Investimentos na Sociedade B no valor de R$200.000."
+      },
+      {
+        "letter": "D",
+        "text": "débito em Investimentos na Sociedade B e crédito em Receita de equivalência patrimonial no valor de R$130.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 17,
+    "text": "Sem observar as exceções previstas no item 4.1.5 da NBC TG 48 – INSTRUMENTOS FINANCEIROS, um ativo financeiro que, para\na entidade que reporta a informação, é mantido dentro de modelo de negócios, cujo objetivo seja atingido tanto pelo\nrecebimento de fluxos de caixa contratuais quanto pela venda de ativos financeiros, e se os termos contratuais do ativo\nfinanceiro derem origem, em datas especificadas, a fluxos de caixa que constituam exclusivamente pagamentos de principal e\njuros sobre o valor do principal em aberto, deve ser mensurado no momento subsequente ao",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Custo Amortizado."
+      },
+      {
+        "letter": "B",
+        "text": "Valor Justo Por Meio de Outros Resultados Abrangentes."
+      },
+      {
+        "letter": "C",
+        "text": "Valor Justo Por Meio de Resultado."
+      },
+      {
+        "letter": "D",
+        "text": "Valor Realizável Líquido."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 18,
+    "text": "No ano de 2023, a Sociedade Empresária XXX foi autuada por um órgão fiscal que alegava o não recolhimento de determinado\nimposto no valor de R$7.000.000. Com base na análise de seu departamento jurídico, a Sociedade Empresária constituiu uma\nprovisão no valor de R$5.000.000 nas demonstrações de 2023 e impetrou recurso administrativo ao referido órgão. Em\n15/03/2024, o recurso da Sociedade Empresária foi julgado e o órgão fiscal determinou que a Sociedade Empresária recolhesse\na quantia de R$6.000.000. A Sociedade Empresária optou por não recorrer da decisão.\nA elaboração das demonstrações contábeis foi finalizada pelo Departamento Contábil em 28/02/2024 e o Conselho de\nAdministração autorizou a emissão de tais demonstrações em 25/03/2024. Instado a decidir se a Sociedade Empresária XXX\ndeve ajustar as Demonstrações Contábeis de 2023 e por qual valor, você declara, corretamente, que a Sociedade Empresária\nXXX",
+    "options": [
+      {
+        "letter": "A",
+        "text": "deve ajustar as Demonstrações Contábeis de 2023, reduzindo o lucro do período e aumentando o passivo em R$1.000.000."
+      },
+      {
+        "letter": "B",
+        "text": "deve ajustar as Demonstrações Contábeis de 2023, reduzindo o lucro do período e aumentando o passivo em R$2.000.000."
+      },
+      {
+        "letter": "C",
+        "text": "não deve ajustar as Demonstrações Contábeis de 2023, sendo a determinação do órgão fiscal ocorrida depois de\n    31/12/2023."
+      },
+      {
+        "letter": "D",
+        "text": "não deve ajustar as Demonstrações Contábeis de 2023, sendo a determinação do órgão fiscal ocorrida depois da data de\n    finalização das Demonstrações Contábeis por parte do Departamento Contábil."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 19,
+    "text": "Em 31/12/2022, uma companhia tinha seu capital social dividido em 40.000 ações ordinárias (ON). Naquela data, todas\nestavam em poder dos acionistas.\nAs seguintes operações com ações foram registradas durante o exercício de 2023:\n       Data           Operação\n       30/04/2023     Emissão de 1.000 novas ações ON, imediatamente subscritas e integralizadas pelos acionistas.\n       30/09/2023     Recompra de 2.000 ações, mantidas em tesouraria.\n       30/11/2023     Venda de 1.000 ações que estavam em tesouraria.\nAo final do exercício de 2023, a companhia apurou Lucro Líquido de R$202.110. Os valores do Resultado Básico por ação e do\nResultado Diluído por ação, a serem divulgados pela companhia, são, respectivamente,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "5,05275 e 5,02137."
+      },
+      {
+        "letter": "B",
+        "text": "5,02137 e 5,02137."
+      },
+      {
+        "letter": "C",
+        "text": "5,05275 e 4,92951."
+      },
+      {
+        "letter": "D",
+        "text": "5,05275 e 5,0275."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 20,
+    "text": "A Sociedade Empresária A possui estoque de um mix de mercadorias para revenda e deseja mensurar as mercadorias da\ncategoria b de acordo com a NORMA BRASILEIRA DE CONTABILIDADE NBC TG 16 (R2) – ESTOQUES. Em termos unitários, o\nvalor de custo das mercadorias dessa categoria é de R$20; o valor realizável líquido é de R$15 e o preço de venda é de R$30.\nConsiderando a quantidade de mil unidades, o seguinte valor dessas mercadorias deve ser apresentado no balanço patrimonial:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$15."
+      },
+      {
+        "letter": "B",
+        "text": "R$15.000."
+      },
+      {
+        "letter": "C",
+        "text": "R$20.000."
+      },
+      {
+        "letter": "D",
+        "text": "R$30.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 21,
+    "text": "Em janeiro de 2024, uma companhia aérea anunciou uma promoção especial de Dia das Mães e vendeu, em fevereiro,\n200 passagens aéreas do Rio de Janeiro para Porto Alegre, por R$300 cada, recebidos à vista.\nEm maio de 2024, os aeroportos de Porto Alegre foram fechados, de modo que a companhia aérea comunicou aos clientes\nque as passagens poderiam ser utilizadas em junho, sem pagamento de taxas e penalidades. Suponha que todos os clientes\nviajem em junho de 2024.\nNesse caso, de acordo com a NBC TG 47 – Receita de Contratos com Clientes, a receita da companhia aérea relativa à venda\ndas 200 passagens deve ser reconhecida no mês de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "janeiro."
+      },
+      {
+        "letter": "B",
+        "text": "fevereiro."
+      },
+      {
+        "letter": "C",
+        "text": "maio."
+      },
+      {
+        "letter": "D",
+        "text": "junho."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 22,
+    "text": "Em 01/07/2021, uma loja de roupas adquiriu uma máquina de costura por R$840. Na data, estimou que iria usar a máquina\ndurante 4 anos e vendê-la pelo equivalente à vista de R$200 após esse período.\nEm 01/01/2023, a loja constatou que poderia utilizar a máquina por mais 3 anos, a partir dessa data, mas seu valor residual\nseria zero.\nAssinale a opção que indica o valor contábil da máquina de costura em 31/12/2023, conforme a NBC TG 27 – Ativo Imobilizado.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$400."
+      },
+      {
+        "letter": "B",
+        "text": "R$440."
+      },
+      {
+        "letter": "C",
+        "text": "R$320."
+      },
+      {
+        "letter": "D",
+        "text": "R$210."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 23,
+    "text": "Em 01/01/2022, uma fábrica de cosméticos adquiriu, por R$180.000, um terreno para a construção de um estacionamento\npara seus empregados.\nEm 31/12/2022, a fábrica realizou o teste de recuperabilidade desse terreno e constatou que seu valor em uso era de\nR$170.000, enquanto o seu valor justo era de R$190.000. Para vender o terreno, a fábrica deveria incorrer em despesas legais\nde alienação no valor de R$15.000.\nAssinale o valor do terreno no balanço patrimonial da fábrica após o teste de recuperabilidade, conforme a NBC TG 01 –\nREDUÇÃO AO VALOR RECUPERÁVEL DE ATIVOS.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$170.000."
+      },
+      {
+        "letter": "B",
+        "text": "R$175.000."
+      },
+      {
+        "letter": "C",
+        "text": "R$180.000."
+      },
+      {
+        "letter": "D",
+        "text": "R$190.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 24,
+    "text": "De acordo com a Lei no 6.404/76, em uma sociedade empresária, as Reservas de Capital poderão ser utilizadas para absorver\nprejuízos quando",
+    "options": [
+      {
+        "letter": "A",
+        "text": "não houver ações em tesouraria."
+      },
+      {
+        "letter": "B",
+        "text": "estes estiverem acumulados há no mínimo três exercícios sociais."
+      },
+      {
+        "letter": "C",
+        "text": "estes ultrapassarem os lucros acumulados e as reservas de lucros."
+      },
+      {
+        "letter": "D",
+        "text": "houver garantia de que os dividendos mínimos obrigatórios serão pagos em conformidade."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 25,
+    "text": "Em dezembro de 2023, uma empresa de consultoria comprou, à vista, aparelhos de ar condicionado, para o seu escritório, por\nR$6.000. Na data, pagou o frete no valor de R$200 e a instalação no valor de R$2.000.\nOs caixas consumidos, reconhecidos na Demonstração dos Fluxos de Caixa da empresa, elaborada pelo método direto, pelas\natividades operacional e de investimento, de acordo com a NBCTG 03 (R3) – DEMONSTRAÇÕES DOS FLUXOS DE CAIXA,\nATIVIDADES DE INVESTIMENTOS, são, respectivamente:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "zero e R$8.200."
+      },
+      {
+        "letter": "B",
+        "text": "R$200 e R$8.000."
+      },
+      {
+        "letter": "C",
+        "text": "R$2.000 e R$6.200."
+      },
+      {
+        "letter": "D",
+        "text": "R$2.200 e R$6.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 26,
+    "text": "Uma joalheria reconheceu as seguintes receitas em 2023 com:\n• vendas de mercadorias: R$800.000;\n• financeira: R$400.000;\n• equivalência patrimonial: R$200.000;\n• venda de ativo imobilizado: R$170.000;\n• aluguel de imóvel a terceiros: R$120.000.\nDe acordo cm a NBC TG 09 (R1) – DEMONSTRAÇÃO DO VALOR ADICIONADO, na Demonstração do Valor Adicionado da\njoalheria, em 31/12/2023, o valor adicionado recebido em transferência apresenta o seguinte montante:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$490.000."
+      },
+      {
+        "letter": "B",
+        "text": "R$600.000."
+      },
+      {
+        "letter": "C",
+        "text": "R$720.000."
+      },
+      {
+        "letter": "D",
+        "text": "R$890.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 27,
+    "text": "Uma sociedade empresária apresenta a seus usuários externos as informações sobre a base de preparação das demonstrações\nfinanceiras e das práticas contábeis específicas selecionadas e aplicadas para negócios e eventos significativos.\nConforme a Lei nº 6.404/76, essa informação deve ser incluída",
+    "options": [
+      {
+        "letter": "A",
+        "text": "nas Notas Explicativas."
+      },
+      {
+        "letter": "B",
+        "text": "no Relatório do Auditor."
+      },
+      {
+        "letter": "C",
+        "text": "no Relatório da Administração."
+      },
+      {
+        "letter": "D",
+        "text": "na Carta de Responsabilidade da Administração."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 28,
+    "text": "De acordo com a NBC TG 02 (R3) – EFEITOS DAS MUDANÇAS NAS TAXAS DE CÂMBIO E CONVERSÃO DE DEMONSTRAÇÕES\nCONTÁBEIS, os elementos do balanço patrimonial podem ser classificados como monetários e não monetários.\nAssinale a opção que indica um ativo classificado como ativo não monetário em uma papelaria.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Estoques."
+      },
+      {
+        "letter": "B",
+        "text": "Contas a receber."
+      },
+      {
+        "letter": "C",
+        "text": "Aplicações financeiras."
+      },
+      {
+        "letter": "D",
+        "text": "Adiantamento de clientes."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 29,
+    "text": "Conforme a Lei no 6.404/76, no Balanço Patrimonial, as contas do ativo são apresentadas de acordo com a ordem decrescente\nde grau de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "liquidez."
+      },
+      {
+        "letter": "B",
+        "text": "relevância."
+      },
+      {
+        "letter": "C",
+        "text": "objetividade."
+      },
+      {
+        "letter": "D",
+        "text": "valor monetário."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 30,
+    "text": "Em 2023, a Demonstração do Resultado do Exercício de uma entidade apresentou Receita Líquida de R$200.000 e Lucro Bruto\nde R$150.000.\nPode-se constatar que, na demonstração, a seguinte conta apresenta saldo de R$50.000:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "despesas de vendas."
+      },
+      {
+        "letter": "B",
+        "text": "despesas operacionais."
+      },
+      {
+        "letter": "C",
+        "text": "deduções da receita."
+      },
+      {
+        "letter": "D",
+        "text": "custo das mercadorias vendidas."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 31,
+    "text": "Uma livraria utiliza o critério PEPS (Primeiro a Entrar, Primeiro a Sair) para mensurar os seus estoques.\nEm 01/01/2024, havia 20 livros de Contabilidade Avançada em estoque, que foram comprados por R$100 cada. Em\n05/01/2024, a livraria adquiriu mais 30 unidades desse mesmo título, por R$120 cada. Já em 10/01/2024, a livraria vendeu 35\nexemplares desse livro a um grupo de estudantes, por R$200 cada.\nDe acordo com a NBC TG 16 (R2) – ESTOQUES, o custo das mercadorias vendidas reconhecido em janeiro foi de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$3.500."
+      },
+      {
+        "letter": "B",
+        "text": "R$3.800."
+      },
+      {
+        "letter": "C",
+        "text": "R$4.100."
+      },
+      {
+        "letter": "D",
+        "text": "R$4.200."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 32,
+    "text": "Uma sociedade empresária apresenta saldo de R$80.000 na conta “Despesas antecipadas”.\nNas Demonstrações contábeis, essa conta é apresentada como",
+    "options": [
+      {
+        "letter": "A",
+        "text": "ativo, no balanço patrimonial."
+      },
+      {
+        "letter": "B",
+        "text": "passivo, no balanço patrimonial."
+      },
+      {
+        "letter": "C",
+        "text": "outras despesas, na demonstração do resultado do exercício."
+      },
+      {
+        "letter": "D",
+        "text": "despesas operacionais, na demonstração do resultado do exercício."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 33,
+    "text": "Em abril de 2024, uma empresa de consultoria adquiriu 10 cadeiras para seus funcionários por R$400 cada. Metade do valor\nfoi pago à vista e o restante tem pagamento previsto para junho do mesmo ano.\nNo momento da compra, observam-se as seguintes modificações nos saldos de seus elementos patrimoniais:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "aumento de R$2.000 no ativo e no passivo."
+      },
+      {
+        "letter": "B",
+        "text": "aumento de R$4.000 no ativo e no passivo."
+      },
+      {
+        "letter": "C",
+        "text": "aumento de R$4.000 no ativo e no patrimônio líquido."
+      },
+      {
+        "letter": "D",
+        "text": "diminuição de R$2.000 no ativo, aumento de R$2.000 no passivo e diminuição de R$4.000 no patrimônio líquido."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 34,
+    "text": "Uma sociedade empresária oferece serviços de entrega de documentos. Para realizar as entregas, possui cinco motos, sendo\nque cada uma apresentava, em 31/12/2023, valor contábil de R$30.000. Além disso, a sociedade empresária possui duas motos\nque são utilizadas exclusivamente para a locomoção de seus diretores. Cada uma dessas motos apresentava, em 31/12/2023,\nvalor contábil de R$50.000.\nAssinale a opção que indica a apresentação das motos no balanço patrimonial da sociedade empresária em 31/12/2023.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Investimentos: R$250.000."
+      },
+      {
+        "letter": "B",
+        "text": "Ativo Imobilizado: R$250.000."
+      },
+      {
+        "letter": "C",
+        "text": "Investimentos: R$100.000 e Ativo Imobilizado: R$150.000."
+      },
+      {
+        "letter": "D",
+        "text": "Investimentos: R$150.000 e Ativo Imobilizado: R$100.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 35,
+    "text": "Considere os seguintes elementos das demonstrações contábeis:\nI. Ativo.\nII. Despesa.\nIII. Receita.\nIV. Passivo.\nV. Patrimônio Líquido.\nDesses elementos os que apresentam natureza devedora são:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "I e III, apenas."
+      },
+      {
+        "letter": "C",
+        "text": "II e IV, apenas."
+      },
+      {
+        "letter": "D",
+        "text": "I, III e V, apenas."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 36,
+    "text": "Uma farmácia apresentava os seguintes saldos em seu ativo, em 31/12/2023:\n• Aplicação financeira com vencimento em 380 dias: R$200.000;\n• Clientes com recebimento previsto para 180 dias: R$140.000;\n• Disponibilidades: R$50.000;\n• Estoque com venda prevista para até 60 dias: R$120.000;\n• Imóvel onde funciona a farmácia: R$600.000;\n• Móveis e utensílios utilizados em suas lojas: R$300.000.\nO ativo circulante da farmácia em 31/12/2023 foi de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$170.000."
+      },
+      {
+        "letter": "B",
+        "text": "R$190.000."
+      },
+      {
+        "letter": "C",
+        "text": "R$310.000."
+      },
+      {
+        "letter": "D",
+        "text": "R$510.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 37,
+    "text": "A Euza Batista Modas é uma indústria têxtil que confecciona apenas calças. No mês de maio de 2024, apresentou os seguintes\ndados a respeito da sua produção:\n                                          Custo Padrão                              Custo Real\n               Descrição\n                            Quantidade Custo Unitário Custo Total Quantidade Custo Unitário Custo Total\n             Tecido Jeans      1,50          45,00         67,50         2,00          55,00         110,00\n             Botão             3,00           6,55         19,65         6,00           5,47          32,82\n             Linha            220,00          0,15         33,00        290,00          0,11          31,90\nA gestora da companhia tem por costume utilizar o método de custo padrão para tomar suas decisões.\nA partir dos dados apresentados, assinale a principal conclusão a respeito da variação dos insumos de produção.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Todas as variações foram desfavoráveis."
+      },
+      {
+        "letter": "B",
+        "text": "Todas as variações de quantidade foram desfavoráveis."
+      },
+      {
+        "letter": "C",
+        "text": "As variações de custo unitário dos itens botão e linha foram desfavoráveis."
+      },
+      {
+        "letter": "D",
+        "text": "O tecido jeans foi o único insumo da produção que teve variações favoráveis."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 38,
+    "text": "Observe a seguinte definição:\nConceito fundamental de finanças e economia que diz respeito aos benefícios que podem ser perdidos quando uma opção é\nescolhida em detrimento de outra; em outras palavras, ele representa o valor da melhor opção a ser considerada após a tomada\nde decisão.\nA definição é referente a",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Custo Controlável."
+      },
+      {
+        "letter": "B",
+        "text": "Custo de Oportunidade."
+      },
+      {
+        "letter": "C",
+        "text": "Custo Perdido."
+      },
+      {
+        "letter": "D",
+        "text": "Custos Imputados."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 39,
+    "text": "A Sociedade Empresária Alegria Alegria Ltda. apresentou o seguinte Balanço Patrimonial em 31/12/20X1:\n\n                                        Balanço Patrimonial – ALEGRIA ALEGRIA Ltda.\n                                                           31/12/20X1\n          Ativo                      31/12/20X1     31/12/20X0       Passivo                 31/12/20X1 31/12/20X0\n          Circulante                  145.000,00        290.000,00   Circulante               34.000,00     68.000,00\n          Banco                        25.000,00         50.000,00   Fornecedores             12.000,00     24.000,00\n          Caixa                        40.000,00         80.000,00   Duplicatas a pagar       22.000,00     44.000,00\n          Estoque                      80.000,00        160.000,00\n\n\n          Não Circulante              270.000,00        540.000,00   Não Circulante          145.000,00    290.000,00\n          Realizável a Longo Prazo     35.000,00         70.000,00\n          Imobilizado                 145.000,00        290.000,00   Patrimônio Líquido      236.000,00    472.000,00\n          Investimentos                55.000,00        110.000,00   Capital Social          236.000,00    472.000,00\n          Intangível                   35.000,00         70.000,00\n\n\n          Total Ativo                 415.000,00        830.000,00   Total Passivo           415.000,00    830.000,00\n\nA partir dos dados apresentados é correto afirmar que",
+    "options": [
+      {
+        "letter": "A",
+        "text": "o percentual dos ativos financiados por capital de terceiros corresponde a 8,19% em 20X1."
+      },
+      {
+        "letter": "B",
+        "text": "a liquidez corrente em 20X1 é 111.000,00 e em 20X0 é -68.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "a empresa não tem capacidade de pagamento a curto prazo em 20X0 e em 20X1, sem considerar os seus estoques."
+      },
+      {
+        "letter": "D",
+        "text": "a empresa possui mais que 50% dos seus recursos aplicados no ativo não circulante em 20X0."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 40,
+    "text": "Uma fábrica de brinquedos produz dois tipos de carrinhos: com quatro portas e com duas portas. A demanda mensal de cada\ntipo de carrinho é de 200 e de 250 unidades, respectivamente. Além disso, o preço de venda e o custo variável unitário de cada\ntipo de carrinho são os seguintes:\n                                     Tipo de carrinho      Preço de venda   Custo variável\n                                     Quatro portas               100             40\n                                     Duas portas                  70             30\n\nEm janeiro de 2024, a fábrica tinha 900 portas para a produção dos carrinhos que seriam vendidos em fevereiro e não era\npossível realizar compras adicionais.\nCom o objetivo de maximização do resultado, assinale a opção que indica, respectivamente, o número de carrinhos de quatro\ne de duas portas que devem ser produzidos.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "100 e 250."
+      },
+      {
+        "letter": "B",
+        "text": "200 e 250."
+      },
+      {
+        "letter": "C",
+        "text": "225 e zero."
+      },
+      {
+        "letter": "D",
+        "text": "800 e 50."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 41,
+    "text": "Um contador realizou uma análise completa das demonstrações contábeis de uma empresa, efetuando as análises horizontal,\nvertical e por indicadores.\nO contador constatou que as seguintes metodologias de análise traziam o mesmo resultado:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "análise vertical do Balanço Patrimonial e indicadores de prazos médios."
+      },
+      {
+        "letter": "B",
+        "text": "análise horizontal do Balanço Patrimonial e indicadores de liquidez."
+      },
+      {
+        "letter": "C",
+        "text": "análise vertical da Demonstração do Resultado do Exercício e indicadores de lucratividade."
+      },
+      {
+        "letter": "D",
+        "text": "análise horizontal da Demonstração do Resultado do Exercício e indicadores de rentabilidade."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 42,
+    "text": "Uma sociedade empresária apresentou os seguintes saldos em seu Balanço Patrimonial em 31/12/2023:\n• Capital Social: 180.000;\n• Disponibilidades: 80.000;\n• Empréstimos a pagar a Longo Prazo: 150.000;\n• Estoques: 20.000;\n• Fornecedores a pagar: 70.000;\n• Imobilizado: 130.000;\n• Realizável a Longo Prazo: 170.000.\nConsiderando apenas os saldos dessas contas, a liquidez corrente aproximada da sociedade empresária em 31/12/2023 foi",
+    "options": [
+      {
+        "letter": "A",
+        "text": "1,14."
+      },
+      {
+        "letter": "B",
+        "text": "1,23."
+      },
+      {
+        "letter": "C",
+        "text": "1,43."
+      },
+      {
+        "letter": "D",
+        "text": "1,82."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 43,
+    "text": "O setor de contabilidade de um determinado ente público estadual identificou que, em janeiro de 2024, parte dos benefícios\na serem pagos aos servidores ativos não foram processados em época própria, quando foi observado o direito ao recebimento,\nem outubro de 2023.\nAo proceder com a emissão de empenho, considerando que o orçamento do referido ano consignava crédito próprio, com\nsaldo suficiente para atendê-los, os benefícios foram classificados contabilmente como",
+    "options": [
+      {
+        "letter": "A",
+        "text": "despesa corrente."
+      },
+      {
+        "letter": "B",
+        "text": "despesa de capital."
+      },
+      {
+        "letter": "C",
+        "text": "despesa de exercícios anteriores."
+      },
+      {
+        "letter": "D",
+        "text": "despesa extraordinária."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 44,
+    "text": "Nas eleições realizadas em outubro de 2022, uma escola do setor público funcionou como seção eleitoral para a realização da\nvotação. A escola geralmente recebe R$5.000 ao ceder o seu espaço para a realização de outras atividades, no entanto, como\nse tratava de eleições, a escola cobrou R$4.500.\nEm outubro de 2022, a escola reconheceu uma receita",
+    "options": [
+      {
+        "letter": "A",
+        "text": "com contraprestração de R$4.500."
+      },
+      {
+        "letter": "B",
+        "text": "com contraprestração de R$5.000."
+      },
+      {
+        "letter": "C",
+        "text": "sem contraprestração de R$4.500."
+      },
+      {
+        "letter": "D",
+        "text": "sem contraprestração de R$5.000."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 45,
+    "text": "Em relação às despesas orçamentárias, avalie se as despesas a seguir são classificadas como despesas correntes:\nI. Despesas de custeio.\nII. Investimentos.\nIII. Inversões Financeiras.\nEstá correto o que se apresenta em",
+    "options": [
+      {
+        "letter": "A",
+        "text": "I, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "C",
+        "text": "I e III, apenas."
+      },
+      {
+        "letter": "D",
+        "text": "II e III, apenas."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 46,
+    "text": "No ambiente empresarial, é cada vez mais relevante a criação de regras claras e de consciência sobre a importância do combate\nàs irregularidades e aos desvios de conduta. Uma cultura de integridade é pautada por ética e transparência nos negócios e\nnas relações de trabalho e se baseia em um conjunto de regras, normas, políticas, processos e ferramentas voltado a prevenir,\ndetectar e corrigir eventuais desvios. Além disso, deve-se incentivar a implantação de boas práticas de governança, programas\nde compliance, mecanismos de gerenciamento de riscos e controles internos.\nEm relação ao tema, analise as afirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa.\n( ) A governança corporativa se resume em mitigar prejuízos causados pelos conflitos de interesses entre acionistas e gestores.\n( ) O compliance é o instrumento de comprovação de aderência a normas e requerimentos estabelecidos, tanto o alinhamento\n    a regras internas como o atendimento a normas externas decorrentes de leis e regulamentos.\n( ) Risco de compliance é o risco de sanções legais ou regulatórias, perdas financeiras ou danos reputacionais, medidas\n    administrativas ou criminais aplicadas à empresa, decorrentes da falta de cumprimento de disposições legais,\n    regulamentares, normas, autorregulações, padrões técnicos ou códigos de conduta.\n( ) Assédios, bullying, discriminação, conduta trabalhista ilícita e outros tipos de comportamentos abusivos não causam danos\n    à reputação da empresa, ao clima organizacional e aos colaboradores, nem geram impacto nos resultados.\nAs afirmativas são, respectivamente,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "V – F – F – F."
+      },
+      {
+        "letter": "B",
+        "text": "F – V – V – V."
+      },
+      {
+        "letter": "C",
+        "text": "F – F – V – V."
+      },
+      {
+        "letter": "D",
+        "text": "F – V – V – F."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 47,
+    "text": "Joaquim, auditor renomado, foi consultado pela firma de auditoria Novos Auditores ABC, com a seguinte problemática: ao\nrealizarem a análise do Balanço Patrimonial de um de seus clientes, foi constatado um valor substancial de Fornecedores em\nseu Passivo em todos os meses, caracterizando um acordo firmado de maneira recorrente; apesar disso, não foi encontrado\nna documentação de seu cliente o contrato que assegurasse essa relação contratual.\nDe acordo com a NBC TA 500 - EVIDÊNCIA DE AUDITORIA, nessa situação hipotética, assinale o procedimento mais adequado\nque Joaquim deveria indicar à firma Novos Auditores ABC, para que eles confirmassem tal relação.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Observação."
+      },
+      {
+        "letter": "B",
+        "text": "Recálculo."
+      },
+      {
+        "letter": "C",
+        "text": "Análise Recombinante."
+      },
+      {
+        "letter": "D",
+        "text": "Confirmação Externa."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 48,
+    "text": "Com base na NBC TA 705 – MODIFICAÇÕES NA OPINIÃO DO AUDITOR INDEPENDENTE, o tipo de parecer que o Auditor deve\nemitir quando, tendo obtido evidência de auditoria apropriada e suficiente, conclui que as distorções, individualmente ou em\nconjunto, são relevantes e generalizadas para as demonstrações contábeis é",
+    "options": [
+      {
+        "letter": "A",
+        "text": "a opinião com ressalva."
+      },
+      {
+        "letter": "B",
+        "text": "a opinião adversa."
+      },
+      {
+        "letter": "C",
+        "text": "a abstenção de opinião."
+      },
+      {
+        "letter": "D",
+        "text": "o parágrafo de ênfase."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 49,
+    "text": "Acerca dos procedimentos periciais, julgue as afirmativas a seguir, considerando as disposições da NBC TP 01 (R1) – PERÍCIA\nCONTÁBIL:\nI. Indagação é a busca de informações mediante entrevista com conhecedores do objeto ou de fato relacionado à perícia.\nII. Arbitramento é a determinação de valores e quantidades ou a solução de controvérsia por critério técnico-científico.\nIII. Vistoria é a análise de livros, registros de transações e documentos.\nEstá correto apenas o que se afirma em",
+    "options": [
+      {
+        "letter": "A",
+        "text": "II."
+      },
+      {
+        "letter": "B",
+        "text": "I e III."
+      },
+      {
+        "letter": "C",
+        "text": "III."
+      },
+      {
+        "letter": "D",
+        "text": "I e II."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 50,
+    "text": "No que tange ao conceito de honorários da perícia contábil, é correto afirmar, com base na NBC PP 01 (R1) – PERITO CONTÁBIL,\nque",
+    "options": [
+      {
+        "letter": "A",
+        "text": "os honorários periciais fixados ou arbitrados e não quitados podem ser executados, judicialmente, pelo perito em\n    conformidade com os dispositivos do Código de Processo Civil."
+      },
+      {
+        "letter": "B",
+        "text": "ainda que a perícia seja considerada inconclusiva ou ineficiente, não há hipótese prevista em lei que determine a devolução\n    parcial ou total dos valores recebidos."
+      },
+      {
+        "letter": "C",
+        "text": "o perito nomeado pode requerer a liberação de até 30% dos honorários depositados, quando julgar necessário para o\n    custeio antes do início dos trabalhos."
+      },
+      {
+        "letter": "D",
+        "text": "na elaboração da proposta de honorários, o perito deve considerar, entre outros fatores: quem será o magistrado da causa;\n    quem são as partes da causa; a complexidade da matéria e o prazo estabelecido para o recebimento dos honorários."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  }
+]

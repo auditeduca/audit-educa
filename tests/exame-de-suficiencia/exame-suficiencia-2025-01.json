@@ -1,0 +1,1182 @@
+[
+  {
+    "number": 1,
+    "text": "Um cartaz, na porta de um supermercado, dizia:\n                                        “Compre hoje! Amanhã pode estar mais caro!”\nEsse cartaz",
+    "options": [
+      {
+        "letter": "A",
+        "text": "aconselha o cliente a economizar."
+      },
+      {
+        "letter": "B",
+        "text": "dá ordem ao cliente para ganhar tempo."
+      },
+      {
+        "letter": "C",
+        "text": "chama a atenção do cliente para a possível falta de produtos."
+      },
+      {
+        "letter": "D",
+        "text": "pretende ensinar o cliente a controlar seu orçamento."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 2,
+    "text": "Um famoso escritor falou sobre a leitura:\n                                     “A leitura é para a mente o que a ginástica é para o corpo.”\nCom essa frase, o autor quer dizer que",
+    "options": [
+      {
+        "letter": "A",
+        "text": "exercícios físicos devem ser feitos todos os dias."
+      },
+      {
+        "letter": "B",
+        "text": "a leitura, como a ginástica, deve ser feita diariamente."
+      },
+      {
+        "letter": "C",
+        "text": "a leitura enriquece o nosso conhecimento."
+      },
+      {
+        "letter": "D",
+        "text": "exercícios físicos e leitura fortalecem o corpo."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 3,
+    "text": "Uma caixa contém seis bolas brancas e quatro bolas azuis, todas de mesmo tamanho.\nSe sortearmos ao acaso 3 dessas bolas, sem reposição, a probabilidade de que todas sejam brancas é igual a",
+    "options": [
+      {
+        "letter": "A",
+        "text": "1/3."
+      },
+      {
+        "letter": "B",
+        "text": "1/4."
+      },
+      {
+        "letter": "C",
+        "text": "1/5."
+      },
+      {
+        "letter": "D",
+        "text": "1/6."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 4,
+    "text": "Em 2023, uma universidade tradicional que, até então, só ofertava cursos presenciais de graduação, resolveu se arriscar em\num novo projeto. Tratava-se da abertura de seu primeiro curso 100% à distância a ser disponibilizado ao mercado. Para tal,\nainda em 2023, foram investidos R$ 100.000,00 para a estruturação do referido curso.\nAlém disso, foram estimadas despesas e receitas anuais conforme dados apresentados na sequência:\n\n                                          Ano           Receitas             Despesas\n                                         2024         R$ 50.000,00         R$ 35.000,00\n                                         2025         R$ 65.000,00         R$ 30.000,00\n                                         2026         R$ 80.000,00         R$ 30.000,00\n                                         2027         R$ 90.000,00         R$ 20.000,00\n                                         2028         R$ 90.000,00         R$ 20.000,00\n\nConsiderando as informações apresentadas, é possível determinar que o payback simples ocorreu em",
+    "options": [
+      {
+        "letter": "A",
+        "text": "2025."
+      },
+      {
+        "letter": "B",
+        "text": "2026."
+      },
+      {
+        "letter": "C",
+        "text": "2027."
+      },
+      {
+        "letter": "D",
+        "text": "2028."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 5,
+    "text": "Avalie se os princípios da Administração Pública incluem:\nI. a legalidade;\nII. a moralidade;\nIII. a livre concorrência;\nIV. a publicidade.\nSão de fato princípios da Administração Pública os itens",
+    "options": [
+      {
+        "letter": "A",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "II, III e IV, apenas."
+      },
+      {
+        "letter": "C",
+        "text": "I, II e IV, apenas."
+      },
+      {
+        "letter": "D",
+        "text": "I, II, III e IV."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 6,
+    "text": "Entre as limitações ao poder de tributar, previstas na Constituição Federal de 1988, estão os princípios gerais do Direito\nTributário que, além de estabelecer limites ao poder de tributar, garantem segurança jurídica e justiça fiscal.\nSobre esse tema, assinale a afirmativa correta.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "O princípio da anterioridade nonagesimal ou noventena estabelece que nenhum tributo pode ser cobrado antes de\n    decorridos 90 dias da data da publicação da sua instituição ou majoração, exceto as contribuições sociais, que podem ser\n    exigidas imediatamente."
+      },
+      {
+        "letter": "B",
+        "text": "O princípio da legalidade tributária determina que nenhum tributo pode ser instituído ou majorado sem previsão em lei\n    complementar."
+      },
+      {
+        "letter": "C",
+        "text": "O princípio da isonomia garante tratamento igualitário a todos que se encontram em situação equivalente, sendo proibida\n    qualquer distinção em razão de ocupação profissional ou função por eles exercida, independentemente da denominação\n    jurídica dos rendimentos, títulos ou direitos."
+      },
+      {
+        "letter": "D",
+        "text": "O princípio da irretroatividade veda a aplicação da lei a ato ou fato pretérito, ainda que a lei seja expressamente\n    interpretativa."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 7,
+    "text": "A empresa Alfa Indústria Ltda. realizou, ao final do mês de julho, o levantamento de suas obrigações tributárias, verificando os\nseguintes tributos devidos:\n• ICMS (Imposto sobre Circulação de Mercadorias e Serviços): incidente sobre as operações de vendas realizadas no período.\n• ISS (Imposto sobre Serviços): devido pelos serviços prestados.\n• IRPJ (Imposto sobre a Renda das Pessoas Jurídicas): apurado sobre a renda tributável do exercício.\nCom base nessas informações, a contabilidade da empresa elaborou um demonstrativo das obrigações tributárias a pagar.\nDe acordo com os conceitos de obrigação tributária e tributo, assinale a afirmativa correta.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "O ISS e o ICMS são impostos de mesma competência tributária, pois ambos são devidos aos Estados."
+      },
+      {
+        "letter": "B",
+        "text": "A obrigação tributária principal consiste no pagamento do tributo devido, enquanto a obrigação tributária acessória está\n    relacionada a deveres instrumentais, como a emissão de notas fiscais e declarações ao Fisco."
+      },
+      {
+        "letter": "C",
+        "text": "O IRPJ, por ser um imposto sobre a renda, é classificado como um tributo indireto, pois seu ônus pode ser repassado ao\n    consumidor."
+      },
+      {
+        "letter": "D",
+        "text": "O fato gerador do ICMS ocorre quando a empresa apura seus lucros ao final do exercício contábil."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 8,
+    "text": "De acordo com o CÓDIGO DE ÉTICA PROFISSIONAL DO CONTADOR em seu item 3:\n“Este código de ética profissional do contador se aplica também ao _____, no exercício de suas prerrogativas profissionais.”\nA lacuna fica corretamente preenchida por",
+    "options": [
+      {
+        "letter": "A",
+        "text": "empresário contábil."
+      },
+      {
+        "letter": "B",
+        "text": "técnico em contabilidade."
+      },
+      {
+        "letter": "C",
+        "text": "administrador de empresas."
+      },
+      {
+        "letter": "D",
+        "text": "gestor financeiro."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 9,
+    "text": "A NBC PG 01 tem por objetivo fixar a conduta do contador, quando no exercício da sua atividade e nos assuntos relacionados\nà profissão e à classe.\nCom base na NBC PG 01 é correto afirmar que o contador pode",
+    "options": [
+      {
+        "letter": "A",
+        "text": "se utilizar de posição ocupada em entidades de classe para benefício próprio ou para proveito pessoal."
+      },
+      {
+        "letter": "B",
+        "text": "fazer afirmações desproporcionais sobre os serviços que oferece, sua capacitação ou sobre a experiência que possui."
+      },
+      {
+        "letter": "C",
+        "text": "se apropriar de trabalhos, iniciativas ou de soluções encontradas por colegas, que deles não tenha participado,\n    apresentando-os como próprios."
+      },
+      {
+        "letter": "D",
+        "text": "indicar, em qualquer modalidade ou veículo de comunicação, os títulos, as especializações, os serviços oferecidos, os\n    trabalhos realizados e a relação de clientes, quando ela for autorizada por eles."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 10,
+    "text": "Para que um passivo se qualifique para reconhecimento, é necessário haver não somente uma obrigação presente, mas\ntambém a probabilidade de saída de recursos que incorporem benefícios econômicos para liquidar essa obrigação.\nNo caso de uma Provisão, o reconhecimento se dá quando:\n(a) a entidade tem uma obrigação presente (legal ou não formalizada) como resultado de evento passado;\n(b) seja provável uma necessária saída de recursos que incorporem benefícios econômicos para liquidar a obrigação; e\n(c) possa ser feita uma estimativa confiável do valor da obrigação.\nSe essas condições não forem satisfeitas, nenhuma provisão deve ser reconhecida.\nEm relação ao reconhecimento de um PASSIVO CONTINGENTE, de acordo com a NBC TG 25 (R2), é correto afirmar que",
+    "options": [
+      {
+        "letter": "A",
+        "text": "não é reconhecido e nem divulgado em notas explicativas."
+      },
+      {
+        "letter": "B",
+        "text": "não é reconhecido, mas é divulgado em notas explicativas."
+      },
+      {
+        "letter": "C",
+        "text": "é reconhecido e divulgado em notas explicativas."
+      },
+      {
+        "letter": "D",
+        "text": "é reconhecido, mas não é divulgado em notas explicativas."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 11,
+    "text": "Um supermercado funciona na região sul do país. Em maio de 2024, devido às fortes chuvas, o supermercado perdeu todo o\nseu estoque. Nas demonstrações contábeis mensais, em 31/05/24, o supermercado optou por baixar todo o estoque, mesmo\nsem ter recebido um laudo oficial, de modo a tornar as demonstrações mais úteis aos tomadores de decisões.\nA informação apresenta a seguinte característica qualitativa:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "neutralidade."
+      },
+      {
+        "letter": "B",
+        "text": "materialidade."
+      },
+      {
+        "letter": "C",
+        "text": "verificabilidade."
+      },
+      {
+        "letter": "D",
+        "text": "tempestividade."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 12,
+    "text": "De acordo com a NBC TG Estrutura Conceitual- ESTRUTURA CONCEITUAL PARA RELATÓRIO FINANCEIRO, as demonstrações\ncontábeis consolidadas fornecem informações sobre os ativos, passivos, patrimônio líquido, receitas e despesas",
+    "options": [
+      {
+        "letter": "A",
+        "text": "apenas das controladas."
+      },
+      {
+        "letter": "B",
+        "text": "apenas da controladora."
+      },
+      {
+        "letter": "C",
+        "text": "da controladora e de suas controladas, como entidades independentes."
+      },
+      {
+        "letter": "D",
+        "text": "da controladora e de suas controladas, como uma única entidade que reporta."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 13,
+    "text": "De acordo com a NBC TG Estrutura Conceitual - ESTRUTURA CONCEITUAL PARA RELATÓRIO FINANCEIRO, patrimônio líquido é\na participação nos ativos da entidade após",
+    "options": [
+      {
+        "letter": "A",
+        "text": "a dedução de seus passivos."
+      },
+      {
+        "letter": "B",
+        "text": "a dedução de suas despesas."
+      },
+      {
+        "letter": "C",
+        "text": "o acréscimo de suas receitas."
+      },
+      {
+        "letter": "D",
+        "text": "o acréscimo de seus passivos."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 14,
+    "text": "Segundo a NBC TG ESTRUTURA CONCEITUAL, para a representação dos relatórios financeiros ser fidedigna ela precisa ser",
+    "options": [
+      {
+        "letter": "A",
+        "text": "completa, neutra e isenta de erros."
+      },
+      {
+        "letter": "B",
+        "text": "confiável, tempestiva e com erros mínimos."
+      },
+      {
+        "letter": "C",
+        "text": "tempestiva, útil e comparável."
+      },
+      {
+        "letter": "D",
+        "text": "consistente, completa e compreensível."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 15,
+    "text": "Segundo a NBC TG 26 (R5) - APRESENTAÇÃO DAS DEMONSTRAÇÕES CONTÁBEIS, quando da elaboração de demonstrações\ncontábeis, a administração deve avaliar a capacidade de a entidade continuar em operação no futuro previsível, o que significa\nque as demonstrações contábeis devem ser elaboradas no pressuposto da",
+    "options": [
+      {
+        "letter": "A",
+        "text": "continuidade, a menos que a administração tenha a intenção de liquidar a entidade ou cessar seus negócios, ou ainda não\n    possua uma alternativa realista senão a descontinuidade de suas atividades."
+      },
+      {
+        "letter": "B",
+        "text": "competência, sendo os itens reconhecidos como ativos, passivos, patrimônio líquido, receitas e despesas, inclusive para a\n    demonstração de fluxo de caixa."
+      },
+      {
+        "letter": "C",
+        "text": "materialidade e agregação, tendo a entidade que apresentar conjuntamente nas demonstrações contábeis cada classe\n    material de itens semelhantes, aglutinando os de natureza ou função distinta mesmo que sejam materiais."
+      },
+      {
+        "letter": "D",
+        "text": "compensação de valores, ativos e passivos ou receitas e despesas devem ser compensados, exceto quando permitido\n    exclusivamente por norma."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 16,
+    "text": "Sobre a classificação e mensuração de ativos não circulantes mantidos para a venda, de acordo com a NBC TG 31 (R4) - ATIVO\nNÃO CIRCULANTE MANTIDO PARA VENDA E OPERAÇÃO DESCONTINUADA, analise as seguintes afirmativas:\nI. Os ativos não circulantes mantidos para a venda, desde que satisfeitos os critérios de classificação, são realocados para o\n     ativo circulante da entidade.\nII. A classificação, a apresentação e a mensuração requeridas pela NBC TG 31 aplicáveis a ativo não circulante classificado\n     como mantido para venda também se aplicam a ativo não circulante que seja classificado como destinado a ser distribuído\n     aos sócios na sua condição de proprietários.\nIII. O ativo não circulante mantido para venda será mensurado pelo maior entre o seu valor contábil e o valor justo menos as\n     despesas de venda.\nEstá correto o que se afirma em",
+    "options": [
+      {
+        "letter": "A",
+        "text": "I, somente."
+      },
+      {
+        "letter": "B",
+        "text": "I e II, somente."
+      },
+      {
+        "letter": "C",
+        "text": "I, II e III."
+      },
+      {
+        "letter": "D",
+        "text": "II, somente."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 17,
+    "text": "A NBC TG ESTRUTURA CONCEITUAL descreve uma série de conceitos utilizados para a elaboração de relatórios financeiros para\nfins gerais.\nRelacione cada elemento a seguir com sua correta definição segundo a Estrutura Conceitual.\n\n Elemento                       Definição\n                                I. Aumentos nos ativos, ou reduções nos passivos, que resultam em aumento no\n a. Despesa                        patrimônio líquido.\n b. Patrimônio Líquido          II. Reduções nos ativos, ou aumentos nos passivos, que resultam em reduções no\n c. Receita                         patrimônio líquido.\n                                III. Participação residual nos ativos da entidade após a dedução de todos os seus passivos.\nOs elementos a, b e c correspondem, respectivamente, às definições",
+    "options": [
+      {
+        "letter": "A",
+        "text": "II – III – I."
+      },
+      {
+        "letter": "B",
+        "text": "I – III – II."
+      },
+      {
+        "letter": "C",
+        "text": "II – I – III."
+      },
+      {
+        "letter": "D",
+        "text": "I – II – III."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 18,
+    "text": "De acordo com a NBC TG 25 (R2) - PROVISÕES, PASSIVOS CONTINGENTES E ATIVOS CONTINGENTES, provisão é um passivo de\nprazo incerto ou de valor incerto.\nConsidere que a sociedade empresária Beta tenha recebido laudo de seu advogado sobre um provável pagamento de processo\ntrabalhista, entretanto com mensuração ainda não confiável.\nNesse caso, o seu reconhecimento nas demonstrações financeiras deve ser",
+    "options": [
+      {
+        "letter": "A",
+        "text": "como apropriação por competência no balanço patrimonial."
+      },
+      {
+        "letter": "B",
+        "text": "como provisão trabalhista no balanço patrimonial."
+      },
+      {
+        "letter": "C",
+        "text": "não realizar reconhecimento de provisão trabalhista no balanço patrimonial e não divulgar em nota explicativa."
+      },
+      {
+        "letter": "D",
+        "text": "não realizar reconhecimento de provisão trabalhista no balanço patrimonial, mas divulgar em nota explicativa como passivo\n    contingente."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 19,
+    "text": "De acordo com a NBC TG 09 (R1) - DEMONSTRAÇÃO DO VALOR ADICIONADO, a referida Demonstração (DVA) está relacionada\ncom informações econômicas e com a comunicação de elementos ambientais, sociais e de governança (ASG), e tem por\nfinalidade evidenciar a riqueza criada pela entidade e sua distribuição, durante determinado período.\nNesse sentido, considerando que a sociedade empresária “B” possui reversão de perdas estimadas com créditos de liquidação\nduvidosa, essa informação deve ser apresentada, em sua DVA, do seguinte modo:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "em remuneração de capitais próprios, na segunda parte da DVA."
+      },
+      {
+        "letter": "B",
+        "text": "em remuneração de capitais de terceiros, na segunda parte da DVA."
+      },
+      {
+        "letter": "C",
+        "text": "em valor adicionado recebido em transferência, na primeira parte da DVA."
+      },
+      {
+        "letter": "D",
+        "text": "em riqueza criada pela própria entidade, na primeira parte da DVA."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 20,
+    "text": "A Demonstração do Valor Adicionado proporciona aos usuários das demonstrações contábeis informações relativas à riqueza\ncriada pela entidade em determinado período e à forma como tais riquezas foram distribuídas.\nNa distribuição do valor adicionado, o total de “Remuneração de capitais próprios” deve ser igual",
+    "options": [
+      {
+        "letter": "A",
+        "text": "às reservas de lucro reportadas no Balanço Patrimonial."
+      },
+      {
+        "letter": "B",
+        "text": "ao pagamento de dividendos reportado na Demonstração dos Fluxos de Caixa."
+      },
+      {
+        "letter": "C",
+        "text": "ao resultado líquido do exercício reportado na Demonstração do Resultado do Período."
+      },
+      {
+        "letter": "D",
+        "text": "à distribuição de dividendos reportada na Demonstração das Mutações do Patrimônio Líquido."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 21,
+    "text": "Uma loja que vende produtos de escritório apresentava os seguintes saldos em 31/12/2023:\n\n • Custo da mercadoria vendida (inclui os valores dos impostos recuperáveis):                        R$ 80.000,00\n • Despesa de depreciação dos ativos imobilizados:                                                   R$ 15.000,00\n • Perdas estimadas com crédito de liquidação duvidosa:                                               R$ 6.000,00\n • Perdas por desvalorização dos ativos imobilizados:                                                R$ 10.000,00\n • Receita de contrato com clientes:                                                                 R$ 200.000,00\n\nAssinale a opção que indica o saldo do valor adicionado líquido produzido pela loja, apresentado em sua Demonstração do\nValor Adicionado em 31/12/2023.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 89.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 114.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 104.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 194.000,00."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 22,
+    "text": "De acordo com a NBC TG 25 (R2) - PROVISÕES, PASSIVOS CONTINGENTES E ATIVOS CONTINGENTES, a entidade deve divulgar,\nem notas explicativas, para cada classe de passivo contingente na data do balanço, uma breve descrição da natureza do passivo\ncontingente, a menos que a possibilidade de ocorrer qualquer desembolso na liquidação seja",
+    "options": [
+      {
+        "letter": "A",
+        "text": "remota."
+      },
+      {
+        "letter": "B",
+        "text": "possível."
+      },
+      {
+        "letter": "C",
+        "text": "provável."
+      },
+      {
+        "letter": "D",
+        "text": "possível e provável."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 23,
+    "text": "A sociedade empresária Solar administra a carreira de influenciadores digitais.\nAs empresas interessadas em divulgar o seu produto ou serviço por meio dos influenciadores devem pagar para a Solar\nR$ 20.000,00 por um pacote que consiste em oito inserções em redes socias, sendo quatro ao mês.\nEm 01/05/2024, a Cia Yellow assinou contrato e pagou, à vista, R$ 20.000,00 para a Cia Solar. Foram realizadas quatro inserções\nem junho e quatro em julho. A Cia Yellow estimou que, por conta da divulgação, o seu faturamento aumentou em R$ 15.000,00\nem agosto e em R$ 18.000,00 em setembro.\nDe acordo com o Regime de Competência, a despesa com a divulgação deve ser reconhecida pela Cia Yellow do seguinte modo:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 20.000,00 em maio."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 10.000,00 em junho e R$ 10.000,00 em julho."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 10.000,00 em agosto e R$ 10.000,00 em setembro."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 5.000,00 em cada um dos meses de junho a setembro."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 24,
+    "text": "Em 01/09/2024, uma sociedade empresária localizada em Belo Horizonte adquiriu aparelhos de informática de Manaus por\nR$ 40.000,00. O frete para a entrega por caminhão era de R$ 2.000,00. No entanto, para receber os aparelhos mais rápido, a\nsociedade empresária solicitou a entrega por avião e pagou o valor de R$ 5.500,00 pelo frete.\nA instalação dos aparelhos no escritório custou R$ 1.000,00. Ainda, foram gastos R$ 2.000,00 com testes para verificar se os\naparelhos estavam funcionando corretamente.\nO valor dos aparelhos de informática a serem registrados no ativo imobilizado da sociedade empresária é de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 43.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 45.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 46.500,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 48.500,00."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 25,
+    "text": "Em janeiro de 2025, um artista, que possui uma empresa, estava em um evento estratégico em um resort na Bahia. Ao voltar\nda viagem, descobriu que um influenciador digital, que também estava no evento, divulgou fotos e vídeos do artista em redes\nsociais.\nA empresa do artista entrou na justiça por quebra de privacidade contra o resort e contra o influenciador, pedindo,\nrespectivamente, R$ 10.000,00 e R$ 15.000,00.\nOs advogados da empresa do artista julgaram que as chances de ganho das causas eram, respectivamente, remota e possível.\nCom base no julgamento dos advogados, a empresa deve apresentar, em suas demonstrações contábeis, um ativo contingente",
+    "options": [
+      {
+        "letter": "A",
+        "text": "igual a zero."
+      },
+      {
+        "letter": "B",
+        "text": "de R$ 10.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "de R$ 15.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "de R$ 25.000,00."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 26,
+    "text": "A Cia Lua atua no setor de comércio de relógios e tem 20 empregados. Todos os anos, na primeira semana de janeiro, a empresa\ncontrata uma equipe de médicos para ir ao escritório realizar exames de rotina em seus empregados.\nEm janeiro de 2025, os gastos com os médicos foram de R$ 6.000,00. Do valor, 20% são pagos pelos empregados, enquanto o\nrestante é pago pela empresa.\nO impacto do atendimento médico na Demonstração do Resultado da Cia Lua em janeiro de 2025, de acordo com o Regime de\nCompetência, foi de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "-R$ 400,00."
+      },
+      {
+        "letter": "B",
+        "text": "-R$ 500,00."
+      },
+      {
+        "letter": "C",
+        "text": "-R$ 4.800,00."
+      },
+      {
+        "letter": "D",
+        "text": "-R$ 6.000,00."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 27,
+    "text": "Em fevereiro de 2025, um hotel adquiriu um televisor de 98 polegadas para que os seus hospedes assistissem a cerimônia do\nOscar, em março. O preço do televisor era de R$ 40.000,00.\nNa data da compra foi acordado com o fornecedor que o pagamento seria realizado por Pix e, em decorrência, o hotel obteve\numa redução de 5% sobre o preço original.\nAssinale a opção que indica a contrapartida da diminuição de R$ 38.000,00 na conta “Disponibilidades”, nas demonstrações\ncontábeis do hotel.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Ativo imobilizado de R$ 38.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "Ativo imobilizado de R$ 40.000,00 e receita financeira de R$ 2.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "Ativo imobilizado de R$ 40.000,00 e outras receitas de R$ 2.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "Ativo imobilizado de R$ 40.000,00 e retificação do ativo imobilizado de R$ 2.000,00."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "B"
+  },
+  {
+    "number": 28,
+    "text": "Uma empresa de doces e bolos possui em 31/12/X0 os seguintes saldos em seu Balanço Patrimonial:\n•    Caixa e equivalentes de caixa: R$ 100.000,00;\n•    Empréstimos a pagar de curto prazo: R$ 250.000,00;\n•    Financiamentos a pagar de longo prazo: R$ 330.000,00;\n•    Imobilizado: R$ 450.000,00;\n•    Intangível: R$ 320.000,00;\n•    Estoques: R$ 250.000,00;\n•    Capital Social: R$ 540.000,00.\nCom base nesses saldos, o valor do ativo não circulante da empresa é",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 770.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 350.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 1.020.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 450.000,00."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "C"
+  },
+  {
+    "number": 29,
+    "text": "A empresa ABC S.A. comprou materiais, em agosto de X1, com a finalidade de utilizá-los em suas atividades.\nO pagamento foi realizado em novembro de X1, e os materiais foram utilizados na prestação de serviços em setembro de X1.\nEsses materiais devem ser reconhecidos como despesa no mês de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "novembro de X1."
+      },
+      {
+        "letter": "B",
+        "text": "setembro de X1."
+      },
+      {
+        "letter": "C",
+        "text": "agosto de X1."
+      },
+      {
+        "letter": "D",
+        "text": "dezembro de X1."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "D"
+  },
+  {
+    "number": 30,
+    "text": "Relacione as contas contábeis do balanço patrimonial apresentadas a seguir com seus respectivas grupos contábeis.\n1. Empréstimos a pagar após 12 meses.\n2. Contas a receber em 5 meses.\n3. Contas a pagar em 3 meses.\n4. Imóveis para uso por 10 anos.\n( ) Ativo Circulante.\n( ) Ativo Não Circulante.\n( ) Passivo Circulante.\n( ) Passivo Não Circulante.\nA relação correta, na ordem apresentada, é",
+    "options": [
+      {
+        "letter": "A",
+        "text": "4 – 2 – 1 – 3."
+      },
+      {
+        "letter": "B",
+        "text": "2 – 4 – 3 – 1."
+      },
+      {
+        "letter": "C",
+        "text": "3 – 1 – 2 – 4."
+      },
+      {
+        "letter": "D",
+        "text": "1 – 3 – 4 – 2."
+      }
+    ],
+    "type": "objetiva",
+    "gabarito": "A"
+  },
+  {
+    "number": 31,
+    "text": "Assinale a opção que contempla apenas componentes do Patrimônio Líquido, descritos na Lei nº 6.404/76 e alterações\nposteriores.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Capital Social – Investimentos – Ações em Tesouraria."
+      },
+      {
+        "letter": "B",
+        "text": "Capital Social – Dividendos Obrigatórios a Pagar – Ajustes de Avaliação Patrimonial."
+      },
+      {
+        "letter": "C",
+        "text": "Reservas de Capital – Reservas de Lucros – Ações em Tesouraria."
+      },
+      {
+        "letter": "D",
+        "text": "Ajustes de Avaliação Patrimonial – Capital Social – Debêntures."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 32,
+    "text": "A companhia investidora Alfa S.A., obrigada legalmente a elaborar demonstrações financeiras consolidadas, possui a seguinte\nparticipação societária nas empresas:\n\n                   Investida                    % de participação de Alfa S.A.         PL da investida em 31/12/2023\n\n Kappa (controlada)                                          90                                R$ 1.000.000,00\n\n Sigma (controlada)                                          70                                 R$ 700.000,00\n\n Zeta (coligada)                                             25                                 R$ 600.000,00\n\n Delta (sem influência significativa)                        15                                 R$ 900.000,00\n\nCom base exclusivamente nas informações acima, o montante registrado na conta de participação de acionistas não\ncontroladores no balanço consolidado da investidora Alfa S.A. em 31/12/2023 deverá ser de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 100.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 310.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 760.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 1.525.000,00."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 33,
+    "text": "Uma empresa adquiriu uma máquina e registrou na contabilidade os seguintes dispêndios:\n•    Preço de aquisição: R$ 500.000,00;\n•    Imposto de importação: R$ 50.000,00 (não recuperável);\n•    Preparação do local: R$ 100.000,00;\n•    Custo com materiais consumido na realização de testes de funcionamento: R$ 50.000,00;\n•    Honorários dos técnicos que realizaram os testes: R$ 60.000,00;\n•    Vida útil estimada: 10 anos;\n•    Valor residual: R$ 100.000,00.\nDe acordo com a NBC TG 27 (R4) - ATIVO IMOBILIZADO, o custo da máquina, ou seja, o valor contábil de registro inicial desse\nimobilizado, será de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 500.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 550.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 650.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 760.000,00."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 34,
+    "text": "Uma empresa adquiriu uma máquina em 01/01/2020 pelo custo total de R$ 240.000,00. No registro inicial da máquina no\nimobilizado, a empresa estimou a vida útil da máquina em 8 anos, sem valor residual. Na data da aquisição, a empresa iniciou\na depreciação pelo método linear.\nEm 31/12/2024, a empresa reavaliou a vida útil para 10 anos, aumentando em 2 anos a vida útil inicialmente estimada. Além\ndisso, verificou que o valor residual da máquina passou a ser de R$ 40.000,00.\nCom base exclusivamente nos dados acima apresentados, o valor anual da despesa de depreciação a ser contabilizada a partir\ndas alterações ocorridas em 31/12/2024 deve ser de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 40.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 30.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 18.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 10.000,00."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 35,
+    "text": "A Indústria Cadeiras Maceió Ltda. produz e comercializa cadeiras de escritório. No mês de setembro de X4, a empresa produziu\n30.000 cadeiras e não possuía estoque inicial. No mês, vendeu 24.000 unidades a um preço unitário de R$ 100,00. Os custos\nvariáveis totais, incluindo matéria-prima, mão de obra direta e outros custos variáveis, somaram R$ 1.800.000,00. Os custos\nfixos, compostos principalmente por aluguel da fábrica, depreciação do maquinário e salários fixos dos supervisores da\nprodução, totalizaram R$ 200.000,00. As despesas fixas, como gastos com administração e vendas, somaram R$ 100.000,00.\nCom base nessas informações, o lucro obtido com as vendas, aplicando o método de custeio variável, foi de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 660.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 960.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 700.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 300.000,00."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 36,
+    "text": "Em janeiro de 2024, uma fábrica que produz bolas de futebol incorreu nos seguintes gastos: aluguel do imóvel e das máquinas:\nR$ 30.000,00; embalagens indispensáveis ao produto final: R$ 2.000,00; matéria-prima: R$ 10.000,00; seguro do imóvel:\nR$ 5.000,00.\nAssinale a opção que indica os custos fixos da fábrica no mês.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "R$ 5.000,00."
+      },
+      {
+        "letter": "B",
+        "text": "R$ 30.000,00."
+      },
+      {
+        "letter": "C",
+        "text": "R$ 35.000,00."
+      },
+      {
+        "letter": "D",
+        "text": "R$ 45.000,00."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 37,
+    "text": "Leia o fragmento a seguir:\n“Departamento é a unidade _____ administrativa para a Contabilidade de Custos, representada, na maioria dos casos, por\npessoas e máquinas, em que se desenvolvem atividades _____.”\nAssinale a opção cujos itens completam corretamente as lacunas do fragmento.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "padrão – heterogêneas"
+      },
+      {
+        "letter": "B",
+        "text": "mínima – homogêneas"
+      },
+      {
+        "letter": "C",
+        "text": "máxima – complementares"
+      },
+      {
+        "letter": "D",
+        "text": "padrão – complementares"
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 38,
+    "text": "Gasto pode ser definido como o sacrifício financeiro necessário para obter um produto ou serviço, representado pela entrega\nou promessa de entrega de ativos. Assim, custos, despesas, investimentos e desembolsos são tipos de gastos.\nEm relação ao tema, analise as afirmativas a seguir.\nI. Custo é um gasto diretamente relacionado a um bem ou serviço utilizado na produção de outros bens e serviços.\nII. Despesa é um gasto com bens ou serviços consumidos direta ou indiretamente para obtenção de receitas.\nIII. Investimento é um gasto que se tornou um item do patrimônio líquido em função da expectativa de geração futura de caixa\n     para a entidade ou em função de sua vida útil.\nIV. Desembolso é um gasto que ocorre quando bens ou serviços são consumidos de forma anormal e/ou involuntária que\n     afetam diretamente o resultado da entidade.\nEstão corretas as afirmativas",
+    "options": [
+      {
+        "letter": "A",
+        "text": "III e IV, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "I, II e III, apenas."
+      },
+      {
+        "letter": "C",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "D",
+        "text": "II, III e IV, apenas."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 39,
+    "text": "Em 01/01/2024, uma loja de teclados apresentava os seguintes saldos em seu balanço patrimonial:\n• Disponibilidades: R$ 60.000,00;\n• Estoque: R$ 240.000,00;\n• Patrimônio Líquido: R$ 300.000,00.\nO estoque era composto por 400 unidades de teclado, sendo que cada uma era vendida por R$ 1.000,00.\nNo primeiro semestre de 2024, os gastos fixos, considerando a loja e o escritório, foram os seguintes:\n• Aluguel: R$ 36.000,00;\n• Depreciação: R$ 30.000,00;\n• Salários: R$ 60.000,00.\nAlém disso, foi paga, antecipadamente, uma despesa de R$ 4.000,00 relacionada ao segundo semestre do ano.\nO ponto de equilíbrio contábil da loja, em unidades, no primeiro semestre de 2024, foi de",
+    "options": [
+      {
+        "letter": "A",
+        "text": "240."
+      },
+      {
+        "letter": "B",
+        "text": "300."
+      },
+      {
+        "letter": "C",
+        "text": "315."
+      },
+      {
+        "letter": "D",
+        "text": "375."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 40,
+    "text": "Acerca do Modelo de Determinação do Preço de Transferência, avalie as afirmativas a seguir.\nI. No Modelo de Preço de Transferência Baseado em Custo Total Realizado (Full Cost), o bem/serviço é transferido pelo valor\n     resultante do somatório dos custos totais incorridos (fixos e variáveis) dividido pelo volume de produção de um\n     determinado período (custeio por absorção).\nII. No Modelo de Preço de Transferência Baseado em Negociação entre os Gestores, o bem/serviço é transferido pelo preço\n     vigente no mercado, que pode ser um preço médio.\nIII. No Modelo de Preço de Transferência Baseado em Custo de Oportunidade, o preço do bem/serviço transferido estrutura-\n     se a partir da premissa de que deveria refletir o valor do benefício possível de ser auferido na melhor alternativa econômica\n     de obtenção dos insumos demandados.\nEstá correto o que se afirma em",
+    "options": [
+      {
+        "letter": "A",
+        "text": "I, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "C",
+        "text": "I e III, apenas."
+      },
+      {
+        "letter": "D",
+        "text": "I, II e III."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 41,
+    "text": "Analise as contas do Balanço Patrimonial a seguir:\n\n               ATIVO                           2023                            PASSIVO                            2023\n Caixa                                        R$ 5.000,00       Fornecedores                                   R$ 15.000,00\n Aplicações financeiras                     R$ 10.000,00        Impostos a pagar                                R$ 5.000,00\n Contas a receber                           R$ 15.000,00        Empréstimos de curto prazo                     R$ 10.000,00\n Estoques                                   R$ 30.000,00        Empréstimos de longo prazo                     R$ 20.000,00\n Imobilizado                                R$ 10.000,00        Patrimônio líquido                             R$ 80.000,00\n Intangível                                 R$ 50.000,00\n Investimentos                              R$ 10.000,00\n TOTAL                                     R$ 130.000,00        TOTAL                                        R$ 130.000,00\n\nO Índice de Liquidez Seca e o Índice de Liquidez Corrente são, respectivamente, iguais a",
+    "options": [
+      {
+        "letter": "A",
+        "text": "2,00 e 1,00."
+      },
+      {
+        "letter": "B",
+        "text": "1,00 e 2,00."
+      },
+      {
+        "letter": "C",
+        "text": "1,00 e 2,60."
+      },
+      {
+        "letter": "D",
+        "text": "2,00 e 0,75."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 42,
+    "text": "A Lei Orçamentária Anual de cada ente federado deverá conter todas as receitas e despesas de todos os Poderes, órgãos,\nentidades, fundos e fundações instituídas e mantidas pelo Poder Público.\nEsse princípio orçamentário é denominado",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Unidade."
+      },
+      {
+        "letter": "B",
+        "text": "Universalidade."
+      },
+      {
+        "letter": "C",
+        "text": "Exclusividade."
+      },
+      {
+        "letter": "D",
+        "text": "Orçamento Bruto."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 43,
+    "text": "De acordo com a NBC TSP ESTRUTURA CONCEITUAL - ESTRUTURA CONCEITUAL PARA ELABORAÇÃO E DIVULGAÇÃO DE\nINFORMAÇÃO CONTÁBIL DE PROPÓSITO GERAL PELAS ENTIDADES DO SETOR PÚBLICO, as informações financeiras e não\nfinanceiras são relevantes quando",
+    "options": [
+      {
+        "letter": "A",
+        "text": "permitem que os usuários compreendam o seu significado."
+      },
+      {
+        "letter": "B",
+        "text": "retratam a substância da transação, a qual pode não corresponder, necessariamente, à sua forma jurídica."
+      },
+      {
+        "letter": "C",
+        "text": "são capazes de influenciar significativamente o cumprimento dos objetivos da elaboração e da divulgação da informação\n    contábil."
+      },
+      {
+        "letter": "D",
+        "text": "estão disponíveis aos usuários a tempo de serem úteis para fins de prestação de contas, responsabilização e tomada de\n    decisão."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 44,
+    "text": "Com relação aos usuários dos Relatórios Contábeis de Propósito Geral das Entidades do Setor Público (RCPGs), avalie as\nafirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa.\n( ) Os RCPGs devem ser elaborados e divulgados, principalmente, para atender às necessidades de informações dos usuários\n    dos serviços e dos provedores de recursos, quando estes detêm a prerrogativa de exigir que a entidade do setor público\n    divulgue as informações que atendam às suas necessidades específicas.\n( ) Os membros do Poder Legislativo são também usuários primários dos RCPGs e utilizam extensiva e continuamente os\n    relatórios enquanto atuam como representantes dos interesses dos usuários de serviços e dos provedores de recursos.\n( ) Alguns usuários dos serviços e alguns provedores de recursos que dependem dos RCPGs para obter informações que eles\n    necessitam para os propósitos de prestação de contas e responsabilização e tomada de decisão podem não ser cidadãos,\n    como, agências bilaterais ou multilaterais.\nDe acordo com a NBC TSP ESTRUTURA CONCEITUAL- ESTRUTURA CONCEITUAL PARA ELABORAÇÃO E DIVULGAÇÃO DE\nINFORMAÇÃO CONTÁBIL DE PROPÓSITO GERAL PELAS ENTIDADES DO SETOR PÚBLICO as afirmativas são, respectivamente,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "V – F – F."
+      },
+      {
+        "letter": "B",
+        "text": "V – F – V."
+      },
+      {
+        "letter": "C",
+        "text": "F – V – V."
+      },
+      {
+        "letter": "D",
+        "text": "V – V – F."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 45,
+    "text": "Em 2022, uma entidade tinha o seu desempenho financeiro analisado com base no Retorno sobre o Investimento. Em 2023, a\nadministração da entidade determinou que o seu desempenho passasse a ser avaliado com base no EVA (Valor Econômico\nAgregado).\nUma vantagem dessa substituição é a incorporação, na avaliação,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "do custo de oportunidade."
+      },
+      {
+        "letter": "B",
+        "text": "das receitas operacionais."
+      },
+      {
+        "letter": "C",
+        "text": "das despesas operacionais."
+      },
+      {
+        "letter": "D",
+        "text": "das receitas financeiras."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 46,
+    "text": "A Administração de uma empresa, na elaboração de seu plano estratégico, deve, na medida do possível, observar alguns\naspectos de formalidade necessários dado a sua relevância e seu impacto nas operações da empresa.\nA respeito desse tema, avalie as afirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa.\n( ) O Plano Estratégico deve ser executado pela Controladoria sob o comando da alta administração da empresa.\n( ) Uma vez elaborado e aprovado, o Plano Estratégico não deve ser alterado ou ajustado.\n( ) Planejamento Estratégico é a atividade que se ocupa da implementação do Plano Estratégico e assegura que os recursos\n    necessários foram obtidos e também que estão sendo usados de maneira eficiente.\n( ) A elaboração de um Planejamento Estratégico deve levar em consideração que todas as decisões são interdependentes,\n    sejam elas simples ou complexas. Assim, um dos principais desafios dessa atividade é um ajustamento dessa cadeia\n    sistêmica de decisões e a avaliação de suas consequências.\nAs afirmativas são, respectivamente,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "F – V – V – F."
+      },
+      {
+        "letter": "B",
+        "text": "F – V – F – V."
+      },
+      {
+        "letter": "C",
+        "text": "V – F – F – V."
+      },
+      {
+        "letter": "D",
+        "text": "V – F – V – F."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 47,
+    "text": "Uma empresa de auditoria independente precisou contratar o trabalho de um especialista na área de Tecnologia da\nInformação. Após receber as conclusões do especialista, foi constatado que esse trabalho era adequado para fins da auditoria.\nCom base na NBC TA 620 – UTILIZAÇÃO DO TRABALHO DE ESPECIALISTAS, assinale a afirmativa correta acerca da\nresponsabilidade do auditor ao emitir a sua opinião.",
+    "options": [
+      {
+        "letter": "A",
+        "text": "O auditor tem sua responsabilidade dividida com o especialista em todo o trabalho."
+      },
+      {
+        "letter": "B",
+        "text": "O auditor é o único responsável por expressar opinião de auditoria, e essa responsabilidade não é reduzida pelo trabalho\n    de especialista contratado pelo auditor."
+      },
+      {
+        "letter": "C",
+        "text": "O auditor é responsável pela parte contábil, e o especialista, pelo trabalho que fez."
+      },
+      {
+        "letter": "D",
+        "text": "O auditor, modificando sua opinião em virtude do trabalho do especialista, não terá nenhuma responsabilidade, sendo a\n    responsabilidade transferida ao especialista."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 48,
+    "text": "No exercício de 2024, uma sociedade empresária foi incluída em um Plano de Refinanciamento de Impostos. O fato foi\napropriadamente divulgado nas demonstrações contábeis. Mesmo sendo divulgado o Plano de Refinanciamento de Impostos,\no auditor julgou que o assunto é de importância fundamental para o entendimento pelos usuários das demonstrações\ncontábeis.\nAssim, o auditor independente incluirá, em seu relatório,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "uma ressalva."
+      },
+      {
+        "letter": "B",
+        "text": "um fato relevante."
+      },
+      {
+        "letter": "C",
+        "text": "um parágrafo de ênfase."
+      },
+      {
+        "letter": "D",
+        "text": "um parágrafo de outros assuntos."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 49,
+    "text": "Julgue as afirmativas a seguir, com base na NBC TP 01 (R1) - PERÍCIA CONTÁBIL.\nI. Concluídos os trabalhos periciais, o perito nomeado deve apresentar laudo pericial contábil, e o assistente técnico deve\n     oferecer seu parecer pericial contábil, obedecendo aos respectivos prazos legais e/ou contratuais.\nII. O assistente técnico não pode validar o laudo pericial quando o documento tiver sido elaborado por leigo ou profissional\n     de outra área, devendo, nesse caso, oferecer o parecer pericial contábil sobre a matéria periciada.\nIII. Mesmo quando assinado em conjunto por peritos, a responsabilidade acerca do laudo pericial contábil é exclusiva do perito\n     nomeado, não sendo passível a assunção de responsabilidade solidária pelos demais peritos assinantes no documento.\nIV. As respostas aos quesitos devem ser objetivas, completas e não lacônicas.\nEstão corretas as afirmativas",
+    "options": [
+      {
+        "letter": "A",
+        "text": "III e IV, apenas."
+      },
+      {
+        "letter": "B",
+        "text": "I e II, apenas."
+      },
+      {
+        "letter": "C",
+        "text": "I e III, apenas."
+      },
+      {
+        "letter": "D",
+        "text": "II e IV, apenas."
+      }
+    ],
+    "type": "objetiva"
+  },
+  {
+    "number": 50,
+    "text": "A Norma Brasileira de Contabilidade Profissional – Perito (NBC PP 01) estabelece as diretrizes e os requisitos para a atuação\ndos contadores como peritos, incluindo qualificações, deveres, responsabilidades, normas de conduta e as situações que\npodem acarretar impedimento ou suspeição.\nAnalise as afirmativas a seguir, com base na NBC PP 01, e assinale (V) para a afirmativa verdadeira e (F) para a falsa.\n( ) Em casos de impedimento ou suspeição, o perito contábil tem a opção de continuar no caso desde que obtenha o\n    consentimento expresso de todas as partes envolvidas e da autoridade competente.\n( ) A NBC PP 01 permite que o perito utilize documentos externos aos autos processuais como elementos de prova, desde que\n    previamente acordado com as partes e autorizado pelo juiz ou autoridade competente.\n( ) O perito contábil deve elaborar a proposta de honorários periciais considerando não apenas os custos e o tempo necessário\n    para a execução dos trabalhos, mas também levando em conta a relevância e o risco envolvidos no objeto da perícia.\nAs afirmativas são, respectivamente,",
+    "options": [
+      {
+        "letter": "A",
+        "text": "F – F – V."
+      },
+      {
+        "letter": "B",
+        "text": "V – F – F."
+      },
+      {
+        "letter": "C",
+        "text": "F – V – F."
+      },
+      {
+        "letter": "D",
+        "text": "V – V – V."
+      }
+    ],
+    "type": "objetiva"
+  }
+]
