@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guia e Acervo de Provas do Exame de Suficiência. Conteúdo programático, gabaritos oficiais e simulados.">
+    <title>Exame de Suficiência | Acervo Audit Educa</title>
+    
+    <!-- Fontes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Ícones e Gráficos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@0.412.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Bibliotecas para PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Tailwind CSS (latest) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'audit-gold': '#C5A059',
+                        'audit-navy': '#0f172a',
+                        'audit-blue': '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- API de Acessibilidade (opcional) -->
+    <script src="https://auditeduca.com.br/assets/js/accessibility-api.js" 
+            onerror="console.warn('API de Acessibilidade não pôde ser carregada')" 
+            crossorigin="anonymous"></script>
+
+    <style>
+        /* ========== ESTILOS GLOBAIS ========== */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #334155; 
+            background-image: 
+                radial-gradient(#cbd5e1 0.5px, transparent 0.5px), 
+                linear-gradient(#e2e8f0 1px, transparent 1px), 
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark body { 
+            background-color: #020617;
+            background-image: radial-gradient(#1e293b 0.5px, transparent 0.5px);
+        }
+
+        /* Barra Lateral Esquerda (mantida) */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
+        }
+        .tool-btn {
+            @apply bg-white text-audit-navy border border-slate-200 border-l-0 w-[54px] h-[54px] rounded-r-2xl flex flex-col items-center justify-center cursor-pointer shadow-lg transition-all duration-300 relative outline-none;
+        }
+        .tool-btn:hover { width: 65px; @apply bg-audit-navy text-audit-gold; padding-left: 5px; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
+        .badge-count {
+            position: absolute; top: 4px; right: 4px; background: #C5A059; color: #fff; font-size: 9px;
+            font-weight: 900; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* Capas A4 (mantidas) */
+        .exam-page-cover {
+            aspect-ratio: 1 / 1.414;
+            background: #ffffff;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            @apply shadow-sm border border-slate-200 flex flex-col overflow-hidden;
+        }
+        .exam-page-cover:hover {
+            transform: translateY(-8px);
+            @apply shadow-2xl border-audit-gold;
+        }
+        .cover-frame {
+            position: absolute; inset: 12px; border: 1px solid #e2e8f0; pointer-events: none; z-index: 1;
+        }
+        .cover-frame::after {
+            content: ''; position: absolute; inset: 3px; border: 1px solid #f1f5f9;
+        }
+        .exam-page-cover:hover .cover-frame { border-color: rgba(197, 160, 89, 0.4); }
+        .svg-texture {
+            position: absolute; inset: 0; opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            z-index: 0; pointer-events: none;
+        }
+        .card-actions-top { position: absolute; top: 20px; right: 20px; display: flex; gap: 8px; z-index: 20; }
+        .card-btn-icon {
+            @apply text-slate-400 hover:text-audit-navy transition-colors bg-white/90 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center border border-slate-100 shadow-sm cursor-pointer;
+        }
+        .card-btn-icon.active-save { @apply text-audit-gold border-audit-gold; }
+        .card-btn-icon.active-cart { @apply text-audit-blue border-audit-blue; }
+        .btn-download-premium {
+            @apply flex-1 bg-audit-navy text-white text-[8px] sm:text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-800 transition-all border-t border-white/5;
+        }
+        .btn-view-premium {
+            @apply flex-1 bg-white text-audit-navy text-[8px] sm:text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-50 transition-all border-r border-slate-100;
+        }
+
+        /* ========== NOVOS ESTILOS DO VISUALIZADOR PREMIUM ========== */
+        /* Barra de Leitura Focada */
+        #reading-focus-bar {
+            position: fixed; pointer-events: none; left: 0; right: 0; height: 35px;
+            background: rgba(197, 160, 89, 0.15); border-top: 1px solid rgba(197, 160, 89, 0.3);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3); z-index: 10000;
+            display: none; box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        /* Tooltip do Glossário */
+        .glossary-term {
+            border-bottom: 2px dotted rgba(197, 160, 89, 0.5); cursor: help; position: relative;
+        }
+        .glossary-term:hover { background-color: rgba(197, 160, 89, 0.1); }
+        .glossary-tooltip {
+            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+            margin-bottom: 8px; width: 220px; padding: 10px; background: #0f172a; color: white;
+            font-size: 11px; border-radius: 6px; opacity: 0; visibility: hidden;
+            transition: all 0.2s; z-index: 50; line-height: 1.4; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+        }
+        .glossary-term:hover .glossary-tooltip { opacity: 1; visibility: visible; }
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark .custom-scroll::-webkit-scrollbar-thumb { background: #334155; }
+        /* Miniaturas Lateral */
+        .nav-thumb {
+            width: 100%; aspect-ratio: 1 / 1.4; background: white; border: 1px solid #e2e8f0;
+            border-radius: 4px; padding: 8px; margin-bottom: 16px; cursor: pointer;
+            transition: all 0.2s; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; font-size: 9px; color: #94a3b8; font-weight: bold; text-align: center;
+        }
+        .dark .nav-thumb { background: #1e293b; border-color: #334155; }
+        .nav-thumb:hover, .nav-thumb.active { border-color: #C5A059; color: #C5A059; }
+        /* Questões */
+        .question-block { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid #f1f5f9; }
+        .dark .question-block { border-bottom-color: #1e293b; }
+        .option-item {
+            display: flex; gap: 16px; padding: 16px; border-radius: 12px;
+            border: 1px solid #e2e8f0; margin-bottom: 12px; cursor: pointer; transition: all 0.2s;
+        }
+        .dark .option-item { border-color: #1e293b; }
+        .option-item:hover { border-color: #C5A059; background-color: rgba(197, 160, 89, 0.05); }
+        .option-item.selected { border-color: #C5A059; background-color: rgba(197, 160, 89, 0.1); box-shadow: 0 0 0 1px #C5A059; }
+        /* Tabelas dentro das questões */
+        .question-text table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.875rem; border: 1px solid #e2e8f0; }
+        .question-text th { background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 8px; text-align: left; font-weight: bold; }
+        .question-text td { border: 1px solid #e2e8f0; padding: 8px; background-color: white; }
+        .dark .question-text table { border-color: #334155; }
+        .dark .question-text th { background-color: #1e293b; border-color: #334155; color: white; }
+        .dark .question-text td { border-color: #334155; background-color: #0f172a; color: #cbd5e1; }
+
+        /* ========== MODAL PREMIUM ========== */
+        #preview-modal {
+            z-index: 9000;
+            transition: opacity 0.3s ease;
+        }
+        .preview-paper {
+            background-color: #ffffff !important;
+            @apply shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] w-full mx-auto relative border border-slate-300 overflow-hidden rounded-sm;
+            max-width: 850px; min-height: 1000px;
+            transition: font-size 0.2s;
+        }
+        .dark .preview-paper { background-color: #0f172a !important; border-color: #1e293b; }
+
+        /* ========== ESTILOS ESPECÍFICOS PARA IMPRESSÃO ========== */
+        @media print {
+            /* Oculta tudo que não é o conteúdo da prova */
+            body * {
+                visibility: hidden;
+            }
+            #preview-modal, #preview-modal * {
+                visibility: visible;
+            }
+            #preview-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: auto;
+                background: white;
+                overflow: visible;
+            }
+            #paper-container {
+                box-shadow: none;
+                border: none;
+                max-width: 100%;
+                margin: 0;
+                padding: 1cm;
+                transform: none !important;
+            }
+            #preview-modal header,
+            #pdf-sidebar,
+            .fixed,
+            .sticky {
+                display: none !important;
+            }
+        }
+
+        /* ========== MOBILE ========== */
+        @media (max-width: 768px) {
+            .sidebar-left-tools { top: auto; bottom: 0; left: 0; width: 100%; height: 60px; flex-direction: row; transform: none; justify-content: space-around; background: white; border-top: 1px solid #e2e8f0; border-radius: 0; }
+            .tool-btn { border: none; width: auto; height: 100%; flex: 1; border-radius: 0; box-shadow: none; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 8px; padding: 0; box-shadow: none; margin-top: 2px;}
+            .badge-count { top: 6px; right: 50%; transform: translateX(15px); width: 14px; height: 14px; font-size: 8px; }
+            body { padding-bottom: 70px; }
+        }
+    </style>
+</head>
+<body class="antialiased custom-scroll">
+
+    <!-- Barra de Foco de Leitura -->
+    <div id="reading-focus-bar"></div>
+
+    <!-- ALERT BANNER INSCRIÇÕES (mantido) -->
+    <div class="bg-gradient-to-r from-audit-navy to-slate-800 text-white text-center py-3 px-4 text-sm font-medium sticky top-0 z-[100] shadow-md flex justify-center items-center flex-wrap gap-4 border-b border-audit-gold/30">
+        <span><i class="fas fa-bullhorn text-audit-gold mr-2"></i> Exame de Suficiência: Inscrições <span class="text-audit-gold font-bold uppercase tracking-widest mx-1">Abertas</span> para a edição 2026.1!</span>
+        <a href="#inscricao" class="bg-audit-gold text-audit-navy px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white transition-all shadow-sm">Inscreva-se</a>
+    </div>
+
+    <!-- BARRA LATERAL DE FERRAMENTAS (mantida) -->
+    <aside class="sidebar-left-tools no-print">
+        <button class="tool-btn" onclick="document.getElementById('acervo').scrollIntoView({behavior:'smooth'})" title="Acervo">
+            <i class="fas fa-book"></i>
+            <span class="btn-label">Provas</span>
+        </button>
+        <button class="tool-btn" onclick="showToast('Visualizando Estatísticas...')" title="Dados">
+            <i class="fas fa-chart-pie"></i>
+            <span class="btn-label">Dados</span>
+        </button>
+        <button class="tool-btn" onclick="showToast('Visualizando Provas Salvas...')" title="Provas Salvas">
+            <i class="fas fa-bookmark"></i>
+            <span class="btn-label">Salvos</span>
+            <span id="save-badge" class="badge-count hidden" style="background: #1e40af;">0</span>
+        </button>
+        <button class="tool-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao Topo">
+            <i class="fas fa-chevron-up"></i>
+            <span class="btn-label">Topo</span>
+        </button>
+    </aside>
+
+    <main class="flex-grow pb-24 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper space-y-20">
+            
+            <!-- BREADCRUMB E HERO (mantido) -->
+            <div>
+                <nav class="flex mb-10 text-[10px] font-bold text-slate-400 uppercase tracking-widest no-print">
+                    <ol class="flex items-center gap-2">
+                        <li><a href="#" class="hover:text-audit-gold transition">Dashboard</a></li>
+                        <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                        <li>Suficiência</li>
+                        <li><i class="fas fa-chevron-right text-[8px]"></i></li>
+                        <li class="text-audit-gold underline underline-offset-4 tracking-widest">Guia & Acervo Oficial</li>
+                    </ol>
+                </nav>
+
+                <div class="text-center lg:text-left lg:flex lg:justify-between lg:items-end gap-10">
+                    <div class="max-w-3xl">
+                        <h1 class="text-4xl md:text-6xl font-serif font-black text-audit-navy tracking-tighter mb-4 leading-none">Exame de Suficiência</h1>
+                        <p class="text-slate-500 text-base sm:text-lg font-light leading-relaxed">O repositório técnico definitivo para bacharéis em Ciências Contábeis. Acervo oficial atualizado, estatísticas de aprovação e simulados estruturados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO SOBRE O EXAME (mantida) -->
+            <section id="sobre">
+                <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                    <i class="fas fa-circle-info text-audit-gold text-xs"></i>
+                    <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Diretrizes Oficiais do Exame</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- cards mantidos (igual ao original) -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:border-audit-gold transition-colors">
+                        <i class="fas fa-file-signature text-2xl text-audit-gold mb-4"></i>
+                        <h3 class="font-serif text-lg font-bold text-audit-navy mb-2">O Objetivo</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Instituído pela Lei nº 12.249/2010, o exame comprova a obtenção de conhecimentos médios técnicos exigidos pelas diretrizes do MEC.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:border-audit-gold transition-colors">
+                        <i class="fas fa-user-graduate text-2xl text-audit-gold mb-4"></i>
+                        <h3 class="font-serif text-lg font-bold text-audit-navy mb-2">Requisito Profissional</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Etapa obrigatória para obtenção do registro profissional no Conselho Regional de Contabilidade (CRC) aos Bacharéis em Contábeis.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:border-audit-gold transition-colors">
+                        <i class="fas fa-list-check text-2xl text-audit-gold mb-4"></i>
+                        <h3 class="font-serif text-lg font-bold text-audit-navy mb-2">Estrutura da Prova</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Composta por 50 questões objetivas. A aprovação exige 50% de acertos (mínimo de 25 questões corretas).</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:border-audit-gold transition-colors">
+                        <i class="fas fa-calendar-alt text-2xl text-audit-gold mb-4"></i>
+                        <h3 class="font-serif text-lg font-bold text-audit-navy mb-2">Aplicação</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Aplicado semestralmente em todo o território nacional. A última edição validada foi a 2025.2.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTEÚDO E ESTATÍSTICAS (mantido) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <section id="conteudo">
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+                        <i class="fas fa-book-open text-audit-gold text-xs"></i>
+                        <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Conteúdo Programático</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="prog-grid"></div>
+                </section>
+                <section id="estatisticas">
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+                        <i class="fas fa-chart-line text-audit-gold text-xs"></i>
+                        <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Estatísticas de Aprovação</h2>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                        <div class="w-full h-[350px]">
+                            <canvas id="approvalChart"></canvas>
+                        </div>
+                        <p class="text-[9px] text-slate-400 mt-4 text-center leading-relaxed font-medium">As edições em andamento não constam na média histórica oficial.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ACERVO DE EDIÇÕES (mantido) -->
+            <section id="acervo" class="pt-10">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+                    <i class="fas fa-layer-group text-audit-gold text-xs"></i>
+                    <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Repositório de Edições</h2>
+                </div>
+                
+                <!-- PAINEL DE CONTROLE (mantido) -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row gap-4 items-center justify-between no-print">
+                    <div class="relative w-full md:w-1/3">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInput" onkeyup="filterAndSortEditions()" placeholder="Buscar ano ou edição..." class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none focus:border-audit-gold transition">
+                    </div>
+                    <div class="flex items-center gap-3 w-full md:w-auto bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                        <i class="fas fa-sort-amount-down text-slate-400 text-xs"></i>
+                        <select id="sortFilter" onchange="filterAndSortEditions()" class="bg-transparent text-[10px] font-bold text-audit-navy uppercase outline-none cursor-pointer w-full tracking-widest">
+                            <option value="desc">Mais Recentes</option>
+                            <option value="asc">Mais Antigos</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between gap-6 w-full md:w-auto bg-slate-50 border border-slate-200 rounded-xl px-4 py-2">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Na Cesta</span>
+                            <span class="text-xs font-semibold text-audit-navy"><span id="toolbar-cart-count">0</span> Arquivos</span>
+                        </div>
+                        <button onclick="downloadBatch()" class="bg-audit-navy text-white px-4 py-2 rounded-lg text-[9px] uppercase font-bold tracking-wider hover:bg-audit-gold transition shadow-md">
+                            Baixar Lote (PDF)
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Grid de Capas A4 -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" id="edicoes-grid"></div>
+            </section>
+
+            <!-- CTA APROVADOS (mantido) -->
+            <section class="mt-10 bg-audit-navy rounded-[3rem] p-12 md:p-16 text-white relative overflow-hidden group shadow-2xl no-print">
+                <div class="absolute -right-10 -bottom-20 opacity-5 group-hover:scale-110 transition-transform duration-1000 rotate-12">
+                    <i class="fas fa-trophy text-[22rem]"></i>
+                </div>
+                <div class="relative z-10 max-w-2xl mx-auto text-center">
+                    <p class="text-audit-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-4">Você venceu a jornada</p>
+                    <h2 class="text-4xl md:text-5xl font-serif font-black mb-6 leading-tight">Você foi aprovado? Parabéns!</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-10">O esforço técnico gerou resultados. Celebre a conquista e inspire futuros profissionais gerando o seu card oficial.</p>
+                    <button onclick="showToast('A redirecionar para gerador de cards...')" class="inline-flex items-center gap-4 bg-audit-gold text-audit-navy px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl">
+                        <i class="fas fa-share-nodes"></i> Criar Card de Aprovação
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ========== MODAL DO VISUALIZADOR PREMIUM ========== -->
+    <div id="preview-modal" class="fixed inset-0 bg-gray-900/95 flex flex-col hidden opacity-0 transition-opacity duration-300 z-[9000]">
+        
+        <!-- CABEÇALHO DE FERRAMENTAS (oculto na impressão) -->
+        <header class="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 z-[9001] shrink-0 no-print">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleSidebar()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Miniaturas">
+                    <i data-lucide="layout-panel-left" class="w-5 h-5"></i>
+                </button>
+                <div class="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-2 hidden sm:block"></div>
+                <h4 id="modal-edition-title" class="text-xs font-black text-audit-navy dark:text-audit-gold uppercase tracking-tighter hidden md:block">Exame CFC 2025.2</h4>
+            </div>
+
+            <!-- Controles de Leitura -->
+            <div class="flex items-center gap-2">
+                <button onclick="toggleSplitView()" id="btn-split" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Lado a Lado">
+                    <i data-lucide="columns-2" class="w-5 h-5"></i>
+                </button>
+                <button onclick="toggleFocusReading()" id="btn-focus" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Foco de Leitura">
+                    <i data-lucide="scan-line" class="w-5 h-5"></i>
+                </button>
+                <div class="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-1"></div>
+                <button onclick="adjustFontSize(-1)" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Diminuir Fonte">
+                    <i data-lucide="circle-minus" class="w-5 h-5"></i>
+                </button>
+                <button onclick="adjustFontSize(1)" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Aumentar Fonte">
+                    <i data-lucide="circle-plus" class="w-5 h-5"></i>
+                </button>
+                <button onclick="window.print()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500 ml-2" title="Imprimir Prova">
+                    <i data-lucide="printer" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Ações Rápidas -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleDarkMode()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Modo Noturno">
+                    <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+                <button onclick="closeModal()" class="bg-audit-navy text-white p-2 rounded-lg hover:scale-105 transition-transform" title="Fechar">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 flex overflow-hidden">
+            
+            <!-- BARRA LATERAL (MINIATURAS) (oculta na impressão) -->
+            <aside id="pdf-sidebar" class="w-64 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto custom-scroll p-4 hidden md:block no-print">
+                <p class="text-[10px] font-bold text-gray-400 uppercase mb-4 tracking-widest">Navegação</p>
+                <div id="sidebar-thumbs"></div>
+            </aside>
+
+            <!-- ÁREA DO DOCUMENTO -->
+            <div id="document-scroll" class="flex-1 overflow-y-auto bg-gray-200 dark:bg-gray-950 p-4 sm:p-12 custom-scroll relative">
+                
+                <div id="paper-container" class="preview-paper p-8 sm:p-20 transform scale-95 transition-all duration-500 mx-auto dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-2xl bg-white min-h-[1000px] max-w-[850px] mb-20" style="font-size: 16px;">
+                    
+                    <div id="split-layout" class="grid grid-cols-1 gap-12 transition-all duration-300">
+                        <div id="main-content-col">
+                            <!-- Cabeçalho com logo e identidade visual -->
+                            <div class="text-center mb-10 pb-6 border-b-2 border-gray-100 dark:border-gray-800 flex flex-col items-center">
+                                <img src="https://auditeduca.com.br/assets/images/tests/simulado-prova-exame-suficiencia-carteirinha-contabilidade-contador-contabilista.avif" 
+                                     alt="Audit Educa Logo" 
+                                     class="w-20 h-20 mb-4 object-contain">
+                                <h1 class="text-2xl font-black text-audit-navy dark:text-white uppercase tracking-widest mb-2">Exame de Suficiência <span id="paper-edition">2025.2</span></h1>
+                                <p class="text-[10px] text-gray-400 italic">Material de estudo - Acervo Audit Educa</p>
+                            </div>
+                            <div id="content-questions" class="space-y-4"></div>
+                        </div>
+
+                        <!-- Coluna de Gabarito (Modo Lado a Lado) -->
+                        <div id="secondary-content-col" class="hidden border-l border-gray-100 dark:border-gray-800 pl-8">
+                            <h3 class="text-lg font-black text-audit-navy dark:text-audit-gold uppercase mb-6 flex items-center gap-2">
+                                <i data-lucide="check-square" class="w-5 h-5"></i> Gabarito
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2" id="gabarito-grid-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION (mantido) -->
+    <div id="toast" class="fixed bottom-20 sm:bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[9999] pointer-events-none border border-audit-gold/30 whitespace-nowrap">
+        <i class="fas fa-info-circle text-audit-gold mr-2"></i> <span id="toast-msg">Mensagem</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        /* ========== DADOS DAS EDIÇÕES (MANTIDOS) ========== */
+        const editionsData = [
+            { edition: '2025.2', approved: 'Aguardando', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2025-02.json' },
+            { edition: '2025.1', approved: '19.8%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2025-01.json' },
+            { edition: '2024.2', approved: '22.1%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2024-02.json' },
+            { edition: '2024.1', approved: '18.4%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2024-01.json' },
+            { edition: '2023.2', approved: '24.2%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2023-02.json' },
+            { edition: '2023.1', approved: '16.7%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2023-01.json' },
+            { edition: '2022.2', approved: '21.5%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2022-02.json' },
+            { edition: '2022.1', approved: '19.3%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2022-01.json' },
+            { edition: '2021.2', approved: '20.1%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2021-02.json' },
+            { edition: '2021.1', approved: '23.8%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2021-01.json' },
+            { edition: '2020.2', approved: '25.6%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2020-02.json' },
+            { edition: '2020.1', approved: '31.2%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2020-01.json' },
+            { edition: '2019.2', approved: '18.9%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2019-02.json' },
+            { edition: '2019.1', approved: '17.5%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2019-01.json' },
+            { edition: '2018.2', approved: '21.0%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2018-02.json' },
+            { edition: '2018.1', approved: '28.3%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2018-01.json' },
+            { edition: '2017.2', approved: '26.4%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2017-02.json' },
+            { edition: '2017.1', approved: '24.8%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2017-01.json' }
+        ];
+
+        const syllabus = [
+            { topic: 'Contabilidade Geral', q: 17, desc: 'Pronunciamentos CPCs (Estoque, Imobilizado, Intangível, DRE, DFC, BP).' },
+            { topic: 'Contabilidade de Custos', q: 4, desc: 'Custeio por Absorção, Variável, ABC e Equivalente de Produção.' },
+            { topic: 'Contabilidade Pública', q: 3, desc: 'MCASP, Receita e Despesa Pública, Demonstrações Contábeis.' },
+            { topic: 'Contabilidade Gerencial', q: 4, desc: 'Ponto de Equilíbrio, Margem de Contribuição, Orçamento.' },
+            { topic: 'Legislação Aplicada', q: 3, desc: 'Direito Tributário, Trabalhista e Previdenciário.' },
+            { topic: 'Matemática e Estatística', q: 2, desc: 'Juros Compostos, VPL, TIR e Descontos.' },
+            { topic: 'Teoria da Contabilidade', q: 4, desc: 'Escolas Contábeis, Estrutura Conceitual Básica.' },
+            { topic: 'Princípios e Ética', q: 4, desc: 'Ética Profissional (NBC PG 01) e Código de Conduta.' }
+        ];
+
+        // Glossário técnico
+        const glossary = {
+            'CFC': 'Conselho Federal de Contabilidade.',
+            'DVA': 'Demonstração do Valor Adicionado: evidencia a riqueza gerada pela entidade e sua distribuição.',
+            'CPC': 'Comitê de Pronunciamentos Contábeis.',
+            'NBC': 'Normas Brasileiras de Contabilidade.',
+            'PATRIMÔNIO': 'Conjunto de bens, direitos e obrigações de uma entidade.',
+            'LAUDO PERICIAL': 'Documento técnico elaborado pelo perito contador.'
+        };
+
+        // Estado Global
+        let cartItems = new Set();
+        let savedItems = new Set();
+        let examData = []; // dados da prova atual no modal
+
+        // Estados do visualizador
+        let isDarkMode = false;
+        let isFocusMode = false;
+        let isSplitMode = false;
+        let fontSizeBase = 16;
+
+        /* ========== FUNÇÕES DO ACERVO (MANTIDAS) ========== */
+        const edicoesGrid = document.getElementById('edicoes-grid');
+
+        const createEditionCard = (ed) => {
+            const isSaved = savedItems.has(ed.edition);
+            const inCart = cartItems.has(ed.edition);
+            return `
+            <div class="flex flex-col gap-4 group exam-item" data-year="${ed.edition}">
+                <div class="exam-page-cover w-full">
+                    <div class="svg-texture"></div>
+                    <div class="cover-frame"></div>
+                    
+                    <div class="card-actions-top">
+                        <button onclick="toggleSave('${ed.edition}')" class="card-btn-icon ${isSaved ? 'active-save' : ''}" title="Salvar">
+                            <i class="${isSaved ? 'fas' : 'far'} fa-bookmark"></i>
+                        </button>
+                        <button onclick="toggleCart('${ed.edition}')" class="card-btn-icon ${inCart ? 'active-cart' : ''}" title="Adicionar à Cesta">
+                            <i class="${inCart ? 'fas fa-check' : 'fas fa-shopping-basket'}"></i>
+                        </button>
+                        <button onclick="printExam('${ed.edition}', '${ed.url}')" class="card-btn-icon" title="Imprimir Prova">
+                            <i class="fas fa-print text-[12px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="relative z-10 p-5 sm:p-8 h-full flex flex-col items-center justify-center text-center w-full mt-2">
+                        <div class="w-12 h-0.5 bg-audit-gold mb-5 opacity-50"></div>
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white shadow-inner border border-slate-200 flex items-center justify-center mb-5 overflow-hidden relative">
+                            <div class="absolute inset-1 border border-dashed border-slate-300 rounded-full"></div>
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=150&q=80" alt="Exame" class="w-full h-full object-cover opacity-60 mix-blend-luminosity rounded-full">
+                        </div>
+                        <h3 class="font-serif font-black text-audit-navy uppercase leading-tight text-base sm:text-lg tracking-widest px-2">Exame de<br>Suficiência</h3>
+                        <p class="mt-4 text-[8px] sm:text-[9px] uppercase font-bold text-slate-400 tracking-[0.2em]">Edição Oficial</p>
+                        <div class="mt-1 text-audit-gold font-serif text-lg sm:text-xl font-black">${ed.edition}</div>
+                    </div>
+                </div>
+
+                <div class="flex shadow-sm rounded-xl overflow-hidden border border-slate-200">
+                    <button onclick="openPreview('${ed.edition}', '${ed.url}')" class="btn-view-premium group-hover:bg-slate-50">
+                        <i class="fas fa-eye text-audit-gold"></i> Visualizar
+                    </button>
+                    <button onclick="downloadExamAsPDF('${ed.edition}', '${ed.url}')" class="btn-download-premium">
+                        <i class="fas fa-download text-audit-gold"></i> PDF
+                    </button>
+                </div>
+            </div>
+        `;};
+
+        function renderProg() {
+            const grid = document.getElementById('prog-grid');
+            grid.innerHTML = syllabus.map(item => `
+                <div class="prog-card">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-serif text-sm font-bold text-audit-navy">${item.topic}</h3>
+                        <span class="bg-slate-100 text-audit-navy text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0">${item.q} Q</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">${item.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('approvalChart').getContext('2d');
+            const validData = editionsData.filter(e => e.approved !== 'Aguardando').reverse();
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: validData.map(e => e.edition),
+                    datasets: [{
+                        label: 'Aprovação (%)',
+                        data: validData.map(e => parseFloat(e.approved.replace('%', ''))),
+                        borderColor: '#C5A059', backgroundColor: 'rgba(197, 160, 89, 0.1)',
+                        borderWidth: 3, pointBackgroundColor: '#0f172a', pointBorderColor: '#ffffff',
+                        pointRadius: 4, pointHoverRadius: 6, fill: true, tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0f172a', padding: 10, cornerRadius: 8 } },
+                    scales: {
+                        y: { beginAtZero: true, max: 40, grid: { color: '#f1f5f9' }, ticks: { color: '#94a3b8', font: {size: 10} } },
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8', font: {size: 10} } }
+                    }
+                }
+            });
+        }
+
+        function filterAndSortEditions() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const sortOrder = document.getElementById('sortFilter').value;
+            let filtered = [...editionsData].filter(ed => ed.edition.toLowerCase().includes(query));
+            filtered.sort((a, b) => sortOrder === 'desc' ? b.edition.localeCompare(a.edition) : a.edition.localeCompare(b.edition));
+            edicoesGrid.innerHTML = filtered.map(createEditionCard).join('');
+        }
+
+        function toggleCart(edition) {
+            cartItems.has(edition) ? cartItems.delete(edition) : cartItems.add(edition);
+            updateBadges(); filterAndSortEditions();
+        }
+
+        function toggleSave(edition) {
+            savedItems.has(edition) ? savedItems.delete(edition) : savedItems.add(edition);
+            updateBadges(); filterAndSortEditions();
+        }
+
+        function updateBadges() {
+            const sb = document.getElementById('save-badge');
+            document.getElementById('toolbar-cart-count').textContent = cartItems.size;
+            sb.textContent = savedItems.size; sb.classList.toggle('hidden', savedItems.size === 0);
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            t.style.opacity = '1'; t.style.transform = 'translate(-50%, 0)';
+            setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translate(-50%, 40px)'; }, 3000);
+        }
+
+        /* ========== FUNÇÕES DE PDF E IMPRESSÃO ========== */
+        async function downloadExamAsPDF(edition, url) {
+            showToast(`Gerando PDF da edição ${edition}...`);
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Erro ao carregar dados');
+                const data = await res.json();
+                const questions = transformExamData(data);
+                generateStyledPDF(edition, questions);
+            } catch (e) {
+                showToast('Erro ao gerar PDF. Tente novamente.');
+                console.error(e);
+            }
+        }
+
+        async function downloadBatch() {
+            if (cartItems.size === 0) {
+                showToast('Cesta vazia. Adicione provas com o ícone de cesta.');
+                return;
+            }
+            showToast(`Gerando PDFs de ${cartItems.size} edições...`);
+            for (let edition of cartItems) {
+                const exam = editionsData.find(e => e.edition === edition);
+                if (exam) {
+                    await downloadExamAsPDF(exam.edition, exam.url);
+                    await new Promise(r => setTimeout(r, 500));
+                }
+            }
+        }
+
+        function generateStyledPDF(edition, questions) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Cores da identidade visual
+            const navy = '#0f172a';
+            const gold = '#C5A059';
+            
+            // Cabeçalho com logo (usando base64 do logo)
+            // Como a imagem pode não carregar devido a CORS, vamos adicionar uma descrição
+            doc.setFillColor(navy);
+            doc.rect(0, 0, 210, 30, 'F');
+            
+            doc.setTextColor(gold);
+            doc.setFontSize(18);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Audit Educa', 105, 20, { align: 'center' });
+            
+            doc.setTextColor(navy);
+            doc.setFontSize(14);
+            doc.text(`Exame de Suficiência - Edição ${edition}`, 105, 40, { align: 'center' });
+            
+            let y = 55;
+            questions.forEach((q, idx) => {
+                if (y > 270) {
+                    doc.addPage();
+                    y = 30;
+                    // cabeçalho reduzido nas páginas seguintes
+                    doc.setFillColor(navy);
+                    doc.rect(0, 0, 210, 15, 'F');
+                    doc.setTextColor(gold);
+                    doc.setFontSize(10);
+                    doc.text(`Audit Educa - Edição ${edition}`, 105, 10, { align: 'center' });
+                    y = 25;
+                }
+                
+                doc.setTextColor(navy);
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`Q${q.number}:`, 20, y);
+                doc.setFont('helvetica', 'normal');
+                
+                // Quebra de linha para o texto da questão
+                const textLines = doc.splitTextToSize(q.text, 170);
+                doc.text(textLines, 25, y + 5);
+                y += (textLines.length * 5) + 5;
+                
+                if (q.options) {
+                    q.options.forEach((opt, i) => {
+                        if (y > 280) { doc.addPage(); y = 30; }
+                        doc.setTextColor('#334155');
+                        doc.setFont('helvetica', 'normal');
+                        const optText = `${opt.letter}) ${opt.text}`;
+                        const optLines = doc.splitTextToSize(optText, 165);
+                        doc.text(optLines, 30, y);
+                        y += (optLines.length * 5) + 2;
+                    });
+                }
+                y += 8;
+            });
+
+            // Página de gabarito
+            doc.addPage();
+            doc.setFillColor(navy);
+            doc.rect(0, 0, 210, 30, 'F');
+            doc.setTextColor(gold);
+            doc.setFontSize(18);
+            doc.text('Gabarito Oficial', 105, 20, { align: 'center' });
+            
+            let gabY = 40;
+            questions.forEach(q => {
+                if (gabY > 280) { doc.addPage(); gabY = 30; }
+                doc.setTextColor(navy);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`Q${q.number}:`, 20, gabY);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(gold);
+                doc.text(q.gabarito || '-', 40, gabY);
+                gabY += 8;
+            });
+
+            doc.save(`exame_suficiencia_${edition.replace('.', '_')}.pdf`);
+            showToast(`PDF da edição ${edition} gerado com sucesso!`);
+        }
+
+        async function printExam(edition, url) {
+            await openPreview(edition, url);
+            setTimeout(() => {
+                window.print();
+            }, 1000);
+        }
+
+        /* ========== FUNÇÕES DO VISUALIZADOR PREMIUM ========== */
+        async function openPreview(edition, url) {
+            document.getElementById('modal-edition-title').innerText = `Exame CFC ${edition}`;
+            document.getElementById('paper-edition').innerText = edition;
+
+            const modal = document.getElementById('preview-modal');
+            const paper = document.getElementById('paper-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.replace('opacity-0', 'opacity-100');
+                paper.classList.remove('scale-95');
+            }, 50);
+            document.body.style.overflow = 'hidden';
+
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Erro ao carregar');
+                const data = await res.json();
+                examData = transformExamData(data);
+            } catch (e) {
+                examData = [];
+                console.warn('Falha ao carregar JSON, exibindo dados mock');
+            } finally {
+                renderQuestions();
+                renderGabarito();
+                generateSidebarThumbs();
+                if (window.lucide) lucide.createIcons();
+            }
+        }
+
+        function transformExamData(raw) {
+            if (Array.isArray(raw) && raw.length && raw[0].number) return raw;
+            if (raw.questoes && Array.isArray(raw.questoes)) {
+                return raw.questoes.map(q => ({
+                    number: q.numero || q.questao_numero || 0,
+                    text: q.enunciado || q.descricao || '',
+                    options: (q.alternativas || []).map((alt, idx) => ({
+                        letter: alt.letra || String.fromCharCode(65 + idx),
+                        text: alt.texto || alt
+                    })),
+                    gabarito: (raw.gabarito || []).find(g => g.questao === (q.numero || q.questao_numero))?.resposta || ''
+                }));
+            }
+            return [];
+        }
+
+        function applyGlossary(text) {
+            if (!text) return '';
+            let formatted = text;
+            Object.keys(glossary).forEach(term => {
+                const regex = new RegExp(`\\b(${term})\\b`, 'gi');
+                formatted = formatted.replace(regex, `<span class="glossary-term">$1<span class="glossary-tooltip">${glossary[term]}</span></span>`);
+            });
+            return formatted;
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('content-questions');
+            if (!container) return;
+            if (!examData.length) {
+                container.innerHTML = '<p class="text-center text-slate-400">Nenhuma questão disponível para esta edição.</p>';
+                return;
+            }
+            container.innerHTML = examData.map(q => `
+                <div id="q-anchor-${q.number}" class="question-block">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="bg-audit-navy text-white font-black text-sm w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-lg">
+                            ${q.number}
+                        </div>
+                        <div class="question-text flex-1 text-gray-700 dark:text-gray-300">
+                            ${q.text.split('\n').map(p => {
+                                if (p.includes('<table')) return p;
+                                return `<p class="mb-4">${applyGlossary(p)}</p>`;
+                            }).join('')}
+                        </div>
+                    </div>
+                    <div class="pl-0 sm:pl-14 space-y-3">
+                        ${q.options ? q.options.map(opt => `
+                            <div class="option-item q-${q.number}-opt" onclick="selectOpt(${q.number}, this)">
+                                <div class="option-letter font-bold text-audit-navy bg-gray-100 w-8 h-8 rounded flex items-center justify-center shrink-0">
+                                    ${opt.letter}
+                                </div>
+                                <div class="option-content">${opt.text}</div>
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderGabarito() {
+            const container = document.getElementById('gabarito-grid-container');
+            if (!container) return;
+            container.innerHTML = examData.map(q => `
+                <div class="border border-gray-200 p-2 rounded flex justify-between items-center dark:border-gray-700 bg-white dark:bg-gray-800 cursor-pointer hover:bg-gray-50 transition-colors" onclick="scrollToQuestion(${q.number})">
+                    <span class="text-[10px] font-bold">Q ${q.number}</span>
+                    <span class="font-black text-audit-gold" style="color:#C5A059">${q.gabarito || '-'}</span>
+                </div>
+            `).join('');
+        }
+
+        function generateSidebarThumbs() {
+            const container = document.getElementById('sidebar-thumbs');
+            if (!container) return;
+            const steps = 5;
+            let html = '';
+            for(let i=1; i<=examData.length; i += steps) {
+                html += `
+                    <div class="nav-thumb" onclick="scrollToQuestion(${i})">
+                        <i data-lucide="file-text" class="w-4 h-4 mb-1"></i>
+                        Questões ${i}-${Math.min(i+steps-1, examData.length)}
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function selectOpt(qNum, el) {
+            document.querySelectorAll(`.q-${qNum}-opt`).forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function scrollToQuestion(num) {
+            const el = document.getElementById(`q-anchor-${num}`);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('preview-modal');
+            const paper = document.getElementById('paper-container');
+            modal.classList.replace('opacity-100', 'opacity-0');
+            paper.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            isDarkMode = !isDarkMode;
+        }
+
+        function toggleFocusReading() {
+            isFocusMode = !isFocusMode;
+            document.getElementById('reading-focus-bar').style.display = isFocusMode ? 'block' : 'none';
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if (isFocusMode) {
+                document.getElementById('reading-focus-bar').style.top = (e.clientY - 17) + 'px';
+            }
+        });
+
+        function toggleSplitView() {
+            isSplitMode = !isSplitMode;
+            const grid = document.getElementById('split-layout');
+            const sec = document.getElementById('secondary-content-col');
+            if (isSplitMode) {
+                grid.classList.replace('grid-cols-1', 'grid-cols-2');
+                sec.classList.remove('hidden');
+            } else {
+                grid.classList.replace('grid-cols-2', 'grid-cols-1');
+                sec.classList.add('hidden');
+            }
+        }
+
+        function adjustFontSize(delta) {
+            fontSizeBase += (delta * 2);
+            if (fontSizeBase < 12) fontSizeBase = 12;
+            if (fontSizeBase > 30) fontSizeBase = 30;
+            document.getElementById('paper-container').style.fontSize = fontSizeBase + 'px';
+        }
+
+        function toggleSidebar() {
+            document.getElementById('pdf-sidebar').classList.toggle('hidden');
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProg();
+            renderChart();
+            filterAndSortEditions();
+            if (window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
