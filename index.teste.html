@@ -124,6 +124,8 @@
             background: var(--navy);
             border-bottom: 1px solid rgba(201,168,76,.2);
             padding: .45rem 0;
+            position: relative; /* Adicionado para garantir z-index */
+            z-index: 200;       /* Garante que fique acima de outros elementos na renderização */
         }
         .datebar-inner {
             max-width: 1320px; margin: 0 auto; padding: 0 2rem;
@@ -564,9 +566,9 @@
     <!-- SKIP NAVIGATION (acessibilidade) -->
     <a class="skip-nav" href="#main-content">Ir ao conteúdo principal</a>
 
-    <!-- CABEÇALHO MODULAR (será preenchido pelo template-engine.js) -->
-    <div id="header-placeholder" class="no-print"></div>
-
+    <!-- ==========================================
+         A BARRA DE DATA FOI MOVIDA PARA CA (ANTES DO HEADER)
+         ========================================== -->
     <!-- BARRA DE DATA / TICKER -->
     <div class="datebar">
         <div class="datebar-inner">
@@ -587,6 +589,9 @@
             </div>
         </div>
     </div>
+
+    <!-- CABEÇALHO MODULAR (será preenchido pelo template-engine.js) -->
+    <div id="header-placeholder" class="no-print"></div>
 
     <!-- HERO -->
     <section class="hero-wrap">
