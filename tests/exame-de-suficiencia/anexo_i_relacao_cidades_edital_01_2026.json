@@ -1,0 +1,122 @@
+{
+  "anexo": {
+    "numero": "I",
+    "titulo": "RELAÇÃO DE CIDADES DE OPÇÃO PARA A REALIZAÇÃO DA PROVA OBJETIVA",
+    "descricao": "Lista de estados e respectivas cidades disponíveis para escolha como local de realização da prova objetiva do Exame de Suficiência n° 1/2026.",
+    "estados": [
+      {
+        "estado": "Acre",
+        "cidades": ["Cruzeiro do Sul", "Rio Branco"]
+      },
+      {
+        "estado": "Alagoas",
+        "cidades": ["Maceió", "Arapiraca"]
+      },
+      {
+        "estado": "Amazonas",
+        "cidades": ["Manaus"]
+      },
+      {
+        "estado": "Amapá",
+        "cidades": ["Macapá"]
+      },
+      {
+        "estado": "Bahia",
+        "cidades": ["Alagoinhas", "Barreiras", "Eunápolis", "Feira de Santana", "Irecê", "Itabuna", "Salvador", "Vitória da Conquista"]
+      },
+      {
+        "estado": "Ceará",
+        "cidades": ["Fortaleza", "Juazeiro do Norte", "Sobral"]
+      },
+      {
+        "estado": "Distrito Federal",
+        "cidades": ["Brasília"]
+      },
+      {
+        "estado": "Espírito Santo",
+        "cidades": ["Cachoeiro de Itapemirim", "Linhares", "Vitória"]
+      },
+      {
+        "estado": "Goiás",
+        "cidades": ["Anápolis", "Goiânia", "Rio Verde"]
+      },
+      {
+        "estado": "Maranhão",
+        "cidades": ["Imperatriz", "São Luís"]
+      },
+      {
+        "estado": "Mato Grosso",
+        "cidades": ["Barra do Garças", "Cáceres", "Cuiabá", "Rondonópolis", "Sinop", "Tangará da Serra"]
+      },
+      {
+        "estado": "Mato Grosso do Sul",
+        "cidades": ["Campo Grande", "Dourados", "Três Lagoas"]
+      },
+      {
+        "estado": "Minas Gerais",
+        "cidades": ["Belo Horizonte", "Divinópolis", "Governador Valadares", "Ipatinga", "Juiz de Fora", "Montes Claros", "Paracatu", "Patos de Minas", "Poços de Caldas", "Pouso Alegre", "São João del-Rei", "Uberlândia", "Varginha"]
+      },
+      {
+        "estado": "Pará",
+        "cidades": ["Belém", "Castanhal", "Itaituba", "Marabá", "Redenção", "Santarém"]
+      },
+      {
+        "estado": "Paraíba",
+        "cidades": ["Campina Grande", "João Pessoa"]
+      },
+      {
+        "estado": "Paraná",
+        "cidades": ["Cascavel", "Curitiba", "Francisco Beltrão", "Londrina", "Maringá", "Ponta Grossa", "Umuarama"]
+      },
+      {
+        "estado": "Pernambuco",
+        "cidades": ["Caruaru", "Petrolina", "Recife"]
+      },
+      {
+        "estado": "Piauí",
+        "cidades": ["Floriano", "Parnaíba", "Picos", "Teresina"]
+      },
+      {
+        "estado": "Rio de Janeiro",
+        "cidades": ["Campos dos Goytacazes", "Niterói", "Nova Friburgo", "Nova Iguaçu", "Petrópolis", "Rio de Janeiro", "Volta Redonda"]
+      },
+      {
+        "estado": "Rio Grande do Norte",
+        "cidades": ["Mossoró", "Natal", "Caicó"]
+      },
+      {
+        "estado": "Rio Grande do Sul",
+        "cidades": ["Caxias do Sul", "Ijuí", "Lajeado", "Novo Hamburgo", "Passo Fundo", "Pelotas", "Porto Alegre", "Santa Cruz do Sul", "Santa Maria", "Santo Ângelo", "Uruguaiana"]
+      },
+      {
+        "estado": "Rondônia",
+        "cidades": ["Ji-Paraná", "Porto Velho", "Vilhena"]
+      },
+      {
+        "estado": "Roraima",
+        "cidades": ["Boa Vista"]
+      },
+      {
+        "estado": "Santa Catarina",
+        "cidades": ["Blumenau", "Chapecó", "Criciúma", "Florianópolis", "Itajaí", "Joaçaba", "Joinville", "Lages"]
+      },
+      {
+        "estado": "São Paulo",
+        "cidades": ["Araçatuba", "Araraquara", "Bauru", "Campinas", "Jundiaí", "Marília", "Piracicaba", "Presidente Prudente", "Ribeirão Preto", "Santos", "São José do Rio Preto", "São José Dos Campos", "São Paulo", "Sorocaba"]
+      },
+      {
+        "estado": "Sergipe",
+        "cidades": ["Aracaju", "Itabaiana"]
+      },
+      {
+        "estado": "Tocantins",
+        "cidades": ["Araguaína", "Gurupi", "Palmas"]
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

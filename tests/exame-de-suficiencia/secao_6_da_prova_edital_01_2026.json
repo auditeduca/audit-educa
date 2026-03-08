@@ -1,0 +1,153 @@
+{
+  "secao": {
+    "numero": 6,
+    "titulo": "DA PROVA",
+    "itens": [
+      {
+        "item": "6.1",
+        "texto": "A Prova Objetiva de múltipla escolha será aplicada no dia 24 de maio de 2026, no turno da manhã, das 10h00 às 14h00, segundo o horário oficial de Brasília/DF."
+      },
+      {
+        "item": "6.2",
+        "texto": "Os portões de acesso aos locais de prova de todas as unidades de aplicação serão fechados 30 (trinta) minutos antes do início da prova, às 09h30, de acordo com o horário oficial de Brasília/DF, sendo terminantemente proibida a entrada de examinando após o fechamento dos portões."
+      },
+      {
+        "item": "6.3",
+        "texto": "Os locais, a data e o horário para a realização da Prova Objetiva serão divulgados no Cartão de Confirmação de Inscrição (CCI) do examinando, com acesso no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, a partir do dia 18 de maio de 2026."
+      },
+      {
+        "item": "6.4",
+        "texto": "É de responsabilidade exclusiva do examinando a identificação correta de seu local de realização da prova e o comparecimento no horário determinado."
+      },
+      {
+        "item": "6.5",
+        "texto": "O examinando não poderá alegar desconhecimento dos horários ou do local de realização da prova como justificativa de sua ausência. O não comparecimento à prova, qualquer que seja o motivo, será considerado como desistência do examinando e resultará em sua eliminação deste exame."
+      },
+      {
+        "item": "6.6",
+        "texto": "Os eventuais erros de digitação no nome, número do documento de identidade, ou outros dados referentes ao cadastro do examinando, deverão ser corrigidos SOMENTE no dia das provas objetivas mediante conferência do documento original de identidade quando do ingresso do examinando no local de provas pelo fiscal de sala."
+      },
+      {
+        "item": "6.7",
+        "texto": "DA PROVA OBJETIVA"
+      },
+      {
+        "item": "6.8",
+        "texto": "A prova será composta de 50 (cinquenta) questões objetivas, valendo um ponto cada uma, abrangendo os seguintes assuntos: PROVA PARA BACHAREL EM CIÊNCIAS CONTÁBEIS a) Língua Portuguesa Aplicada b) Matemática Financeira e Estatística c) Noções de Direito e Legislação Aplicada d) Legislação e Ética Profissional e) Teoria da Contabilidade f) Princípios de Contabilidade e Normas Brasileiras de Contabilidade g) Contabilidade Geral h) Contabilidade de Custos i) Contabilidade Gerencial j) Contabilidade Aplicada ao Setor Público k) Controladoria l) Auditoria Contábil m) Perícia Contábil"
+      },
+      {
+        "item": "6.9",
+        "texto": "A prova versará sobre os conteúdos programáticos constantes deste edital, conforme descrito acima."
+      },
+      {
+        "item": "6.10",
+        "texto": "O detalhamento do conteúdo programático e a listagem estruturada de contas da prova constam nos Anexos II e III deste edital, respectivamente."
+      },
+      {
+        "item": "6.11",
+        "texto": "As legislações, normas e resoluções requeridas no Exame de Suficiência serão aquelas vigentes até 90 (noventa) dias antes da realização da prova. As alterações que, eventualmente, ocorrerem dentro desse período de 90 (noventa) dias antecedentes à prova serão desconsideradas tanto para a elaboração das questões quanto para a sua correção."
+      },
+      {
+        "item": "6.12",
+        "texto": "A utilização de palavras ou frases similares às adotadas pelas Normas Brasileiras de Contabilidade ou de outras fontes constantes do conteúdo programático e a não abordagem ou citação literal das Normas Brasileiras de Contabilidade não serão motivo para impugnação por parte dos examinandos."
+      },
+      {
+        "item": "6.13",
+        "texto": "Os conhecimentos e habilidades relacionados ao conteúdo programático do Exame de Suficiência poderão ser avaliados de forma interdisciplinar, sendo associados às diversas etapas do processo contábil."
+      },
+      {
+        "item": "6.14",
+        "texto": "Cada questão da prova objetiva será de múltipla escolha, constituída de quatro opções (A, B, C e D) e uma única resposta correta, de acordo com o enunciado da questão. Para cada questão, haverá, no Cartão de Respostas, quatro campos de marcação (A, B, C e D)."
+      },
+      {
+        "item": "6.15",
+        "texto": "O examinando transcreverá as respostas da prova objetiva para o Cartão de Respostas, utilizando para esta finalidade, exclusivamente, caneta esferográfica de tinta azul ou preta de ponta grossa."
+      },
+      {
+        "item": "6.16",
+        "texto": "O Cartão de Respostas será o único documento válido para a correção da prova objetiva, e o examinando será o único responsável pelo seu preenchimento, devendo proceder em conformidade com as instruções específicas contidas neste edital e no Cartão de Respostas."
+      },
+      {
+        "item": "6.17",
+        "texto": "Não será permitido que as marcações no Cartão de Respostas sejam feitas por outras pessoas, salvo em caso de examinando que tenha solicitado atendimento especial para esse fim. Nesse caso, se necessário, o examinando será acompanhado por um fiscal da FGV devidamente treinado."
+      },
+      {
+        "item": "6.18",
+        "texto": "Em hipótese alguma, haverá substituição do Cartão de Respostas por erro de preenchimento por parte do examinando ou dano por ele causado."
+      },
+      {
+        "item": "6.19",
+        "texto": "Ao terminar a prova, o examinando deve entregar, obrigatoriamente, ao fiscal de sala o seu Cartão de Respostas."
+      },
+      {
+        "item": "6.20",
+        "texto": "Será atribuída nota 0 (zero) à questão que apresentar mais de 1 (uma) ou nenhuma resposta assinalada, ou à questão que apresentar emenda ou rasura."
+      },
+      {
+        "item": "6.21",
+        "texto": "Os prejuízos advindos do preenchimento indevido do cartão de respostas serão de inteira responsabilidade do examinando. Serão consideradas marcações indevidas as que estiverem em desacordo com este Edital ou com as instruções do cartão de respostas, como marcação rasurada, emendada ou com o campo de marcação não preenchido integralmente. Em hipótese alguma, haverá substituição do cartão de respostas por erro do examinando."
+      },
+      {
+        "item": "6.22",
+        "texto": "O examinando não deverá amassar, molhar, dobrar, rasgar, manchar ou, de qualquer modo, danificar o seu cartão de respostas, sob pena de arcar com os prejuízos advindos da impossibilidade de realização da leitura ótica."
+      },
+      {
+        "item": "6.23",
+        "texto": "O examinando é responsável pela conferência de seus dados pessoais, em especial seu nome, seu número de inscrição, sua data de nascimento e o número de seu documento de identidade."
+      },
+      {
+        "item": "6.24",
+        "texto": "Caso o examinando tenha recebido caderno de questão de tipo diferente do impresso no Cartão de Resposta, o fiscal deve ser obrigatoriamente informado da situação para o devido registro na ata da sala. A ausência de registro deste fato acarretará na correção da prova conforme o tipo constante no documento, não cabendo reclamações posteriores neste sentido."
+      },
+      {
+        "item": "6.25",
+        "texto": "Todos os examinandos, ao terminarem as provas, deverão, obrigatoriamente, entregar ao fiscal de aplicação o cartão de respostas que será utilizado para a correção de suas provas. O examinando que descumprir a regra de entrega desse documento será eliminado do Exame."
+      },
+      {
+        "item": "6.26",
+        "texto": "A FGV divulgará a imagem do cartão de respostas dos examinandos que realizarem a Prova Objetiva, exceto dos eliminados na forma deste Edital, no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, após a data de divulgação do resultado da Prova Objetiva. A imagem ficará disponível por até 15 (quinze) dias corridos a contar da data de publicação do resultado final do Exame."
+      },
+      {
+        "item": "6.27",
+        "texto": "Após o prazo determinado no subitem anterior, não serão aceitos pedidos de disponibilização da imagem do cartão de respostas."
+      },
+      {
+        "item": "6.28",
+        "texto": "Cada questão terá o valor de 1 (um) ponto, e o cálculo da nota da prova objetiva será igual à soma algébrica do ponto obtido com cada questão correta."
+      },
+      {
+        "item": "6.29",
+        "texto": "Será considerado aprovado o examinando que acertar, no mínimo, 50% (cinquenta por cento) do total das questões, ou seja, 25 (vinte e cinco) pontos."
+      },
+      {
+        "item": "6.30",
+        "texto": "Em hipótese alguma, devido à anulação de qualquer questão, a prova deixará de valer 50 pontos em sua totalidade."
+      },
+      {
+        "item": "6.31",
+        "texto": "Se houver anulação de qualquer questão, essas alterações pontuarão todos os examinandos, independentemente de eventual interposição de recurso."
+      },
+      {
+        "item": "6.32",
+        "texto": "Será reprovado na prova objetiva o examinando que obtiver nota inferior a 50% (cinquenta por cento), ou seja, nota inferior a 25 (vinte e cinco) pontos."
+      },
+      {
+        "item": "6.33",
+        "texto": "O gabarito preliminar das questões objetivas da prova será divulgado nos sites da FGV e do CFC (www.cfc.org.br), a partir do dia 25 de maio de 2026."
+      },
+      {
+        "item": "6.34",
+        "texto": "O resultado da análise dos recursos contra o gabarito preliminar será oportunamente divulgado nos sites da FGV e do CFC."
+      },
+      {
+        "item": "6.35",
+        "texto": "A relação definitiva de aprovados será publicada no Diário Oficial da União (DOU) e divulgada nos sites da FGV e do CFC."
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

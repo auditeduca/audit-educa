@@ -1,0 +1,17 @@
+{
+  "secao": {
+    "numero": 8,
+    "titulo": "DA CERTIDÃO DE APROVAÇÃO",
+    "itens": [
+      {
+        "item": "8.1",
+        "texto": "O examinando que obtiver aprovação poderá emitir sua certidão de aprovação através de link específico disponibilizado nos sites da FGV e do CFC, por meio do CPF e senha."
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

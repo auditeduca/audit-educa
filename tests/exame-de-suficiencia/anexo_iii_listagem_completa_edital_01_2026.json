@@ -1,0 +1,393 @@
+{
+  "anexo": {
+    "numero": "III",
+    "titulo": "LISTAGEM ESTRUTURADA DE CONTAS – BACHAREL EM CIÊNCIAS CONTÁBEIS",
+    "observacoes": [
+      "Esta listagem estruturada de contas é de caráter meramente didático.",
+      "Objetivos: 1) Guiar a nomenclatura a ser utilizada pelos preparadores na elaboração da prova; 2) Servir de referência para os examinandos quanto aos termos que poderão ser apresentados na prova e facilitar sua compreensão.",
+      "A listagem NÃO tem a pretensão de contemplar todas as operações de todos os setores e atividades, nem representar a estrutura de um plano de contas operacional completo."
+    ],
+    "estrutura": {
+      "1": {
+        "nome": "ATIVO",
+        "natureza": "devedora",
+        "tipo": "patrimonial",
+        "nivel": "sintetica",
+        "subgrupos": {
+          "1.01": {
+            "nome": "ATIVO CIRCULANTE",
+            "natureza": "devedora",
+            "tipo": "patrimonial",
+            "nivel": "sintetica",
+            "contas": [
+              {
+                "codigo": "1.01.01",
+                "nome": "CAIXA E EQUIVALENTES DE CAIXA",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {"codigo": "1.01.01.01", "nome": "CAIXA E FUNDO FIXO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.01.01.01.01", "nome": "CAIXA", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.01.01.02", "nome": "FUNDO FIXO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.01.02", "nome": "BANCOS CONTA MOVIMENTO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.01.01.02.01", "nome": "BANCO A", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.01.02.02", "nome": "BANCO B", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.01.03", "nome": "APLICAÇÕES FINANCEIRAS DE LIQUIDEZ IMEDIATA", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"}
+                ]
+              },
+              {
+                "codigo": "1.01.02",
+                "nome": "APLICAÇÕES FINANCEIRAS",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {"codigo": "1.01.02.01", "nome": "DISPONÍVEIS PARA VENDA", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.02.02", "nome": "MANTIDAS ATÉ O VENCIMENTO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.02.03", "nome": "AVALIADAS AO VALOR JUSTO POR MEIO DO RESULTADO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.02.04", "nome": "AVALIADAS PELO CUSTO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.01.02.04.01", "nome": "APLICAÇÃO FINANCEIRA", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.02.04.02", "nome": "(-) PERDAS ESTIMADAS PARA REDUÇÃO AO VALOR RECUPERÁVEL", "natureza": "credora", "tipo": "patrimonial", "nivel": "analitica", "grupo_estimativa": true, "observacao": "conta redutora"}
+                ]
+              },
+              {
+                "codigo": "1.01.03",
+                "nome": "CONTAS A RECEBER E OUTROS CRÉDITOS",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {
+                    "codigo": "1.01.03.01",
+                    "nome": "CLIENTES",
+                    "natureza": "devedora",
+                    "tipo": "patrimonial",
+                    "nivel": "sintetica",
+                    "subcontas": [
+                      {"codigo": "1.01.03.01.01", "nome": "DUPLICATAS A RECEBER", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.01.02", "nome": "(-) PERDAS ESTIMADAS COM CRÉDITOS DE LIQUIDAÇÃO DUVIDOSA", "natureza": "credora", "tipo": "patrimonial", "nivel": "analitica", "grupo_estimativa": true, "observacao": "conta redutora"},
+                      {"codigo": "1.01.03.01.03", "nome": "(-) JUROS A APROPRIAR", "natureza": "credora", "tipo": "patrimonial", "nivel": "analitica", "observacao": "conta transitória / redutora"}
+                    ]
+                  },
+                  {
+                    "codigo": "1.01.03.02",
+                    "nome": "CRÉDITOS COM EMPREGADOS",
+                    "natureza": "devedora",
+                    "tipo": "patrimonial",
+                    "nivel": "sintetica",
+                    "subcontas": [
+                      {"codigo": "1.01.03.02.01", "nome": "ADIANTAMENTO A EMPREGADOS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.02.02", "nome": "ADIANTAMENTO DE SALÁRIO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.02.03", "nome": "ADIANTAMENTO DE FÉRIAS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.02.04", "nome": "ADIANTAMENTO DE 13º SALÁRIO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.02.05", "nome": "EMPRÉSTIMO A EMPREGADO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"}
+                    ]
+                  },
+                  {
+                    "codigo": "1.01.03.03",
+                    "nome": "CRÉDITOS COM TERCEIROS",
+                    "natureza": "devedora",
+                    "tipo": "patrimonial",
+                    "nivel": "sintetica",
+                    "subcontas": [
+                      {"codigo": "1.01.03.03.01", "nome": "ADIANTAMENTO A TERCEIROS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"}
+                    ]
+                  },
+                  {
+                    "codigo": "1.01.03.04",
+                    "nome": "CRÉDITOS FISCAIS E TRIBUTÁRIOS",
+                    "natureza": "devedora",
+                    "tipo": "patrimonial",
+                    "nivel": "sintetica",
+                    "subcontas": [
+                      {"codigo": "1.01.03.04.01", "nome": "ICMS A RECUPERAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.04.02", "nome": "IRRF A COMPENSAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.04.03", "nome": "PIS A RECUPERAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.04.04", "nome": "COFINS A RECUPERAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.04.05", "nome": "IRPJ A COMPENSAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.04.06", "nome": "CSLL A COMPENSAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                      {"codigo": "1.01.03.04.07", "nome": "IPI A RECUPERAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"}
+                    ]
+                  }
+                ]
+              },
+              {
+                "codigo": "1.01.04",
+                "nome": "ESTOQUES",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {"codigo": "1.01.04.01", "nome": "MERCADORIAS PARA REVENDA", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.02", "nome": "MATÉRIA-PRIMA", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.03", "nome": "INSUMOS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.04", "nome": "MATERIAL DE EMBALAGEM", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.05", "nome": "PRODUTOS EM ELABORAÇÃO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.06", "nome": "PRODUTOS ACABADOS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.07", "nome": "ALMOXARIFADO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.08", "nome": "ESTOQUE EM PODER DE TERCEIROS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.09", "nome": "ADIANTAMENTOS A FORNECEDORES", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.10", "nome": "ADIANTAMENTO DE IMPORTAÇÃO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica"},
+                  {"codigo": "1.01.04.11", "nome": "(-) AJUSTE A VALOR PRESENTE", "natureza": "credora", "tipo": "patrimonial", "nivel": "analitica", "grupo_estimativa": true, "observacao": "conta redutora / transitória"},
+                  {"codigo": "1.01.04.12", "nome": "(-) PERDAS ESTIMADAS PARA REDUÇÃO AO VALOR REALIZÁVEL LÍQUIDO", "natureza": "credora", "tipo": "patrimonial", "nivel": "analitica", "grupo_estimativa": true, "observacao": "conta redutora"}
+                ]
+              },
+              {
+                "codigo": "1.01.05",
+                "nome": "ATIVOS BIOLÓGICOS",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "1.01.06",
+                "nome": "DESPESAS PAGAS ANTECIPADAMENTE",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "observacao": "conta transitória",
+                "subcontas": [
+                  {"codigo": "1.01.06.01", "nome": "PRÊMIOS DE SEGUROS A APROPRIAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica", "observacao": "transitória"},
+                  {"codigo": "1.01.06.02", "nome": "ALUGUEL PAGO ANTECIPADAMENTE", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica", "observacao": "transitória"},
+                  {"codigo": "1.01.06.03", "nome": "ASSINATURAS E ANUIDADES A APROPRIAR", "natureza": "devedora", "tipo": "patrimonial", "nivel": "analitica", "observacao": "transitória"}
+                ]
+              },
+              {
+                "codigo": "1.01.07",
+                "nome": "ATIVO NÃO CIRCULANTE MANTIDO PARA VENDA",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              }
+            ]
+          },
+          "1.02": {
+            "nome": "ATIVO NÃO CIRCULANTE",
+            "natureza": "devedora",
+            "tipo": "patrimonial",
+            "nivel": "sintetica",
+            "subgrupos": [
+              {
+                "codigo": "1.02.01",
+                "nome": "ATIVO REALIZÁVEL A LONGO PRAZO",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {"codigo": "1.02.01.01", "nome": "CONTAS A RECEBER", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.01.02", "nome": "CRÉDITOS TRIBUTÁRIOS E TRIBUTOS DIFERIDOS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.01.03", "nome": "CRÉDITOS COM PARTES RELACIONADAS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.01.04", "nome": "ATIVOS BIOLÓGICOS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.01.05", "nome": "DESPESAS PAGAS ANTECIPADAMENTE", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica", "observacao": "transitória"}
+                ]
+              },
+              {
+                "codigo": "1.02.02",
+                "nome": "INVESTIMENTOS",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {"codigo": "1.02.02.01", "nome": "PARTICIPAÇÕES AVALIADAS PELO MÉTODO DA EQUIVALÊNCIA PATRIMONIAL", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.02.02", "nome": "PARTICIPAÇÕES AVALIADAS PELO MÉTODO DO CUSTO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.02.03", "nome": "PARTICIPAÇÕES AVALIADAS PELO VALOR JUSTO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.02.04", "nome": "PROPRIEDADES PARA INVESTIMENTO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"}
+                ]
+              },
+              {
+                "codigo": "1.02.03",
+                "nome": "IMOBILIZADO",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {"codigo": "1.02.03.01", "nome": "BENS EM OPERAÇÃO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.03.02", "nome": "(-) DEPRECIAÇÃO ACUMULADA", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica", "grupo_estimativa": true, "observacao": "conta redutora"},
+                  {"codigo": "1.02.03.03", "nome": "(-) EXAUSTÃO ACUMULADA", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica", "grupo_estimativa": true, "observacao": "conta redutora"},
+                  {"codigo": "1.02.03.04", "nome": "IMOBILIZADO EM ANDAMENTO", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"}
+                ]
+              },
+              {
+                "codigo": "1.02.04",
+                "nome": "INTANGÍVEL",
+                "natureza": "devedora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "subcontas": [
+                  {"codigo": "1.02.04.01", "nome": "INTANGÍVEIS", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica"},
+                  {"codigo": "1.02.04.01.05", "nome": "(-) AMORTIZAÇÃO ACUMULADA", "natureza": "credora", "tipo": "patrimonial", "nivel": "analitica", "grupo_estimativa": true, "observacao": "conta redutora"}
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "2": {
+        "nome": "PASSIVO",
+        "natureza": "credora",
+        "tipo": "patrimonial",
+        "nivel": "sintetica",
+        "subgrupos": {
+          "2.01": {
+            "nome": "PASSIVO CIRCULANTE",
+            "natureza": "credora",
+            "tipo": "patrimonial",
+            "nivel": "sintetica",
+            "contas": [
+              {
+                "codigo": "2.01.01",
+                "nome": "FORNECEDORES",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "2.01.02",
+                "nome": "SALÁRIOS E ENCARGOS SOCIAIS",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "2.01.03",
+                "nome": "OBRIGAÇÕES FISCAIS",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "2.01.04",
+                "nome": "EMPRÉSTIMOS E FINANCIAMENTOS",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "2.01.05",
+                "nome": "DEBÊNTURES",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "2.01.06",
+                "nome": "CONTAS A PAGAR",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "2.01.07",
+                "nome": "OUTRAS OBRIGAÇÕES",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica"
+              },
+              {
+                "codigo": "2.01.08",
+                "nome": "PROVISÕES",
+                "natureza": "credora",
+                "tipo": "patrimonial",
+                "nivel": "sintetica",
+                "observacao": "contas de estimativa / provisões"
+              }
+            ]
+          },
+          "2.02": {
+            "nome": "PASSIVO NÃO CIRCULANTE",
+            "natureza": "credora",
+            "tipo": "patrimonial",
+            "nivel": "sintetica",
+            "contas": [
+              {"codigo": "2.02.01", "nome": "EMPRÉSTIMOS E FINANCIAMENTOS", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"},
+              {"codigo": "2.02.02", "nome": "DEBÊNTURES", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"},
+              {"codigo": "2.02.03", "nome": "TRIBUTOS DIFERIDOS", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"},
+              {"codigo": "2.02.04", "nome": "PROVISÕES", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"}
+            ]
+          }
+        }
+      },
+      "2.03": {
+        "nome": "PATRIMÔNIO LÍQUIDO",
+        "natureza": "credora",
+        "tipo": "patrimonial",
+        "nivel": "sintetica",
+        "contas": [
+          {"codigo": "2.03.01", "nome": "CAPITAL SOCIAL", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"},
+          {"codigo": "2.03.02", "nome": "RESERVAS", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"},
+          {"codigo": "2.03.03", "nome": "LUCROS/PREJUÍZOS ACUMULADOS", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"},
+          {"codigo": "2.03.04", "nome": "DIVIDENDO ADICIONAL PROPOSTO", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"},
+          {"codigo": "2.03.05", "nome": "(-) AÇÕES DE EMISSÃO PRÓPRIA EM TESOURARIA", "natureza": "devedora", "tipo": "patrimonial", "nivel": "sintetica", "observacao": "conta redutora"},
+          {"codigo": "2.03.06", "nome": "OUTROS RESULTADOS ABRANGENTES", "natureza": "mista", "tipo": "patrimonial / resultado abrangente", "nivel": "sintetica"},
+          {"codigo": "2.03.07", "nome": "PARTICIPAÇÃO DOS NÃO CONTROLADORES", "natureza": "credora", "tipo": "patrimonial", "nivel": "sintetica"}
+        ]
+      },
+      "3": {
+        "nome": "RESULTADO",
+        "natureza": "mista",
+        "tipo": "resultado",
+        "nivel": "sintetica",
+        "subgrupos": {
+          "3.01": {
+            "nome": "RECEITA BRUTA / FATURAMENTO",
+            "natureza": "credora",
+            "tipo": "resultado",
+            "nivel": "sintetica"
+          },
+          "3.02": {
+            "nome": "DEDUÇÕES DA RECEITA BRUTA",
+            "natureza": "devedora",
+            "tipo": "resultado (redutora)",
+            "nivel": "sintetica"
+          },
+          "3.03": {
+            "nome": "CUSTOS",
+            "natureza": "devedora",
+            "tipo": "resultado",
+            "nivel": "sintetica"
+          },
+          "3.04": {
+            "nome": "DESPESAS OPERACIONAIS",
+            "natureza": "devedora",
+            "tipo": "resultado",
+            "nivel": "sintetica",
+            "subgrupos": [
+              {"codigo": "3.04.01", "nome": "DESPESAS COMERCIAIS", "natureza": "devedora", "tipo": "resultado"},
+              {"codigo": "3.04.02", "nome": "DESPESAS ADMINISTRATIVAS", "natureza": "devedora", "tipo": "resultado"},
+              {"codigo": "3.04.03", "nome": "DESPESAS TRIBUTÁRIAS", "natureza": "devedora", "tipo": "resultado"},
+              {"codigo": "3.04.04", "nome": "DESPESAS COM PROVISÕES", "natureza": "devedora", "tipo": "resultado"},
+              {"codigo": "3.04.05", "nome": "RESULTADO NA VENDA DE ITENS NÃO CIRCULANTES", "natureza": "mista", "tipo": "resultado"},
+              {"codigo": "3.04.06", "nome": "OUTRAS RECEITAS E DESPESAS", "natureza": "mista", "tipo": "resultado"}
+            ]
+          },
+          "3.05": {
+            "nome": "RESULTADO FINANCEIRO LÍQUIDO",
+            "natureza": "mista",
+            "tipo": "resultado",
+            "nivel": "sintetica"
+          },
+          "3.06": {
+            "nome": "DESPESA COM TRIBUTOS SOBRE O LUCRO",
+            "natureza": "devedora",
+            "tipo": "resultado",
+            "nivel": "sintetica"
+          },
+          "3.07": {
+            "nome": "RESULTADO DAS OPERAÇÕES NÃO CONTINUADAS",
+            "natureza": "mista",
+            "tipo": "resultado",
+            "nivel": "sintetica"
+          }
+        }
+      }
+    }
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf",
+    "versao": "completa com todas as contas listadas no texto original",
+    "data_geracao": "2026-03-08"
+  }
+}
