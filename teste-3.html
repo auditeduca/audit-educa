@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Audit Educa — Conteúdo Prático para Contadores e Auditores</title>
+    <meta name="description" content="Hub gratuito de ferramentas, artigos e guias de estudo para auditores e contadores. Baseado em IFRS, NBC TA, CPCs e normas vigentes.">
+    <meta name="keywords" content="auditoria, contabilidade, IFRS, NBC TA, CPC, pericia, IA agentica, circularizacao, auditoria interna">
+    <meta property="og:title" content="Audit Educa — Hub de Auditoria e Contabilidade">
+    <meta property="og:description" content="Ferramentas gratuitas, artigos técnicos e guias de estudo para profissionais de auditoria e contabilidade.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.auditeduca.com.br/">
+
+    <!-- Fontes e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS Globais e Específicos -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- Estilos adicionais (apenas para fallback de acessibilidade) -->
+    <style>
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #C9A84C;
+            color: #0C1B33;
+            padding: 8px 16px;
+            z-index: 1000;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 0 0 4px 0;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid white;
+        }
+        /* Fallback simples para quando o header não carregar */
+        .fallback-header {
+            background: #0C1B33;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #C9A84C;
+        }
+        .fallback-header a {
+            color: #C9A84C;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        .fallback-footer {
+            background: #0C1B33;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201,168,76,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Link de pular para o conteúdo (acessibilidade) -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- HEADER MODULAR (carregado via template-engine.js ou fallback local) -->
+    <div id="header-placeholder" class="no-print"></div>
+
+    <!-- ================================================================
+         DATE / TICKER BAR
+         ================================================================ -->
+    <div class="datebar">
+        <div class="datebar-inner">
+            <div class="datebar-left">
+                <b id="ae-date"></b>
+                <span class="db-dot"></span>
+                <span>Conteúdo técnico gratuito</span>
+                <span class="db-dot"></span>
+                <span>Baseado em IFRS · NBC TA · CPCs · NBC PP · CLT</span>
+            </div>
+            <div class="datebar-tags">
+                <span class="db-tag on"  onclick="dbFilter(this,'all')">Todos</span>
+                <span class="db-tag off" onclick="dbFilter(this,'auditoria')">Auditoria</span>
+                <span class="db-tag off" onclick="dbFilter(this,'ifrs')">IFRS</span>
+                <span class="db-tag off" onclick="dbFilter(this,'ia')">IA Agêntica</span>
+                <span class="db-tag off" onclick="dbFilter(this,'pericia')">Perícia</span>
+                <span class="db-tag off" onclick="dbFilter(this,'ferramentas')">Ferramentas</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         HERO
+         ================================================================ -->
+    <section class="hero-wrap" aria-label="Destaques">
+        <div class="hero-gold-bar"></div>
+        <div class="hero-grid">
+
+            <!-- Lead story -->
+            <div class="hero-lead a1">
+                <div class="hero-img">
+                    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1400&auto=format&fit=crop" alt="IA Agêntica em Auditoria — robôs e dados">
+                    <div class="hero-overlay">
+                        <div class="h-cat"><i class="fas fa-robot"></i> IA Agêntica · Hot Topic</div>
+                        <div class="h-hl">Agentes de IA na Auditoria: da Prova de Conceito à Execução Real de Testes</div>
+                        <div class="h-meta">
+                            <span><i class="fas fa-clock" style="color:var(--gold)"></i> 12 min</span>
+                            <span>·</span><span>Audit Educa · Mar 2026</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-body">
+                    <div>
+                        <p class="hero-text">LLMs evoluem de assistentes passivos para agentes autônomos que executam sequências completas de auditoria — extração de ERP, testes substantivos e geração de papéis de trabalho conforme NBC TA 330.</p>
+                        <p class="hero-text">Este artigo analisa os frameworks mais relevantes (AutoGen, LangGraph, CrewAI) e seus casos de uso reais em engagements de auditoria externa e interna.</p>
+                        <a class="read-more" href="biblioteca.html">Ler artigo completo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div>
+                        <div class="key-card">
+                            <div class="key-label"><i class="fas fa-bookmark"></i> Pontos-Chave</div>
+                            <ul>
+                                <li>Agentes reduzem 40–60% do tempo em testes de dados</li>
+                                <li>NBC TA 330 e ISA 330 já permitem uso de CAAT</li>
+                                <li>Risco de "alucinação" exige supervisão humana no loop</li>
+                                <li>Big 4 em rollout interno de agentes especializados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary stack -->
+            <div class="hero-stack a2">
+                <div class="sec-art">
+                    <div class="sec-img">
+                        <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=700&auto=format&fit=crop" alt="IFRS S1 S2 sustentabilidade">
+                    </div>
+                    <div class="sec-cat"><i class="fas fa-leaf"></i> IFRS S1 &amp; S2</div>
+                    <div class="sec-title">Relatório de Sustentabilidade: o que o Auditor Precisa Saber para 2026</div>
+                    <div class="sec-meta">8 min · Contabilidade</div>
+                </div>
+                <div class="sec-art">
+                    <div class="sec-img">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=700&auto=format&fit=crop" alt="NBC TA 600 grupos">
+                    </div>
+                    <div class="sec-cat"><i class="fas fa-file-alt"></i> NBC TA 600 Rev.</div>
+                    <div class="sec-title">Nova NBC TA 600: Auditoria de Grupos — Mudanças Críticas para o Auditor</div>
+                    <div class="sec-meta">6 min · Auditoria Externa</div>
+                </div>
+                <div class="sec-art">
+                    <div class="sec-img">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=700&auto=format&fit=crop" alt="Perícia contábil digital">
+                    </div>
+                    <div class="sec-cat"><i class="fas fa-gavel"></i> Perícia Contábil</div>
+                    <div class="sec-title">Laudo Pericial com Uso de Dados: NBC PP 01 e o Perito Digital</div>
+                    <div class="sec-meta">10 min · Perícia</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================================
+         TOPIC STRIP
+         ================================================================ -->
+    <nav class="topic-strip" aria-label="Filtro por tópico">
+        <div class="topic-inner">
+            <button class="t-chip on" onclick="topicFilter(this,'all')"><i class="fas fa-th-large"></i> Todos</button>
+            <div class="t-div"></div>
+            <button class="t-chip" onclick="topicFilter(this,'auditoria')"><i class="fas fa-search"></i> Auditoria Externa</button>
+            <button class="t-chip" onclick="topicFilter(this,'interna')"><i class="fas fa-shield-alt"></i> Auditoria Interna</button>
+            <button class="t-chip" onclick="topicFilter(this,'ifrs')"><i class="fas fa-book-open"></i> IFRS / CPC</button>
+            <button class="t-chip" onclick="topicFilter(this,'pericia')"><i class="fas fa-balance-scale"></i> Perícia</button>
+            <button class="t-chip" onclick="topicFilter(this,'ia')"><i class="fas fa-robot"></i> IA Agêntica</button>
+            <button class="t-chip" onclick="topicFilter(this,'tributario')"><i class="fas fa-landmark"></i> Tributário</button>
+            <button class="t-chip" onclick="topicFilter(this,'ferramentas')"><i class="fas fa-tools"></i> Ferramentas</button>
+            <button class="t-chip" onclick="topicFilter(this,'guias')"><i class="fas fa-graduation-cap"></i> Guias de Estudo</button>
+            <div class="t-div"></div>
+            <button class="t-chip" onclick="topicFilter(this,'cnai')"><i class="fas fa-award"></i> QTG / CNAI</button>
+            <button class="t-chip" onclick="topicFilter(this,'cvm')"><i class="fas fa-chart-line"></i> CVM</button>
+        </div>
+    </nav>
+
+    <!-- ================================================================
+         MAIN CONTENT (com id para skip link)
+         ================================================================ -->
+    <main id="main-content" class="main-wrap" role="main" aria-label="Conteúdo principal">
+
+        <!-- ── LEFT FEED ── (CONTEÚDO COMPLETO PRESERVADO) -->
+        <div>
+            <!-- Auditoria Interna -->
+            <section class="a2" data-topic="interna" style="margin-bottom:3.25rem" aria-labelledby="aud-interna-heading">
+                <div class="sec-hd">
+                    <div class="sec-hd-l">
+                        <span class="sec-eye" id="aud-interna-heading"><i class="fas fa-shield-alt"></i> Hot Topic</span>
+                        <span class="sec-ttl">Auditoria Interna</span>
+                    </div>
+                    <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="art-h">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop" alt="IPPF 2024"></div>
+                    <div>
+                        <div class="a-cat" style="color:#1D4ED8">IPPF 2024 · IIA Global</div>
+                        <div class="art-ttl">IPPF Atualizado: as Novas Exigências de Competência para o Auditor Interno</div>
+                        <div class="art-exc">O IPPF revisado em 2024 eleva o padrão de competências técnicas e comportamentais, com ênfase em ciência de dados, gestão de riscos e posicionamento estratégico do CAE.</div>
+                        <div class="art-ft">
+                            <div class="art-meta"><i class="fas fa-clock"></i> 9 min · Mar 2026</div>
+                            <span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-h">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" alt="Auditoria Contínua Power BI"></div>
+                    <div>
+                        <div class="a-cat" style="color:#065F46">Auditoria Contínua · Data Analytics</div>
+                        <div class="art-ttl">Auditoria Contínua com Power BI e Python: Implementação Prática do Zero</div>
+                        <div class="art-exc">Como estruturar monitoramento contínuo integrando Power BI, scripts Python e APIs de ERP — com exemplos de alarmes para anomalias em contas a pagar e folha.</div>
+                        <div class="art-ft">
+                            <div class="art-meta"><i class="fas fa-clock"></i> 15 min · Fev 2026</div>
+                            <span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-h">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?q=80&w=600&auto=format&fit=crop" alt="COSO ERM risco"></div>
+                    <div>
+                        <div class="a-cat" style="color:#B45309">Gestão de Riscos · COSO ERM 2017</div>
+                        <div class="art-ttl">Mapeamento de Riscos no COSO ERM: da Teoria ao Papel de Trabalho</div>
+                        <div class="art-exc">Guia prático para construção de mapas de calor, apetite a risco e planos de resposta integrados ao planejamento estratégico, com templates editáveis.</div>
+                        <div class="art-ft">
+                            <div class="art-meta"><i class="fas fa-clock"></i> 11 min · Jan 2026</div>
+                            <span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IA AGÊNTICA SPOTLIGHT -->
+            <section class="a3" data-topic="ia" style="margin-bottom:3.25rem" aria-labelledby="ia-spot-heading">
+                <div class="sec-hd" style="border-bottom-color:#7C3AED">
+                    <div class="sec-hd-l">
+                        <span class="sec-eye" style="color:#7C3AED" id="ia-spot-heading"><i class="fas fa-robot"></i> Em Alta</span>
+                        <span class="sec-ttl">IA Agêntica &amp; Contabilidade</span>
+                    </div>
+                    <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="ai-spot">
+                    <div class="ai-spot-img">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop" alt="IA e Auditoria IFRS 16">
+                        <div class="ai-spot-overlay">
+                            <div class="ai-badge"><i class="fas fa-microchip"></i> IA Agêntica · Exclusivo</div>
+                            <div class="ai-hl">Como Agentes LLM Estão Revolucionando a Revisão de Contratos de Arrendamento (IFRS 16)</div>
+                            <div class="ai-sub">Da extração automática de cláusulas à geração do cronograma de amortização — sem intervenção humana.</div>
+                        </div>
+                    </div>
+                    <div class="ai-body">
+                        <p class="ai-body-text">Agentes LLM processam centenas de contratos PDF, extraem automaticamente taxa, prazo e índice, e alimentam o cálculo do passivo de arrendamento conforme IFRS 16 / CPC 06(R2). Este artigo demonstra a arquitetura end-to-end com LangGraph e GPT-4o, incluindo validação do cálculo pelo auditor.</p>
+                        <div class="ai-tags">
+                            <span class="ai-tag">IFRS 16</span><span class="ai-tag">LangGraph</span><span class="ai-tag">GPT-4o</span>
+                            <span class="ai-tag">CPC 06(R2)</span><span class="ai-tag">Extração de Dados</span><span class="ai-tag">Auditoria Automatizada</span>
+                        </div>
+                        <a class="ai-cta" href="biblioteca.html">Ler artigo completo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="vgrid" style="margin-top:1.375rem">
+                    <div class="art-v">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=600&auto=format&fit=crop" alt="NLP controles"></div>
+                        <span class="av-tag" style="background:rgba(124,58,237,.1);color:#7C3AED">IA · NLP</span>
+                        <div class="av-cat" style="color:#7C3AED">NBC TA 265 · Deficiências</div>
+                        <div class="av-ttl">NLP para Detecção Automática de Deficiências em Controles Internos</div>
+                        <div class="av-desc">Classificadores treinados em relatórios de auditoria identificam padrões de deficiências significativas com 87% de acurácia.</div>
+                        <div class="av-ft"><span>7 min</span><span>→ Ler</span></div>
+                    </div>
+                    <div class="art-v">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt="Python PECLD ECL"></div>
+                        <span class="av-tag" style="background:rgba(4,120,87,.1);color:#065F46">Python · ECL</span>
+                        <div class="av-cat" style="color:#065F46">IFRS 9 · CPC 48</div>
+                        <div class="av-ttl">Calculando a PECLD com ECL: Script Python para o Modelo de Perda Esperada</div>
+                        <div class="av-desc">Implementação completa do modelo ECL do IFRS 9 com estimativas de PD, LGD e EAD por safra de crédito.</div>
+                        <div class="av-ft"><span>10 min</span><span>→ Ler</span></div>
+                    </div>
+                    <div class="art-v">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop" alt="Regulação IA"></div>
+                        <span class="av-tag" style="background:rgba(29,78,216,.1);color:#1D4ED8">IA · Regulação</span>
+                        <div class="av-cat" style="color:#1D4ED8">CVM · IASB · IAASB</div>
+                        <div class="av-ttl">O que os Reguladores Dizem sobre IA em Auditoria: CVM, IASB e IAASB</div>
+                        <div class="av-desc">Análise comparada das posições regulatórias sobre uso de IA em auditoria e divulgação financeira.</div>
+                        <div class="av-ft"><span>8 min</span><span>→ Ler</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FERRAMENTAS COM PREVIEW -->
+            <section class="a3" data-topic="ferramentas" style="margin-bottom:3.25rem" aria-labelledby="ferramentas-heading">
+                <div class="sec-hd">
+                    <div class="sec-hd-l">
+                        <span class="sec-eye" id="ferramentas-heading"><i class="fas fa-tools"></i> Plataforma SGG</span>
+                        <span class="sec-ttl">Ferramentas em Destaque</span>
+                    </div>
+                    <a class="see-all" href="busca-e-conteudo.html">Ver todas <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tools-grid">
+                    <a href="circularizacao-bancos.html" class="tool-card">
+                        <div class="t-preview"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop" alt="Circularização bancos"><div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-envelope"></i> Circularização</span></div></div>
+                        <div class="t-info"><div class="tool-name">Gerador de Cartas de Circularização Bancária</div><div class="tool-desc">Gere, controle e exporte cartas de confirmação para bancos, clientes e advogados conforme NBC TA 505.</div><div class="tool-norms"><span class="tool-norm">NBC TA 505</span><span class="tool-norm">ISA 505</span></div></div>
+                    </a>
+                    <a href="arrendamento.html" class="tool-card">
+                        <div class="t-preview"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="IFRS 16 arrendamento"><div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-building"></i> IFRS 16</span></div></div>
+                        <div class="t-info"><div class="tool-name">Calculadora IFRS 16 — Passivo e Direito de Uso</div><div class="tool-desc">Tabela de amortização com VPL do passivo, ROU asset e lançamentos por período.</div><div class="tool-norms"><span class="tool-norm">IFRS 16</span><span class="tool-norm">CPC 06(R2)</span></div></div>
+                    </a>
+                    <a href="analise-contas-a-receber.html" class="tool-card">
+                        <div class="t-preview"><img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=800&auto=format&fit=crop" alt="Análise contas a receber"><div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-chart-bar"></i> Análise Financeira</span></div></div>
+                        <div class="t-info"><div class="tool-name">Teste de Auditoria — Contas a Receber e PECLD</div><div class="tool-desc">Aging report, análise de concentração e estimativa de perda esperada (ECL) conforme IFRS 9.</div><div class="tool-norms"><span class="tool-norm">CPC 48</span><span class="tool-norm">IFRS 9</span><span class="tool-norm">NBC TA 330</span></div></div>
+                    </a>
+                    <a href="indicadores-financeiros.html" class="tool-card">
+                        <div class="t-preview"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Indicadores financeiros"><div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-chart-line"></i> Indicadores</span></div></div>
+                        <div class="t-info"><div class="tool-name">Painel de Indicadores Financeiros</div><div class="tool-desc">Liquidez, rentabilidade, endividamento e eficiência — com alertas de desvio para procedimentos analíticos.</div><div class="tool-norms"><span class="tool-norm">NBC TA 520</span><span class="tool-norm">IFRS 7</span></div></div>
+                    </a>
+                    <a href="calculadora-juros-simples.html" class="tool-card">
+                        <div class="t-preview"><img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800&auto=format&fit=crop" alt="Calculadora juros"><div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-percent"></i> Financeiro</span></div></div>
+                        <div class="t-info"><div class="tool-name">Calculadora de Juros e Taxa Efetiva</div><div class="tool-desc">Recalcule encargos financeiros e verifique a taxa efetiva de contratos conforme CPC 08.</div><div class="tool-norms"><span class="tool-norm">CPC 08(R1)</span><span class="tool-norm">IFRS 9</span></div></div>
+                    </a>
+                    <a href="s-contigencias-teste-ifrc.html" class="tool-card">
+                        <div class="t-preview"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop" alt="Contingências CPC 25"><div class="t-prev-overlay"><span class="t-prev-cat"><i class="fas fa-gavel"></i> IFRS / CPC</span></div></div>
+                        <div class="t-info"><div class="tool-name">Teste de Provisões e Contingências</div><div class="tool-desc">Documente provisões fiscais, trabalhistas e cíveis. Classifique por probabilidade conforme CPC 25.</div><div class="tool-norms"><span class="tool-norm">CPC 25</span><span class="tool-norm">IAS 37</span></div></div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- PERÍCIA CONTÁBIL -->
+            <section class="a3" data-topic="pericia" style="margin-bottom:3.25rem" aria-labelledby="pericia-heading">
+                <div class="sec-hd" style="border-bottom-color:#991B1B">
+                    <div class="sec-hd-l">
+                        <span class="sec-eye" style="color:#991B1B" id="pericia-heading"><i class="fas fa-balance-scale"></i> Artigos Técnicos</span>
+                        <span class="sec-ttl">Perícia Contábil</span>
+                    </div>
+                    <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="vgrid">
+                    <div class="art-v">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1453945619913-79ec89a82c51?q=80&w=600&auto=format&fit=crop" alt="Laudo pericial"></div>
+                        <span class="av-tag" style="background:rgba(153,27,27,.1);color:#991B1B">NBC PP 01</span>
+                        <div class="av-ttl">Estrutura do Laudo Pericial: Requisitos e Armadilhas Comuns nas Impugnações</div>
+                        <div class="av-desc">NBC PP 01 detalha os elementos obrigatórios. Veja o que os peritos erram com mais frequência nos laudos contestados.</div>
+                        <div class="av-ft"><span>8 min · Fev 2026</span><span>→ Ler</span></div>
+                    </div>
+                    <div class="art-v">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Perícia trabalhista"></div>
+                        <span class="av-tag" style="background:rgba(180,83,9,.1);color:#B45309">Trabalhista · CLT</span>
+                        <div class="av-ttl">Quantificação de Danos em Perícia Trabalhista: Metodologia e Jurisprudência</div>
+                        <div class="av-desc">Como calcular verbas com reflexos, corrigir pelo TRCT e documentar o raciocínio pericial para resistir a contestações.</div>
+                        <div class="av-ft"><span>11 min · Jan 2026</span><span>→ Ler</span></div>
+                    </div>
+                    <div class="art-v">
+                        <div class="av-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&auto=format&fit=crop" alt="Perícia digital forense"></div>
+                        <span class="av-tag" style="background:rgba(29,78,216,.1);color:#1D4ED8">Forense · Digital</span>
+                        <div class="av-ttl">Perícia Contábil Digital: Evidências Eletrônicas e Cadeia de Custódia</div>
+                        <div class="av-desc">Hash, cadeia de custódia e conformidade com CPC/2015 e LGPD para perícias envolvendo provas eletrônicas.</div>
+                        <div class="av-ft"><span>9 min · Mar 2026</span><span>→ Ler</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GUIAS DE ESTUDO -->
+            <section class="a4" data-topic="guias" style="margin-bottom:3.25rem" aria-labelledby="guias-heading">
+                <div class="sec-hd">
+                    <div class="sec-hd-l">
+                        <span class="sec-eye" id="guias-heading"><i class="fas fa-graduation-cap"></i> Certificações &amp; Qualificação</span>
+                        <span class="sec-ttl">Guias de Estudo</span>
+                    </div>
+                    <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="guide-list">
+                    <a href="guia-qtg.html" class="g-item"><div class="g-num">01</div><div><div class="g-ttl">Guia Completo QTG — Qualificação Técnica em Auditoria Independente</div><div class="g-meta"><i class="fas fa-clock"></i> 6h · 12 módulos · CNAI</div></div><span class="g-badge badge-key">Essencial</span></a>
+                    <a href="guia-nbc-ta.html" class="g-item"><div class="g-num">02</div><div><div class="g-ttl">NBC TA Comentadas: do Planejamento ao Relatório</div><div class="g-meta"><i class="fas fa-clock"></i> 8h · 16 NBCs</div></div><span class="g-badge badge-pop">Popular</span></a>
+                    <a href="guia-ifrs-auditores.html" class="g-item"><div class="g-num">03</div><div><div class="g-ttl">IFRS para Auditores: CPC 01,03,06,25,27,48</div><div class="g-meta"><i class="fas fa-clock"></i> 5h · 200 questões</div></div><span class="g-badge badge-pop">Popular</span></a>
+                    <a href="exame-suficiencia.html" class="g-item"><div class="g-num">04</div><div><div class="g-ttl">Exame de Suficiência CFC — Acervo 2017–2025</div><div class="g-meta"><i class="fas fa-clock"></i> 4h · 18 edições</div></div><span class="g-badge badge-new">Novo</span></a>
+                    <a href="guia-data-analytics.html" class="g-item"><div class="g-num">05</div><div><div class="g-ttl">Data Analytics para Auditores: SQL, Python e ACL</div><div class="g-meta"><i class="fas fa-clock"></i> 10h · 5 projetos</div></div><span class="g-badge badge-new">Novo</span></a>
+                    <a href="guia-pericia.html" class="g-item"><div class="g-num">06</div><div><div class="g-ttl">NBC PP 01 a 05: Guia Prático para o Perito</div><div class="g-meta"><i class="fas fa-clock"></i> 3h · casos</div></div><span class="g-badge badge-key">Essencial</span></a>
+                </div>
+            </section>
+
+            <!-- CONTABILIDADE / IFRS -->
+            <section class="a4" data-topic="ifrs" style="margin-bottom:3.25rem" aria-labelledby="ifrs-heading">
+                <div class="sec-hd" style="border-bottom-color:#7C3AED">
+                    <div class="sec-hd-l">
+                        <span class="sec-eye" style="color:#7C3AED" id="ifrs-heading"><i class="fas fa-book-open"></i> Normas Vigentes</span>
+                        <span class="sec-ttl">Contabilidade &amp; IFRS</span>
+                    </div>
+                    <a class="see-all" href="biblioteca.html">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="art-h">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=600&auto=format&fit=crop" alt="IFRS sustentabilidade"></div>
+                    <div><div class="a-cat" style="color:#7C3AED">IFRS S1 & S2 · Sustentabilidade</div><div class="art-ttl">IFRS S1 e S2: Como Auditar Divulgações de Sustentabilidade e Clima</div><div class="art-exc">O IAASB emitiu o ISSA 5000. Entenda o que muda e a linha do tempo de adoção no Brasil.</div><div class="art-ft"><div class="art-meta"><i class="fas fa-clock"></i> 9 min · Mar 2026</div><span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span></div></div>
+                </div>
+                <div class="art-h">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=600&auto=format&fit=crop" alt="IFRS 15 receita"></div>
+                    <div><div class="a-cat" style="color:#065F46">CPC 47 · IFRS 15</div><div class="art-ttl">Receita Over-Time vs Point-in-Time: Testes de Auditoria</div><div class="art-exc">As cinco etapas do IFRS 15 geram diferentes riscos. Mapeamos os principais testes substantivos.</div><div class="art-ft"><div class="art-meta"><i class="fas fa-clock"></i> 12 min · Fev 2026</div><span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span></div></div>
+                </div>
+                <div class="art-h">
+                    <div class="a-thumb"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop" alt="IFRIC 23 tributário"></div>
+                    <div><div class="a-cat" style="color:#B45309">CPC 49 · IFRIC 23</div><div class="art-ttl">Incerteza Tributária (IFRIC 23): Quando Registrar e Como Divulgar</div><div class="art-exc">IFRIC 23 exige avaliação de probabilidade de posições fiscais incertas.</div><div class="art-ft"><div class="art-meta"><i class="fas fa-clock"></i> 10 min · Jan 2026</div><span class="art-arrow">Ler <i class="fas fa-arrow-right"></i></span></div></div>
+                </div>
+            </section>
+        </div><!-- /left feed -->
+
+        <!-- ── RIGHT SIDEBAR ── (CONTEÚDO COMPLETO PRESERVADO) -->
+        <aside class="sidebar">
+            <div class="sw">
+                <div class="sw-head"><span class="sw-title"><i class="fas fa-fire"></i> Em Alta Agora</span></div>
+                <div class="trend-list">
+                    <div class="trend-item"><div class="t-num">1</div><div><div class="t-ttl">IA Agêntica em Auditoria</div><div class="t-sub">NBC TA 330 · CAAT · LLM</div></div></div>
+                    <div class="trend-item"><div class="t-num">2</div><div><div class="t-ttl">NBC TA 600 Revisada</div><div class="t-sub">Auditoria de Grupos · ISA 600</div></div></div>
+                    <div class="trend-item"><div class="t-num">3</div><div><div class="t-ttl">IFRS S1 & S2 — ESG</div><div class="t-sub">Sustentabilidade · ISSA 5000</div></div></div>
+                    <div class="trend-item"><div class="t-num">4</div><div><div class="t-ttl">Reforma do IR 2026</div><div class="t-sub">Isenção R$ 5k · Salário Líquido</div></div></div>
+                    <div class="trend-item"><div class="t-num">5</div><div><div class="t-ttl">IPPF 2024 — Auditoria Interna</div><div class="t-sub">IIA · IPPF · COSO ERM</div></div></div>
+                </div>
+            </div>
+            <div class="sw">
+                <div class="sw-head"><span class="sw-title"><i class="fas fa-bolt"></i> Ferramentas Rápidas</span><a class="sw-link" href="busca-e-conteudo.html">Ver todas</a></div>
+                <div class="qt-list">
+                    <a href="circularizacao-bancos.html" class="qt-link"><div class="qt-icon"><i class="fas fa-envelope"></i></div><div><div class="qt-name">Circularização Bancos</div><div class="qt-norm">NBC TA 505</div></div><i class="fas fa-chevron-right qt-arr"></i></a>
+                    <a href="arrendamento.html" class="qt-link"><div class="qt-icon"><i class="fas fa-building"></i></div><div><div class="qt-name">IFRS 16 Arrendamento</div><div class="qt-norm">CPC 06(R2)</div></div><i class="fas fa-chevron-right qt-arr"></i></a>
+                    <a href="indicadores-financeiros.html" class="qt-link"><div class="qt-icon"><i class="fas fa-chart-bar"></i></div><div><div class="qt-name">Indicadores Financeiros</div><div class="qt-norm">NBC TA 520</div></div><i class="fas fa-chevron-right qt-arr"></i></a>
+                    <a href="salario-liquido.html" class="qt-link"><div class="qt-icon"><i class="fas fa-money-bill"></i></div><div><div class="qt-name">Salário Líquido 2026</div><div class="qt-norm">IN RFB 2.141/2023</div></div><i class="fas fa-chevron-right qt-arr"></i></a>
+                    <a href="moedas-bcb.html" class="qt-link"><div class="qt-icon"><i class="fas fa-globe"></i></div><div><div class="qt-name">Cotação Moedas BCB</div><div class="qt-norm">IAS 21 · PTAX</div></div><i class="fas fa-chevron-right qt-arr"></i></a>
+                    <a href="calculadora-juros-simples.html" class="qt-link"><div class="qt-icon"><i class="fas fa-percent"></i></div><div><div class="qt-name">Calculadora de Juros</div><div class="qt-norm">CPC 08(R1)</div></div><i class="fas fa-chevron-right qt-arr"></i></a>
+                    <a href="s-contigencias-teste-ifrc.html" class="qt-link"><div class="qt-icon"><i class="fas fa-gavel"></i></div><div><div class="qt-name">Contingências CPC 25</div><div class="qt-norm">IAS 37</div></div><i class="fas fa-chevron-right qt-arr"></i></a>
+                </div>
+            </div>
+            <div class="sw">
+                <div class="sw-head"><span class="sw-title"><i class="fas fa-gavel"></i> Normas Vigentes</span><a class="sw-link" href="biblioteca.html">Biblioteca</a></div>
+                <div class="norm-grid">
+                    <div class="n-cell"><div class="n-code">NBC TA 200–810</div><div class="n-name">Auditoria Externa</div></div>
+                    <div class="n-cell"><div class="n-code">IFRS 1–17</div><div class="n-name">Normas IASB</div></div>
+                    <div class="n-cell"><div class="n-code">CPC 01–47</div><div class="n-name">Pronunciamentos CPC</div></div>
+                    <div class="n-cell"><div class="n-code">NBC PP 01–05</div><div class="n-name">Perícia Contábil</div></div>
+                    <div class="n-cell"><div class="n-code">NBC PI 01</div><div class="n-name">Auditoria Interna</div></div>
+                    <div class="n-cell"><div class="n-code">IPPF 2024</div><div class="n-name">Padrões IIA</div></div>
+                    <div class="n-cell"><div class="n-code">ISSAI 100</div><div class="n-name">Auditoria Gov.</div></div>
+                    <div class="n-cell"><div class="n-code">ISSA 5000</div><div class="n-name">Sustentabilidade</div></div>
+                </div>
+            </div>
+            <div class="sw" data-topic="auditoria">
+                <div class="sw-head"><span class="sw-title"><i class="fas fa-search"></i> Auditoria Externa</span><a class="sw-link" href="biblioteca.html">Ver mais</a></div>
+                <div class="sw-arts">
+                    <div class="sw-art"><div class="sw-thumb"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=200&auto=format&fit=crop" alt=""></div><div><div class="sw-art-ttl">NBC TA 700: Formando a Opinião</div><div class="sw-art-meta">7 min</div></div></div>
+                    <div class="sw-art"><div class="sw-thumb"><img src="https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=200&auto=format&fit=crop" alt=""></div><div><div class="sw-art-ttl">Materialidade e Risco: NBC TA 320</div><div class="sw-art-meta">9 min</div></div></div>
+                    <div class="sw-art"><div class="sw-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=200&auto=format&fit=crop" alt=""></div><div><div class="sw-art-ttl">Papéis de Trabalho Digitais</div><div class="sw-art-meta">8 min</div></div></div>
+                </div>
+            </div>
+            <div class="nl-box">
+                <div class="nl-eye">Digest Semanal</div>
+                <div class="nl-ttl">Auditoria & Contabilidade em 5 minutos</div>
+                <div class="nl-sub">Atualizações normativas, artigos e novas ferramentas — toda semana, grátis.</div>
+                <input class="nl-inp" type="email" placeholder="seu@email.com.br" id="nl-email" aria-label="Seu e-mail para assinar newsletter">
+                <button class="nl-btn" onclick="nlSubscribe()" aria-label="Assinar newsletter"><i class="fas fa-paper-plane" style="margin-right:.35rem"></i>Assinar Grátis</button>
+                <div id="nl-ok" role="status">✅ Perfeito! Confirme seu e-mail para ativar.</div>
+            </div>
+        </aside>
+    </main><!-- /main-wrap -->
+
+    <!-- CTA BAND -->
+    <section class="cta-band" aria-label="Chamada para ferramentas gratuitas">
+        <div class="cta-inner">
+            <div>
+                <div class="cta-eye">Plataforma Aberta</div>
+                <div class="cta-ttl">Ferramentas Gratuitas<br>Baseadas em Normas Reais.</div>
+                <p class="cta-sub">Sem cadastro. Sem custo. Conteúdo prático desenvolvido por auditores, para auditores e contadores.</p>
+            </div>
+            <div class="cta-btns">
+                <button class="btn-gold" onclick="location.href='busca-e-conteudo.html'"><i class="fas fa-tools"></i> Explorar Ferramentas</button>
+                <button class="btn-ghost" onclick="location.href='biblioteca.html'"><i class="fas fa-book"></i> Biblioteca Técnica</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER MODULAR -->
+    <div id="footer-placeholder" class="no-print"></div>
+    <!-- MODAIS (ex.: cookie consent) -->
+    <div id="modals-placeholder"></div>
+
+    <!-- SCROLL TOP -->
+    <button id="scroll-top" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- SCRIPTS MODULARES -->
+    <script src="https://auditeduca.com.br/assets/js/template-engine.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/utils.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/header.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/footer.js"></script>
+    <script src="https://auditeduca.com.br/assets/js/accessibility-api.js"></script>
+
+    <script>
+        (function(){
+            'use strict';
+
+            // --- DETECTA AMBIENTE LOCAL (file://) E INJETA FALLBACK NOS PLACEHOLDERS ---
+            if (window.location.protocol === 'file:') {
+                console.warn('🌍 Ambiente local detectado. Injetando fallback de header/footer.');
+
+                // Fallback para header-placeholder
+                const headerPlaceholder = document.getElementById('header-placeholder');
+                if (headerPlaceholder && !headerPlaceholder.innerHTML.trim()) {
+                    headerPlaceholder.innerHTML = `
+                        <header class="fallback-header">
+                            <img src="https://auditeduca.com.br/assets/images/logo-auditeduca.svg" alt="AuditEduca" style="height:32px;">
+                            <nav>
+                                <a href="biblioteca.html">Biblioteca</a>
+                                <a href="busca-e-conteudo.html">Ferramentas</a>
+                                <a href="sobre.html">Sobre</a>
+                            </nav>
+                        </header>
+                    `;
+                }
+
+                // Fallback para footer-placeholder
+                const footerPlaceholder = document.getElementById('footer-placeholder');
+                if (footerPlaceholder && !footerPlaceholder.innerHTML.trim()) {
+                    footerPlaceholder.innerHTML = `
+                        <footer class="fallback-footer">
+                            <p>© 2026 AuditEduca. Todos os direitos reservados.</p>
+                            <p style="margin-top:0.5rem; font-size:0.8rem;">
+                                <a href="privacidade.html" style="color:#C9A84C;">Política de Privacidade</a> | 
+                                <a href="termos.html" style="color:#C9A84C;">Termos de Uso</a>
+                            </p>
+                        </footer>
+                    `;
+                }
+
+                // Para evitar que o HeaderManager fique tentando se conectar indefinidamente,
+                // podemos definir um pequeno timeout e então limpar o console (opcional)
+                // Mas o mais importante é que o header já tem conteúdo.
+            }
+
+            // --- DATA ATUAL NO TICKER ---
+            const d = document.getElementById('ae-date');
+            if(d) d.textContent = new Date().toLocaleDateString('pt-BR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+            // --- FILTROS DA DATEBAR ---
+            window.dbFilter = function(el, topic){
+                document.querySelectorAll('.db-tag').forEach(t=>{t.className='db-tag off';});
+                el.className='db-tag on';
+                topicFilter(null, topic, true);
+            };
+
+            // --- FILTROS DOS CHIPS DE TÓPICO ---
+            window.topicFilter = function(btn, topic, fromDatebar){
+                if(!fromDatebar){
+                    document.querySelectorAll('.t-chip').forEach(c=>c.classList.remove('on'));
+                    if(btn) btn.classList.add('on');
+                }
+                document.querySelectorAll('[data-topic]').forEach(s=>{
+                    s.style.display = (topic==='all' || s.dataset.topic===topic) ? '' : 'none';
+                });
+            };
+
+            // --- SCROLL TOP ---
+            const st = document.getElementById('scroll-top');
+            window.addEventListener('scroll', () => st.classList.toggle('vis', scrollY > 450), {passive: true});
+            st?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+            // --- NEWSLETTER ---
+            window.nlSubscribe = function(){
+                const v = document.getElementById('nl-email');
+                if(!v) return;
+                const email = v.value.trim();
+                if(!email || !email.includes('@')){
+                    alert('Informe um e-mail válido.');
+                    return;
+                }
+                const ok = document.getElementById('nl-ok');
+                if(ok) ok.style.display = 'block';
+                v.value = '';
+            };
+
+            // --- INICIALIZA ACCESSIBILITY API ---
+            if (window.AccessControl) {
+                window.AccessControl.init();
+            }
+        })();
+    </script>
+</body>
+</html>
