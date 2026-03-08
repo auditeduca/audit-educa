@@ -27,7 +27,29 @@
     <!-- Favicon Oficial -->
     <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
 
-    <!-- CSS Modulares Audit Educa -->
+    <!-- TAILWIND CSS (ESSENCIAL para as classes utilitárias) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        mono: ['DM Mono', 'monospace'],
+                    },
+                    colors: {
+                        'audit-gold': '#C9A84C',
+                        'audit-navy': '#0C1B33',
+                        'audit-blue': '#1E40AF',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS Modulares Audit Educa (complementam o Tailwind) -->
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
     <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
