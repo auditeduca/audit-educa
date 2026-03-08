@@ -72,24 +72,62 @@
   },
   {
     "number": 4,
-    "text": "A empresa VGF S.A. tomou um empréstimo bancário de R$ 14.560,00 para financiar a compra de equipamentos. O contrato\nde empréstimo estabelece que o valor tomado deve ser liquidado por meio de uma série postecipada de 3 pagamentos\nmensais, iguais e sucessivos. O regime de capitalização adotado é o de juros compostos, à taxa de 20% ao mês.\nConsiderando essas informações, é correto afirmar que o valor das prestações mensais será de",
+    "text": "Em 2023, uma universidade tradicional que, até então, só ofertava cursos presenciais de graduação, resolveu se arriscar em um novo projeto. Tratava-se da abertura de seu primeiro curso 100% à distância a ser disponibilizado ao mercado. Para tal, ainda em 2023, foram investidos R$ 100.000,00 para a estruturação do referido curso.\nAlém disso, foram estimadas despesas e receitas anuais conforme dados apresentados na sequência:",
+    "table": {
+      "headers": [
+        "Ano",
+        "Receitas",
+        "Despesas"
+      ],
+      "rows": [
+        [
+          "2024",
+          "R$ 50.000,00",
+          "R$ 35.000,00"
+        ],
+        [
+          "2025",
+          "R$ 65.000,00",
+          "R$ 30.000,00"
+        ],
+        [
+          "2026",
+          "R$ 80.000,00",
+          "R$ 30.000,00"
+        ],
+        [
+          "2027",
+          "R$ 90.000,00",
+          "R$ 20.000,00"
+        ],
+        [
+          "2028",
+          "R$ 90.000,00",
+          "R$ 20.000,00"
+        ]
+      ]
+    },
+    "question_text": "Considerando as informações apresentadas, é possível determinar que o *payback* simples ocorreu em",
     "options": [
       {
         "letter": "A",
-        "text": "R$ 4.853,33."
+        "text": "2025."
       },
       {
         "letter": "B",
-        "text": "R$ 6.400,00."
+        "text": "2026."
       },
       {
         "letter": "C",
-        "text": "R$ 6.912,00."
+        "text": "2027."
       },
       {
         "letter": "D",
-        "text": "R$ 7.280,00."
+        "text": "2028."
       }
+    ],
+    "type": "objetiva"
+  }
     ],
     "type": "objetiva"
   },
