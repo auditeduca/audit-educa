@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guia e Acervo de Provas do Exame de Suficiência. Conteúdo programático, gabaritos oficiais e simulados.">
+    <title>Exame de Suficiência | Acervo Audit Educa</title>
+    
+    <!-- Fontes Oficiais Audit Educa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+
+    <!-- CSS Modulares Audit Educa -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+
+    <!-- Ícones e Gráficos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://unpkg.com/lucide@0.412.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Bibliotecas para PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Tailwind CSS (latest) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        mono: ['DM Mono', 'monospace'],
+                    },
+                    colors: {
+                        'audit-gold': '#C9A84C',
+                        'audit-navy': '#0C1B33',
+                        'audit-blue': '#1E40AF',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ========== CSS VARS OFICIAIS ========== */
+        :root {
+            --navy:#0C1B33; --navy2:#162843; --navy3:#1E3A5F;
+            --gold:#C9A84C; --gold-lt:#E2C87A; --gold-d:rgba(201,168,76,.12); --gold-b:rgba(201,168,76,.25);
+            --bg:#F8F7F4; --bg2:#F2F0EC; --white:#FFFFFF;
+            --border:#E0DDD8; --border2:#CCC9C2;
+            --th:#0C1B33; --t:#2D3748; --t2:#6B7280; --t3:#9CA3AF;
+            --r:4px; --ease:cubic-bezier(.4,0,.2,1);
+            --fs:'Cormorant Garamond',Georgia,serif;
+            --fn:'DM Sans',system-ui,sans-serif;
+            --fm:'DM Mono',monospace;
+        }
+
+        /* ========== ESTILOS GLOBAIS ========== */
+        body { 
+            font-family: var(--fn);
+            background-color: var(--bg);
+            color: var(--t);
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark body { 
+            background-color: #020617;
+        }
+
+        /* ── DATEBAR ── */
+        .datebar { background: var(--navy); border-bottom: 1px solid rgba(201,168,76,.18); padding: .42rem 0; }
+        .db-in { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        .db-l { display: flex; align-items: center; gap: .9rem; font-size: .65rem; font-weight: 500; color: rgba(255,255,255,.38); letter-spacing: .03em; }
+        .db-l b { color: var(--gold); font-weight: 700; }
+        .db-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.18); display: inline-block; }
+        .db-back { display: inline-flex; align-items: center; gap: .38rem; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); text-decoration: none; transition: color .2s; }
+        .db-back:hover { color: var(--gold); }
+        .db-inscrição { display: inline-flex; align-items: center; gap: .4rem; font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--gold); color: var(--navy); padding: .2rem .7rem; border-radius: 3px; text-decoration: none; transition: opacity .2s; }
+        .db-inscrição:hover { opacity: .85; }
+        .db-inscrição-badge { font-size: .55rem; font-weight: 700; letter-spacing: .08em; background: rgba(201,168,76,.2); border: 1px solid rgba(201,168,76,.35); color: var(--gold); padding: .12rem .5rem; border-radius: 2px; text-transform: uppercase; animation: pulse-badge 2s infinite; }
+        @keyframes pulse-badge { 0%,100%{opacity:1} 50%{opacity:.6} }
+
+        /* ── GOLD RULE ── */
+        .gr { height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-lt) 45%, transparent); }
+
+        /* ── HERO ── */
+        .hero { background: var(--white); border-bottom: 1px solid var(--border); }
+        .hero-in { max-width: 1300px; margin: 0 auto; padding: 2.75rem 1.5rem 2.5rem; display: grid; grid-template-columns: 1fr 360px; gap: 3rem; align-items: start; }
+        @media(max-width:1100px) { .hero-in { grid-template-columns: 1fr; } .lcard { display: none; } }
+        .hero-eye { font-size: .58rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; display: flex; align-items: center; gap: .45rem; }
+        .hero-eye::before { content: ''; display: block; width: 1.5rem; height: 1px; background: var(--gold); }
+        .hero-h1 { font-family: var(--fs); font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 700; color: var(--th); line-height: 1.1; margin-bottom: .75rem; }
+        .hero-h1 em { font-style: italic; color: var(--gold); }
+        .hero-p { font-size: .97rem; color: var(--t2); font-weight: 300; line-height: 1.78; max-width: 580px; margin-bottom: 1.375rem; }
+        .hero-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 1.375rem; }
+        @media(max-width:600px) { .hero-kpis { grid-template-columns: repeat(2,1fr); } }
+        .kpi { background: var(--white); padding: .875rem 1rem; }
+        .kpi-v { font-family: var(--fs); font-size: 1.9rem; font-weight: 700; color: var(--th); line-height: 1; }
+        .kpi-l { font-size: .62rem; font-weight: 600; color: var(--t3); letter-spacing: .04em; margin-top: .18rem; }
+        .hero-acts { display: flex; gap: .55rem; flex-wrap: wrap; }
+
+        /* ── LATEST CARD ── */
+        .lcard { background: var(--navy); border-radius: var(--r); overflow: hidden; }
+        .lc-bar { height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-lt)); }
+        .lc-body { padding: 1.5rem; }
+        .lc-badge { display: inline-flex; align-items: center; gap: .32rem; font-size: .57rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(201,168,76,.14); border: 1px solid rgba(201,168,76,.28); color: var(--gold); padding: .2rem .6rem; border-radius: 2px; margin-bottom: .875rem; }
+        .lc-yr { font-family: var(--fs); font-size: 2.1rem; font-weight: 700; color: white; line-height: 1.1; margin-bottom: .25rem; }
+        .lc-sub { font-size: .76rem; color: rgba(255,255,255,.4); margin-bottom: 1.25rem; }
+        .lc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.25rem; }
+        .lci-lbl { font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.32); margin-bottom: .2rem; }
+        .lci-v { font-size: .88rem; font-weight: 600; color: white; }
+        .lc-div { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 1.125rem; }
+        .lc-tags { display: flex; flex-wrap: wrap; gap: .28rem; margin-bottom: 1.125rem; }
+        .lc-tag { font-size: .58rem; font-weight: 600; padding: .16rem .45rem; background: rgba(255,255,255,.07); border-radius: 2px; color: rgba(255,255,255,.5); }
+        .lc-btns { display: flex; gap: .45rem; }
+
+        /* ── BTN SYSTEM (oficial) ── */
+        .ae-btn { display: inline-flex; align-items: center; justify-content: center; gap: .42rem; font-size: .71rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .6rem 1.25rem; border-radius: var(--r); border: none; transition: all .2s; cursor: pointer; text-decoration: none; white-space: nowrap; }
+        .ae-btn-navy { background: var(--navy); color: var(--gold); }
+        .ae-btn-navy:hover { background: var(--navy2); }
+        .ae-btn-gold { background: var(--gold); color: var(--navy); }
+        .ae-btn-gold:hover { background: var(--gold-lt); }
+        .ae-btn-ghost { background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.14); }
+        .ae-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+        .ae-btn-outline { background: transparent; color: var(--t2); border: 1px solid var(--border2); }
+        .ae-btn-outline:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-d); }
+
+        /* ── SOBRE GRID ── */
+        .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 2.5rem; }
+        @media(max-width:768px) { .sobre-grid { grid-template-columns: 1fr; } .tl-wrap { grid-template-columns: 1fr !important; } }
+        .sg { background: var(--white); padding: 1.25rem; }
+        .sg-icon { width: 36px; height: 36px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: .9rem; margin-bottom: .65rem; }
+        .sg-t { font-family: var(--fs); font-size: 1rem; font-weight: 700; color: var(--th); margin-bottom: .45rem; }
+        .sg-p { font-size: .82rem; color: var(--t2); line-height: 1.68; font-weight: 300; }
+        .sg-p strong { color: var(--th); font-weight: 600; }
+
+        /* ── SECTION HEADER ── */
+        .sh { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+        .sh-l { display: flex; flex-direction: column; gap: .28rem; }
+        .sh-eye { font-size: .58rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: .38rem; }
+        .sh-t { font-family: var(--fs); font-size: 1.35rem; font-weight: 700; color: var(--th); }
+
+        /* ── TIMELINE (Roteiro) ── */
+        .timeline { display: flex; flex-direction: column; gap: 0; }
+        .tl-item { display: flex; gap: 1rem; padding: .875rem 0; border-bottom: 1px solid var(--border); position: relative; }
+        .tl-item:last-child { border-bottom: none; }
+        .tl-dot-wrap { display: flex; flex-direction: column; align-items: center; width: 24px; flex-shrink: 0; }
+        .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--gold); flex-shrink: 0; margin-top: .28rem; }
+        .tl-line { flex: 1; width: 1px; background: var(--border); margin-top: .3rem; }
+        .tl-item:last-child .tl-line { display: none; }
+        .tl-body { flex: 1; }
+        .tl-step { font-size: .59rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .18rem; }
+        .tl-t { font-weight: 600; color: var(--th); font-size: .88rem; margin-bottom: .18rem; }
+        .tl-p { font-size: .79rem; color: var(--t2); font-weight: 300; line-height: 1.62; }
+
+        /* ── CALENDÁRIO / PLANO ── */
+        .cal-section { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem 0; }
+        .cal-in { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
+        .cal-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-top: 1.75rem; }
+        @media(max-width:1100px) { .cal-grid { grid-template-columns: 1fr 1fr; } }
+        @media(max-width:640px) { .cal-grid { grid-template-columns: 1fr; } }
+        .cal-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+        .cal-card-head { background: var(--navy); padding: .6rem .875rem; display: flex; align-items: center; gap: .4rem; }
+        .cal-card-head-t { font-size: .59rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+        .cal-card-head-t i { color: var(--gold); }
+        .cal-card-body { padding: .875rem 0; }
+        .cal-row { display: flex; align-items: flex-start; justify-content: space-between; padding: .42rem .875rem; border-bottom: 1px solid var(--border); font-size: .78rem; }
+        .cal-row:last-child { border-bottom: none; }
+        .cal-row-l { color: var(--t2); font-weight: 400; }
+        .cal-row-v { font-family: var(--fm); font-size: .72rem; font-weight: 500; color: var(--th); text-align: right; }
+        .cal-row.done .cal-row-l { text-decoration: line-through; color: var(--t3); }
+        .cal-row.done .cal-row-v { color: var(--t3); }
+        .cal-row.highlight { background: var(--gold-d); }
+        .cal-row.highlight .cal-row-l { font-weight: 600; color: var(--th); }
+
+        /* Countdown */
+        .countdown-wrap { background: var(--navy); border-radius: var(--r); padding: 1.75rem 1.5rem; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+        .countdown-wrap::before { content: ''; position: absolute; right: 0; top: 0; width: 300px; height: 100%; background: radial-gradient(ellipse at right, rgba(201,168,76,.07), transparent 60%); pointer-events: none; }
+        .countdown-days { font-family: var(--fs); font-size: 4.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+        .countdown-label { font-size: .65rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-top: .25rem; }
+        .countdown-info { display: flex; flex-direction: column; gap: .35rem; }
+        .countdown-title { font-family: var(--fs); font-size: 1.25rem; font-weight: 700; color: white; line-height: 1.2; }
+        .countdown-sub { font-size: .8rem; color: rgba(255,255,255,.38); font-weight: 300; }
+        .countdown-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .5rem; }
+        .countdown-meta span { font-size: .63rem; font-weight: 600; color: rgba(255,255,255,.35); display: flex; align-items: center; gap: .3rem; }
+        .countdown-meta span i { color: var(--gold); }
+
+        /* Semanas timeline */
+        .semanas-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+        @media(max-width:640px) { .semanas-grid { grid-template-columns: 1fr; } }
+        .sem-item { background: var(--white); padding: .75rem 1rem; display: flex; gap: .75rem; align-items: flex-start; }
+        .sem-n { font-family: var(--fm); font-size: .6rem; font-weight: 700; color: var(--gold); flex-shrink: 0; margin-top: .1rem; }
+        .sem-t { font-size: .78rem; font-weight: 600; color: var(--th); line-height: 1.3; }
+        .sem-p { font-size: .72rem; color: var(--t2); font-weight: 300; margin-top: .12rem; }
+
+        /* Peso bars */
+        .peso-item { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
+        .peso-lbl { font-size: .74rem; font-weight: 500; color: var(--t); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .peso-bar-bg { flex: 2; height: 7px; background: var(--bg2); border-radius: 100px; overflow: hidden; }
+        .peso-bar-fill { height: 100%; background: linear-gradient(90deg, var(--navy), var(--navy3)); border-radius: 100px; transition: width .7s var(--ease); }
+        .peso-val { font-family: var(--fm); font-size: .68rem; font-weight: 600; color: var(--th); width: 34px; text-align: right; }
+
+        /* Barra Lateral Esquerda (mantida) */
+        .sidebar-left-tools {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 1000; padding: 10px 0;
+        }
+        .tool-btn {
+            @apply bg-white text-audit-navy border border-slate-200 border-l-0 w-[54px] h-[54px] rounded-r-2xl flex flex-col items-center justify-center cursor-pointer shadow-lg transition-all duration-300 relative outline-none;
+        }
+        .tool-btn:hover { width: 65px; @apply bg-audit-navy text-audit-gold; padding-left: 5px; }
+        .btn-label {
+            display: none; position: absolute; left: 60px; background: #0f172a; color: white;
+            padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            white-space: nowrap; pointer-events: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tool-btn:hover .btn-label { display: block; animation: fadeIn 0.2s ease-out; }
+        .badge-count {
+            position: absolute; top: 4px; right: 4px; background: #C5A059; color: #fff; font-size: 9px;
+            font-weight: 900; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* ── PRELOADER ── */
+        #preloader { position: fixed; inset: 0; background: #0f172a; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity .6s; }
+        #preloader.gone { opacity: 0; pointer-events: none; }
+        .spinner { width: 44px; height: 44px; border: 3px solid rgba(197,160,89,.2); border-top-color: #C5A059; border-radius: 50%; animation: spin .8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── SKIP NAV ── */
+        .skip-nav { position: absolute; top: -100px; left: 1rem; padding: .5rem 1rem; background: #C5A059; color: #0f172a; font-weight: 700; font-size: .85rem; border-radius: 6px; z-index: 99998; transition: top .2s; }
+        .skip-nav:focus { top: 1rem; }
+
+        /* ── SCROLL TOP ── */
+        #scroll-top { position: fixed; bottom: 5rem; right: 1.5rem; z-index: 498; width: 38px; height: 38px; background: #0f172a; border: 1px solid rgba(197,160,89,.3); border-radius: 8px; color: #C5A059; font-size: .7rem; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(8px); transition: all .25s; pointer-events: none; }
+        #scroll-top.vis { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        #scroll-top:hover { background: #C5A059; color: #0f172a; }
+        @media (max-width:768px) { #scroll-top { bottom: 5.5rem; right: .75rem; } }
+
+        /* ── TOAST ── */
+        #toast-el { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(10px); background: #0f172a; color: white; padding: .65rem 1.25rem; border-radius: 8px; font-size: .78rem; font-weight: 600; z-index: 9998; border-left: 3px solid #C5A059; box-shadow: 0 4px 20px rgba(0,0,0,.4); display: flex; align-items: center; gap: .5rem; pointer-events: none; opacity: 0; transition: opacity .3s, transform .3s; white-space: nowrap; }
+        #toast-el.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* ── HP 12C DRAWER ── */
+        #hp12c-drawer { position: fixed; top: 0; right: 0; height: 100%; width: 320px; max-width: 95vw; background: #1a1a2e; z-index: 1200; transform: translateX(110%); transition: transform .4s cubic-bezier(.4,0,.2,1); border-left: 2px solid rgba(197,160,89,.2); box-shadow: -20px 0 60px rgba(0,0,0,.5); display: flex; flex-direction: column; overflow-y: auto; }
+        #hp12c-drawer.open { transform: translateX(0); }
+        #hp12c-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 1199; opacity: 0; pointer-events: none; transition: opacity .3s; }
+        #hp12c-overlay.open { opacity: 1; pointer-events: auto; }
+        .hp-disp { background: #0a1628; border: 1px solid rgba(197,160,89,.2); border-radius: 8px; padding: 10px 14px; margin: 0 12px 8px; font-family: 'JetBrains Mono','Courier New',monospace; }
+        .hp-stack-row { display: flex; justify-content: space-between; font-size: 8.5px; color: rgba(197,160,89,.35); margin-bottom: 2px; letter-spacing: .03em; }
+        .hp-main-val { font-size: 24px; color: #e8d080; text-align: right; font-weight: 300; min-height: 32px; overflow: hidden; text-overflow: ellipsis; }
+        .hp-flags { display: flex; gap: 6px; margin-top: 4px; }
+        .hp-flag { font-size: 7.5px; font-weight: 700; letter-spacing: .1em; padding: 1px 5px; border-radius: 2px; background: rgba(197,160,89,.08); color: rgba(197,160,89,.3); }
+        .hp-flag.on { background: rgba(197,160,89,.18); color: #C5A059; }
+        .hp-btn-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; padding: 0 12px 12px; }
+        .hk { border: none; border-radius: 5px; cursor: pointer; padding: 0; height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; transition: all .1s; position: relative; line-height: 1.1; user-select: none; }
+        .hk-main { font-size: 9.5px; font-weight: 700; font-family: 'Inter',sans-serif; letter-spacing: .01em; }
+        .hk-sub { font-size: 7px; font-weight: 500; opacity: .5; }
+        .hk:active { transform: scale(.9); filter: brightness(.75); }
+        .hk-tvm { background: #7c3f0e; color: #ffd166; }
+        .hk-tvm:hover { background: #9c5212; }
+        .hk-num { background: #252d3a; color: #dde3ed; }
+        .hk-num:hover { background: #323d4f; }
+        .hk-op  { background: #1a3050; color: #90cdf4; }
+        .hk-op:hover  { background: #243e68; }
+        .hk-fn  { background: #163327; color: #68d391; }
+        .hk-fn:hover  { background: #1e4534; }
+        .hk-enter { background: #C5A059; color: #0f172a; font-size: 10px !important; }
+        .hk-enter:hover { background: #d4b26a; }
+        .hk-clx { background: #7f1d1d; color: #fc8181; }
+        .hk-clx:hover { background: #991b1b; }
+        .hk-wide { grid-column: span 2; height: 40px; }
+        .hp-mem-row { display: flex; justify-content: space-between; padding: 0 12px 8px; gap: 4px; }
+        .hp-mem-cell { flex: 1; text-align: center; }
+        .hp-mem-v { font-family: 'JetBrains Mono',monospace; font-size: 8px; color: rgba(197,160,89,.5); background: rgba(10,22,40,.5); border-radius: 4px; padding: 3px; }
+        .hp-mem-l { font-size: 7px; color: rgba(255,255,255,.22); }
+
+        /* Capas A4 (mantidas) */
+        .exam-page-cover {
+            aspect-ratio: 1 / 1.414;
+            background: #ffffff;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            @apply shadow-sm border border-slate-200 flex flex-col overflow-hidden;
+        }
+        .exam-page-cover:hover {
+            transform: translateY(-8px);
+            @apply shadow-2xl border-audit-gold;
+        }
+        .cover-frame {
+            position: absolute; inset: 12px; border: 1px solid #e2e8f0; pointer-events: none; z-index: 1;
+        }
+        .cover-frame::after {
+            content: ''; position: absolute; inset: 3px; border: 1px solid #f1f5f9;
+        }
+        .exam-page-cover:hover .cover-frame { border-color: rgba(197, 160, 89, 0.4); }
+        .svg-texture {
+            position: absolute; inset: 0; opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            z-index: 0; pointer-events: none;
+        }
+        .card-actions-top { position: absolute; top: 20px; right: 20px; display: flex; gap: 8px; z-index: 20; }
+        .card-btn-icon {
+            @apply text-slate-400 hover:text-audit-navy transition-colors bg-white/90 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center border border-slate-100 shadow-sm cursor-pointer;
+        }
+        .card-btn-icon.active-save { @apply text-audit-gold border-audit-gold; }
+        .card-btn-icon.active-cart { @apply text-audit-blue border-audit-blue; }
+        .btn-download-premium {
+            @apply flex-1 bg-audit-navy text-white text-[8px] sm:text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-800 transition-all border-t border-white/5;
+        }
+        .btn-view-premium {
+            @apply flex-1 bg-white text-audit-navy text-[8px] sm:text-[9px] font-black uppercase tracking-widest py-3 flex items-center justify-center gap-2 hover:bg-slate-50 transition-all border-r border-slate-100;
+        }
+
+        /* ========== ESTILOS DO VISUALIZADOR PREMIUM ========== */
+        #preview-modal {
+            z-index: 9000;
+            transition: opacity 0.3s ease;
+        }
+        .preview-paper {
+            background-color: #ffffff !important;
+            @apply shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] w-full mx-auto relative border border-slate-300 overflow-hidden rounded-sm;
+            max-width: 850px; min-height: 1000px;
+            transition: font-size 0.2s;
+        }
+        .dark .preview-paper { background-color: #0f172a !important; border-color: #1e293b; }
+
+        /* Ferramentas de Estudo */
+        .study-tools-panel {
+            background: #f9fafb;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .dark .study-tools-panel {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        .highlight-color-btn {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 0.25rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .highlight-color-btn.selected {
+            border-color: #0f172a;
+            transform: scale(1.1);
+        }
+        .comment-item, .note-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .dark .comment-item, .dark .note-item {
+            background: #0f172a;
+            border-color: #334155;
+        }
+        .note-item {
+            border-left-width: 4px;
+        }
+        .highlight-item {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        /* Glossário Modal */
+        .glossary-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .glossary-modal.show {
+            display: flex;
+        }
+        .glossary-content {
+            background: white;
+            border-radius: 1rem;
+            max-width: 48rem;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .dark .glossary-content {
+            background: #0f172a;
+            border: 1px solid #334155;
+        }
+
+        /* Impressão */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #preview-modal, #preview-modal * {
+                visibility: visible;
+            }
+            #preview-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: auto;
+                background: white;
+                overflow: visible;
+            }
+            #paper-container {
+                box-shadow: none;
+                border: none;
+                max-width: 100%;
+                margin: 0;
+                padding: 1cm;
+                transform: none !important;
+            }
+            #preview-modal header,
+            #pdf-sidebar,
+            .study-tools-panel,
+            .fixed,
+            .sticky,
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* ========== MOBILE ========== */
+        @media (max-width: 768px) {
+            .sidebar-left-tools { top: auto; bottom: 0; left: 0; width: 100%; height: 60px; flex-direction: row; transform: none; justify-content: space-around; background: white; border-top: 1px solid #e2e8f0; border-radius: 0; }
+            .tool-btn { border: none; width: auto; height: 100%; flex: 1; border-radius: 0; box-shadow: none; }
+            .btn-label { display: block; position: static; background: transparent; color: currentColor; font-size: 8px; padding: 0; box-shadow: none; margin-top: 2px;}
+            .badge-count { top: 6px; right: 50%; transform: translateX(15px); width: 14px; height: 14px; font-size: 8px; }
+            body { padding-bottom: 70px; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- PRELOADER -->
+    <div id="preloader" aria-hidden="true"><div class="spinner"></div></div>
+
+    <!-- SKIP NAVIGATION (Acessibilidade WCAG 2.1) -->
+    <a class="skip-nav" href="#main-content">Ir ao conteúdo principal</a>
+
+    <!-- CABEÇALHO MODULAR -->
+    <div id="header-placeholder" class="no-print" role="banner"></div>
+
+    <!-- ALERT BANNER INSCRIÇÕES (sticky datebar) -->
+    <div class="datebar no-print" role="complementary" aria-label="Informações do exame">
+        <div class="db-in">
+            <div class="db-l">
+                <b id="ae-date"></b>
+                <span class="db-dot" aria-hidden="true"></span>
+                <span>Exame de Suficiência CFC</span>
+                <span class="db-dot" aria-hidden="true"></span>
+                <span class="db-inscrição-badge">Inscrições Abertas</span>
+                <span>CFC 1/2026 · Prova: 13/07/2026</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:.6rem;">
+                <a href="simulado-exame-suficiencia.html" class="db-back"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Simulado</a>
+                <a href="https://examecfc.cev.com.br" target="_blank" rel="noopener" class="db-inscrição" aria-label="Inscreva-se no Exame de Suficiência CFC 1/2026"><i class="fas fa-arrow-right" aria-hidden="true"></i> Inscreva-se</a>
+            </div>
+        </div>
+    </div>
+    <div class="gr no-print" aria-hidden="true"></div>
+
+    <!-- BARRA LATERAL DE FERRAMENTAS -->
+    <aside class="sidebar-left-tools no-print">
+        <button class="tool-btn" onclick="document.getElementById('acervo').scrollIntoView({behavior:'smooth'})" title="Acervo">
+            <i class="fas fa-book"></i>
+            <span class="btn-label">Provas</span>
+        </button>
+        <button class="tool-btn" onclick="document.getElementById('edital-section').scrollIntoView({behavior:'smooth'})" title="Edital">
+            <i class="fas fa-file-alt"></i>
+            <span class="btn-label">Edital</span>
+        </button>
+        <button class="tool-btn" onclick="window.open('simulado-exame-suficiencia.html','_blank')" title="Simulado">
+            <i class="fas fa-pencil-alt"></i>
+            <span class="btn-label">Simulado</span>
+        </button>
+        <button class="tool-btn" onclick="showToast('Visualizando Provas Salvas...')" title="Provas Salvas">
+            <i class="fas fa-bookmark"></i>
+            <span class="btn-label">Salvos</span>
+            <span id="save-badge" class="badge-count hidden" style="background: #1e40af;">0</span>
+        </button>
+        <button class="tool-btn" onclick="openGlossaryModal()" title="Glossário" aria-label="Abrir glossário financeiro">
+            <i class="fas fa-book-open"></i>
+            <span class="btn-label">Glossário</span>
+        </button>
+        <button class="tool-btn" onclick="openHP12C()" title="HP 12C Financeira" aria-label="Abrir calculadora HP 12C">
+            <i class="fas fa-calculator"></i>
+            <span class="btn-label">HP 12C</span>
+        </button>
+        <button class="tool-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao Topo" aria-label="Voltar ao topo">
+            <i class="fas fa-chevron-up"></i>
+            <span class="btn-label">Topo</span>
+        </button>
+    </aside>
+
+    <!-- GLOSSÁRIO MODAL (vanilla JS) -->
+    <div id="glossaryModal" class="glossary-modal no-print">
+        <div class="glossary-content">
+            <div class="bg-gradient-to-r from-audit-navy to-audit-blue p-6 text-white flex items-center justify-between rounded-t-lg">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-book-open text-2xl"></i>
+                    <h2 class="text-2xl font-serif font-bold">Glossário Financeiro</h2>
+                </div>
+                <button onclick="closeGlossaryModal()" class="p-2 hover:bg-white/20 rounded-full transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4 border-b border-slate-200 dark:border-slate-700">
+                <div class="relative">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="glossarySearch" placeholder="Buscar termo..." class="w-full pl-10 pr-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg dark:bg-slate-800 dark:text-white">
+                </div>
+                <div class="flex flex-wrap gap-2 mt-3" id="glossaryCategories"></div>
+            </div>
+            <div class="overflow-y-auto max-h-96 p-4 space-y-3" id="glossaryTermsList"></div>
+            <div class="border-t border-slate-200 dark:border-slate-700 p-4 flex justify-end">
+                <button onclick="closeGlossaryModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content" role="main" aria-label="Conteúdo principal">
+
+        <!-- ── HERO ── -->
+        <section class="hero a1" aria-labelledby="hero-title">
+            <div class="hero-in">
+                <div>
+                    <div class="hero-eye">CFC · Conselho Federal de Contabilidade</div>
+                    <h1 id="hero-title" class="hero-h1">Exame de<br><em>Suficiência</em> CFC</h1>
+                    <p class="hero-p">Acervo completo 2017–2025: provas, gabaritos e estatísticas de aprovação. Conteúdo programático detalhado, simulador de cronômetro, rastreador de progresso por área e gerador de card para compartilhar sua aprovação.</p>
+                    <div class="hero-kpis" role="list" aria-label="Estatísticas do exame">
+                        <div class="kpi" role="listitem"><div class="kpi-v">18</div><div class="kpi-l">Edições Disponíveis</div></div>
+                        <div class="kpi" role="listitem"><div class="kpi-v">50</div><div class="kpi-l">Questões por Prova</div></div>
+                        <div class="kpi" role="listitem"><div class="kpi-v">50%</div><div class="kpi-l">Nota Mínima</div></div>
+                        <div class="kpi" role="listitem"><div class="kpi-v">~41%</div><div class="kpi-l">Taxa Média (2025)</div></div>
+                    </div>
+                    <div class="hero-acts">
+                        <button class="ae-btn ae-btn-navy" onclick="document.getElementById('acervo').scrollIntoView({behavior:'smooth'})"><i class="fas fa-archive" aria-hidden="true"></i> Ver Acervo de Provas</button>
+                        <button class="ae-btn ae-btn-outline" onclick="document.getElementById('edital-section').scrollIntoView({behavior:'smooth'})"><i class="fas fa-list-alt" aria-hidden="true"></i> Conteúdo Programático</button>
+                        <a href="simulado-exame-suficiencia.html" class="ae-btn ae-btn-outline"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Simulado Oficial</a>
+                    </div>
+                </div>
+                <!-- Última edição card -->
+                <div class="lcard a2" aria-label="Última edição do exame">
+                    <div class="lc-bar"></div>
+                    <div class="lc-body">
+                        <div class="lc-badge"><i class="fas fa-star" aria-hidden="true"></i> Última Edição</div>
+                        <div class="lc-yr">2025 — 2ª Ed.</div>
+                        <div class="lc-sub">Aplicado em setembro/outubro de 2025</div>
+                        <div class="lc-grid">
+                            <div><div class="lci-lbl">Aplicação</div><div class="lci-v">Set/Out 2025</div></div>
+                            <div><div class="lci-lbl">Questões</div><div class="lci-v">50 objetivas</div></div>
+                            <div><div class="lci-lbl">Taxa de Aprovação</div><div class="lci-v">~43%</div></div>
+                            <div><div class="lci-lbl">Banca</div><div class="lci-v">FGV</div></div>
+                        </div>
+                        <div class="lc-div"></div>
+                        <div class="lc-tags">
+                            <span class="lc-tag">Contab. Geral</span><span class="lc-tag">Custos</span>
+                            <span class="lc-tag">Auditoria</span><span class="lc-tag">Análise DFs</span>
+                            <span class="lc-tag">Ética</span><span class="lc-tag">Setor Público</span>
+                            <span class="lc-tag">Mat. Financeira</span><span class="lc-tag">Teoria</span>
+                        </div>
+                        <div class="lc-btns">
+                            <a href="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2025-02.json" target="_blank" class="ae-btn ae-btn-gold ae-btn-sm" style="font-size:.64rem;padding:.38rem .85rem;"><i class="fas fa-file-pdf" aria-hidden="true"></i> Baixar Prova</a>
+                            <button class="ae-btn ae-btn-ghost ae-btn-sm" style="font-size:.64rem;padding:.38rem .85rem;" onclick="document.getElementById('acervo').scrollIntoView({behavior:'smooth'})"><i class="fas fa-list-check" aria-hidden="true"></i> Gabarito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SOBRE O EXAME ── -->
+        <section id="sobre" style="background:var(--white);border-bottom:1px solid var(--border);padding:2.5rem 0;" aria-labelledby="sobre-title">
+            <div style="max-width:1300px;margin:0 auto;padding:0 1.5rem;">
+                <div class="sh" style="margin-bottom:1.75rem;">
+                    <div class="sh-l">
+                        <span class="sh-eye"><i class="fas fa-info-circle" aria-hidden="true"></i> CFC · Decreto-Lei 9.295/1946</span>
+                        <span class="sh-t" id="sobre-title">O que é o Exame de Suficiência?</span>
+                    </div>
+                </div>
+                <div class="sobre-grid">
+                    <div class="sg">
+                        <div class="sg-icon" style="background:rgba(30,64,175,.1);color:#1E40AF;" aria-hidden="true"><i class="fas fa-certificate"></i></div>
+                        <div class="sg-t">Habilitação Profissional</div>
+                        <p class="sg-p">O Exame de Suficiência é <strong>requisito obrigatório</strong> para registro no Conselho Regional de Contabilidade (CRC) como <strong>Contador</strong> (bacharelado em Ciências Contábeis) ou <strong>Técnico Contábil</strong>. Instituído pela Lei 12.249/2010 e regulamentado pelo CFC.</p>
+                    </div>
+                    <div class="sg">
+                        <div class="sg-icon" style="background:rgba(6,95,70,.1);color:#065F46;" aria-hidden="true"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="sg-t">Periodicidade e Formato</div>
+                        <p class="sg-p">Realizado <strong>duas vezes ao ano</strong> pelo CFC: 1ª edição (março/abril) e 2ª edição (setembro/outubro). O exame é composto por <strong>50 questões objetivas</strong> de múltipla escolha com 4 alternativas. Duração: <strong>3 horas</strong>.</p>
+                    </div>
+                    <div class="sg">
+                        <div class="sg-icon" style="background:rgba(201,168,76,.15);color:#7A5C10;" aria-hidden="true"><i class="fas fa-check-double"></i></div>
+                        <div class="sg-t">Aprovação e Nota Mínima</div>
+                        <p class="sg-p">Aprovação exige <strong>mínimo de 50% das questões corretas</strong> (25 de 50). Não há penalidade para erros. Após aprovação, o candidato solicita registro no CRC do estado onde atuará. Reprovados podem se inscrever na edição seguinte sem restrição.</p>
+                    </div>
+                    <div class="sg">
+                        <div class="sg-icon" style="background:rgba(153,27,27,.1);color:#991B1B;" aria-hidden="true"><i class="fas fa-chart-line"></i></div>
+                        <div class="sg-t">Taxas de Aprovação (2017–2025)</div>
+                        <p class="sg-p">A taxa de aprovação historicamente varia entre <strong>33% e 51%</strong>. A média do período 2017–2025 é de aproximadamente <strong>41%</strong>. As edições de 2020 tiveram taxas menores pela irregularidade de aplicação durante a pandemia de COVID-19.</p>
+                    </div>
+                </div>
+
+                <!-- Roteiro de Preparação + Estratégia -->
+                <div style="margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="tl-wrap">
+                    <div>
+                        <div class="sh-eye" style="margin-bottom:1rem;"><i class="fas fa-route" aria-hidden="true"></i> Roteiro de Preparação</div>
+                        <div class="timeline" role="list">
+                            <div class="tl-item" role="listitem">
+                                <div class="tl-dot-wrap" aria-hidden="true"><div class="tl-dot"></div><div class="tl-line"></div></div>
+                                <div class="tl-body">
+                                    <div class="tl-step">Passo 01</div>
+                                    <div class="tl-t">Analise o conteúdo programático</div>
+                                    <p class="tl-p">Revise as 8 áreas temáticas e identifique seus pontos fortes e fracos. Priorize Contabilidade Geral (~28%) e Custos (~14%) que representam 42% do exame.</p>
+                                </div>
+                            </div>
+                            <div class="tl-item" role="listitem">
+                                <div class="tl-dot-wrap" aria-hidden="true"><div class="tl-dot"></div><div class="tl-line"></div></div>
+                                <div class="tl-body">
+                                    <div class="tl-step">Passo 02</div>
+                                    <div class="tl-t">Resolva provas das últimas 5 edições</div>
+                                    <p class="tl-p">Baixe as provas de 2023 a 2025 e resolva em condições reais (3h, sem consulta). Anote os temas onde errou mais de 40% das questões.</p>
+                                </div>
+                            </div>
+                            <div class="tl-item" role="listitem">
+                                <div class="tl-dot-wrap" aria-hidden="true"><div class="tl-dot"></div><div class="tl-line"></div></div>
+                                <div class="tl-body">
+                                    <div class="tl-step">Passo 03</div>
+                                    <div class="tl-t">Foque nos pontos críticos</div>
+                                    <p class="tl-p">Revise as normas NBC TG, ética profissional e demonstrações contábeis. Use o guia de estudos da plataforma com questões comentadas por área.</p>
+                                </div>
+                            </div>
+                            <div class="tl-item" role="listitem">
+                                <div class="tl-dot-wrap" aria-hidden="true"><div class="tl-dot"></div></div>
+                                <div class="tl-body">
+                                    <div class="tl-step">Passo 04</div>
+                                    <div class="tl-t">Simule o exame completo</div>
+                                    <p class="tl-p">Uma semana antes, faça simulado completo com o cronômetro desta página (3h). Mire em 33+ questões certas para ter margem de segurança acima do mínimo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="sh-eye" style="margin-bottom:1rem;"><i class="fas fa-lightbulb" aria-hidden="true"></i> Estratégia por Área</div>
+                        <div style="display:flex;flex-direction:column;gap:.5rem;">
+                            <div style="background:var(--bg);border-radius:var(--r);padding:.875rem 1.125rem;border:1px solid var(--border);">
+                                <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1E40AF;margin-bottom:.3rem;">Contab. Geral (~14 questões)</div>
+                                <p style="font-size:.8rem;color:var(--t2);font-weight:300;line-height:1.6;">Maior bloco. Foque em: depreciação, MEP, estoques (PEPS/Custo Médio), IFRS 16, IFRS 9. Questões costumam envolver cálculos.</p>
+                            </div>
+                            <div style="background:var(--bg);border-radius:var(--r);padding:.875rem 1.125rem;border:1px solid var(--border);">
+                                <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#065F46;margin-bottom:.3rem;">Custos (~7 questões)</div>
+                                <p style="font-size:.8rem;color:var(--t2);font-weight:300;line-height:1.6;">Ponto de equilíbrio e margem de contribuição caem com frequência. Absorção vs. Direto é tema recorrente.</p>
+                            </div>
+                            <div style="background:var(--bg);border-radius:var(--r);padding:.875rem 1.125rem;border:1px solid var(--border);">
+                                <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#991B1B;margin-bottom:.3rem;">Ética e Legislação (~5 questões)</div>
+                                <p style="font-size:.8rem;color:var(--t2);font-weight:300;line-height:1.6;">Código de Ética (Res. 1.530/2018) e penalidades disciplinares. Alta frequência de questões literais da norma.</p>
+                            </div>
+                            <div style="background:var(--bg);border-radius:var(--r);padding:.875rem 1.125rem;border:1px solid var(--border);">
+                                <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B45309;margin-bottom:.3rem;">Análise de DFs (~6 questões)</div>
+                                <p style="font-size:.8rem;color:var(--t2);font-weight:300;line-height:1.6;">Índices de liquidez, endividamento e rentabilidade com dados de balanço fornecidos. Calcule e interprete corretamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CALENDÁRIO E PLANO DE ESTUDOS ── -->
+        <section id="calendario" class="cal-section" aria-labelledby="cal-title">
+            <div class="cal-in">
+                <div class="sh" style="margin-bottom:0;">
+                    <div class="sh-l">
+                        <span class="sh-eye"><i class="fas fa-calendar-check" aria-hidden="true"></i> Calendário e Plano de Estudos</span>
+                        <span class="sh-t" id="cal-title">Datas do Exame de Suficiência CFC 1/2026 · Planejamento semanal</span>
+                    </div>
+                </div>
+
+                <!-- Countdown -->
+                <div class="countdown-wrap" style="margin-top:1.5rem;" aria-label="Contagem regressiva para o exame">
+                    <div>
+                        <div class="countdown-days" id="countdown-days" aria-live="polite">—</div>
+                        <div class="countdown-label">dias restantes</div>
+                    </div>
+                    <div class="countdown-info">
+                        <div class="countdown-title">Faltam para o Exame de Suficiência CFC 1/2026</div>
+                        <div class="countdown-sub">Organize sua rotina de estudos com antecedência.</div>
+                        <div class="countdown-meta">
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i> Data prevista: 13 de julho de 2026</span>
+                            <span><i class="fas fa-building" aria-hidden="true"></i> Aplicação: FGV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cal-grid">
+                    <!-- Cronograma oficial -->
+                    <div class="cal-card">
+                        <div class="cal-card-head"><span class="cal-card-head-t"><i class="fas fa-list-check"></i> Cronograma Oficial</span></div>
+                        <div class="cal-card-body">
+                            <div class="cal-row done"><span class="cal-row-l">Publicação do Edital</span><span class="cal-row-v">13/02/2026</span></div>
+                            <div class="cal-row done"><span class="cal-row-l">Período de Inscrições</span><span class="cal-row-v">13/02 – 07/03</span></div>
+                            <div class="cal-row done"><span class="cal-row-l">Pagamento da Taxa</span><span class="cal-row-v">Até 09/03/2026</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Local de Prova</span><span class="cal-row-v">Site FGV</span></div>
+                            <div class="cal-row highlight"><span class="cal-row-l" style="font-weight:600;color:var(--th);">📋 Aplicação da Prova</span><span class="cal-row-v" style="color:var(--gold);font-weight:700;">13/07/2026</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Gabarito Preliminar</span><span class="cal-row-v">Após a prova</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Resultado Final</span><span class="cal-row-v">Julho/Ago 2026</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Plano de estudos -->
+                    <div class="cal-card">
+                        <div class="cal-card-head"><span class="cal-card-head-t"><i class="fas fa-book-open"></i> Plano de Estudos Sugerido</span></div>
+                        <div class="cal-card-body">
+                            <div class="cal-row"><span class="cal-row-l">Fev–Mar: Fundamentos</span><span class="cal-row-v" style="color:var(--t2);font-size:.68rem;">Geral, Custos, Teoria</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Mar–Abr: Especialidades</span><span class="cal-row-v" style="color:var(--t2);font-size:.68rem;">Auditoria, Perícia, SP</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Abr: Complementares</span><span class="cal-row-v" style="color:var(--t2);font-size:.68rem;">Dir., Ética, Mat.Fin.</span></div>
+                            <div class="cal-row highlight"><span class="cal-row-l">Maio: Revisão + Simulados</span><span class="cal-row-v" style="color:var(--t2);font-size:.68rem;">Provas anteriores</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Jun: Lacunas críticas</span><span class="cal-row-v" style="color:var(--t2);font-size:.68rem;">Áreas com erro &gt;40%</span></div>
+                            <div class="cal-row highlight"><span class="cal-row-l" style="font-weight:600;">Véspera</span><span class="cal-row-v" style="color:var(--gold);font-weight:700;">Só Flashcards!</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Peso das disciplinas -->
+                    <div class="cal-card">
+                        <div class="cal-card-head"><span class="cal-card-head-t"><i class="fas fa-chart-pie"></i> Peso das Disciplinas</span></div>
+                        <div class="cal-card-body" style="padding:.875rem 1rem;">
+                            <div class="peso-item"><span class="peso-lbl">Contabilidade Geral</span><div class="peso-bar-bg"><div class="peso-bar-fill" style="width:25%"></div></div><span class="peso-val">~25%</span></div>
+                            <div class="peso-item"><span class="peso-lbl">Auditoria Contábil</span><div class="peso-bar-bg"><div class="peso-bar-fill" style="width:15%"></div></div><span class="peso-val">~15%</span></div>
+                            <div class="peso-item"><span class="peso-lbl">Custos + Gerencial</span><div class="peso-bar-bg"><div class="peso-bar-fill" style="width:15%"></div></div><span class="peso-val">~15%</span></div>
+                            <div class="peso-item"><span class="peso-lbl">Setor Público</span><div class="peso-bar-bg"><div class="peso-bar-fill" style="width:12%"></div></div><span class="peso-val">~12%</span></div>
+                            <div class="peso-item"><span class="peso-lbl">Direito + Ética</span><div class="peso-bar-bg"><div class="peso-bar-fill" style="width:12%"></div></div><span class="peso-val">~12%</span></div>
+                            <div class="peso-item"><span class="peso-lbl">Demais (6 disc.)</span><div class="peso-bar-bg"><div class="peso-bar-fill" style="width:21%;background:linear-gradient(90deg,var(--t3),var(--border2));"></div></div><span class="peso-val">~21%</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Dicas para a prova -->
+                    <div class="cal-card">
+                        <div class="cal-card-head"><span class="cal-card-head-t"><i class="fas fa-bullseye"></i> Dicas para a Prova</span></div>
+                        <div class="cal-card-body">
+                            <div class="cal-row"><span class="cal-row-l">Mínimo para aprovação</span><span class="cal-row-v" style="color:var(--gold);">50% (25/50)</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Duração da prova</span><span class="cal-row-v">4 horas</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Questões objetivas</span><span class="cal-row-v">50 (A/B/C/D)</span></div>
+                            <div class="cal-row highlight"><span class="cal-row-l">Leve calculadora</span><span class="cal-row-v" style="color:var(--gold);">Científica ✓</span></div>
+                            <div class="cal-row"><span class="cal-row-l">Documentos necessários</span><span class="cal-row-v" style="font-size:.65rem;">RG + CRC ou diploma</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roteiro 13 semanas -->
+                <div style="margin-top:1.5rem;">
+                    <div class="sh-eye" style="margin-bottom:1rem;"><i class="fas fa-calendar-week" aria-hidden="true"></i> Roteiro de Revisão — Últimas 13 Semanas</div>
+                    <div class="semanas-grid" role="list" aria-label="Cronograma de 13 semanas">
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 1–2</div><div><div class="sem-t">Cont. Geral: BP, DRE, DFC, DVA</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 3</div><div><div class="sem-t">Cont. Geral: Avaliação de Ativos</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 4</div><div><div class="sem-t">Contabilidade de Custos</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 5</div><div><div class="sem-t">Gerencial + Controladoria</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 6</div><div><div class="sem-t">Setor Público (MCASP/LRF)</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 7</div><div><div class="sem-t">Auditoria — NBC TA 200–570</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 8</div><div><div class="sem-t">Auditoria — Relatório + PAA</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 9</div><div><div class="sem-t">Teoria + Ética + NBCs</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 10</div><div><div class="sem-t">Perícia Contábil</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 11</div><div><div class="sem-t">Direito + Mat. Financeira</div></div></div>
+                        <div class="sem-item" role="listitem"><div class="sem-n">S 12</div><div><div class="sem-t">Simulados + Revisão geral</div></div></div>
+                        <div class="sem-item" role="listitem" style="background:var(--gold-d);border-left:3px solid var(--gold);"><div class="sem-n" style="color:var(--gold);">S 13</div><div><div class="sem-t" style="color:var(--th);">Flashcards + Revisão final</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTEÚDO PRINCIPAL (grid com padding lateral) -->
+        <div class="flex-grow pb-24 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto content-wrapper space-y-20" style="padding-top:3rem;">
+
+            <!-- CONTEÚDO E ESTATÍSTICAS -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <section id="conteudo">
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+                        <i class="fas fa-book-open text-audit-gold text-xs"></i>
+                        <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Distribuição de Questões</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="prog-grid"></div>
+                </section>
+                <section id="estatisticas">
+                    <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+                        <i class="fas fa-chart-line text-audit-gold text-xs"></i>
+                        <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Estatísticas de Aprovação</h2>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                        <div class="w-full h-[350px]">
+                            <canvas id="approvalChart"></canvas>
+                        </div>
+                        <p class="text-[9px] text-slate-400 mt-4 text-center leading-relaxed font-medium">Dados históricos oficiais CFC. As edições em andamento não constam na média.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- EDITAL COMPLETO 2026.1 -->
+            <section id="edital-section" class="pt-10">
+                <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-4">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-file-alt text-audit-gold text-xs"></i>
+                        <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Conteúdo Programático — Edital 1/2026</h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="bg-audit-gold/10 text-audit-gold border border-audit-gold/30 text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">13 Disciplinas · FGV</span>
+                        <button onclick="toggleAllEdital()" class="text-[9px] text-audit-navy font-bold border border-slate-200 px-3 py-1.5 rounded-lg hover:border-audit-gold transition no-print" id="edital-toggle-btn">Expandir Tudo</button>
+                    </div>
+                </div>
+                <div class="text-[10px] text-slate-500 mb-5 flex flex-wrap gap-4 items-center bg-white border border-slate-200 rounded-2xl p-4">
+                    <span><i class="fas fa-calendar text-audit-gold mr-1"></i> Publicado: 13/02/2026</span>
+                    <span><i class="fas fa-building text-audit-gold mr-1"></i> Banca: FGV</span>
+                    <span><i class="fas fa-list-ol text-audit-gold mr-1"></i> 50 questões objetivas</span>
+                    <span><i class="fas fa-percentage text-audit-gold mr-1"></i> Aprovação: mín. 50% (25 acertos)</span>
+                    <a href="https://cfc.org.br/wp-content/uploads/2026/02/edital_exame_suficiencia_1_2026.pdf" target="_blank" class="ml-auto bg-audit-navy text-white text-[9px] px-3 py-1.5 rounded-lg font-bold uppercase tracking-wider hover:bg-audit-gold hover:text-audit-navy transition"><i class="fas fa-download mr-1"></i> Edital PDF</a>
+                </div>
+                <div id="edital-accordion" class="space-y-2"></div>
+            </section>
+
+            <!-- CTA SIMULADO -->
+            <section class="bg-gradient-to-br from-slate-800 to-audit-navy rounded-[2rem] p-8 md:p-10 text-white relative overflow-hidden group shadow-xl no-print">
+                <div class="absolute -right-8 -bottom-8 opacity-5 group-hover:scale-110 transition-transform duration-700">
+                    <i class="fas fa-pencil-alt text-[14rem]"></i>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div>
+                        <p class="text-audit-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Novo · Simulados Oficiais</p>
+                        <h2 class="text-2xl md:text-3xl font-serif font-black mb-2">Teste seus conhecimentos</h2>
+                        <p class="text-slate-400 text-xs leading-relaxed max-w-lg">Simulado completo com as 50 questões do Exame de Suficiência. Questões baseadas em provas reais de 2022–2025, com gabarito comentado, cronômetro e estatísticas por disciplina.</p>
+                    </div>
+                    <a href="simulado-exame-suficiencia.html" class="shrink-0 inline-flex items-center gap-3 bg-audit-gold text-audit-navy px-7 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl">
+                        <i class="fas fa-play"></i> Iniciar Simulado
+                    </a>
+                </div>
+            </section>
+
+            <!-- ACERVO DE EDIÇÕES (mantido) -->
+            <section id="acervo" class="pt-10">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+                    <i class="fas fa-layer-group text-audit-gold text-xs"></i>
+                    <h2 class="text-[11px] font-black text-audit-navy uppercase tracking-[0.2em]">Repositório de Edições</h2>
+                </div>
+                
+                <!-- PAINEL DE CONTROLE (mantido) -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row gap-4 items-center justify-between no-print">
+                    <div class="relative w-full md:w-1/3">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInput" onkeyup="filterAndSortEditions()" placeholder="Buscar ano ou edição..." class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none focus:border-audit-gold transition">
+                    </div>
+                    <div class="flex items-center gap-3 w-full md:w-auto bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                        <i class="fas fa-sort-amount-down text-slate-400 text-xs"></i>
+                        <select id="sortFilter" onchange="filterAndSortEditions()" class="bg-transparent text-[10px] font-bold text-audit-navy uppercase outline-none cursor-pointer w-full tracking-widest">
+                            <option value="desc">Mais Recentes</option>
+                            <option value="asc">Mais Antigos</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between gap-6 w-full md:w-auto bg-slate-50 border border-slate-200 rounded-xl px-4 py-2">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Na Cesta</span>
+                            <span class="text-xs font-semibold text-audit-navy"><span id="toolbar-cart-count">0</span> Arquivos</span>
+                        </div>
+                        <button onclick="downloadBatch()" class="bg-audit-navy text-white px-4 py-2 rounded-lg text-[9px] uppercase font-bold tracking-wider hover:bg-audit-gold transition shadow-md">
+                            Baixar Lote (PDF)
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Grid de Capas A4 -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" id="edicoes-grid"></div>
+            </section>
+
+            <!-- CTA APROVADOS (mantido) -->
+            <section class="mt-10 bg-audit-navy rounded-[3rem] p-12 md:p-16 text-white relative overflow-hidden group shadow-2xl no-print">
+                <div class="absolute -right-10 -bottom-20 opacity-5 group-hover:scale-110 transition-transform duration-1000 rotate-12">
+                    <i class="fas fa-trophy text-[22rem]"></i>
+                </div>
+                <div class="relative z-10 max-w-2xl mx-auto text-center">
+                    <p class="text-audit-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-4">Você venceu a jornada</p>
+                    <h2 class="text-4xl md:text-5xl font-serif font-black mb-6 leading-tight">Você foi aprovado? Parabéns!</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-10">O esforço técnico gerou resultados. Celebre a conquista e inspire futuros profissionais gerando o seu card oficial.</p>
+                    <button onclick="showToast('A redirecionar para gerador de cards...')" class="inline-flex items-center gap-4 bg-audit-gold text-audit-navy px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-xl">
+                        <i class="fas fa-share-nodes"></i> Criar Card de Aprovação
+                    </button>
+                </div>
+            </section>
+        </div>
+        </div>
+    </main>
+
+    <!-- ========== MODAL DO VISUALIZADOR PREMIUM ========== -->
+    <div id="preview-modal" class="fixed inset-0 bg-gray-900/95 flex flex-col hidden opacity-0 transition-opacity duration-300 z-[9000]">
+        
+        <!-- CABEÇALHO DE FERRAMENTAS -->
+        <header class="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 z-[9001] shrink-0 no-print">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleSidebar()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Miniaturas">
+                    <i data-lucide="layout-panel-left" class="w-5 h-5"></i>
+                </button>
+                <div class="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-2 hidden sm:block"></div>
+                <h4 id="modal-edition-title" class="text-xs font-black text-audit-navy dark:text-audit-gold uppercase tracking-tighter hidden md:block">Exame CFC 2025.2</h4>
+            </div>
+
+            <!-- Controles de Leitura -->
+            <div class="flex items-center gap-2">
+                <button onclick="toggleSplitView()" id="btn-split" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Lado a Lado">
+                    <i data-lucide="columns-2" class="w-5 h-5"></i>
+                </button>
+                <button onclick="toggleFocusReading()" id="btn-focus" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Foco de Leitura">
+                    <i data-lucide="scan-line" class="w-5 h-5"></i>
+                </button>
+                <div class="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-1"></div>
+                <button onclick="adjustFontSize(-1)" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Diminuir Fonte">
+                    <i data-lucide="circle-minus" class="w-5 h-5"></i>
+                </button>
+                <button onclick="adjustFontSize(1)" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Aumentar Fonte">
+                    <i data-lucide="circle-plus" class="w-5 h-5"></i>
+                </button>
+                <button onclick="window.print()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500 ml-2" title="Imprimir Prova">
+                    <i data-lucide="printer" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Ações Rápidas -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleDarkMode()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-500" title="Modo Noturno">
+                    <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+                <button onclick="closeModal()" class="bg-audit-navy text-white p-2 rounded-lg hover:scale-105 transition-transform" title="Fechar">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 flex overflow-hidden">
+            
+            <!-- BARRA LATERAL (MINIATURAS) -->
+            <aside id="pdf-sidebar" class="w-64 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 overflow-y-auto custom-scroll p-4 hidden md:block no-print">
+                <p class="text-[10px] font-bold text-gray-400 uppercase mb-4 tracking-widest">Navegação</p>
+                <div id="sidebar-thumbs"></div>
+            </aside>
+
+            <!-- ÁREA DO DOCUMENTO -->
+            <div id="document-scroll" class="flex-1 overflow-y-auto bg-gray-200 dark:bg-gray-950 p-4 sm:p-12 custom-scroll relative">
+                
+                <div id="paper-container" class="preview-paper p-8 sm:p-20 transform scale-95 transition-all duration-500 mx-auto dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-2xl bg-white min-h-[1000px] max-w-[850px] mb-20" style="font-size: 16px;">
+                    
+                    <div id="split-layout" class="grid grid-cols-1 gap-12 transition-all duration-300">
+                        <div id="main-content-col">
+                            <!-- Cabeçalho com logo -->
+                            <div class="text-center mb-10 pb-6 border-b-2 border-gray-100 dark:border-gray-800 flex flex-col items-center">
+                                <img src="https://auditeduca.com.br/assets/images/tests/simulado-prova-exame-suficiencia-carteirinha-contabilidade-contador-contabilista.avif" 
+                                     alt="Audit Educa Logo" 
+                                     class="w-20 h-20 mb-4 object-contain">
+                                <h1 class="text-2xl font-black text-audit-navy dark:text-white uppercase tracking-widest mb-2">Exame de Suficiência <span id="paper-edition">2025.2</span></h1>
+                                <p class="text-[10px] text-gray-400 italic">Material de estudo - Acervo Audit Educa</p>
+                            </div>
+                            <div id="content-questions" class="space-y-4"></div>
+                            
+                            <!-- Área de Ferramentas de Estudo (aparece após as questões) -->
+                            <div id="study-tools-area" class="study-tools-panel no-print mt-8"></div>
+                        </div>
+
+                        <!-- Coluna de Gabarito (Modo Lado a Lado) -->
+                        <div id="secondary-content-col" class="hidden border-l border-gray-100 dark:border-gray-800 pl-8">
+                            <h3 class="text-lg font-black text-audit-navy dark:text-audit-gold uppercase mb-6 flex items-center gap-2">
+                                <i data-lucide="check-square" class="w-5 h-5"></i> Gabarito
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2" id="gabarito-grid-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION (mantido) -->
+    <div id="toast" class="fixed bottom-20 sm:bottom-10 left-1/2 -translate-x-1/2 bg-audit-navy text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-[9999] pointer-events-none border border-audit-gold/30 whitespace-nowrap">
+        <i class="fas fa-info-circle text-audit-gold mr-2"></i> <span id="toast-msg">Mensagem</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        /* ========== DADOS DAS EDIÇÕES ========== */
+        const editionsData = [
+            { edition: '2025.2', approved: 'Aguardando', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2025-02.json' },
+            { edition: '2025.1', approved: '19.8%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2025-01.json' },
+            { edition: '2024.2', approved: '22.1%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2024-02.json' },
+            { edition: '2024.1', approved: '18.4%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2024-01.json' },
+            { edition: '2023.2', approved: '24.2%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2023-02.json' },
+            { edition: '2023.1', approved: '16.7%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2023-01.json' },
+            { edition: '2022.2', approved: '21.5%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2022-02.json' },
+            { edition: '2022.1', approved: '19.3%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2022-01.json' },
+            { edition: '2021.2', approved: '20.1%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2021-02.json' },
+            { edition: '2021.1', approved: '23.8%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2021-01.json' },
+            { edition: '2020.2', approved: '25.6%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2020-02.json' },
+            { edition: '2020.1', approved: '31.2%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2020-01.json' },
+            { edition: '2019.2', approved: '18.9%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2019-02.json' },
+            { edition: '2019.1', approved: '17.5%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2019-01.json' },
+            { edition: '2018.2', approved: '21.0%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2018-02.json' },
+            { edition: '2018.1', approved: '28.3%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2018-01.json' },
+            { edition: '2017.2', approved: '26.4%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2017-02.json' },
+            { edition: '2017.1', approved: '24.8%', url: 'https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2017-01.json' }
+        ];
+
+        const syllabus = [
+            { topic: 'Contabilidade Geral', q: 17, desc: 'Patrimônio, variações, CPCs, DRE, DFC, BP, consolidação.' },
+            { topic: 'Contabilidade de Custos', q: 4, desc: 'Custeio Absorção, Variável, ABC, Padrão, departamentalização.' },
+            { topic: 'Setor Público', q: 3, desc: 'MCASP 11ª ed., PCASP, NBC TSP, receita/despesa orçamentária.' },
+            { topic: 'Contabilidade Gerencial', q: 4, desc: 'CVL, análise de índices, capital de giro, ciclo financeiro.' },
+            { topic: 'Controladoria', q: 2, desc: 'BSC, EVA, ROI, orçamento, sistemas de informação gerencial.' },
+            { topic: 'Direito e Legislação', q: 3, desc: 'CTN, CLT, Lei 6.404/76, Lei 14.133/21, societário.' },
+            { topic: 'Matemática e Estatística', q: 4, desc: 'Juros compostos, SAC/PRICE, VPL, TIR, estatística, regressão.' },
+            { topic: 'Teoria da Contabilidade', q: 3, desc: 'NBC TG 00 R2, estrutura conceitual, características qualitativas.' },
+            { topic: 'Ética e Legislação Prof.', q: 3, desc: 'NBC PG 01/100/200/300, Código de Ética, DL 9.295/46.' },
+            { topic: 'Princípios e NBCs', q: 2, desc: 'Res. CFC 1.328/2011, estrutura das NBCs, revisão NBC.' },
+            { topic: 'Auditoria Contábil', q: 4, desc: 'NBC TA 200–706, riscos, fraude, PAA, relatório, materialidade.' },
+            { topic: 'Perícia Contábil', q: 2, desc: 'NBC TP 01, laudo, parecer, quesitos, CPC arts. 465–480.' },
+            { topic: 'Língua Portuguesa', q: 1, desc: 'Acordo Ortográfico DL 6.583/2008, gramática aplicada.' },
+        ];
+
+        // EDITAL COMPLETO 2026.1
+        const EDITAL_DATA = [
+          {n:1,t:'CONTABILIDADE GERAL',color:'#1e40af',items:[
+            {l:'A',tt:'PATRIMÔNIO E VARIAÇÕES PATRIMONIAIS',tx:'Conceituação de patrimônio, ativo, passivo e patrimônio líquido. Aspecto qualitativo e quantitativo. Formação, subscrição e integralização de capital, registros de mutações patrimoniais e apuração do resultado.'},
+            {l:'B',tt:'PLANO DE CONTAS E ESCRITURAÇÃO',tx:'Conceito, classificação, natureza das contas. Elementos essenciais do lançamento contábil. Regime de competência. Balancete de verificação. Escrituração Contábil Digital (ECD).'},
+            {l:'C',tt:'AVALIAÇÃO DE ATIVOS E PASSIVOS',tx:'Normatização, reconhecimento, mensuração inicial e subsequente. Custo histórico, valor realizável, valor presente, valor justo, custo amortizado. Valor recuperável. MEP. Provisões e contingências. Depreciação, amortização e exaustão.'},
+            {l:'D',tt:'MENSURAÇÃO DE OPERAÇÕES',tx:'Estoques, imobilizado, intangíveis, biológicos, combinação de negócio, impairment, receitas, despesas, tributos correntes e diferidos, consolidação.'},
+            {l:'E',tt:'OPERAÇÕES FISCAIS E TRIBUTÁRIAS',tx:'Cálculo e contabilização de tributos federais, estaduais e municipais; contribuições previdenciárias; ativos e passivos fiscais correntes e diferidos; diferenças temporárias.'},
+            {l:'F-K',tt:'DEMONSTRAÇÕES CONTÁBEIS',tx:'BP, DRE, DRA, DMPL, DLPA, DFC (métodos direto e indireto), DVA e Notas Explicativas — apresentação, conceitos, elaboração e normatização.'},
+            {l:'L',tt:'CONSOLIDAÇÃO',tx:'Eliminações intragrupo, resultados não realizados, participação de não controladores, joint ventures.'},
+            {l:'M',tt:'LEGISLAÇÃO',tx:'NBCs TG. Lei 6.404/76 aplicável aos itens A–L.',link:{t:'Portal CFC',u:'https://cfc.org.br/tecnica/normas-brasileiras-de-contabilidade/'}}
+          ]},
+          {n:2,t:'CONTABILIDADE DE CUSTOS',color:'#7b3fb5',items:[
+            {l:'A',tt:'CONCEITOS E OBJETIVOS',tx:'Gastos, custos, despesas, investimento, perdas. Princípios contábeis aplicados.'},
+            {l:'B',tt:'CLASSIFICAÇÃO DOS CUSTOS',tx:'Fixos, variáveis, diretos, indiretos, controláveis, primários, de transformação.'},
+            {l:'C',tt:'CONTROLE E ALOCAÇÃO',tx:'Produtos em elaboração, equivalentes de produção, custos conjuntos, MOD, materiais, métodos de controle de estoques, CIF, departamentalização.'},
+            {l:'D',tt:'MÉTODOS DE CUSTEAMENTO',tx:'Custeio por Absorção, Custeio Variável, ABC (Activity Based Costing), Custeio Pleno (RKW).'},
+            {l:'E-F',tt:'SISTEMAS DE ACUMULAÇÃO E CUSTO PADRÃO',tx:'Acumulação por ordem e por processo. Custo padrão (padrões físicos e financeiros).'}
+          ]},
+          {n:3,t:'CONTABILIDADE PÚBLICA',color:'#b07a00',items:[
+            {l:'A-F',tt:'NBC TSP E ESTRUTURA CONCEITUAL',tx:'Estrutura Conceitual do Setor Público, receitas com/sem contraprestação, provisões/contingências, estoques, contratos de concessão.',link:{t:'NBCs TSP',u:'https://cfc.org.br/tecnica/normas-brasileiras-de-contabilidade/'}},
+            {l:'G',tt:'PCASP — MCASP 11ª EDIÇÃO',tx:'Estrutura e padronização do Plano de Contas Aplicado ao Setor Público para todos os entes da Federação.',link:{t:'MCASP',u:'https://www.gov.br/tesouro/pt-br/contabilidade-e-custos/mcasp'}},
+            {l:'H-J',tt:'PROCEDIMENTOS ORÇAMENTÁRIOS E PATRIMONIAIS',tx:'Princípios orçamentários. Ciclo da receita orçamentária (previsão, lançamento, arrecadação, recolhimento). Ciclo da despesa (fixação, empenho, liquidação, pagamento). DEA, restos a pagar.'},
+            {l:'K',tt:'DEMONSTRAÇÕES CONTÁBEIS',tx:'BP, Balanço Orçamentário, Balanço Financeiro, DVP, DMPL, DFC, Notas Explicativas. Consolidação.'},
+            {l:'L',tt:'LEGISLAÇÃO',tx:'Lei 4.320/64, LC 101/2000 (LRF), NBC TSP, MCASP 11ª ed., Portaria Conjunta STN/SOF 23/2023.',link:{t:'LRF',u:'https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm'}}
+          ]},
+          {n:4,t:'CONTABILIDADE GERENCIAL',color:'#2d7a3c',items:[
+            {l:'A',tt:'CUSTOS PARA DECISÃO',tx:'Margem de contribuição, ponto de equilíbrio (contábil, econômico, financeiro), margem de segurança, alavancagem operacional, preço de venda, custo de oportunidade, análise CVL.'},
+            {l:'B',tt:'CUSTO PADRÃO',tx:'Análise das variações de custos reais versus custo padrão (preço e eficiência).'},
+            {l:'C',tt:'ANÁLISE DAS DEMONSTRAÇÕES',tx:'Análise vertical e horizontal. Liquidez, endividamento, rentabilidade. Prazos médios. Ciclo operacional e financeiro. Capital de giro.'}
+          ]},
+          {n:5,t:'CONTROLADORIA',color:'#c0392b',items:[
+            {l:'A',tt:'CONTEXTUALIZAÇÃO',tx:'Função da controladoria e do compliance. Papel do controller no processo decisório.'},
+            {l:'B',tt:'PLANEJAMENTO E ORÇAMENTO',tx:'Planejamento estratégico, tático e operacional. Orçamentos: vendas, produção, despesas, caixa. Controle orçamentário.'},
+            {l:'C-E',tt:'GESTÃO E AVALIAÇÃO DE DESEMPENHO',tx:'BSC, EVA, ROI, centros de responsabilidade. Sistemas de informações gerenciais integrados ao processo de gestão.'}
+          ]},
+          {n:6,t:'DIREITO E LEGISLAÇÃO APLICADA',color:'#1a6b9a',items:[
+            {l:'A',tt:'DIREITO PÚBLICO E PRIVADO',tx:'CF/88, Direito Administrativo (Lei 14.133/21), Direito Civil (obrigações, contratos, prescrição).'},
+            {l:'B',tt:'DIREITO TRABALHISTA E PREVIDENCIÁRIO',tx:'CLT — contrato de trabalho, remuneração, rescisão, aviso prévio, FGTS. Previdência Social.',link:{t:'CLT',u:'https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm'}},
+            {l:'C',tt:'DIREITO EMPRESARIAL',tx:'Ltda, S.A. (Lei 6.404/76), cooperativas, LC 123/06 (Simples). Recuperação empresarial e falência.',link:{t:'Lei 6.404/76',u:'https://www.planalto.gov.br/ccivil_03/leis/l6404consol.htm'}},
+            {l:'D',tt:'DIREITO TRIBUTÁRIO',tx:'CTN — obrigação tributária, crédito tributário, lançamento, suspensão, extinção, exclusão. STN.',link:{t:'CTN',u:'https://www.planalto.gov.br/ccivil_03/leis/l5172compilado.htm'}}
+          ]},
+          {n:7,t:'MATEMÁTICA FINANCEIRA E ESTATÍSTICA',color:'#6b2090',items:[
+            {l:'A',tt:'FUNDAMENTOS DE MATEMÁTICA FINANCEIRA',tx:'Juros Simples e Compostos, descontos, taxas (nominal, efetiva, proporcional, equivalente), séries uniformes, SAC e PRICE.'},
+            {l:'B-C',tt:'ANÁLISE DE INVESTIMENTOS',tx:'VPL, TIR, Payback, TMA. Fluxo de Caixa Descontado. Custo amortizado e aplicação contábil.'},
+            {l:'D-E',tt:'ESTATÍSTICA',tx:'Estatística descritiva, probabilidade, distribuições binomial e normal, estimação, testes de hipótese, correlação, regressão linear. Amostragem em auditoria.'}
+          ]},
+          {n:8,t:'TEORIA DA CONTABILIDADE',color:'#2060a0',items:[
+            {l:'A',tt:'ESTRUTURA CONCEITUAL NBC TG 00 R2',tx:'Objetivo das DCs, usuários, características qualitativas (fundamentais: relevância e representação fidedigna; de melhoria: 4). Elementos das DCs. Reconhecimento, desreconhecimento e mensuração. Conceitos de capital.',link:{t:'NBC TG 00 R2',u:'https://www2.cfc.org.br/sisweb/sre/detalhes_sre.aspx?Codigo=2019/NBCTG00(R2)'}},
+            {l:'B',tt:'ELEMENTOS CONTÁBEIS',tx:'Ativo, passivo e mensuração. Receita, despesas, ganhos, perdas, patrimônio líquido e direitos de propriedade.'}
+          ]},
+          {n:9,t:'LEGISLAÇÃO E ÉTICA PROFISSIONAL',color:'#906000',items:[
+            {l:'A',tt:'ÉTICA GERAL',tx:'Conceito, filosofia moral, fontes das regras éticas. Papel da contabilidade na sociedade.'},
+            {l:'B',tt:'LEGISLAÇÃO DE ÉTICA PROFISSIONAL',tx:'Código de Ética (NBC PG 01), NBC PG 12, NBC PG 100, NBC PG 200, NBC PG 300, NBC PA 400 e NBC PO 900.',link:{t:'NBC PG 01',u:'https://www2.cfc.org.br/sisweb/sre/detalhes_sre.aspx?Codigo=2019/NBCPG01'}},
+            {l:'C',tt:'LEGISLAÇÃO PROFISSIONAL',tx:'DL 9.295/1946, Res. CFC 1.612/2021. Alterações até 90 dias antes do exame.',link:{t:'Res. CFC 1.612/21',u:'https://cfc.org.br/legislacao/'}}
+          ]},
+          {n:10,t:'PRINCÍPIOS E NBCs',color:'#2a8050',items:[
+            {l:'A',tt:'ESTRUTURA DAS NBCs',tx:'Resolução CFC 1.328/2011 — tipos de normas e codificação (TG, TSP, TA, TP, PA, PG etc.).',link:{t:'Res. CFC 1.328/11',u:'https://cfc.org.br/legislacao/'}},
+            {l:'B',tt:'NORMAS BRASILEIRAS DE CONTABILIDADE',tx:'Portal das NBCs vigentes: portal CFC e SISWEB CFC.',link:{t:'Portal NBCs',u:'https://cfc.org.br/tecnica/normas-brasileiras-de-contabilidade/'}}
+          ]},
+          {n:11,t:'AUDITORIA CONTÁBIL',color:'#7b3fb5',items:[
+            {l:'A-C',tt:'CONCEITO, ASSEGURAÇÃO E OBJETIVOS',tx:'Tipos de auditoria. Controle interno (COSO). Papéis de trabalho. Estrutura conceitual para asseguração. Ceticismo e julgamento profissional.',link:{t:'NBC TA 200',u:'https://www2.cfc.org.br/sisweb/sre/detalhes_sre.aspx?Codigo=2016/NBCTA200(R1)'}},
+            {l:'D',tt:'FRAUDE',tx:'Triângulo da fraude. Responsabilidades. Ceticismo profissional. Comunicações.',link:{t:'NBC TA 240',u:'https://www2.cfc.org.br/sisweb/sre/detalhes_sre.aspx?Codigo=2016/NBCTA240(R1)'}},
+            {l:'E-F',tt:'PLANEJAMENTO E RISCOS',tx:'RA = RI × RC × RD. Avaliação de riscos. Entendimento da entidade e CI. NBC TA 300/315.',link:{t:'NBC TA 315',u:'https://www2.cfc.org.br/sisweb/sre/detalhes_sre.aspx?Codigo=2016/NBCTA315(R1)'}},
+            {l:'G-K',tt:'RELATÓRIO E ASSUNTOS ESPECIAIS',tx:'Opinião (não modificada, ressalva, adversa, abstenção). PAA (NBC TA 701). Materialidade. Amostragem. Estimativas contábeis. Partes relacionadas. Eventos subsequentes. Continuidade.',link:{t:'NBC TA 700',u:'https://www2.cfc.org.br/sisweb/sre/detalhes_sre.aspx?Codigo=2016/NBCTA700(R1)'}}
+          ]},
+          {n:12,t:'PERÍCIA CONTÁBIL',color:'#a03040',items:[
+            {l:'A-C',tt:'CONCEITO E ASPECTOS TÉCNICOS',tx:'Definição, classificação. Perito judicial e extrajudicial. Laudo Pericial (perito do juízo) vs Parecer Pericial (assistente técnico). Quesitos. Planejamento e execução.',link:{t:'NBC TP 01',u:'https://www2.cfc.org.br/sisweb/sre/detalhes_sre.aspx?Codigo=2019/NBCTP01(R2)'}},
+            {l:'D-E',tt:'LEGISLAÇÃO E APLICAÇÕES',tx:'CPC arts. 465–480 (Lei 13.105/15). Apuração de haveres, dissolução, inventários, SFH, cálculos trabalhistas.',link:{t:'CPC',u:'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm'}}
+          ]},
+          {n:13,t:'LÍNGUA PORTUGUESA',color:'#4a4845',items:[
+            {l:'A-B',tt:'CONHECIMENTOS DE LÍNGUA PORTUGUESA',tx:'Lei 9.394/1996 (LDB) — Ensino Fundamental e Médio.'},
+            {l:'C',tt:'ACORDO ORTOGRÁFICO',tx:'DL 6.583/2008 — trema, acentuação (paroxítonas "ei"/"oi"), hífen.',link:{t:'DL 6.583/08',u:'https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6583.htm'}}
+          ]}
+        ];
+
+        // Glossário (baseado no GlossaryModal.tsx)
+        const GLOSSARY_TERMS = [
+            { term: 'Ativo', definition: 'Recurso controlado pela entidade como resultado de eventos passados, do qual se espera que resultem benefícios econômicos futuros.', category: 'Contabilidade Geral', nbc: 'NBC TG 26 (R5)', example: 'Caixa, Contas a Receber, Imobilizado' },
+            { term: 'Passivo', definition: 'Obrigação presente da entidade, resultante de eventos passados, cuja liquidação se espera que resulte em saída de recursos.', category: 'Contabilidade Geral', nbc: 'NBC TG 26 (R5)', example: 'Contas a Pagar, Empréstimos' },
+            { term: 'Patrimônio Líquido', definition: 'Interesse residual nos ativos da entidade depois de deduzidos todos os seus passivos.', category: 'Contabilidade Geral', nbc: 'NBC TG 26 (R5)', example: 'Capital Social, Reservas, Lucros Acumulados' },
+            { term: 'Receita', definition: 'Aumento nos benefícios econômicos durante o período contábil, sob a forma de entrada de recursos ou aumento de ativos.', category: 'Contabilidade Geral', nbc: 'NBC TG 30 (R2)', example: 'Vendas, Prestação de Serviços' },
+            { term: 'Despesa', definition: 'Diminuição nos benefícios econômicos durante o período contábil, sob a forma de saída de recursos ou redução de ativos.', category: 'Contabilidade Geral', nbc: 'NBC TG 26 (R5)', example: 'Salários, Aluguel, Depreciação' },
+            { term: 'Custeio por Absorção', definition: 'Método que aloca todos os custos (diretos e indiretos) aos produtos fabricados.', category: 'Contabilidade de Custos', nbc: 'NBC TG 16 (R3)', example: 'Custos Diretos + Custos Indiretos = Custo Total do Produto' },
+            { term: 'Custeio Variável', definition: 'Método que aloca apenas os custos variáveis aos produtos, tratando os custos fixos como despesa do período.', category: 'Contabilidade de Custos', nbc: 'NBC TG 16 (R3)', example: 'Matéria-Prima + Mão de Obra Variável' },
+            { term: 'Ponto de Equilíbrio', definition: 'Nível de vendas em que a receita total iguala os custos e despesas totais, resultando em lucro zero.', category: 'Contabilidade Gerencial', nbc: 'NBC TG 16 (R3)', example: 'Quantidade ou Valor de Vendas = Custos Fixos / Margem de Contribuição' },
+            { term: 'Margem de Contribuição', definition: 'Diferença entre a receita de vendas e os custos variáveis, disponível para cobrir custos fixos e gerar lucro.', category: 'Contabilidade Gerencial', nbc: 'NBC TG 16 (R3)', example: 'Preço de Venda - Custos Variáveis Unitários' },
+            { term: 'Demonstração do Resultado do Exercício (DRE)', definition: 'Demonstração contábil que apresenta o resultado do exercício (lucro ou prejuízo) de uma entidade.', category: 'Contabilidade Geral', nbc: 'NBC TG 26 (R5)', example: 'Receitas - Despesas = Resultado' },
+            { term: 'Balanço Patrimonial', definition: 'Demonstração contábil que apresenta a posição patrimonial e financeira de uma entidade em determinada data.', category: 'Contabilidade Geral', nbc: 'NBC TG 26 (R5)', example: 'Ativo = Passivo + Patrimônio Líquido' },
+            { term: 'Fluxo de Caixa', definition: 'Demonstração que apresenta as entradas e saídas de caixa de uma entidade durante um período.', category: 'Contabilidade Geral', nbc: 'NBC TG 03 (R3)', example: 'Caixa Inicial + Entradas - Saídas = Caixa Final' },
+            { term: 'Depreciação', definition: 'Alocação sistemática do valor depreciável de um ativo ao longo de sua vida útil.', category: 'Contabilidade Geral', nbc: 'NBC TG 27 (R5)', example: 'Máquina com Vida Útil de 10 Anos' },
+            { term: 'Amortização', definition: 'Alocação sistemática do valor amortizável de um ativo intangível ao longo de sua vida útil.', category: 'Contabilidade Geral', nbc: 'NBC TG 04 (R5)', example: 'Patente, Marca, Goodwill' },
+            { term: 'Impairment', definition: 'Redução no valor recuperável de um ativo quando seu valor contábil excede seu valor recuperável.', category: 'Contabilidade Geral', nbc: 'NBC TG 01 (R4)', example: 'Teste de Recuperabilidade de Ativos' },
+            { term: 'Equivalência Patrimonial', definition: 'Método de avaliação de investimentos em coligadas e controladas pelo valor patrimonial da investida.', category: 'Contabilidade Geral', nbc: 'NBC TG 18 (R3)', example: 'Investimento em Empresa Coligada' },
+            { term: 'Consolidação de Demonstrações Contábeis', definition: 'Processo de apresentação das demonstrações contábeis de um grupo de entidades como se fossem uma única entidade.', category: 'Contabilidade Geral', nbc: 'NBC TG 36 (R4)', example: 'Controladora + Controladas = Grupo Consolidado' },
+            { term: 'Ética Profissional', definition: 'Conjunto de princípios e normas de conduta que devem ser observados pelos contadores no exercício da profissão.', category: 'Ética e Legislação', nbc: 'NBC PG 01 (R2)', example: 'Integridade, Objetividade, Competência, Confidencialidade' },
+            { term: 'Independência do Auditor', definition: 'Condição essencial para que o auditor possa exercer suas funções de forma imparcial e objetiva.', category: 'Auditoria', nbc: 'NBC PA 01 (R2)', example: 'Não ter interesse financeiro na entidade auditada' }
+        ];
+
+        // Banco de questões de fallback (extraído do cfc_guia_completo_2026.html)
+        const FALLBACK_QUESTIONS = [
+            { number: 1, text: 'A empresa Alfa S.A. adquiriu uma máquina por R$ 120.000, com vida útil estimada de 10 anos e valor residual de R$ 20.000. Pelo método das cotas constantes (linear), o valor contábil líquido ao final do 3º ano será:', options: ['A) R$ 90.000', 'B) R$ 86.000', 'C) R$ 96.000', 'D) R$ 50.000'], answer: 'B' },
+            { number: 2, text: 'Uma empresa adquiriu 30% das ações de uma coligada por R$ 150.000. No exercício, a coligada apurou lucro líquido de R$ 200.000 e distribuiu dividendos de R$ 60.000. Pelo Método da Equivalência Patrimonial, o saldo do investimento no final do período será:', options: ['A) R$ 150.000', 'B) R$ 162.000', 'C) R$ 168.000', 'D) R$ 192.000'], answer: 'D' },
+            { number: 3, text: 'De acordo com o CPC 25 (Provisões, Passivos Contingentes e Ativos Contingentes), assinale a afirmativa CORRETA sobre passivos contingentes:', options: ['A) Devem ser reconhecidos no balanço patrimonial quando a saída de recursos for possível.', 'B) Devem ser divulgados em notas explicativas quando a saída de recursos for possível, exceto quando a probabilidade for remota.', 'C) Devem ser reconhecidos no resultado como provisão quando a saída de recursos for provável.', 'D) Não precisam de qualquer tratamento contábil, independentemente da probabilidade de ocorrência.'], answer: 'B' }
+        ];
+
+        // Estado Global
+        let cartItems = new Set();
+        let savedItems = new Set();
+        let examData = []; // dados da prova atual no modal
+        let currentEditionView = null;
+
+        // Estados do visualizador
+        let isDarkMode = false;
+        let isFocusMode = false;
+        let isSplitMode = false;
+        let fontSizeBase = 16;
+
+        // Estados das ferramentas de estudo
+        let highlights = [];
+        let comments = [];
+        let notes = [];
+        let currentQuestionId = 1; // será atualizado ao navegar
+        let highlightColor = 'yellow';
+
+        const highlightColors = [
+            { name: 'yellow', bg: 'bg-yellow-200', border: 'border-yellow-400' },
+            { name: 'green', bg: 'bg-green-200', border: 'border-green-400' },
+            { name: 'blue', bg: 'bg-blue-200', border: 'border-blue-400' },
+            { name: 'pink', bg: 'bg-pink-200', border: 'border-pink-400' },
+            { name: 'purple', bg: 'bg-purple-200', border: 'border-purple-400' },
+        ];
+
+        /* ========== FUNÇÕES DO ACERVO ========== */
+        const edicoesGrid = document.getElementById('edicoes-grid');
+
+        const createEditionCard = (ed) => {
+            const isSaved = savedItems.has(ed.edition);
+            const inCart = cartItems.has(ed.edition);
+            return `
+            <div class="flex flex-col gap-4 group exam-item" data-year="${ed.edition}">
+                <div class="exam-page-cover w-full">
+                    <div class="svg-texture"></div>
+                    <div class="cover-frame"></div>
+                    
+                    <div class="card-actions-top">
+                        <button onclick="toggleSave('${ed.edition}')" class="card-btn-icon ${isSaved ? 'active-save' : ''}" title="Salvar">
+                            <i class="${isSaved ? 'fas' : 'far'} fa-bookmark"></i>
+                        </button>
+                        <button onclick="toggleCart('${ed.edition}')" class="card-btn-icon ${inCart ? 'active-cart' : ''}" title="Adicionar à Cesta">
+                            <i class="${inCart ? 'fas fa-check' : 'fas fa-shopping-basket'}"></i>
+                        </button>
+                        <button onclick="printExam('${ed.edition}', '${ed.url}')" class="card-btn-icon" title="Imprimir Prova">
+                            <i class="fas fa-print text-[12px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="relative z-10 p-5 sm:p-8 h-full flex flex-col items-center justify-center text-center w-full mt-2">
+                        <div class="w-12 h-0.5 bg-audit-gold mb-5 opacity-50"></div>
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white shadow-inner border border-slate-200 flex items-center justify-center mb-5 overflow-hidden relative">
+                            <div class="absolute inset-1 border border-dashed border-slate-300 rounded-full"></div>
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=150&q=80" alt="Exame" class="w-full h-full object-cover opacity-60 mix-blend-luminosity rounded-full">
+                        </div>
+                        <h3 class="font-serif font-black text-audit-navy uppercase leading-tight text-base sm:text-lg tracking-widest px-2">Exame de<br>Suficiência</h3>
+                        <p class="mt-4 text-[8px] sm:text-[9px] uppercase font-bold text-slate-400 tracking-[0.2em]">Edição Oficial</p>
+                        <div class="mt-1 text-audit-gold font-serif text-lg sm:text-xl font-black">${ed.edition}</div>
+                    </div>
+                </div>
+
+                <div class="flex shadow-sm rounded-xl overflow-hidden border border-slate-200">
+                    <button onclick="openPreview('${ed.edition}', '${ed.url}')" class="btn-view-premium group-hover:bg-slate-50">
+                        <i class="fas fa-eye text-audit-gold"></i> Visualizar
+                    </button>
+                    <button onclick="downloadExamAsPDF('${ed.edition}', '${ed.url}')" class="btn-download-premium">
+                        <i class="fas fa-download text-audit-gold"></i> PDF
+                    </button>
+                </div>
+            </div>
+        `;};
+
+        function renderProg() {
+            const grid = document.getElementById('prog-grid');
+            grid.innerHTML = syllabus.map(item => `
+                <div class="prog-card">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-serif text-sm font-bold text-audit-navy">${item.topic}</h3>
+                        <span class="bg-slate-100 text-audit-navy text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0">${item.q} Q</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">${item.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('approvalChart').getContext('2d');
+            const validData = editionsData.filter(e => e.approved !== 'Aguardando').reverse();
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: validData.map(e => e.edition),
+                    datasets: [{
+                        label: 'Aprovação (%)',
+                        data: validData.map(e => parseFloat(e.approved.replace('%', ''))),
+                        borderColor: '#C5A059', backgroundColor: 'rgba(197, 160, 89, 0.1)',
+                        borderWidth: 3, pointBackgroundColor: '#0f172a', pointBorderColor: '#ffffff',
+                        pointRadius: 4, pointHoverRadius: 6, fill: true, tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0f172a', padding: 10, cornerRadius: 8 } },
+                    scales: {
+                        y: { beginAtZero: true, max: 40, grid: { color: '#f1f5f9' }, ticks: { color: '#94a3b8', font: {size: 10} } },
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8', font: {size: 10} } }
+                    }
+                }
+            });
+        }
+
+        function filterAndSortEditions() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const sortOrder = document.getElementById('sortFilter').value;
+            let filtered = [...editionsData].filter(ed => ed.edition.toLowerCase().includes(query));
+            filtered.sort((a, b) => sortOrder === 'desc' ? b.edition.localeCompare(a.edition) : a.edition.localeCompare(b.edition));
+            edicoesGrid.innerHTML = filtered.map(createEditionCard).join('');
+        }
+
+        function toggleCart(edition) {
+            cartItems.has(edition) ? cartItems.delete(edition) : cartItems.add(edition);
+            updateBadges(); filterAndSortEditions();
+        }
+
+        function toggleSave(edition) {
+            savedItems.has(edition) ? savedItems.delete(edition) : savedItems.add(edition);
+            updateBadges(); filterAndSortEditions();
+        }
+
+        function updateBadges() {
+            const sb = document.getElementById('save-badge');
+            document.getElementById('toolbar-cart-count').textContent = cartItems.size;
+            sb.textContent = savedItems.size; sb.classList.toggle('hidden', savedItems.size === 0);
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            t.style.opacity = '1'; t.style.transform = 'translate(-50%, 0)';
+            setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translate(-50%, 40px)'; }, 3000);
+        }
+
+        /* ========== FUNÇÕES DE PDF E IMPRESSÃO ========== */
+        async function downloadExamAsPDF(edition, url) {
+            showToast(`Gerando PDF da edição ${edition}...`);
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Erro ao carregar dados');
+                const data = await res.json();
+                const questions = transformExamData(data);
+                generateStyledPDF(edition, questions);
+            } catch (e) {
+                showToast('Erro ao gerar PDF. Tente novamente.');
+                console.error(e);
+            }
+        }
+
+        async function downloadBatch() {
+            if (cartItems.size === 0) {
+                showToast('Cesta vazia. Adicione provas com o ícone de cesta.');
+                return;
+            }
+            showToast(`Gerando PDFs de ${cartItems.size} edições...`);
+            for (let edition of cartItems) {
+                const exam = editionsData.find(e => e.edition === edition);
+                if (exam) {
+                    await downloadExamAsPDF(exam.edition, exam.url);
+                    await new Promise(r => setTimeout(r, 500));
+                }
+            }
+        }
+
+        function generateStyledPDF(edition, questions) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const navy = '#0f172a';
+            const gold = '#C5A059';
+            
+            doc.setFillColor(navy);
+            doc.rect(0, 0, 210, 30, 'F');
+            doc.setTextColor(gold);
+            doc.setFontSize(18);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Audit Educa', 105, 20, { align: 'center' });
+            
+            doc.setTextColor(navy);
+            doc.setFontSize(14);
+            doc.text(`Exame de Suficiência - Edição ${edition}`, 105, 40, { align: 'center' });
+            
+            let y = 55;
+            questions.forEach((q, idx) => {
+                if (y > 270) {
+                    doc.addPage();
+                    y = 30;
+                    doc.setFillColor(navy);
+                    doc.rect(0, 0, 210, 15, 'F');
+                    doc.setTextColor(gold);
+                    doc.setFontSize(10);
+                    doc.text(`Audit Educa - Edição ${edition}`, 105, 10, { align: 'center' });
+                    y = 25;
+                }
+                
+                doc.setTextColor(navy);
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`Q${q.number}:`, 20, y);
+                doc.setFont('helvetica', 'normal');
+                
+                const textLines = doc.splitTextToSize(q.text, 170);
+                doc.text(textLines, 25, y + 5);
+                y += (textLines.length * 5) + 5;
+                
+                if (q.options) {
+                    q.options.forEach((opt, i) => {
+                        if (y > 280) { doc.addPage(); y = 30; }
+                        doc.setTextColor('#334155');
+                        doc.setFont('helvetica', 'normal');
+                        const optText = `${opt.letter}) ${opt.text}`;
+                        const optLines = doc.splitTextToSize(optText, 165);
+                        doc.text(optLines, 30, y);
+                        y += (optLines.length * 5) + 2;
+                    });
+                }
+                y += 8;
+            });
+
+            doc.addPage();
+            doc.setFillColor(navy);
+            doc.rect(0, 0, 210, 30, 'F');
+            doc.setTextColor(gold);
+            doc.setFontSize(18);
+            doc.text('Gabarito Oficial', 105, 20, { align: 'center' });
+            
+            let gabY = 40;
+            questions.forEach(q => {
+                if (gabY > 280) { doc.addPage(); gabY = 30; }
+                doc.setTextColor(navy);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`Q${q.number}:`, 20, gabY);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(gold);
+                doc.text(q.answer || '-', 40, gabY);
+                gabY += 8;
+            });
+
+            doc.save(`exame_suficiencia_${edition.replace('.', '_')}.pdf`);
+            showToast(`PDF da edição ${edition} gerado com sucesso!`);
+        }
+
+        async function printExam(edition, url) {
+            await openPreview(edition, url);
+            setTimeout(() => {
+                window.print();
+            }, 1000);
+        }
+
+        /* ========== FUNÇÕES DO VISUALIZADOR ========== */
+        function transformExamData(raw) {
+            if (Array.isArray(raw) && raw.length && raw[0].number) return raw;
+            if (raw.questoes && Array.isArray(raw.questoes)) {
+                return raw.questoes.map(q => ({
+                    number: q.numero || q.questao_numero || 0,
+                    text: q.enunciado || q.descricao || '',
+                    options: (q.alternativas || []).map((alt, idx) => ({
+                        letter: alt.letra || String.fromCharCode(65 + idx),
+                        text: alt.texto || alt
+                    })),
+                    answer: (raw.gabarito || []).find(g => g.questao === (q.numero || q.questao_numero))?.resposta || ''
+                }));
+            }
+            return FALLBACK_QUESTIONS; // fallback
+        }
+
+        async function openPreview(edition, url) {
+            currentEditionView = edition;
+            document.getElementById('modal-edition-title').innerText = `Exame CFC ${edition}`;
+            document.getElementById('paper-edition').innerText = edition;
+
+            const modal = document.getElementById('preview-modal');
+            const paper = document.getElementById('paper-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.replace('opacity-0', 'opacity-100');
+                paper.classList.remove('scale-95');
+            }, 50);
+            document.body.style.overflow = 'hidden';
+
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Erro ao carregar');
+                const data = await res.json();
+                examData = transformExamData(data);
+            } catch (e) {
+                examData = FALLBACK_QUESTIONS;
+                console.warn('Falha ao carregar JSON, usando fallback');
+            } finally {
+                renderQuestions();
+                renderGabarito();
+                generateSidebarThumbs();
+                if (window.lucide) lucide.createIcons();
+            }
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('content-questions');
+            if (!container) return;
+            if (!examData.length) {
+                container.innerHTML = '<p class="text-center text-slate-400">Nenhuma questão disponível para esta edição.</p>';
+                return;
+            }
+            container.innerHTML = examData.map(q => `
+                <div id="q-anchor-${q.number}" class="question-block">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="bg-audit-navy text-white font-black text-sm w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-lg">
+                            ${q.number}
+                        </div>
+                        <div class="question-text flex-1 text-gray-700 dark:text-gray-300">
+                            ${q.text.split('\n').map(p => `<p class="mb-4">${p}</p>`).join('')}
+                        </div>
+                    </div>
+                    <div class="pl-0 sm:pl-14 space-y-3">
+                        ${q.options ? q.options.map(opt => `
+                            <div class="option-item q-${q.number}-opt" onclick="selectOpt(${q.number}, this)">
+                                <div class="option-letter font-bold text-audit-navy bg-gray-100 w-8 h-8 rounded flex items-center justify-center shrink-0">
+                                    ${opt.letter}
+                                </div>
+                                <div class="option-content">${opt.text}</div>
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            // Inicializa ferramentas de estudo para a primeira questão
+            if (examData.length > 0) {
+                currentQuestionId = examData[0].number;
+                renderStudyTools();
+            }
+        }
+
+        function renderGabarito() {
+            const container = document.getElementById('gabarito-grid-container');
+            if (!container) return;
+            container.innerHTML = examData.map(q => `
+                <div class="border border-gray-200 p-2 rounded flex justify-between items-center dark:border-gray-700 bg-white dark:bg-gray-800 cursor-pointer hover:bg-gray-50 transition-colors" onclick="scrollToQuestion(${q.number})">
+                    <span class="text-[10px] font-bold">Q ${q.number}</span>
+                    <span class="font-black text-audit-gold" style="color:#C5A059">${q.answer || '-'}</span>
+                </div>
+            `).join('');
+        }
+
+        function generateSidebarThumbs() {
+            const container = document.getElementById('sidebar-thumbs');
+            if (!container) return;
+            const steps = 5;
+            let html = '';
+            for(let i=1; i<=examData.length; i += steps) {
+                html += `
+                    <div class="nav-thumb" onclick="scrollToQuestion(${i})">
+                        <i data-lucide="file-text" class="w-4 h-4 mb-1"></i>
+                        Questões ${i}-${Math.min(i+steps-1, examData.length)}
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function selectOpt(qNum, el) {
+            document.querySelectorAll(`.q-${qNum}-opt`).forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function scrollToQuestion(num) {
+            const el = document.getElementById(`q-anchor-${num}`);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                currentQuestionId = num;
+                renderStudyTools();
+            }
+        }
+
+        /* ========== FERRAMENTAS DE ESTUDO ========== */
+        function renderStudyTools() {
+            const area = document.getElementById('study-tools-area');
+            if (!area) return;
+            
+            const qHighlights = highlights.filter(h => h.questionId === currentQuestionId);
+            const qComments = comments.filter(c => c.questionId === currentQuestionId);
+            const qNotes = notes.filter(n => n.questionId === currentQuestionId);
+
+            let html = `
+                <div class="flex flex-wrap gap-2 items-center justify-between mb-4">
+                    <div class="flex gap-2 items-center">
+                        <span class="text-xs font-semibold">Marca texto:</span>
+                        ${highlightColors.map(c => `
+                            <button onclick="setHighlightColor('${c.name}')" class="w-6 h-6 rounded border-2 ${c.bg} ${highlightColor === c.name ? c.border + ' border-2' : 'border-transparent'}" title="${c.name}"></button>
+                        `).join('')}
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="showCommentForm()" class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full flex items-center gap-1">
+                            <i class="fas fa-comment"></i> Comentar (${qComments.length})
+                        </button>
+                        <button onclick="showNoteForm()" class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full flex items-center gap-1">
+                            <i class="fas fa-sticky-note"></i> Post-it (${qNotes.length})
+                        </button>
+                        <button onclick="exportStudyNotes()" class="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full flex items-center gap-1">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+                </div>
+                <div id="study-tools-content"></div>
+            `;
+            area.innerHTML = html;
+
+            let content = '';
+            if (qHighlights.length > 0) {
+                content += '<div class="mt-4"><h4 class="text-sm font-bold mb-2">Trechos marcados</h4>';
+                qHighlights.forEach(h => {
+                    const color = highlightColors.find(c => c.name === h.color)?.bg || 'bg-yellow-200';
+                    content += `<div class="${color} p-2 rounded mb-1 flex justify-between items-start"><span>${h.text}</span><button onclick="deleteHighlight('${h.id}')" class="text-red-500 text-xs"><i class="fas fa-trash"></i></button></div>`;
+                });
+                content += '</div>';
+            }
+            if (qComments.length > 0) {
+                content += '<div class="mt-4"><h4 class="text-sm font-bold mb-2">Comentários</h4>';
+                qComments.forEach(c => {
+                    content += `<div class="bg-blue-50 p-3 rounded mb-2 flex justify-between items-start"><span>${c.text}</span><button onclick="deleteComment('${c.id}')" class="text-red-500 text-xs"><i class="fas fa-trash"></i></button></div>`;
+                });
+                content += '</div>';
+            }
+            if (qNotes.length > 0) {
+                content += '<div class="mt-4"><h4 class="text-sm font-bold mb-2">Post-its</h4>';
+                qNotes.forEach(n => {
+                    const color = highlightColors.find(c => c.name === n.color)?.border || 'border-yellow-400';
+                    content += `<div class="border-l-4 ${color} bg-white p-3 rounded mb-2 flex justify-between items-start"><span>${n.text}</span><button onclick="deleteNote('${n.id}')" class="text-red-500 text-xs"><i class="fas fa-trash"></i></button></div>`;
+                });
+                content += '</div>';
+            }
+            if (qHighlights.length === 0 && qComments.length === 0 && qNotes.length === 0) {
+                content = '<p class="text-sm text-slate-500 text-center py-4">Selecione um texto para marcar ou adicione um comentário.</p>';
+            }
+
+            document.getElementById('study-tools-content').innerHTML = content;
+        }
+
+        function setHighlightColor(color) {
+            highlightColor = color;
+            renderStudyTools();
+        }
+
+        function showCommentForm() {
+            const text = prompt('Digite seu comentário:');
+            if (text && text.trim()) {
+                comments.push({
+                    id: Date.now() + '',
+                    text: text,
+                    questionId: currentQuestionId,
+                    timestamp: new Date()
+                });
+                renderStudyTools();
+            }
+        }
+
+        function showNoteForm() {
+            const text = prompt('Digite a nota do post-it:');
+            if (text && text.trim()) {
+                notes.push({
+                    id: Date.now() + '',
+                    text: text,
+                    color: highlightColor,
+                    questionId: currentQuestionId,
+                    timestamp: new Date()
+                });
+                renderStudyTools();
+            }
+        }
+
+        function deleteHighlight(id) {
+            highlights = highlights.filter(h => h.id !== id);
+            renderStudyTools();
+        }
+
+        function deleteComment(id) {
+            comments = comments.filter(c => c.id !== id);
+            renderStudyTools();
+        }
+
+        function deleteNote(id) {
+            notes = notes.filter(n => n.id !== id);
+            renderStudyTools();
+        }
+
+        function exportStudyNotes() {
+            const data = {
+                questionId: currentQuestionId,
+                questionText: examData.find(q => q.number === currentQuestionId)?.text || '',
+                highlights: highlights.filter(h => h.questionId === currentQuestionId),
+                comments: comments.filter(c => c.questionId === currentQuestionId),
+                notes: notes.filter(n => n.questionId === currentQuestionId),
+                exportedAt: new Date().toISOString()
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `questao-${currentQuestionId}-anotacoes.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Anotações exportadas!');
+        }
+
+        // Permitir marcação de texto
+        document.addEventListener('mouseup', function() {
+            if (!document.getElementById('preview-modal').classList.contains('hidden')) {
+                const selection = window.getSelection();
+                if (selection && selection.toString().length > 0) {
+                    const text = selection.toString();
+                    const id = Date.now() + '';
+                    highlights.push({
+                        id: id,
+                        text: text,
+                        color: highlightColor,
+                        questionId: currentQuestionId,
+                        timestamp: new Date()
+                    });
+                    selection.removeAllRanges();
+                    renderStudyTools();
+                    showToast('Texto marcado!');
+                }
+            }
+        });
+
+        /* ========== GLOSSÁRIO MODAL ========== */
+        function openGlossaryModal() {
+            document.getElementById('glossaryModal').classList.add('show');
+            renderGlossary();
+        }
+        function closeGlossaryModal() {
+            document.getElementById('glossaryModal').classList.remove('show');
+        }
+        function renderGlossary() {
+            const search = document.getElementById('glossarySearch')?.value.toLowerCase() || '';
+            const categories = [...new Set(GLOSSARY_TERMS.map(t => t.category))];
+            const catHtml = '<button onclick="filterGlossary(\'all\')" class="pill active">Todos</button>' +
+                categories.map(c => `<button onclick="filterGlossary('${c}')" class="pill">${c}</button>`).join('');
+            document.getElementById('glossaryCategories').innerHTML = catHtml;
+
+            const filtered = GLOSSARY_TERMS.filter(t => 
+                t.term.toLowerCase().includes(search) || t.definition.toLowerCase().includes(search)
+            );
+            const listHtml = filtered.map(t => `
+                <div class="border border-slate-200 dark:border-slate-700 rounded-lg p-3">
+                    <div class="flex justify-between">
+                        <h3 class="font-serif font-bold text-audit-navy dark:text-audit-gold">${t.term}</h3>
+                        ${t.nbc ? `<span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">${t.nbc}</span>` : ''}
+                    </div>
+                    <p class="text-sm text-slate-700 dark:text-slate-300 mt-1">${t.definition}</p>
+                    ${t.example ? `<p class="text-xs text-slate-500 mt-1 italic">Exemplo: ${t.example}</p>` : ''}
+                    <span class="text-xs font-semibold text-slate-500 uppercase">${t.category}</span>
+                </div>
+            `).join('');
+            document.getElementById('glossaryTermsList').innerHTML = listHtml || '<p class="text-center text-slate-500">Nenhum termo encontrado.</p>';
+        }
+        window.filterGlossary = function(cat) {
+            document.querySelectorAll('#glossaryCategories .pill').forEach(p => p.classList.remove('active'));
+            event.target.classList.add('active');
+            renderGlossary();
+        };
+        document.getElementById('glossarySearch')?.addEventListener('input', renderGlossary);
+
+        /* ========== FUNÇÕES ADICIONAIS DO VISUALIZADOR ========== */
+        function closeModal() {
+            const modal = document.getElementById('preview-modal');
+            const paper = document.getElementById('paper-container');
+            modal.classList.replace('opacity-100', 'opacity-0');
+            paper.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            isDarkMode = !isDarkMode;
+        }
+
+        function toggleFocusReading() {
+            isFocusMode = !isFocusMode;
+            // Implementação da barra de foco
+            let bar = document.getElementById('reading-focus-bar');
+            if (!bar) {
+                bar = document.createElement('div');
+                bar.id = 'reading-focus-bar';
+                bar.style.position = 'fixed';
+                bar.style.pointerEvents = 'none';
+                bar.style.left = '0';
+                bar.style.right = '0';
+                bar.style.height = '35px';
+                bar.style.background = 'rgba(197, 160, 89, 0.15)';
+                bar.style.borderTop = '1px solid rgba(197, 160, 89, 0.3)';
+                bar.style.borderBottom = '1px solid rgba(197, 160, 89, 0.3)';
+                bar.style.zIndex = '10000';
+                bar.style.display = 'none';
+                document.body.appendChild(bar);
+            }
+            bar.style.display = isFocusMode ? 'block' : 'none';
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if (isFocusMode) {
+                const bar = document.getElementById('reading-focus-bar');
+                if (bar) bar.style.top = (e.clientY - 17) + 'px';
+            }
+        });
+
+        function toggleSplitView() {
+            isSplitMode = !isSplitMode;
+            const grid = document.getElementById('split-layout');
+            const sec = document.getElementById('secondary-content-col');
+            if (isSplitMode) {
+                grid.classList.replace('grid-cols-1', 'grid-cols-2');
+                sec.classList.remove('hidden');
+            } else {
+                grid.classList.replace('grid-cols-2', 'grid-cols-1');
+                sec.classList.add('hidden');
+            }
+        }
+
+        function adjustFontSize(delta) {
+            fontSizeBase += (delta * 2);
+            if (fontSizeBase < 12) fontSizeBase = 12;
+            if (fontSizeBase > 30) fontSizeBase = 30;
+            document.getElementById('paper-container').style.fontSize = fontSizeBase + 'px';
+        }
+
+        function toggleSidebar() {
+            document.getElementById('pdf-sidebar').classList.toggle('hidden');
+        }
+
+        /* ========== EDITAL ACCORDION ========== */
+        let editalAllOpen = false;
+        function renderEdital() {
+            const container = document.getElementById('edital-accordion');
+            if (!container) return;
+            container.innerHTML = EDITAL_DATA.map((disc, idx) => `
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow edital-item" id="edital-${disc.n}">
+                    <button class="w-full flex items-center gap-4 p-4 sm:p-5 text-left hover:bg-slate-50 transition-colors" onclick="toggleEditalItem(${idx})">
+                        <span class="shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-white text-[10px] font-black" style="background:${disc.color}">${disc.n}</span>
+                        <span class="flex-1 text-xs font-black text-audit-navy uppercase tracking-wide">${disc.t}</span>
+                        <span class="text-[9px] text-slate-400 font-medium hidden sm:block">${disc.items.length} tópico${disc.items.length > 1 ? 's' : ''}</span>
+                        <i class="fas fa-chevron-down text-slate-400 text-[9px] transition-transform edital-chev-${idx}"></i>
+                    </button>
+                    <div class="edital-body-${idx} hidden border-t border-slate-100">
+                        ${disc.items.map(item => `
+                        <div class="p-4 sm:p-5 border-b border-slate-50 last:border-b-0 hover:bg-slate-50/50 transition-colors">
+                            <div class="flex items-start gap-3">
+                                <span class="shrink-0 text-[9px] font-black px-2 py-0.5 rounded mt-0.5 text-white" style="background:${disc.color}">${item.l}</span>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-[10px] font-black text-audit-navy uppercase tracking-wide mb-1">${item.tt}</p>
+                                    <p class="text-[11px] text-slate-600 leading-relaxed">${item.tx}</p>
+                                    ${item.link ? `<a href="${item.link.u}" target="_blank" class="inline-flex items-center gap-1 mt-2 text-[9px] font-bold text-audit-blue hover:text-audit-gold transition"><i class="fas fa-external-link-alt"></i> ${item.link.t}</a>` : ''}
+                                </div>
+                            </div>
+                        </div>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleEditalItem(idx) {
+            const body = document.querySelector(`.edital-body-${idx}`);
+            const chev = document.querySelector(`.edital-chev-${idx}`);
+            if (!body) return;
+            const isOpen = !body.classList.contains('hidden');
+            body.classList.toggle('hidden');
+            if (chev) chev.style.transform = isOpen ? '' : 'rotate(180deg)';
+        }
+
+        function toggleAllEdital() {
+            editalAllOpen = !editalAllOpen;
+            EDITAL_DATA.forEach((_, idx) => {
+                const body = document.querySelector(`.edital-body-${idx}`);
+                const chev = document.querySelector(`.edital-chev-${idx}`);
+                if (body) body.classList.toggle('hidden', !editalAllOpen);
+                if (chev) chev.style.transform = editalAllOpen ? 'rotate(180deg)' : '';
+            });
+            const btn = document.getElementById('edital-toggle-btn');
+            if (btn) btn.textContent = editalAllOpen ? 'Recolher Tudo' : 'Expandir Tudo';
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProg();
+            renderChart();
+            renderEdital();
+            filterAndSortEditions();
+            if (window.lucide) lucide.createIcons();
+            // Módulos: cabeçalho e rodapé
+            loadHtmlComponent('https://auditeduca.com.br/assets/components/header.html', 'header-placeholder');
+            loadHtmlComponent('https://auditeduca.com.br/assets/components/footer.html', 'footer-placeholder');
+            // Preloader
+            setTimeout(() => { const p = document.getElementById('preloader'); if(p) p.classList.add('gone'); setTimeout(() => { if(p) p.style.display='none'; }, 700); }, 900);
+            // Datebar date
+            const dateEl = document.getElementById('ae-date');
+            if (dateEl) dateEl.textContent = new Date().toLocaleDateString('pt-BR', {weekday:'short',day:'2-digit',month:'short',year:'numeric'});
+            // Countdown
+            const examDate = new Date('2026-07-13T08:00:00');
+            const cdEl = document.getElementById('countdown-days');
+            if (cdEl) {
+                const diff = Math.ceil((examDate - new Date()) / (1000 * 60 * 60 * 24));
+                cdEl.textContent = diff > 0 ? diff : '0';
+            }
+        });
+        // Scroll top
+        window.addEventListener('scroll', () => { document.getElementById('scroll-top')?.classList.toggle('vis', scrollY > 400); }, {passive:true});
+        // loadHtmlComponent
+        async function loadHtmlComponent(url, elementId) { try { const r = await fetch(url); if(r.ok) { const el = document.getElementById(elementId); if(el) el.innerHTML = await r.text(); } } catch(e) { console.warn('Componente não carregado:', url); } }
+    </script>
+
+    <!-- HP 12C FINANCEIRA — Drawer -->
+    <div id="hp12c-overlay" onclick="closeHP12C()" aria-hidden="true"></div>
+    <aside id="hp12c-drawer" role="complementary" aria-label="Calculadora HP 12C" aria-hidden="true">
+        <!-- Header -->
+        <div style="background:#0f0f1e;border-bottom:1px solid rgba(197,160,89,.15);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+            <div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(197,160,89,.5);margin-bottom:2px;">HEWLETT · PACKARD</div>
+                <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#C5A059;letter-spacing:.04em;">12C Financial</div>
+            </div>
+            <button onclick="closeHP12C()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:rgba(255,255,255,.5);width:30px;height:30px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;" aria-label="Fechar calculadora">×</button>
+        </div>
+        <!-- Display -->
+        <div style="padding:12px 12px 4px;">
+            <div class="hp-disp">
+                <div class="hp-stack-row">
+                    <span>T: <span id="hp-t">0</span></span>
+                    <span>Z: <span id="hp-z">0</span></span>
+                    <span>Y: <span id="hp-y">0</span></span>
+                </div>
+                <div class="hp-main-val" id="hp-x" aria-live="polite">0</div>
+                <div class="hp-flags">
+                    <span class="hp-flag" id="hp-flag-f">f</span>
+                    <span class="hp-flag" id="hp-flag-g">g</span>
+                    <span class="hp-flag" id="hp-flag-begin">BEGIN</span>
+                    <span class="hp-flag" id="hp-flag-fin">FIN</span>
+                </div>
+            </div>
+        </div>
+        <!-- TVM Memory Row -->
+        <div class="hp-mem-row" title="Registros TVM">
+            <div class="hp-mem-cell"><div class="hp-mem-l">n</div><div class="hp-mem-v" id="m-n">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">i%</div><div class="hp-mem-v" id="m-i">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">PV</div><div class="hp-mem-v" id="m-pv">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">PMT</div><div class="hp-mem-v" id="m-pmt">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">FV</div><div class="hp-mem-v" id="m-fv">—</div></div>
+        </div>
+        <!-- Buttons -->
+        <div class="hp-btn-grid" role="group" aria-label="Teclas da calculadora">
+            <!-- Row TVM -->
+            <button class="hk hk-tvm" onclick="hpKey('n')" aria-label="Número de períodos"><span class="hk-main">n</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('i')" aria-label="Taxa de juros"><span class="hk-main">i%</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('PV')" aria-label="Valor presente"><span class="hk-main">PV</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('PMT')" aria-label="Pagamento"><span class="hk-main">PMT</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('FV')" aria-label="Valor futuro"><span class="hk-main">FV</span></button>
+            <!-- Row Math -->
+            <button class="hk hk-fn" onclick="hpKey('sqrt')" aria-label="Raiz quadrada"><span class="hk-main">√x</span></button>
+            <button class="hk hk-fn" onclick="hpKey('inv')" aria-label="Inverso"><span class="hk-main">1/x</span></button>
+            <button class="hk hk-fn" onclick="hpKey('pct')" aria-label="Porcentagem"><span class="hk-main">%</span></button>
+            <button class="hk hk-fn" onclick="hpKey('pctd')" aria-label="Variação percentual"><span class="hk-main">Δ%</span></button>
+            <button class="hk hk-fn" onclick="hpKey('yx')" aria-label="Potência"><span class="hk-main">yˣ</span></button>
+            <!-- Row 7-9 -->
+            <button class="hk hk-num" onclick="hpKey('7')" aria-label="7"><span class="hk-main">7</span></button>
+            <button class="hk hk-num" onclick="hpKey('8')" aria-label="8"><span class="hk-main">8</span></button>
+            <button class="hk hk-num" onclick="hpKey('9')" aria-label="9"><span class="hk-main">9</span></button>
+            <button class="hk hk-op" onclick="hpKey('div')" aria-label="Dividir"><span class="hk-main">÷</span></button>
+            <button class="hk hk-op" onclick="hpKey('chs')" aria-label="Mudar sinal"><span class="hk-main">CHS</span></button>
+            <!-- Row 4-6 -->
+            <button class="hk hk-num" onclick="hpKey('4')" aria-label="4"><span class="hk-main">4</span></button>
+            <button class="hk hk-num" onclick="hpKey('5')" aria-label="5"><span class="hk-main">5</span></button>
+            <button class="hk hk-num" onclick="hpKey('6')" aria-label="6"><span class="hk-main">6</span></button>
+            <button class="hk hk-op" onclick="hpKey('mul')" aria-label="Multiplicar"><span class="hk-main">×</span></button>
+            <button class="hk hk-clx" onclick="hpKey('clx')" aria-label="Limpar X"><span class="hk-main">CLx</span></button>
+            <!-- Row 1-3 -->
+            <button class="hk hk-num" onclick="hpKey('1')" aria-label="1"><span class="hk-main">1</span></button>
+            <button class="hk hk-num" onclick="hpKey('2')" aria-label="2"><span class="hk-main">2</span></button>
+            <button class="hk hk-num" onclick="hpKey('3')" aria-label="3"><span class="hk-main">3</span></button>
+            <button class="hk hk-op" onclick="hpKey('sub')" aria-label="Subtrair"><span class="hk-main">−</span></button>
+            <button class="hk hk-fn" onclick="hpKey('sto')" aria-label="Armazenar"><span class="hk-main">STO</span></button>
+            <!-- Row 0 -->
+            <button class="hk hk-num" onclick="hpKey('0')" aria-label="0"><span class="hk-main">0</span></button>
+            <button class="hk hk-num" onclick="hpKey('.')" aria-label="Ponto decimal"><span class="hk-main">.</span></button>
+            <button class="hk hk-enter hk-wide" onclick="hpKey('enter')" aria-label="Entrar"><span class="hk-main">ENTER</span></button>
+            <button class="hk hk-op" onclick="hpKey('add')" aria-label="Somar"><span class="hk-main">+</span></button>
+            <button class="hk hk-fn" onclick="hpKey('rcl')" aria-label="Recuperar memória"><span class="hk-main">RCL</span></button>
+        </div>
+        <!-- Info -->
+        <div style="padding:0 12px 12px;font-size:8.5px;color:rgba(255,255,255,.2);line-height:1.6;border-top:1px solid rgba(255,255,255,.05);margin-top:4px;padding-top:10px;">
+            <b style="color:rgba(197,160,89,.5);letter-spacing:.08em;">MODO RPN</b> — Digite o 1º valor, ENTER, 2º valor, operação.<br>
+            TVM: insira valores conhecidos e pressione a incógnita.<br>
+            <b style="color:rgba(197,160,89,.4);">STO/RCL</b> = mem0 · <b style="color:rgba(197,160,89,.4);">Δ%</b> = variação percentual
+        </div>
+    </aside>
+
+    <!-- RODAPÉ MODULAR -->
+    <div id="footer-placeholder" class="no-print" role="contentinfo"></div>
+
+    <!-- SCROLL TOP -->
+    <button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo" aria-label="Voltar ao topo da página">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- TOAST -->
+    <div id="toast-el" role="status" aria-live="polite"></div>
+
+    <script>
+    // ══════════════════════════════════════════════════════
+    // HP 12C FINANCEIRA — RPN Engine
+    // ══════════════════════════════════════════════════════
+    (function() {
+        let stack = { T: 0, Z: 0, Y: 0, X: 0 };
+        let tvm = { n: null, i: null, PV: null, PMT: null, FV: null };
+        let mem = 0;
+        let inputBuf = '';
+        let newEntry = true;
+        let lastKey = null;
+
+        function fmt(v) {
+            if (v === null) return '—';
+            if (!isFinite(v)) return 'Error';
+            if (Math.abs(v) >= 1e10 || (Math.abs(v) < 1e-5 && v !== 0)) return v.toExponential(5);
+            const s = parseFloat(v.toPrecision(10));
+            return s.toString();
+        }
+
+        function updateDisp() {
+            const x = document.getElementById('hp-x');
+            const y = document.getElementById('hp-y');
+            const z = document.getElementById('hp-z');
+            const t = document.getElementById('hp-t');
+            if (x) x.textContent = inputBuf !== '' ? inputBuf : fmt(stack.X);
+            if (y) y.textContent = fmt(stack.Y);
+            if (z) z.textContent = fmt(stack.Z);
+            if (t) t.textContent = fmt(stack.T);
+            ['n','i','PV','PMT','FV'].forEach(k => {
+                const el = document.getElementById('m-'+k.toLowerCase().replace('%',''));
+                const kid = k==='i'?'m-i':('m-'+k.toLowerCase());
+                const el2 = document.getElementById(kid);
+                if(el2) el2.textContent = tvm[k] !== null ? fmt(tvm[k]) : '—';
+            });
+        }
+
+        function pushStack(v) {
+            stack.T = stack.Z; stack.Z = stack.Y; stack.Y = stack.X; stack.X = v;
+        }
+
+        function getX() {
+            return inputBuf !== '' ? parseFloat(inputBuf) : stack.X;
+        }
+
+        function commitInput() {
+            if (inputBuf !== '') { stack.X = parseFloat(inputBuf); inputBuf = ''; }
+            newEntry = true;
+        }
+
+        // TVM solver
+        function solveTVM(unknown) {
+            commitInput();
+            const known = { ...tvm };
+            try {
+                if (unknown === 'FV') {
+                    const { n, i, PV, PMT } = known;
+                    if ([n,i,PV,PMT].some(v=>v===null)) { pushStack(NaN); updateDisp(); return; }
+                    const r = i/100;
+                    const fv = -PV * Math.pow(1+r,n) - PMT * (Math.pow(1+r,n)-1)/r;
+                    tvm.FV = fv; pushStack(fv);
+                } else if (unknown === 'PV') {
+                    const { n, i, PMT, FV } = known;
+                    if ([n,i,PMT,FV].some(v=>v===null)) { pushStack(NaN); updateDisp(); return; }
+                    const r = i/100;
+                    const pv = (-FV - PMT*(Math.pow(1+r,n)-1)/r) / Math.pow(1+r,n);
+                    tvm.PV = pv; pushStack(pv);
+                } else if (unknown === 'PMT') {
+                    const { n, i, PV, FV } = known;
+                    if ([n,i,PV,FV].some(v=>v===null)) { pushStack(NaN); updateDisp(); return; }
+                    const r = i/100;
+                    const pmt = (-PV*Math.pow(1+r,n) - FV) * r / (Math.pow(1+r,n)-1);
+                    tvm.PMT = pmt; pushStack(pmt);
+                } else if (unknown === 'n') {
+                    const { i, PV, PMT, FV } = known;
+                    if ([i,PV,PMT,FV].some(v=>v===null)) { pushStack(NaN); updateDisp(); return; }
+                    const r = i/100;
+                    const n = Math.log((-FV*r+PMT) / (PMT+PV*r)) / Math.log(1+r);
+                    tvm.n = n; pushStack(n);
+                } else if (unknown === 'i') {
+                    // Newton-Raphson
+                    const { n, PV, PMT, FV } = known;
+                    if ([n,PV,PMT,FV].some(v=>v===null)) { pushStack(NaN); updateDisp(); return; }
+                    let r = 0.1;
+                    for (let iter = 0; iter < 200; iter++) {
+                        const f = PV*Math.pow(1+r,n) + PMT*(Math.pow(1+r,n)-1)/r + FV;
+                        const df = n*PV*Math.pow(1+r,n-1) + PMT*(n*Math.pow(1+r,n-1)*r - (Math.pow(1+r,n)-1))/(r*r);
+                        const r2 = r - f/df;
+                        if (Math.abs(r2 - r) < 1e-10) { r = r2; break; }
+                        r = r2;
+                    }
+                    tvm.i = r*100; pushStack(r*100);
+                }
+            } catch(e) { pushStack(NaN); }
+            updateDisp();
+        }
+
+        window.hpKey = function(k) {
+            const digits = '0123456789';
+            if (digits.includes(k)) {
+                if (newEntry) { inputBuf = k; newEntry = false; }
+                else { inputBuf = (inputBuf === '0' ? '' : inputBuf) + k; }
+                updateDisp(); return;
+            }
+            if (k === '.') {
+                if (!inputBuf.includes('.')) { inputBuf = (inputBuf||'0') + '.'; newEntry = false; }
+                updateDisp(); return;
+            }
+            if (k === 'chs') {
+                if (inputBuf !== '') { inputBuf = inputBuf.startsWith('-') ? inputBuf.slice(1) : '-'+inputBuf; }
+                else { stack.X = -stack.X; }
+                updateDisp(); return;
+            }
+            if (k === 'enter') {
+                commitInput(); pushStack(stack.X); newEntry = true; updateDisp(); return;
+            }
+            if (k === 'clx') { inputBuf = ''; stack.X = 0; newEntry = true; updateDisp(); return; }
+
+            // Arithmetic
+            const ops = { add: (a,b)=>b+a, sub: (a,b)=>b-a, mul: (a,b)=>b*a, div: (a,b)=>b/a };
+            if (ops[k]) {
+                const x = getX(); commitInput();
+                const y = stack.Y;
+                stack.X = ops[k](x, y);
+                stack.Y = stack.Z; stack.Z = stack.T;
+                newEntry = true; inputBuf = ''; updateDisp(); return;
+            }
+
+            // Math functions
+            if (k === 'sqrt') { commitInput(); stack.X = Math.sqrt(stack.X); newEntry = true; updateDisp(); return; }
+            if (k === 'inv') { commitInput(); stack.X = 1/stack.X; newEntry = true; updateDisp(); return; }
+            if (k === 'yx') { const x=getX(); commitInput(); stack.X = Math.pow(stack.Y,x); stack.Y=stack.Z; stack.Z=stack.T; newEntry=true; updateDisp(); return; }
+            if (k === 'pct') { commitInput(); stack.X = stack.Y * stack.X / 100; newEntry=true; updateDisp(); return; }
+            if (k === 'pctd') { commitInput(); const r=(stack.X-stack.Y)/Math.abs(stack.Y)*100; stack.X=r; newEntry=true; updateDisp(); return; }
+
+            // Memory
+            if (k === 'sto') { mem = getX(); commitInput(); newEntry=true; updateDisp(); return; }
+            if (k === 'rcl') { commitInput(); pushStack(mem); newEntry=true; updateDisp(); return; }
+
+            // TVM store
+            const tvmStore = { n:'n', i:'i', PV:'PV', PMT:'PMT', FV:'FV' };
+            if (tvmStore[k]) {
+                const x = getX(); commitInput();
+                if (tvm[k] === null) { tvm[k] = x; }
+                else if (x !== 0) { tvm[k] = x; }
+                else { solveTVM(k); return; }
+                updateDisp(); return;
+            }
+        };
+
+        window.openHP12C = function() {
+            document.getElementById('hp12c-drawer')?.classList.add('open');
+            document.getElementById('hp12c-overlay')?.classList.add('open');
+            document.getElementById('hp12c-drawer')?.setAttribute('aria-hidden','false');
+        };
+        window.closeHP12C = function() {
+            document.getElementById('hp12c-drawer')?.classList.remove('open');
+            document.getElementById('hp12c-overlay')?.classList.remove('open');
+            document.getElementById('hp12c-drawer')?.setAttribute('aria-hidden','true');
+        };
+
+        updateDisp();
+    })();
+
+    // ══ OVERRIDE showToast para usar o novo elemento ══
+    window.showToast = function(msg) {
+        const t = document.getElementById('toast-el');
+        if (!t) return;
+        t.innerHTML = '<i class="fas fa-check-circle" style="color:#C5A059;"></i> ' + msg;
+        t.classList.add('show');
+        clearTimeout(t._tid);
+        t._tid = setTimeout(() => t.classList.remove('show'), 3000);
+    };
+    </script>
+</body>
+</html>

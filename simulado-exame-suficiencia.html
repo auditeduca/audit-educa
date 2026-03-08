@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulado do Exame de Suficiência CFC — 50 questões com gabarito comentado, cronômetro e estatísticas por disciplina.">
+    <title>Simulado · Exame de Suficiência | Acervo Audit Educa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="https://auditeduca.com.br/assets/images/audit-educa-favicon.webp">
+    <!-- CSS Modulares -->
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/preloader.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/global.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/header.css">
+    <link rel="stylesheet" href="https://auditeduca.com.br/assets/css/footer.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'gold': '#C5A059',
+                        'navy': '#0f172a',
+                        'blue': '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --ac: #C5A059; --navy: #0f172a; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #334155; overflow-x: hidden; }
+        .dark body { background: #020617; color: #e2e8f0; }
+
+        /* Progress bar */
+        .prog-bar { height: 4px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+        .prog-fill { height: 100%; background: linear-gradient(90deg, var(--ac), #d4780c); border-radius: 4px; transition: width 0.4s ease; }
+
+        /* Option buttons */
+        .opt-btn {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 12px 16px; border: 1.5px solid #e2e8f0; border-radius: 10px;
+            cursor: pointer; transition: all 0.2s; text-align: left; width: 100%;
+            background: white; font-size: 13px; line-height: 1.6;
+        }
+        .dark .opt-btn { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+        .opt-btn:hover:not(.disabled) { border-color: var(--ac); background: #fffbf0; }
+        .dark .opt-btn:hover:not(.disabled) { background: #1e3a5f; }
+        .opt-btn.selected { border-color: var(--ac); background: #fffbf0; }
+        .dark .opt-btn.selected { background: #1e3a5f; }
+        .opt-btn.correct { border-color: #2d7a3c !important; background: #f0fdf4 !important; }
+        .opt-btn.wrong { border-color: #c0392b !important; background: #fef2f2 !important; }
+        .opt-btn.disabled { pointer-events: none; }
+        .opt-letter {
+            flex-shrink: 0; width: 22px; height: 22px; border-radius: 5px; background: #f1f5f9;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 800; font-family: 'JetBrains Mono', monospace;
+            margin-top: 1px; transition: all 0.2s;
+        }
+        .opt-btn.selected .opt-letter { background: var(--ac); color: white; }
+        .opt-btn.correct .opt-letter { background: #2d7a3c; color: white; }
+        .opt-btn.wrong .opt-letter { background: #c0392b; color: white; }
+
+        /* Q-dot navigator */
+        .q-dot {
+            width: 28px; height: 28px; border-radius: 7px; border: 1.5px solid #e2e8f0; background: white;
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            color: #64748b; transition: all 0.2s; flex-shrink: 0;
+        }
+        .dark .q-dot { background: #1e293b; border-color: #334155; color: #94a3b8; }
+        .q-dot:hover { border-color: var(--ac); color: var(--ac); }
+        .q-dot.answered { background: var(--ac); border-color: var(--ac); color: white; }
+        .q-dot.current { border-color: var(--ac); box-shadow: 0 0 0 2px rgba(197,160,89,0.3); color: var(--ac); font-weight: 900; }
+        .q-dot.ok { background: #2d7a3c; border-color: #2d7a3c; color: white; }
+        .q-dot.err { background: #c0392b; border-color: #c0392b; color: white; }
+
+        /* Timer */
+        .timer-display { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 700; color: var(--navy); }
+        .timer-warning { color: #c0392b; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+        /* Score card */
+        .score-card { border-radius: 16px; padding: 20px; text-align: center; }
+        .score-big { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; line-height: 1; }
+
+        /* Explanation */
+        .explanation { border-left: 3px solid var(--ac); border-radius: 0 10px 10px 0; padding: 14px 16px; background: #fffdf7; display: none; margin-top: 12px; font-size: 12.5px; line-height: 1.75; }
+        .dark .explanation { background: #1e293b; }
+        .explanation.show { display: block; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+
+        /* Loading spinner */
+        .spinner { width: 32px; height: 32px; border: 3px solid #e2e8f0; border-top-color: var(--ac); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Toast */
+        #toast { transition: all 0.3s; }
+
+        /* Config panel */
+        .config-sel { background: white; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 12px; font-weight: 600; color: #334155; outline: none; cursor: pointer; transition: border-color 0.2s; width: 100%; }
+        .config-sel:focus { border-color: var(--ac); }
+        .dark .config-sel { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+
+        /* Category breakdown */
+        .cat-bar { height: 4px; border-radius: 4px; background: #e2e8f0; overflow: hidden; }
+        .cat-fill { height: 100%; border-radius: 4px; background: var(--ac); }
+
+        @media (max-width: 640px) {
+            .q-dot { width: 24px; height: 24px; font-size: 9px; border-radius: 5px; }
+            .timer-display { font-size: 1.1rem; }
+        }
+
+        /* ── PRELOADER ── */
+        #preloader { position: fixed; inset: 0; background: #0f172a; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity .6s; }
+        #preloader.gone { opacity: 0; pointer-events: none; }
+        .preload-spin { width: 44px; height: 44px; border: 3px solid rgba(197,160,89,.2); border-top-color: #C5A059; border-radius: 50%; animation: spin .8s linear infinite; }
+
+        /* ── SKIP NAV ── */
+        .skip-nav { position: absolute; top: -100px; left: 1rem; padding: .5rem 1rem; background: #C5A059; color: #0f172a; font-weight: 700; font-size: .85rem; border-radius: 6px; z-index: 99998; transition: top .2s; }
+        .skip-nav:focus { top: 1rem; }
+
+        /* ── HP 12C FLOAT BUTTON ── */
+        #hp12c-fab { position: fixed; bottom: 5.5rem; right: 1.25rem; z-index: 490; width: 46px; height: 46px; background: #0f172a; border: 1.5px solid rgba(197,160,89,.4); border-radius: 10px; color: #C5A059; font-size: .85rem; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,.3); transition: all .2s; gap: 2px; }
+        #hp12c-fab:hover { background: #C5A059; color: #0f172a; transform: scale(1.05); }
+        #hp12c-fab span { font-size: 6px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+        @media (max-width:640px) { #hp12c-fab { bottom: 4.5rem; right: .75rem; } }
+
+        /* ── HP 12C DRAWER ── */
+        #hp12c-drawer { position: fixed; top: 0; right: 0; height: 100%; width: 320px; max-width: 95vw; background: #1a1a2e; z-index: 1200; transform: translateX(110%); transition: transform .4s cubic-bezier(.4,0,.2,1); border-left: 2px solid rgba(197,160,89,.2); box-shadow: -20px 0 60px rgba(0,0,0,.5); display: flex; flex-direction: column; overflow-y: auto; }
+        #hp12c-drawer.open { transform: translateX(0); }
+        #hp12c-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 1199; opacity: 0; pointer-events: none; transition: opacity .3s; }
+        #hp12c-overlay.open { opacity: 1; pointer-events: auto; }
+        .hp-disp { background: #0a1628; border: 1px solid rgba(197,160,89,.2); border-radius: 8px; padding: 10px 14px; margin: 0 12px 8px; font-family: 'JetBrains Mono','Courier New',monospace; }
+        .hp-stack-row { display: flex; justify-content: space-between; font-size: 8.5px; color: rgba(197,160,89,.35); margin-bottom: 2px; }
+        .hp-main-val { font-size: 24px; color: #e8d080; text-align: right; font-weight: 300; min-height: 32px; overflow: hidden; }
+        .hp-flags { display: flex; gap: 6px; margin-top: 4px; }
+        .hp-flag { font-size: 7.5px; font-weight: 700; letter-spacing: .1em; padding: 1px 5px; border-radius: 2px; background: rgba(197,160,89,.08); color: rgba(197,160,89,.3); }
+        .hp-flag.on { background: rgba(197,160,89,.18); color: #C5A059; }
+        .hp-btn-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; padding: 0 12px 12px; }
+        .hk { border: none; border-radius: 5px; cursor: pointer; padding: 0; height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all .1s; user-select: none; }
+        .hk-main { font-size: 9.5px; font-weight: 700; font-family: 'Inter',sans-serif; }
+        .hk-sub { font-size: 7px; font-weight: 500; opacity: .5; }
+        .hk:active { transform: scale(.9); filter: brightness(.75); }
+        .hk-tvm { background: #7c3f0e; color: #ffd166; }
+        .hk-tvm:hover { background: #9c5212; }
+        .hk-num { background: #252d3a; color: #dde3ed; }
+        .hk-num:hover { background: #323d4f; }
+        .hk-op  { background: #1a3050; color: #90cdf4; }
+        .hk-op:hover  { background: #243e68; }
+        .hk-fn  { background: #163327; color: #68d391; }
+        .hk-fn:hover  { background: #1e4534; }
+        .hk-enter { background: #C5A059; color: #0f172a; }
+        .hk-enter:hover { background: #d4b26a; }
+        .hk-clx { background: #7f1d1d; color: #fc8181; }
+        .hk-clx:hover { background: #991b1b; }
+        .hk-wide { grid-column: span 2; height: 40px; }
+        .hp-mem-row { display: flex; justify-content: space-between; padding: 0 12px 8px; gap: 4px; }
+        .hp-mem-cell { flex: 1; text-align: center; }
+        .hp-mem-v { font-family: 'JetBrains Mono',monospace; font-size: 8px; color: rgba(197,160,89,.5); background: rgba(10,22,40,.5); border-radius: 4px; padding: 3px; }
+        .hp-mem-l { font-size: 7px; color: rgba(255,255,255,.22); }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+
+    <!-- PRELOADER -->
+    <div id="preloader" aria-hidden="true"><div class="preload-spin"></div></div>
+
+    <!-- SKIP NAVIGATION -->
+    <a class="skip-nav" href="#main-content">Ir ao conteúdo principal</a>
+
+    <!-- CABEÇALHO MODULAR -->
+    <div id="header-placeholder" class="no-print" role="banner"></div>
+
+    <!-- TOP BAR -->
+    <div class="bg-gradient-to-r from-[#0f172a] to-slate-800 text-white sticky top-0 z-50 shadow-lg border-b border-[#C5A059]/30">
+        <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="text-[#C5A059] hover:text-white transition" title="Voltar ao Hub">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <span class="text-[10px] font-black uppercase tracking-widest text-white/60">Audit Educa</span>
+                <span class="text-white/20">|</span>
+                <span class="text-[11px] font-black text-[#C5A059] uppercase tracking-wider">Simulado · Exame de Suficiência</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div id="timer-wrap" class="hidden items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg">
+                    <i class="fas fa-clock text-[#C5A059] text-xs"></i>
+                    <span id="timer-display" class="timer-display text-white text-sm">00:00</span>
+                </div>
+                <button onclick="toggleDark()" class="p-2 text-white/60 hover:text-white transition rounded-lg">
+                    <i class="fas fa-moon text-sm" id="dark-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content" class="max-w-5xl mx-auto px-4 py-8" role="main">
+
+        <!-- CONFIG PANEL -->
+        <div id="config-panel">
+            <div class="text-center mb-10">
+                <p class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.3em] mb-3">CFC · Exame de Suficiência</p>
+                <h1 class="text-4xl md:text-5xl font-serif font-black text-[#0f172a] dark:text-white tracking-tighter mb-4">Simulado Oficial</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl mx-auto leading-relaxed">Questões baseadas em provas oficiais (2022–2025) com gabarito comentado, cronômetro e análise de desempenho por disciplina.</p>
+            </div>
+
+            <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-8 shadow-sm max-w-2xl mx-auto">
+                <h3 class="text-sm font-black text-[#0f172a] dark:text-white uppercase tracking-wider mb-6 flex items-center gap-2">
+                    <i class="fas fa-sliders text-[#C5A059]"></i> Configurar Simulado
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-wider block mb-2">Edição / Fonte</label>
+                        <select class="config-sel" id="cfg-edition">
+                            <option value="local">Banco de Questões (50 Q)</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2025-01.json">Prova Oficial 2025.1</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2024-02.json">Prova Oficial 2024.2</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2024-01.json">Prova Oficial 2024.1</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2023-02.json">Prova Oficial 2023.2</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2023-01.json">Prova Oficial 2023.1</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2022-02.json">Prova Oficial 2022.2</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2022-01.json">Prova Oficial 2022.1</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2021-02.json">Prova Oficial 2021.2</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2021-01.json">Prova Oficial 2021.1</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2020-02.json">Prova Oficial 2020.2</option>
+                            <option value="https://auditeduca.com.br/tests/exame-de-suficiencia/exame-suficiencia-2020-01.json">Prova Oficial 2020.1</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-wider block mb-2">Número de Questões</label>
+                        <select class="config-sel" id="cfg-qtd">
+                            <option value="10">10 questões (aquecimento)</option>
+                            <option value="20">20 questões</option>
+                            <option value="30">30 questões</option>
+                            <option value="50" selected>50 questões (completo)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-wider block mb-2">Disciplina</label>
+                        <select class="config-sel" id="cfg-area">
+                            <option value="all">Todas as Disciplinas</option>
+                            <option value="Contabilidade Geral">Contabilidade Geral</option>
+                            <option value="Contabilidade de Custos">Contabilidade de Custos</option>
+                            <option value="Contabilidade Aplicada ao Setor Público">Setor Público</option>
+                            <option value="Contabilidade Gerencial">Contabilidade Gerencial</option>
+                            <option value="Matemática Financeira">Matemática Financeira</option>
+                            <option value="Auditoria Contábil">Auditoria Contábil</option>
+                            <option value="Perícia Contábil">Perícia Contábil</option>
+                            <option value="Ética Profissional">Ética Profissional</option>
+                            <option value="Direito e Legislação">Direito e Legislação</option>
+                            <option value="Teoria da Contabilidade">Teoria da Contabilidade</option>
+                            <option value="Controladoria">Controladoria</option>
+                            <option value="Língua Portuguesa">Língua Portuguesa</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-wider block mb-2">Modo</label>
+                        <select class="config-sel" id="cfg-mode">
+                            <option value="timed">⏱ Cronometrado</option>
+                            <option value="free">∞ Livre</option>
+                            <option value="instant">✓ Gabarito Imediato</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 mb-6 text-[11px] text-slate-600 dark:text-slate-400 space-y-1.5">
+                    <div class="flex items-center gap-2"><i class="fas fa-info-circle text-[#C5A059]"></i> <strong>50 questões completas</strong> no banco local com gabarito comentado.</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-wifi text-[#C5A059]"></i> Provas oficiais requerem conexão com a internet. Em caso de falha, o banco local é usado automaticamente.</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-[#C5A059]"></i> Modo cronometrado: 4 min/questão (máx. 200 min para 50 questões).</div>
+                </div>
+
+                <button id="start-btn" onclick="startSimulado()" class="w-full bg-[#0f172a] text-white py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-[#C5A059] hover:text-[#0f172a] transition-all shadow-lg flex items-center justify-center gap-3">
+                    <i class="fas fa-play"></i> Iniciar Simulado
+                </button>
+            </div>
+
+            <!-- STATS STRIP -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 max-w-2xl mx-auto">
+                <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-serif font-black text-[#C5A059]">50</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-wider mt-1">Questões</div>
+                </div>
+                <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-serif font-black text-[#C5A059]">13</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-wider mt-1">Disciplinas</div>
+                </div>
+                <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-serif font-black text-[#C5A059]">50%</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-wider mt-1">Aprovação</div>
+                </div>
+                <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center shadow-sm">
+                    <div class="text-2xl font-serif font-black text-[#C5A059]">200'</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-wider mt-1">Tempo Oficial</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOADING STATE -->
+        <div id="loading-panel" class="hidden text-center py-20">
+            <div class="spinner mx-auto mb-4"></div>
+            <p class="text-sm text-slate-500">Carregando questões...</p>
+        </div>
+
+        <!-- SIMULADO PANEL -->
+        <div id="sim-panel" class="hidden">
+            <!-- Top progress bar -->
+            <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-4 mb-4 shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-black text-slate-500 uppercase tracking-wider">Questão <span id="q-num-display">1</span> de <span id="q-total-display">50</span></span>
+                    <span id="q-discipline" class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#C5A059]/10 text-[#C5A059] uppercase tracking-wider"></span>
+                </div>
+                <div class="prog-bar"><div class="prog-fill" id="q-progress" style="width:0%"></div></div>
+            </div>
+
+            <!-- Question dots navigator -->
+            <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-3 mb-4 shadow-sm overflow-x-auto">
+                <div class="flex gap-1.5 flex-wrap" id="q-dots"></div>
+            </div>
+
+            <!-- Question card -->
+            <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-6 md:p-8 shadow-sm mb-4" id="q-card">
+                <div class="flex items-center gap-3 mb-5">
+                    <span id="q-badge-num" class="text-[9px] font-black text-slate-400 font-mono">Q01</span>
+                    <span id="q-fonte" class="text-[9px] font-medium text-slate-400 font-mono"></span>
+                    <span id="q-nivel" class="ml-auto text-[9px] font-bold px-2 py-0.5 rounded-full"></span>
+                </div>
+                <p class="text-sm md:text-base leading-relaxed text-[#0f172a] dark:text-slate-100 mb-6 font-medium" id="q-enunciado"></p>
+                <div class="space-y-2.5" id="q-options"></div>
+                <div id="q-explanation" class="explanation text-slate-700 dark:text-slate-300"></div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-wrap gap-3 justify-between items-center" id="q-actions">
+                <div class="flex gap-2">
+                    <button onclick="prevQ()" id="btn-prev" class="flex items-center gap-2 bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 px-4 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider hover:border-[#C5A059] transition disabled:opacity-40 disabled:cursor-not-allowed">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                    <button onclick="nextQ()" id="btn-next" class="flex items-center gap-2 bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 px-4 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider hover:border-[#C5A059] transition">
+                        Próxima <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showExplanation()" id="btn-explain" class="hidden items-center gap-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-4 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider hover:bg-[#C5A059]/20 transition">
+                        <i class="fas fa-lightbulb"></i> Gabarito
+                    </button>
+                    <button onclick="finishSimulado()" id="btn-finish" class="hidden items-center gap-2 bg-[#0f172a] text-white px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-wider hover:bg-[#C5A059] hover:text-[#0f172a] transition">
+                        <i class="fas fa-flag-checkered"></i> Finalizar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT PANEL -->
+        <div id="result-panel" class="hidden">
+            <div class="text-center mb-8">
+                <p class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.3em] mb-2">Resultado Final</p>
+                <h2 class="text-3xl font-serif font-black text-[#0f172a] dark:text-white" id="result-title">Parabéns!</h2>
+            </div>
+
+            <!-- Score cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6" id="score-grid"></div>
+
+            <!-- Category breakdown -->
+            <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm mb-6" id="cat-breakdown">
+                <h3 class="text-xs font-black text-[#0f172a] dark:text-white uppercase tracking-wider mb-4">Desempenho por Disciplina</h3>
+                <div id="cat-list" class="space-y-3"></div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button onclick="reviewSimulado()" class="flex items-center gap-2 bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 text-[#0f172a] dark:text-white px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-wider hover:border-[#C5A059] transition shadow-sm">
+                    <i class="fas fa-eye text-[#C5A059]"></i> Revisar Questões
+                </button>
+                <button onclick="resetSimulado()" class="flex items-center gap-2 bg-[#0f172a] text-white px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-wider hover:bg-[#C5A059] hover:text-[#0f172a] transition shadow-sm">
+                    <i class="fas fa-redo"></i> Novo Simulado
+                </button>
+                <a href="index.html" class="flex items-center gap-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-wider hover:bg-slate-200 transition shadow-sm">
+                    <i class="fas fa-home"></i> Hub de Provas
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- TOAST -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#0f172a] text-white px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.1em] shadow-2xl opacity-0 translate-y-4 pointer-events-none border border-[#C5A059]/30 z-[9999] whitespace-nowrap">
+        <i class="fas fa-info-circle text-[#C5A059] mr-2"></i><span id="toast-msg">…</span>
+    </div>
+
+    <script>
+    // ══════════════════════════════════════
+    // BANCO DE QUESTÕES LOCAL (50 QUESTÕES OFICIAIS ADAPTADAS 2022-2024)
+    // ══════════════════════════════════════
+    const QUESTOES_DB = [{"id":1,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2023","enunciado":"A empresa Alfa S.A. adquiriu uma máquina por R$ 120.000, com vida útil estimada de 10 anos e valor residual de R$ 20.000. Pelo método das cotas constantes (linear), o valor contábil líquido ao final do 3º ano será:","alternativas":["A) R$ 90.000","B) R$ 86.000","C) R$ 96.000","D) R$ 50.000"],"gabarito":"A","explicacao":"Depreciação anual = (120.000 − 20.000) / 10 = R$ 10.000/ano. Em 3 anos: 3 × 10.000 = R$ 30.000 acumulados. VCL = 120.000 − 30.000 = R$ 90.000. (Base depreciável = custo − valor residual = 100.000)","nivel":"Médio"},{"id":2,"disciplina":"Contabilidade Geral","fonte":"CFC 2/2022","enunciado":"Uma empresa adquiriu 30% das ações de uma coligada por R$ 150.000. No exercício, a coligada apurou lucro líquido de R$ 200.000 e distribuiu dividendos de R$ 60.000. Pelo Método da Equivalência Patrimonial, o saldo do investimento no final do período será:","alternativas":["A) R$ 150.000","B) R$ 162.000","C) R$ 168.000","D) R$ 192.000"],"gabarito":"D","explicacao":"MEP: Saldo = 150.000 + 30%×200.000 − 30%×60.000 = 150.000 + 60.000 − 18.000 = R$ 192.000.","nivel":"Médio"},{"id":3,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2024","enunciado":"De acordo com o CPC 25 (Provisões, Passivos Contingentes e Ativos Contingentes), sobre passivos contingentes a afirmativa CORRETA é:","alternativas":["A) Devem ser reconhecidos no balanço quando a saída de recursos for possível.","B) Devem ser divulgados em notas explicativas quando a saída de recursos for possível, exceto quando remota.","C) Devem ser reconhecidos no resultado como provisão quando a saída for provável.","D) Não precisam de qualquer tratamento contábil."],"gabarito":"B","explicacao":"Passivo contingente NÃO é reconhecido no balanço; é divulgado em notas quando a probabilidade for 'possível'. Se 'remota', nada é feito. Se 'provável', torna-se provisão (reconhecida).","nivel":"Fácil"},{"id":4,"disciplina":"Contabilidade Geral","fonte":"CFC 2/2023","enunciado":"Na DFC pelo método indireto, a depreciação do período deve ser:","alternativas":["A) Adicionada ao lucro líquido, pois não representa saída de caixa.","B) Deduzida do lucro líquido, pois reduz o resultado.","C) Classificada como atividade de investimento.","D) Ignorada na demonstração."],"gabarito":"A","explicacao":"No método indireto parte-se do LL. A depreciação REDUZ o lucro mas NÃO é saída de caixa, então é somada de volta (adicionada).","nivel":"Fácil"},{"id":5,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2022","enunciado":"Uma empresa vende um imobilizado por R$ 80.000. O bem tinha custo de R$ 200.000 e depreciação acumulada de R$ 140.000. O resultado é:","alternativas":["A) Ganho de R$ 20.000.","B) Perda de R$ 20.000.","C) Ganho de R$ 80.000.","D) Perda de R$ 120.000."],"gabarito":"A","explicacao":"VCL = 200.000 − 140.000 = R$ 60.000. Resultado = 80.000 − 60.000 = R$ 20.000 de GANHO.","nivel":"Médio"},{"id":6,"disciplina":"Contabilidade de Custos","fonte":"CFC 2/2022","enunciado":"Dados mensais: CF = R$ 80.000; PV unit. = R$ 40; CV unit. = R$ 24; DV unit. = R$ 4. O Ponto de Equilíbrio Contábil em unidades é:","alternativas":["A) 2.000 unidades","B) 3.333 unidades","C) 5.000 unidades","D) 6.667 unidades"],"gabarito":"D","explicacao":"MCu = 40 − 24 − 4 = R$ 12. PE = 80.000 / 12 ≈ 6.667 unidades.","nivel":"Médio"},{"id":7,"disciplina":"Contabilidade de Custos","fonte":"CFC 1/2023","enunciado":"No custeio por absorção, os Custos Indiretos de Fabricação (CIF) são:","alternativas":["A) Debitados diretamente ao CPV sem rateio.","B) Ativados como parte do custo do produto, após rateio.","C) Reconhecidos como despesa operacional no período.","D) Excluídos do custo do produto (custeio variável)."],"gabarito":"B","explicacao":"No absorção, TODOS os custos de produção integram o custo do produto. CIF são rateados e ativados no estoque até a venda.","nivel":"Fácil"},{"id":8,"disciplina":"Contabilidade de Custos","fonte":"CFC 2/2024","enunciado":"Receita líquida R$ 500.000; custos variáveis R$ 300.000; custos fixos R$ 120.000. O Grau de Alavancagem Operacional (GAO) é:","alternativas":["A) 1,60","B) 2,50","C) 4,17","D) 2,00"],"gabarito":"B","explicacao":"MC = 500.000 − 300.000 = 200.000. LAIR = 200.000 − 120.000 = 80.000. GAO = MC / LAIR = 200.000 / 80.000 = 2,50.","nivel":"Médio"},{"id":9,"disciplina":"Contabilidade Aplicada ao Setor Público","fonte":"CFC 1/2023","enunciado":"Sobre o ciclo da despesa orçamentária no Setor Público, a sequência CORRETA é:","alternativas":["A) Empenho → Liquidação → Pagamento → Fixação","B) Fixação → Empenho → Liquidação → Pagamento","C) Fixação → Liquidação → Empenho → Pagamento","D) Empenho → Fixação → Pagamento → Liquidação"],"gabarito":"B","explicacao":"Lei 4.320/64: Fixação (LOA) → Empenho (reserva da dotação) → Liquidação (verificação do direito do credor) → Pagamento (quitação). Proibido gasto sem empenho prévio.","nivel":"Fácil"},{"id":10,"disciplina":"Contabilidade Aplicada ao Setor Público","fonte":"CFC 2/2023","enunciado":"As VPA (Variações Patrimoniais Aumentativas) diferem das receitas orçamentárias porque:","alternativas":["A) São conceitos idênticos.","B) VPA usa competência; receita orçamentária usa caixa modificado.","C) VPA inclui só tributos; receitas orçamentárias incluem todos os ingressos.","D) VPA são registradas só no BP."],"gabarito":"B","explicacao":"O sistema tem dois registros: patrimonial (competência → VPA/VPD) e orçamentário (misto: receita na arrecadação, despesa no empenho/liquidação).","nivel":"Difícil"},{"id":11,"disciplina":"Contabilidade Gerencial","fonte":"CFC 1/2022","enunciado":"AT = R$ 1.200.000; LL = R$ 180.000; Receita = R$ 900.000; PL = R$ 600.000. O ROE e a Margem Líquida são:","alternativas":["A) 15% e 20%","B) 30% e 20%","C) 20% e 15%","D) 30% e 15%"],"gabarito":"B","explicacao":"ROE = LL/PL = 180.000/600.000 = 30%. Margem Líquida = LL/Receita = 180.000/900.000 = 20%.","nivel":"Fácil"},{"id":12,"disciplina":"Contabilidade Gerencial","fonte":"CFC 2/2024","enunciado":"O ciclo financeiro (ciclo de caixa) é calculado como:","alternativas":["A) PMRE + PMRV + PMPF","B) PMRE + PMRV − PMPF","C) PMRV − PMRE + PMPF","D) PMPF − PMRE − PMRV"],"gabarito":"B","explicacao":"Ciclo Financeiro = Ciclo Operacional − PMPF = (PMRE + PMRV) − PMPF. PMPF 'financia' parte do CO, reduzindo a NCG.","nivel":"Médio"},{"id":13,"disciplina":"Matemática Financeira","fonte":"CFC 1/2024","enunciado":"Capital de R$ 10.000 aplicado por 2 anos a 12% a.a. em juros compostos. O montante final é:","alternativas":["A) R$ 12.000,00","B) R$ 12.400,00","C) R$ 12.544,00","D) R$ 11.440,00"],"gabarito":"C","explicacao":"M = C(1+i)ⁿ = 10.000 × 1,12² = 10.000 × 1,2544 = R$ 12.544.","nivel":"Fácil"},{"id":14,"disciplina":"Matemática Financeira","fonte":"CFC 2/2022","enunciado":"Taxa de 2% ao mês equivale, em juros compostos, a que taxa anual?","alternativas":["A) 24,00% a.a.","B) 26,82% a.a.","C) 24,32% a.a.","D) 25,97% a.a."],"gabarito":"B","explicacao":"(1+ia) = (1,02)¹² = 1,268241. ia ≈ 26,82% a.a. (A alternativa A é proporcional, válida só em juros simples.)","nivel":"Médio"},{"id":15,"disciplina":"Matemática Financeira","fonte":"CFC 1/2023","enunciado":"Investimento de R$ 100.000; retorno R$ 60.000 no ano 1 e R$ 60.000 no ano 2; TMA 10% a.a. O VPL é aproximadamente:","alternativas":["A) R$ 20.000","B) R$ 4.132","C) R$ 10.412","D) − R$ 4.132"],"gabarito":"B","explicacao":"VPL = −100.000 + 60.000/1,10 + 60.000/1,21 = −100.000 + 54.545 + 49.587 ≈ R$ 4.132. VPL > 0 → projeto viável.","nivel":"Difícil"},{"id":16,"disciplina":"Auditoria Contábil","fonte":"CFC 2/2023","enunciado":"Segundo NBC TA 705, qual opinião é adequada quando as DCs contêm distorção relevante E generalizada?","alternativas":["A) Ressalva ('exceto por').","B) Abstenção de opinião.","C) Opinião adversa (contrária).","D) Não modificada com parágrafo de ênfase."],"gabarito":"C","explicacao":"NBC TA 705: Distorção relevante + NÃO generalizada = Ressalva. Distorção relevante + generalizada = Adversa. Impossibilidade de evidência + generalizável = Abstenção.","nivel":"Médio"},{"id":17,"disciplina":"Auditoria Contábil","fonte":"CFC 1/2022","enunciado":"A materialidade no planejamento da auditoria (NBC TA 320) é determinada para:","alternativas":["A) Identificar todas as distorções, independentemente do valor.","B) Estabelecer um limite abaixo do qual distorções podem ser desconsideradas.","C) Garantir exame de 100% das transações.","D) Fixar honorários mínimos."],"gabarito":"B","explicacao":"Materialidade define um limiar para os procedimentos. Distorções imateriais (abaixo do limiar) não precisam ser corrigidas.","nivel":"Médio"},{"id":18,"disciplina":"Auditoria Contábil","fonte":"CFC 2/2024","enunciado":"Segundo NBC TA 240, a responsabilidade PRIMÁRIA pela prevenção e detecção de fraude é:","alternativas":["A) Do auditor externo.","B) Da administração e responsáveis pela governança.","C) Do auditor interno.","D) Do Conselho Fiscal."],"gabarito":"B","explicacao":"A administração é responsável pela prevenção e detecção de fraude. O auditor obtém segurança razoável (não absoluta).","nivel":"Fácil"},{"id":19,"disciplina":"Perícia Contábil","fonte":"CFC 1/2023","enunciado":"Na perícia judicial, o Assistente Técnico indicado por uma das partes:","alternativas":["A) Substitui o perito do juízo.","B) Atua em paralelo e pode elaborar parecer concordando ou discordando do laudo.","C) Deve ser aprovado pelo juiz.","D) É obrigado a chegar à mesma conclusão do perito."],"gabarito":"B","explicacao":"Assistente técnico atua em paralelo e elabora Parecer Pericial, que pode concordar ou discordar do laudo. Não precisa de aprovação judicial.","nivel":"Médio"},{"id":20,"disciplina":"Ética Profissional","fonte":"CFC 2/2022","enunciado":"Segundo NBC PG 100, os princípios fundamentais de ética incluem, EXCETO:","alternativas":["A) Integridade e Objetividade.","B) Competência profissional e Confidencialidade.","C) Comportamento profissional.","D) Rentabilidade e maximização de honorários."],"gabarito":"D","explicacao":"Os 5 princípios da NBC PG 100: Integridade, Objetividade, Competência e devido cuidado, Confidencialidade, Comportamento profissional. Rentabilidade não é princípio.","nivel":"Fácil"},{"id":21,"disciplina":"Teoria da Contabilidade","fonte":"CFC 1/2024","enunciado":"Segundo NBC TG 00 R2, as duas características qualitativas FUNDAMENTAIS são:","alternativas":["A) Comparabilidade e Verificabilidade.","B) Relevância e Representação fidedigna.","C) Tempestividade e Compreensibilidade.","D) Relevância e Comparabilidade."],"gabarito":"B","explicacao":"Fundamentais: Relevância (valor preditivo/confirmatório) + Representação Fidedigna (completa, neutra, livre de erros). As demais são características de melhoria.","nivel":"Fácil"},{"id":22,"disciplina":"Contabilidade Geral","fonte":"CFC 2/2023","enunciado":"AC = R$ 400.000 (estoques R$ 120.000; desp. antecipadas R$ 20.000); PC = R$ 200.000. O índice de Liquidez Seca é:","alternativas":["A) 2,00","B) 1,30","C) 1,60","D) 1,00"],"gabarito":"B","explicacao":"LS = (AC − Estoques − Desp. Antecipadas) / PC = (400.000 − 120.000 − 20.000) / 200.000 = 260.000 / 200.000 = 1,30.","nivel":"Médio"},{"id":23,"disciplina":"Direito e Legislação","fonte":"CFC 1/2023","enunciado":"A hipótese de SUSPENSÃO da exigibilidade do crédito tributário NÃO inclui:","alternativas":["A) Depósito do montante integral.","B) Medida liminar em mandado de segurança.","C) Parcelamento.","D) Pagamento com compensação."],"gabarito":"D","explicacao":"CTN art. 151 — Suspensão: moratória, depósito integral, recursos administrativos, liminar em MS, parcelamento. Pagamento/compensação é EXTINÇÃO (art. 156).","nivel":"Médio"},{"id":24,"disciplina":"Contabilidade Geral","fonte":"CFC 2/2024","enunciado":"Pelo CPC 47 (Receita de Contrato com Cliente), a empresa reconhece receita quando:","alternativas":["A) O contrato é assinado.","B) O cliente efetua pagamento antecipado.","C) O controle do bem ou serviço é transferido ao cliente.","D) A fatura é emitida."],"gabarito":"C","explicacao":"CPC 47 (IFRS 15): receita reconhecida quando as obrigações de desempenho são satisfeitas, ou seja, quando o CONTROLE é transferido ao cliente.","nivel":"Fácil"},{"id":25,"disciplina":"Controladoria","fonte":"CFC 1/2022","enunciado":"O Balanced Scorecard (BSC) utiliza quatro perspectivas. Identifique-as CORRETAMENTE:","alternativas":["A) Financeira, Clientes, Processos Internos e Aprendizado e Crescimento.","B) Financeira, Fornecedores, Processos Externos e Inovação.","C) Clientes, Colaboradores, Processos e Sustentabilidade.","D) Estratégica, Tática, Operacional e Financeira."],"gabarito":"A","explicacao":"BSC (Kaplan & Norton): (1) Financeira (resultados); (2) Clientes (satisfação/mercado); (3) Processos Internos (excelência operacional); (4) Aprendizado e Crescimento (capital humano, sistemas).","nivel":"Fácil"},{"id":26,"disciplina":"Contabilidade Aplicada ao Setor Público","fonte":"CFC 2/2023","enunciado":"Conforme NBC TSP 03, o reconhecimento de receita tributária (transação sem contraprestação) ocorre quando:","alternativas":["A) O tributo é depositado pelo arrecadador.","B) O ente controla o ativo resultante e o ingresso é provável e mensurável.","C) O contribuinte assina a declaração.","D) A lei instituidora entra em vigor."],"gabarito":"B","explicacao":"NBC TSP 03: reconhecimento quando (1) entidade controla o ativo; (2) ingresso é provável; (3) valor mensurável com confiabilidade.","nivel":"Difícil"},{"id":27,"disciplina":"Contabilidade de Custos","fonte":"CFC 1/2024","enunciado":"Produto A: MCu = R$ 20, 2 h-máquina. Produto B: MCu = R$ 30, 5 h-máquina. Capacidade: 1.000 h-máquina. Qual priorizar?","alternativas":["A) Produto B, pois tem maior MC unitária.","B) Produto A, pois tem maior MC por hora-máquina.","C) Ambos igualmente.","D) Produto B, pois gera mais receita."],"gabarito":"B","explicacao":"Com fator limitante: A = 20/2 = R$ 10/h-máquina; B = 30/5 = R$ 6/h-máquina. Priorizar Produto A (maior MC pelo recurso escasso).","nivel":"Difícil"},{"id":28,"disciplina":"Contabilidade Geral","fonte":"CFC 2/2022","enunciado":"Na consolidação (CPC 36), devem ser eliminadas nas operações intragrupo:","alternativas":["A) Apenas as receitas entre empresas do grupo.","B) Saldos, transações, receitas, despesas, dividendos intragrupo e resultados não realizados em ativos.","C) Somente empréstimos entre controladora e controladas.","D) Apenas dividendos."],"gabarito":"B","explicacao":"CPC 36: eliminar TODOS os itens intragrupo — saldos, transações, receitas, despesas, dividendos e resultados não realizados em ativos (ex: lucro em estoque vendido internamente).","nivel":"Médio"},{"id":29,"disciplina":"Língua Portuguesa","fonte":"CFC 1/2023","enunciado":"Assinale a frase em que a crase está empregada CORRETAMENTE:","alternativas":["A) O auditor entregou o relatório à empresa contratante.","B) O perito referiu-se à documentos contábeis.","C) A empresa passou à ser auditada.","D) O balanço foi enviado à todos os sócios."],"gabarito":"A","explicacao":"A) CORRETO: 'à empresa' = preposição 'a' + artigo 'a'. B) Errado: 'à documentos' — masculino. C) Errado: 'à ser' — antes de verbo não há crase. D) Errado: antes de 'todos' (pronome indefinido) não há crase.","nivel":"Médio"},{"id":30,"disciplina":"Contabilidade Geral","fonte":"CFC 2/2024","enunciado":"Provisão para garantias constituída: R$ 50.000. Garantias acionadas: R$ 35.000. O lançamento ao UTILIZAR a provisão é:","alternativas":["A) D: Despesa de Garantia R$ 35.000 / C: Caixa R$ 35.000.","B) D: Provisão para Garantias R$ 35.000 / C: Caixa/Fornecedores R$ 35.000.","C) D: Provisão para Garantias R$ 50.000 / C: Resultado R$ 50.000.","D) D: Despesa de Garantia R$ 50.000 / C: Provisão R$ 50.000."],"gabarito":"B","explicacao":"CPC 25: ao UTILIZAR a provisão, debita-se a Provisão (já constituída) e credita-se Caixa/Fornecedores. A despesa já foi reconhecida quando a provisão foi constituída.","nivel":"Médio"},{"id":31,"disciplina":"Contabilidade Gerencial","fonte":"CFC 1/2022","enunciado":"O índice de Endividamento Geral é 0,60. Isso significa:","alternativas":["A) PL representa 60% do ativo total.","B) Capitais de terceiros (passivo total) representam 60% do ativo total.","C) Empréstimos bancários = 60% das obrigações.","D) Para R$ 1,00 de capital próprio, R$ 0,60 de terceiros."],"gabarito":"B","explicacao":"Endividamento Geral = Passivo Total / Ativo Total = 60%, ou seja, 60% dos ativos são financiados por terceiros.","nivel":"Médio"},{"id":32,"disciplina":"Auditoria Contábil","fonte":"CFC 2/2023","enunciado":"Os Principais Assuntos de Auditoria (PAA — NBC TA 701) são comunicados:","alternativas":["A) Em todos os trabalhos de auditoria.","B) Apenas quando há opinião modificada.","C) Primariamente para entidades listadas em bolsa.","D) Somente quando solicitado pela administração."],"gabarito":"C","explicacao":"NBC TA 701: PAA aplica-se PRIMARIAMENTE a entidades listadas (companhias abertas). Para demais, é encorajado mas não obrigatório. Não modifica a opinião.","nivel":"Médio"},{"id":33,"disciplina":"Direito e Legislação","fonte":"CFC 1/2024","enunciado":"O empregado demitido SEM justa causa tem direito a:","alternativas":["A) Aviso prévio, saldo salário, férias vencidas+proporcionais+1/3, 13º proporcional, multa 40% FGTS.","B) Apenas saldo de salário e 13º proporcional.","C) Aviso prévio, saldo salário e multa 20% FGTS.","D) Férias sem o adicional de 1/3 e 13º proporcional."],"gabarito":"A","explicacao":"Rescisão sem justa causa (CLT): aviso prévio + saldo salário + férias vencidas + férias proporcionais + 1/3 + 13º proporcional + FGTS + multa 40% + seguro-desemprego.","nivel":"Médio"},{"id":34,"disciplina":"Contabilidade Aplicada ao Setor Público","fonte":"CFC 2/2024","enunciado":"A LRF (LC 101/2000) limita a despesa com pessoal para os Municípios em relação à RCL a:","alternativas":["A) 50%","B) 54%","C) 60%","D) 65%"],"gabarito":"C","explicacao":"LRF art. 19: União = 50%, Estados = 60%, Municípios = 60%. Dentro do limite municipal: Legislativo = 6%, Executivo = 54%.","nivel":"Médio"},{"id":35,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2022","enunciado":"AT = R$ 800.000; Passivo = R$ 500.000; Capital = R$ 200.000; Reservas = R$ 80.000; LL = R$ 20.000. O PL total é:","alternativas":["A) R$ 300.000","B) R$ 280.000","C) R$ 500.000","D) R$ 200.000"],"gabarito":"A","explicacao":"PL = AT − Passivo = 800.000 − 500.000 = R$ 300.000. Verificação: 200.000 + 80.000 + 20.000 = 300.000. ✓","nivel":"Fácil"},{"id":36,"disciplina":"Contabilidade de Custos","fonte":"CFC 2/2023","enunciado":"No ABC (Activity Based Costing), os custos são alocados aos produtos por meio de:","alternativas":["A) Rateio baseado em volume de produção.","B) Rastreamento via atividades e direcionadores de atividade.","C) Absorção proporcional dos CF ao CPV.","D) Separação entre CV e CF; CF ao resultado."],"gabarito":"B","explicacao":"ABC: 2 estágios. 1º: custos → atividades (direcionadores de recursos). 2º: atividades → produtos (direcionadores de atividade, ex: nº pedidos, setups). Elimina distorções do rateio volumétrico.","nivel":"Médio"},{"id":37,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2023","enunciado":"O valor recuperável de um ativo (impairment — CPC 01) é:","alternativas":["A) O MAIOR valor entre Valor em Uso e Valor Justo líquido de custos de alienação.","B) O menor valor entre Valor em Uso e Custo Histórico.","C) A média entre VCL e Valor de Mercado.","D) Valor Justo + depreciação acumulada."],"gabarito":"A","explicacao":"CPC 01: Valor Recuperável = MAX(Valor em Uso, VJC). Impairment = VCL − Valor Recuperável (quando positivo). A empresa escolhe a melhor alternativa: usar ou vender.","nivel":"Médio"},{"id":38,"disciplina":"Matemática Financeira","fonte":"CFC 2/2023","enunciado":"Dívida R$ 50.000 em 5 parcelas mensais pelo PRICE a 2% a.m. [(1,02)⁵=1,10408]. O PMT é aproximadamente:","alternativas":["A) R$ 10.000,00","B) R$ 10.608,16","C) R$ 11.000,00","D) R$ 9.804,00"],"gabarito":"B","explicacao":"PMT = 50.000 × 0,02 / [1 − (1,02)⁻⁵] = 1.000 / [1 − 0,90573] = 1.000 / 0,09427 ≈ R$ 10.608,16.","nivel":"Difícil"},{"id":39,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2024","enunciado":"Na DVA (CPC 09), qual NÃO é destinatário do valor adicionado distribuído?","alternativas":["A) Empregados.","B) Governo (tributos).","C) Fornecedores de insumos de terceiros.","D) Financiadores (juros, aluguéis)."],"gabarito":"C","explicacao":"Fornecedores de insumos são DEDUZIDOS na apuração da riqueza gerada (Receitas − Insumos = VA Bruto). Os destinatários da distribuição são: empregados, governo, financiadores e sócios.","nivel":"Difícil"},{"id":40,"disciplina":"Contabilidade Gerencial","fonte":"CFC 2/2022","enunciado":"Variação de preço de MP: Preço padrão = R$ 5/kg; Preço real = R$ 5,50/kg; Qtde comprada = 10.000 kg. A variação é:","alternativas":["A) R$ 5.000 desfavorável.","B) R$ 5.000 favorável.","C) R$ 500 desfavorável.","D) R$ 50.000 desfavorável."],"gabarito":"A","explicacao":"Variação Preço = (PR − PP) × QR = (5,50 − 5,00) × 10.000 = R$ 5.000 DESFAVORÁVEL (pagamos mais que o padrão).","nivel":"Médio"},{"id":41,"disciplina":"Teoria da Contabilidade","fonte":"CFC 1/2023","enunciado":"Segundo NBC TG 00 R2, 'manutenção de capital financeiro' implica que o lucro é reconhecido quando:","alternativas":["A) A capacidade produtiva ao final supera a do início.","B) O valor monetário dos ativos líquidos ao final supera o do início (excluindo transações com sócios).","C) A empresa gerou mais receitas que despesas a valores correntes.","D) O valor de mercado das ações supera o patrimonial."],"gabarito":"B","explicacao":"Manutenção de capital financeiro (dominante nas IFRS): capital = valor monetário investido. Lucro = excedente dos ativos líquidos monetários. A alternativa A descreve manutenção de capital físico.","nivel":"Difícil"},{"id":42,"disciplina":"Contabilidade Aplicada ao Setor Público","fonte":"CFC 2/2022","enunciado":"Restos a Pagar Processados são despesas:","alternativas":["A) Empenhadas e não liquidadas até 31/12.","B) Empenhadas, liquidadas e não pagas até 31/12.","C) Liquidadas, pagas, com documentação pendente.","D) Previstas no orçamento sem empenho realizado."],"gabarito":"B","explicacao":"Lei 4.320/64: Processados = empenhados + liquidados (bem/serviço entregue) + não pagos. Não processados = empenhados mas NÃO liquidados.","nivel":"Médio"},{"id":43,"disciplina":"Direito e Legislação","fonte":"CFC 1/2024","enunciado":"A Reserva Legal (Lei 6.404/76) deve ser constituída à razão de:","alternativas":["A) 5% do lucro líquido do exercício, até 20% do capital social.","B) 10% do lucro líquido, sem limite.","C) 5% do lucro bruto, até 30% do capital.","D) 5% do LAIR, até 20% do capital mais reservas."],"gabarito":"A","explicacao":"Lei 6.404/76, art. 193: 5% do LL do exercício até atingir 20% do capital social. Pode deixar de ser constituída se saldo + reservas de capital exceder 30% do CS.","nivel":"Médio"},{"id":44,"disciplina":"Auditoria Contábil","fonte":"CFC 2/2024","enunciado":"O risco de distorção relevante é composto por:","alternativas":["A) Risco de detecção e risco de controle.","B) Risco inerente e risco de controle.","C) Risco inerente e risco de detecção.","D) Risco de negócio e risco de fraude."],"gabarito":"B","explicacao":"NBC TA 200: RA = RDR × RD. RDR = RI (suscetibilidade sem controles) × RC (falha do CI). O Risco de Detecção é o único que o AUDITOR controla.","nivel":"Médio"},{"id":45,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2022","enunciado":"DVA: VA bruto = R$ 900.000; retenções (depr.) = R$ 80.000; VA recebido em transferência = R$ 40.000. O VA Total a Distribuir é:","alternativas":["A) R$ 860.000","B) R$ 820.000","C) R$ 940.000","D) R$ 980.000"],"gabarito":"A","explicacao":"VA Líquido = 900.000 − 80.000 = 820.000. (+) VA Recebido (MEP, receitas financeiras) = 40.000. VA Total = 860.000.","nivel":"Médio"},{"id":46,"disciplina":"Ética Profissional","fonte":"CFC 2/2023","enunciado":"O DL 9.295/46 estabelece que são trabalhos PRIVATIVOS do contador bacharel, EXCETO:","alternativas":["A) Escrituração de livros contábeis de sociedades anônimas.","B) Elaboração de balanços gerais.","C) Escrituração de livros de empresas de qualquer natureza.","D) Elaboração de boletins de caixa de pequenas empresas."],"gabarito":"D","explicacao":"Boletins de caixa podem ser feitos por técnicos em contabilidade. S.A. e balanços gerais são privativos do contador bacharel.","nivel":"Médio"},{"id":47,"disciplina":"Controladoria","fonte":"CFC 1/2024","enunciado":"O EVA (Economic Value Added) é calculado por:","alternativas":["A) NOPAT − (WACC × Capital Investido).","B) Lucro Bruto − Despesas Operacionais.","C) EBITDA − Investimentos em Capital Fixo.","D) Receita Líquida × Margem Líquida."],"gabarito":"A","explicacao":"EVA = NOPAT − (WACC × Capital Investido). EVA > 0: empresa cria valor. EVA < 0: destrói valor. Considera o custo do capital próprio, diferente do lucro contábil.","nivel":"Difícil"},{"id":48,"disciplina":"Direito e Legislação","fonte":"CFC 2/2022","enunciado":"A imunidade tributária (CF art. 150, VI, 'c') para entidades de educação e assistência social sem fins lucrativos abrange:","alternativas":["A) Todos os tributos, inclusive taxas.","B) Apenas o IRPJ.","C) Os impostos sobre patrimônio, renda e serviços relacionados às finalidades essenciais.","D) Apenas impostos federais."],"gabarito":"C","explicacao":"CF/88: imunidade abrange IMPOSTOS (não taxas) sobre patrimônio, renda e serviços LIGADOS às finalidades essenciais. Exige: não distribuir lucro, aplicar recursos no país, manter escrituração.","nivel":"Médio"},{"id":49,"disciplina":"Contabilidade Geral","fonte":"CFC 1/2023","enunciado":"Um ativo intangível (CPC 04) pode ser reconhecido quando, além de atender à definição de ativo, for:","alternativas":["A) Identificável e seu custo puder ser mensurado com confiabilidade.","B) Desenvolvido em fase de pesquisa.","C) Uma marca gerada internamente.","D) Um goodwill gerado internamente por especialistas."],"gabarito":"A","explicacao":"CPC 04: ativo intangível exige identificabilidade (separável ou decorrente de direito contratual) + controle + BEF + custo mensurável. Marcas/goodwill gerados internamente são proibidos.","nivel":"Médio"},{"id":50,"disciplina":"Contabilidade Geral","fonte":"CFC 2/2024","enunciado":"O custo dos estoques (CPC 16) NÃO inclui:","alternativas":["A) Fretes na aquisição de matéria-prima.","B) Custos de conversão (MOD e CIF).","C) Despesas administrativas gerais e custos de armazenagem de produtos acabados.","D) Custos dos materiais diretos."],"gabarito":"C","explicacao":"CPC 16: custo dos estoques = custos de aquisição + custos de conversão. Excluídos: despesas administrativas, armazenagem de produtos acabados (pós-produção), perdas anormais.","nivel":"Médio"}];
+
+    // ══════════════════════════════════════
+    // APP STATE
+    // ══════════════════════════════════════
+    let simQuestoes = [];
+    let simIdx = 0;
+    let simAnswers = {};
+    let simTimer = null;
+    let simSeconds = 0;
+    let simMode = 'timed';
+    let isReviewMode = false;
+    let isDark = false;
+
+    // ══════════════════════════════════════
+    // DARK MODE
+    // ══════════════════════════════════════
+    function toggleDark() {
+        isDark = !isDark;
+        document.documentElement.classList.toggle('dark', isDark);
+        document.getElementById('dark-icon').className = isDark ? 'fas fa-sun text-sm' : 'fas fa-moon text-sm';
+    }
+
+    // ══════════════════════════════════════
+    // TOAST
+    // ══════════════════════════════════════
+    function toast(msg) {
+        const el = document.getElementById('toast');
+        document.getElementById('toast-msg').textContent = msg;
+        el.style.opacity = '1';
+        el.style.transform = 'translateX(-50%) translateY(0)';
+        setTimeout(() => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateX(-50%) translateY(16px)';
+        }, 2500);
+    }
+
+    // ══════════════════════════════════════
+    // TIMER
+    // ══════════════════════════════════════
+    function startTimer(totalSeconds) {
+        simSeconds = totalSeconds;
+        const wrap = document.getElementById('timer-wrap');
+        const display = document.getElementById('timer-display');
+        wrap.classList.remove('hidden');
+        wrap.classList.add('flex');
+        clearInterval(simTimer);
+        simTimer = setInterval(() => {
+            simSeconds--;
+            const m = Math.floor(simSeconds / 60).toString().padStart(2, '0');
+            const s = (simSeconds % 60).toString().padStart(2, '0');
+            display.textContent = `${m}:${s}`;
+            if (simSeconds <= 300) display.classList.add('timer-warning');
+            if (simSeconds <= 0) {
+                clearInterval(simTimer);
+                toast('⏰ Tempo esgotado!');
+                finishSimulado();
+            }
+        }, 1000);
+    }
+
+    function stopTimer() {
+        clearInterval(simTimer);
+        document.getElementById('timer-wrap').classList.add('hidden');
+        document.getElementById('timer-wrap').classList.remove('flex');
+    }
+
+    // ══════════════════════════════════════
+    // START SIMULADO
+    // ══════════════════════════════════════
+    async function startSimulado() {
+        const editionVal = document.getElementById('cfg-edition').value;
+        const qtd = parseInt(document.getElementById('cfg-qtd').value);
+        const area = document.getElementById('cfg-area').value;
+        simMode = document.getElementById('cfg-mode').value;
+
+        document.getElementById('config-panel').classList.add('hidden');
+        document.getElementById('loading-panel').classList.remove('hidden');
+
+        let questoes = [...QUESTOES_DB];
+
+        // Try to load from JSON URL
+        if (editionVal !== 'local') {
+            try {
+                const res = await fetch(editionVal);
+                if (res.ok) {
+                    const data = await res.json();
+                    // Normalize JSON format
+                    if (Array.isArray(data)) {
+                        questoes = data.map((q, i) => ({
+                            id: q.id || i + 1,
+                            disciplina: q.disciplina || q.area || q.subject || 'Geral',
+                            fonte: q.fonte || q.source || editionVal.match(/\d{4}-\d{2}/)?.[0]?.replace('-', '.') || '',
+                            enunciado: q.enunciado || q.texto || q.question || q.text || '',
+                            alternativas: q.alternativas || q.options || q.opcoes || [],
+                            gabarito: q.gabarito || q.resposta || q.answer || q.correct || '',
+                            explicacao: q.explicacao || q.explanation || q.comentario || '',
+                            nivel: q.nivel || q.difficulty || 'Médio'
+                        })).filter(q => q.enunciado);
+                    }
+                    if (questoes.length === 0) questoes = [...QUESTOES_DB];
+                }
+            } catch(e) {
+                toast('⚠ Falha ao carregar JSON. Usando banco local.');
+                questoes = [...QUESTOES_DB];
+            }
+        }
+
+        // Filter by area
+        if (area !== 'all') {
+            const filtered = questoes.filter(q => q.disciplina && q.disciplina.includes(area.split(' ')[0]));
+            if (filtered.length > 0) questoes = filtered;
+        }
+
+        // Shuffle and slice
+        questoes = questoes.sort(() => Math.random() - 0.5).slice(0, Math.min(qtd, questoes.length));
+
+        if (questoes.length === 0) {
+            toast('Nenhuma questão encontrada. Verifique os filtros.');
+            document.getElementById('loading-panel').classList.add('hidden');
+            document.getElementById('config-panel').classList.remove('hidden');
+            return;
+        }
+
+        simQuestoes = questoes;
+        simIdx = 0;
+        simAnswers = {};
+        isReviewMode = false;
+
+        setTimeout(() => {
+            document.getElementById('loading-panel').classList.add('hidden');
+            document.getElementById('sim-panel').classList.remove('hidden');
+            renderDots();
+            renderQuestion();
+            if (simMode === 'timed') {
+                startTimer(questoes.length * 4 * 60); // 4 min/question
+            }
+        }, 600);
+    }
+
+    // ══════════════════════════════════════
+    // RENDER QUESTIONS
+    // ══════════════════════════════════════
+    function renderDots() {
+        const container = document.getElementById('q-dots');
+        container.innerHTML = simQuestoes.map((q, i) => {
+            let cls = 'q-dot';
+            if (i === simIdx) cls += ' current';
+            else if (isReviewMode) {
+                const correct = simAnswers[i] === q.gabarito;
+                cls += correct ? ' ok' : simAnswers[i] ? ' err' : '';
+            } else if (simAnswers[i] !== undefined) cls += ' answered';
+            return `<button class="${cls}" onclick="jumpQ(${i})">${i + 1}</button>`;
+        }).join('');
+    }
+
+    function renderQuestion() {
+        const q = simQuestoes[simIdx];
+        const total = simQuestoes.length;
+        const answered = Object.keys(simAnswers).length;
+
+        // Header
+        document.getElementById('q-num-display').textContent = simIdx + 1;
+        document.getElementById('q-total-display').textContent = total;
+        document.getElementById('q-discipline').textContent = q.disciplina || '';
+        document.getElementById('q-progress').style.width = ((simIdx + 1) / total * 100) + '%';
+
+        // Badge info
+        document.getElementById('q-badge-num').textContent = `Q${String(simIdx + 1).padStart(2, '0')}`;
+        document.getElementById('q-fonte').textContent = q.fonte || '';
+
+        const nivelEl = document.getElementById('q-nivel');
+        const nivelMap = { 'Fácil': 'bg-green-100 text-green-700', 'Médio': 'bg-yellow-100 text-yellow-700', 'Difícil': 'bg-red-100 text-red-700' };
+        nivelEl.className = `text-[9px] font-bold px-2 py-0.5 rounded-full ${nivelMap[q.nivel] || 'bg-slate-100 text-slate-500'}`;
+        nivelEl.textContent = q.nivel || '';
+
+        // Enunciado
+        document.getElementById('q-enunciado').innerHTML = (q.enunciado || '').replace(/\n/g, '<br>');
+
+        // Options
+        const opts = document.getElementById('q-options');
+        const isAnswered = simAnswers[simIdx] !== undefined;
+        const isInstant = simMode === 'instant';
+
+        opts.innerHTML = (q.alternativas || []).map((opt, i) => {
+            const letter = String.fromCharCode(65 + i); // A, B, C, D
+            let cls = 'opt-btn';
+            if (isAnswered || isReviewMode) {
+                cls += ' disabled';
+                const userLetter = simAnswers[simIdx];
+                const isCorrect = letter === q.gabarito;
+                const isUser = letter === userLetter;
+                if (isCorrect) cls += ' correct';
+                else if (isUser && !isCorrect) cls += ' wrong';
+            } else if (simMode === 'instant' && false) { /* handled below */ }
+            return `
+            <button class="${cls}" onclick="selectOption('${letter}')">
+                <span class="opt-letter">${letter}</span>
+                <span>${opt.replace(/^[A-D]\)\s*/, '')}</span>
+            </button>`;
+        }).join('');
+
+        // Explanation
+        const expEl = document.getElementById('q-explanation');
+        if (isAnswered || isReviewMode) {
+            const isCorrect = simAnswers[simIdx] === q.gabarito;
+            expEl.innerHTML = `
+                <div class="flex items-center gap-2 mb-2 font-bold ${isCorrect ? 'text-green-700' : 'text-red-600'}">
+                    <i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                    ${isCorrect ? 'Resposta Correta!' : `Incorreto — Gabarito: ${q.gabarito}`}
+                </div>
+                <div class="text-slate-700 dark:text-slate-300">${q.explicacao || 'Sem explicação disponível.'}</div>`;
+            expEl.classList.add('show');
+        } else {
+            expEl.classList.remove('show');
+            expEl.innerHTML = '';
+        }
+
+        // Action buttons
+        document.getElementById('btn-prev').disabled = simIdx === 0;
+        const btnNext = document.getElementById('btn-next');
+        btnNext.textContent = simIdx === total - 1 ? 'Última' : 'Próxima';
+
+        const btnExplain = document.getElementById('btn-explain');
+        const btnFinish = document.getElementById('btn-finish');
+
+        if (isAnswered && !isReviewMode) {
+            btnExplain.classList.remove('hidden');
+            btnExplain.classList.add('flex');
+        } else {
+            btnExplain.classList.add('hidden');
+            btnExplain.classList.remove('flex');
+        }
+
+        // Show finish button when all answered or in review mode
+        const allAnswered = answered >= total;
+        if (allAnswered && !isReviewMode) {
+            btnFinish.classList.remove('hidden');
+            btnFinish.classList.add('flex');
+        } else {
+            btnFinish.classList.add('hidden');
+            btnFinish.classList.remove('flex');
+        }
+
+        renderDots();
+    }
+
+    function selectOption(letter) {
+        if (simAnswers[simIdx] !== undefined) return;
+        simAnswers[simIdx] = letter;
+        if (simMode === 'instant') {
+            renderQuestion(); // show immediately
+        } else {
+            renderQuestion();
+        }
+        // Auto-advance after 1.5s in instant mode
+        if (simMode === 'instant' && simIdx < simQuestoes.length - 1) {
+            setTimeout(() => nextQ(), 1500);
+        }
+    }
+
+    function jumpQ(i) { simIdx = i; renderQuestion(); }
+    function prevQ() { if (simIdx > 0) { simIdx--; renderQuestion(); } }
+    function nextQ() { if (simIdx < simQuestoes.length - 1) { simIdx++; renderQuestion(); } }
+    function showExplanation() {
+        document.getElementById('q-explanation').classList.toggle('show');
+    }
+
+    // ══════════════════════════════════════
+    // FINISH
+    // ══════════════════════════════════════
+    function finishSimulado() {
+        stopTimer();
+        document.getElementById('sim-panel').classList.add('hidden');
+        document.getElementById('result-panel').classList.remove('hidden');
+
+        const total = simQuestoes.length;
+        let correct = 0;
+        const catMap = {};
+
+        simQuestoes.forEach((q, i) => {
+            const isCorrect = simAnswers[i] === q.gabarito;
+            if (isCorrect) correct++;
+            const disc = q.disciplina || 'Geral';
+            if (!catMap[disc]) catMap[disc] = { total: 0, correct: 0 };
+            catMap[disc].total++;
+            if (isCorrect) catMap[disc].correct++;
+        });
+
+        const pct = Math.round(correct / total * 100);
+        const approved = pct >= 50;
+
+        document.getElementById('result-title').textContent = approved ? '🎉 Aprovado!' : '📚 Continue Estudando';
+
+        // Score cards
+        const scoreColors = [
+            { label: 'Acertos', value: correct, color: 'text-green-600' },
+            { label: 'Erros', value: total - correct - (total - Object.keys(simAnswers).length), color: 'text-red-500' },
+            { label: 'Aproveitamento', value: pct + '%', color: approved ? 'text-green-600' : 'text-red-500' },
+            { label: 'Questões', value: total, color: 'text-[#C5A059]' },
+        ];
+        document.getElementById('score-grid').innerHTML = scoreColors.map(s => `
+            <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-700 rounded-2xl p-5 text-center shadow-sm">
+                <div class="score-big ${s.color}">${s.value}</div>
+                <div class="text-[9px] text-slate-500 uppercase tracking-wider mt-1">${s.label}</div>
+            </div>`).join('');
+
+        // Category breakdown
+        const catList = document.getElementById('cat-list');
+        catList.innerHTML = Object.entries(catMap).sort((a, b) => b[1].total - a[1].total).map(([disc, data]) => {
+            const catPct = Math.round(data.correct / data.total * 100);
+            return `
+            <div>
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[11px] font-medium text-slate-700 dark:text-slate-300 truncate max-w-[60%]">${disc}</span>
+                    <span class="text-[10px] font-black font-mono ${catPct >= 50 ? 'text-green-600' : 'text-red-500'}">${data.correct}/${data.total} · ${catPct}%</span>
+                </div>
+                <div class="cat-bar"><div class="cat-fill" style="width:${catPct}%;background:${catPct>=50?'#2d7a3c':'#c0392b'}"></div></div>
+            </div>`;
+        }).join('');
+    }
+
+    // ══════════════════════════════════════
+    // REVIEW MODE
+    // ══════════════════════════════════════
+    function reviewSimulado() {
+        isReviewMode = true;
+        simIdx = 0;
+        document.getElementById('result-panel').classList.add('hidden');
+        document.getElementById('sim-panel').classList.remove('hidden');
+        // Hide finish button in review
+        document.getElementById('btn-finish').classList.add('hidden');
+        document.getElementById('btn-finish').classList.remove('flex');
+        renderDots();
+        renderQuestion();
+    }
+
+    function resetSimulado() {
+        stopTimer();
+        simQuestoes = [];
+        simIdx = 0;
+        simAnswers = {};
+        isReviewMode = false;
+        document.getElementById('result-panel').classList.add('hidden');
+        document.getElementById('sim-panel').classList.add('hidden');
+        document.getElementById('config-panel').classList.remove('hidden');
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) toggleDark();
+        // Módulos
+        loadHtmlComponent('https://auditeduca.com.br/assets/components/header.html', 'header-placeholder');
+        loadHtmlComponent('https://auditeduca.com.br/assets/components/footer.html', 'footer-placeholder');
+        // Preloader
+        setTimeout(() => { const p = document.getElementById('preloader'); if(p) p.classList.add('gone'); setTimeout(()=>{if(p)p.style.display='none';},700); }, 800);
+    });
+    async function loadHtmlComponent(url, elementId) { try { const r = await fetch(url); if(r.ok){const el=document.getElementById(elementId);if(el)el.innerHTML=await r.text();} } catch(e){console.warn('Componente:',url,e);} }
+    </script>
+
+    <!-- HP 12C FINANCEIRA — FAB + Drawer -->
+    <button id="hp12c-fab" onclick="openHP12C()" title="Calculadora HP 12C" aria-label="Abrir calculadora HP 12C financeira">
+        <i class="fas fa-calculator"></i>
+        <span>HP 12C</span>
+    </button>
+
+    <div id="hp12c-overlay" onclick="closeHP12C()" aria-hidden="true"></div>
+    <aside id="hp12c-drawer" role="complementary" aria-label="Calculadora HP 12C" aria-hidden="true">
+        <div style="background:#0f0f1e;border-bottom:1px solid rgba(197,160,89,.15);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+            <div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(197,160,89,.5);margin-bottom:2px;">HEWLETT · PACKARD</div>
+                <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#C5A059;">12C Financial</div>
+            </div>
+            <button onclick="closeHP12C()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:rgba(255,255,255,.5);width:30px;height:30px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;" aria-label="Fechar">×</button>
+        </div>
+        <div style="padding:12px 12px 4px;">
+            <div class="hp-disp">
+                <div class="hp-stack-row"><span>T: <span id="hp-t">0</span></span><span>Z: <span id="hp-z">0</span></span><span>Y: <span id="hp-y">0</span></span></div>
+                <div class="hp-main-val" id="hp-x" aria-live="polite">0</div>
+                <div class="hp-flags"><span class="hp-flag" id="hp-flag-f">f</span><span class="hp-flag" id="hp-flag-g">g</span><span class="hp-flag" id="hp-flag-begin">BEGIN</span></div>
+            </div>
+        </div>
+        <div class="hp-mem-row">
+            <div class="hp-mem-cell"><div class="hp-mem-l">n</div><div class="hp-mem-v" id="m-n">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">i%</div><div class="hp-mem-v" id="m-i">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">PV</div><div class="hp-mem-v" id="m-pv">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">PMT</div><div class="hp-mem-v" id="m-pmt">—</div></div>
+            <div class="hp-mem-cell"><div class="hp-mem-l">FV</div><div class="hp-mem-v" id="m-fv">—</div></div>
+        </div>
+        <div class="hp-btn-grid" role="group" aria-label="Teclado HP 12C">
+            <button class="hk hk-tvm" onclick="hpKey('n')"><span class="hk-main">n</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('i')"><span class="hk-main">i%</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('PV')"><span class="hk-main">PV</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('PMT')"><span class="hk-main">PMT</span></button>
+            <button class="hk hk-tvm" onclick="hpKey('FV')"><span class="hk-main">FV</span></button>
+            <button class="hk hk-fn" onclick="hpKey('sqrt')"><span class="hk-main">√x</span></button>
+            <button class="hk hk-fn" onclick="hpKey('inv')"><span class="hk-main">1/x</span></button>
+            <button class="hk hk-fn" onclick="hpKey('pct')"><span class="hk-main">%</span></button>
+            <button class="hk hk-fn" onclick="hpKey('pctd')"><span class="hk-main">Δ%</span></button>
+            <button class="hk hk-fn" onclick="hpKey('yx')"><span class="hk-main">yˣ</span></button>
+            <button class="hk hk-num" onclick="hpKey('7')"><span class="hk-main">7</span></button>
+            <button class="hk hk-num" onclick="hpKey('8')"><span class="hk-main">8</span></button>
+            <button class="hk hk-num" onclick="hpKey('9')"><span class="hk-main">9</span></button>
+            <button class="hk hk-op"  onclick="hpKey('div')"><span class="hk-main">÷</span></button>
+            <button class="hk hk-op"  onclick="hpKey('chs')"><span class="hk-main">CHS</span></button>
+            <button class="hk hk-num" onclick="hpKey('4')"><span class="hk-main">4</span></button>
+            <button class="hk hk-num" onclick="hpKey('5')"><span class="hk-main">5</span></button>
+            <button class="hk hk-num" onclick="hpKey('6')"><span class="hk-main">6</span></button>
+            <button class="hk hk-op"  onclick="hpKey('mul')"><span class="hk-main">×</span></button>
+            <button class="hk hk-clx" onclick="hpKey('clx')"><span class="hk-main">CLx</span></button>
+            <button class="hk hk-num" onclick="hpKey('1')"><span class="hk-main">1</span></button>
+            <button class="hk hk-num" onclick="hpKey('2')"><span class="hk-main">2</span></button>
+            <button class="hk hk-num" onclick="hpKey('3')"><span class="hk-main">3</span></button>
+            <button class="hk hk-op"  onclick="hpKey('sub')"><span class="hk-main">−</span></button>
+            <button class="hk hk-fn"  onclick="hpKey('sto')"><span class="hk-main">STO</span></button>
+            <button class="hk hk-num" onclick="hpKey('0')"><span class="hk-main">0</span></button>
+            <button class="hk hk-num" onclick="hpKey('.')"><span class="hk-main">.</span></button>
+            <button class="hk hk-enter hk-wide" onclick="hpKey('enter')"><span class="hk-main">ENTER</span></button>
+            <button class="hk hk-op"  onclick="hpKey('add')"><span class="hk-main">+</span></button>
+            <button class="hk hk-fn"  onclick="hpKey('rcl')"><span class="hk-main">RCL</span></button>
+        </div>
+        <div style="padding:0 12px 14px;font-size:8.5px;color:rgba(255,255,255,.2);line-height:1.6;border-top:1px solid rgba(255,255,255,.05);padding-top:10px;">
+            <b style="color:rgba(197,160,89,.5);">RPN</b> — Valor, ENTER, valor, operação.<br>
+            <b style="color:rgba(197,160,89,.4);">TVM:</b> insira os valores conhecidos → pressione a incógnita.<br>
+            <b style="color:rgba(197,160,89,.4);">STO/RCL</b> = memória geral.
+        </div>
+    </aside>
+
+    <!-- RODAPÉ MODULAR -->
+    <div id="footer-placeholder" role="contentinfo"></div>
+
+    <script>
+    // HP 12C ENGINE (RPN)
+    (function(){
+        let stack={T:0,Z:0,Y:0,X:0}, tvm={n:null,i:null,PV:null,PMT:null,FV:null};
+        let mem=0, inputBuf='', newEntry=true;
+        function fmt(v){if(v===null)return'—';if(!isFinite(v))return'Error';if(Math.abs(v)>=1e10||(Math.abs(v)<1e-5&&v!==0))return v.toExponential(4);return parseFloat(v.toPrecision(10)).toString();}
+        function upd(){
+            const set=(id,val)=>{const e=document.getElementById(id);if(e)e.textContent=val;};
+            set('hp-x', inputBuf!==''?inputBuf:fmt(stack.X));
+            set('hp-y',fmt(stack.Y));set('hp-z',fmt(stack.Z));set('hp-t',fmt(stack.T));
+            set('m-n',tvm.n!==null?fmt(tvm.n):'—');
+            set('m-i',tvm.i!==null?fmt(tvm.i):'—');
+            set('m-pv',tvm.PV!==null?fmt(tvm.PV):'—');
+            set('m-pmt',tvm.PMT!==null?fmt(tvm.PMT):'—');
+            set('m-fv',tvm.FV!==null?fmt(tvm.FV):'—');
+        }
+        function push(v){stack.T=stack.Z;stack.Z=stack.Y;stack.Y=stack.X;stack.X=v;}
+        function getX(){return inputBuf!==''?parseFloat(inputBuf):stack.X;}
+        function commit(){if(inputBuf!==''){stack.X=parseFloat(inputBuf);inputBuf='';}newEntry=true;}
+        function solveTVM(u){
+            commit();
+            try{
+                const{n,i,PV,PMT,FV}=tvm;
+                if(u==='FV'){if([n,i,PV,PMT].some(v=>v===null))return;const r=i/100;push(-PV*Math.pow(1+r,n)-PMT*(Math.pow(1+r,n)-1)/r);tvm.FV=stack.X;}
+                else if(u==='PV'){if([n,i,PMT,FV].some(v=>v===null))return;const r=i/100;push((-FV-PMT*(Math.pow(1+r,n)-1)/r)/Math.pow(1+r,n));tvm.PV=stack.X;}
+                else if(u==='PMT'){if([n,i,PV,FV].some(v=>v===null))return;const r=i/100;push((-PV*Math.pow(1+r,n)-FV)*r/(Math.pow(1+r,n)-1));tvm.PMT=stack.X;}
+                else if(u==='n'){if([i,PV,PMT,FV].some(v=>v===null))return;const r=i/100;push(Math.log((-FV*r+PMT)/(PMT+PV*r))/Math.log(1+r));tvm.n=stack.X;}
+                else if(u==='i'){if([n,PV,PMT,FV].some(v=>v===null))return;let r=0.1;for(let k=0;k<200;k++){const f=PV*Math.pow(1+r,n)+PMT*(Math.pow(1+r,n)-1)/r+FV;const df=n*PV*Math.pow(1+r,n-1)+PMT*(n*Math.pow(1+r,n-1)*r-(Math.pow(1+r,n)-1))/(r*r);const r2=r-f/df;if(Math.abs(r2-r)<1e-10){r=r2;break;}r=r2;}push(r*100);tvm.i=stack.X;}
+            }catch(e){push(NaN);}
+            upd();
+        }
+        window.hpKey=function(k){
+            if('0123456789'.includes(k)){if(newEntry){inputBuf=k;newEntry=false;}else{inputBuf=(inputBuf==='0'?'':inputBuf)+k;}upd();return;}
+            if(k==='.'){if(!inputBuf.includes('.')){inputBuf=(inputBuf||'0')+'.';newEntry=false;}upd();return;}
+            if(k==='chs'){if(inputBuf!==''){inputBuf=inputBuf.startsWith('-')?inputBuf.slice(1):'-'+inputBuf;}else{stack.X=-stack.X;}upd();return;}
+            if(k==='enter'){commit();push(stack.X);newEntry=true;upd();return;}
+            if(k==='clx'){inputBuf='';stack.X=0;newEntry=true;upd();return;}
+            const ops={add:(a,b)=>b+a,sub:(a,b)=>b-a,mul:(a,b)=>b*a,div:(a,b)=>b/a};
+            if(ops[k]){const x=getX();commit();stack.X=ops[k](x,stack.Y);stack.Y=stack.Z;stack.Z=stack.T;newEntry=true;inputBuf='';upd();return;}
+            if(k==='sqrt'){commit();stack.X=Math.sqrt(stack.X);newEntry=true;upd();return;}
+            if(k==='inv'){commit();stack.X=1/stack.X;newEntry=true;upd();return;}
+            if(k==='yx'){const x=getX();commit();stack.X=Math.pow(stack.Y,x);stack.Y=stack.Z;stack.Z=stack.T;newEntry=true;upd();return;}
+            if(k==='pct'){commit();stack.X=stack.Y*stack.X/100;newEntry=true;upd();return;}
+            if(k==='pctd'){commit();stack.X=(stack.X-stack.Y)/Math.abs(stack.Y)*100;newEntry=true;upd();return;}
+            if(k==='sto'){mem=getX();commit();newEntry=true;upd();return;}
+            if(k==='rcl'){commit();push(mem);newEntry=true;upd();return;}
+            const tvmMap={n:'n',i:'i',PV:'PV',PMT:'PMT',FV:'FV'};
+            if(tvmMap[k]){const x=getX();commit();if(tvm[k]===null||x!==0){tvm[k]=x;}else{solveTVM(k);return;}upd();return;}
+        };
+        window.openHP12C=function(){document.getElementById('hp12c-drawer')?.classList.add('open');document.getElementById('hp12c-overlay')?.classList.add('open');document.getElementById('hp12c-drawer')?.setAttribute('aria-hidden','false');};
+        window.closeHP12C=function(){document.getElementById('hp12c-drawer')?.classList.remove('open');document.getElementById('hp12c-overlay')?.classList.remove('open');document.getElementById('hp12c-drawer')?.setAttribute('aria-hidden','true');};
+        upd();
+    })();
+    </script>
+</body>
+</html>
