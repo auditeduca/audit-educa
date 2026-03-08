@@ -1232,6 +1232,51 @@
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
+
+            // ===== AJUSTE PARA BARRA STICKY ABAIXO DO CABEÇALHO =====
+            (function adjustStickyElements() {
+                // Elementos que serão ajustados
+                const topicStrip = document.querySelector('.topic-strip');
+                const mainWrap = document.querySelector('.main-wrap');
+                const headerPlaceholder = document.getElementById('header-placeholder');
+
+                if (!topicStrip || !mainWrap || !headerPlaceholder) return;
+
+                // Função que calcula e aplica os ajustes
+                function applyStickyAdjustments() {
+                    // Tenta encontrar o elemento do cabeçalho (pode ser o primeiro filho do placeholder)
+                    const headerEl = headerPlaceholder.firstElementChild;
+                    if (!headerEl) return;
+
+                    const headerHeight = headerEl.offsetHeight;
+                    const headerStyles = window.getComputedStyle(headerEl);
+                    const isHeaderFixedOrSticky = headerStyles.position === 'fixed' || headerStyles.position === 'sticky';
+
+                    if (isHeaderFixedOrSticky) {
+                        // Barra gruda abaixo do cabeçalho
+                        topicStrip.style.top = headerHeight + 'px';
+                        // Conteúdo principal ganha padding igual à altura do cabeçalho
+                        mainWrap.style.paddingTop = headerHeight + 'px';
+                    } else {
+                        // Se cabeçalho não for fixo, volta ao normal
+                        topicStrip.style.top = '0';
+                        mainWrap.style.paddingTop = '';
+                    }
+                }
+
+                // Observa quando o cabeçalho for carregado (via template-engine)
+                const observer = new MutationObserver(() => {
+                    if (headerPlaceholder.children.length > 0) {
+                        applyStickyAdjustments();
+                        observer.disconnect(); // para de observar após carregar
+                    }
+                });
+                observer.observe(headerPlaceholder, { childList: true });
+
+                // Reaplica em caso de redimensionamento da janela
+                window.addEventListener('resize', applyStickyAdjustments);
+            })();
+
         })();
     </script>
 </body>
