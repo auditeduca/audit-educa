@@ -1,0 +1,94 @@
+{
+  "projeto_auditoria": {
+    "metadata": {
+      "id_projeto": "AUD-2026-001",
+      "empresa_cliente": "Controladora S/A",
+      "periodo_auditoria": "FY2025",
+      "auditor_lider": "Gerente de Projeto",
+      "ultima_atualizacao": "2026-03-09T10:00:00Z"
+    },
+    "requisicoes_mestres": [
+      {
+        "id_rla": "REQ-002",
+        "area": "Receitas",
+        "fase": "Execução",
+        "solicitacao_titulo": "Amostragem de Faturamento",
+        "data_base": "2025-10-31",
+        "confidencialidade": "Público",
+        "prioridade": "Alta",
+        "status_geral": "Em Análise",
+        "data_vencimento": "2026-03-12",
+        "data_recebimento_efetiva": "2026-03-10",
+        "indicadores_amostra": {
+          "total_itens_solicitados": 30,
+          "total_itens_entregues": 2,
+          "total_aprovados": 1,
+          "total_rejeitados": 1,
+          "percentual_conclusao": 6.6
+        },
+        "detalhamento_amostragem": [
+          {
+            "item_id": "002.01",
+            "referencia_documento": "NF 4598 - Cliente X",
+            "departamento": "Fiscal",
+            "tipo_documento": "Nota Fiscal",
+            "documento_substituto": null,
+            "responsavel_cliente": {
+              "nome": "João Silva",
+              "email": "joao.silva@cliente.com"
+            },
+            "data_envio_solicitacao": "2026-03-01",
+            "data_recebimento_efetiva": "2026-03-05",
+            "auditor_responsavel": "Auditor A",
+            "status_item": "Aprovado",
+            "log_validacao": {
+              "aprovado_em": "2026-03-06T14:20:00Z",
+              "motivo_rejeicao": null,
+              "versao_documento": 1
+            }
+          },
+          {
+            "item_id": "002.02",
+            "referencia_documento": "NF 4599 - Cliente Y",
+            "departamento": "Comercial",
+            "tipo_documento": "Nota Fiscal",
+            "documento_substituto": "Pedido de Venda",
+            "responsavel_cliente": {
+              "nome": "Maria Luz",
+              "email": "maria.luz@cliente.com"
+            },
+            "data_envio_solicitacao": "2026-03-01",
+            "data_recebimento_efetiva": "2026-03-06",
+            "auditor_responsavel": "Auditor A",
+            "status_item": "Rejeitado",
+            "log_validacao": {
+              "rejeitado_em": "2026-03-07T09:00:00Z",
+              "motivo_rejeicao": "Data da NF fora do período de teste (Dez/25).",
+              "versao_documento": 1
+            }
+          }
+        ]
+      },
+      {
+        "id_rla": "REQ-003",
+        "area": "Ativo Imobilizado",
+        "fase": "Execução",
+        "solicitacao_titulo": "Notas Fiscais de Aquisição",
+        "data_base": "2025-12-31",
+        "confidencialidade": "Público",
+        "prioridade": "Média",
+        "status_geral": "Pendente",
+        "data_vencimento": "2026-03-18",
+        "data_recebimento_efetiva": null,
+        "indicadores_amostra": {
+          "total_itens_solicitados": 15,
+          "total_itens_entregues": 0,
+          "total_aprovados": 0,
+          "total_rejeitados": 0,
+          "percentual_conclusao": 0
+        },
+        "detalhamento_amostragem": []
+      }
+    ]
+  }
+}
