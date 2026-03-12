@@ -1,0 +1,487 @@
+{
+  "_meta": {
+    "site": "Audit Educa",
+    "tagline": "Conteúdo técnico gratuito",
+    "subtitle": "Baseado em IFRS · NBC TA · CPCs · NBC PP · CLT",
+    "baseUrl": "https://auditeduca.com.br"
+  },
+
+  "filterBar": {
+    "id": "filter-bar",
+    "items": [
+      { "label": "Todos",             "value": "todos",     "active": true  },
+      { "label": "Auditoria",         "value": "auditoria", "active": false },
+      { "label": "IFRS",              "value": "ifrs",      "active": false },
+      { "label": "IA Agêntica",       "value": "ia",        "active": false },
+      { "label": "Perícia",           "value": "pericia",   "active": false },
+      { "label": "Ferramentas",       "value": "tools",     "active": false }
+    ]
+  },
+
+  "hero": {
+    "id": "hero-featured",
+    "badge": "IA Agêntica · Hot Topic",
+    "title": "Agentes de IA na Auditoria: da Prova de Conceito à Execução Real de Testes",
+    "readTime": "12 min",
+    "author": "Audit Educa",
+    "date": "Mar 2026",
+    "excerpt": "LLMs evoluem de assistentes passivos para agentes autônomos que executam sequências completas de auditoria — extração de ERP, testes substantivos e geração de papéis de trabalho conforme NBC TA 330. Este artigo analisa os frameworks mais relevantes (AutoGen, LangGraph, CrewAI) e seus casos de uso reais em engagements de auditoria externa e interna.",
+    "image": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1400&auto=format&fit=crop",
+    "imageAlt": "IA Agêntica em Auditoria — robôs e dados",
+    "ctaLabel": "Ler artigo completo",
+    "ctaUrl": "https://auditeduca.com.br/biblioteca.html",
+    "bullets": [
+      "Agentes reduzem 40–60% do tempo em testes de dados",
+      "NBC TA 330 e ISA 330 já permitem uso de CAAT",
+      "Risco de 'alucinação' exige supervisão humana no loop",
+      "Big 4 em rollout interno de agentes especializados"
+    ]
+  },
+
+  "featuredTrio": {
+    "id": "featured-trio",
+    "articles": [
+      {
+        "id": "f1",
+        "badge": "IFRS S1 & S2",
+        "title": "Relatório de Sustentabilidade: o que o Auditor Precisa Saber para 2026",
+        "readTime": "8 min",
+        "category": "Contabilidade",
+        "image": "https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=700&auto=format&fit=crop",
+        "url": "https://auditeduca.com.br/biblioteca.html"
+      },
+      {
+        "id": "f2",
+        "badge": "NBC TA 600 Rev.",
+        "title": "Nova NBC TA 600: Auditoria de Grupos — Mudanças Críticas para o Auditor",
+        "readTime": "6 min",
+        "category": "Auditoria Externa",
+        "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=700&auto=format&fit=crop",
+        "url": "https://auditeduca.com.br/biblioteca.html"
+      },
+      {
+        "id": "f3",
+        "badge": "Perícia Contábil",
+        "title": "Laudo Pericial com Uso de Dados: NBC PP 01 e o Perito Digital",
+        "readTime": "10 min",
+        "category": "Perícia",
+        "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=700&auto=format&fit=crop",
+        "url": "https://auditeduca.com.br/biblioteca.html"
+      }
+    ]
+  },
+
+  "sections": [
+    {
+      "id": "auditoria-interna",
+      "template": "grid-3col",
+      "label": "Hot Topic",
+      "title": "Auditoria Interna",
+      "ctaLabel": "Ver todos",
+      "ctaUrl": "https://auditeduca.com.br/biblioteca.html",
+      "showAd": true,
+      "articles": [
+        {
+          "id": "ai1",
+          "badge": "IPPF 2024 · IIA Global",
+          "title": "IPPF Atualizado: as Novas Exigências de Competência para o Auditor Interno",
+          "excerpt": "O IPPF revisado em 2024 eleva o padrão de competências técnicas e comportamentais, com ênfase em ciência de dados, gestão de riscos e posicionamento estratégico do CAE.",
+          "readTime": "9 min",
+          "date": "Mar 2026",
+          "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/biblioteca.html"
+        },
+        {
+          "id": "ai2",
+          "badge": "Auditoria Contínua · Data Analytics",
+          "title": "Auditoria Contínua com Power BI e Python: Implementação Prática do Zero",
+          "excerpt": "Como estruturar monitoramento contínuo integrando Power BI, scripts Python e APIs de ERP — com exemplos de alarmes para anomalias em contas a pagar e folha.",
+          "readTime": "15 min",
+          "date": "Fev 2026",
+          "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/biblioteca.html"
+        },
+        {
+          "id": "ai3",
+          "badge": "Gestão de Riscos · COSO ERM 2017",
+          "title": "Mapeamento de Riscos no COSO ERM: da Teoria ao Papel de Trabalho",
+          "excerpt": "Guia prático para construção de mapas de calor, apetite a risco e planos de resposta integrados ao planejamento estratégico, com templates editáveis.",
+          "readTime": "11 min",
+          "date": "Jan 2026",
+          "image": "https://images.unsplash.com/photo-1560472355-536de3962603?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/biblioteca.html"
+        }
+      ]
+    },
+
+    {
+      "id": "ia-agentica",
+      "template": "featured-large-plus-3",
+      "label": "Em Alta",
+      "title": "IA Agêntica & Contabilidade",
+      "ctaLabel": "Ver todos",
+      "ctaUrl": "https://auditeduca.com.br/biblioteca.html",
+      "featured": {
+        "id": "ia-f1",
+        "badge": "IA Agêntica · Exclusivo",
+        "title": "Como Agentes LLM Estão Revolucionando a Revisão de Contratos de Arrendamento (IFRS 16)",
+        "excerpt": "Da extração automática de cláusulas à geração do cronograma de amortização — sem intervenção humana. Agentes LLM processam centenas de contratos PDF, extraem automaticamente taxa, prazo e índice, e alimentam o cálculo do passivo de arrendamento conforme IFRS 16 / CPC 06(R2). Este artigo demonstra a arquitetura end-to-end com LangGraph e GPT-4o, incluindo validação do cálculo pelo auditor.",
+        "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop",
+        "tags": ["IFRS 16","LangGraph","GPT-4o","CPC 06(R2)","Extração de Dados","Auditoria Automatizada"],
+        "ctaLabel": "Ler artigo completo",
+        "url": "https://auditeduca.com.br/busca-e-conteudo.html"
+      },
+      "articles": [
+        {
+          "id": "ia1",
+          "badge": "IA · NLP",
+          "badgeUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+          "norm": "NBC TA 265 · Deficiências",
+          "title": "NLP para Detecção Automática de Deficiências em Controles Internos",
+          "excerpt": "Classificadores treinados em relatórios de auditoria identificam padrões de deficiências significativas com 87% de acurácia.",
+          "readTime": "7 min",
+          "image": "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/busca-e-conteudo.html"
+        },
+        {
+          "id": "ia2",
+          "badge": "Python · ECL",
+          "badgeUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+          "norm": "IFRS 9 · CPC 48",
+          "title": "Calculando a PECLD com ECL: Script Python para o Modelo de Perda Esperada",
+          "excerpt": "Implementação completa do modelo ECL do IFRS 9 com estimativas de PD, LGD e EAD por safra de crédito.",
+          "readTime": "10 min",
+          "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/busca-e-conteudo.html"
+        },
+        {
+          "id": "ia3",
+          "badge": "IA · Regulação",
+          "badgeUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+          "norm": "CVM · IASB · IAASB",
+          "title": "O que os Reguladores Dizem sobre IA em Auditoria: CVM, IASB e IAASB",
+          "excerpt": "Análise comparada das posições regulatórias sobre uso de IA em auditoria e divulgação financeira.",
+          "readTime": "8 min",
+          "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/busca-e-conteudo.html"
+        }
+      ]
+    },
+
+    {
+      "id": "ferramentas",
+      "template": "tools-grid",
+      "label": "Plataforma SGG",
+      "title": "Ferramentas em Destaque",
+      "ctaLabel": "Ver todas",
+      "ctaUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+      "tools": [
+        {
+          "id": "t1",
+          "category": "Circularização",
+          "title": "Gerador de Cartas de Circularização Bancária",
+          "description": "Gere, controle e exporte cartas de confirmação para bancos, clientes e advogados conforme NBC TA 505.",
+          "tags": ["NBC TA 505","ISA 505"],
+          "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/circularizacao-bancos.html"
+        },
+        {
+          "id": "t2",
+          "category": "IFRS 16",
+          "title": "Calculadora IFRS 16 — Passivo e Direito de Uso",
+          "description": "Tabela de amortização com VPL do passivo, ROU asset e lançamentos por período.",
+          "tags": ["IFRS 16","CPC 06(R2)"],
+          "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/arrendamento.html"
+        },
+        {
+          "id": "t3",
+          "category": "Análise Financeira",
+          "title": "Teste de Auditoria — Contas a Receber e PECLD",
+          "description": "Aging report, análise de concentração e estimativa de perda esperada (ECL) conforme IFRS 9.",
+          "tags": ["CPC 48","IFRS 9","NBC TA 330"],
+          "image": "https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=800&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/analise-contas-a-receber.html"
+        },
+        {
+          "id": "t4",
+          "category": "Indicadores",
+          "title": "Painel de Indicadores Financeiros",
+          "description": "Liquidez, rentabilidade, endividamento e eficiência — com alertas de desvio para procedimentos analíticos.",
+          "tags": ["NBC TA 520","IFRS 7"],
+          "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/indicadores-financeiros.html"
+        },
+        {
+          "id": "t5",
+          "category": "Financeiro",
+          "title": "Calculadora de Juros e Taxa Efetiva",
+          "description": "Recalcule encargos financeiros e verifique a taxa efetiva de contratos conforme CPC 08.",
+          "tags": ["CPC 08(R1)","IFRS 9"],
+          "image": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/calculadora-juros-simples.html"
+        },
+        {
+          "id": "t6",
+          "category": "IFRS / CPC",
+          "title": "Teste de Provisões e Contingências",
+          "description": "Documente provisões fiscais, trabalhistas e cíveis. Classifique por probabilidade conforme CPC 25.",
+          "tags": ["CPC 25","IAS 37"],
+          "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/s-contigencias-teste-ifrc.html"
+        }
+      ]
+    },
+
+    {
+      "id": "pericia-contabil",
+      "template": "grid-3col",
+      "label": "Artigos Técnicos",
+      "title": "Perícia Contábil",
+      "ctaLabel": "Ver todos",
+      "ctaUrl": "https://auditeduca.com.br/biblioteca.html",
+      "showAd": false,
+      "articles": [
+        {
+          "id": "pc1",
+          "badge": "NBC PP 01",
+          "badgeUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+          "title": "Estrutura do Laudo Pericial: Requisitos e Armadilhas Comuns nas Impugnações",
+          "excerpt": "NBC PP 01 detalha os elementos obrigatórios. Veja o que os peritos erram com mais frequência nos laudos contestados.",
+          "readTime": "8 min",
+          "date": "Fev 2026",
+          "image": "https://images.unsplash.com/photo-1453945619913-79ec89a82c51?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/busca-e-conteudo.html"
+        },
+        {
+          "id": "pc2",
+          "badge": "Trabalhista · CLT",
+          "badgeUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+          "title": "Quantificação de Danos em Perícia Trabalhista: Metodologia e Jurisprudência",
+          "excerpt": "Como calcular verbas com reflexos, corrigir pelo TRCT e documentar o raciocínio pericial para resistir a contestações.",
+          "readTime": "11 min",
+          "date": "Jan 2026",
+          "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/busca-e-conteudo.html"
+        },
+        {
+          "id": "pc3",
+          "badge": "Forense · Digital",
+          "badgeUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+          "title": "Perícia Contábil Digital: Evidências Eletrônicas e Cadeia de Custódia",
+          "excerpt": "Hash, cadeia de custódia e conformidade com CPC/2015 e LGPD para perícias envolvendo provas eletrônicas.",
+          "readTime": "9 min",
+          "date": "Mar 2026",
+          "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/busca-e-conteudo.html"
+        }
+      ]
+    },
+
+    {
+      "id": "guias-estudo",
+      "template": "numbered-list",
+      "label": "Certificações & Qualificação",
+      "title": "Guias de Estudo",
+      "ctaLabel": "Ver todos",
+      "ctaUrl": "https://auditeduca.com.br/biblioteca.html",
+      "guides": [
+        {
+          "id": "g1",
+          "number": "01",
+          "title": "Guia Completo QTG — Qualificação Técnica em Auditoria Independente",
+          "duration": "6h estimado",
+          "modules": "12 módulos",
+          "norm": "CNAI · CFC",
+          "badge": "Essencial",
+          "url": "https://auditeduca.com.br/guia-qtg.html"
+        },
+        {
+          "id": "g2",
+          "number": "02",
+          "title": "NBC TA Comentadas: do Planejamento ao Relatório de Auditoria",
+          "duration": "8h estimado",
+          "modules": "16 NBCs cobertas",
+          "norm": "NBC TA 200–800",
+          "badge": "Popular",
+          "url": "https://auditeduca.com.br/guia-nbc-ta.html"
+        },
+        {
+          "id": "g3",
+          "number": "03",
+          "title": "IFRS para Auditores: CPC 01, 03, 06, 25, 27, 48 — Questões Comentadas",
+          "duration": "5h estimado",
+          "modules": "200 questões",
+          "norm": "IFRS · CPC",
+          "badge": "Popular",
+          "url": "https://auditeduca.com.br/guia-ifrs-auditores.html"
+        },
+        {
+          "id": "g4",
+          "number": "04",
+          "title": "Exame de Suficiência CFC — Acervo 2017–2025 · Conteúdo Programático",
+          "duration": "4h estimado",
+          "modules": "18 edições · provas e gabaritos",
+          "norm": "CRC · NBC",
+          "badge": "Novo",
+          "url": "https://auditeduca.com.br/exame-suficiencia.html"
+        },
+        {
+          "id": "g5",
+          "number": "05",
+          "title": "Data Analytics para Auditores: SQL, Python e ACL do Zero",
+          "duration": "10h estimado",
+          "modules": "5 projetos práticos",
+          "norm": "CAAT · NBC TA 330",
+          "badge": "Novo",
+          "url": "https://auditeduca.com.br/guia-data-analytics.html"
+        },
+        {
+          "id": "g6",
+          "number": "06",
+          "title": "NBC PP 01 a 05: Guia Prático para o Perito Contábil Judicial",
+          "duration": "3h estimado",
+          "modules": "Casos com gabarito",
+          "norm": "CPC/2015 · NBC PP",
+          "badge": "Essencial",
+          "url": "https://auditeduca.com.br/guia-pericia.html"
+        }
+      ]
+    },
+
+    {
+      "id": "contabilidade-ifrs",
+      "template": "grid-3col",
+      "label": "Normas Vigentes",
+      "title": "Contabilidade & IFRS",
+      "ctaLabel": "Ver todos",
+      "ctaUrl": "https://auditeduca.com.br/biblioteca.html",
+      "showAd": false,
+      "articles": [
+        {
+          "id": "ci1",
+          "badge": "IFRS S1 & S2 · Sustentabilidade",
+          "title": "IFRS S1 e S2: Como Auditar Divulgações de Sustentabilidade e Clima",
+          "excerpt": "O IAASB emitiu o ISSA 5000 para asseguração de relatórios de sustentabilidade. Entenda o que muda e a linha do tempo de adoção no Brasil.",
+          "readTime": "9 min",
+          "date": "Mar 2026",
+          "image": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/biblioteca.html"
+        },
+        {
+          "id": "ci2",
+          "badge": "CPC 47 · IFRS 15",
+          "title": "Receita Over-Time vs Point-in-Time: Testes de Auditoria para Cada Modelo",
+          "excerpt": "As cinco etapas do IFRS 15 geram diferentes riscos de distorção. Mapeamos os principais testes substantivos para cada padrão de reconhecimento.",
+          "readTime": "12 min",
+          "date": "Fev 2026",
+          "image": "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/biblioteca.html"
+        },
+        {
+          "id": "ci3",
+          "badge": "CPC 49 · IFRIC 23",
+          "title": "Incerteza Tributária (IFRIC 23): Quando Registrar e Como Divulgar",
+          "excerpt": "IFRIC 23 exige avaliação de probabilidade de posições fiscais incertas. Veja como documentar o raciocínio jurídico-contábil e os impactos no passivo.",
+          "readTime": "10 min",
+          "date": "Jan 2026",
+          "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop",
+          "url": "https://auditeduca.com.br/biblioteca.html"
+        }
+      ]
+    }
+  ],
+
+  "sidebar": {
+    "id": "sidebar",
+    "trending": {
+      "title": "Em Alta Agora",
+      "items": [
+        { "rank": 1, "title": "IA Agêntica em Auditoria",    "tags": ["NBC TA 330","CAAT","LLM"] },
+        { "rank": 2, "title": "NBC TA 600 Revisada",         "tags": ["Auditoria de Grupos","ISA 600"] },
+        { "rank": 3, "title": "IFRS S1 & S2 — ESG",          "tags": ["Sustentabilidade","ISSA 5000"] },
+        { "rank": 4, "title": "Reforma do IR 2026",           "tags": ["Isenção R$ 5k","Salário Líquido"] },
+        { "rank": 5, "title": "IPPF 2024 — Auditoria Interna","tags": ["IIA","IPPF","COSO ERM"] }
+      ]
+    },
+    "quickTools": {
+      "title": "Ferramentas Rápidas",
+      "ctaLabel": "Ver todas",
+      "ctaUrl": "https://auditeduca.com.br/busca-e-conteudo.html",
+      "items": [
+        { "label": "Circularização Bancos",  "norm": "NBC TA 505",    "url": "https://auditeduca.com.br/circularizacao-bancos.html" },
+        { "label": "IFRS 16 Arrendamento",   "norm": "CPC 06(R2)",    "url": "https://auditeduca.com.br/arrendamento.html" },
+        { "label": "Indicadores Financeiros","norm": "NBC TA 520",    "url": "https://auditeduca.com.br/indicadores-financeiros.html" },
+        { "label": "Salário Líquido 2026",   "norm": "IN RFB 2.141/2023","url": "https://auditeduca.com.br/salario-liquido.html" },
+        { "label": "Calculadora de Juros",   "norm": "CPC 08(R1)",    "url": "https://auditeduca.com.br/calculadora-juros-simples.html" }
+      ]
+    },
+    "simulados": {
+      "title": "Simulados & Testes",
+      "items": [
+        { "label": "Exame de Suficiência", "sub": "Simulado CFC",          "url": "https://auditeduca.com.br/simulado-exame-suficiencia.html" },
+        { "label": "QTG / CNAI",           "sub": "Simulado Auditoria",    "url": "https://auditeduca.com.br/simulado-qtg.html" },
+        { "label": "Auditor CVM",          "sub": "Simulado Regulatório",  "url": "https://auditeduca.com.br/simulado-cvm.html" }
+      ]
+    },
+    "normas": {
+      "title": "Normas Vigentes",
+      "ctaLabel": "Biblioteca",
+      "ctaUrl": "https://auditeduca.com.br/biblioteca.html",
+      "items": [
+        { "code": "NBC TA 200–810", "desc": "Auditoria Externa — CFC" },
+        { "code": "IFRS 1–17",      "desc": "Normas IASB" },
+        { "code": "CPC 01–47",      "desc": "Pronunciamentos CPC" },
+        { "code": "NBC PP 01–05",   "desc": "Perícia Contábil CFC" },
+        { "code": "NBC PI 01",      "desc": "Auditoria Interna CFC" },
+        { "code": "IPPF 2024",      "desc": "Padrões IIA Global" }
+      ]
+    },
+    "marketData": {
+      "title": "Mercado & Índices (BCB)",
+      "items": [
+        { "label": "Taxa Selic",  "value": "10.75%", "delta": "-0.50 pp",  "trend": "down" },
+        { "label": "IPCA (12m)", "value": "4.52%",  "delta": "+0.12 pp",  "trend": "up"   },
+        { "label": "Dólar PTAX", "value": "R$ 5,02","delta": "Estável",   "trend": "neutral" },
+        { "label": "Euro (BCE)", "value": "R$ 5,45","delta": "-0.05%",    "trend": "down" }
+      ]
+    }
+  },
+
+  "suggestionForm": {
+    "id": "suggestion-form",
+    "title": "Envie sua Sugestão",
+    "description": "Sentiu falta de algum artigo, calculadora ou guia? Compartilhe sua ideia connosco de forma 100% segura.",
+    "ctaLabel": "Enviar Sugestão",
+    "successMessage": "Recebemos a sua sugestão. Muito obrigado!"
+  },
+
+  "ctaBanner": {
+    "id": "cta-banner",
+    "title": "Plataforma Aberta e Ferramentas Gratuitas!",
+    "description": "O esforço técnico gerou resultados. Ferramentas sem cadastro, baseadas em normas reais. Conteúdo prático desenvolvido por auditores, para inspirar e facilitar o dia a dia de futuros profissionais.",
+    "ctas": [
+      { "label": "Explorar Ferramentas", "url": "https://auditeduca.com.br/busca-e-conteudo.html", "variant": "primary" },
+      { "label": "Biblioteca Técnica",   "url": "https://auditeduca.com.br/biblioteca.html",       "variant": "secondary" }
+    ]
+  },
+
+  "pageLayout": {
+    "order": [
+      "filterBar",
+      "hero",
+      "featuredTrio",
+      "sections.auditoria-interna",
+      "sections.ia-agentica",
+      "sections.ferramentas",
+      "sections.pericia-contabil",
+      "sections.guias-estudo",
+      "sections.contabilidade-ifrs",
+      "suggestionForm",
+      "ctaBanner"
+    ],
+    "hasSidebar": true,
+    "sidebarPosition": "right",
+    "sidebarSections": ["trending","quickTools","simulados","normas","marketData"]
+  }
+}
