@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construtor de Calculadoras · Enfermagem</title>
+    <!-- Tailwind via CDN (apenas desenvolvimento) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        body { overflow: hidden; }
+        .preview-scale {
+            width: 100%;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+        .json-editor {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Menlo', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: none;
+        }
+        .json-editor:focus { outline: none; }
+        .nav-active { background: #1e3a8a; color: white; font-weight: bold; }
+        .preview-scale button, .preview-scale a { pointer-events: none; }
+    </style>
+</head>
+<body class="flex h-screen bg-gray-100">
+
+<!-- DADOS INICIAIS (MEEM + SIDEBAR CONFIGURÁVEL) -->
+<script>
+    window.initialData = {
+        seo: {
+            title: "Mini-Exame do Estado Mental (MEEM) - Rastreio Cognitivo - Calculadoras de Enfermagem",
+            description: "Calcule o Mini-Exame do Estado Mental (MEEM) para rastreio e avaliação de déficits cognitivos, incluindo demência. Ferramenta essencial para geriatria e neurologia. mini mental calculadora",
+            keywords: "MEEM, Mini-Exame do Estado Mental, rastreio cognitivo, teste cognitivo, enfermagem, neurologia, geriatria, demência, alzheimer",
+            canonical: "https://www.calculadorasdeenfermagem.com.br/meem.html"
+        },
+        header: {
+            title: "Mini-Exame do Estado Mental (MEEM)",
+            subtitle: "Instrumento de rastreio para avaliação de perda cognitiva.",
+            iconUrl: "https://www.calculadorasdeenfermagem.com.br/img/iconemeem.webp"
+        },
+        about: {
+            year: "1975",
+            authors: "Marshal F. Folstein, Susan E. Folstein e Paul R. McHugh",
+            area: "Geriatria, Neurologia, Psiquiatria e Saúde Mental",
+            criteria: "São Onze (11) itens + O nível de escolaridade: Orientação temporal, espacial, memória, atenção, cálculo, linguagem e habilidades construtivas",
+            users: "Médicos, neuropsicólogos, enfermeiros, psicólogos e terapeutas."
+        },
+        calculatorTitle: "Calculadora de MEEM - Mini-Exame do Estado Mental",
+        variables: [
+            { id: "orientacao_temporal", label: "1-Orientação Temporal (0 a 5)", desc: "Pergunte ao paciente sobre: a) ano em que estamos (1 ponto); b) estação do ano (1 ponto); c) mês (1 ponto); d) dia do mês (1 ponto); e) dia da semana (1 ponto). Pontue 1 para cada resposta correta. (Máximo: 5 pontos)", options: [{ value: 0, text: "0 - Nenhum acerto" }, { value: 1, text: "1 - Um acerto" }, { value: 2, text: "2 - Dois acertos" }, { value: 3, text: "3 - Três acertos" }, { value: 4, text: "4 - Quatro acertos" }, { value: 5, text: "5 - Correto (todos os acertos)" }], defaultValue: 5 },
+            { id: "orientacao_espacial", label: "2-Orientação Espacial (0 a 5)", desc: "Pergunte ao paciente sobre: a) estado (1 ponto); b) cidade (1 ponto); c) bairro ou rua próxima (1 ponto); d) local exato/hospital/clínica (1 ponto); e) andar ou cômodo (1 ponto). Pontue 1 para cada resposta correta. (Máximo: 5 pontos)", options: [{ value: 0, text: "0 - Nenhum acerto" }, { value: 1, text: "1 - Um acerto" }, { value: 2, text: "2 - Dois acertos" }, { value: 3, text: "3 - Três acertos" }, { value: 4, text: "4 - Quatro acertos" }, { value: 5, text: "5 - Correto (todos os acertos)" }], defaultValue: 5 },
+            { id: "registro", label: "3-Registro (0 a 3)", desc: "Diga três palavras não relacionadas, pausadamente (ex: Carro, Vaso, Tijolo). Peça para o paciente repetir. Pontue 1 para cada palavra correta na primeira tentativa. Repita as palavras até que ele aprenda (necessário para evocação posterior). (Máximo: 3 pontos)", options: [{ value: 0, text: "0 - Nenhuma palavra" }, { value: 1, text: "1 - Uma palavra" }, { value: 2, text: "2 - Duas palavras" }, { value: 3, text: "3 - Três palavras" }], defaultValue: 3 }
+        ],
+        hasModifier: true,
+        modifier: {
+            id: "escolaridade",
+            label: "Nível de Escolaridade",
+            desc: "Necessário para definir o ponto de corte do resultado.",
+            icon: "fa-graduation-cap",
+            options: [
+                { value: "analfabeto", text: "Analfabeto", cutoffValue: 20 },
+                { value: "baixa", text: "1 a 11 anos de estudo", cutoffValue: 24 },
+                { value: "alta", text: "Mais de 11 anos de estudo", cutoffValue: 28 }
+            ],
+            defaultValue: "alta"
+        },
+        references: [
+            "Brucki, S. M. D., Nitrini, R., Caramelli, P., Bertolucci, P. H. F., & Okamoto, I. H. (2003). Sugestões para o uso do mini-exame do estado mental no Brasil. Arquivos de Neuro-Psiquiatria, 61(3B), 777-781.",
+            "Brito-Marques, P. R. D., & Cabral-Filho, J. E. (2004). The role of education in mini-mental state examination: a study in Northeast Brazil. Arquivos de Neuro-Psiquiatria, 62(2A), 206-211."
+        ],
+        sidebar: {
+            faqLink: "https://www.calculadorasdeenfermagem.com.br/forum-enfermagem.html",
+            relatedCalculators: [
+                { title: "Escala de MoCA", url: "https://www.calculadorasdeenfermagem.com.br/moca.html", icon: "fa-brain", description: "Rastreio de comprometimento cognitivo leve (CCL)." },
+                { title: "Escala de coma de Glasgow", url: "https://www.calculadorasdeenfermagem.com.br/glasgow.html", icon: "fa-eye", description: "Calculadora de Nível de consciência." },
+                { title: "Escala de Jouvet", url: "https://www.calculadorasdeenfermagem.com.br/jouvet.html", icon: "fa-bed", description: "Escala de coma/consciência." },
+                { title: "Escala Ramsay", url: "https://www.calculadorasdeenfermagem.com.br/ramsay.html", icon: "fa-bed-pulse", description: "Avaliação da sedação em pacientes." },
+                { title: "Escala de Katz", url: "https://www.calculadorasdeenfermagem.com.br/katz.html", icon: "fa-bath", description: "Avaliação de autonomia nas ABVDs." },
+                { title: "Escala de Zarit", url: "https://www.calculadorasdeenfermagem.com.br/zarit.html", icon: "fa-hospital-user", description: "Avaliação do grau de sobrecarga do cuidador familiar." },
+                { title: "Escala de Lawton", url: "https://www.calculadorasdeenfermagem.com.br/lawton.html", icon: "fa-mug-saucer", description: "Mede o grau de independência nas AIVD em idosos." }
+            ]
+        }
+    };
+</script>
+
+<!-- SIDEBAR (inalterada, apenas para navegação) -->
+<div class="w-64 bg-[#1A3E74] text-white flex flex-col shadow-xl shrink-0">
+    <div class="p-4 border-b border-blue-800 flex items-center gap-3">
+        <i class="fa-solid fa-file-code text-blue-300 text-2xl"></i>
+        <h1 class="text-lg font-bold leading-tight">Construtor de<br/>Calculadoras</h1>
+    </div>
+    <nav class="flex-1 overflow-y-auto py-4" id="sidebarNav">
+        <ul class="space-y-1 px-2">
+            <li><button data-section="seo" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-blue-200 hover:bg-blue-800 transition"><i class="fa-solid fa-gear w-5"></i> SEO e Meta Tags</button></li>
+            <li><button data-section="header" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-blue-200 hover:bg-blue-800 transition"><i class="fa-solid fa-pen w-5"></i> Cabeçalho e Título</button></li>
+            <li><button data-section="about" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-blue-200 hover:bg-blue-800 transition"><i class="fa-solid fa-circle-info w-5"></i> Sobre a Escala</button></li>
+            <li><button data-section="variables" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-blue-200 hover:bg-blue-800 transition"><i class="fa-solid fa-plus w-5"></i> Questões e Variáveis</button></li>
+            <li><button data-section="modifier" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-blue-200 hover:bg-blue-800 transition"><i class="fa-solid fa-eye w-5"></i> Modificador (Corte)</button></li>
+        </ul>
+        <div class="mt-8 px-4 text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Visão do Sistema</div>
+        <ul class="space-y-1 px-2">
+            <li><button id="tabJsonBtn" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left text-blue-200 hover:bg-blue-800 transition"><i class="fa-solid fa-code w-5"></i> Configuração (JSON)</button></li>
+        </ul>
+    </nav>
+    <div class="p-4 border-t border-blue-800 flex flex-col gap-2">
+        <button id="exportHtmlBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2 transition"><i class="fa-solid fa-download"></i> Exportar HTML</button>
+        <div class="flex gap-2">
+            <button id="saveJsonBtn" class="flex-1 bg-blue-700 hover:bg-blue-600 text-white text-xs font-bold py-2 px-2 rounded flex items-center justify-center gap-1"><i class="fa-solid fa-save"></i> Salvar Modelo</button>
+            <label class="flex-1 bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-2 px-2 rounded cursor-pointer flex items-center justify-center gap-1"><i class="fa-solid fa-upload"></i> Abrir <input type="file" id="loadJsonFile" accept=".json" class="hidden"></label>
+        </div>
+    </div>
+</div>
+
+<!-- ÁREA PRINCIPAL -->
+<div class="flex-1 flex flex-col h-full overflow-hidden bg-white">
+    <div class="bg-gray-200 flex text-sm font-medium">
+        <button id="editorTabBtn" class="tab-btn px-6 py-3 bg-white border-r font-bold" data-tab="editor">✎ Editor</button>
+        <button id="previewTabBtn" class="tab-btn px-6 py-3 bg-gray-100 text-gray-700 border-r" data-tab="preview">👁 Preview</button>
+    </div>
+    <div class="flex-1 flex overflow-hidden" id="mainWorkspace">
+        <!-- EDITOR PANEL -->
+        <div id="editorPanel" class="w-1/2 flex flex-col border-r border-gray-200 bg-gray-50 h-full overflow-y-auto">
+            <div class="p-6" id="editorFormContainer">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2" id="sectionTitle">SEO e Meta Tags</h2>
+                <div id="dynamicForm"></div>
+            </div>
+        </div>
+        <!-- PREVIEW PANEL -->
+        <div id="previewPanel" class="w-1/2 h-full overflow-y-auto bg-gray-100">
+            <div class="bg-gray-800 text-white text-xs px-4 py-2 flex justify-between items-center sticky top-0 z-50">
+                <span class="font-bold flex items-center gap-2"><i class="fa-regular fa-eye text-green-400"></i> Preview em Tempo Real</span>
+            </div>
+            <div id="previewContent" class="p-4 preview-scale"></div>
+        </div>
+        <!-- JSON PANEL -->
+        <div id="jsonPanel" class="hidden w-full h-full flex-col bg-[#1e1e1e]">
+            <div class="p-3 bg-[#2d2d2d] text-gray-300 text-sm font-mono border-b border-black flex justify-between items-center">
+                <span>config.json</span>
+                <span class="text-xs text-yellow-500">Edite com cuidado</span>
+            </div>
+            <textarea id="jsonEditor" class="json-editor w-full h-full p-4" spellcheck="false"></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- Script do construtor (inclui a função generateHTML com URLs absolutas) -->
+<script>
+    (function() {
+        // ----- DADOS GLOBAIS -----
+        let data = JSON.parse(JSON.stringify(window.initialData));
+        let activeTab = 'editor';
+        let activeSection = 'seo';
+        let showingJson = false;
+
+        // ----- ELEMENTOS DOM -----
+        const editorPanel = document.getElementById('editorPanel');
+        const previewPanel = document.getElementById('previewPanel');
+        const jsonPanel = document.getElementById('jsonPanel');
+        const editorFormContainer = document.getElementById('dynamicForm');
+        const sectionTitle = document.getElementById('sectionTitle');
+        const previewContent = document.getElementById('previewContent');
+        const jsonEditor = document.getElementById('jsonEditor');
+        const editorTabBtn = document.getElementById('editorTabBtn');
+        const previewTabBtn = document.getElementById('previewTabBtn');
+        const tabJsonBtn = document.getElementById('tabJsonBtn');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const exportHtmlBtn = document.getElementById('exportHtmlBtn');
+        const saveJsonBtn = document.getElementById('saveJsonBtn');
+        const loadJsonFile = document.getElementById('loadJsonFile');
+
+        // Base URL absoluta (usada no HTML gerado)
+        const BASE_URL = 'https://www.calculadorasdeenfermagem.com.br';
+
+        function escapeHtml(unsafe) {
+            if (!unsafe) return unsafe;
+            return unsafe.replace(/[&<>"]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                if (m === '"') return '&quot;';
+                return m;
+            });
+        }
+
+        function updateJsonEditor() {
+            jsonEditor.value = JSON.stringify(data, null, 2);
+        }
+
+        function renderPreview() {
+            let html = `
+                <div class="bg-white p-4 rounded shadow mb-4">
+                    <h1 class="text-2xl font-bold text-[#1A3E74]">${escapeHtml(data.header.title)}</h1>
+                    <p class="text-gray-600">${escapeHtml(data.header.subtitle)}</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow mb-4">
+                    <h3 class="text-lg font-bold text-[#1A3E74]">Sobre</h3>
+                    <p><strong>Ano:</strong> ${escapeHtml(data.about.year)}</p>
+                    <p><strong>Autores:</strong> ${escapeHtml(data.about.authors)}</p>
+                    <p><strong>Área:</strong> ${escapeHtml(data.about.area)}</p>
+                    <p><strong>Critérios:</strong> ${escapeHtml(data.about.criteria)}</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow mb-4">
+                    <h2 class="text-xl font-bold text-[#1A3E74]">${escapeHtml(data.calculatorTitle)}</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${data.variables.map(v => `
+                        <div class="bg-white p-3 rounded border">
+                            <label class="font-bold">${escapeHtml(v.label)}</label>
+                            <p class="text-xs text-gray-500">${escapeHtml(v.desc.substring(0,80))}…</p>
+                            <select class="w-full mt-2 border p-2 rounded">
+                                ${v.options.map(opt => `<option>${escapeHtml(opt.text)}</option>`).join('')}
+                            </select>
+                        </div>
+                    `).join('')}
+                </div>
+                ${data.hasModifier ? `
+                    <div class="bg-blue-50 p-4 rounded mt-4">
+                        <label class="font-bold text-[#1A3E74]">${escapeHtml(data.modifier.label)}</label>
+                        <p class="text-xs">${escapeHtml(data.modifier.desc)}</p>
+                        <select class="w-full mt-2 border p-2 rounded">
+                            ${data.modifier.options.map(opt => `<option>${escapeHtml(opt.text)}</option>`).join('')}
+                        </select>
+                    </div>
+                ` : ''}
+                <div class="mt-6 text-center">
+                    <span class="bg-[#1A3E74] text-white py-2 px-6 rounded-lg inline-block">Calcular</span>
+                </div>
+            `;
+            previewContent.innerHTML = html;
+        }
+
+        function renderForm() {
+            let formHtml = '';
+            if (activeSection === 'seo') {
+                sectionTitle.innerText = 'SEO e Meta Tags';
+                formHtml = `
+                    <div><label>Título</label><input id="seoTitle" class="w-full border p-2" value="${escapeHtml(data.seo.title)}"></div>
+                    <div class="mt-2"><label>Descrição</label><textarea id="seoDesc" class="w-full border p-2">${escapeHtml(data.seo.description)}</textarea></div>
+                    <div class="mt-2"><label>Keywords</label><input id="seoKeywords" class="w-full border p-2" value="${escapeHtml(data.seo.keywords)}"></div>
+                    <div class="mt-2"><label>Canonical</label><input id="seoCanonical" class="w-full border p-2" value="${escapeHtml(data.seo.canonical)}"></div>
+                `;
+            } else if (activeSection === 'header') {
+                sectionTitle.innerText = 'Cabeçalho';
+                formHtml = `
+                    <div><label>Título do Banner</label><input id="headerTitle" class="w-full border p-2" value="${escapeHtml(data.header.title)}"></div>
+                    <div class="mt-2"><label>Subtítulo</label><textarea id="headerSubtitle" class="w-full border p-2">${escapeHtml(data.header.subtitle)}</textarea></div>
+                    <div class="mt-2"><label>URL do Ícone</label><input id="headerIcon" class="w-full border p-2" value="${escapeHtml(data.header.iconUrl)}"></div>
+                    <div class="mt-4"><label>Título da Calculadora</label><input id="calculatorTitle" class="w-full border p-2" value="${escapeHtml(data.calculatorTitle)}"></div>
+                `;
+            } else if (activeSection === 'about') {
+                sectionTitle.innerText = 'Sobre a Escala';
+                formHtml = `
+                    <div><label>Ano</label><input id="aboutYear" class="w-full border p-2" value="${escapeHtml(data.about.year)}"></div>
+                    <div class="mt-2"><label>Autores</label><input id="aboutAuthors" class="w-full border p-2" value="${escapeHtml(data.about.authors)}"></div>
+                    <div class="mt-2"><label>Área</label><input id="aboutArea" class="w-full border p-2" value="${escapeHtml(data.about.area)}"></div>
+                    <div class="mt-2"><label>Critérios</label><textarea id="aboutCriteria" class="w-full border p-2">${escapeHtml(data.about.criteria)}</textarea></div>
+                    <div class="mt-2"><label>Usuários</label><input id="aboutUsers" class="w-full border p-2" value="${escapeHtml(data.about.users)}"></div>
+                `;
+            } else if (activeSection === 'variables') {
+                sectionTitle.innerText = 'Variáveis';
+                formHtml = `<p class="text-sm text-gray-600">Edite as variáveis no modo JSON.</p>`;
+            } else if (activeSection === 'modifier') {
+                sectionTitle.innerText = 'Modificador';
+                formHtml = `
+                    <label class="flex items-center gap-2"><input type="checkbox" id="hasModifier" ${data.hasModifier ? 'checked' : ''}> <span>Usar modificador</span></label>
+                    ${data.hasModifier ? `
+                        <div class="mt-4 p-4 border rounded">
+                            <div><label>Rótulo</label><input id="modifierLabel" class="w-full border p-2" value="${escapeHtml(data.modifier.label)}"></div>
+                            <div class="mt-2"><label>Descrição</label><input id="modifierDesc" class="w-full border p-2" value="${escapeHtml(data.modifier.desc)}"></div>
+                            <p class="text-xs mt-2">Opções: ${data.modifier.options.length}</p>
+                        </div>
+                    ` : ''}
+                `;
+            }
+            editorFormContainer.innerHTML = formHtml;
+            attachEvents();
+        }
+
+        function attachEvents() {
+            if (activeSection === 'seo') {
+                document.getElementById('seoTitle')?.addEventListener('input', e => { data.seo.title = e.target.value; updateAll(); });
+                document.getElementById('seoDesc')?.addEventListener('input', e => { data.seo.description = e.target.value; updateAll(); });
+                document.getElementById('seoKeywords')?.addEventListener('input', e => { data.seo.keywords = e.target.value; updateAll(); });
+                document.getElementById('seoCanonical')?.addEventListener('input', e => { data.seo.canonical = e.target.value; updateAll(); });
+            }
+            if (activeSection === 'header') {
+                document.getElementById('headerTitle')?.addEventListener('input', e => { data.header.title = e.target.value; updateAll(); });
+                document.getElementById('headerSubtitle')?.addEventListener('input', e => { data.header.subtitle = e.target.value; updateAll(); });
+                document.getElementById('headerIcon')?.addEventListener('input', e => { data.header.iconUrl = e.target.value; updateAll(); });
+                document.getElementById('calculatorTitle')?.addEventListener('input', e => { data.calculatorTitle = e.target.value; updateAll(); });
+            }
+            if (activeSection === 'about') {
+                document.getElementById('aboutYear')?.addEventListener('input', e => { data.about.year = e.target.value; updateAll(); });
+                document.getElementById('aboutAuthors')?.addEventListener('input', e => { data.about.authors = e.target.value; updateAll(); });
+                document.getElementById('aboutArea')?.addEventListener('input', e => { data.about.area = e.target.value; updateAll(); });
+                document.getElementById('aboutCriteria')?.addEventListener('input', e => { data.about.criteria = e.target.value; updateAll(); });
+                document.getElementById('aboutUsers')?.addEventListener('input', e => { data.about.users = e.target.value; updateAll(); });
+            }
+            if (activeSection === 'modifier') {
+                document.getElementById('hasModifier')?.addEventListener('change', e => {
+                    data.hasModifier = e.target.checked;
+                    if (!data.modifier) data.modifier = { id: "escolaridade", label: "", desc: "", icon: "", options: [], defaultValue: "" };
+                    updateAll();
+                });
+                document.getElementById('modifierLabel')?.addEventListener('input', e => { if (data.modifier) data.modifier.label = e.target.value; updateAll(); });
+                document.getElementById('modifierDesc')?.addEventListener('input', e => { if (data.modifier) data.modifier.desc = e.target.value; updateAll(); });
+            }
+        }
+
+        function showJsonMode(show) {
+            showingJson = show;
+            if (show) {
+                editorPanel.style.display = 'none';
+                previewPanel.style.display = 'none';
+                jsonPanel.style.display = 'flex';
+                updateJsonEditor();
+            } else {
+                jsonPanel.style.display = 'none';
+                setActiveTab(activeTab);
+            }
+        }
+
+        function setActiveTab(tab) {
+            activeTab = tab;
+            if (tab === 'editor') {
+                editorTabBtn.classList.add('bg-white', 'font-bold');
+                editorTabBtn.classList.remove('bg-gray-100');
+                previewTabBtn.classList.add('bg-gray-100');
+                previewTabBtn.classList.remove('bg-white', 'font-bold');
+                if (!showingJson) {
+                    editorPanel.style.display = 'flex';
+                    previewPanel.style.display = 'block';
+                    jsonPanel.style.display = 'none';
+                }
+            } else if (tab === 'preview') {
+                previewTabBtn.classList.add('bg-white', 'font-bold');
+                previewTabBtn.classList.remove('bg-gray-100');
+                editorTabBtn.classList.add('bg-gray-100');
+                editorTabBtn.classList.remove('bg-white', 'font-bold');
+                if (!showingJson) {
+                    editorPanel.style.display = 'none';
+                    previewPanel.style.display = 'block';
+                    jsonPanel.style.display = 'none';
+                }
+            }
+        }
+
+        function updateAll() {
+            updateJsonEditor();
+            renderPreview();
+            renderForm();
+        }
+
+        // Navegação seções
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                navBtns.forEach(b => b.classList.remove('bg-blue-600', 'text-white', 'font-bold'));
+                this.classList.add('bg-blue-600', 'text-white', 'font-bold');
+                activeSection = this.dataset.section;
+                renderForm();
+            });
+        });
+        navBtns[0].classList.add('bg-blue-600', 'text-white', 'font-bold');
+
+        tabJsonBtn.addEventListener('click', () => showJsonMode(true));
+
+        jsonEditor.addEventListener('input', function(e) {
+            try {
+                data = JSON.parse(e.target.value);
+                renderPreview();
+                renderForm();
+            } catch (err) {}
+        });
+
+        editorTabBtn.addEventListener('click', () => { setActiveTab('editor'); showJsonMode(false); });
+        previewTabBtn.addEventListener('click', () => { setActiveTab('preview'); showJsonMode(false); });
+
+        // Exportar HTML (função generateHTML com URLs absolutas)
+        exportHtmlBtn.addEventListener('click', function() {
+            const htmlString = generateHTML(data);
+            const blob = new Blob([htmlString], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = data.seo.canonical.split('/').pop() || 'calculadora.html';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        saveJsonBtn.addEventListener('click', function() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+            const a = document.createElement('a');
+            a.href = dataStr;
+            a.download = `template_${data.seo.canonical.split('/').pop().replace('.html','')}.json`;
+            a.click();
+        });
+
+        loadJsonFile.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        data = JSON.parse(e.target.result);
+                        updateAll();
+                    } catch (error) {
+                        alert("Arquivo JSON inválido.");
+                    }
+                };
+                reader.readAsText(file);
+            }
+            loadJsonFile.value = '';
+        });
+
+        // Inicialização
+        updateAll();
+        setActiveTab('editor');
+
+        // ========== GERADOR DE HTML COMPLETO COM URLs ABSOLUTAS ==========
+        window.generateHTML = function(data) {
+            // Define valores padrão para a sidebar, caso não existam no JSON
+            const sidebar = data.sidebar || {
+                faqLink: BASE_URL + "/forum-enfermagem.html",
+                relatedCalculators: [
+                    { title: "Escala de MoCA", url: BASE_URL + "/moca.html", icon: "fa-brain", description: "Rastreio de comprometimento cognitivo leve (CCL)." },
+                    { title: "Escala de coma de Glasgow", url: BASE_URL + "/glasgow.html", icon: "fa-eye", description: "Calculadora de Nível de consciência." },
+                    { title: "Escala de Jouvet", url: BASE_URL + "/jouvet.html", icon: "fa-bed", description: "Escala de coma/consciência." },
+                    { title: "Escala Ramsay", url: BASE_URL + "/ramsay.html", icon: "fa-bed-pulse", description: "Avaliação da sedação em pacientes." },
+                    { title: "Escala de Katz", url: BASE_URL + "/katz.html", icon: "fa-bath", description: "Avaliação de autonomia nas ABVDs." },
+                    { title: "Escala de Zarit", url: BASE_URL + "/zarit.html", icon: "fa-hospital-user", description: "Avaliação do grau de sobrecarga do cuidador familiar." },
+                    { title: "Escala de Lawton", url: BASE_URL + "/lawton.html", icon: "fa-mug-saucer", description: "Mede o grau de independência nas AIVD em idosos." }
+                ]
+            };
+
+            // Divide as variáveis em duas metades para as colunas 1 e 2
+            const half = Math.ceil(data.variables.length / 2);
+            const firstHalf = data.variables.slice(0, half);
+            const secondHalf = data.variables.slice(half);
+
+            // Gera o HTML dos selects para cada metade
+            function renderVariables(vars) {
+                return vars.map(v => `
+                    <div class="bg-white rounded-xl p-5 shadow-[0_8px_20px_rgba(0,0,0,0.12)] border-2 border-gray-100 hover:border-gray-200 focus-within:border-[#1A3E74] transition-colors">
+                        <label for="${v.id}" class="block text-sm font-bold text-gray-800 mb-2">${v.label}</label>
+                        <p class="text-xs text-gray-500 mb-3 leading-relaxed">${v.desc}</p>
+                        <select id="${v.id}" class="w-full p-3 rounded-lg border-2 border-gray-300 focus:border-[#1A3E74] focus:ring-2 focus:ring-[#1A3E74]/20 outline-none transition-all font-medium text-gray-700">
+                            ${v.options.map(opt => `<option value="${opt.value}" ${opt.value === v.defaultValue ? 'selected' : ''}>${opt.text}</option>`).join('')}
+                        </select>
+                    </div>
+                `).join('');
+            }
+
+            const firstHalfHTML = renderVariables(firstHalf);
+            const secondHalfHTML = renderVariables(secondHalf);
+
+            // Gera o modificador, se houver
+            let modifierHTML = '';
+            if (data.hasModifier) {
+                modifierHTML = `
+                    <div class="bg-[#F8FBFF] rounded-xl p-5 shadow-[0_8px_20px_rgba(26,62,116,0.15)] border-2 border-[#4A90E2]/30 focus-within:border-[#1A3E74] transition-colors mt-4">
+                        <label for="${data.modifier.id}" class="block text-sm font-black text-[#1A3E74] mb-2"><i class="fa-solid ${data.modifier.icon || 'fa-sliders-h'} mr-1"></i> ${data.modifier.label}</label>
+                        <p class="text-xs text-gray-600 mb-3">${data.modifier.desc}</p>
+                        <select id="${data.modifier.id}" class="w-full p-3 rounded-lg border-2 border-[#1A3E74]/40 bg-white focus:border-[#1A3E74] focus:ring-2 focus:ring-[#1A3E74]/20 outline-none transition-all font-bold text-[#1A3E74]">
+                            ${data.modifier.options.map(opt => `<option value="${opt.value}" ${opt.value === data.modifier.defaultValue ? 'selected' : ''}>${opt.text}</option>`).join('')}
+                        </select>
+                    </div>
+                `;
+            }
+
+            // Gera os IDs das variáveis para o script de cálculo
+            const varIds = data.variables.map(v => `"${v.id}"`).join(', ');
+
+            // Lógica de cálculo (soma e comparação com corte, se houver modificador)
+            let calculationLogic = '';
+            if (data.hasModifier) {
+                calculationLogic = `
+                    const selects = [${varIds}];
+                    let soma = 0;
+                    selects.forEach(id => { soma += parseInt(document.getElementById(id).value) || 0; });
+                    document.getElementById('score-valor').textContent = soma;
+                    const escolaridade = document.getElementById('${data.modifier.id}').value;
+                    let corte = 0;
+                    let descricaoEscolaridade = "";
+                    const cutoffs = ${JSON.stringify(data.modifier.options)};
+                    const match = cutoffs.find(o => o.value === escolaridade);
+                    if (match) {
+                        corte = match.cutoffValue;
+                        descricaoEscolaridade = match.text;
+                    }
+                    const status = document.getElementById('status-alerta');
+                    const msg = document.getElementById('resultado-mensagem');
+                    if (soma < corte) {
+                        status.textContent = 'Possível Declínio Cognitivo';
+                        status.className = 'inline-block px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-6 shadow-sm relative z-10 bg-red-500 text-white';
+                        msg.innerHTML = \`O escore obtido foi de <strong>\${soma} pontos</strong>. <br><br>Para o nível de escolaridade selecionado (\${descricaoEscolaridade}), o ponto de corte esperado é de pelo menos <strong>\${corte} pontos</strong>. <br><br>Como o valor está <strong>abaixo</strong> do esperado, este resultado sugere a necessidade de uma avaliação médica e neuropsicológica mais aprofundada.\`;
+                    } else {
+                        status.textContent = 'Dentro do Padrão Esperado';
+                        status.className = 'inline-block px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-6 shadow-sm relative z-10 bg-green-500 text-white';
+                        msg.innerHTML = \`O escore obtido foi de <strong>\${soma} pontos</strong>. <br><br>Para o nível de escolaridade selecionado (\${descricaoEscolaridade}), o ponto de corte é de <strong>\${corte} pontos</strong>. <br><br>O valor está <strong>dentro ou acima</strong> do padrão normal esperado para a escolaridade.\`;
+                    }
+                `;
+            } else {
+                calculationLogic = `
+                    const selects = [${varIds}];
+                    let soma = 0;
+                    selects.forEach(id => { soma += parseInt(document.getElementById(id).value) || 0; });
+                    document.getElementById('score-valor').textContent = soma;
+                    document.getElementById('status-alerta').textContent = 'Pontuação calculada';
+                    document.getElementById('resultado-mensagem').innerHTML = \`Pontuação total: <strong>\${soma}</strong>.\`;
+                `;
+            }
+
+            // Reseta todos os selects para o defaultValue
+            const resetLogic = data.variables.map(v => `document.getElementById("${v.id}").value = "${v.defaultValue}";`).join('\n');
+            const resetModifier = data.hasModifier ? `document.getElementById("${data.modifier.id}").value = "${data.modifier.defaultValue}";` : '';
+
+            // Template final com URLs absolutas
+            return `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
+  <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="">
+  <link rel="preload" href="${BASE_URL}/menu-global.html" as="fetch" crossorigin="">
+  <link rel="preload" href="${BASE_URL}/global-body-elements.html" as="fetch" crossorigin="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${data.seo.title}</title>
+  <meta name="description" content="${data.seo.description}">
+  <meta name="keywords" content="${data.seo.keywords}">
+  <meta name="google-adsense-account" content="ca-pub-6472730056006847">
+  <link rel="canonical" href="${data.seo.canonical}">
+  <!-- Hreflangs (exemplo básico) -->
+  <link rel="alternate" hreflang="pt-br" href="${data.seo.canonical}">
+  <!-- Outros hreflangs podem ser adicionados dinamicamente -->
+  <link rel="icon" href="${BASE_URL}/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="${BASE_URL}/manifest.json">
+  <meta property="og:title" content="${data.seo.title}">
+  <meta property="og:description" content="${data.seo.description}">
+  <meta property="og:url" content="${data.seo.canonical}">
+  <meta property="og:image" content="${BASE_URL}/iconpages.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${data.seo.title}">
+  <meta name="twitter:description" content="${data.seo.description}">
+  <meta name="twitter:image" content="${BASE_URL}/iconpages.webp">
+  <link href="${BASE_URL}/public/output.css" rel="stylesheet">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="${BASE_URL}/global-styles.css">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css"></noscript>
+  <script>
+    // Script de consentimento e lazy load (copiado do meem.html)
+    if (localStorage.getItem('admin_mode') === 'true' || new URLSearchParams(window.location.search).get('admin') === '1') {
+      console.log('🚧 Modo Admin: Bloqueado.');
+      if (new URLSearchParams(window.location.search).get('admin') === '1') localStorage.setItem('admin_mode','true');
+    } else {
+      var savedConsent = localStorage.getItem("cookieConsent");
+      var isRefused = (savedConsent === "refused");
+      var isManaged = (savedConsent === "managed");
+      var adsBlocked = isRefused || (isManaged && localStorage.getItem("ad_storage") === "denied");
+      window.__metricsLoaded = false;
+      window.__adsenseLoaded = false;
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      function loadAnalytics() {
+        if (window.__metricsLoaded) return;
+        window.__metricsLoaded = true;
+        var aState = isRefused ? "denied" : (localStorage.getItem("analytics_storage") || "granted");
+        var adState = adsBlocked ? "denied" : "granted";
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-PFM06B7TS5";
+        document.head.appendChild(s);
+        gtag("consent","default",{ analytics_storage: aState, ad_storage: adState, ad_user_data: adState, ad_personalization: adState, wait_for_update: 500 });
+        gtag("js", new Date());
+        gtag("config","G-PFM06B7TS5");
+        gtag("config","G-MJDKPDPJ26");
+        gtag("config","G-M7DHHF38EJ");
+        gtag("config","G-8FLJ59XXDK");
+        gtag("config","G-VVDP5JGEX8");
+        gtag("config","G-EX8");
+        gtag("config","AW-952633102");
+        gtag("config","AW-9277197961");
+        console.log("📈 Analytics carregado via Lazy Load.");
+      }
+      function loadAdSenseOnce() {
+        if (window.__adsenseLoaded || adsBlocked) return;
+        window.__adsenseLoaded = true;
+        var ad = document.createElement("script");
+        ad.async = true;
+        ad.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6472730056006847";
+        ad.crossOrigin = "anonymous";
+        document.head.appendChild(ad);
+        console.log("💰 AdSense carregado via Lazy Load.");
+      }
+      function onUserInteraction(){
+        loadAnalytics();
+        loadAdSenseOnce();
+        window.removeEventListener("scroll", onUserInteraction);
+        window.removeEventListener("mousemove", onUserInteraction);
+        window.removeEventListener("touchstart", onUserInteraction);
+        window.removeEventListener("keydown", onUserInteraction);
+      }
+      if (!adsBlocked){
+        window.addEventListener("scroll", onUserInteraction, {passive:true});
+        window.addEventListener("mousemove", onUserInteraction, {passive:true});
+        window.addEventListener("touchstart", onUserInteraction, {passive:true});
+        window.addEventListener("keydown", onUserInteraction, {passive:true});
+        setTimeout(onUserInteraction, 4000);
+      }
+      window.acceptAllCookies = function(){
+        localStorage.setItem("cookieConsent","accepted");
+        gtag("consent","update",{ analytics_storage:"granted", ad_storage:"granted", ad_user_data:"granted", ad_personalization:"granted" });
+      };
+      window.rejectAllCookies = function(){
+        localStorage.setItem("cookieConsent","refused");
+        gtag("consent","update",{ analytics_storage:"denied", ad_storage:"denied", ad_user_data:"denied", ad_personalization:"denied" });
+      };
+    }
+  </script>
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "${BASE_URL}/#organization",
+          "name": "Calculadoras de Enfermagem",
+          "url": "${BASE_URL}",
+          "logo": { "@type": "ImageObject", "url": "${BASE_URL}/assets/logo.png" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "${BASE_URL}/#website",
+          "url": "${BASE_URL}",
+          "name": "Calculadoras de Enfermagem",
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "${data.seo.canonical}/#app",
+          "name": "${data.header.title}",
+          "operatingSystem": "Web",
+          "applicationCategory": "HealthApplication",
+          "isAccessibleForFree": true,
+          "inLanguage": "pt-BR",
+          "offers": { "@type": "Offer", "price": 0, "priceCurrency": "BRL", "url": "${data.seo.canonical}" },
+          "publisher": { "@id": "${BASE_URL}/#organization" }
+        },
+        {
+          "@type": "MedicalWebPage",
+          "@id": "${data.seo.canonical}/#webpage",
+          "url": "${data.seo.canonical}",
+          "name": "${data.seo.title}",
+          "description": "${data.seo.description}",
+          "inLanguage": "pt-BR",
+          "isPartOf": { "@id": "${BASE_URL}/#website" },
+          "author": { "@id": "${BASE_URL}/#organization" },
+          "audience": { "@type": "MedicalAudience", "audienceType": "Clinician" },
+          "specialty": { "@type": "MedicalSpecialty", "name": "Nursing" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": "${BASE_URL}/" },
+            { "@type": "ListItem", "position": 2, "name": "Calculadoras" },
+            { "@type": "ListItem", "position": 3, "name": "${data.header.title}" }
+          ]
+        }
+      ]
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <div id="global-header-container"></div>
+  <div id="language-dropdown-wrapper" class="flex justify-end w-full" style="position: absolute; top: 1.5rem; right: 0; z-index: 1000; pointer-events: none;">
+    <!-- mesmo dropdown do meem.html -->
+  </div>
+  <main class="container mx-auto px-4 py-6 max-w-7xl">
+    <!-- Breadcrumb -->
+    <nav class="flex text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center"><a href="${BASE_URL}/" class="inline-flex items-center hover:text-[#1A3E74]"><i class="fa-solid fa-house mr-2"></i> Início</a></li>
+        <li><div class="flex items-center"><i class="fa-solid fa-chevron-right text-gray-400 mx-2"></i><span class="text-gray-700 font-medium">${data.header.title}</span></div></li>
+      </ol>
+    </nav>
+
+    <!-- Header com título e ícone -->
+    <section class="my-5 md:my-7" aria-labelledby="main-title">
+      <div class="bg-[#1A3E74]/85 backdrop-blur-md border border-white/15 rounded-2xl shadow-[0_16px_34px_rgba(0,0,0,0.45)] overflow-hidden">
+        <div class="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 py-4 md:py-5 relative">
+          <div class="w-full md:w-2/3 z-10 text-center md:text-left">
+            <h1 id="main-title" class="text-2xl md:text-4xl font-black text-white mb-2 tracking-tight leading-snug">${data.header.title}</h1>
+            <p class="text-base md:text-lg text-blue-100 font-medium max-w-2xl leading-snug">${data.header.subtitle}</p>
+          </div>
+          <div class="w-full md:w-1/3 flex justify-center mt-3 md:mt-0 z-10">
+            <img src="${data.header.iconUrl}" alt="Ícone" class="w-24 h-24 md:w-36 md:h-36 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card "Sobre a Escala" -->
+    <div class="bg-white rounded-2xl px-6 py-4 shadow-[0_16px_34px_rgba(0,0,0,0.15)] border border-gray-100 mb-6">
+      <h3 class="text-xl font-bold text-[#1A3E74] mb-2 border-b pb-1">Sobre a Escala</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-700 leading-snug">
+        <p><strong>Ano de Criação:</strong> ${data.about.year}</p>
+        <p><strong>Autores:</strong> ${data.about.authors}</p>
+        <p><strong>Área empregada:</strong> ${data.about.area}</p>
+        <p><strong>Critérios avaliados:</strong> ${data.about.criteria}</p>
+        <p><strong>Quem utiliza?:</strong> ${data.about.users}</p>
+      </div>
+    </div>
+
+    <!-- Título da Calculadora -->
+    <section class="my-8 md:my-12" aria-labelledby="calculator-title">
+      <div class="bg-[#1A3E74]/85 backdrop-blur-md border border-white/15 rounded-2xl shadow-[0_16px_34px_rgba(0,0,0,0.45)] overflow-hidden">
+        <div class="px-6 py-5 md:px-10 md:py-7 text-center">
+          <h2 id="calculator-title" class="text-2xl md:text-4xl font-black text-white tracking-tight">${data.calculatorTitle}</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário com 3 colunas -->
+    <form id="calcForm" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Coluna 1: primeira metade das variáveis -->
+      <div class="space-y-6">
+        ${firstHalfHTML}
+      </div>
+
+      <!-- Coluna 2: segunda metade + modificador -->
+      <div class="space-y-6">
+        ${secondHalfHTML}
+        ${modifierHTML}
+      </div>
+
+      <!-- Coluna 3: Sidebar -->
+      <aside class="space-y-6">
+        <!-- Widget Dúvidas Frequentes -->
+        <div class="bg-[#F8FBFF] rounded-xl p-6 border border-[#E2E8F0] shadow-md">
+          <h4 class="font-bold text-[#1A3E74] mb-2 text-sm uppercase">Dúvidas Frequentes</h4>
+          <p class="text-xs text-gray-500 mb-4">Acompanhe mais informações de enfermagem no nosso Fórum de enfermagem.</p>
+          <a href="${sidebar.faqLink}" class="text-xs font-bold text-[#4A90E2] hover:text-[#1A3E74] uppercase flex items-center gap-1">
+            TIRE SUAS DÚVIDAS <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Widget Veja Também -->
+        <section class="py-2">
+          <div class="p-6 rounded-2xl shadow-[0_16px_34px_rgba(0,0,0,0.15)] border border-white/40 bg-white/70 backdrop-blur-xl lg:sticky lg:top-6">
+            <h3 class="text-xl font-bold text-[#1A3E74] mb-6 border-b pb-2">Veja outras escalas relacionadas</h3>
+            <ul class="space-y-4">
+              ${sidebar.relatedCalculators.map(item => `
+                <li>
+                  <a href="${item.url}" class="glass-card p-4 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors border border-gray-100">
+                    <div class="text-3xl text-[#1A3E74] mb-2 group-hover:scale-110 transition-transform">
+                      <i class="fa-solid ${item.icon}"></i>
+                    </div>
+                    <h4 class="text-sm font-bold text-gray-800 mb-1 leading-tight">${item.title}</h4>
+                    <p class="text-[10px] text-gray-500">${item.description}</p>
+                  </a>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </section>
+      </aside>
+    </form>
+
+    <!-- Botões de ação -->
+    <div class="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
+      <button type="button" id="btnCalcular" class="bg-[#1A3E74] hover:bg-[#153260] text-white text-lg font-bold py-4 px-10 rounded-xl shadow-[0_10px_20px_rgba(26,62,116,0.3)] hover:shadow-[0_15px_25px_rgba(26,62,116,0.5)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 w-full sm:w-auto">
+        <i class="fa-solid fa-calculator"></i> Calcular Resultado
+      </button>
+      <button type="button" id="btnLimpar" class="bg-white hover:bg-gray-50 text-gray-600 font-bold py-4 px-8 rounded-xl border-2 border-gray-200 shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 w-full sm:w-auto">
+        <i class="fa-solid fa-eraser"></i> Limpar
+      </button>
+    </div>
+
+    <!-- Seção de resultado (hero card) -->
+    <section id="resultado-section" class="hidden my-12 opacity-0 transition-opacity duration-500 ease-in-out">
+      <div class="bg-[#1A3E74] rounded-2xl p-8 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.5)] relative overflow-hidden text-center max-w-4xl mx-auto border border-white/10">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-40 h-40 bg-[#4A90E2] opacity-20 rounded-full blur-2xl -ml-10 -mb-10 pointer-events-none"></div>
+        <h3 class="text-sm md:text-base font-medium uppercase tracking-wider text-blue-200 mb-3 relative z-10">Pontuação Final</h3>
+        <div class="flex items-center justify-center gap-4 mb-4 relative z-10">
+          <span id="score-valor" class="text-5xl md:text-7xl font-black text-white tracking-tight drop-shadow-md">0</span>
+          <span class="text-xl md:text-2xl font-bold text-blue-200 mt-4">/ 30</span>
+        </div>
+        <div id="status-alerta" class="inline-block px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-6 shadow-sm relative z-10">Status</div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 relative z-10 text-left">
+          <p id="resultado-mensagem" class="text-white text-lg md:text-xl font-medium leading-relaxed"></p>
+        </div>
+        <p class="text-xs text-blue-200 opacity-80 mt-6 relative z-10">* Este é um teste de rastreio e não substitui uma avaliação clínica completa.</p>
+      </div>
+    </section>
+
+    <!-- Referências Bibliográficas -->
+    <section class="mt-16 pt-8 border-t border-gray-200">
+      <h3 class="text-lg font-bold text-gray-800 mb-4"><i class="fa-solid fa-book-medical mr-2 text-[#1A3E74]"></i>Referências Bibliográficas</h3>
+      <ul class="text-sm text-gray-600 space-y-4 list-none">
+        ${data.references.map(ref => `<li class="pl-4 border-l-4 border-[#1A3E74]">${ref}</li>`).join('')}
+      </ul>
+    </section>
+  </main>
+
+  <script src="${BASE_URL}/global-scripts.js"></script>
+  <script src="${BASE_URL}/lang-selector.js" defer></script>
+
+  <!-- Script de cálculo -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const btnCalc = document.getElementById("btnCalcular");
+      const btnLimpar = document.getElementById("btnLimpar");
+      const resultadoSection = document.getElementById("resultado-section");
+      const scoreValor = document.getElementById("score-valor");
+      const statusAlerta = document.getElementById("status-alerta");
+      const resultadoMensagem = document.getElementById("resultado-mensagem");
+
+      function calcular() {
+        ${calculationLogic}
+        resultadoSection.classList.remove("hidden");
+        setTimeout(() => {
+          resultadoSection.classList.remove("opacity-0");
+          resultadoSection.classList.add("opacity-100");
+          resultadoSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 50);
+      }
+
+      function limpar() {
+        ${resetLogic}
+        ${resetModifier}
+        resultadoSection.classList.remove("opacity-100");
+        resultadoSection.classList.add("opacity-0");
+        setTimeout(() => resultadoSection.classList.add("hidden"), 500);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      btnCalc.addEventListener("click", calcular);
+      btnLimpar.addEventListener("click", limpar);
+    });
+  </script>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("${BASE_URL}/footer.html").then(r => r.text()).then(d => document.getElementById("footer-placeholder").innerHTML = d);
+  </script>
+</body>
+</html>`;
+        };
+    })();
+</script>
+</body>
+</html>
