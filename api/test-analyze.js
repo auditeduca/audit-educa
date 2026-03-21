@@ -6,7 +6,7 @@
 
 require('dotenv').config();
 
-const handler = require('./analyze.js');
+const handler = require('./analyze.cjs');
 
 // Mock do Express/Vercel request/response
 class MockResponse {
