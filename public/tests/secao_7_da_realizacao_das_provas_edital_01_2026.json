@@ -1,0 +1,363 @@
+{
+  "secao": {
+    "numero": 7,
+    "titulo": "DA REALIZAÇÃO DAS PROVAS",
+    "itens": [
+      {
+        "item": "7.1",
+        "texto": "O examinando deverá comparecer ao local designado para a realização das provas com antecedência mínima de 1 (uma) hora e 30 (trinta) minutos do horário fixado para o seu início, observando o horário oficial de Brasília/DF, munido de caneta esferográfica de tinta azul ou preta em material transparente, do documento de identidade original, do comprovante de inscrição ou do comprovante de pagamento da taxa de inscrição."
+      },
+      {
+        "item": "7.2",
+        "texto": "Serão considerados documentos de identidade: carteiras expedidas pelos Comandos Militares, pelas Secretarias de Segurança Pública, pelos Institutos de Identificação e pelos Corpos de Bombeiros Militares; carteiras expedidas pelos órgãos fiscalizadores de exercício profissional (ordens, conselhos etc.); passaporte brasileiro; certificado de reservista; carteiras funcionais expedidas por órgão público que, por lei federal, valham como identidade; carteira de trabalho; carteira nacional de habilitação (somente o modelo com foto)."
+      },
+      {
+        "item": "7.2.1",
+        "texto": "Não serão aceitos como documentos de identidade: certidões de nascimento, CPF, títulos eleitorais, carteiras de motorista (modelo sem foto), carteiras de estudante, carteiras funcionais sem valor de identidade, nem documentos ilegíveis, não identificáveis e/ou danificados."
+      },
+      {
+        "item": "7.2.2",
+        "texto": "Não será aceita cópia do documento de identidade, ainda que autenticada, nem protocolo do documento."
+      },
+      {
+        "item": "7.3",
+        "texto": "Por ocasião da realização das provas, o examinando que não apresentar documento de identidade original na forma definida no subitem 7.2 deste Edital não poderá fazer as provas e será automaticamente eliminado do exame."
+      },
+      {
+        "item": "7.4",
+        "texto": "O examinando que esteja portando documento com prazo de validade expirado poderá realizar a prova, sendo, contudo, submetido à identificação especial."
+      },
+      {
+        "item": "7.5",
+        "texto": "Caso o examinando esteja impossibilitado de apresentar, no dia de realização das provas, documento de identidade original, por motivo de perda, roubo ou furto, deverá apresentar documento que ateste o registro da ocorrência em órgão policial, expedido, no máximo, 30 (trinta) dias antes. Na ocasião, será submetido à identificação especial, compreendendo coleta de dados, de assinaturas e de impressão digital em formulário próprio."
+      },
+      {
+        "item": "7.5.1",
+        "texto": "A identificação especial também será exigida do examinando cujo documento de identificação suscite dúvidas relativas à fisionomia ou à assinatura do portador."
+      },
+      {
+        "item": "7.5.2",
+        "texto": "A identificação especial compreenderá coleta de dados e de aposição de assinatura por 3 (três) vezes em formulário próprio, sendo utilizada em todos os casos nos quais exista qualquer tipo de dúvida quanto à identificação civil do examinando, como nos exemplos citados nos subitens 7.4 e 7.5.1, visando subsidiar eventual futura perícia para confirmação da identidade do examinando que se submeteu às provas."
+      },
+      {
+        "item": "7.5.3",
+        "texto": "O documento de identidade deverá estar em perfeitas condições, de forma a permitir com clareza a identificação do examinando e sua assinatura. É vedada a apresentação de documentos sem assinatura ou que possuam em seu lugar termos como \"não alfabetizado\", \"documento infantil\", entre outros"
+      },
+      {
+        "item": "7.6",
+        "texto": "Para a segurança dos examinandos e a garantia da lisura do certame, a FGV procederá, como forma de identificação, à coleta da impressão digital de todos os examinandos no dia de realização das provas."
+      },
+      {
+        "item": "7.6.1",
+        "texto": "A identificação datiloscópica compreenderá a coleta da impressão digital do polegar direito dos examinandos, mediante a utilização de material específico para esse fim, em campo específico da lista de presença."
+      },
+      {
+        "item": "7.6.2",
+        "texto": "Caso o examinando esteja fisicamente impedido de permitir a coleta da impressão digital do polegar direito, deverá ser colhida a digital do polegar esquerdo ou de outro dedo, sendo registrado o fato na ata de aplicação da respectiva sala."
+      },
+      {
+        "item": "7.7",
+        "texto": "Não serão aplicadas provas em local, data ou horário diferentes dos predeterminados em Edital ou em comunicado oficial."
+      },
+      {
+        "item": "7.8",
+        "texto": "Não será admitido ingresso de examinando nos locais de realização das provas após o horário fixado para o seu início."
+      },
+      {
+        "item": "7.8.1",
+        "texto": "A inobservância do subitem anterior acarretará a não correção das provas e, consequentemente, a eliminação do examinando do Exame."
+      },
+      {
+        "item": "7.9",
+        "texto": "A partir do fechamento dos portões é vedada a entrada de pessoas ou objetos (materiais, documentos) no local de prova, bem como é vedada aos examinandos qualquer contato com o ambiente externo."
+      },
+      {
+        "item": "7.10",
+        "texto": "A partir do fechamento dos portões é vedado aos examinandos usar o celular, circular ou permanecer nos ambientes comuns da instituição, e deverão obrigatoriamente se identificar na sala e passar pelos procedimentos de segurança antes do início das provas."
+      },
+      {
+        "item": "7.11",
+        "texto": "A partir do início das provas é vedado ao examinando entrar na sala."
+      },
+      {
+        "item": "7.12",
+        "texto": "O examinando deverá permanecer obrigatoriamente no local de realização das provas por, no mínimo, 90 minutos após o início da prova objetiva."
+      },
+      {
+        "item": "7.12.1",
+        "texto": "A inobservância do subitem anterior acarretará a não correção da prova e, consequentemente, a eliminação do examinando."
+      },
+      {
+        "item": "7.12.2",
+        "texto": "O examinando que insistir em sair do recinto de realização das provas, descumprindo o disposto no subitem 7.12, deverá assinar o Termo de Ocorrência, lavrado pelo Coordenador Local, declarando sua desistência do exame."
+      },
+      {
+        "item": "7.12.3",
+        "texto": "Os 3 (três) últimos examinandos a terminarem as provas deverão permanecer juntos no recinto, sendo liberados somente após os 3 (três) terem entregado o material utilizado e terem seus nomes registrados na Ata, além de estabelecidas suas respectivas assinaturas."
+      },
+      {
+        "item": "7.12.4",
+        "texto": "A regra do subitem anterior poderá ser relativizada quando se tratar de casos excepcionais, nos quais haja número reduzido de examinandos acomodados em uma determinada sala de aplicação. Por exemplo, no caso de examinandos com necessidades especiais que necessitem de sala em separado para a realização do exame, oportunidade em que o lacre da embalagem de segurança será testemunhado pelos integrantes da equipe de aplicação, juntamente com o(s) examinando(s) presente(s) na sala de aplicação."
+      },
+      {
+        "item": "7.13",
+        "texto": "Iniciada a prova, o examinando não poderá retirar-se da sala sem autorização e sem acompanhamento da fiscalização. Caso o faça, ainda que por questões de saúde, não poderá retornar, em hipótese alguma."
+      },
+      {
+        "item": "7.14",
+        "texto": "O examinando somente poderá levar consigo o caderno de questões, ao final da prova, se sua saída ocorrer nos últimos 30 (trinta) minutos anteriores ao horário determinado para o término da aplicação."
+      },
+      {
+        "item": "7.14.1",
+        "texto": "Ao terminar a prova, o examinando entregará, obrigatoriamente, ao fiscal de sala, o seu cartão de respostas e o seu caderno de questões, este último ressalvado o disposto no subitem 7.14."
+      },
+      {
+        "item": "7.14.2",
+        "texto": "Não será permitido ao examinando realizar anotação de informações relativas às suas respostas (cópia de gabarito) no comprovante de inscrição ou em qualquer outro meio de rascunho. Caso o examinando deseje levar consigo a anotação de suas opções de resposta, deverá aguardar o horário em que é autorizada a saída com o caderno de provas."
+      },
+      {
+        "item": "7.15",
+        "texto": "Não haverá, por qualquer motivo, prorrogação do tempo previsto para a aplicação das provas em razão do afastamento de examinando da sala de provas."
+      },
+      {
+        "item": "7.15.1",
+        "texto": "Se, por qualquer razão fortuita, o exame sofrer atraso em seu início ou necessitar de interrupção, será concedido prazo adicional aos examinandos do local afetado, de modo que tenham o tempo total previsto neste Edital para a realização das provas, em garantia à isonomia do certame."
+      },
+      {
+        "item": "7.15.2",
+        "texto": "Os examinandos afetados deverão permanecer no local do exame. Durante o período em que estiverem aguardando, para fins de interpretação das regras deste Edital, o tempo para realização da prova será interrompido."
+      },
+      {
+        "item": "7.16",
+        "texto": "Não haverá segunda chamada para a realização das provas. O não comparecimento implicará a eliminação automática do examinando."
+      },
+      {
+        "item": "7.17",
+        "texto": "Não será permitida, durante a realização das provas, a comunicação entre os examinandos ou a utilização de livros, anotações, réguas de cálculo, impressos ou qualquer outro material de consulta, protetor auricular, lápis, borracha ou corretivo."
+      },
+      {
+        "item": "7.18",
+        "texto": "Será eliminado do exame o examinando que, durante a realização das provas, for surpreendido portando aparelhos eletrônicos, tais como iPod, smartphone, telefone celular, agenda eletrônica, aparelho MP3, notebook, tablet, palmtop, pendrive, headfone, receptor, gravador, máquina fotográfica, controle de alarme de carro, pulseiras magnéticas e/ou similares, carteiras etc., bem como relógio de qualquer espécie, óculos escuros ou quaisquer acessórios de chapelaria, tais como chapéu, boné, gorro etc, e, ainda, lápis, lapiseira (grafite), corretor líquido e/ou borracha. O examinando que estiver portando algo definido ou similar ao disposto neste subitem deverá informar ao fiscal da sala, que determinará o seu recolhimento em embalagem não reutilizável fornecida pelos fiscais, a qual deverá permanecer lacrada durante todo o período da aplicação, sob a guarda do examinando."
+      },
+      {
+        "item": "7.18.1",
+        "texto": "O CFC e a FGV recomendam que o examinando não leve nenhum dos objetos citados no subitem anterior, no dia de realização das provas."
+      },
+      {
+        "item": "7.18.2",
+        "texto": "A FGV não ficará responsável pela guarda de quaisquer dos objetos supracitados."
+      },
+      {
+        "item": "7.18.3",
+        "texto": "O CFC e a FGV não se responsabilizarão por perdas ou extravios de objetos ou de equipamentos eletrônicos ocorridos durante a realização das provas, nem por danos a eles causados."
+      },
+      {
+        "item": "7.18.4",
+        "texto": "Não será permitida a entrada de examinando no ambiente de prova portando armas, à exceção dos casos previstos na Lei nº 10.826/2003 e suas alterações. O examinando que se enquadrar em alguma das hipóteses legais deverá solicitar atendimento especial no ato da inscrição."
+      },
+      {
+        "item": "7.18.5",
+        "texto": "Quando do ingresso na sala de aplicação de provas, os examinandos deverão recolher todos os equipamentos eletrônicos e/ou materiais não permitidos em envelope de segurança não reutilizável, fornecido pelo fiscal de aplicação, que deverá permanecer lacrado durante toda a realização das provas e somente poderá ser aberto após o examinando deixar o local de aplicação."
+      },
+      {
+        "item": "7.18.6",
+        "texto": "A utilização de aparelhos eletrônicos é vedada em qualquer parte do local de provas. Assim, ainda que o examinando tenha terminado sua prova e esteja se encaminhando para a saída do local, não poderá utilizar quaisquer aparelhos eletrônicos, sendo recomendável que a embalagem não reutilizável fornecida para o recolhimento de tais aparelhos somente seja rompida após a saída do examinando do local de aplicação."
+      },
+      {
+        "item": "7.18.7",
+        "texto": "Durante a realização das provas, o envelope de segurança com os equipamentos e materiais não permitidos, devidamente lacrado, deverá permanecer embaixo ou ao lado da carteira/cadeira utilizada pelo examinando, devendo permanecer lacrado durante toda a realização das provas e somente podendo ser aberto no ambiente externo do local do evento."
+      },
+      {
+        "item": "7.18.8",
+        "texto": "Bolsas, mochilas e outros pertences dos examinandos deverão igualmente permanecer ao lado ou embaixo da carteira/cadeira do examinando. Todos os materiais de estudo deverão ser devidamente guardados antes do início das provas, não podendo estar de posse dos examinandos quando do uso de sanitários durante a realização do Exame, podendo o examinando uma vez flagrado nesta situação ser eliminado do processo."
+      },
+      {
+        "item": "7.18.9",
+        "texto": "Os examinandos que possuam cabelos longos deverão prendê-los, deixando as orelhas à mostra."
+      },
+      {
+        "item": "7.18.10",
+        "texto": "Serão permitidos tão somente alimentos de rápido consumo. É recomendado que comidas e bebidas sejam armazenadas em embalagens fabricadas em material transparente e sem rótulos que impeçam a visualização de seu conteúdo. Quaisquer embalagens de produtos trazidos para a sala estarão sujeitas à inspeção pelo fiscal de aplicação."
+      },
+      {
+        "item": "7.18.11",
+        "texto": "Será admitido o uso de máquina calculadora, desde que não permita o armazenamento de texto."
+      },
+      {
+        "item": "7.18.11.1",
+        "texto": "Modelos de calculadora recomendados: a) HP 12C; b) Casio FX 82MS; c) KK-82MS-D; d) Casio HR 8RC; e) Dotad CCD-1501 DX208; f) Casio FX-82ES Plus; g) ECOODA EC-82MS;"
+      },
+      {
+        "item": "7.18.11.2",
+        "texto": "Para os demais modelos de calculadoras, o examinando deverá aguardar a análise pela FGV e pelo CFC."
+      },
+      {
+        "item": "7.18.12",
+        "texto": "Não será permitida, durante a realização da prova, a utilização pelo examinando de óculos escuros (exceto para correção visual ou fotofobia) ou quaisquer acessórios de chapelaria (chapéu, boné, gorro, etc.)."
+      },
+      {
+        "item": "7.18.13",
+        "texto": "É garantida a liberdade religiosa dos examinandos inscritos no Exame. Todavia, em razão dos procedimentos de segurança previstos neste edital, previamente ao início da prova, aqueles que trajarem vestimentas que restrinjam a visualização das orelhas ou da parte superior da cabeça serão solicitados a se dirigirem a local a ser indicado pela Coordenação do local de provas, no qual, com a devida reserva, passarão por procedimento de vistoria por fiscais de sexo masculino ou feminino, conforme o caso, de modo a respeitar a intimidade do examinando e garantir a necessária segurança na aplicação das provas, sendo o fato registrado em ata."
+      },
+      {
+        "item": "7.18.14",
+        "texto": "Excepcionalmente, por razões de segurança, caso seja estritamente necessário, novo procedimento de vistoria descrito no subitem anterior poderá ser realizado."
+      },
+      {
+        "item": "7.19",
+        "texto": "Terá sua prova anulada e será automaticamente eliminado do Exame o examinando que, durante a sua realização:",
+        "subitens": [
+          {
+            "letra": "a",
+            "texto": "for surpreendido dando ou recebendo auxílio para a execução das provas;"
+          },
+          {
+            "letra": "b",
+            "texto": "utilizar-se de livros, régua de cálculo, dicionário, notas ou impressos que não forem expressamente permitidos, gravador, calculadoras em modelo não permitido por este edital, receptor e/ou pagers e/ou que se comunicar com outro examinando;"
+          },
+          {
+            "letra": "c",
+            "texto": "for surpreendido portando aparelhos eletrônicos e quaisquer utensílios descritos no subitem 7.18;"
+          },
+          {
+            "letra": "d",
+            "texto": "faltar com o devido respeito para com qualquer integrante da equipe de aplicação das provas, com as autoridades presentes ou com os demais examinandos;"
+          },
+          {
+            "letra": "e",
+            "texto": "fizer anotação de informações relativas às suas respostas (cópia de gabarito) no comprovante de inscrição ou em qualquer meio de rascunho não permitido;"
+          },
+          {
+            "letra": "f",
+            "texto": "não entregar o material das provas ao término do tempo destinado para a sua realização;"
+          },
+          {
+            "letra": "g",
+            "texto": "afastar-se da sala, a qualquer tempo, sem o acompanhamento de fiscal;"
+          },
+          {
+            "letra": "h",
+            "texto": "ausentar-se da sala, a qualquer tempo, portando o cartão de respostas;"
+          },
+          {
+            "letra": "i",
+            "texto": "descumprir as instruções contidas no caderno de questões e no cartão de respostas;"
+          },
+          {
+            "letra": "j",
+            "texto": "perturbar, de qualquer modo, a ordem dos trabalhos, incorrendo em comportamento indevido;"
+          },
+          {
+            "letra": "k",
+            "texto": "utilizar-se ou tentar utilizar-se de meios fraudulentos ou ilegais para obter aprovação própria ou de terceiros, em qualquer etapa do Exame;"
+          },
+          {
+            "letra": "l",
+            "texto": "não permitir a coleta de sua assinatura;"
+          },
+          {
+            "letra": "m",
+            "texto": "for surpreendido portando anotações em qualquer meio que não os permitidos, exceto no seu cartão de respostas ou caderno de questões;"
+          },
+          {
+            "letra": "n",
+            "texto": "for surpreendido portando qualquer tipo de arma fora do envelope de segurança não reutilizável;"
+          },
+          {
+            "letra": "o",
+            "texto": "não permitir ser submetido ao detector de metal;"
+          },
+          {
+            "letra": "p",
+            "texto": "não permitir a coleta de sua impressão digital na lista de presença;"
+          },
+          {
+            "letra": "q",
+            "texto": "não se dirigir para sua sala após o fechamento dos portões;"
+          },
+          {
+            "letra": "r",
+            "texto": "for surpreendido portando ou fazendo uso de aparelho celular e/ou quaisquer aparelhos eletrônicos durante a realização das provas, mesmo que o aparelho esteja desligado;"
+          },
+          {
+            "letra": "s",
+            "texto": "receber qualquer objeto ou tiver contato com o ambiente externo após o fechamento dos portões; e"
+          },
+          {
+            "letra": "t",
+            "texto": "não se identificar na sala antes do início das provas."
+          }
+        ]
+      },
+      {
+        "item": "7.20",
+        "texto": "Com vistas à garantia da isonomia e lisura do certame, no dia da realização da Prova Objetiva, os examinandos serão submetidos, durante a aplicação, ao sistema de detecção de metais quando do ingresso e da saída dos sanitários."
+      },
+      {
+        "item": "7.20.1",
+        "texto": "Não será permitido o uso dos banheiros por examinandos que tenham terminado as provas. A exclusivo critério da Coordenação do local, poderá ser permitido, caso haja disponibilidade, o uso de outros sanitários do local que não estejam sendo usados para o atendimento a examinandos que ainda estejam realizando as provas."
+      },
+      {
+        "item": "7.21",
+        "texto": "A banca organizadora poderá, a qualquer momento durante a realização da prova, utilizar equipamentos eletrônicos específicos destinados à detecção da presença de aparelhos eletrônicos não permitidos, com a finalidade de resguardar a segurança, a lisura e a isonomia do exame."
+      },
+      {
+        "item": "7.21.1",
+        "texto": "O examinando poderá ser submetido, a qualquer momento, inclusive durante a realização da prova, a procedimento de detecção de metais e/ou de equipamentos eletrônicos."
+      },
+      {
+        "item": "7.21.2",
+        "texto": "A recusa do examinando em se submeter aos procedimentos de detecção previstos neste item implicará sua eliminação do Exame, sem prejuízo das demais sanções cabíveis."
+      },
+      {
+        "item": "7.21.3",
+        "texto": "Caso a realização dos procedimentos de detecção ocasione interrupção temporária da prova, o tempo eventualmente despendido será compensado ao final, exclusivamente para o examinando submetido à verificação, desde que devidamente autorizado pela coordenação da aplicação."
+      },
+      {
+        "item": "7.22",
+        "texto": "Não será permitido ao examinando fumar na sala de provas, bem como nas dependências do local de aplicação."
+      },
+      {
+        "item": "7.23",
+        "texto": "No dia da realização das provas, não serão fornecidas, por qualquer integrante da equipe de aplicação e/ou pelas autoridades presentes, informações referentes ao seu conteúdo e/ou aos critérios de avaliação e de classificação."
+      },
+      {
+        "item": "7.24",
+        "texto": "Se, a qualquer tempo, for constatado, por meio eletrônico, estatístico, visual, grafológico ou por investigação policial, ter o examinando se utilizado de processo ilícito, sua prova será anulada e ele estará automaticamente eliminado do Exame."
+      },
+      {
+        "item": "7.25",
+        "texto": "O descumprimento de quaisquer das instruções supracitadas implicará a eliminação do examinando, podendo constituir tentativa de fraude."
+      },
+      {
+        "item": "7.26",
+        "texto": "Nos casos de eventual falta de prova/material personalizado de aplicação de prova, em razão de falha de impressão ou de equívoco na distribuição de prova/material, a Fundação Getulio Vargas tem a prerrogativa para entregar ao examinando prova/material reserva não personalizado eletronicamente, o que será registrado em atas de sala e de coordenação."
+      },
+      {
+        "item": "7.27",
+        "texto": "O examinando poderá obter informações referentes ao Exame via internet no sítio eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1."
+      },
+      {
+        "item": "7.28",
+        "texto": "As informações a respeito de notas e classificações poderão ser acessadas por meio dos editais de resultados. Não serão fornecidas informações que já constem dos editais ou fora dos prazos previstos nesses editais."
+      },
+      {
+        "item": "7.29",
+        "texto": "O examinando que desejar relatar à Fundação Getulio Vargas fatos ocorridos durante a realização do Exame deverá fazê-lo através de e-mail para o endereço eletrônico examecfc@fgv.br."
+      },
+      {
+        "item": "7.30",
+        "texto": "Não serão dadas por telefone informações a respeito de datas, locais e horários de realização das provas. O examinando deverá observar rigorosamente os editais e os comunicados a serem divulgados na forma prevista neste Edital."
+      },
+      {
+        "item": "7.31",
+        "texto": "Por ocasião da realização das provas, deverão ser observados todos os protocolos de segurança e medidas sanitárias vigentes, conforme legislação do poder público federal, estadual e municipal."
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

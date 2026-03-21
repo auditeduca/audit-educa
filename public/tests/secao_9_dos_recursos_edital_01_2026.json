@@ -1,0 +1,83 @@
+{
+  "secao": {
+    "numero": 9,
+    "titulo": "DOS RECURSOS",
+    "itens": [
+      {
+        "item": "9.1",
+        "texto": "O gabarito oficial preliminar e o resultado definitivo da Prova Objetiva serão divulgados no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1."
+      },
+      {
+        "item": "9.2",
+        "texto": "O examinando que desejar interpor recurso contra o gabarito oficial preliminar disporá de 2 (dois) dias úteis para fazê-lo. O recurso contra o gabarito preliminar estará disponível das 12 horas do primeiro dia às 12 horas do terceiro dia, a contar do dia subsequente ao da divulgação do gabarito preliminar."
+      },
+      {
+        "item": "9.3",
+        "texto": "Para recorrer contra o gabarito oficial preliminar da Prova Objetiva, o examinando deverá usar formulários próprios, encontrados no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, respeitando as respectivas instruções.",
+        "subitens": [
+          {
+            "subitem": "9.3.1",
+            "texto": "O examinando deverá ser claro, consistente e objetivo em seu pleito. Recurso inconsistente ou intempestivo será liminarmente indeferido."
+          },
+          {
+            "subitem": "9.3.2",
+            "texto": "O formulário preenchido de forma incorreta, com campos em branco ou faltando informações, será automaticamente desconsiderado, não sendo sequer encaminhado à Banca Examinadora da FGV."
+          },
+          {
+            "subitem": "9.3.3",
+            "texto": "Após a análise dos recursos contra o gabarito preliminar da Prova Objetiva, a Banca Examinadora da FGV poderá manter o gabarito, alterá-lo ou anular a questão."
+          },
+          {
+            "subitem": "9.3.4",
+            "texto": "Se, do exame de recurso, resultar a anulação de questão integrante da Prova Objetiva, a pontuação correspondente a ela será atribuída a todos os examinandos"
+          },
+          {
+            "subitem": "9.3.5",
+            "texto": "Se houver alteração, por força dos recursos, do gabarito oficial preliminar de questão integrante de Prova Objetiva, essa alteração valerá para todos os examinandos, independentemente de terem recorrido."
+          },
+          {
+            "subitem": "9.3.6",
+            "texto": "Os questionamentos relativos ao preenchimento da folha de respostas não serão apreciados."
+          },
+          {
+            "subitem": "9.3.7",
+            "texto": "Todos os recursos serão analisados, e as respostas serão divulgadas no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1."
+          },
+          {
+            "subitem": "9.3.8",
+            "texto": "Não serão aceitos recursos via fax, correio eletrônico, canais de Ouvidoria ou pelos Correios, assim como fora do prazo."
+          },
+          {
+            "subitem": "9.3.9",
+            "texto": "O examinando que se identificar no momento da interposição não terá o recurso conhecido."
+          },
+          {
+            "subitem": "9.3.10",
+            "texto": "De igual forma, não será conhecido o recurso interposto pelo examinando que tratar de assuntos diversos aos especificados quando do resultado da etapa."
+          }
+        ]
+      },
+      {
+        "item": "9.4",
+        "texto": "Em nenhuma hipótese, será aceito pedido de revisão de recurso ou recurso de gabarito oficial definitivo, bem como contra o resultado final das provas."
+      },
+      {
+        "item": "9.5",
+        "texto": "Será liminarmente indeferido o recurso cujo teor desrespeitar a Banca, o Sistema CFC/CRCs, ou as instituições envolvidas no exame"
+      },
+      {
+        "item": "9.6",
+        "texto": "Não serão aceitos, em hipótese alguma, recursos protocolados em Delegacias Regionais, CRCs CFC, via e-mail ou pessoalmente à FGV, ou qualquer outro meio que não seja o disposto no item 9.3."
+      },
+      {
+        "item": "9.7",
+        "texto": "A FGV e o CFC não se responsabilizarão por interposição de recurso não recebido por motivos de ordem técnica dos computadores, falhas de comunicação, congestionamento das linhas de comunicação, bem como por outros fatores que impossibilitem a transferência de dados que não sejam de sua responsabilidade."
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

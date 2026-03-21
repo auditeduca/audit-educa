@@ -1,0 +1,148 @@
+/* * Main CSS - Audit Educa 
+ * Focado em estrutura, espaçamento e correções de layout.
+ */
+
+:root {
+    --header-height: 80px; /* Valor base, será ajustado via JS se necessário */
+    --spacing-section: 4rem; /* Espaço padrão entre seções */
+    --spacing-container: 2rem;
+    --primary-color: #004aad; /* Exemplo baseado no tema */
+    --text-color: #333;
+    --bg-light: #f9f9f9;
+}
+
+/* =========================================
+   Estrutura Base (Sticky Footer Fix)
+   ========================================= */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden; /* Previne scroll horizontal acidental */
+}
+
+main {
+    flex: 1; /* Faz o main ocupar o espaço disponível empurrando o footer */
+    width: 100%;
+    max-width: 1440px; /* Container máximo para telas gigantes */
+    margin: 0 auto;
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
+    /* Padding-top é gerenciado via JS para ser perfeito com header fixo */
+    box-sizing: border-box;
+}
+
+/* =========================================
+   Espaçamento de Módulos (Index)
+   ========================================= */
+
+/* Classe utilitária para seções na Index */
+.module-section {
+    margin-bottom: var(--spacing-section);
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Divisor sutil opcional */
+}
+
+.module-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.hero-section {
+    /* Ajuste para garantir que o Hero não colida com o Header */
+    margin-top: 1rem; 
+    margin-bottom: var(--spacing-section);
+}
+
+/* =========================================
+   Cookie Banner Styles
+   ========================================= */
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    z-index: 9999;
+    display: none; /* Controlado via JS (flex/none) */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 4px solid var(--primary-color);
+}
+
+.cookie-content {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.cookie-content h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.cookie-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
+.btn-cookie {
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-accept {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-accept:hover {
+    background-color: #003380;
+}
+
+.btn-reject {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-reject:hover {
+    background-color: #d0d0d0;
+}
+
+/* Mobile Responsiveness para o Banner */
+@media (max-width: 768px) {
+    #cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .cookie-content {
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .cookie-actions {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .btn-cookie {
+        width: 100%;
+    }
+}

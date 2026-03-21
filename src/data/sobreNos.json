@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "lastUpdated": "2026-03-20T00:00:00Z",
+    "version": "2.0.0"
+  },
+  "historia": {
+    "titulo": "Nossa História",
+    "texto": "Fundada em 2020 por especialistas...",
+    "impactos": [
+      { "value": "10k+", "label": "Profissionais impactados" },
+      { "value": "50+", "label": "Cursos lançados" },
+      { "value": "100%", "label": "Conteúdo atualizado" },
+      { "value": "4.9", "label": "Avaliação média" }
+    ]
+  },
+  "missao": {
+    "titulo": "Missão",
+    "texto": "Democratizar o conhecimento técnico..."
+  },
+  "visao": {
+    "titulo": "Visão",
+    "texto": "Ser a principal referência..."
+  },
+  "valores": [
+    {
+      "nome": "Ética Absoluta",
+      "icon": "fa-scale-balanced",
+      "desc": "Integridade inegociável..."
+    }
+  ],
+  "faq": [
+    {
+      "pergunta": "O que é o AuditEduca?",
+      "resposta": "AuditEduca é uma plataforma..."
+    }
+  ],
+  "sugestoes": {
+    "descricao": "A sua sugestão é o combustível...",
+    "placeholder": "Ex: Sugiro incluírem conteúdos sobre auditoria em ESG...",
+    "minLength": 10,
+    "maxLength": 1000,
+    "validationMessages": {
+      "requiresConsent": "É necessário aceitar a Política de Privacidade (LGPD).",
+      "empty": "Por favor, escreva a sua sugestão antes de enviar.",
+      "tooShort": "A sugestão deve ter pelo menos 10 caracteres.",
+      "tooLong": "A sugestão excede o limite de caracteres."
+    },
+    "successMessage": "Sugestão enviada com sucesso!",
+    "errorMessage": "Erro ao enviar. Tente novamente mais tarde."
+  },
+  "lgpd": {
+    "consentText": "Li e concordo que os dados fornecidos nesta sugestão sejam tratados conforme a"
+  },
+  "seo": {
+    "privacyPolicyUrl": "/privacidade"
+  }
+}

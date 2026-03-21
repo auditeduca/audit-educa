@@ -1,0 +1,33 @@
+{
+  "secao": {
+    "numero": 2,
+    "titulo": "DO EXAME",
+    "itens": [
+      {
+        "item": "2.1",
+        "texto": "O Exame de Suficiência será constituído de prova objetiva de múltipla escolha."
+      },
+      {
+        "item": "2.2",
+        "texto": "Os resultados serão divulgados na Internet, no seguinte endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1."
+      },
+      {
+        "item": "2.3",
+        "texto": "A prova será aplicada nas cidades constantes do Anexo I deste edital, no mesmo dia e horário em todo o território nacional, observado o horário oficial de Brasília (DF)."
+      },
+      {
+        "item": "2.4",
+        "texto": "Caso o número de examinandos inscritos exceda a oferta de lugares existentes no município elencado no subitem 2.3, a FGV se reserva o direito de alocá-los em cidades próximas para a aplicação das provas, não assumindo, entretanto, qualquer responsabilidade quanto ao deslocamento e à hospedagem desses examinandos."
+      },
+      {
+        "item": "2.5",
+        "texto": "Todos os horários definidos neste Edital, em seus anexos e em comunicados oficiais têm como referência o horário oficial de Brasília."
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

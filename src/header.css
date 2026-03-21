@@ -1,0 +1,658 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const Header = () => {
+  // Estados
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null); // id do submenu aberto
+  const [activeMegaPanel, setActiveMegaPanel] = useState(null); // painel desktop aberto
+  const [activeTab, setActiveTab] = useState({ panel: 'sobre', tab: 'sobre-inst' }); // abas nos mega panels
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark' ||
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  );
+  const [fontSize, setFontSize] = useState(100); // percentual
+
+  const hoverTimeout = useRef(null);
+
+  // Aplicar tema escuro
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  // Ajustar fonte (exemplo simples)
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${fontSize}%`;
+  }, [fontSize]);
+
+  // Bloquear scroll quando menu mobile aberto
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, [isMobileMenuOpen]);
+
+  // Funções do menu mobile
+  const toggleMobileSubmenu = (id) => {
+    setActiveMobileSubmenu(activeMobileSubmenu === id ? null : id);
+  };
+
+  // Funções dos mega panels desktop
+  const handleMouseEnter = (panelId) => {
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+    setActiveMegaPanel(panelId);
+  };
+
+  const handleMouseLeave = () => {
+    hoverTimeout.current = setTimeout(() => {
+      setActiveMegaPanel(null);
+    }, 200);
+  };
+
+  // Troca de abas nos mega panels
+  const handleTabClick = (panel, tab) => {
+    setActiveTab({ panel, tab });
+  };
+
+  // Aumentar/diminuir fonte
+  const increaseFont = () => setFontSize(prev => Math.min(prev + 10, 150));
+  const decreaseFont = () => setFontSize(prev => Math.max(prev - 10, 70));
+
+  return (
+    <>
+      {/* ========= MENU MOBILE (OFF-CANVAS) com z-index alto ========= */}
+      <div
+        id="mobile-menu"
+        className={`fixed inset-0 z-[2000] ${isMobileMenuOpen ? '' : 'hidden'}`}
+        aria-labelledby="mobile-menu-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        {/* Backdrop */}
+        <div
+          className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+            isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+
+        {/* Drawer */}
+        <div
+          className={`absolute left-0 top-0 bottom-0 w-[85%] max-w-sm bg-white dark:bg-slate-900 shadow-xl transform transition-transform duration-300 ease-in-out flex flex-col ${
+            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+        >
+          {/* Header do Mobile */}
+          <div className="p-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+            <img
+              src="/assets/images/logotipo-audit-educa-default.webp"
+              alt="Logotipo Audit Educa"
+              className="h-8 w-auto"
+            />
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-gray-500 dark:text-gray-400 hover:text-audit-gold text-lg p-2"
+              aria-label="Fechar menu"
+            >
+              <i className="fas fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+          <h2 id="mobile-menu-title" className="sr-only">Menu de Navegação Principal</h2>
+
+          {/* Lista de Links Mobile (Acordeão) – conforme header.html */}
+          <nav className="flex-1 overflow-y-auto custom-scroll p-4">
+            <ul className="space-y-2">
+              <li>
+                <a href="/" className="block py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 hover:text-audit-gold transition-colors">
+                  Início
+                </a>
+              </li>
+
+              {/* Sobre Nós */}
+              <li>
+                <button
+                  onClick={() => toggleMobileSubmenu('sobre')}
+                  className="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 hover:text-audit-gold transition-colors"
+                  aria-expanded={activeMobileSubmenu === 'sobre'}
+                  aria-controls="mob-submenu-sobre"
+                >
+                  Sobre Nós <i className={`fas fa-chevron-down text-xs transition-transform ${activeMobileSubmenu === 'sobre' ? 'rotate-180' : ''}`}></i>
+                </button>
+                <div
+                  id="mob-submenu-sobre"
+                  className={`mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1 overflow-hidden transition-all duration-300 ${
+                    activeMobileSubmenu === 'sobre' ? 'max-h-96' : 'max-h-0'
+                  }`}
+                >
+                  <ul className="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Institucional</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">O Criador</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Acessibilidade</a></li>
+                    <li><a href="/de-olho-na-acessibilidade.html" className="block py-2 px-4 hover:text-audit-gold">De Olho na Acessibilidade</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Sustentabilidade</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Políticas</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Mapa do Site</a></li>
+                    <li><a href="/busca-e-conteudo.html" className="block py-2 px-4 hover:text-audit-gold">Busca e Conteúdo</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              {/* Conteúdo */}
+              <li>
+                <button
+                  onClick={() => toggleMobileSubmenu('conteudo')}
+                  className="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 hover:text-audit-gold transition-colors"
+                  aria-expanded={activeMobileSubmenu === 'conteudo'}
+                  aria-controls="mob-submenu-conteudo"
+                >
+                  Conteúdo <i className={`fas fa-chevron-down text-xs transition-transform ${activeMobileSubmenu === 'conteudo' ? 'rotate-180' : ''}`}></i>
+                </button>
+                <div
+                  id="mob-submenu-conteudo"
+                  className={`mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1 overflow-hidden transition-all duration-300 ${
+                    activeMobileSubmenu === 'conteudo' ? 'max-h-96' : 'max-h-0'
+                  }`}
+                >
+                  <ul className="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Auditoria</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Contabilidade</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">ESG</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Tributário</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              {/* Ferramentas */}
+              <li>
+                <button
+                  onClick={() => toggleMobileSubmenu('ferramentas')}
+                  className="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 hover:text-audit-gold transition-colors"
+                  aria-expanded={activeMobileSubmenu === 'ferramentas'}
+                  aria-controls="mob-submenu-ferramentas"
+                >
+                  Ferramentas <i className={`fas fa-chevron-down text-xs transition-transform ${activeMobileSubmenu === 'ferramentas' ? 'rotate-180' : ''}`}></i>
+                </button>
+                <div
+                  id="mob-submenu-ferramentas"
+                  className={`mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1 overflow-hidden transition-all duration-300 ${
+                    activeMobileSubmenu === 'ferramentas' ? 'max-h-96' : 'max-h-0'
+                  }`}
+                >
+                  <ul className="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Checklists</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Planilhas</a></li>
+                    <li className="px-4 py-1 text-xs font-bold text-audit-gold uppercase mt-2">Financeira</li>
+                    <li><a href="/calculadora-juros-simples.html" className="block py-2 px-4 hover:text-audit-gold">Calculadora de Juros Simples</a></li>
+                    <li className="px-4 py-1 text-xs font-bold text-audit-gold uppercase mt-2">Trabalhista</li>
+                    <li><a href="/calculadora-de-salario-liquido.html" className="block py-2 px-4 hover:text-audit-gold">Calculadora de Salário Líquido</a></li>
+                    <li><a href="/-calculadora-de-ferias.html" className="block py-2 px-4 hover:text-audit-gold">Calculadora de Férias</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              {/* Carreiras */}
+              <li>
+                <button
+                  onClick={() => toggleMobileSubmenu('carreiras')}
+                  className="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 hover:text-audit-gold transition-colors"
+                  aria-expanded={activeMobileSubmenu === 'carreiras'}
+                  aria-controls="mob-submenu-carreiras"
+                >
+                  Carreiras <i className={`fas fa-chevron-down text-xs transition-transform ${activeMobileSubmenu === 'carreiras' ? 'rotate-180' : ''}`}></i>
+                </button>
+                <div
+                  id="mob-submenu-carreiras"
+                  className={`mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1 overflow-hidden transition-all duration-300 ${
+                    activeMobileSubmenu === 'carreiras' ? 'max-h-96' : 'max-h-0'
+                  }`}
+                >
+                  <ul className="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Vagas</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Trilhas</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              {/* Fale Conosco */}
+              <li>
+                <button
+                  onClick={() => toggleMobileSubmenu('fale')}
+                  className="w-full flex justify-between items-center py-3 px-2 text-gray-800 dark:text-gray-200 font-bold border-b border-gray-100 dark:border-gray-800 hover:text-audit-gold transition-colors"
+                  aria-expanded={activeMobileSubmenu === 'fale'}
+                  aria-controls="mob-submenu-fale"
+                >
+                  Fale Conosco <i className={`fas fa-chevron-down text-xs transition-transform ${activeMobileSubmenu === 'fale' ? 'rotate-180' : ''}`}></i>
+                </button>
+                <div
+                  id="mob-submenu-fale"
+                  className={`mobile-submenu bg-gray-50 dark:bg-slate-800/50 rounded-lg mt-1 overflow-hidden transition-all duration-300 ${
+                    activeMobileSubmenu === 'fale' ? 'max-h-96' : 'max-h-0'
+                  }`}
+                >
+                  <ul className="p-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Canais</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">FAQ</a></li>
+                    <li><a href="#" className="block py-2 px-4 hover:text-audit-gold">Parcerias</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Footer Mobile */}
+          <div className="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-slate-800/50">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-xs text-gray-500 uppercase font-bold">Idioma</span>
+              <div className="flex gap-2">
+                <button aria-label="Português"><img src="/assets/images/flags/bandeira-brasil.webp" alt="Brasil" className="w-6 h-auto rounded opacity-50 hover:opacity-100" /></button>
+                <button aria-label="English"><img src="/assets/images/flags/flag-united-kingdom.webp" alt="UK" className="w-6 h-auto rounded opacity-50 hover:opacity-100" /></button>
+                <button aria-label="Español"><img src="/assets/images/flags/bandera-espana.webp" alt="España" className="w-6 h-auto rounded opacity-50 hover:opacity-100" /></button>
+              </div>
+            </div>
+            <a href="#" className="block w-full text-center py-2 bg-audit-gold text-white rounded font-bold text-sm hover:bg-audit-goldDark transition-colors">
+              Entrar / Área do Aluno
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ========= HEADER PRINCIPAL DESKTOP ========= */}
+      <header
+        id="header"
+        className="fixed w-full top-0 z-[100] transition-all duration-300 font-sans group"
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="bg-audit-glassLight dark:bg-audit-glassDark glass shadow-sm relative z-[101]">
+          {/* Barra de Acessibilidade e Topo */}
+          <div className="py-1 border-b border-gray-200/50 dark:border-gray-700/50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs">
+              <div className="flex items-center gap-4 text-gray-500 dark:text-gray-400 w-full lg:w-auto">
+                <div className="flex gap-2 items-center">
+                  <button onClick={decreaseFont} className="hover:text-audit-gold font-bold transition px-1 p-1" aria-label="Diminuir fonte">A-</button>
+                  <button onClick={increaseFont} className="hover:text-audit-gold font-bold transition px-1 p-1" aria-label="Aumentar fonte">A+</button>
+                  <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="hover:text-audit-gold transition ml-2 p-1"
+                    aria-label="Alternar tema"
+                  >
+                    <i className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'}`}></i>
+                  </button>
+                </div>
+                <nav className="hidden lg:flex items-center gap-1 border-l border-gray-300 dark:border-gray-600 pl-4 ml-2" aria-label="Navegação de Atalho">
+                  <a href="#header" className="w-24 text-center py-1 bg-gray-100/50 dark:bg-white/5 hover:bg-audit-gold hover:text-white rounded transition text-[10px] font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Topo</a>
+                  <a href="#main-content" className="w-24 text-center py-1 bg-gray-100/50 dark:bg-white/5 hover:bg-audit-gold hover:text-white rounded transition text-[10px] font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Conteúdo</a>
+                  <a href="#footer" className="w-24 text-center py-1 bg-gray-100/50 dark:bg-white/5 hover:bg-audit-gold hover:text-white rounded transition text-[10px] font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">Rodapé</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          {/* Linha principal com logo e navegação */}
+          <div className="py-3 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+              <div className="flex items-center shrink-0">
+                <a href="/" className="flex items-center gap-2" aria-label="Página inicial">
+                  <img src="/assets/images/logotipo-audit-educa-default.webp" alt="Audit Educa" className="h-10 w-auto" />
+                </a>
+              </div>
+
+              {/* Navegação Desktop */}
+              <nav className="hidden lg:flex items-center gap-1 h-10" aria-label="Menu Principal">
+                <a href="/" className="nav-item px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition">Início</a>
+
+                {/* Sobre Nós */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('sobre')}
+                >
+                  <button className="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1">
+                    Sobre Nós <i className="fas fa-chevron-down text-[10px] opacity-50"></i>
+                  </button>
+                </div>
+
+                {/* Conteúdo */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('conteudo')}
+                >
+                  <button className="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1">
+                    Conteúdo <i className="fas fa-chevron-down text-[10px] opacity-50"></i>
+                  </button>
+                </div>
+
+                {/* Ferramentas */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('ferramentas')}
+                >
+                  <button className="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1">
+                    Ferramentas <i className="fas fa-chevron-down text-[10px] opacity-50"></i>
+                  </button>
+                </div>
+
+                {/* Carreiras */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('carreiras')}
+                >
+                  <button className="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1">
+                    Carreiras <i className="fas fa-chevron-down text-[10px] opacity-50"></i>
+                  </button>
+                </div>
+
+                {/* Fale Conosco */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('fale')}
+                >
+                  <button className="nav-trigger px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-audit-gold transition flex items-center gap-1">
+                    Fale Conosco <i className="fas fa-chevron-down text-[10px] opacity-50"></i>
+                  </button>
+                </div>
+              </nav>
+
+              {/* Ícones de ação (busca e idioma) */}
+              <div className="hidden lg:flex items-center gap-2">
+                <button
+                  onMouseEnter={() => handleMouseEnter('busca')}
+                  className="nav-trigger w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-gray-600 dark:text-gray-300"
+                  aria-label="Buscar"
+                >
+                  <i className="fas fa-search"></i>
+                </button>
+
+                <button
+                  onMouseEnter={() => handleMouseEnter('idioma')}
+                  className="nav-trigger h-9 px-2 flex items-center gap-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-gray-600 dark:text-gray-300"
+                  aria-label="Idioma"
+                >
+                  <img src="/assets/images/flags/bandeira-brasil.webp" alt="Português" className="w-6 h-auto shadow-sm rounded-sm" />
+                  <i className="fas fa-chevron-down text-[10px]"></i>
+                </button>
+              </div>
+
+              {/* Botão Menu Mobile */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="lg:hidden p-2 text-audit-navy dark:text-white"
+                aria-label="Abrir menu"
+              >
+                <i className="fas fa-bars text-xl"></i>
+              </button>
+            </div>
+          </div>
+
+          {/* Linha dourada inferior */}
+          <div className="h-[2px] w-full bg-gradient-to-r from-audit-navy via-audit-gold to-audit-navy relative z-50"></div>
+
+          {/* MEGA PANELS (conforme header.html) */}
+          {activeMegaPanel === 'sobre' && (
+            <div id="panel-sobre" className="mega-panel active bg-white dark:bg-slate-900" onMouseEnter={() => handleMouseEnter('sobre')} onMouseLeave={handleMouseLeave}>
+              <div className="max-w-7xl mx-auto h-[400px] flex">
+                {/* Abas à esquerda */}
+                <div className="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 pr-2 custom-scroll overflow-y-auto">
+                  <ul className="space-y-1 px-4" role="tablist">
+                    {[
+                      { id: 'sobre-inst', label: 'Institucional' },
+                      { id: 'sobre-criador', label: 'O Criador' },
+                      { id: 'sobre-acessibilidade', label: 'Acessibilidade' },
+                      { id: 'sobre-sustentabilidade', label: 'Sustentabilidade Digital' },
+                      { id: 'sobre-politicas', label: 'Políticas do Site' },
+                      { id: 'sobre-mapa', label: 'Mapa do Site' },
+                    ].map(item => (
+                      <li key={item.id}>
+                        <button
+                          onClick={() => handleTabClick('sobre', item.id)}
+                          className={`menu-tab-trigger w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition flex justify-between items-center group focus:outline-none ${
+                            activeTab.panel === 'sobre' && activeTab.tab === item.id
+                              ? 'bg-white dark:bg-white/5 text-audit-gold'
+                              : 'text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5'
+                          }`}
+                        >
+                          {item.label}
+                          <i className="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold"></i>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Conteúdo da aba */}
+                <div className="w-[45%] p-8 overflow-y-auto custom-scroll dark:text-gray-300">
+                  {activeTab.panel === 'sobre' && activeTab.tab === 'sobre-inst' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-2">Quem Somos</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">A Audit Educa nasceu para democratizar o conhecimento técnico em auditoria e finanças.</p>
+                      <a href="/sobre-nos.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                        <span className="text-audit-goldDark font-bold text-sm block mb-1">Missão, Visão e Valores</span>
+                        <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossa Missão, Visão e Valores</span>
+                      </a>
+                    </div>
+                  )}
+                  {activeTab.panel === 'sobre' && activeTab.tab === 'sobre-criador' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-2">Sobre o Criador</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">Conheça a trajetória de quem idealizou este projeto.</p>
+                      <a href="/sobre-o-criador.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                        <span className="text-audit-goldDark font-bold text-sm block mb-1">Sobre o Criador</span>
+                        <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça mais sobre mim.</span>
+                      </a>
+                    </div>
+                  )}
+                  {activeTab.panel === 'sobre' && activeTab.tab === 'sobre-acessibilidade' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-2">Inclusão Digital</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">Compromisso com o acesso universal ao conhecimento.</p>
+                      <div className="space-y-3">
+                        <a href="/politica-de-acessibilidade.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Política de Acessibilidade</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas diretrizes de inclusão.</span>
+                        </a>
+                        <a href="/recursos-assistivos.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Recursos Assistivos</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossos recursos de acessibilidade.</span>
+                        </a>
+                        <a href="/de-olho-na-acessibilidade.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">De Olho na Acessibilidade</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossa iniciativa de inclusão.</span>
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                  {activeTab.panel === 'sobre' && activeTab.tab === 'sobre-sustentabilidade' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-2">Sustentabilidade Digital</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">Reduzindo nossa pegada ecológica através da tecnologia.</p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <a href="/sustentabilidade-digital.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Nosso Compromisso</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas metas ambientais.</span>
+                        </a>
+                        <a href="/pegada-de-carbono.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Pegada de Carbono</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça o monitoramento de impacto.</span>
+                        </a>
+                        <a href="/relatorio-de-impacto.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Relatório de Impacto</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossos resultados de impacto ambiental</span>
+                        </a>
+                        <a href="/tecnologia-verde.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Tecnologia Verde</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas tecnologias sustentáveis.</span>
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                  {activeTab.panel === 'sobre' && activeTab.tab === 'sobre-politicas' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-2">Políticas do Site</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">Transparência e conformidade legal.</p>
+                      <div className="space-y-3">
+                        <a href="/privacidade.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Central de Privacidade</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossas regras de privacidade.</span>
+                        </a>
+                        <a href="/notificacoes-legais.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Notificações Legais</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça nossa isenção de responsabilidade.</span>
+                        </a>
+                        <a href="/termos-de-uso.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Termos de Utilização e Uso</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça os termos de utilização.</span>
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                  {activeTab.panel === 'sobre' && activeTab.tab === 'sobre-mapa' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-2">Navegação</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">Encontre o que você precisa rapidamente.</p>
+                      <div className="space-y-3">
+                        <a href="/mapa-do-site.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Mapa do Site</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Conheça a estrutura completa.</span>
+                        </a>
+                        <a href="/busca-e-conteudo.html" className="block p-3 rounded bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                          <span className="text-audit-goldDark font-bold text-sm block mb-1">Busca e Conteúdo</span>
+                          <span className="text-xs text-gray-500 group-hover:text-audit-navy dark:group-hover:text-white">Encontre artigos, cursos e materiais.</span>
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Imagem lateral */}
+                <div className="w-[30%] p-6 pr-8 flex items-center justify-center">
+                  <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Escritório"
+                    className="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeMegaPanel === 'conteudo' && (
+            <div id="panel-conteudo" className="mega-panel active bg-white dark:bg-slate-900" onMouseEnter={() => handleMouseEnter('conteudo')} onMouseLeave={handleMouseLeave}>
+              <div className="max-w-7xl mx-auto h-[400px] flex">
+                <div className="w-1/4 border-r border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-slate-800/50 py-6 pr-2 custom-scroll overflow-y-auto">
+                  <ul className="space-y-1 px-4" role="tablist">
+                    <li>
+                      <button
+                        onClick={() => handleTabClick('conteudo', 'cont-auditoria')}
+                        className={`menu-tab-trigger w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition flex justify-between items-center group ${
+                          activeTab.panel === 'conteudo' && activeTab.tab === 'cont-auditoria'
+                            ? 'bg-white dark:bg-white/5 text-audit-gold'
+                            : 'text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5'
+                        }`}
+                      >
+                        Auditoria (Int/Ext) <i className="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold"></i>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => handleTabClick('conteudo', 'cont-contabil')}
+                        className={`menu-tab-trigger w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition flex justify-between items-center group ${
+                          activeTab.panel === 'conteudo' && activeTab.tab === 'cont-contabil'
+                            ? 'bg-white dark:bg-white/5 text-audit-gold'
+                            : 'text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5'
+                        }`}
+                      >
+                        Contabilidade <i className="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold"></i>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => handleTabClick('conteudo', 'cont-esg')}
+                        className={`menu-tab-trigger w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition flex justify-between items-center group ${
+                          activeTab.panel === 'conteudo' && activeTab.tab === 'cont-esg'
+                            ? 'bg-white dark:bg-white/5 text-audit-gold'
+                            : 'text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5'
+                        }`}
+                      >
+                        ESG e Sustentabilidade <i className="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold"></i>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => handleTabClick('conteudo', 'cont-tributario')}
+                        className={`menu-tab-trigger w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition flex justify-between items-center group ${
+                          activeTab.panel === 'conteudo' && activeTab.tab === 'cont-tributario'
+                            ? 'bg-white dark:bg-white/5 text-audit-gold'
+                            : 'text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-white/5'
+                        }`}
+                      >
+                        Tributário <i className="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition text-audit-gold"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div className="w-[45%] p-8 overflow-y-auto custom-scroll dark:text-gray-300">
+                  {activeTab.panel === 'conteudo' && activeTab.tab === 'cont-auditoria' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-4">Mundo da Auditoria</h3>
+                      <div className="grid grid-cols-2 gap-6">
+                        <div>
+                          <h4 className="text-sm font-bold text-audit-goldDark mb-2 border-b border-gray-200 pb-1">Auditoria Externa</h4>
+                          <ul className="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                            <li><a href="#" className="hover:text-audit-blue">Normas Brasileiras (NBAs)</a></li>
+                            <li><a href="#" className="hover:text-audit-blue">Pareceres e Relatórios</a></li>
+                            <li><a href="#" className="hover:text-audit-blue">Procedimentos Analíticos</a></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-bold text-audit-goldDark mb-2 border-b border-gray-200 pb-1">Auditoria Interna</h4>
+                          <ul className="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                            <li><a href="#" className="hover:text-audit-blue">Gestão de Riscos</a></li>
+                            <li><a href="#" className="hover:text-audit-blue">Compliance</a></li>
+                            <li><a href="#" className="hover:text-audit-blue">Matriz de Controles</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {activeTab.panel === 'conteudo' && activeTab.tab === 'cont-contabil' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-4">Contabilidade (IFRS/CPC)</h3>
+                      <p className="text-sm mb-4">Aprofunde-se nos pronunciamentos contábeis.</p>
+                      <a href="#" className="text-audit-blue underline text-sm">Ver lista de CPCs comentados</a>
+                    </div>
+                  )}
+                  {activeTab.panel === 'conteudo' && activeTab.tab === 'cont-esg' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-4">ESG</h3>
+                      <p className="text-sm text-gray-500">Environmental, Social and Governance.</p>
+                    </div>
+                  )}
+                  {activeTab.panel === 'conteudo' && activeTab.tab === 'cont-tributario' && (
+                    <div>
+                      <h3 className="text-xl font-bold text-audit-navy dark:text-white mb-4">Tributário</h3>
+                      <p className="text-sm text-gray-500">Reforma tributária, PIS/COFINS e IRPJ.</p>
+                    </div>
+                  )}
+                </div>
+                <div className="w-[30%] p-6 pr-8 flex items-center justify-center">
+                  <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Análise de dados" className="w-full h-full object-cover rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl border-2 border-audit-gold/50 shadow-md" />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Painéis adicionais (ferramentas, carreiras, fale, busca, idioma) seguiriam o mesmo padrão, omitidos por brevidade mas devem ser incluídos conforme header.html */}
+
+        </div>
+      </header>
+    </>
+  );
+};
+
+export default Header;

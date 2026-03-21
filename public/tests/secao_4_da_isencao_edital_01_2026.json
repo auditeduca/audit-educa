@@ -1,0 +1,117 @@
+{
+  "secao": {
+    "numero": 4,
+    "titulo": "DA ISENÇÃO",
+    "itens": [
+      {
+        "item": "4.1",
+        "texto": "Somente haverá isenção da taxa de inscrição para os examinandos amparados pelo Decreto n. 6.593/2008, que estiverem inscritos no Cadastro Único para Programas Sociais do Governo Federal (CadÚnico), de que trata o Decreto n. 11.016/2022."
+      },
+      {
+        "item": "4.1.1",
+        "texto": "É de responsabilidade exclusiva da pessoa examinanda, sob pena de não concessão, a correta indicação, no sistema de inscrição, da hipótese de isenção que pretende pleitear, bem como a correta apresentação da respectiva documentação comprobatória."
+      },
+      {
+        "item": "4.2",
+        "texto": "Estará isento do pagamento da taxa de inscrição o examinando que, cumulativamente:",
+        "subitens": [
+          {
+            "letra": "a",
+            "texto": "estiver inscrito no Cadastro Único para Programas Sociais do Governo Federal (CadÚnico), de que trata o Decreto n. 6.593/2008, que estiverem inscritos no Cadastro Único para Programas Sociais do Governo Federal (CadÚnico), de que trata o Decreto n. 11.016/2022; e"
+          },
+          {
+            "letra": "b",
+            "texto": "for membro de família de baixa renda, nos termos do referido Decreto."
+          }
+        ]
+      },
+      {
+        "item": "4.3",
+        "texto": "A isenção poderá ser solicitada no período entre as 16h00 do dia 23 de fevereiro de 2026 até as 16h00 do dia 25 de fevereiro de 2026, horário oficial de Brasília/DF, por meio de inscrição no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, devendo o examinando, obrigatoriamente:",
+        "subitens": [
+          {
+            "letra": "a",
+            "texto": "enviar via upload no link de inscrição declaração legível e assinada de ser membro de família cuja renda familiar mensal per capita seja inferior ou igual a meio salário-mínimo, nos termos da regulamentação do Governo Federal para o Cadastro Único para Programas Sociais do Governo Federal, conforme Anexo IV."
+          }
+        ]
+      },
+      {
+        "item": "4.4",
+        "texto": "Cada pedido de isenção será analisado e julgado pelo órgão gestor do CadÚnico. A FGV poderá, ainda, consultar este órgão para fins de verificação da veracidade das informações prestadas pelo examinando."
+      },
+      {
+        "item": "4.5",
+        "texto": "O examinando que requerer a isenção deverá informar, no ato da inscrição, seus dados pessoais em conformidade com os que foram originalmente informados ao órgão de Assistência Social de seu município responsável pelo cadastramento de famílias no CadÚnico, mesmo que atualmente eles estejam divergentes ou que tenham sido alterados nos últimos 45 (quarenta e cinco) dias, em virtude do decurso de tempo para atualização do banco de dados do CadÚnico em âmbito nacional. Após o julgamento do pedido de isenção, o examinando poderá efetuar a atualização dos seus dados cadastrais pelo sistema de inscrições on-line da FGV ou solicitá-la ao fiscal de aplicação no dia de realização das provas."
+      },
+      {
+        "item": "4.6",
+        "texto": "Mesmo que inscrito no CadÚnico, a inobservância do disposto no item 4.5 poderá implicar ao examinando o indeferimento do seu pedido de isenção, por divergência dos dados cadastrais informados e os constantes no banco de dados do CadÚnico."
+      },
+      {
+        "item": "4.7",
+        "texto": "O fato de o examinando estar participando de algum Programa Social do Governo Federal (ProUni, Fies, Bolsa Família, etc.), assim como o fato de ter obtido a isenção em outros certames não garantem, por si só, a isenção da taxa de inscrição."
+      },
+      {
+        "item": "4.8",
+        "texto": "Não serão aceitos documentos encaminhados em meio diverso do indicado no subitem 4.3, bem como aqueles entregues pessoalmente à sede da FGV."
+      },
+      {
+        "item": "4.9",
+        "texto": "Não será aceito, ainda, o envio dos documentos elencados neste Edital, por fax, correio eletrônico ou outras vias que não a expressamente prevista."
+      },
+      {
+        "item": "4.10",
+        "texto": "Expirado o período de remessa dos documentos, não serão aceitos pedidos para inclusão de novos documentos, sob qualquer hipótese ou alegação."
+      },
+      {
+        "item": "4.11",
+        "texto": "As informações prestadas no requerimento e no formulário de isenção serão de inteira responsabilidade do examinando. O examinando que prestar declarações falsas será excluído do exame, em qualquer fase do processo, e responderá legalmente pelas consequências decorrentes do seu ato."
+      },
+      {
+        "item": "4.12",
+        "texto": "O simples preenchimento dos dados necessários e o envio dos documentos para a solicitação da isenção de taxa de inscrição não garante o benefício ao interessado, o qual estará sujeito à análise e ao deferimento por parte da FGV."
+      },
+      {
+        "item": "4.13",
+        "texto": "Não será deferida a solicitação de isenção de pagamento de taxa de inscrição feita por fax ou correio eletrônico."
+      },
+      {
+        "item": "4.14",
+        "texto": "O não cumprimento de uma das etapas fixadas, a falta ou a inconformidade de alguma informação ou documento e/ou a solicitação apresentada fora do período fixado implicará a eliminação automática do processo de isenção."
+      },
+      {
+        "item": "4.15",
+        "texto": "O resultado preliminar da análise dos pedidos de isenção de taxa de inscrição será divulgado no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, conforme cronograma previsto no Anexo V."
+      },
+      {
+        "item": "4.16",
+        "texto": "É de responsabilidade do examinando acompanhar a publicação e tomar ciência do seu conteúdo."
+      },
+      {
+        "item": "4.17",
+        "texto": "O examinando cujo requerimento de isenção de pagamento da taxa de inscrição for indeferido poderá interpor recurso no prazo de 2 (dois) dias úteis, a serem contados do primeiro dia útil subsequente ao da divulgação do resultado da análise dos pedidos, por meio de link disponibilizado no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1."
+      },
+      {
+        "item": "4.18",
+        "texto": "A relação dos pedidos de isenção deferidos após recurso será divulgada no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, conforme cronograma previsto no Anexo V."
+      },
+      {
+        "item": "4.19",
+        "texto": "Os examinandos que tiverem seus pedidos de isenção indeferidos poderão efetivar sua inscrição acessando o endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, e imprimir o boleto para pagamento, conforme item 3 deste Edital."
+      },
+      {
+        "item": "4.20",
+        "texto": "O examinando que tiver seu pedido de isenção indeferido e que não efetuar o pagamento da taxa de inscrição na forma e no prazo estabelecidos no subitem anterior estará automaticamente excluído do Exame de Suficiência."
+      },
+      {
+        "item": "4.21",
+        "texto": "O examinando que tiver seu pedido de isenção deferido e que, concomitantemente, efetuar o pagamento da taxa, terá seu pedido de isenção cancelado, não cabendo solicitação de ressarcimento."
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

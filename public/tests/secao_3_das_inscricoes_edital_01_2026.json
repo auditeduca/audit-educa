@@ -1,0 +1,241 @@
+{
+  "secao": {
+    "numero": 3,
+    "titulo": "DAS INSCRIÇÕES",
+    "itens": [
+      {
+        "item": "3.1",
+        "texto": "A inscrição no presente Exame de Suficiência implica o conhecimento e tácita aceitação das condições estabelecidas neste Edital, incluindo seus anexos e eventuais retificações, das quais o examinando não poderá alegar desconhecimento."
+      },
+      {
+        "item": "3.2",
+        "texto": "A taxa de inscrição, no valor de R$ 130,00 (cento e trinta reais), deverá ser recolhida, em guia própria, em favor do CFC."
+      },
+      {
+        "item": "3.3",
+        "texto": "Para efetuar sua inscrição, o interessado deverá acessar, via Internet, o endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, observando o seguinte:",
+        "subitens": [
+          {
+            "letra": "a",
+            "texto": "acessar o endereço eletrônico a partir das 16h00 do dia 23 de fevereiro de 2026 até as 16h00 do dia 24 de março de 2026;"
+          },
+          {
+            "letra": "b",
+            "texto": "preencher o requerimento de inscrição, informando a cidade de realização da prova e demais informações de acordo com as instruções ali contidas;"
+          },
+          {
+            "letra": "c",
+            "texto": "o envio do requerimento de inscrição gerará automaticamente o Boleto Bancário, que deverá ser impresso e pago em espécie em qualquer agência bancária, ou por meio eletrônico, sendo de inteira responsabilidade do examinando a impressão e a guarda do comprovante de inscrição;"
+          },
+          {
+            "letra": "d",
+            "texto": "o CFC e a FGV não se responsabilizarão por requerimento de inscrição que não tenha sido recebido, por fatores de ordem técnica dos computadores, os quais impossibilitem a transferência dos dados e/ou ausem falhas de comunicação ou congestionamento das linhas de transmissão de dados;"
+          },
+          {
+            "letra": "e",
+            "texto": "o requerimento de inscrição será cancelado caso o pagamento da taxa de inscrição (Boleto Bancário) não seja efetuado até o dia 25 de março de 2026, primeiro dia útil subsequente ao último dia do período destinado ao recebimento de inscrições via Internet;"
+          },
+          {
+            "letra": "f",
+            "texto": "após as 16h00 do dia 24 de março de 2026, não será mais possível acessar o formulário de requerimento de inscrição."
+          },
+          {
+            "letra": "g",
+            "texto": "o examinando deverá estar enquadrado no item 1.4 deste edital, sob pena de nulidade da inscrição a qualquer tempo."
+          },
+          {
+            "letra": "h",
+            "texto": "fazer upload de fotografia atual no formato e extensão determinados no link de inscrição."
+          }
+        ]
+      },
+      {
+        "item": "3.4",
+        "texto": "No ato da inscrição, o examinando deverá fazer upload de 1 (uma) foto 3X4 do rosto em formato JPEG ou JPG, com tamanho máximo de até 1MB, conforme orientações a seguir:",
+        "subitens": [
+          {
+            "letra": "a",
+            "texto": "O rosto deverá estar de frente, em primeiro plano, com boa iluminação e sem sombras, bem como descoberto (sem chapéu, sem óculos escuros, sem cabelo cobrindo o rosto ou outros elementos que escondam a face do examinando, mesmo que parcialmente)."
+          },
+          {
+            "letra": "b",
+            "texto": "O fundo deverá ser neutro e não conter nada além da imagem da pessoa fotografada (similar a foto do RG)."
+          },
+          {
+            "letra": "c",
+            "texto": "A fotografia anexada poderá ser confrontada com a imagem do participante durante as etapas do processo."
+          }
+        ]
+      },
+      {
+        "item": "3.5",
+        "texto": "O examinando somente poderá efetuar o pagamento da taxa de inscrição por meio do Boleto Bancário disponibilizado pela FGV, gerado ao término do processo de inscrição."
+      },
+      {
+        "item": "3.6",
+        "texto": "O Boleto Bancário estará disponível no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1, e deverá ser impresso para o pagamento da taxa de inscrição após a conclusão do preenchimento do requerimento de inscrição."
+      },
+      {
+        "item": "3.7",
+        "texto": "Todos os examinandos inscritos no período entre 16h00min do dia 23 de fevereiro de 2026 até as 16h00min do dia 24 de março de 2026 poderão reimprimir, caso necessário, o Boleto Bancário, no máximo até as 16h00 do dia 25 de março de 2026, primeiro dia útil posterior ao encerramento das inscrições, quando esse recurso será retirado do site da FGV. O pagamento deve ser efetuado neste mesmo dia, respeitado o horário de funcionamento das agências e correspondentes bancários, bem como das regras de internet banking de seu respectivo banco.",
+        "subitens": [
+          {
+            "subitem": "3.7.1",
+            "texto": "O pagamento da taxa de inscrição após o dia 25 de março de 2026, a realização de qualquer modalidade de pagamento que não seja pela quitação do Boleto Bancário e/ou o pagamento de valor distinto do estipulado neste Edital implicam o cancelamento da inscrição."
+          },
+          {
+            "subitem": "3.7.2",
+            "texto": "Não será aceito, como comprovação de pagamento de taxa de inscrição, comprovante de agendamento bancário."
+          },
+          {
+            "subitem": "3.7.3",
+            "texto": "Não serão aceitos os pagamentos das inscrições, por depósito em caixa eletrônico, por meio de cartão de crédito, via postal, fac-símile (fax), transferência ou depósito em conta corrente, ordem de pagamento, ou por qualquer outra via que não as especificadas neste Edital."
+          },
+          {
+            "subitem": "3.7.4",
+            "texto": "Em caso de feriado ou evento que acarrete o fechamento de agências bancárias na localidade em que se encontra, o examinando deverá antecipar o pagamento do boleto ou realizá-lo por outro meio válido, devendo ser respeitado o prazo-limite determinado neste Edital."
+          },
+          {
+            "subitem": "3.7.5",
+            "texto": "Quando do pagamento do Boleto Bancário, o examinando tem o dever de conferir todos os seus dados cadastrais e da inscrição nele registrados, bem como no comprovante de pagamento. As inscrições e/ou os pagamentos que não forem identificados devido a erro na informação de dados pelo examinando ou terceiros, no pagamento do referido Boleto Bancário, não serão aceitos, não cabendo reclamações posteriores nesse sentido."
+          },
+          {
+            "subitem": "3.7.6",
+            "texto": "Após efetuar o pagamento do boleto referente à taxa de inscrição, o examinando deverá aguardar o prazo mínimo de 5 (cinco) dias úteis para a confirmação/compensação do pagamento."
+          }
+        ]
+      },
+      {
+        "item": "3.8",
+        "texto": "As inscrições somente serão efetivadas após a comprovação de pagamento da taxa de inscrição ou o deferimento da solicitação de isenção da taxa de inscrição, nos termos do subitem 5.1 e seguintes deste Edital."
+      },
+      {
+        "item": "3.9",
+        "texto": "Não serão aceitas inscrições condicionais ou extemporâneas, nem as requeridas por via postal, via fax e/ou correio eletrônico."
+      },
+      {
+        "item": "3.10",
+        "texto": "É vedada a transferência do valor pago, a título de taxa, para terceiros, para outra inscrição ou para outro exame."
+      },
+      {
+        "item": "3.11",
+        "texto": "Para efetuar a inscrição, é imprescindível o número de Cadastro de Pessoa Física (CPF) do examinando."
+      },
+      {
+        "item": "3.12",
+        "texto": "A inscrição do examinando implica o conhecimento e a tácita aceitação das normas e condições estabelecidas neste Edital, em relação às quais não poderá alegar desconhecimento, bem como quanto à realização das provas nos prazos estipulados."
+      },
+      {
+        "item": "3.13",
+        "texto": "A qualquer tempo, mesmo após o término das etapas do exame, será possível anular a inscrição, as provas e a nomeação do examinando, desde que verificada falsidade em qualquer declaração e/ou irregularidade nas provas e/ou em informações fornecidas."
+      },
+      {
+        "item": "3.14",
+        "texto": "O examinando que cometer, no ato de inscrição, erro grosseiro na digitação de seu nome ou apresentar documento de identificação que não conste na ficha de cadastro do exame será eliminado do certame, a qualquer tempo."
+      },
+      {
+        "item": "3.15",
+        "texto": "Caso, quando do processamento das inscrições, seja verificada a existência de mais de uma inscrição, efetivada por meio de pagamento ou isenção da taxa por um mesmo examinando, somente será considerada válida e homologada aquela que tiver sido realizada por último, sendo esta identificada pelo sistema de inscrições on-line da FGV, pela data e hora de envio do requerimento via Internet. Consequentemente, as demais inscrições do examinando serão automaticamente canceladas, não cabendo reclamações posteriores nesse sentido, nem mesmo quanto à restituição do valor pago a título de taxa de inscrição."
+      },
+      {
+        "item": "3.16",
+        "texto": "O valor referente ao pagamento da taxa de inscrição não será devolvido em hipótese alguma, salvo em caso de cancelamento do exame por conveniência do CFC."
+      },
+      {
+        "item": "3.17",
+        "texto": "O comprovante de inscrição e/ou pagamento da taxa de inscrição deverá ser mantido em poder do examinando e apresentado nos locais de realização das provas ou quando solicitado."
+      },
+      {
+        "item": "3.18",
+        "texto": "Após a homologação da inscrição, não será aceita, em hipótese alguma, solicitação de alteração dos dados contidos na inscrição."
+      },
+      {
+        "item": "3.19",
+        "texto": "A relação provisória dos examinandos com inscrição deferida será divulgada na Internet, no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1."
+      },
+      {
+        "item": "3.20",
+        "texto": "O examinando que desejar interpor recurso contra a relação provisória dos examinandos com inscrição deferida, ou contra o indeferimento da inscrição, deverá observar o prazo de 2 (dois) dias úteis a contar da publicação."
+      },
+      {
+        "item": "3.21",
+        "texto": "O examinando, ao realizar sua inscrição, também manifesta ciência quanto à possibilidade de divulgação de seus dados em listagens e resultados no decorrer do certame, tais como aqueles relativos à data de nascimento, notas e desempenho nas provas, ser pessoa com deficiência (se for o caso), entre outros, tendo em vista que essas informações são essenciais para o fiel cumprimento da publicidade dos atos atinentes ao exame. Não caberão reclamações posteriores nesse sentido, ficando cientes também os examinandos de que, possivelmente, tais informações poderão ser encontradas na rede mundial de computadores por meio dos mecanismos de busca atualmente existentes."
+      },
+      {
+        "item": "3.22",
+        "texto": "Ao realizar sua inscrição, o examinando manifesta, ainda, sua concordância com o tratamento de seus dados pessoais pelo Conselho Federal de Contabilidade, bem como o compartilhamento destes com os Conselhos Regionais, para fins de registro e fiscalização nos termos do Art. 12 do Decreto Lei nº 9.295, de 27 de maio de 1946, alterado pela Lei nº 12.249/2010."
+      },
+      {
+        "item": "3.23",
+        "texto": "A qualquer tempo, poder-se-ão anular a inscrição, as provas e a aprovação do examinando, desde que verificada falsidade em qualquer declaração e/ou irregularidade nas provas e/ou em informações fornecidas, garantido o direito ao contraditório e à ampla defesa."
+      },
+      {
+        "item": "3.24",
+        "texto": "No caso de informações falsas, o examinando será considerado como “não aprovado”, independentemente da pontuação obtida no Exame."
+      },
+      {
+        "item": "3.25",
+        "texto": "Ficam assegurados às pessoas transexuais e travestis, o direito à identificação por meio do seu nome social e o direito à escolha de tratamento nominal. Entende-se por nome social aquele pelo qual travestis e transexuais se reconhecem, bem como são identificadas por sua comunidade e em seu meio social. O(a) examinando(a) poderá informar o seu nome social através de requerimento via correio eletrônico examecfc@fgv.br até a data de 24 de março de 2026."
+      },
+      {
+        "item": "3.26",
+        "texto": "O requerimento deve ser assinado e encaminhado juntamente com cópia simples do documento oficial de identidade do examinando, por meio do correio eletrônico examecfc@fgv.br."
+      },
+      {
+        "item": "3.27",
+        "texto": "Não serão aceitas outras formas de solicitação de nome social, tais como: via postal, telefone ou fax. A FGV e o CFC reservam-se o direito de exigir, a qualquer tempo, documentos que atestem a condição que motiva a solicitação de atendimento declarado."
+      },
+      {
+        "item": "3.28",
+        "texto": "O Cartão de Confirmação de Inscrição (CCI) e o documento oficial de identificação pessoal deverão ser apresentados no dia e no local de realização das provas."
+      },
+      {
+        "item": "3.29",
+        "texto": "As inscrições efetuadas somente serão efetivadas após a comprovação de pagamento da taxa de inscrição ou o deferimento da solicitação de isenção."
+      },
+      {
+        "item": "3.30",
+        "texto": "É vedada a transferência do valor pago a título de taxa de inscrição para terceiros ou para outra inscrição, assim como a transferência da inscrição para outros exames."
+      },
+      {
+        "item": "3.31",
+        "texto": "É vedada a devolução do valor recolhido, em qualquer hipótese e sob qualquer argumento."
+      },
+      {
+        "item": "3.32",
+        "texto": "Não serão aceitos como comprovação de pagamento de taxa de inscrição comprovante de agendamento bancário ou extrato bancário."
+      },
+      {
+        "item": "3.33",
+        "texto": "Considera-se, para todos os efeitos, nula a inscrição:",
+        "subitens": [
+          {
+            "letra": "a",
+            "texto": "efetuada com dado comprovadamente falso ou incorreto;"
+          },
+          {
+            "letra": "b",
+            "texto": "efetuada por aquele que não esteja enquadrado no item 1.4 deste Edital;"
+          },
+          {
+            "letra": "c",
+            "texto": "cujo pagamento ocorra em data posterior à data de vencimento do boleto;"
+          },
+          {
+            "letra": "d",
+            "texto": "quando em desacordo com qualquer requisito deste edital; e"
+          },
+          {
+            "letra": "e",
+            "texto": "quando constatada fraude e/ou falsificação de documentação ou boleto bancário."
+          }
+        ]
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}

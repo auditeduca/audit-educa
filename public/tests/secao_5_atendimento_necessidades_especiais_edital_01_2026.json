@@ -1,0 +1,89 @@
+{
+  "secao": {
+    "numero": 5,
+    "titulo": "DO ATENDIMENTO AOS EXAMINANDOS COM NECESSIDADES ESPECIAIS",
+    "itens": [
+      {
+        "item": "5.1",
+        "texto": "O examinando que necessitar de atendimento especial para a realização da prova deverá indicar, no requerimento de inscrição, os recursos especiais necessários e, ainda, enviar (upload) documentação comprobatória por meio de link específico nesse requerimento, até o dia 24 de março de 2026, mediante laudo médico (imagem do documento original, da cópia autenticada em cartório ou da cópia simples) que justifique o atendimento especial solicitado. Após esse período, a solicitação será indeferida, salvo nos casos de força maior. A solicitação de condições especiais será atendida segundo critérios de viabilidade e de razoabilidade."
+      },
+      {
+        "item": "5.1.1",
+        "texto": "A concessão de sala individual, realização de prova em meio eletrônico e tempo adicional para a realização das provas somente serão deferidos em caso de deficiência ou doença que justifiquem tais condições especiais, e, ainda, caso tal recomendação seja decorrente de orientação médica específica contida no laudo médico enviado pelo examinando nos moldes do item 5.1 deste Edital. Em nome da isonomia entre os examinandos, por padrão, será concedida 1 (uma) hora adicional a examinandos que tiverem deferido o pedido de tempo adicional."
+      },
+      {
+        "item": "5.1.2",
+        "texto": "Somente serão aceitos os documentos enviados nos formatos PDF, JPEG e JPG, cujo tamanho não exceda 5 MB. O examinando deverá observar as demais orientações contidas no link de inscrição para efetuar o envio da documentação."
+      },
+      {
+        "item": "5.1.3",
+        "texto": "Nos casos de força maior, em que seja necessário solicitar atendimento especial após a data de 24 de março de 2026, o examinando deverá enviar solicitação de atendimento especial via correio eletrônico (examecfc@fgv.br), juntamente com cópia digitalizada do laudo médico que justifique o pedido, especificando os recursos especiais necessários. O examinando nesta situação deverá comparecer ao local de provas portando o laudo médico (original ou cópia autenticada), o qual será retido."
+      },
+      {
+        "item": "5.1.4",
+        "texto": "A concessão de tempo adicional para a realização das provas somente será deferida caso tal recomendação seja decorrente de orientação médica específica contida no laudo médico enviado pelo examinando."
+      },
+      {
+        "item": "5.1.5",
+        "texto": "O fornecimento do laudo médico ou do parecer emitido por profissional de saúde (original, cópia autenticada ou cópia simples) é de responsabilidade exclusiva do examinando. O CFC e a FGV não se responsabilizarão por laudos médicos ou pareceres que não tenham sido recebidos, por fatores de ordem técnica dos computadores, os quais impossibilitem a transferência dos dados e/ou causem falhas de comunicação ou congestionamento das linhas de transmissão de dados."
+      },
+      {
+        "item": "5.1.6",
+        "texto": "A FGV reserva-se o direito de negar a concessão do atendimento especial ao examinando que não entregar o laudo médico na forma especificada neste Edital, em nome da isonomia e segurança do Exame."
+      },
+      {
+        "item": "5.2",
+        "texto": "De acordo com a Lei nº 13.872/2019, fica assegurado à mãe o direito de amamentar seus filhos de até 6 (seis) meses de idade durante a realização das provas. Para garantir seu direito, a examinanda deverá solicitar atendimento especial para tal fim e enviar, através de campo específico no link de inscrição, a cópia digitalizada da certidão de nascimento. Caso o nascimento ocorra após essa data, o atendimento especial deverá ser solicitado através do endereço eletrônico examecfc@fgv.br."
+      },
+      {
+        "item": "5.2.1",
+        "texto": "A lactante deverá levar a certidão de nascimento original, ou em cópia autenticada, no dia da prova. O alimentando deverá estar com um acompanhante (adulto), que ficará em sala reservada e será o responsável pela guarda da criança. A candidata que não levar acompanhante adulto não poderá permanecer com a criança no local de realização das provas."
+      },
+      {
+        "item": "5.2.2",
+        "texto": "Deferida a solicitação de que trata o item 5.2, a mãe deverá, no dia das provas, levar um acompanhante, maior de 18 anos, que será a responsável pela guarda da criança durante o período necessário."
+      },
+      {
+        "item": "5.2.3",
+        "texto": "A pessoa acompanhante somente terá acesso ao local das provas até o horário estabelecido para fechamento dos portões e ficará com a criança em sala reservada para essa finalidade, próxima ao local de aplicação das provas. Aplicam-se ao acompanhante as mesmas proibições de uso de aparelhos celulares, eletrônicos e similares, aplicadas aos Examinandos."
+      },
+      {
+        "item": "5.2.4",
+        "texto": "A amamentação será permitida por períodos de até 30 minutos (por criança), em cada intervalo de 2h (duas horas) e com acompanhamento de uma fiscal, devendo a(s) lactante(s) ser(em) deslocada(s) da sala de prova para o local destinado à amamentação. O tempo despendido na amamentação será compensado durante a realização da prova, em igual período, no máximo em até 1 (uma) hora."
+      },
+      {
+        "item": "5.2.5",
+        "texto": "A fim de possibilitar melhor controle do fluxo de pessoas e do tempo adicional concedido às lactantes, eventualmente a FGV poderá alocar as lactantes em uma mesma sala de prova."
+      },
+      {
+        "item": "5.2.6",
+        "texto": "A Fundação Getulio Vargas e o CFC não disponibilizarão, em nenhuma hipótese, acompanhante para a guarda de criança."
+      },
+      {
+        "item": "5.3",
+        "texto": "Será divulgada no endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1 a relação de examinandos que tiverem deferidos ou indeferidos os pedidos de atendimento especial para a realização das provas."
+      },
+      {
+        "item": "5.3.1",
+        "texto": "O examinando cujo pedido de atendimento especial for indeferido poderá interpor recurso no prazo de 2 (dois) dias úteis, a contar do primeiro dia útil subsequente ao da divulgação do resultado da análise dos pedidos, mediante requerimento dirigido à FGV pelo endereço eletrônico https://conhecimento.fgv.br/exames/cfc/2026.1."
+      },
+      {
+        "item": "5.4",
+        "texto": "Portadores de doenças infectocontagiosas que não tiverem comunicado o fato à FGV, por inexistir a doença na data-limite referida, deverão fazê-lo via correio eletrônico (examecfc@fgv.br), tão logo a condição seja diagnosticada, de acordo com o item 5.1.1. Os examinandos nessa situação, quando da realização das provas, deverão se identificar ao fiscal no portão de entrada, munidos de laudo médico, tendo direito a atendimento especial."
+      },
+      {
+        "item": "5.4.1",
+        "texto": "O item acima não se aplica aos casos de COVID-19, devendo os examinandos diagnosticados positivamente cumprirem o prazo previsto para isolamento conforme a legislação vigente."
+      },
+      {
+        "item": "5.5",
+        "texto": "Considerando a possibilidade de os examinandos serem submetidos à detecção de metais durante as provas, aqueles que, por razões de saúde, façam uso de marca-passo, pinos cirúrgicos ou outros instrumentos metálicos deverão comunicar a situação à FGV, previamente, nos moldes do item 5.1 deste Edital. Esses examinandos deverão, ainda, comparecer ao local de provas munidos dos exames e laudos que comprovem o uso de tais equipamentos."
+      }
+    ]
+  },
+  "metadados": {
+    "edital": "Nº 01/2026",
+    "fonte": "Edital oficial CFC/FGV - Exame de Suficiência n° 1/2026",
+    "link_oficial": "https://conhecimento.fgv.br/sites/default/files/concursos/cfc-edital-2026.1-versao-final.pdf"
+  }
+}
