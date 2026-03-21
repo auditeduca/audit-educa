@@ -16,7 +16,7 @@ import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
 import CurriculoHome from './pages/curriculo/Home';
 import ResumeWizard from './pages/curriculo/ResumeWizard';
 import Contingencias from './pages/contingencias/Contingencias';
-import Fornecedores from './pages/fornecedores/Fornecedores';
+import Fornecedores from './pages/fornecedores/fornecedores';
 import Imobilizado from './pages/imobilizado/Imobilizado';
 import ContasAReceber from './pages/clientes/contas-a-receber';
 import CaixaEquivalentes from './pages/caixa-e-bancos/caixa-e-equivalentes';
