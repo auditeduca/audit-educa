@@ -1,76 +1,98 @@
 /**
  * AUDITEDUCA - ANALYZE ENGINE (VERCEL SERVERLESS)
- * Versão: 1.0.1 - Gatilho de Redeploy Automático
- * Este arquivo deve ser salvo em: C:\GitHub\audit-educa\api\analyze.js
+ * Versão: 1.0.2 - Fix CommonJS + Groq SDK
+ * Caminho: /api/analyze.js (raiz do repo)
  */
 
-import Groq from 'groq-sdk';
+const Groq = require('groq-sdk').default || require('groq-sdk');
 
-// Inicialização segura da Groq
-const getGroqClient = () => {
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) {
-    throw new Error("ERRO DE CONFIGURAÇÃO: A variável GROQ_API_KEY não foi encontrada no ambiente da Vercel.");
-  }
-  return new Groq({ apiKey });
-};
+// Handler principal
+module.exports = async (req, res) => {
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', process.env.VERCEL_URL || '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-export default async function handler(req, res) {
-  // 1. Configuração de CORS para permitir que o seu frontend fale com a API
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
-
+  // Preflight
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return res.status(200).end();
   }
 
+  // Validar método
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: "Método não permitido. Use POST." });
+    return res.status(405).json({ error: 'Apenas POST permitido' });
   }
 
   try {
+    // Validar chave
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      console.error('❌ GROQ_API_KEY não encontrada');
+      return res.status(500).json({
+        error: 'Configuração ausente',
+        details: 'GROQ_API_KEY não definida na Vercel'
+      });
+    }
+
+    // Inicializar Groq
+    const groq = new Groq({ apiKey });
+
+    // Validar request
     const { context, userMessage, documents } = req.body;
-    const groq = getGroqClient();
+    if (!context || !userMessage) {
+      return res.status(400).json({
+        error: 'Parâmetros obrigatórios ausentes',
+        required: ['context', 'userMessage']
+      });
+    }
 
-    const systemPrompt = `
-      Você é o Revisor Sênior Agêntico do Laboratório Auditeduca.
-      Especialista em auditoria externa (CPC/IFRS).
-      
-      DIRETRIZES:
-      1. Identifique riscos de distorção relevante.
-      2. Mantenha o padrão Navy & Gold de excelência.
-      3. Responda APENAS em JSON estruturado.
-    `;
+    // System prompt
+    const systemPrompt = `Você é o Revisor Sênior Agêntico do Laboratório Auditeduca.
+Especialista em auditoria externa (CPC/IFRS).
 
+DIRETRIZES:
+1. Identifique riscos de distorção relevante.
+2. Mantenha o padrão Navy & Gold de excelência.
+3. Responda APENAS em JSON estruturado com fields: analysis, risks, recommendations.`;
+
+    // Chamar Groq
     const completion = await groq.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
       messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: `Caso: ${context}. Mensagem: ${userMessage}. Docs: ${JSON.stringify(documents || [])}` }
+        { role: 'system', content: systemPrompt },
+        {
+          role: 'user',
+          content: `Contexto: ${context}\n\nMensagem: ${userMessage}\n\nDocumentos: ${JSON.stringify(documents || [])}`
+        }
       ],
-      model: "llama-3.3-70b-versatile",
       temperature: 0.2,
-      response_format: { type: "json_object" }
+      max_tokens: 2048,
+      response_format: { type: 'json_object' }
     });
 
-    const result = JSON.parse(completion.choices[0].message.content);
-    
-    // Retorno de sucesso
-    return res.status(200).json(result);
+    // Parse resposta
+    const responseText = completion.choices[0]?.message?.content;
+    if (!responseText) {
+      throw new Error('Resposta vazia do Groq');
+    }
 
+    const result = JSON.parse(responseText);
+
+    return res.status(200).json({
+      success: true,
+      data: result,
+      timestamp: new Date().toISOString()
+    });
   } catch (error) {
-    console.error("LOG DE ERRO AUDITEDUCA:", error.message);
-    
-    // Retorno detalhado para ajudar no Debug
-    return res.status(500).json({ 
-      error: "Falha no processamento da IA", 
-      details: error.message,
-      tip: "A chave GROQ_API_KEY pode estar ausente ou o build atual ainda não a reconheceu."
+    console.error('🔴 ERRO AUDITEDUCA:', error);
+
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Falha no processamento',
+      type: error.name,
+      // Remove em produção:
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
-}
+};
