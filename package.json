@@ -2,14 +2,13 @@
   "name": "audit-educa",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "vercel-build": "vite build",
-    "start": "vercel dev",
-    "agent-test": "node api/analyze.js"
+    "test-api": "node api/test-analyze.js",
+    "start": "npm run dev"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.8",
@@ -57,7 +56,7 @@
     "postcss": "^8.5.8",
     "tailwindcss": "^3.4.19",
     "terser": "^5.46.1",
-    "vite": "^5.1.4",
-    "vercel": "^39.2.4"
+    "vercel": "^39.2.4",
+    "vite": "^5.1.4"
   }
 }

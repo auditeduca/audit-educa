@@ -2,6 +2,8 @@
   "version": 2,
   "name": "auditeduca-agentic-lab",
   "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -13,9 +15,15 @@
     }
   ],
   "functions": {
-    "api/*.js": {
-      "maxDuration": 10,
-      "memory": 1024
+    "api/analyze.js": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 30,
+      "memory": 1024,
+      "includeFiles": ".env"
     }
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "GROQ_API_KEY": "@groq_api_key"
   }
 }
