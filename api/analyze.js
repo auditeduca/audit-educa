@@ -1,65 +1,71 @@
 import { Groq } from 'groq-sdk';
 
 /**
- * AGENTE DE AUDITORIA COM LOGS DE DEPURAÇÃO
- * Este arquivo deve estar em /api/analyze.js
+ * BACKEND DO AUDITEDUCA - SERVERLESS FUNCTION
+ * Este arquivo processa as requisições de auditoria usando o Llama 3.3 via Groq.
  */
 
 export default async function handler(req, res) {
-    // Configurações de CORS
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+  // Configuração de CORS para permitir chamadas do Frontend na Vercel
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-    if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
 
-    // 1. Verificação de Segurança da Chave
-    const apiKey = process.env.GROQ_API_KEY;
-    
-    if (!apiKey) {
-        console.error("[ERRO CRÍTICO] GROQ_API_KEY não encontrada nas variáveis de ambiente da Vercel.");
-        return res.status(500).json({ 
-            error: "Configuração incompleta", 
-            details: "A chave de API do Groq não foi configurada no painel da Vercel." 
-        });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Método não permitido' });
+  }
 
-    const groq = new Groq({ apiKey });
+  const { context, userMessage } = req.body;
+  const apiKey = process.env.GROQ_API_KEY;
 
-    try {
-        const { context, documents, userMessage } = req.body;
+  if (!apiKey) {
+    return res.status(500).json({ 
+      analise: "ERRO DE CONFIGURAÇÃO: A chave GROQ_API_KEY não foi encontrada no ambiente da Vercel.",
+      pergunta_socrata: "Por favor, verifique as variáveis de ambiente no painel da Vercel."
+    });
+  }
 
-        const completion = await groq.chat.completions.create({
-            messages: [
-                {
-                    role: "system",
-                    content: "Você é um Auditor Sênior Agêntico. Responda APENAS em JSON."
-                },
-                {
-                    role: "user",
-                    content: `Contexto: ${context}. Mensagem: ${userMessage}`
-                }
-            ],
-            model: "llama-3.3-70b-versatile",
-            response_format: { type: "json_object" },
-            temperature: 0.2,
-        });
+  const groq = new Groq({ apiKey });
 
-        const result = JSON.parse(completion.choices[0].message.content);
-        return res.status(200).json(result);
-
-    } catch (error) {
-        console.error("[ERRO NA API GROQ]:", error.message);
-        
-        // Trata especificamente o erro de limite de cota ou chave inválida
-        if (error.status === 401) {
-            return res.status(500).json({ error: "Chave de API inválida." });
+  try {
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: `Você é o Auditor Sênior do Laboratório Auditeduca. 
+          Seu objetivo é desafiar o aluno a pensar com ceticismo profissional sobre casos de auditoria (Cut-off, Estoques, etc).
+          Diretrizes:
+          1. Nunca dê a resposta de bandeja.
+          2. Use referências a normas (CPC/IFRS).
+          3. Avalie o ceticismo do aluno de 0 a 100.
+          
+          Responda OBRIGATORIAMENTE em JSON:
+          { "analise": "string", "ceticismo_score": number, "pergunta_socrata": "string" }`
+        },
+        {
+          role: "user",
+          content: `Caso Atual: ${context}. Mensagem do Aluno: ${userMessage}`
         }
+      ],
+      model: "llama-3.3-70b-versatile",
+      response_format: { type: "json_object" },
+      temperature: 0.3
+    });
 
-        return res.status(500).json({ 
-            error: "Falha no processamento agêntico", 
-            details: error.message 
-        });
-    }
+    const result = JSON.parse(chatCompletion.choices[0].message.content);
+    return res.status(200).json(result);
+
+  } catch (error) {
+    console.error("Erro no processamento da IA:", error);
+    return res.status(500).json({ 
+      analise: "Ocorreu um erro no motor de raciocínio FinLLM.",
+      pergunta_socrata: "Você poderia tentar reformular sua dúvida técnica?"
+    });
+  }
 }

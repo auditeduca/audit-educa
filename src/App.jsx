@@ -38,6 +38,7 @@ import RecursosAssistivos from './pages/recursos-assistivos';
 import TemplatesHub from './pages/templates/TemplatesHub';
 import RelatorioInstitucional from './pages/RelatorioInstitucional';
 import ConversorDeMoedas from './pages/moedas/CalculadoraMoedas';
+import AuditLab from './pages/IAGEN';
 
 // Componente global de acessibilidade
 import AccessibilityWidget from './components/AccessibilityWidget';
@@ -79,6 +80,7 @@ function App() {
         <Route path="/recursos-assistivos" element={<RecursosAssistivos />} />
         <Route path="/relatorio-institucional" element={<RelatorioInstitucional />} />
         <Route path="/conversor-de-moedas" element={<ConversorDeMoedas />} />
+        <Route path="/IAGEN" element={<AuditLab />} />
       </Routes>
       <AccessibilityWidget />
       <Toast />
