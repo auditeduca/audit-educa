@@ -1,5 +1,6 @@
 /**
  * AUDITEDUCA - ANALYZE ENGINE (VERCEL SERVERLESS)
+ * Versão: 1.0.1 - Gatilho de Redeploy Automático
  * Este arquivo deve ser salvo em: C:\GitHub\audit-educa\api\analyze.js
  */
 
@@ -69,7 +70,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ 
       error: "Falha no processamento da IA", 
       details: error.message,
-      tip: "Verifique se a GROQ_API_KEY foi adicionada nas Settings da Vercel e se você fez o Redeploy."
+      tip: "A chave GROQ_API_KEY pode estar ausente ou o build atual ainda não a reconheceu."
     });
   }
 }
