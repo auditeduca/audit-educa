@@ -1,0 +1,33 @@
+{
+  "header": {
+    "tools": [
+      { "label": "Calculadoras", "to": "/calculadoras" },
+      { "label": "Juros Simples", "to": "/calculadora-juros-simples" },
+      { "label": "Salário Líquido", "to": "/calculadora-de-salario-liquido" },
+      { "label": "Férias", "to": "/calculadora-de-ferias" },
+      { "label": "Conversor de Moedas", "to": "/conversor-de-moedas" },
+      { "label": "Exame CFC", "to": "/exame-suficiencia" },
+      { "label": "Templates Pro", "to": "/templates-pro" }
+    ]
+  },
+  "footer": {
+    "institutional": [
+      { "label": "Sobre Nós", "to": "/sobre-nos" },
+      { "label": "Políticas do Site", "to": "/politica-de-privacidade" },
+      { "label": "Mapa do Site", "to": "/mapa-do-site" }
+    ],
+    "accessibility": [
+      { "label": "Política de Acessibilidade", "to": "/politica-de-acessibilidade" },
+      { "label": "Recursos Assistivos", "to": "/recursos-assistivos" }
+    ],
+    "esg": [
+      { "label": "Nosso Compromisso", "to": "/nosso-compromisso" },
+      { "label": "Pegada de Carbono", "to": "/pegada-de-carbono" },
+      { "label": "Tecnologia Verde", "to": "/tecnologia-verde" }
+    ]
+  },
+  "homeCta": {
+    "primary": { "label": "Explorar Calculadoras", "to": "/calculadoras" },
+    "secondary": { "label": "Exame de Suficiência", "to": "/exame-suficiencia" }
+  }
+}

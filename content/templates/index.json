@@ -1,0 +1,294 @@
+{
+  "templates": [
+    {
+      "id": "email-signature",
+      "name": "📧 Assinatura de E-mail",
+      "description": "Template profissional para assinatura de e-mails",
+      "category": "Comunicação",
+      "variables": [
+        "name",
+        "title",
+        "company",
+        "phone",
+        "email"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/email-signature.js",
+      "thumbnail": "/assets/thumbnails/templates/email-signature.webp"
+    },
+    {
+      "id": "proposal",
+      "name": "📄 Proposta Comercial",
+      "description": "Template de proposta para envio por e-mail",
+      "category": "Documentos",
+      "variables": [
+        "clientName",
+        "serviceDescription",
+        "methodology"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/proposal.js",
+      "thumbnail": "/assets/thumbnails/templates/proposal.webp"
+    },
+    {
+      "id": "business-card-print",
+      "name": "🎫 Cartão de Visitas (Impressão)",
+      "description": "Cartão profissional para impressão - 90x50mm",
+      "category": "Materiais",
+      "variables": [
+        "name",
+        "title",
+        "phone",
+        "email"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/business-card-print.js",
+      "thumbnail": "/assets/thumbnails/templates/business-card-print.webp"
+    },
+    {
+      "id": "business-card-virtual",
+      "name": "💼 Cartão de Visitas Virtual",
+      "description": "Cartão digital para compartilhamento online",
+      "category": "Digital",
+      "variables": [
+        "name",
+        "title",
+        "phone",
+        "email",
+        "website",
+        "company"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/business-card-virtual.js",
+      "thumbnail": "/assets/thumbnails/templates/business-card-virtual.webp"
+    },
+    {
+      "id": "letterhead",
+      "name": "📋 Papel Timbrado",
+      "description": "Template de papel timbrado para documentos",
+      "category": "Documentos",
+      "variables": [
+        "companyName",
+        "address",
+        "phone",
+        "email",
+        "content",
+        "footerText"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/letterhead.js",
+      "thumbnail": "/assets/thumbnails/templates/letterhead.webp"
+    },
+    {
+      "id": "report-cover",
+      "name": "📊 Capa de Relatório",
+      "description": "Capa profissional para relatórios",
+      "category": "Documentos",
+      "variables": [
+        "reportTitle",
+        "reportSubtitle",
+        "author",
+        "date",
+        "company"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/report-cover.js",
+      "thumbnail": "/assets/thumbnails/templates/report-cover.webp"
+    },
+    {
+      "id": "nda",
+      "name": "🔒 NDA - Acordo de Confidencialidade",
+      "description": "Acordo de Não Divulgação profissional",
+      "category": "Contratos",
+      "variables": [
+        "disclosingParty",
+        "personType",
+        "address",
+        "receivingParty",
+        "receiverType",
+        "receiverAddress",
+        "duration",
+        "location",
+        "date"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/nda.js",
+      "thumbnail": "/assets/thumbnails/templates/nda.webp"
+    },
+    {
+      "id": "service-contract",
+      "name": "📝 Contrato de Prestação de Serviço",
+      "description": "Contrato profissional para serviços",
+      "category": "Contratos",
+      "variables": [
+        "clientName",
+        "companyName",
+        "serviceDescription",
+        "totalValue",
+        "paymentMethod",
+        "paymentTerms",
+        "startDate",
+        "endDate",
+        "terminationNotice",
+        "location",
+        "date"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/service-contract.js",
+      "thumbnail": "/assets/thumbnails/templates/service-contract.webp"
+    },
+    {
+      "id": "audit-report",
+      "name": "🔍 Relatório de Auditoria Financeira",
+      "description": "Relatório profissional de auditoria",
+      "category": "Relatórios",
+      "variables": [
+        "fiscalYear",
+        "companyName",
+        "auditScope",
+        "findings",
+        "conclusions",
+        "recommendations",
+        "location",
+        "date",
+        "auditorName",
+        "clientName"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/audit-report.js",
+      "thumbnail": "/assets/thumbnails/templates/audit-report.webp"
+    },
+    {
+      "id": "final-report",
+      "name": "📑 Relatório Final de Consultoria",
+      "description": "Relatório completo de consultoria",
+      "category": "Relatórios",
+      "variables": [
+        "projectName",
+        "executiveSummary",
+        "projectObjectives",
+        "methodology",
+        "activitiesPerformed",
+        "results",
+        "recommendations",
+        "conclusions",
+        "location",
+        "date",
+        "consultantName",
+        "clientName"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/final-report.js",
+      "thumbnail": "/assets/thumbnails/templates/final-report.webp"
+    },
+    {
+      "id": "presentation",
+      "name": "🎯 Apresentação/PPT",
+      "description": "Template de apresentação em HTML",
+      "category": "Apresentações",
+      "variables": [
+        "presentationTitle",
+        "presentationSubtitle",
+        "topic1",
+        "topic2",
+        "topic3",
+        "topic4",
+        "presenterName",
+        "presenterTitle",
+        "companyName",
+        "date"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/presentation.js",
+      "thumbnail": "/assets/thumbnails/templates/presentation.webp"
+    },
+    {
+      "id": "accounting-proposal",
+      "name": "💰 Proposta de Serviços Contábeis",
+      "description": "Proposta específica para serviços contábeis",
+      "category": "Documentos",
+      "variables": [
+        "clientName",
+        "date",
+        "validity",
+        "additionalServices",
+        "monthlyValue",
+        "totalMonthly",
+        "paymentTerms",
+        "deadlines",
+        "observations",
+        "location",
+        "consultantName"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/accounting-proposal.js",
+      "thumbnail": "/assets/thumbnails/templates/accounting-proposal.webp"
+    },
+    {
+      "id": "project-charter",
+      "name": "🎯 Termo de Abertura de Projeto",
+      "description": "Documento de abertura formal de projeto",
+      "category": "Projetos",
+      "variables": [
+        "projectName",
+        "projectManager",
+        "sponsor",
+        "startDate",
+        "justification",
+        "objectives",
+        "scope",
+        "constraints",
+        "assumptions",
+        "budget",
+        "schedule",
+        "location",
+        "date"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/project-charter.js",
+      "thumbnail": "/assets/thumbnails/templates/project-charter.webp"
+    },
+    {
+      "id": "technical-opinion",
+      "name": "📋 Parecer Técnico",
+      "description": "Parecer técnico profissional",
+      "category": "Documentos",
+      "variables": [
+        "requester",
+        "subject",
+        "date",
+        "opinionNumber",
+        "introduction",
+        "technicalAnalysis",
+        "considerations",
+        "conclusion",
+        "recommendations",
+        "location",
+        "expertName",
+        "expertTitle",
+        "expertCredentials"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/technical-opinion.js",
+      "thumbnail": "/assets/thumbnails/templates/technical-opinion.webp"
+    },
+    {
+      "id": "proposta-comercial-asc",
+      "name": "📄 Proposta Comercial ASC",
+      "description": "Template profissional para propostas de serviços de consultoria e auditoria",
+      "category": "Documentos",
+      "variables": [
+        "clienteNome",
+        "introducao",
+        "servico",
+        "valor",
+        "prazo",
+        "corpoAdicional",
+        "emailContato",
+        "consultorNome",
+        "consultorTitulo",
+        "empresa"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/proposta-comercial-asc.js",
+      "thumbnail": "/assets/thumbnails/templates/proposta-comercial-asc.webp"
+    },
+    {
+      "id": "proposta-motherson",
+      "name": "📊 Proposta de Consultoria - Grupo Motherson",
+      "description": "Proposta de serviços de consultoria contábil permanente para empresas do Grupo Motherson (SMP, SMRC, Baldi)",
+      "category": "Documentos",
+      "variables": [
+        "ano",
+        "dataMemorando"
+      ],
+      "sourceModule": "src/pages/templates/data/templates/proposta-motherson.js",
+      "thumbnail": "/assets/thumbnails/templates/proposta-motherson.webp"
+    }
+  ]
+}

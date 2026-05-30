@@ -1,0 +1,19 @@
+{
+  "id": "salario-liquido",
+  "slug": "/calculadora-de-salario-liquido",
+  "title": "Calculadora de Salário Líquido",
+  "description": "Estimativa de salário líquido com INSS e IRRF simplificados.",
+  "category": "trabalhista",
+  "norms": ["CLT", "Tabelas 2026"],
+  "formulaType": "salario-liquido",
+  "tableRef": "content/calculators/tables/inss-2026.json",
+  "inputs": [
+    { "id": "gross", "label": "Salário bruto (R$)", "type": "currency", "default": 5000, "min": 0 },
+    { "id": "dependents", "label": "Dependentes IRRF", "type": "number", "default": 0, "min": 0 }
+  ],
+  "outputs": [
+    { "id": "inss", "label": "INSS", "format": "currency" },
+    { "id": "irrf", "label": "IRRF", "format": "currency" },
+    { "id": "net", "label": "Salário líquido", "format": "currency" }
+  ]
+}

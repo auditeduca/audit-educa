@@ -127,7 +127,7 @@ export default function Busca() {
       {/* Sidebar esquerda (ferramentas) */}
       <aside className="sidebar-left-tools no-print" aria-label="Ferramentas Laterais">
         <Link to="/" className="tool-btn" title="Home"><i className="fas fa-home"></i></Link>
-        <Link to="/institucional" className="tool-btn" title="Institucional"><i className="fas fa-building"></i></Link>
+        <Link to="/sobre-nos" className="tool-btn" title="Institucional"><i className="fas fa-building"></i></Link>
         <button onClick={clearSearch} className="tool-btn" title="Limpar">
           <i className="fas fa-eraser text-audit-blue"></i>
         </button>
@@ -244,7 +244,7 @@ export default function Busca() {
                   Não encontrou a norma ou política desejada? Entre em contato com nosso suporte regulatório.
                 </p>
                 <Link
-                  to="/contato"
+                  to="/fale-conosco"
                   className="block w-full p-3 bg-audit-gold text-audit-navy font-bold text-center text-[10px] uppercase tracking-widest rounded-lg hover:bg-yellow-500 transition"
                 >
                   Falar Conosco

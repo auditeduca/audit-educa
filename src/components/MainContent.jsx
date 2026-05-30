@@ -1,3 +1,4 @@
+/** @deprecated Use home.jsx with content/pages/home.json */
 import React from 'react';
 import Sidebar from './Sidebar';
 

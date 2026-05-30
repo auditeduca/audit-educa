@@ -1,0 +1,181 @@
+{
+  "slug": "home",
+  "title": "Audit Educa",
+  "sections": [
+    {
+      "id": "interna",
+      "type": "articles",
+      "topic": "interna",
+      "eyebrow": "Hot Topic",
+      "icon": "fa-shield-alt",
+      "title": "Auditoria Interna",
+      "items": [
+        {
+          "layout": "horizontal",
+          "category": "IPPF 2024 · IIA Global",
+          "categoryColor": "#1D4ED8",
+          "title": "IPPF Atualizado: as Novas Exigências de Competência",
+          "excerpt": "O IPPF revisado em 2024 eleva o padrão de competências técnicas e comportamentais.",
+          "meta": "9 min · Mar 2026",
+          "thumbnail": { "unsplashId": "1552664730-d307ca884978", "alt": "IPPF" },
+          "href": "/busca-e-conteudo?categoria=auditoria",
+          "status": "live"
+        },
+        {
+          "layout": "horizontal",
+          "category": "Auditoria Contínua · Data Analytics",
+          "categoryColor": "#065F46",
+          "title": "Auditoria Contínua com Power BI e Python",
+          "excerpt": "Monitore KPIs e exceções em tempo real integrando ERP, BI e scripts de validação.",
+          "meta": "7 min · Fev 2026",
+          "thumbnail": { "unsplashId": "1551288049-bebda4e38f71", "alt": "BI" },
+          "href": "/busca-e-conteudo?categoria=auditoria",
+          "status": "live"
+        }
+      ]
+    },
+    {
+      "id": "auditoria",
+      "type": "articles",
+      "topic": "auditoria",
+      "eyebrow": "Auditoria Externa",
+      "icon": "fa-search",
+      "title": "Auditoria Externa",
+      "items": [
+        {
+          "layout": "vertical",
+          "tag": "NBC TA · Materialidade",
+          "tagStyle": { "background": "rgba(29,78,216,.1)", "color": "#1D4ED8" },
+          "category": "NBC TA 320",
+          "categoryColor": "#1D4ED8",
+          "title": "Materialidade Revisitada: Guia Prático 2026",
+          "excerpt": "Como recalcular limiares com volatilidade de mercado e novos requisitos de divulgação.",
+          "meta": "12 min",
+          "thumbnail": { "unsplashId": "1454165804606-c3d57bc86b40", "alt": "Materialidade" },
+          "href": "/busca-e-conteudo?categoria=auditoria",
+          "status": "live"
+        },
+        {
+          "layout": "vertical",
+          "tag": "IFRS 9",
+          "tagStyle": { "background": "rgba(6,95,70,.1)", "color": "#065F46" },
+          "category": "IFRS 9",
+          "categoryColor": "#065F46",
+          "title": "Calculando a PECLD com Script Python",
+          "excerpt": "Implementação completa do modelo ECL com estimativas PD e LGD.",
+          "meta": "10 min",
+          "thumbnail": { "unsplashId": "1485827404703-89b55fcc595e", "alt": "PECLD" },
+          "href": "/calculadoras",
+          "status": "live"
+        },
+        {
+          "layout": "vertical",
+          "tag": "IA · Regulação",
+          "tagStyle": { "background": "rgba(29,78,216,.1)", "color": "#1D4ED8" },
+          "category": "CVM · IASB",
+          "categoryColor": "#1D4ED8",
+          "title": "O que Reguladores Dizem sobre IA",
+          "excerpt": "Análise comparada das posições regulatórias sobre uso de IA.",
+          "meta": "8 min",
+          "thumbnail": { "unsplashId": "1485827404703-89b55fcc595e", "alt": "Regulação" },
+          "href": "/busca-e-conteudo?categoria=esg",
+          "status": "live"
+        }
+      ]
+    },
+    {
+      "id": "ferramentas",
+      "type": "tools",
+      "topic": "ferramentas",
+      "eyebrow": "Plataforma SGG",
+      "icon": "fa-tools",
+      "title": "Ferramentas em Destaque",
+      "seeAllHref": "/ferramentas",
+      "items": [
+        {
+          "title": "Simulador Exame CFC",
+          "desc": "Acervo 2017–2026",
+          "norm": "CFC",
+          "icon": "fa-graduation-cap",
+          "thumbnail": { "unsplashId": "1611974789855-9c2a0a7236a3", "alt": "Exame" },
+          "href": "/exame-suficiencia",
+          "status": "live"
+        },
+        {
+          "title": "Calculadora IFRS 16 — Passivo e ROU",
+          "desc": "CPC 06(R2)",
+          "norm": "CPC 06(R2)",
+          "icon": "fa-building",
+          "thumbnail": { "unsplashId": "1486406146926-c627a92ad1ab", "alt": "IFRS 16" },
+          "href": "/calculadoras",
+          "status": "live"
+        },
+        {
+          "title": "Calculadora de Juros Compostos",
+          "desc": "Finanças",
+          "norm": "NBC TG",
+          "icon": "fa-chart-bar",
+          "thumbnail": { "unsplashId": "1543286386-713bdd548da4", "alt": "Juros" },
+          "href": "/calculadora-juros-compostos",
+          "status": "live"
+        },
+        {
+          "title": "Conversor de Moedas",
+          "desc": "Câmbio",
+          "norm": "IAS 21",
+          "icon": "fa-chart-line",
+          "thumbnail": { "unsplashId": "1460925895917-afdab827c52f", "alt": "Moedas" },
+          "href": "/conversor-de-moedas",
+          "status": "live"
+        }
+      ]
+    },
+    {
+      "id": "guias",
+      "type": "guides",
+      "topic": "guias",
+      "eyebrow": "Certificações & Qualificação",
+      "icon": "fa-graduation-cap",
+      "title": "Guias de Estudo",
+      "seeAllHref": "/exame-suficiencia",
+      "items": [
+        {
+          "num": "01",
+          "title": "Guia Completo QTG — Qualificação Técnica",
+          "meta": "6h estimado · CNAI · CFC",
+          "badge": "Essencial",
+          "badgeType": "key",
+          "href": "/exame-suficiencia",
+          "status": "live"
+        },
+        {
+          "num": "02",
+          "title": "Exame de Suficiência CFC — Acervo 2017–2025",
+          "meta": "4h estimado · CRC · NBC",
+          "badge": "Novo",
+          "badgeType": "new",
+          "href": "/exame-suficiencia",
+          "status": "live"
+        }
+      ]
+    }
+  ],
+  "sidebar": {
+    "trends": [
+      { "title": "IA Agêntica em Auditoria", "sub": "NBC TA 330" },
+      { "title": "NBC TA 600 Revisada", "sub": "Auditoria de Grupos" },
+      { "title": "IFRS S1 & S2 — ESG", "sub": "Sustentabilidade" }
+    ],
+    "market": [
+      { "label": "Taxa Selic", "value": "10.75%", "change": "-0.50 pp", "direction": "down" },
+      { "label": "IPCA (12m)", "value": "4.52%", "change": "+0.12 pp", "direction": "up" }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Auditoria Descomplicada",
+    "title": "Plataforma Aberta e Ferramentas Gratuitas!",
+    "subtitle": "O esforço técnico gerou resultados. Ferramentas sem cadastro, baseadas em normas reais para facilitar o dia a dia.",
+    "primary": { "label": "Explorar Calculadoras", "to": "/calculadoras" },
+    "secondary": { "label": "Exame de Suficiência", "to": "/exame-suficiencia" }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "integrations.schema.json",
+  "type": "object",
+  "required": ["gtm", "ga4", "firebase", "consent"],
+  "properties": {
+    "gtm": {
+      "type": "object",
+      "required": ["enabled", "containerId"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "containerId": { "type": "string", "pattern": "^GTM-" }
+      }
+    },
+    "ga4": {
+      "type": "object",
+      "required": ["enabled", "measurementId", "viaGtmOnly"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "measurementId": { "type": "string", "pattern": "^G-" },
+        "viaGtmOnly": { "type": "boolean" }
+      }
+    },
+    "firebase": {
+      "type": "object",
+      "required": ["enabled", "config"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "config": {
+          "type": "object",
+          "required": ["apiKey", "authDomain", "projectId", "storageBucket", "messagingSenderId", "appId"],
+          "properties": {
+            "apiKey": { "type": "string" },
+            "authDomain": { "type": "string" },
+            "projectId": { "type": "string" },
+            "storageBucket": { "type": "string" },
+            "messagingSenderId": { "type": "string" },
+            "appId": { "type": "string" }
+          }
+        }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "required": ["required", "defaultAnalytics"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "defaultAnalytics": { "type": "boolean" }
+      }
+    }
+  }
+}

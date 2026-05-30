@@ -452,7 +452,7 @@ export default function RecursosAssistivos() {
                   Páginas Relacionadas
                 </h3>
                 <div className="space-y-3">
-                  <Link to="/politica-acessibilidade" className="block p-3 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-transparent hover:border-blue-200">
+                  <Link to="/politica-de-acessibilidade" className="block p-3 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-transparent hover:border-blue-200">
                     <p className="font-semibold text-sm text-audit-navy">Política de Acessibilidade</p>
                     <p className="text-xs text-slate-600">WCAG 2.1 AAA</p>
                   </Link>

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "calculator.schema.json",
+  "type": "object",
+  "required": ["id", "slug", "title", "category", "inputs", "outputs"],
+  "properties": {
+    "id": { "type": "string" },
+    "slug": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": ["financeira", "trabalhista", "cambio"]
+    },
+    "norms": { "type": "array", "items": { "type": "string" } },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "type": { "type": "string", "enum": ["number", "currency", "percent", "select"] },
+          "default": { "type": "number" },
+          "min": { "type": "number" },
+          "step": { "type": "number" },
+          "options": { "type": "array" }
+        }
+      }
+    },
+    "formula": { "type": "string" },
+    "formulaType": {
+      "type": "string",
+      "enum": ["expression", "juros-simples", "juros-compostos", "desconto", "salario-liquido", "ferias", "custom"]
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "format": { "type": "string", "enum": ["currency", "percent", "number"] }
+        }
+      }
+    },
+    "tableRef": { "type": "string" }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "desconto",
+  "slug": "/calculadora-desconto",
+  "title": "Calculadora de Desconto Comercial",
+  "description": "Valor presente com taxa de desconto simples.",
+  "category": "financeira",
+  "norms": ["Matemática Financeira"],
+  "formulaType": "desconto",
+  "inputs": [
+    { "id": "faceValue", "label": "Valor nominal (R$)", "type": "currency", "default": 1000, "min": 0 },
+    { "id": "rate", "label": "Taxa de desconto (%)", "type": "percent", "default": 2, "min": 0 },
+    { "id": "periods", "label": "Períodos", "type": "number", "default": 1, "min": 1 }
+  ],
+  "outputs": [
+    { "id": "presentValue", "label": "Valor presente", "format": "currency" },
+    { "id": "discount", "label": "Desconto", "format": "currency" }
+  ]
+}

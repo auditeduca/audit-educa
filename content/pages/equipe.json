@@ -1,0 +1,33 @@
+{
+  "slug": "equipe",
+  "title": "Corpo Técnico e Consultores",
+  "themeColor": "audit-blue",
+  "breadcrumbs": [
+    { "label": "Home", "to": "/" },
+    { "label": "Institucional", "to": "/sobre-nos" },
+    { "label": "Equipe" }
+  ],
+  "hero": {
+    "eyebrow": "Institucional",
+    "title": "Corpo Técnico e Consultores",
+    "subtitle": "Profissionais com experiência em auditoria, contabilidade, compliance e tecnologia aplicada à educação técnica."
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "type": "prose",
+      "body": "O Audit Educa reúne especialistas em normas brasileiras e internacionais, focados em democratizar ferramentas e conteúdos de alta qualidade para estudantes e profissionais."
+    },
+    {
+      "id": "team",
+      "type": "grid",
+      "title": "Nossa Equipe",
+      "items": [
+        { "title": "Auditoria Externa", "desc": "NBC TA, ISA e IFRS" },
+        { "title": "Contabilidade", "desc": "NBC TG e CPC" },
+        { "title": "Compliance & ESG", "desc": "Governança e sustentabilidade" },
+        { "title": "Tecnologia", "desc": "Desenvolvimento e acessibilidade digital" }
+      ]
+    }
+  ]
+}

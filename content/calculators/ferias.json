@@ -1,0 +1,18 @@
+{
+  "id": "ferias",
+  "slug": "/calculadora-de-ferias",
+  "title": "Calculadora de Férias",
+  "description": "Estimativa de férias com adicional de 1/3.",
+  "category": "trabalhista",
+  "norms": ["CLT Art. 129"],
+  "formulaType": "ferias",
+  "inputs": [
+    { "id": "gross", "label": "Salário base (R$)", "type": "currency", "default": 5000, "min": 0 },
+    { "id": "days", "label": "Dias de férias", "type": "number", "default": 30, "min": 1, "max": 30 }
+  ],
+  "outputs": [
+    { "id": "vacationPay", "label": "Férias", "format": "currency" },
+    { "id": "third", "label": "1/3 constitucional", "format": "currency" },
+    { "id": "total", "label": "Total bruto férias", "format": "currency" }
+  ]
+}

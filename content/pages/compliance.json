@@ -1,0 +1,33 @@
+{
+  "slug": "compliance",
+  "title": "Programa de Compliance",
+  "themeColor": "audit-navy",
+  "breadcrumbs": [
+    { "label": "Home", "to": "/" },
+    { "label": "Institucional", "to": "/sobre-nos" },
+    { "label": "Compliance" }
+  ],
+  "hero": {
+    "eyebrow": "Transparência",
+    "title": "Programa de Compliance",
+    "subtitle": "Compromisso com integridade, ética e conformidade regulatória em todas as operações da plataforma."
+  },
+  "sections": [
+    {
+      "id": "programa",
+      "type": "prose",
+      "body": "Nosso programa de compliance orienta a conduta da equipe, parceiros e fornecedores, alinhado às melhores práticas de governança corporativa e proteção de dados (LGPD)."
+    },
+    {
+      "id": "pilares",
+      "type": "grid",
+      "title": "Pilares",
+      "items": [
+        { "title": "Ética", "desc": "Código de conduta e canal de denúncias" },
+        { "title": "Privacidade", "desc": "Tratamento de dados conforme LGPD" },
+        { "title": "Qualidade", "desc": "Revisão técnica de conteúdos e ferramentas" },
+        { "title": "Acessibilidade", "desc": "WCAG 2.2 e inclusão digital" }
+      ]
+    }
+  ]
+}

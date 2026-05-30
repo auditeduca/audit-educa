@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "route.schema.json",
+  "type": "object",
+  "required": ["routes"],
+  "properties": {
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "status"],
+        "properties": {
+          "path": { "type": "string", "pattern": "^/" },
+          "status": {
+            "type": "string",
+            "enum": ["live", "draft", "archived", "redirect"]
+          },
+          "component": { "type": "string" },
+          "redirectTo": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["home", "institutional", "tool", "calculator", "education", "legal", "esg", "redirect"]
+          },
+          "title": { "type": "string" },
+          "seo": {
+            "type": "object",
+            "properties": {
+              "description": { "type": "string" },
+              "keywords": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "layout": {
+            "type": "string",
+            "enum": ["default", "institutional", "calculator", "home", "tool"]
+          },
+          "contentFile": { "type": "string" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "live" } } },
+            "then": { "required": ["component"] }
+          },
+          {
+            "if": { "properties": { "status": { "const": "redirect" } } },
+            "then": { "required": ["redirectTo"] }
+          }
+        ]
+      }
+    }
+  }
+}

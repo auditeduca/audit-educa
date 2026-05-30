@@ -1,0 +1,32 @@
+{
+  "slug": "sustentabilidade",
+  "title": "Compromissos Ambientais",
+  "themeColor": "green-600",
+  "breadcrumbs": [
+    { "label": "Home", "to": "/" },
+    { "label": "ESG", "to": "/nosso-compromisso" },
+    { "label": "Sustentabilidade" }
+  ],
+  "hero": {
+    "eyebrow": "ESG Digital",
+    "title": "Compromissos Ambientais",
+    "subtitle": "Redução de pegada de carbono, tecnologia verde e relatórios de impacto digital."
+  },
+  "sections": [
+    {
+      "id": "compromissos",
+      "type": "prose",
+      "body": "Integramos práticas de sustentabilidade digital em nossa infraestrutura e conteúdos, com transparência sobre consumo energético e emissões estimadas."
+    },
+    {
+      "id": "links",
+      "type": "grid",
+      "title": "Saiba mais",
+      "items": [
+        { "title": "Tecnologia Verde", "desc": "Arquitetura sustentável", "href": "/tecnologia-verde" },
+        { "title": "Pegada de Carbono", "desc": "Métricas e metas", "href": "/pegada-de-carbono" },
+        { "title": "Relatório de Impacto", "desc": "Impacto digital", "href": "/relatorio-de-impacto" }
+      ]
+    }
+  ]
+}

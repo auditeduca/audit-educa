@@ -353,7 +353,7 @@ export default function SobreNos() {
 
                   <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-12 max-w-2xl font-light">
                     No <strong className="text-white font-semibold underline decoration-audit-gold/50 underline-offset-4">AuditEduca</strong>, acreditamos que a excelência técnica só é plena quando partilhada. Somos o ponto de encontro entre o rigor da norma e o dinamismo da prática. Oferecemos{' '}
-                    <Link to="/cursos-auditoria" className="text-audit-gold hover:underline">cursos de auditoria</Link>, conteúdos exclusivos e ferramentas que elevam o padrão profissional. Atuamos nas áreas de <strong>auditoria interna, compliance, governança corporativa, SOX e COSO</strong>, proporcionando capacitação profissional e treinamento em auditoria de ponta.
+                    <Link to="/busca-e-conteudo?categoria=auditoria" className="text-audit-gold hover:underline">cursos de auditoria</Link>, conteúdos exclusivos e ferramentas que elevam o padrão profissional. Atuamos nas áreas de <strong>auditoria interna, compliance, governança corporativa, SOX e COSO</strong>, proporcionando capacitação profissional e treinamento em auditoria de ponta.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-white/10">
@@ -395,7 +395,7 @@ export default function SobreNos() {
                 <p className="text-slate-600 leading-relaxed mb-4">{data.historia.texto}</p>
                 <p className="text-slate-600 leading-relaxed mb-4">
                   Com o objetivo de suprir a demanda por <strong>capacitação em auditoria interna</strong> e <strong>conformidade regulatória</strong>, a AuditEduca foi criada para oferecer <strong>treinamento em normas internacionais</strong> como <strong>SOX, COSO e controles internos</strong>. Desde então, impactamos <strong className="text-audit-navy">mais de 10.000 profissionais</strong> em todo o país, através de{' '}
-                  <Link to="/cursos-auditoria" className="text-audit-gold hover:underline">cursos</Link>, conteúdos gratuitos e ferramentas inovadoras.
+                  <Link to="/busca-e-conteudo?categoria=auditoria" className="text-audit-gold hover:underline">cursos</Link>, conteúdos gratuitos e ferramentas inovadoras.
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
                   {data.historia.impactos.map((stat, i) => (

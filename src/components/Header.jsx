@@ -243,7 +243,7 @@ const Header = forwardRef((props, ref) => {
                 <button aria-label="Español"><img src="/assets/images/flags/bandera-espana.webp" alt="España" className="w-6 h-auto rounded opacity-50 hover:opacity-100" /></button>
               </div>
             </div>
-            <Link to="/entrar" className="block w-full text-center py-2 bg-audit-gold text-white rounded font-bold text-sm hover:bg-audit-goldDark transition-colors">
+            <Link to="/fale-conosco" className="block w-full text-center py-2 bg-audit-gold text-white rounded font-bold text-sm hover:bg-audit-goldDark transition-colors">
               Entrar / Área do Aluno
             </Link>
           </div>
