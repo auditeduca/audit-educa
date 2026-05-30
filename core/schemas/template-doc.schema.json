@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "template-doc.schema.json",
+  "type": "object",
+  "required": ["templates"],
+  "properties": {
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "category": { "type": "string" },
+          "variables": { "type": "array", "items": { "type": "string" } },
+          "sourceModule": { "type": "string" },
+          "thumbnail": { "type": "string" }
+        }
+      }
+    }
+  }
+}

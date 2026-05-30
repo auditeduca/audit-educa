@@ -1,0 +1,826 @@
+{
+  "generatedAt": "2026-05-30T23:17:28.167Z",
+  "summary": {
+    "totalRoutes": 58,
+    "live": 33,
+    "draft": 10,
+    "archived": 8,
+    "redirect": 7,
+    "brokenLinks": 0,
+    "archivedStillLinked": 0
+  },
+  "routeMatrix": [
+    {
+      "path": "/",
+      "status": "live",
+      "component": "home",
+      "contentFile": "content/pages/home.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/exame-suficiencia",
+      "status": "live",
+      "component": "ExameSuficiencia",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/notificacoes-legais",
+      "status": "live",
+      "component": "NotificacoesLegais",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/politica-de-privacidade",
+      "status": "live",
+      "component": "PoliticaPrivacidade",
+      "contentFile": "content/pages/politica-privacidade.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/curriculo",
+      "status": "live",
+      "component": "CurriculoHome",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/curriculo/wizard",
+      "status": "live",
+      "component": "ResumeWizard",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/politica-de-acessibilidade",
+      "status": "live",
+      "component": "PoliticaAcessibilidade",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/sobre-nos",
+      "status": "live",
+      "component": "SobreNos",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/de-olho-na-acessibilidade",
+      "status": "live",
+      "component": "DeOlhoNaAcessibilidade",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/pegada-de-carbono",
+      "status": "live",
+      "component": "PegadaDeCarbono",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/termos-de-uso",
+      "status": "live",
+      "component": "TermosDeUso",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/relatorio-de-impacto",
+      "status": "live",
+      "component": "RelatorioDeImpacto",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/mapa-do-site",
+      "status": "live",
+      "component": "MapaSite",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/fale-conosco",
+      "status": "live",
+      "component": "FaleConosco",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/busca-e-conteudo",
+      "status": "live",
+      "component": "BuscaEConteudo",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/tecnologia-verde",
+      "status": "live",
+      "component": "TecnologiaVerde",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/templates-pro",
+      "status": "live",
+      "component": "TemplatesHub",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/template-wizard",
+      "status": "live",
+      "component": "TemplateWizard",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/sobre-o-criador",
+      "status": "live",
+      "component": "SobreOCriador",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/nosso-compromisso",
+      "status": "live",
+      "component": "NossoCompromisso",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/recursos-assistivos",
+      "status": "live",
+      "component": "RecursosAssistivos",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/relatorio-institucional",
+      "status": "live",
+      "component": "RelatorioInstitucional",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/conversor-de-moedas",
+      "status": "live",
+      "component": "ConversorDeMoedas",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/calculadoras",
+      "status": "live",
+      "component": "CalculadorasHub",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/calculadora-juros-simples",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "contentFile": "content/calculators/juros-simples.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/calculadora-juros-compostos",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "contentFile": "content/calculators/juros-compostos.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/calculadora-desconto",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "contentFile": "content/calculators/desconto.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/calculadora-de-salario-liquido",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "contentFile": "content/calculators/salario-liquido.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/calculadora-de-ferias",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "contentFile": "content/calculators/ferias.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/equipe",
+      "status": "live",
+      "component": "InstitutionalPage",
+      "contentFile": "content/pages/equipe.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/compliance",
+      "status": "live",
+      "component": "InstitutionalPage",
+      "contentFile": "content/pages/compliance.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/sustentabilidade",
+      "status": "live",
+      "component": "InstitutionalPage",
+      "contentFile": "content/pages/sustentabilidade.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/ferramentas",
+      "status": "live",
+      "component": "FerramentasHub",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/missao-valores",
+      "status": "redirect",
+      "component": null,
+      "contentFile": null,
+      "redirectTo": "/sobre-nos"
+    },
+    {
+      "path": "/privacidade",
+      "status": "redirect",
+      "component": null,
+      "contentFile": null,
+      "redirectTo": "/politica-de-privacidade"
+    },
+    {
+      "path": "/institucional",
+      "status": "redirect",
+      "component": null,
+      "contentFile": null,
+      "redirectTo": "/sobre-nos"
+    },
+    {
+      "path": "/politica-acessibilidade",
+      "status": "redirect",
+      "component": null,
+      "contentFile": null,
+      "redirectTo": "/politica-de-acessibilidade"
+    },
+    {
+      "path": "/relatorio-impacto",
+      "status": "redirect",
+      "component": null,
+      "contentFile": null,
+      "redirectTo": "/relatorio-de-impacto"
+    },
+    {
+      "path": "/sustentabilidade-digital",
+      "status": "redirect",
+      "component": null,
+      "contentFile": null,
+      "redirectTo": "/nosso-compromisso"
+    },
+    {
+      "path": "/contato",
+      "status": "redirect",
+      "component": null,
+      "contentFile": null,
+      "redirectTo": "/fale-conosco"
+    },
+    {
+      "path": "/circularizacao",
+      "status": "archived",
+      "component": "Circularizacao",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/contingencias",
+      "status": "archived",
+      "component": "Contingencias",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/fornecedores",
+      "status": "archived",
+      "component": "Fornecedores",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/imobilizado",
+      "status": "archived",
+      "component": "Imobilizado",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/contas-a-receber",
+      "status": "archived",
+      "component": "ContasAReceber",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/caixa-e-equivalentes",
+      "status": "archived",
+      "component": "CaixaEquivalentes",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/notas-explicativas",
+      "status": "archived",
+      "component": "NotasExplicativas",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/IAGEN",
+      "status": "archived",
+      "component": "AuditLab",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/calculadora-rescisao",
+      "status": "draft",
+      "component": "CalculadoraPage",
+      "contentFile": "content/calculators/rescisao.json",
+      "redirectTo": null
+    },
+    {
+      "path": "/governanca",
+      "status": "draft",
+      "component": "InstitutionalPage",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/esg",
+      "status": "draft",
+      "component": "InstitutionalPage",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/normas",
+      "status": "draft",
+      "component": "InstitutionalPage",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/qualidade",
+      "status": "draft",
+      "component": "InstitutionalPage",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/acessibilidade",
+      "status": "draft",
+      "component": "InstitutionalPage",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/biblioteca",
+      "status": "draft",
+      "component": "BuscaEConteudo",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/simulados",
+      "status": "draft",
+      "component": "ExameSuficiencia",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/cursos-auditoria",
+      "status": "draft",
+      "component": "InstitutionalPage",
+      "contentFile": null,
+      "redirectTo": null
+    },
+    {
+      "path": "/entrar",
+      "status": "draft",
+      "component": "InstitutionalPage",
+      "contentFile": null,
+      "redirectTo": null
+    }
+  ],
+  "pagesInventory": [
+    "src/pages/BuscaEConteudo.jsx",
+    "src/pages/ExameSuficiencia.jsx",
+    "src/pages/IAGEN.jsx",
+    "src/pages/NotificacoesLegais.jsx",
+    "src/pages/PoliticaAcessibilidade.jsx",
+    "src/pages/PoliticaPrivacidade.jsx",
+    "src/pages/RelatorioDeImpacto.jsx",
+    "src/pages/RelatorioInstitucional.jsx",
+    "src/pages/SobreNos.jsx",
+    "src/pages/caixa-e-bancos/caixa-e-equivalentes.jsx",
+    "src/pages/caixa-e-bancos/caixaequivalentes.jsx",
+    "src/pages/calculadoras/CalculadoraPage.jsx",
+    "src/pages/calculadoras/CalculadorasHub.jsx",
+    "src/pages/circularizacao/Circularizacao.jsx",
+    "src/pages/circularizacao/components/A4PreviewWithThumbnail.jsx",
+    "src/pages/circularizacao/components/CEPField.jsx",
+    "src/pages/circularizacao/components/CNPJField.jsx",
+    "src/pages/circularizacao/components/FixedButtons.jsx",
+    "src/pages/circularizacao/components/MXBadge.jsx",
+    "src/pages/circularizacao/components/ProgressBar.jsx",
+    "src/pages/circularizacao/components/Step1Setup.jsx",
+    "src/pages/circularizacao/components/Step2Tipo.jsx",
+    "src/pages/circularizacao/components/Step3Textos.jsx",
+    "src/pages/circularizacao/components/Step4Produtos.jsx",
+    "src/pages/circularizacao/components/Step5Dados.jsx",
+    "src/pages/circularizacao/components/Step6Design.jsx",
+    "src/pages/circularizacao/components/Step7Destinatarios.jsx",
+    "src/pages/circularizacao/components/Step8Exportar.jsx",
+    "src/pages/circularizacao/components/StepSidebar.jsx",
+    "src/pages/circularizacao/hooks/useCircularization.js",
+    "src/pages/circularizacao/hooks/useMX.js",
+    "src/pages/clientes/contas-a-receber.jsx",
+    "src/pages/contingencias/Contingencias.jsx",
+    "src/pages/curriculo/Home.jsx",
+    "src/pages/curriculo/ResumeWizard.jsx",
+    "src/pages/curriculo/components/ColorPicker.jsx",
+    "src/pages/curriculo/components/ResumePreview.jsx",
+    "src/pages/curriculo/components/TemplateSelector.jsx",
+    "src/pages/de-olho-na-acessibilidade.jsx",
+    "src/pages/fale-conosco.jsx",
+    "src/pages/ferramentas/FerramentasHub.jsx",
+    "src/pages/fornecedores/fornecedores.jsx",
+    "src/pages/home.jsx",
+    "src/pages/imobilizado/Imobilizado.jsx",
+    "src/pages/mapa-do-site.jsx",
+    "src/pages/moedas/CalculadoraMoedas.jsx",
+    "src/pages/moedas/components/ConversorMoedas.jsx",
+    "src/pages/moedas/components/GraficoCambio.jsx",
+    "src/pages/moedas/components/SeletorMoedas.jsx",
+    "src/pages/moedas/components/SeriesHistorica.jsx",
+    "src/pages/moedas/components/TabelaMoedas.jsx",
+    "src/pages/moedas/hooks/useMoedas.js",
+    "src/pages/moedas/services/apiMoedas.js",
+    "src/pages/nosso-compromisso.jsx",
+    "src/pages/notas-explicativas/NotasExplicativas.jsx",
+    "src/pages/notas-explicativas/components/DataForm.jsx",
+    "src/pages/notas-explicativas/components/NoteDisplay.jsx",
+    "src/pages/notas-explicativas/components/Preview.jsx",
+    "src/pages/notas-explicativas/components/TemplateSelector.jsx",
+    "src/pages/notas-explicativas/templates/caixa.js",
+    "src/pages/notas-explicativas/templates/fornecedores.js",
+    "src/pages/notas-explicativas/templates/imobilizado.js",
+    "src/pages/notas-explicativas/templates/index.js",
+    "src/pages/notas-explicativas/templates/outros-investimentos.js",
+    "src/pages/pegada-de-carbono.jsx",
+    "src/pages/recursos-assistivos.jsx",
+    "src/pages/sobre-o-criador.jsx",
+    "src/pages/tecnologia-verde.jsx",
+    "src/pages/template-wizard/TemplateWizard.jsx",
+    "src/pages/template-wizard/components/TemplateEditorStep.jsx",
+    "src/pages/template-wizard/components/TemplateSelector.jsx",
+    "src/pages/templates/TemplatesHub.jsx",
+    "src/pages/templates/components/CollaborationPanel.jsx",
+    "src/pages/templates/components/ExportManager.jsx",
+    "src/pages/templates/components/TemplateEditor.jsx",
+    "src/pages/templates/components/TemplateLibrary.jsx",
+    "src/pages/templates/components/TemplatePreview.jsx",
+    "src/pages/templates/components/TemplateSidebar.jsx",
+    "src/pages/templates/components/VariableManager.jsx",
+    "src/pages/templates/components/VersionHistory.jsx",
+    "src/pages/templates/data/categories.js",
+    "src/pages/templates/data/templates/accounting-proposal.js",
+    "src/pages/templates/data/templates/audit-report.js",
+    "src/pages/templates/data/templates/business-card-print.js",
+    "src/pages/templates/data/templates/business-card-virtual.js",
+    "src/pages/templates/data/templates/email-signature.js",
+    "src/pages/templates/data/templates/final-report.js",
+    "src/pages/templates/data/templates/index.js",
+    "src/pages/templates/data/templates/letterhead.js",
+    "src/pages/templates/data/templates/nda.js",
+    "src/pages/templates/data/templates/presentation.js",
+    "src/pages/templates/data/templates/project-charter.js",
+    "src/pages/templates/data/templates/proposal.js",
+    "src/pages/templates/data/templates/proposta-comercial-asc.js",
+    "src/pages/templates/data/templates/proposta-motherson.js",
+    "src/pages/templates/data/templates/report-cover.js",
+    "src/pages/templates/data/templates/service-contract.js",
+    "src/pages/templates/data/templates/technical-opinion.js",
+    "src/pages/templates/data/templates/templates.js",
+    "src/pages/templates/hooks/useExport.js",
+    "src/pages/templates/hooks/useHistory.js",
+    "src/pages/templates/hooks/useTemplate.js",
+    "src/pages/termos-de-uso.jsx"
+  ],
+  "brokenLinks": [],
+  "archivedStillLinked": [],
+  "orphanLiveRoutes": [
+    {
+      "path": "/",
+      "status": "live",
+      "component": "home",
+      "category": "home",
+      "title": "Início",
+      "layout": "home",
+      "contentFile": "content/pages/home.json"
+    },
+    {
+      "path": "/exame-suficiencia",
+      "status": "live",
+      "component": "ExameSuficiencia",
+      "category": "education",
+      "title": "Exame de Suficiência",
+      "layout": "tool"
+    },
+    {
+      "path": "/notificacoes-legais",
+      "status": "live",
+      "component": "NotificacoesLegais",
+      "category": "legal",
+      "title": "Notificações Legais",
+      "layout": "institutional"
+    },
+    {
+      "path": "/politica-de-privacidade",
+      "status": "live",
+      "component": "PoliticaPrivacidade",
+      "category": "legal",
+      "title": "Política de Privacidade",
+      "layout": "institutional",
+      "contentFile": "content/pages/politica-privacidade.json"
+    },
+    {
+      "path": "/curriculo",
+      "status": "live",
+      "component": "CurriculoHome",
+      "category": "education",
+      "title": "Currículo",
+      "layout": "tool"
+    },
+    {
+      "path": "/curriculo/wizard",
+      "status": "live",
+      "component": "ResumeWizard",
+      "category": "education",
+      "title": "Wizard de Currículo",
+      "layout": "tool"
+    },
+    {
+      "path": "/politica-de-acessibilidade",
+      "status": "live",
+      "component": "PoliticaAcessibilidade",
+      "category": "institutional",
+      "title": "Política de Acessibilidade",
+      "layout": "institutional"
+    },
+    {
+      "path": "/sobre-nos",
+      "status": "live",
+      "component": "SobreNos",
+      "category": "institutional",
+      "title": "Sobre Nós",
+      "layout": "institutional"
+    },
+    {
+      "path": "/de-olho-na-acessibilidade",
+      "status": "live",
+      "component": "DeOlhoNaAcessibilidade",
+      "category": "institutional",
+      "title": "De Olho na Acessibilidade",
+      "layout": "institutional"
+    },
+    {
+      "path": "/pegada-de-carbono",
+      "status": "live",
+      "component": "PegadaDeCarbono",
+      "category": "esg",
+      "title": "Pegada de Carbono",
+      "layout": "institutional"
+    },
+    {
+      "path": "/termos-de-uso",
+      "status": "live",
+      "component": "TermosDeUso",
+      "category": "legal",
+      "title": "Termos de Uso",
+      "layout": "institutional"
+    },
+    {
+      "path": "/relatorio-de-impacto",
+      "status": "live",
+      "component": "RelatorioDeImpacto",
+      "category": "esg",
+      "title": "Relatório de Impacto",
+      "layout": "institutional"
+    },
+    {
+      "path": "/mapa-do-site",
+      "status": "live",
+      "component": "MapaSite",
+      "category": "institutional",
+      "title": "Mapa do Site",
+      "layout": "institutional"
+    },
+    {
+      "path": "/fale-conosco",
+      "status": "live",
+      "component": "FaleConosco",
+      "category": "institutional",
+      "title": "Fale Conosco",
+      "layout": "institutional"
+    },
+    {
+      "path": "/busca-e-conteudo",
+      "status": "live",
+      "component": "BuscaEConteudo",
+      "category": "institutional",
+      "title": "Busca e Conteúdo",
+      "layout": "institutional"
+    },
+    {
+      "path": "/tecnologia-verde",
+      "status": "live",
+      "component": "TecnologiaVerde",
+      "category": "esg",
+      "title": "Tecnologia Verde",
+      "layout": "institutional"
+    },
+    {
+      "path": "/templates-pro",
+      "status": "live",
+      "component": "TemplatesHub",
+      "category": "tool",
+      "title": "Templates Pro",
+      "layout": "tool"
+    },
+    {
+      "path": "/template-wizard",
+      "status": "live",
+      "component": "TemplateWizard",
+      "category": "tool",
+      "title": "Template Wizard",
+      "layout": "tool"
+    },
+    {
+      "path": "/sobre-o-criador",
+      "status": "live",
+      "component": "SobreOCriador",
+      "category": "institutional",
+      "title": "Sobre o Criador",
+      "layout": "institutional"
+    },
+    {
+      "path": "/nosso-compromisso",
+      "status": "live",
+      "component": "NossoCompromisso",
+      "category": "esg",
+      "title": "Nosso Compromisso",
+      "layout": "institutional"
+    },
+    {
+      "path": "/recursos-assistivos",
+      "status": "live",
+      "component": "RecursosAssistivos",
+      "category": "institutional",
+      "title": "Recursos Assistivos",
+      "layout": "institutional"
+    },
+    {
+      "path": "/relatorio-institucional",
+      "status": "live",
+      "component": "RelatorioInstitucional",
+      "category": "institutional",
+      "title": "Relatório Institucional",
+      "layout": "institutional"
+    },
+    {
+      "path": "/conversor-de-moedas",
+      "status": "live",
+      "component": "ConversorDeMoedas",
+      "category": "calculator",
+      "title": "Conversor de Moedas",
+      "layout": "calculator"
+    },
+    {
+      "path": "/calculadoras",
+      "status": "live",
+      "component": "CalculadorasHub",
+      "category": "calculator",
+      "title": "Hub de Calculadoras",
+      "layout": "calculator"
+    },
+    {
+      "path": "/calculadora-juros-simples",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "category": "calculator",
+      "title": "Juros Simples",
+      "layout": "calculator",
+      "contentFile": "content/calculators/juros-simples.json"
+    },
+    {
+      "path": "/calculadora-juros-compostos",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "category": "calculator",
+      "title": "Juros Compostos",
+      "layout": "calculator",
+      "contentFile": "content/calculators/juros-compostos.json"
+    },
+    {
+      "path": "/calculadora-desconto",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "category": "calculator",
+      "title": "Desconto Comercial",
+      "layout": "calculator",
+      "contentFile": "content/calculators/desconto.json"
+    },
+    {
+      "path": "/calculadora-de-salario-liquido",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "category": "calculator",
+      "title": "Salário Líquido",
+      "layout": "calculator",
+      "contentFile": "content/calculators/salario-liquido.json"
+    },
+    {
+      "path": "/calculadora-de-ferias",
+      "status": "live",
+      "component": "CalculadoraPage",
+      "category": "calculator",
+      "title": "Férias",
+      "layout": "calculator",
+      "contentFile": "content/calculators/ferias.json"
+    },
+    {
+      "path": "/equipe",
+      "status": "live",
+      "component": "InstitutionalPage",
+      "category": "institutional",
+      "title": "Corpo Técnico",
+      "layout": "institutional",
+      "contentFile": "content/pages/equipe.json"
+    },
+    {
+      "path": "/compliance",
+      "status": "live",
+      "component": "InstitutionalPage",
+      "category": "institutional",
+      "title": "Programa de Compliance",
+      "layout": "institutional",
+      "contentFile": "content/pages/compliance.json"
+    },
+    {
+      "path": "/sustentabilidade",
+      "status": "live",
+      "component": "InstitutionalPage",
+      "category": "esg",
+      "title": "Compromissos Ambientais",
+      "layout": "institutional",
+      "contentFile": "content/pages/sustentabilidade.json"
+    },
+    {
+      "path": "/ferramentas",
+      "status": "live",
+      "component": "FerramentasHub",
+      "category": "tool",
+      "title": "Ferramentas",
+      "layout": "default"
+    }
+  ],
+  "duplicateContent": [
+    {
+      "files": [
+        "src/pages/caixa-e-bancos/caixaequivalentes.jsx",
+        "src/pages/caixa-e-bancos/caixa-e-equivalentes.jsx"
+      ]
+    }
+  ],
+  "duplicateAnalytics": [],
+  "referencedButDraft": [
+    {
+      "path": "/biblioteca",
+      "referencedFrom": [
+        "src/components/LearnMore.jsx"
+      ]
+    },
+    {
+      "path": "/simulados",
+      "referencedFrom": [
+        "src/components/LearnMore.jsx"
+      ]
+    }
+  ]
+}

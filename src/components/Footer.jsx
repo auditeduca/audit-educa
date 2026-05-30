@@ -325,7 +325,7 @@ const Footer = () => {
               </h3>
               <ul className="space-y-3 text-sm">
                 <li><Link to="/sobre-nos" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Sobre Nós</Link></li>
-                <li><Link to="/privacidade" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Políticas do Site</Link></li>
+                <li><Link to="/politica-de-privacidade" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Políticas do Site</Link></li>
                 <li><Link to="/mapa-do-site" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Mapa do Site</Link></li>
               </ul>
             </div>
@@ -344,7 +344,7 @@ const Footer = () => {
                   <span className="w-1 h-6 bg-audit-gold rounded-full"></span> Sustentabilidade Digital
                 </h3>
                 <ul className="space-y-3 text-sm">
-                  <li><Link to="/sustentabilidade-digital" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Nosso Compromisso</Link></li>
+                  <li><Link to="/nosso-compromisso" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Nosso Compromisso</Link></li>
                   <li><Link to="/pegada-de-carbono" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Pegada de Carbono</Link></li>
                   <li><Link to="/tecnologia-verde" className="hover:text-audit-gold transition text-gray-300 dark:text-gray-400">Tecnologia Verde</Link></li>
                 </ul>
@@ -372,7 +372,7 @@ const Footer = () => {
                   &copy; {currentYear} Audit Educa. Todos os direitos reservados.
                 </p>
                 <div className="flex flex-wrap justify-center md:justify-start gap-4 text-xs font-semibold text-gray-400 dark:text-gray-500">
-                  <Link to="/privacidade" className="hover:text-audit-gold transition">Central de Privacidade</Link>
+                  <Link to="/politica-de-privacidade" className="hover:text-audit-gold transition">Central de Privacidade</Link>
                   <Link to="/notificacoes-legais" className="hover:text-audit-gold transition">Notificações Legais</Link>
                   <Link to="/termos-de-uso" className="hover:text-audit-gold transition">Configurações</Link>
                 </div>

@@ -41,9 +41,8 @@
  *   ]}
  *   themeColor="green-500"
  * >
- *   {/* Conteúdo principal */}
- *   <section id="hero">...</section>
- *   <section id="coleta">...</section>
+ *   Conteúdo principal em children
+ *   section id="hero"
  * </PageLayout>
  */
 

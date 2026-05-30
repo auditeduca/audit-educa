@@ -1,0 +1,18 @@
+{
+  "id": "juros-simples",
+  "slug": "/calculadora-juros-simples",
+  "title": "Calculadora de Juros Simples",
+  "description": "Calcule juros simples sobre capital, taxa e período.",
+  "category": "financeira",
+  "norms": ["Matemática Financeira"],
+  "formulaType": "juros-simples",
+  "inputs": [
+    { "id": "principal", "label": "Capital (R$)", "type": "currency", "default": 1000, "min": 0 },
+    { "id": "rate", "label": "Taxa mensal (%)", "type": "percent", "default": 1, "min": 0, "step": 0.01 },
+    { "id": "periods", "label": "Períodos (meses)", "type": "number", "default": 12, "min": 1 }
+  ],
+  "outputs": [
+    { "id": "interest", "label": "Juros", "format": "currency" },
+    { "id": "total", "label": "Montante", "format": "currency" }
+  ]
+}

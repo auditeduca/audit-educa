@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "page.schema.json",
+  "type": "object",
+  "required": ["slug", "title", "sections"],
+  "properties": {
+    "slug": { "type": "string" },
+    "title": { "type": "string" },
+    "themeColor": { "type": "string" },
+    "breadcrumbs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label"],
+        "properties": {
+          "label": { "type": "string" },
+          "to": { "type": "string" }
+        }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "properties": {
+        "eyebrow": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["prose", "stats", "grid", "cta", "faq", "articles", "tools", "guides", "trends", "market", "suggestion"]
+          },
+          "title": { "type": "string" },
+          "eyebrow": { "type": "string" },
+          "icon": { "type": "string" },
+          "topic": { "type": "string" },
+          "body": { "type": "string" },
+          "items": { "type": "array" },
+          "html": { "type": "string" }
+        }
+      }
+    },
+    "sidebar": { "type": "object" }
+  }
+}
