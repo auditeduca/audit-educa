@@ -17,19 +17,27 @@ export default function MapaDoSite() {
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Header />
 
-      {/* Sidebar esquerda (ferramentas) */}
+      {/* Sidebar esquerda (ferramentas) - CORREÇÃO: nomes acessíveis */}
       <aside className="sidebar-left-tools no-print" aria-label="Ferramentas Laterais">
-        <Link to="/" className="tool-btn" title="Início"><i className="fas fa-home"></i></Link>
-        <Link to="/institucional" className="tool-btn" title="Institucional"><i className="fas fa-building"></i></Link>
-        <button onClick={() => showToast('Índice Sincronizado')} className="tool-btn" title="Sincronizar">
+        <Link to="/" className="tool-btn" aria-label="Início">
+          <i className="fas fa-home"></i>
+        </Link>
+        <Link to="/institucional" className="tool-btn" aria-label="Institucional">
+          <i className="fas fa-building"></i>
+        </Link>
+        <button 
+          onClick={() => showToast('Índice Sincronizado')} 
+          className="tool-btn" 
+          aria-label="Sincronizar índice"
+        >
           <i className="fas fa-sync-alt text-audit-blue"></i>
         </button>
       </aside>
 
       <main className="flex-grow pb-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto content-wrapper">
-          {/* Breadcrumb */}
-          <nav className="mb-12 no-print text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+          {/* Breadcrumb - CORREÇÃO: contraste de cor */}
+          <nav className="mb-12 no-print text-[10px] font-bold text-slate-600 uppercase tracking-widest">
             <ol className="flex items-center gap-2">
               <li><Link to="/" className="hover:text-audit-gold transition">Início</Link></li>
               <li><i className="fas fa-chevron-right text-[8px]"></i></li>
@@ -113,31 +121,31 @@ export default function MapaDoSite() {
                 </div>
               </div>
 
-              {/* Statistics Grid */}
+              {/* Statistics Grid - CORREÇÃO: contraste de cores */}
               <section className="pt-8">
                 <h2 className="text-2xl font-serif font-bold text-audit-navy mb-8">Métricas da Plataforma</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="stat-card">
                     <div className="text-2xl font-bold text-audit-blue mb-1" id="total-pages">18+</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Páginas Totais</div>
+                    <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Páginas Totais</div>
                   </div>
                   <div className="stat-card">
-                    <div className="text-2xl font-bold text-audit-gold mb-1">100%</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Acessibilidade</div>
+                    <div className="text-2xl font-bold text-audit-gold-dark mb-1">100%</div>
+                    <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Acessibilidade</div>
                   </div>
                   <div className="stat-card">
                     <div className="text-2xl font-bold text-green-600 mb-1">64-bit</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Arquitetura</div>
+                    <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Arquitetura</div>
                   </div>
                   <div className="stat-card">
                     <div className="text-2xl font-bold text-purple-600 mb-1">Zero</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Links Quebrados</div>
+                    <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Links Quebrados</div>
                   </div>
                 </div>
               </section>
             </div>
 
-            {/* SIDEBAR (4 Colunas) */}
+            {/* SIDEBAR (4 Colunas) - CORREÇÕES: hierarquia de títulos e contraste */}
             <div className="lg:col-span-4 space-y-8">
               {/* Search Widget */}
               <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm sticky top-24">
@@ -150,31 +158,36 @@ export default function MapaDoSite() {
                     type="text"
                     placeholder="Procurar página..."
                     className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none focus:border-audit-blue transition"
+                    aria-label="Campo de busca de páginas"
                   />
                 </div>
-                <nav className="space-y-4">
-                  <h4 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2">Categorias</h4>
+                <nav className="space-y-4" aria-labelledby="categorias-heading">
+                  <h2 id="categorias-heading" className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mb-2">
+                    Categorias
+                  </h2>
                   <a href="#" className="flex items-center justify-between text-xs text-slate-600 hover:text-audit-blue transition">
                     <span>Institucional</span>
-                    <span className="bg-slate-100 px-2 py-0.5 rounded-full text-[9px]">05</span>
+                    <span className="bg-slate-100 px-2 py-0.5 rounded-full text-[9px]" aria-label="5 páginas">05</span>
                   </a>
                   <a href="#" className="flex items-center justify-between text-xs text-slate-600 hover:text-audit-blue transition">
                     <span>Sustentabilidade</span>
-                    <span className="bg-slate-100 px-2 py-0.5 rounded-full text-[9px]">04</span>
+                    <span className="bg-slate-100 px-2 py-0.5 rounded-full text-[9px]" aria-label="4 páginas">04</span>
                   </a>
                   <a href="#" className="flex items-center justify-between text-xs text-slate-600 hover:text-audit-blue transition">
                     <span>Jurídico</span>
-                    <span className="bg-slate-100 px-2 py-0.5 rounded-full text-[9px]">03</span>
+                    <span className="bg-slate-100 px-2 py-0.5 rounded-full text-[9px]" aria-label="3 páginas">03</span>
                   </a>
                 </nav>
               </div>
 
-              {/* CTA Sidebar */}
+              {/* CTA Sidebar - CORREÇÃO: hierarquia de títulos */}
               <div className="bg-audit-navy p-8 rounded-2xl text-white shadow-xl relative overflow-hidden group">
                 <div className="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition duration-500">
                   <i className="fas fa-compass text-6xl"></i>
                 </div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">Ajuda na Navegação</h4>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-audit-gold mb-4">
+                  Ajuda na Navegação
+                </h2>
                 <p className="text-xs font-light text-slate-300 mb-6 leading-relaxed">Não encontrou o que procurava? Nosso guia de navegação assistida pode ajudar.</p>
                 <Link to="/fale-conosco" className="block w-full p-3 bg-audit-gold text-audit-navy font-bold text-center text-[10px] uppercase tracking-widest rounded-lg hover:bg-yellow-500 transition shadow-lg">
                   Suporte Técnico
@@ -205,7 +218,7 @@ export default function MapaDoSite() {
       <Footer />
       <Toast message={toastMessage} />
 
-      {/* Estilos adicionais */}
+      {/* Estilos adicionais - CORREÇÃO: adicionado tom mais escuro para o dourado */}
       <style>{`
         .sidebar-left-tools {
             position: fixed; left: 0; top: 50%; transform: translateY(-50%);
@@ -238,6 +251,11 @@ export default function MapaDoSite() {
             transition: transform 0.3s ease;
         }
         .stat-card:hover { transform: translateY(-5px); border-color: #1e40af; }
+
+        /* CORREÇÃO: contraste para o texto dourado de 100% */
+        .text-audit-gold-dark {
+            color: #937b38 !important;
+        }
 
         @media (max-width: 768px) {
             .sidebar-left-tools { display: none; }
